@@ -9,11 +9,17 @@ Binance now has serval Postman Collections for quick and easy exercise of our RE
 
 ## How to import environment
 - Download the environment json file
-- Click the `Run in Postman` button to import collection
+- Click the `Run in Postman` button above to import collection
+    
 - Click the button `Manage Environments`(gear icon) from the top right of Postman console (Postman Mac version)
-- From the pop-up page, click `import` button
-- Select the json file download above. Click the environment, and set the API key and secret key.
+    <p align="center"><img src="https://raw.githubusercontent.com/Binance-docs/binance-api-postman-environment/assets/postman/1.png"/></p>
+- From the pop-up page, click `import` button, then select the downloaded json file.Click the environment,
+   <p align="center"><img src="https://raw.githubusercontent.com/Binance-docs/binance-api-postman-environment/assets/postman/2.png"/></p>
+- Set the API key and secret key. Leave timestamp and signature empty.
+    <p align="center"><img src="https://raw.githubusercontent.com/Binance-docs/binance-api-postman-environment/assets/postman/3.png"/></p>
+    
 - Select the environment from the dropdown.
+    <p align="center"><img src="https://raw.githubusercontent.com/Binance-docs/binance-api-postman-environment/assets/postman/4.png"/></p>
 
 ## What is Postman
 [Click here](https://www.getpostman.com/)
