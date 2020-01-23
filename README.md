@@ -5,6 +5,7 @@ Binance now has serval Postman Collections for quick and easy exercise of our RE
 |   Collections    |       Click to Run     |  Document |
 | :--------------- | :---------------------------------- | :-----|
 | Binance Spot API | [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/7c052414684953667296) | [https://binance-docs.github.io/apidocs/spot/en](https://binance-docs.github.io/apidocs/spot/en)
+| Binance Futures API | [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/collections/6eacab304784a36a8243) | [https://binance-docs.github.io/apidocs/spot/en](https://binance-docs.github.io/apidocs/futures/en)
 
 
 ## How to import environment
