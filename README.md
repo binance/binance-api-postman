@@ -39,6 +39,12 @@ Serval reasons can cause this error:
 ### Error: `Mandatory parameter 'xxxx' was not sent, was empty/null, or malformed.`
 - The mandatory parameter is missing. Please refer to the API document and pass all required parameters.
 
+### How to debug or find out request URL
+- Open Postman console `(CMD/CTRL + ALT + C)`, each request will print request parameters and URL.
+- Edit Pre-request scripts for debugging.
+
+## Where to ask question
+Please open an issue.
 
 ## What is Postman
 [Click here](https://www.getpostman.com/)
