@@ -48,3 +48,6 @@ Please open an issue.
 
 ## What is Postman
 [Click here](https://www.getpostman.com/)
+
+## License
+MIT
