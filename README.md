@@ -22,5 +22,29 @@ Binance now has serval Postman Collections for quick and easy exercise of our RE
 - Select the environment from the dropdown.
     <p align="center"><img src="https://raw.githubusercontent.com/Binance-docs/binance-api-postman-environment/assets/postman/4.png"/></p>
 
+## Q&A
+### Error: `Could not get any response`
+- Either you haven't setup the environment or the environment is not selected. Please find the step above to setup the environment.
+
+### Error: `API-key format invalid.`
+- API key is not set.
+- API key is not correct.
+- In Postman `Headers`, the `X-MBX-APIKEY` is not selected.
+
+### Error: `Signature for this request is not valid.`
+Serval reasons can cause this error:
+- Secret key is not set.
+- Parameters are selected, but didn't pass any value. Uncheck the parameter if you don't use it.
+
+### Error: `Mandatory parameter 'xxxx' was not sent, was empty/null, or malformed.`
+- The mandatory parameter is missing. Please refer to the API document and pass all required parameters.
+
+### How to debug or find out request URL
+- Open Postman console `(CMD/CTRL + ALT + C)`, each request will print request parameters and URL.
+- Edit Pre-request scripts for debugging.
+
+## Where to ask question
+Please open an issue.
+
 ## What is Postman
 [Click here](https://www.getpostman.com/)
