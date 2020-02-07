@@ -3883,7 +3883,7 @@
 				{
 					"name": "Margin Account Borrow (MARGIN)",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -3897,7 +3897,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/loan?asset=BTC&amount&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/loan?asset=&amount&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3910,7 +3910,7 @@
 							"query": [
 								{
 									"key": "asset",
-									"value": "BTC"
+									"value": ""
 								},
 								{
 									"key": "amount",
@@ -3932,7 +3932,7 @@
 				{
 					"name": "Margin Account Repay (MARGIN)",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -3946,7 +3946,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/repay?asset=BTC&amount&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/repay?asset=&amount&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3959,7 +3959,7 @@
 							"query": [
 								{
 									"key": "asset",
-									"value": "BTC"
+									"value": ""
 								},
 								{
 									"key": "amount",
@@ -5081,7 +5081,7 @@
 	],
 	"variable": [
 		{
-			"id": "289ca322-82c6-43a4-89e8-eb02d0494194",
+			"id": "93a7c6a8-ae46-4e5b-b8c2-3cddf0e4ec5c",
 			"key": "url",
 			"value": "https://api.binance.com",
 			"type": "string"
