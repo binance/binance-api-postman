@@ -1,12 +1,10 @@
 # Postman collection environment
 
-Binance now has serval Postman Collections for quick and easy exercise of our REST-based APIs. The environment hosted here can be imported for easy changing of API public key, secret key. Use the button below for easy import into Postman. 
+Binance now has serval Postman Collections for quick and easy exercise of our REST-based APIs. The environment hosted here can be imported for easy changing of API public key, secret key. 
 
-|   Collections    |       Click to Run     |  Document |
-| :--------------- | :---------------------------------- | :-----|
-| Binance Spot API | [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/7c052414684953667296) | [https://binance-docs.github.io/apidocs/spot/en](https://binance-docs.github.io/apidocs/spot/en)
-| Binance Futures API | [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/6eacab304784a36a8243) | [https://binance-docs.github.io/apidocs/futures/en](https://binance-docs.github.io/apidocs/futures/en)
-
+## How to import collection
+- Download the collections
+- Import the collection into Postman APP
 
 ## How to import environment
 - Download the environment json file
@@ -17,6 +15,7 @@ Binance now has serval Postman Collections for quick and easy exercise of our RE
 - From the pop-up page, click `import` button, then select the downloaded json file.Click the environment,
    <p align="center"><img src="https://raw.githubusercontent.com/binance-exchange/binance-api-postman/assets/postman/2.png"/></p>
 - Set the API key and secret key. Leave timestamp and signature empty.
+    Please DON'T set into `INTIAL VALUE` column, otherwise postman will upload into your personal postman account.
     <p align="center"><img src="https://raw.githubusercontent.com/binance-exchange/binance-api-postman/assets/postman/3.png"/></p>
     
 - Select the environment from the dropdown.
@@ -42,6 +41,15 @@ Serval reasons can cause this error:
 ### How to debug or find out request URL
 - Open Postman console `(CMD/CTRL + ALT + C)`, each request will print request parameters and URL.
 - Edit Pre-request scripts for debugging.
+
+## Is Postman safe to use
+We suggest users to deveop their own application to work with Binance API. However Postman is a good tool for those who want to easily experience APIs. These best pratices are recommended:
+
+- Don't use collections from distrust channel.
+- Review the json file before using it.
+- Don't use if any code that you don't understand.
+- Generate API key that disable withdraw.
+- Delete API key after work.
 
 ## Where to ask question
 Please open an issue.

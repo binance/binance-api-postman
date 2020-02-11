@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "13d38405-b6c3-483a-970f-8e4099bd6e85",
-		"name": "Binance future API",
+		"_postman_id": "6651B07C-1D04-4E2D-BED1-49DC8F916BC7",
+		"name": "Binance future API v1.0",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -1135,7 +1135,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/order?symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=0.1&reduceOnly=false&price=9000&workingType=CONTRACT_PRICE&marginType=CROSSED&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/order?symbol=BTCUSDT&side=SELL&type=TAKE_PROFIT_MARKET&timeInForce=GTC&quantity=0.1&reduceOnly=false&price=9000&stopPrice=&workingType=CONTRACT_PRICE&marginType=CROSSED&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1155,7 +1155,7 @@
 								},
 								{
 									"key": "type",
-									"value": "LIMIT"
+									"value": "TAKE_PROFIT_MARKET"
 								},
 								{
 									"key": "timeInForce",
@@ -1172,6 +1172,10 @@
 								{
 									"key": "price",
 									"value": "9000"
+								},
+								{
+									"key": "stopPrice",
+									"value": ""
 								},
 								{
 									"key": "workingType",
@@ -1997,7 +2001,7 @@
 	],
 	"variable": [
 		{
-			"id": "089c367e-ffb0-4ffc-b185-58bc6ac446e6",
+			"id": "be464583-e325-40ae-8ef1-ae10cbdb6d4d",
 			"key": "url",
 			"value": "https://api.binance.com",
 			"type": "string",
