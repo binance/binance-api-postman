@@ -677,7 +677,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/sapi/v1/sub-account/futures/account?email&timestamp={{timestamp}}&signature={{signature}}",
+									"raw": "{{url}}/sapi/v1/sub-account/futures/positionRisk?email=&timestamp={{timestamp}}&signature={{signature}}",
 									"host": [
 										"{{url}}"
 									],
@@ -686,12 +686,298 @@
 										"v1",
 										"sub-account",
 										"futures",
-										"account"
+										"positionRisk"
 									],
 									"query": [
 										{
 											"key": "email",
+											"value": ""
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Futures Transfer for Sub-account（For Master Account)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v1/sub-account/futures/transfer?email=&asset&amount&type&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v1",
+										"sub-account",
+										"futures",
+										"transfer"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": ""
+										},
+										{
+											"key": "asset",
 											"value": null
+										},
+										{
+											"key": "amount",
+											"value": null
+										},
+										{
+											"key": "type",
+											"value": null
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Margin Transfer for Sub-account（For Master Account",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v1/sub-account/margin/transfer?email=&asset&amount&type&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v1",
+										"sub-account",
+										"margin",
+										"transfer"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": ""
+										},
+										{
+											"key": "asset",
+											"value": null
+										},
+										{
+											"key": "amount",
+											"value": null
+										},
+										{
+											"key": "type",
+											"value": null
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Transfer to Sub-account of Same Master（For Sub-account）",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v1/sub-account/transfer/subToSub?email=&asset&amount&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v1",
+										"sub-account",
+										"transfer",
+										"subToSub"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": ""
+										},
+										{
+											"key": "asset",
+											"value": null
+										},
+										{
+											"key": "amount",
+											"value": null
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Transfer to Master（For Sub-account）",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v1/sub-account/transfer/subToMaster?asset&amount&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v1",
+										"sub-account",
+										"transfer",
+										"subToMaster"
+									],
+									"query": [
+										{
+											"key": "asset",
+											"value": null
+										},
+										{
+											"key": "amount",
+											"value": null
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Sub-account Transfer History (For Sub-account)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v1/sub-account/transfer/subUserHistory?asset&type&startTime&endTime&limit=500&amount&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v1",
+										"sub-account",
+										"transfer",
+										"subUserHistory"
+									],
+									"query": [
+										{
+											"key": "asset",
+											"value": ""
+										},
+										{
+											"key": "type",
+											"value": ""
+										},
+										{
+											"key": "startTime",
+											"value": ""
+										},
+										{
+											"key": "endTime",
+											"value": ""
+										},
+										{
+											"key": "limit",
+											"value": "500"
+										},
+										{
+											"key": "amount",
+											"value": ""
 										},
 										{
 											"key": "timestamp",
@@ -5029,7 +5315,8 @@
 					"        !is_empty(param.value) &&",
 					"        !is_disabled(param.disabled)) {",
 					"            paramsObject[param.key] = param.value;",
-					"            // pm.environment.set(param.key, encodeURIComponent(param.value));",
+					"            //console.log(encodeURIComponent(param.value));",
+					"            //pm.environment.set(param.key, encodeURIComponent(param.value));",
 					"    }",
 					"})",
 					"        ",
@@ -5037,7 +5324,7 @@
 					"",
 					"if (binance_api_secret) {",
 					"    const queryString = Object.keys(paramsObject).map((key) => {",
-					"        return `${encodeURIComponent(key)}=${paramsObject[key]}`;",
+					"        return `${key}=${paramsObject[key]}`;",
 					"    }).join('&');",
 					"    console.log(queryString);",
 					"    const signature = CryptoJS.HmacSHA256(queryString, binance_api_secret).toString();",
@@ -5081,7 +5368,7 @@
 	],
 	"variable": [
 		{
-			"id": "93a7c6a8-ae46-4e5b-b8c2-3cddf0e4ec5c",
+			"id": "f588d635-86c1-4e30-8a92-f5b6e9bcde93",
 			"key": "url",
 			"value": "https://api.binance.com",
 			"type": "string"
