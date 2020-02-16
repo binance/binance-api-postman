@@ -1,4 +1,4 @@
-# Postman collection environment
+# Binance API Postman
 
 Binance now has serval Postman Collections for quick and easy exercise of our REST-based APIs. The environment hosted here can be imported for easy changing of API public key, secret key. 
 
