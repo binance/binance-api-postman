@@ -1,6 +1,9 @@
 # Binance API Postman
 
-Binance now has serval Postman Collections for quick and easy exercise of our REST-based APIs. The environment hosted here can be imported for easy changing of API public key, secret key. 
+[Postman](https://getpostman.com) is an API Collaboration Platform.
+
+Binance now has several Postman Collections for quick and easy usage of our REST-based APIs. <br>
+The environment hosted here can be imported for easy changing of API public key, secret key. 
 
 ## How to import collection
 - Download the collections
@@ -21,7 +24,7 @@ Binance now has serval Postman Collections for quick and easy exercise of our RE
 - Select the environment from the dropdown.
     <p align="center"><img src="https://raw.githubusercontent.com/binance-exchange/binance-api-postman/assets/postman/4.png"/></p>
 
-## Q&A
+## FAQ
 ### Error: `Could not get any response`
 - Either you haven't setup the environment or the environment is not selected. Please find the step above to setup the environment.
 
@@ -43,7 +46,7 @@ Serval reasons can cause this error:
 - Edit Pre-request scripts for debugging.
 
 ## Is Postman safe to use
-We suggest users to deveop their own application to work with Binance API. However Postman is a good tool for those who want to easily experience APIs. These best pratices are recommended:
+We suggest users to develop their own application to work with Binance API. However Postman is a good tool for those who want to easily experience APIs. These best pratices are recommended:
 
 - Don't use collections from distrust channel.
 - Review the json file before using it.
@@ -51,11 +54,8 @@ We suggest users to deveop their own application to work with Binance API. Howev
 - Generate API key that disable withdraw.
 - Delete API key after work.
 
-## Where to ask question
-Please open an issue.
-
-## What is Postman
-[Click here](https://www.getpostman.com/)
+## My question isn't here
+Please open an issue [here](https://github.com/binance-exchange/binance-api-postman/issues).
 
 ## License
 MIT
