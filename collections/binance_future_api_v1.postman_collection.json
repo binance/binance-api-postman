@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "6651B07C-1D04-4E2D-BED1-49DC8F916BC7",
-		"name": "Binance future API v1.0",
+		"_postman_id": "13d38405-b6c3-483a-970f-8e4099bd6e85",
+		"name": "Binance future API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -565,6 +565,43 @@
 								"fapi",
 								"v1",
 								"openInterest"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								}
+							]
+						},
+						"description": "Get present open interest of a specific symbol."
+					},
+					"response": []
+				},
+				{
+					"name": "Notional and Leverage Brackets (MARKET_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/leverageBracket?symbol=BTCUSDT",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"leverageBracket"
 							],
 							"query": [
 								{
@@ -1502,6 +1539,71 @@
 					"response": []
 				},
 				{
+					"name": "Query Current Open Order (USER_DATA)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/openOrder?symbol=&orderId=&origClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"openOrder"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": ""
+								},
+								{
+									"key": "orderId",
+									"value": ""
+								},
+								{
+									"key": "origClientOrderId",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "All Orders",
 					"event": [
 						{
@@ -2001,7 +2103,7 @@
 	],
 	"variable": [
 		{
-			"id": "be464583-e325-40ae-8ef1-ae10cbdb6d4d",
+			"id": "84445254-26d1-4f68-b6f0-3658f67914cc",
 			"key": "url",
 			"value": "https://api.binance.com",
 			"type": "string",
