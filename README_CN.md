@@ -11,7 +11,7 @@
 
 ## 如果导入`environment`文件
 - 下载`environment`文件到本地。
-- 以Mac版的Postman为例， 点击右上角的按钮`Manage Environments`(⚙️)
+- 以Mac版的Postman为例， 点击右上角的按钮`Manage Environments`(齿轮图标)
     <p align="center"><img src="https://raw.githubusercontent.com/binance-exchange/binance-api-postman/assets/postman/1.png"/></p>
 - 从弹出来的窗口，点击导入按钮(`import`), 然后选择上面下载好的`environment`文件。
    <p align="center"><img src="https://raw.githubusercontent.com/binance-exchange/binance-api-postman/assets/postman/2.png"/></p>
