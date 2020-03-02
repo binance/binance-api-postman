@@ -34,7 +34,7 @@ The environment hosted here can be imported for easy changing of API public key,
 - In Postman `Headers`, the `X-MBX-APIKEY` is not selected.
 
 ### Error: `Signature for this request is not valid.`
-Serval reasons can cause this error:
+These are the likely reasons that can cause this error:
 - Secret key is not set.
 - Parameters are selected, but didn't pass any value. Uncheck the parameter if you don't use it.
 
@@ -51,8 +51,8 @@ We suggest users to develop their own application to work with Binance API. Howe
 - Don't use collections from distrust channel.
 - Review the json file before using it.
 - Don't use if any code that you don't understand.
-- Generate API key that disable withdraw.
-- Delete API key after work.
+- Make sure that withdrawals are not enabled on your API keys. 
+- Delete API key after use. 
 
 ## My question isn't here
 Please open an issue [here](https://github.com/binance-exchange/binance-api-postman/issues).
