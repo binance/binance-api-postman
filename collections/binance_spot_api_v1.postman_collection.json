@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "0faf43e5-e292-45e9-81e6-59eaf6773629",
 		"name": "Binance spot API",
+		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -5373,7 +5374,7 @@
 	],
 	"variable": [
 		{
-			"id": "87e5de9d-ab6c-40e9-b49f-ff4b709202d7",
+			"id": "c72cb43b-7376-42f5-b239-8973225643a2",
 			"key": "url",
 			"value": "https://api.binance.com",
 			"type": "string"

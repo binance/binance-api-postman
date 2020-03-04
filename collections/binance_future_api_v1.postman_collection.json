@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "13d38405-b6c3-483a-970f-8e4099bd6e85",
 		"name": "Binance future API",
+		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/futures/en/\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -2103,7 +2104,7 @@
 	],
 	"variable": [
 		{
-			"id": "84445254-26d1-4f68-b6f0-3658f67914cc",
+			"id": "302423a4-6ef6-4b23-aa55-3d50cf80395a",
 			"key": "url",
 			"value": "https://api.binance.com",
 			"type": "string",
