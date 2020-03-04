@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "23586153-AAB9-492B-8D06-BC41EE0B20A7",
-		"name": "Binance spot API v1.0",
+		"_postman_id": "0faf43e5-e292-45e9-81e6-59eaf6773629",
+		"name": "Binance spot API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -2168,10 +2168,15 @@
 								"key": "Content-Type",
 								"type": "text",
 								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/historicalTrades?symbol=BTCUSDT&limit=500&fromId=",
+							"raw": "{{url}}/api/v3/historicalTrades?symbol=BTCUSDT&limit=500&fromId",
 							"host": [
 								"{{url}}"
 							],
@@ -2192,7 +2197,7 @@
 								},
 								{
 									"key": "fromId",
-									"value": ""
+									"value": null
 								}
 							]
 						}
@@ -4498,9 +4503,9 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}} /sapi/v1/margin/order?symbol=BTCUSDT&side=SELL&type=LIMIT&quantity=&price=9000&stopPrice&newClientOrderId&icebergQty&newOrderRespType&sideEffectType&timeInForce=GTC&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/order?symbol=BTCUSDT&side=SELL&type=LIMIT&quantity=&price=9000&stopPrice&newClientOrderId&icebergQty&newOrderRespType&sideEffectType&timeInForce=GTC&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
-								"{{url}} "
+								"{{url}}"
 							],
 							"path": [
 								"sapi",
@@ -5368,7 +5373,7 @@
 	],
 	"variable": [
 		{
-			"id": "f588d635-86c1-4e30-8a92-f5b6e9bcde93",
+			"id": "87e5de9d-ab6c-40e9-b49f-ff4b709202d7",
 			"key": "url",
 			"value": "https://api.binance.com",
 			"type": "string"
