@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "13d38405-b6c3-483a-970f-8e4099bd6e85",
+		"_postman_id": "8e352759-7529-42fc-aa31-89cb4d791ab5",
 		"name": "Binance future API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/futures/en/\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -1173,7 +1173,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/order?symbol=BTCUSDT&side=SELL&type=TAKE_PROFIT_MARKET&timeInForce=GTC&quantity=0.1&reduceOnly=false&price=9000&stopPrice=&workingType=CONTRACT_PRICE&marginType=CROSSED&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/order?symbol=BTCUSDT&side=SELL&positionSide=&type=TAKE_PROFIT_MARKET&timeInForce=GTC&quantity=0.1&reduceOnly=false&price=9000&stopPrice=&workingType=CONTRACT_PRICE&marginType=CROSSED&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1190,6 +1190,11 @@
 								{
 									"key": "side",
 									"value": "SELL"
+								},
+								{
+									"key": "positionSide",
+									"value": "",
+									"description": "Default BOTH for One-way Mode ;\nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode."
 								},
 								{
 									"key": "type",
@@ -1823,7 +1828,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/positionMargin?symbol=BTCUSDT&amount=100&type=1&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/positionMargin?symbol=BTCUSDT&positionSide=&amount=100&type=1&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1836,6 +1841,11 @@
 								{
 									"key": "symbol",
 									"value": "BTCUSDT"
+								},
+								{
+									"key": "positionSide",
+									"value": "",
+									"description": "Default BOTH for One-way Mode ; \nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode."
 								},
 								{
 									"key": "amount",
@@ -1918,6 +1928,65 @@
 								{
 									"key": "limit",
 									"value": "500"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Position Mode（TRADE）",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/positionSide/dual?dualSidePosition=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"positionSide",
+								"dual"
+							],
+							"query": [
+								{
+									"key": "dualSidePosition",
+									"value": "",
+									"description": "Boolean value. \"true\": Hedge Mode mode; \"false\": One-way Mode"
 								},
 								{
 									"key": "timestamp",
