@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "02b59168-86e4-4e18-97e8-fa01d7328661",
+		"_postman_id": "09817685-3a10-4742-a240-62b5e0a093ea",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -1223,7 +1223,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/capital/withdraw/apply?coin=&network&address=&addressTag=&amount=&name=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/capital/withdraw/apply?coin=&network=&address=&addressTag=&amount=&transactionFeeFlag=&name=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1241,7 +1241,7 @@
 								},
 								{
 									"key": "network",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "address",
@@ -1254,6 +1254,11 @@
 								{
 									"key": "amount",
 									"value": ""
+								},
+								{
+									"key": "transactionFeeFlag",
+									"value": "",
+									"description": "Boolean value, default: false"
 								},
 								{
 									"key": "name",
@@ -1289,7 +1294,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/wapi/v3/withdraw.html?asset&withdrawOrderId&network&address=&addressTag=&amount=&name=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/wapi/v3/withdraw.html?asset=&withdrawOrderId=&network=&address=&addressTag=&amount=&transactionFeeFlag=&name=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1301,15 +1306,15 @@
 							"query": [
 								{
 									"key": "asset",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "withdrawOrderId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "network",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "address",
@@ -1322,6 +1327,11 @@
 								{
 									"key": "amount",
 									"value": ""
+								},
+								{
+									"key": "transactionFeeFlag",
+									"value": "",
+									"description": "Boolean value, default: false"
 								},
 								{
 									"key": "name",
