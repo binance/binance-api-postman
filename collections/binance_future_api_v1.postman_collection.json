@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8e352759-7529-42fc-aa31-89cb4d791ab5",
+		"_postman_id": "8642eda4-f727-4269-b8c7-875f5985e7ec",
 		"name": "Binance future API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/futures/en/\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -608,6 +608,222 @@
 								{
 									"key": "symbol",
 									"value": "BTCUSDT"
+								}
+							]
+						},
+						"description": "Get present open interest of a specific symbol."
+					},
+					"response": []
+				},
+				{
+					"name": "Open Interest Statistics (MARKET_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/futures/data/openInterestHist?symbol=BTCUSDT&period=&limit=30&startTime=&endTime=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"futures",
+								"data",
+								"openInterestHist"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "period",
+									"value": "",
+									"description": "\"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\""
+								},
+								{
+									"key": "limit",
+									"value": "30"
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								}
+							]
+						},
+						"description": "Get present open interest of a specific symbol."
+					},
+					"response": []
+				},
+				{
+					"name": "Top Trader Long/Short Ratio (Accounts) (MARKET_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/futures/data/topLongShortAccountRatio?symbol=BTCUSDT&period=&limit=30&startTime=&endTime=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"futures",
+								"data",
+								"topLongShortAccountRatio"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "period",
+									"value": "",
+									"description": "\"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\""
+								},
+								{
+									"key": "limit",
+									"value": "30"
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								}
+							]
+						},
+						"description": "Get present open interest of a specific symbol."
+					},
+					"response": []
+				},
+				{
+					"name": "Top Trader Long/Short Ratio (Positions) (MARKET_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/futures/data/topLongShortPositionRatio?symbol=BTCUSDT&period=&limit=30&startTime=&endTime=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"futures",
+								"data",
+								"topLongShortPositionRatio"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "period",
+									"value": "",
+									"description": "\"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\""
+								},
+								{
+									"key": "limit",
+									"value": "30"
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								}
+							]
+						},
+						"description": "Get present open interest of a specific symbol."
+					},
+					"response": []
+				},
+				{
+					"name": "Long/Short Ratio (MARKET_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/futures/data/globalLongShortAccountRatio?symbol=BTCUSDT&period=&limit=30&startTime=&endTime=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"futures",
+								"data",
+								"globalLongShortAccountRatio"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "period",
+									"value": "",
+									"description": "\"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\""
+								},
+								{
+									"key": "limit",
+									"value": "30"
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
 								}
 							]
 						},
