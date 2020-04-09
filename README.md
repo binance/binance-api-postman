@@ -11,7 +11,7 @@ The environment hosted here can be imported for easy changing of API public key,
 
 ## How to import environment
 - Download the environment json file
-- Click the `Run in Postman` button above to import collection
+- Open the postman app
     
 - Click the button `Manage Environments`(gear icon) from the top right of Postman console (Postman Mac version)
     <p align="center"><img src="https://raw.githubusercontent.com/binance-exchange/binance-api-postman/assets/postman/1.png"/></p>
