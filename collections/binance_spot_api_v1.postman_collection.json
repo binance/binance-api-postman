@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "09817685-3a10-4742-a240-62b5e0a093ea",
+		"_postman_id": "b0a6c850-678d-40e0-abc9-2a5e0fda5adb",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -2734,6 +2734,188 @@
 								{
 									"key": "asset",
 									"value": "USDT"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Fixed and Customized Fixed Project List(USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/project/list?asset=USDT&type=REGULAR&status=ALL&isSortAsc=true&sortBy=START_TIME&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"project",
+								"list"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": "USDT"
+								},
+								{
+									"key": "type",
+									"value": "REGULAR",
+									"description": "\"REGULAR\", \"CUSTOMIZED_FIXED\""
+								},
+								{
+									"key": "status",
+									"value": "ALL",
+									"description": "ALL\", \"SUBSCRIBABLE\", \"UNSUBSCRIBABLE\"; default \"ALL\""
+								},
+								{
+									"key": "isSortAsc",
+									"value": "true",
+									"description": "default \"true\""
+								},
+								{
+									"key": "sortBy",
+									"value": "START_TIME",
+									"description": "\"START_TIME\", \"LOT_SIZE\", \"INTEREST_RATE\", \"DURATION\"; default \"START_TIME"
+								},
+								{
+									"key": "current",
+									"value": "1",
+									"description": "Currently querying page. Start from 1. Default:1"
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"description": "Default:10, Max:100"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Purchase Customized Fixed Project (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/customizedFixed/purchase?projectId=&lot=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"customizedFixed",
+								"purchase"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": ""
+								},
+								{
+									"key": "lot",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customized Fixed Project Position (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/project/position/list?asset=USDT&projectId=&status=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"project",
+								"position",
+								"list"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": "USDT"
+								},
+								{
+									"key": "projectId",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": "",
+									"description": "\"HOLDING\", \"REDEEMED\""
 								},
 								{
 									"key": "timestamp",
