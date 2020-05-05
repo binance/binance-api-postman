@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d78db90e-9d02-4dd5-a074-a4586dac5121",
+		"_postman_id": "928e1984-5f40-41ba-b649-d111d1803dcd",
 		"name": "Binance future API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/futures/en/\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -897,7 +897,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "a62daf6c-2024-4fe5-81fd-a28682002f4c",
 								"exec": [
 									"",
 									""
@@ -950,7 +950,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "bb9aef72-c47b-47ac-8479-fb6aa83db5d9",
 								"exec": [
 									"",
 									""
@@ -1025,7 +1025,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "d0776cb4-093a-4d13-9d02-ffcbe1546075",
 								"exec": [
 									"",
 									""
@@ -1078,7 +1078,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "e29de24a-05df-4fc5-afb6-1c0d09ca3626",
 								"exec": [
 									"",
 									""
@@ -1154,7 +1154,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "b52baa6c-db45-477c-8cde-57d1e14706bb",
 								"exec": [
 									"",
 									""
@@ -1229,7 +1229,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "18cef0b5-e2c4-4c7d-af74-0797dd16a391",
 								"exec": [
 									"",
 									""
@@ -1304,7 +1304,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "eeb4ce4d-fafc-4f12-af82-15a724b666f5",
 								"exec": [
 									"",
 									""
@@ -1363,7 +1363,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "dfc870f4-2662-4b73-9e9e-2a1d11067114",
 								"exec": [
 									""
 								],
@@ -1456,12 +1456,70 @@
 					"response": []
 				},
 				{
+					"name": "Place Multiple Orders (TRADE)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "b1c919c5-b5fa-4660-b765-bc4bfddd4313",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/batchOrders?batchOrders=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"batchOrders"
+							],
+							"query": [
+								{
+									"key": "batchOrders",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Default BOTH for One-way Mode ;\nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Query Order",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "81748c89-10ff-4b6c-b9b4-f309d72b6f92",
 								"exec": [
 									""
 								],
@@ -1522,7 +1580,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "c58a1887-34ef-4d01-a7e7-d56f607cac96",
 								"exec": [
 									""
 								],
@@ -1583,7 +1641,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "54a109b0-1331-43a0-9d60-f405cde76c42",
 								"exec": [
 									""
 								],
@@ -1640,7 +1698,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "9723e004-922d-47ba-a57c-0f28ae1aa31f",
 								"exec": [
 									""
 								],
@@ -1707,7 +1765,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "d467b52d-9661-4d53-8f4f-b72585e0a1f7",
 								"exec": [
 									""
 								],
@@ -1764,7 +1822,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "2c446e7d-7700-4c81-b0c6-ca16b7074e09",
 								"exec": [
 									""
 								],
@@ -1829,7 +1887,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "9eb45cc0-deb6-4434-b830-0d6fee41b3ce",
 								"exec": [
 									""
 								],
@@ -1909,7 +1967,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "b7daf449-47d4-4390-aa5b-46594e946ac8",
 								"exec": [
 									""
 								],
@@ -1970,7 +2028,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "2b38ec0b-e64e-495a-b2e6-0e2d033ee23f",
 								"exec": [
 									""
 								],
@@ -2031,7 +2089,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "a03ff771-93f3-4b63-9fee-593d49130de1",
 								"exec": [
 									""
 								],
@@ -2101,7 +2159,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "e5aa0eb6-8ec4-4841-85f6-ec40f69e8163",
 								"exec": [
 									""
 								],
@@ -2175,7 +2233,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f84eed81-afe3-4f46-9782-0476b5a2cbfc",
+								"id": "cb77414d-9b9b-49a5-9ef5-131471178c8b",
 								"exec": [
 									""
 								],
@@ -2215,6 +2273,60 @@
 									"value": "",
 									"description": "Boolean value. \"true\": Hedge Mode mode; \"false\": One-way Mode"
 								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current Position Mode（USER_DATA）",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0fcbba61-5316-452e-9099-8fd9ff710551",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/positionSide/dual?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"positionSide",
+								"dual"
+							],
+							"query": [
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
@@ -2332,7 +2444,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "daf7197e-a4a5-4fd6-aae8-8efb0f82bb5c",
+				"id": "ae36f703-04af-4156-a731-3b67eb8c11f9",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -2390,7 +2502,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "ad4dce26-5288-4b9b-a802-9c54a5a3a6f8",
+				"id": "97709d29-317d-42f6-a539-17fc65cfabe7",
 				"type": "text/javascript",
 				"exec": [
 					""
