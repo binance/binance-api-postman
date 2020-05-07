@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "928e1984-5f40-41ba-b649-d111d1803dcd",
+		"_postman_id": "bfa58c2a-1d1d-4366-9a1d-9d63abc69d56",
 		"name": "Binance future API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/futures/en/\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -595,7 +595,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/leverageBracket?symbol=BTCUSDT",
+							"raw": "{{url}}/fapi/v1/leverageBracket?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -608,6 +608,14 @@
 								{
 									"key": "symbol",
 									"value": "BTCUSDT"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
 								}
 							]
 						},
@@ -897,7 +905,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a62daf6c-2024-4fe5-81fd-a28682002f4c",
+								"id": "f203c20e-25a4-491a-ad49-fad1dccb1b10",
 								"exec": [
 									"",
 									""
@@ -950,7 +958,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "bb9aef72-c47b-47ac-8479-fb6aa83db5d9",
+								"id": "613e60ac-a31a-4b2b-aa13-9bfefbe559a0",
 								"exec": [
 									"",
 									""
@@ -1025,7 +1033,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d0776cb4-093a-4d13-9d02-ffcbe1546075",
+								"id": "3379371d-a65d-4136-bfcb-0fd3d027ca6e",
 								"exec": [
 									"",
 									""
@@ -1078,7 +1086,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e29de24a-05df-4fc5-afb6-1c0d09ca3626",
+								"id": "7f725dbc-49f0-4b2e-8fb3-f657752c9685",
 								"exec": [
 									"",
 									""
@@ -1154,7 +1162,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b52baa6c-db45-477c-8cde-57d1e14706bb",
+								"id": "02fb863a-061a-47c1-9ad8-d0e337192415",
 								"exec": [
 									"",
 									""
@@ -1229,7 +1237,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "18cef0b5-e2c4-4c7d-af74-0797dd16a391",
+								"id": "1c9cc254-de8d-4b64-9d75-16075d5e9ce9",
 								"exec": [
 									"",
 									""
@@ -1304,7 +1312,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "eeb4ce4d-fafc-4f12-af82-15a724b666f5",
+								"id": "f377eca8-fc6e-4e58-af92-ba2731c2bf39",
 								"exec": [
 									"",
 									""
@@ -1363,7 +1371,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "dfc870f4-2662-4b73-9e9e-2a1d11067114",
+								"id": "70f2c6b6-beb7-4355-89ab-f80740ede3d8",
 								"exec": [
 									""
 								],
@@ -1461,7 +1469,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b1c919c5-b5fa-4660-b765-bc4bfddd4313",
+								"id": "b67a00e0-e297-4e4f-bb69-59c4b0a4b69d",
 								"exec": [
 									""
 								],
@@ -1519,7 +1527,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "81748c89-10ff-4b6c-b9b4-f309d72b6f92",
+								"id": "10124c78-69f4-4de3-8ea4-77e3854f03a3",
 								"exec": [
 									""
 								],
@@ -1580,7 +1588,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c58a1887-34ef-4d01-a7e7-d56f607cac96",
+								"id": "65906cc3-b2b4-4a85-8035-ff3e5edd9e4c",
 								"exec": [
 									""
 								],
@@ -1641,7 +1649,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "54a109b0-1331-43a0-9d60-f405cde76c42",
+								"id": "9f3d7bf2-a5ed-4c13-830f-1f4dce0286c1",
 								"exec": [
 									""
 								],
@@ -1698,7 +1706,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9723e004-922d-47ba-a57c-0f28ae1aa31f",
+								"id": "88402864-473a-4749-9e55-0443e2687b95",
 								"exec": [
 									""
 								],
@@ -1765,7 +1773,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d467b52d-9661-4d53-8f4f-b72585e0a1f7",
+								"id": "296746c0-68c1-45fe-a2e1-e9c27b352163",
 								"exec": [
 									""
 								],
@@ -1822,7 +1830,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2c446e7d-7700-4c81-b0c6-ca16b7074e09",
+								"id": "65ed994c-ca55-4651-a7bc-f41d4b0b23e9",
 								"exec": [
 									""
 								],
@@ -1887,7 +1895,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9eb45cc0-deb6-4434-b830-0d6fee41b3ce",
+								"id": "691abb8a-626c-419d-ae87-4c66c2bf8c38",
 								"exec": [
 									""
 								],
@@ -1967,7 +1975,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b7daf449-47d4-4390-aa5b-46594e946ac8",
+								"id": "c82881c6-62a0-4f51-9e5f-af4e809ee2d0",
 								"exec": [
 									""
 								],
@@ -2028,7 +2036,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2b38ec0b-e64e-495a-b2e6-0e2d033ee23f",
+								"id": "30fc5ddc-5a31-4a6f-ad1a-72ce9dc0150a",
 								"exec": [
 									""
 								],
@@ -2089,7 +2097,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a03ff771-93f3-4b63-9fee-593d49130de1",
+								"id": "7a970557-8490-40c4-b170-5ab7d6b89d5f",
 								"exec": [
 									""
 								],
@@ -2159,7 +2167,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e5aa0eb6-8ec4-4841-85f6-ec40f69e8163",
+								"id": "575e5088-b676-4d76-9f95-4f151f63eb2b",
 								"exec": [
 									""
 								],
@@ -2233,7 +2241,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "cb77414d-9b9b-49a5-9ef5-131471178c8b",
+								"id": "4a8678ab-7f0a-48bb-8858-eb59d14c33ff",
 								"exec": [
 									""
 								],
@@ -2292,7 +2300,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "0fcbba61-5316-452e-9099-8fd9ff710551",
+								"id": "0b439c8c-e66d-4f82-8fce-4dcdf1c80eec",
 								"exec": [
 									""
 								],
@@ -2444,7 +2452,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "ae36f703-04af-4156-a731-3b67eb8c11f9",
+				"id": "2dea91c6-b06d-4736-8093-cb349c6c7e85",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -2502,7 +2510,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "97709d29-317d-42f6-a539-17fc65cfabe7",
+				"id": "071d9420-906e-4aa4-8903-5b22386ac138",
 				"type": "text/javascript",
 				"exec": [
 					""
