@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bfa58c2a-1d1d-4366-9a1d-9d63abc69d56",
+		"_postman_id": "ab8b757e-2768-432b-8f92-3b964ac554bc",
 		"name": "Binance future API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/futures/en/\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -905,7 +905,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f203c20e-25a4-491a-ad49-fad1dccb1b10",
+								"id": "2394603c-947c-4e3b-abdd-e12443714fbf",
 								"exec": [
 									"",
 									""
@@ -958,7 +958,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "613e60ac-a31a-4b2b-aa13-9bfefbe559a0",
+								"id": "3deca63f-bb6a-4ed6-8f6b-954eafba411c",
 								"exec": [
 									"",
 									""
@@ -1033,7 +1033,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "3379371d-a65d-4136-bfcb-0fd3d027ca6e",
+								"id": "44b98e06-a19a-4378-ae27-4d6cdc9e20c3",
 								"exec": [
 									"",
 									""
@@ -1086,7 +1086,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "7f725dbc-49f0-4b2e-8fb3-f657752c9685",
+								"id": "5a0c8692-c18a-4082-a0d6-a630d285fd9e",
 								"exec": [
 									"",
 									""
@@ -1162,7 +1162,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "02fb863a-061a-47c1-9ad8-d0e337192415",
+								"id": "dc07d852-0c66-41d8-a748-9f9a52f642d7",
 								"exec": [
 									"",
 									""
@@ -1237,7 +1237,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "1c9cc254-de8d-4b64-9d75-16075d5e9ce9",
+								"id": "5808a25a-2774-473c-a134-eb983eed1d9f",
 								"exec": [
 									"",
 									""
@@ -1312,7 +1312,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f377eca8-fc6e-4e58-af92-ba2731c2bf39",
+								"id": "905b3a60-33ed-4282-994a-481e6ddbb810",
 								"exec": [
 									"",
 									""
@@ -1371,7 +1371,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "70f2c6b6-beb7-4355-89ab-f80740ede3d8",
+								"id": "99b3355e-743a-4858-a476-e972236972ff",
 								"exec": [
 									""
 								],
@@ -1469,7 +1469,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b67a00e0-e297-4e4f-bb69-59c4b0a4b69d",
+								"id": "886b30b4-47a9-4944-9e48-6ee4d048dbdb",
 								"exec": [
 									""
 								],
@@ -1527,7 +1527,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "10124c78-69f4-4de3-8ea4-77e3854f03a3",
+								"id": "c1100741-cebb-40ab-acf2-13f7a2bb9ace",
 								"exec": [
 									""
 								],
@@ -1588,7 +1588,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "65906cc3-b2b4-4a85-8035-ff3e5edd9e4c",
+								"id": "6b6c55c4-b071-48bf-8af5-0eb78e327c27",
 								"exec": [
 									""
 								],
@@ -1649,7 +1649,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9f3d7bf2-a5ed-4c13-830f-1f4dce0286c1",
+								"id": "da08a459-729d-41d6-9665-2dc107953062",
 								"exec": [
 									""
 								],
@@ -1701,12 +1701,74 @@
 					"response": []
 				},
 				{
+					"name": "Auto-Cancel All Open Orders (TRADE)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "18991dd5-cd42-4445-94f0-f532d0fe694c",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/countdownCancelAll?symbol=&countdownTime=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"countdownCancelAll"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": ""
+								},
+								{
+									"key": "countdownTime",
+									"value": "",
+									"description": "countdown time, 1000 for 1 second. 0 to cancel the timer"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Cancel Multiple Orders (TRADE)",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "88402864-473a-4749-9e55-0443e2687b95",
+								"id": "2de40ea3-f1ed-41bb-97e3-efe8a4c4bafd",
 								"exec": [
 									""
 								],
@@ -1773,7 +1835,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "296746c0-68c1-45fe-a2e1-e9c27b352163",
+								"id": "90f03c63-9fcc-4b49-ae5d-42f62550b0a9",
 								"exec": [
 									""
 								],
@@ -1830,7 +1892,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "65ed994c-ca55-4651-a7bc-f41d4b0b23e9",
+								"id": "6a499bde-6240-4587-a39b-593573db212d",
 								"exec": [
 									""
 								],
@@ -1895,7 +1957,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "691abb8a-626c-419d-ae87-4c66c2bf8c38",
+								"id": "9c81906a-5674-46cb-baae-afae4ca6c94f",
 								"exec": [
 									""
 								],
@@ -1975,7 +2037,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c82881c6-62a0-4f51-9e5f-af4e809ee2d0",
+								"id": "b7d00e49-07c6-40e0-83af-00bf8eae66c6",
 								"exec": [
 									""
 								],
@@ -2036,7 +2098,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "30fc5ddc-5a31-4a6f-ad1a-72ce9dc0150a",
+								"id": "c680b732-3401-4270-ab33-4739538acf21",
 								"exec": [
 									""
 								],
@@ -2097,7 +2159,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "7a970557-8490-40c4-b170-5ab7d6b89d5f",
+								"id": "6c5a1884-de44-47b4-8e42-505192394eb6",
 								"exec": [
 									""
 								],
@@ -2167,7 +2229,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "575e5088-b676-4d76-9f95-4f151f63eb2b",
+								"id": "2d7c248d-ee4c-4699-ae94-23f40a6110e2",
 								"exec": [
 									""
 								],
@@ -2241,7 +2303,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "4a8678ab-7f0a-48bb-8858-eb59d14c33ff",
+								"id": "9b624666-90b1-4ae0-b560-b46515b34cf2",
 								"exec": [
 									""
 								],
@@ -2300,7 +2362,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "0b439c8c-e66d-4f82-8fce-4dcdf1c80eec",
+								"id": "affb64a9-82ef-41ea-9aa8-1bb866b6ac42",
 								"exec": [
 									""
 								],
@@ -2452,7 +2514,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "2dea91c6-b06d-4736-8093-cb349c6c7e85",
+				"id": "5b91eb15-8151-40ff-bc9b-f67e981ae2d7",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -2510,7 +2572,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "071d9420-906e-4aa4-8903-5b22386ac138",
+				"id": "e34f7e26-6299-4a18-922f-9a011d55a646",
 				"type": "text/javascript",
 				"exec": [
 					""
