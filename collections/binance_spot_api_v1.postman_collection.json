@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a355a2b1-4b54-433e-9ba8-2a01ac106cd0",
+		"_postman_id": "9e1c8af5-af00-42f4-a8c6-6159fe8d41b6",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -5536,13 +5536,406 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Mining",
+			"item": [
+				{
+					"name": "Acquiring Algorithm (MARKET_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/mining/pub/algoList?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"mining",
+								"pub",
+								"algoList"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Acquiring CoinName (MARKET_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/mining/pub/coinList?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"mining",
+								"pub",
+								"coinList"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request for Detail Miner List (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/mining/worker/detail?algo=&userName=&workerName=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"mining",
+								"worker",
+								"detail"
+							],
+							"query": [
+								{
+									"key": "algo",
+									"value": "",
+									"description": "Algorithm(sha256)"
+								},
+								{
+									"key": "userName",
+									"value": "",
+									"description": "Mining account"
+								},
+								{
+									"key": "workerName",
+									"value": "",
+									"description": "Miner’s name（required）"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request for Miner List (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/mining/worker/list?algo=&userName=&pageIndex=&sort=&sortColumn=&workerStatus=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"mining",
+								"worker",
+								"list"
+							],
+							"query": [
+								{
+									"key": "algo",
+									"value": "",
+									"description": "Algorithm(sha256)"
+								},
+								{
+									"key": "userName",
+									"value": "",
+									"description": "Mining account"
+								},
+								{
+									"key": "pageIndex",
+									"value": "",
+									"description": "Page number，default is first page，start form 1"
+								},
+								{
+									"key": "sort",
+									"value": "",
+									"description": "sort sequence（default=0）0 positive sequence，1 negative sequence"
+								},
+								{
+									"key": "sortColumn",
+									"value": "",
+									"description": "sort sequence（default=0）0 positive sequence，1 negative sequence"
+								},
+								{
+									"key": "workerStatus",
+									"value": "",
+									"description": "miners status（default=0）0 all，1 valid，2 invalid，3failure"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Revenue List (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/mining/payment/list?algo=&userName=&coin=&startDate=&endDate=&pageIndex=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"mining",
+								"payment",
+								"list"
+							],
+							"query": [
+								{
+									"key": "algo",
+									"value": "",
+									"description": "Algorithm(sha256)"
+								},
+								{
+									"key": "userName",
+									"value": "",
+									"description": "Mining account"
+								},
+								{
+									"key": "coin",
+									"value": ""
+								},
+								{
+									"key": "startDate",
+									"value": ""
+								},
+								{
+									"key": "endDate",
+									"value": ""
+								},
+								{
+									"key": "pageIndex",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Statistic List (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/mining/statistics/user/status?algo=&userName=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"mining",
+								"statistics",
+								"user",
+								"status"
+							],
+							"query": [
+								{
+									"key": "algo",
+									"value": "",
+									"description": "Algorithm(sha256)"
+								},
+								{
+									"key": "userName",
+									"value": "",
+									"description": "Mining account"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account List (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/mining/statistics/user/list?algo=&userName=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"mining",
+								"statistics",
+								"user",
+								"list"
+							],
+							"query": [
+								{
+									"key": "algo",
+									"value": "",
+									"description": "Algorithm(sha256)"
+								},
+								{
+									"key": "userName",
+									"value": "",
+									"description": "Mining account"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "daf7197e-a4a5-4fd6-aae8-8efb0f82bb5c",
+				"id": "a77d77e4-8a87-4cc3-8da9-58f230c1423a",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -5603,7 +5996,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "ad4dce26-5288-4b9b-a802-9c54a5a3a6f8",
+				"id": "34dc9bd6-549d-4d3a-bc91-44f75591d3e7",
 				"type": "text/javascript",
 				"exec": [
 					""
