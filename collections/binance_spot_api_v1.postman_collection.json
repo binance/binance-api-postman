@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9e1c8af5-af00-42f4-a8c6-6159fe8d41b6",
+		"_postman_id": "dca3e52f-232c-4fd0-82f3-85b999651c0f",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -2447,7 +2447,7 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Leanding",
+			"name": "Savings",
 			"item": [
 				{
 					"name": "Get Flexible Product List (USER_DATA)",
@@ -3169,6 +3169,29 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"description": "Previously it's lending products.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2b4cf13d-5e06-4e79-847c-5adf01a87e87",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "7c440c39-958d-4e66-bc72-e01dd72c182b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -5935,7 +5958,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "a77d77e4-8a87-4cc3-8da9-58f230c1423a",
+				"id": "3db53a96-fdde-45a2-939a-b12d7b126ada",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -5996,7 +6019,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "34dc9bd6-549d-4d3a-bc91-44f75591d3e7",
+				"id": "ea012d92-2972-4182-9044-cdd9cd9a626e",
 				"type": "text/javascript",
 				"exec": [
 					""
