@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ab8b757e-2768-432b-8f92-3b964ac554bc",
+		"_postman_id": "78e1d887-5166-4dc9-ac25-a13d37b152c2",
 		"name": "Binance future API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/futures/en/\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -905,7 +905,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2394603c-947c-4e3b-abdd-e12443714fbf",
+								"id": "9e3ea408-6dfb-4583-a2ea-f8c1cc4e7ed4",
 								"exec": [
 									"",
 									""
@@ -958,7 +958,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "3deca63f-bb6a-4ed6-8f6b-954eafba411c",
+								"id": "3d9f9787-02b3-4b85-bd22-590a9e4bce52",
 								"exec": [
 									"",
 									""
@@ -1033,7 +1033,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "44b98e06-a19a-4378-ae27-4d6cdc9e20c3",
+								"id": "681fe5f1-2505-400d-b7f1-576d80c10920",
 								"exec": [
 									"",
 									""
@@ -1086,7 +1086,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "5a0c8692-c18a-4082-a0d6-a630d285fd9e",
+								"id": "f238e13e-b672-4d4a-9d0e-929a7051cbcc",
 								"exec": [
 									"",
 									""
@@ -1162,7 +1162,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "dc07d852-0c66-41d8-a748-9f9a52f642d7",
+								"id": "1c5d277d-1b5a-4cf6-93d0-ea643fea0f4b",
 								"exec": [
 									"",
 									""
@@ -1237,7 +1237,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "5808a25a-2774-473c-a134-eb983eed1d9f",
+								"id": "6acace9f-564b-4de5-a20c-f02666412933",
 								"exec": [
 									"",
 									""
@@ -1312,7 +1312,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "905b3a60-33ed-4282-994a-481e6ddbb810",
+								"id": "7a8a1b61-11de-4692-8f72-04f3cdbddade",
 								"exec": [
 									"",
 									""
@@ -1371,7 +1371,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "99b3355e-743a-4858-a476-e972236972ff",
+								"id": "c4c8d239-aeee-4fcc-8f99-a4f2b912c713",
 								"exec": [
 									""
 								],
@@ -1395,7 +1395,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/order?symbol=BTCUSDT&side=SELL&positionSide=&type=TAKE_PROFIT_MARKET&timeInForce=GTC&quantity=0.1&reduceOnly=false&price=9000&stopPrice=&workingType=CONTRACT_PRICE&marginType=CROSSED&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/order?symbol=&side=&positionSide=&type=&timeInForce=&quantity=&reduceOnly=&price=&newClientOrderId=&stopPrice=&closePosition=&activationPrice=&callbackRate=&workingType=CONTRACT_PRICE&newOrderRespType=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1407,11 +1407,11 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTCUSDT"
+									"value": ""
 								},
 								{
 									"key": "side",
-									"value": "SELL"
+									"value": ""
 								},
 								{
 									"key": "positionSide",
@@ -1420,35 +1420,55 @@
 								},
 								{
 									"key": "type",
-									"value": "TAKE_PROFIT_MARKET"
+									"value": ""
 								},
 								{
 									"key": "timeInForce",
-									"value": "GTC"
+									"value": ""
 								},
 								{
 									"key": "quantity",
-									"value": "0.1"
+									"value": ""
 								},
 								{
 									"key": "reduceOnly",
-									"value": "false"
+									"value": ""
 								},
 								{
 									"key": "price",
-									"value": "9000"
+									"value": ""
+								},
+								{
+									"key": "newClientOrderId",
+									"value": ""
 								},
 								{
 									"key": "stopPrice",
 									"value": ""
 								},
 								{
-									"key": "workingType",
-									"value": "CONTRACT_PRICE"
+									"key": "closePosition",
+									"value": "",
+									"description": "true, false；Close-All，used with STOP_MARKET or TAKE_PROFIT_MARKET."
 								},
 								{
-									"key": "marginType",
-									"value": "CROSSED"
+									"key": "activationPrice",
+									"value": ""
+								},
+								{
+									"key": "callbackRate",
+									"value": "",
+									"description": "Used with TRAILING_STOP_MARKET orders, min 0.1, max 5 where 1 for 1%"
+								},
+								{
+									"key": "workingType",
+									"value": "CONTRACT_PRICE",
+									"description": "stopPrice triggered by: \"MARK_PRICE\", \"CONTRACT_PRICE\". Default \"CONTRACT_PRICE\""
+								},
+								{
+									"key": "newOrderRespType",
+									"value": "",
+									"description": "\"ACK\", \"RESULT\", default \"ACK\""
 								},
 								{
 									"key": "timestamp",
@@ -1459,7 +1479,8 @@
 									"value": "{{signature}}"
 								}
 							]
-						}
+						},
+						"description": "https://binance-docs.github.io/apidocs/futures/en/#new-order-trade"
 					},
 					"response": []
 				},
@@ -1469,7 +1490,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "886b30b4-47a9-4944-9e48-6ee4d048dbdb",
+								"id": "2a350912-67e0-4afe-8fa0-ba3018eabffc",
 								"exec": [
 									""
 								],
@@ -1527,7 +1548,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c1100741-cebb-40ab-acf2-13f7a2bb9ace",
+								"id": "2445d714-8fd7-4a0a-a242-b97f4ad2c378",
 								"exec": [
 									""
 								],
@@ -1588,7 +1609,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "6b6c55c4-b071-48bf-8af5-0eb78e327c27",
+								"id": "b0052b27-4931-49ee-ba27-a4bd89359d22",
 								"exec": [
 									""
 								],
@@ -1649,7 +1670,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "da08a459-729d-41d6-9665-2dc107953062",
+								"id": "2668636b-6b34-4fa2-9154-6a894b6bbf29",
 								"exec": [
 									""
 								],
@@ -1706,7 +1727,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "18991dd5-cd42-4445-94f0-f532d0fe694c",
+								"id": "e309df83-8c22-4562-993c-3cf671896646",
 								"exec": [
 									""
 								],
@@ -1768,7 +1789,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2de40ea3-f1ed-41bb-97e3-efe8a4c4bafd",
+								"id": "5bf0057e-de44-4855-9a65-bc67e81c5e6d",
 								"exec": [
 									""
 								],
@@ -1835,7 +1856,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "90f03c63-9fcc-4b49-ae5d-42f62550b0a9",
+								"id": "66a66c5e-0475-4185-a4cd-c158fa6ccb0c",
 								"exec": [
 									""
 								],
@@ -1892,7 +1913,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "6a499bde-6240-4587-a39b-593573db212d",
+								"id": "21ebbef8-4aa0-4ec1-b01e-eee05d28d82c",
 								"exec": [
 									""
 								],
@@ -1957,7 +1978,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9c81906a-5674-46cb-baae-afae4ca6c94f",
+								"id": "c21fbc05-91e1-4bef-a42f-1243553483e5",
 								"exec": [
 									""
 								],
@@ -2037,7 +2058,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b7d00e49-07c6-40e0-83af-00bf8eae66c6",
+								"id": "2fe1eac2-f0aa-48a7-90fb-f13c33d090b4",
 								"exec": [
 									""
 								],
@@ -2098,7 +2119,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c680b732-3401-4270-ab33-4739538acf21",
+								"id": "b7770ace-0489-4742-9763-780fa7ade4d7",
 								"exec": [
 									""
 								],
@@ -2159,7 +2180,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "6c5a1884-de44-47b4-8e42-505192394eb6",
+								"id": "ffaf5c38-77e2-43df-a135-a78d6413bc3d",
 								"exec": [
 									""
 								],
@@ -2229,7 +2250,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2d7c248d-ee4c-4699-ae94-23f40a6110e2",
+								"id": "f838c31c-4ab5-4006-85f0-e0cddef7b496",
 								"exec": [
 									""
 								],
@@ -2303,7 +2324,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9b624666-90b1-4ae0-b560-b46515b34cf2",
+								"id": "8129ac13-e0c3-4c19-bef5-49c05419009f",
 								"exec": [
 									""
 								],
@@ -2362,7 +2383,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "affb64a9-82ef-41ea-9aa8-1bb866b6ac42",
+								"id": "58472d13-0781-41ac-8465-97b8c61d2a8e",
 								"exec": [
 									""
 								],
@@ -2514,7 +2535,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "5b91eb15-8151-40ff-bc9b-f67e981ae2d7",
+				"id": "44bc0dd9-7860-43d6-8111-6a4797d41cbe",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -2572,7 +2593,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "e34f7e26-6299-4a18-922f-9a011d55a646",
+				"id": "525f72cd-5a6c-4893-b686-c69c7520389e",
 				"type": "text/javascript",
 				"exec": [
 					""
