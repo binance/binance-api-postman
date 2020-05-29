@@ -48,7 +48,7 @@
 - 使用前查看一下`collections`文件源码.
 - 如果有不明白的代码，请不要使用。
 - 生成`API key`, 不要给提款的权限。
-- 试用后，尽快删除`API key`.
+- 试用后，尽快删除`API key`。
 
 ## 有疑问
 请提[`issue`](https://github.com/binance-exchange/binance-api-postman/issues).
