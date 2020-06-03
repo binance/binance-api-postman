@@ -2529,6 +2529,76 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "V2",
+			"item": [
+				{
+					"name": "Account",
+					"item": [
+						{
+							"name": "Position Information(USER_DATA)",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "925eebfc-1374-40cf-ad33-f8536d3e9359",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/fapi/v2/positionRisk?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fapi",
+										"v2",
+										"positionRisk"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": ""
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"event": [
