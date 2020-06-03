@@ -18,7 +18,7 @@ The environment hosted here can be imported for easy changing of API public key,
 - From the pop-up page, click `import` button, then select the downloaded json file.Click the environment,
    <p align="center"><img src="https://raw.githubusercontent.com/binance-exchange/binance-api-postman/assets/postman/2.png"/></p>
 - Set the API key and secret key. Leave timestamp and signature empty.
-    Please DON'T set into `INTIAL VALUE` column, otherwise postman will upload into your personal postman account.
+    Please DON'T set into `INTIAL VALUE` column, otherwise postman will upload into your personal postman account. Don't leave `INTIAL VALUE` empty, postman can copy the `CURRENT VALUE` into here.
     <p align="center"><img src="https://raw.githubusercontent.com/binance-exchange/binance-api-postman/assets/postman/3.png"/></p>
     
 - Select the environment from the dropdown.
