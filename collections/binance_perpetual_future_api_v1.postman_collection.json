@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "78e1d887-5166-4dc9-ac25-a13d37b152c2",
+		"_postman_id": "4b532a05-3712-47a9-8b43-72af4349859e",
 		"name": "Binance perpetual future API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/futures/en/\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -905,7 +905,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9e3ea408-6dfb-4583-a2ea-f8c1cc4e7ed4",
+								"id": "90308e9a-d87e-4990-bae4-94151ba38c0e",
 								"exec": [
 									"",
 									""
@@ -958,7 +958,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "3d9f9787-02b3-4b85-bd22-590a9e4bce52",
+								"id": "b4d2cfb5-b9b4-4f76-81bd-37212bb57677",
 								"exec": [
 									"",
 									""
@@ -1033,7 +1033,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "681fe5f1-2505-400d-b7f1-576d80c10920",
+								"id": "17abf1be-fea2-4c3b-8c1a-1c5caadf3046",
 								"exec": [
 									"",
 									""
@@ -1086,7 +1086,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f238e13e-b672-4d4a-9d0e-929a7051cbcc",
+								"id": "c0b09cf4-a742-4d7e-a85d-2a59fac8cd9f",
 								"exec": [
 									"",
 									""
@@ -1162,7 +1162,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "1c5d277d-1b5a-4cf6-93d0-ea643fea0f4b",
+								"id": "ebf5c583-883c-4de4-beb9-09289bd801f3",
 								"exec": [
 									"",
 									""
@@ -1237,7 +1237,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "6acace9f-564b-4de5-a20c-f02666412933",
+								"id": "d712cf01-1f86-469d-8d73-b83ec182aac5",
 								"exec": [
 									"",
 									""
@@ -1312,7 +1312,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "7a8a1b61-11de-4692-8f72-04f3cdbddade",
+								"id": "af172672-b447-4519-a8c4-4b0273e0f7a0",
 								"exec": [
 									"",
 									""
@@ -1371,7 +1371,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c4c8d239-aeee-4fcc-8f99-a4f2b912c713",
+								"id": "e3adf4e7-9275-458c-a4e6-68df607d85c8",
 								"exec": [
 									""
 								],
@@ -1490,7 +1490,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2a350912-67e0-4afe-8fa0-ba3018eabffc",
+								"id": "792f996f-4190-44f4-9ecc-4bc59c6f27d4",
 								"exec": [
 									""
 								],
@@ -1548,7 +1548,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2445d714-8fd7-4a0a-a242-b97f4ad2c378",
+								"id": "e58e6da7-e7bb-46fb-af9d-44b062080049",
 								"exec": [
 									""
 								],
@@ -1609,7 +1609,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b0052b27-4931-49ee-ba27-a4bd89359d22",
+								"id": "012c822d-5920-4d10-913e-665b65086ca9",
 								"exec": [
 									""
 								],
@@ -1670,7 +1670,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2668636b-6b34-4fa2-9154-6a894b6bbf29",
+								"id": "ee01fcf3-0b7f-4a86-a076-7ec4efaaa840",
 								"exec": [
 									""
 								],
@@ -1727,7 +1727,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e309df83-8c22-4562-993c-3cf671896646",
+								"id": "37cd3c13-061b-4070-9b3c-5af92adde1c0",
 								"exec": [
 									""
 								],
@@ -1789,7 +1789,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "5bf0057e-de44-4855-9a65-bc67e81c5e6d",
+								"id": "ef5cbf6c-d3de-443d-b039-d9c24d87a641",
 								"exec": [
 									""
 								],
@@ -1856,7 +1856,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "66a66c5e-0475-4185-a4cd-c158fa6ccb0c",
+								"id": "06d61d6f-c331-4aa7-ab40-18c4d313aeed",
 								"exec": [
 									""
 								],
@@ -1913,7 +1913,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "21ebbef8-4aa0-4ec1-b01e-eee05d28d82c",
+								"id": "2081a5bd-f61a-4551-b434-cb2799f35f10",
 								"exec": [
 									""
 								],
@@ -1978,7 +1978,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c21fbc05-91e1-4bef-a42f-1243553483e5",
+								"id": "c86f1efc-e6b1-4848-a206-5a9b563d0e67",
 								"exec": [
 									""
 								],
@@ -2058,7 +2058,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2fe1eac2-f0aa-48a7-90fb-f13c33d090b4",
+								"id": "5766646f-d9fb-4ec1-ad39-54da666ec2de",
 								"exec": [
 									""
 								],
@@ -2119,7 +2119,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b7770ace-0489-4742-9763-780fa7ade4d7",
+								"id": "3e2af1ae-14e2-46b0-99a5-dacc7a7e385b",
 								"exec": [
 									""
 								],
@@ -2180,7 +2180,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ffaf5c38-77e2-43df-a135-a78d6413bc3d",
+								"id": "c1e089c0-2d1a-408c-8fcb-3249fd29ef65",
 								"exec": [
 									""
 								],
@@ -2250,7 +2250,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f838c31c-4ab5-4006-85f0-e0cddef7b496",
+								"id": "4d289786-616d-487d-9a35-c520eeeaafb4",
 								"exec": [
 									""
 								],
@@ -2324,7 +2324,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "8129ac13-e0c3-4c19-bef5-49c05419009f",
+								"id": "601b9115-c101-4b33-a2b3-a1485f5c341b",
 								"exec": [
 									""
 								],
@@ -2383,7 +2383,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "58472d13-0781-41ac-8465-97b8c61d2a8e",
+								"id": "32dc9e8a-1ee0-436b-9538-1385878ac7f4",
 								"exec": [
 									""
 								],
@@ -2542,7 +2542,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "925eebfc-1374-40cf-ad33-f8536d3e9359",
+										"id": "e3ad634c-fd69-4625-bd12-4cc56a814c72",
 										"exec": [
 											"",
 											""
@@ -2592,6 +2592,112 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Account Balance",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "41711d77-aa0f-47f5-b772-9038ff527f6a",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/fapi/v2/balance?timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fapi",
+										"v2",
+										"balance"
+									],
+									"query": [
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Account Information",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"id": "78167eaf-8fca-4e01-9d1c-9c470f82d2c2",
+										"exec": [
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/fapi/v2/account?timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fapi",
+										"v2",
+										"account"
+									],
+									"query": [
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -2605,7 +2711,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "44bc0dd9-7860-43d6-8111-6a4797d41cbe",
+				"id": "d05ccd75-28b6-4167-b0e2-fe308139e36c",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -2663,7 +2769,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "525f72cd-5a6c-4893-b686-c69c7520389e",
+				"id": "4ec62b6f-b246-4b7e-8258-30465aba154a",
 				"type": "text/javascript",
 				"exec": [
 					""
