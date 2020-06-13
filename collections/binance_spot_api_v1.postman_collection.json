@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "dca3e52f-232c-4fd0-82f3-85b999651c0f",
+		"_postman_id": "c3ca281c-bd6d-43bb-84e3-791f027a972c",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -930,7 +930,7 @@
 						{
 							"name": "Sub-account Transfer History (For Sub-account)",
 							"request": {
-								"method": "POST",
+								"method": "GET",
 								"header": [
 									{
 										"key": "Content-Type",
@@ -3176,7 +3176,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "2b4cf13d-5e06-4e79-847c-5adf01a87e87",
+						"id": "578f3ebe-4231-4880-b4b6-9857d6b2780f",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -3186,7 +3186,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7c440c39-958d-4e66-bc72-e01dd72c182b",
+						"id": "85883641-9f29-4b03-b059-cd5bdbceafc6",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -5958,7 +5958,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "3db53a96-fdde-45a2-939a-b12d7b126ada",
+				"id": "4f4c353a-b792-45a8-adc9-6599800521cd",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -6019,7 +6019,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "ea012d92-2972-4182-9044-cdd9cd9a626e",
+				"id": "7dc27769-ab12-4ba8-9084-0dd004ef5017",
 				"type": "text/javascript",
 				"exec": [
 					""
