@@ -511,13 +511,5 @@
 			}
 		}
 	],
-	"variable": [
-		{
-			"id": "9b8a58f7-53fd-4cdc-9b8b-dd40042fc04e",
-			"key": "url",
-			"value": "https://api.binance.com",
-			"type": "string"
-		}
-	],
 	"protocolProfileBehavior": {}
 }

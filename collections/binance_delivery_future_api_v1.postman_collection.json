@@ -2262,14 +2262,5 @@
 			}
 		}
 	],
-	"variable": [
-		{
-			"id": "302423a4-6ef6-4b23-aa55-3d50cf80395a",
-			"key": "url",
-			"value": "https://fapi.binance.com",
-			"type": "string",
-			"disabled": true
-		}
-	],
 	"protocolProfileBehavior": {}
 }
