@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c60deb34-c862-4a71-90c2-70dba88b0db1",
+		"_postman_id": "31dfbd48-b9bf-4c56-9a4b-8ba42769eab3",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -148,7 +148,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/wapi/v3/sub-account/transfer/transfer.html?fromEmail&toEmail&asset&amount=&timestamp={{timestamp}}&signature={{signature}}",
+									"raw": "{{url}}/wapi/v3/sub-account/transfer.html?fromEmail&toEmail&asset&amount=&timestamp={{timestamp}}&signature={{signature}}",
 									"host": [
 										"{{url}}"
 									],
@@ -156,7 +156,6 @@
 										"wapi",
 										"v3",
 										"sub-account",
-										"transfer",
 										"transfer.html"
 									],
 									"query": [
@@ -3176,7 +3175,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "259bbdba-2933-4561-beb9-5a6f7546606a",
+						"id": "8f547ad8-ce55-4dd4-8838-93076e5ea364",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -3186,7 +3185,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d14c6c30-fad2-4156-857d-5bfc2646c8af",
+						"id": "fa6c0175-f973-4a35-9134-27cbabad5a36",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -5958,7 +5957,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "56e92e41-a913-4e54-b03a-56959f791ef1",
+				"id": "6740ed1d-1235-4b64-b1aa-498ddada16b2",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -6019,7 +6018,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "1b7b08ef-322d-497d-891d-4394e5056556",
+				"id": "881702e1-62e9-4b39-a81b-9d83290e4672",
 				"type": "text/javascript",
 				"exec": [
 					""
