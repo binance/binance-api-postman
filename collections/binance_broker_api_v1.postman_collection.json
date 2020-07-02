@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a067cb52-73e3-40c5-81d4-18750dfe301b",
+		"_postman_id": "8fc1b4b9-b00d-4469-93b3-84087388ac9e",
 		"name": "Binance Broker API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/Brokerage-API/General",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -34,6 +34,369 @@
 						"subAccount"
 					],
 					"query": [
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enable Margin for Sub Account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/subAccount/margin?subAccountId=&margin=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"subAccount",
+						"margin"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "margin",
+							"value": "",
+							"description": "only true for now"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enable Futures for Sub Account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/subAccount/futures?subAccountId=&futures=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"subAccount",
+						"futures"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "futures",
+							"value": "",
+							"description": "only true for now"
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Api Key for Sub Account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/subAccountApi?subAccountId=&canTrade=&marginTrade=&futuresTrade=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"subAccountApi"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "canTrade",
+							"value": ""
+						},
+						{
+							"key": "marginTrade",
+							"value": ""
+						},
+						{
+							"key": "futuresTrade",
+							"value": ""
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Sub Account Api Key",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/subAccountApi?subAccountId=&subAccountApiKey=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"subAccountApi"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "subAccountApiKey",
+							"value": ""
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query Sub Account Api Key",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/subAccountApi?subAccountId=&subAccountApiKey=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"subAccountApi"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "subAccountApiKey",
+							"value": ""
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Change Sub Account Api Permission",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/subAccountApi?subAccountId=&subAccountApiKey=&canTrade=&marginTrade=&futuresTrade=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"subAccountApi"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "subAccountApiKey",
+							"value": ""
+						},
+						{
+							"key": "canTrade",
+							"value": ""
+						},
+						{
+							"key": "marginTrade",
+							"value": ""
+						},
+						{
+							"key": "futuresTrade",
+							"value": ""
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query Sub Account",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/subAccount?subAccountId=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"subAccount"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
 						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
@@ -110,7 +473,7 @@
 			"response": []
 		},
 		{
-			"name": "Create Api Key for Sub Account",
+			"name": "Change Sub Account Futures Commission Adjustment",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -126,7 +489,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/subAccountApi?subAccountId=&canTrade=&marginTrade=&futuresTrade=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/subAccountApi/commission/futures?subAccountId=&symbol=&makerAdjustment=&takerAdjustment=&timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -134,7 +497,9 @@
 						"sapi",
 						"v1",
 						"broker",
-						"subAccountApi"
+						"subAccountApi",
+						"commission",
+						"futures"
 					],
 					"query": [
 						{
@@ -142,15 +507,15 @@
 							"value": ""
 						},
 						{
-							"key": "canTrade",
+							"key": "symbol",
 							"value": ""
 						},
 						{
-							"key": "marginTrade",
+							"key": "makerAdjustment",
 							"value": ""
 						},
 						{
-							"key": "futuresTrade",
+							"key": "takerAdjustment",
 							"value": ""
 						},
 						{
@@ -167,7 +532,7 @@
 			"response": []
 		},
 		{
-			"name": "Query Sub Account",
+			"name": "Query Sub Account Futures Commission Adjustment",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -183,7 +548,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/subAccount?subAccountId=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/subAccountApi/commission/futures?subAccountId=&symbol=&timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -191,7 +556,9 @@
 						"sapi",
 						"v1",
 						"broker",
-						"subAccount"
+						"subAccountApi",
+						"commission",
+						"futures"
 					],
 					"query": [
 						{
@@ -199,146 +566,7 @@
 							"value": ""
 						},
 						{
-							"key": "timestamp",
-							"value": "{{timestamp}}"
-						},
-						{
-							"key": "signature",
-							"value": "{{signature}}"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Query Sub Account Transfer History",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "X-MBX-APIKEY",
-						"type": "text",
-						"value": "{{binance-api-key}}"
-					}
-				],
-				"url": {
-					"raw": "{{url}}/sapi/v1/broker/transfer?subAccountId=&timestamp={{timestamp}}&signature={{signature}}",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"sapi",
-						"v1",
-						"broker",
-						"transfer"
-					],
-					"query": [
-						{
-							"key": "subAccountId",
-							"value": ""
-						},
-						{
-							"key": "timestamp",
-							"value": "{{timestamp}}"
-						},
-						{
-							"key": "signature",
-							"value": "{{signature}}"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Query Sub Account Api Key",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "X-MBX-APIKEY",
-						"type": "text",
-						"value": "{{binance-api-key}}"
-					}
-				],
-				"url": {
-					"raw": "{{url}}/sapi/v1/broker/subAccountApi?subAccountId=&subAccountApiKey=&timestamp={{timestamp}}&signature={{signature}}",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"sapi",
-						"v1",
-						"broker",
-						"subAccountApi"
-					],
-					"query": [
-						{
-							"key": "subAccountId",
-							"value": ""
-						},
-						{
-							"key": "subAccountApiKey",
-							"value": ""
-						},
-						{
-							"key": "timestamp",
-							"value": "{{timestamp}}"
-						},
-						{
-							"key": "signature",
-							"value": "{{signature}}"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Query Sub Account Api Key Copy",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"type": "text",
-						"value": "application/json"
-					},
-					{
-						"key": "X-MBX-APIKEY",
-						"type": "text",
-						"value": "{{binance-api-key}}"
-					}
-				],
-				"url": {
-					"raw": "{{url}}/sapi/v1/broker/subAccountApi?subAccountId=&subAccountApiKey=&timestamp={{timestamp}}&signature={{signature}}",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"sapi",
-						"v1",
-						"broker",
-						"subAccountApi"
-					],
-					"query": [
-						{
-							"key": "subAccountId",
-							"value": ""
-						},
-						{
-							"key": "subAccountApiKey",
+							"key": "symbol",
 							"value": ""
 						},
 						{
@@ -396,6 +624,244 @@
 			"response": []
 		},
 		{
+			"name": "Sub Account Transfer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/transfer?fromId=&told=&clientTranId=&asset=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"transfer"
+					],
+					"query": [
+						{
+							"key": "fromId",
+							"value": ""
+						},
+						{
+							"key": "told",
+							"value": ""
+						},
+						{
+							"key": "clientTranId",
+							"value": ""
+						},
+						{
+							"key": "asset",
+							"value": ""
+						},
+						{
+							"key": "amount",
+							"value": ""
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query Sub Account Transfer History",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/transfer?subAccountId=&clientTradId=&startTime=&endTime=&page=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"transfer"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "clientTradId",
+							"value": ""
+						},
+						{
+							"key": "startTime",
+							"value": ""
+						},
+						{
+							"key": "endTime",
+							"value": ""
+						},
+						{
+							"key": "page",
+							"value": ""
+						},
+						{
+							"key": "limit",
+							"value": ""
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query Broker Commission Rebate Recent Record",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/rebate/recentRecord?subAccountId=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"rebate",
+						"recentRecord"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "startTime",
+							"value": ""
+						},
+						{
+							"key": "endTime",
+							"value": ""
+						},
+						{
+							"key": "limit",
+							"value": ""
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Broker Commission Rebate History",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/rebate/historicalRecord?subAccountId=&startTime=&endTime=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"rebate",
+						"historicalRecord"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "startTime",
+							"value": ""
+						},
+						{
+							"key": "endTime",
+							"value": ""
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Query Broker Commission Rebate History",
 			"request": {
 				"method": "GET",
@@ -412,7 +878,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/rebate/historicalRecord?timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/rebate/historicalRecord?subAccountId=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -424,6 +890,403 @@
 						"historicalRecord"
 					],
 					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "startTime",
+							"value": ""
+						},
+						{
+							"key": "endTime",
+							"value": ""
+						},
+						{
+							"key": "limit",
+							"value": ""
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enable Or Disable BNB Burn for Sub Account SPOT and MARGIN",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/subAccount/bnbBurn/spot?subAccountId=&spotBNBBurn=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"subAccount",
+						"bnbBurn",
+						"spot"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "spotBNBBurn",
+							"value": ""
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enable Or Disable BNB Burn for Sub Account Margin Interest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/subAccount/bnbBurn/marginInterest?subAccountId=&spotBNBBurn=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"subAccount",
+						"bnbBurn",
+						"marginInterest"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "spotBNBBurn",
+							"value": ""
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get BNB Burn Status for Sub Account",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/subAccount/bnbBurn/status?subAccountId=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"subAccount",
+						"bnbBurn",
+						"status"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sub Account Deposit History",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/subAccount/depositHist?subAccountId=&coin=&status=&startTime=&endTime=&limit=&offset=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"subAccount",
+						"depositHist"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "coin",
+							"value": ""
+						},
+						{
+							"key": "status",
+							"value": ""
+						},
+						{
+							"key": "startTime",
+							"value": ""
+						},
+						{
+							"key": "endTime",
+							"value": ""
+						},
+						{
+							"key": "limit",
+							"value": ""
+						},
+						{
+							"key": "offset",
+							"value": ""
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query Sub Account Spot Asset info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/subAccount/spotSummary?subAccountId=&page=&size=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"subAccount",
+						"spotSummary"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "page",
+							"value": ""
+						},
+						{
+							"key": "size",
+							"value": ""
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query Subaccount Margin Asset info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/subAccount/marginSummary?subAccountId=&page=&size=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"subAccount",
+						"marginSummary"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "page",
+							"value": ""
+						},
+						{
+							"key": "size",
+							"value": ""
+						},
+						{
+							"key": "timestamp",
+							"value": "{{timestamp}}"
+						},
+						{
+							"key": "signature",
+							"value": "{{signature}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query Subaccount Futures Asset info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "X-MBX-APIKEY",
+						"type": "text",
+						"value": "{{binance-api-key}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/sapi/v1/broker/subAccount/futuresSummary?subAccountId=&page=&size=&timestamp={{timestamp}}&signature={{signature}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"sapi",
+						"v1",
+						"broker",
+						"subAccount",
+						"futuresSummary"
+					],
+					"query": [
+						{
+							"key": "subAccountId",
+							"value": ""
+						},
+						{
+							"key": "page",
+							"value": ""
+						},
+						{
+							"key": "size",
+							"value": ""
+						},
 						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
@@ -442,7 +1305,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "daf7197e-a4a5-4fd6-aae8-8efb0f82bb5c",
+				"id": "3fbfbd8c-6197-44ab-908f-4971862faadc",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -503,7 +1366,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "ad4dce26-5288-4b9b-a802-9c54a5a3a6f8",
+				"id": "71541026-2f73-43c3-9af5-c664e157b066",
 				"type": "text/javascript",
 				"exec": [
 					""
