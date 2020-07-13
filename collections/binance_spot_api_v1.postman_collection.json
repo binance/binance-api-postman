@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "31dfbd48-b9bf-4c56-9a4b-8ba42769eab3",
+		"_postman_id": "afc55dd4-641d-4734-abd6-9b8402c75539",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -3175,7 +3175,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "8f547ad8-ce55-4dd4-8838-93076e5ea364",
+						"id": "8b4be8cf-0466-44ec-b3bf-849990fe3a8c",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -3185,7 +3185,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "fa6c0175-f973-4a35-9134-27cbabad5a36",
+						"id": "02ee3413-102a-43be-99ff-44857e09a88c",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -3439,7 +3439,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/futures/transfer?asset=USDT&amount=1&type=2&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/futures/transfer?asset=&amount=&type=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3452,15 +3452,15 @@
 							"query": [
 								{
 									"key": "asset",
-									"value": "USDT"
+									"value": ""
 								},
 								{
 									"key": "amount",
-									"value": "1"
+									"value": ""
 								},
 								{
 									"key": "type",
-									"value": "2",
+									"value": "",
 									"description": "1: transfer from spot main account to future account 2: transfer from future account to spot main account"
 								},
 								{
@@ -3493,7 +3493,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/futures/transfer?asset=USDT&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/futures/transfer?asset=&startTime&endTime&current=&size=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3506,7 +3506,7 @@
 							"query": [
 								{
 									"key": "asset",
-									"value": "USDT"
+									"value": ""
 								},
 								{
 									"key": "startTime",
@@ -3518,12 +3518,605 @@
 								},
 								{
 									"key": "current",
-									"value": "1"
+									"value": ""
 								},
 								{
 									"key": "size",
-									"value": "10",
+									"value": "",
 									"description": "Default:10 Max:100"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrow For Cross-Collateral (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/futures/loan/borrow?coin=&amount=&collateralCoin=&collateralAmount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"futures",
+								"loan",
+								"borrow"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "collateralAmount",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "limit: once per second per account"
+					},
+					"response": []
+				},
+				{
+					"name": "Cross-Collateral Borrow History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/futures/loan/borrow/history?coin=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"futures",
+								"loan",
+								"borrow",
+								"history"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Repay For Cross-Collateral (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/futures/loan/repay?coin=&collateralCoin=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"futures",
+								"loan",
+								"repay"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": ""
+								},
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "limit: once per second per account"
+					},
+					"response": []
+				},
+				{
+					"name": "Cross-Collateral Repayment History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/futures/loan/repay/history?coin=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"futures",
+								"loan",
+								"repay",
+								"history"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cross-Collateral Wallet (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/futures/loan/wallet?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"futures",
+								"loan",
+								"wallet"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cross-Collateral Information (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/futures/loan/configs?collateralCoin=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"futures",
+								"loan",
+								"configs"
+							],
+							"query": [
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Calculate Rate After Adjust Cross-Collateral LTV (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/futures/loan/calcAdjustLevel?collateralCoin=&amount=&direction=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"futures",
+								"loan",
+								"calcAdjustLevel"
+							],
+							"query": [
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "direction",
+									"value": "",
+									"description": "\"ADDITIONAL\", \"REDUCED\""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Max Amount for Adjust Cross-Collateral LTV (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/futures/loan/calcMaxAdjustAmount?collateralCoin=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"futures",
+								"loan",
+								"calcMaxAdjustAmount"
+							],
+							"query": [
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adjust Cross-Collateral LTV (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/futures/loan/adjustCollateral?collateralCoin=&amount=&direction=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"futures",
+								"loan",
+								"adjustCollateral"
+							],
+							"query": [
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "direction",
+									"value": "",
+									"description": "\"ADDITIONAL\", \"REDUCED\""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adjust Cross-Collateral LTV History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/futures/loan/adjustCollateral/history?collateralCoin=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"futures",
+								"loan",
+								"adjustCollateral",
+								"history"
+							],
+							"query": [
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cross-Collateral Liquidation History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/futures/loan/liquidationHistory?collateralCoin=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"futures",
+								"loan",
+								"liquidationHistory"
+							],
+							"query": [
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -5957,7 +6550,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "6740ed1d-1235-4b64-b1aa-498ddada16b2",
+				"id": "32e9df40-4f8f-45f1-a575-dff5ae547e5c",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -6018,7 +6611,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "881702e1-62e9-4b39-a81b-9d83290e4672",
+				"id": "87de7a84-259f-4929-86e5-0302dcc59308",
 				"type": "text/javascript",
 				"exec": [
 					""
