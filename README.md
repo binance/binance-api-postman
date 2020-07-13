@@ -24,6 +24,10 @@ The environment hosted here can be imported for easy changing of API public key,
 - Select the environment from the dropdown.
     <p align="center"><img src="https://raw.githubusercontent.com/binance-exchange/binance-api-postman/assets/postman/4.png"/></p>
 
+## Guide for using the Binance API with Postman
+
+https://academy.binance.com/economics/binance-api-series-pt-1-spot-trading-with-postman
+
 ## FAQ
 ### Error: `Could not get any response`
 - Either you haven't setup the environment or the environment is not selected. Please find the step above to setup the environment.
