@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "619babbe-3bf3-4be6-8245-8c48c63343a7",
+		"_postman_id": "dfe09cb1-3a68-42ee-a8ca-4bbcc1620edd",
 		"name": "Binance delivery futures API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/futures/en/\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -791,6 +791,228 @@
 						"description": "Get present open interest of a specific symbol."
 					},
 					"response": []
+				},
+				{
+					"name": "Top Trader Long/Short Ratio (Positions) (MARKET DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/futures/data/topLongShortPositionRatio?pair=&period=5m",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"futures",
+								"data",
+								"topLongShortPositionRatio"
+							],
+							"query": [
+								{
+									"key": "pair",
+									"value": ""
+								},
+								{
+									"key": "period",
+									"value": "5m",
+									"description": "\"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\""
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Default 30,Max 500",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Get present open interest of a specific symbol."
+					},
+					"response": []
+				},
+				{
+					"name": "Long/Short Ratio (MARKET DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/futures/data/globalLongShortAccountRatio?pair=&period=5m",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"futures",
+								"data",
+								"globalLongShortAccountRatio"
+							],
+							"query": [
+								{
+									"key": "pair",
+									"value": ""
+								},
+								{
+									"key": "period",
+									"value": "5m",
+									"description": "\"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\""
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Default 30,Max 500",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Get present open interest of a specific symbol."
+					},
+					"response": []
+				},
+				{
+					"name": "Taker Buy/Sell Volume (MARKET DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/futures/data/takerBuySellVol?pair=&period=5m&contractType=ALL",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"futures",
+								"data",
+								"takerBuySellVol"
+							],
+							"query": [
+								{
+									"key": "pair",
+									"value": ""
+								},
+								{
+									"key": "period",
+									"value": "5m",
+									"description": "\"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\""
+								},
+								{
+									"key": "contractType",
+									"value": "ALL",
+									"description": "ALL,CURRENT_QUARTER,NEXT_QUARTER"
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Default 30,Max 500",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Get present open interest of a specific symbol."
+					},
+					"response": []
+				},
+				{
+					"name": "Basis (MARKET DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/futures/data/basis?pair=&period=5m&contractType=CURRENT_QUARTER",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"futures",
+								"data",
+								"basis"
+							],
+							"query": [
+								{
+									"key": "pair",
+									"value": ""
+								},
+								{
+									"key": "period",
+									"value": "5m",
+									"description": "\"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\""
+								},
+								{
+									"key": "contractType",
+									"value": "CURRENT_QUARTER",
+									"description": "CURRENT_QUARTER,NEXT_QUARTER"
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Default 30,Max 500",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Get present open interest of a specific symbol."
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -804,7 +1026,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "84a3d4ee-fd5b-44a1-903c-2f454a6205f6",
+								"id": "f04c6ecf-860d-40bc-8b9b-77174b926cb3",
 								"exec": [
 									""
 								],
@@ -863,7 +1085,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "3be2d6ec-bf78-4960-8cc9-0787a1c1837c",
+								"id": "ad18a7b3-46ab-4b58-b592-6c1ddbb77ea0",
 								"exec": [
 									""
 								],
@@ -917,7 +1139,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "279cf5dd-012e-4fc9-9f9f-015e850833ae",
+								"id": "ea36e2ca-07bf-4029-a14a-bb747a557896",
 								"exec": [
 									""
 								],
@@ -1039,7 +1261,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "722cf71c-dcd1-4c89-a0f5-4103f1033a14",
+								"id": "bf3b4c84-c048-46c3-8d30-8c8789632173",
 								"exec": [
 									""
 								],
@@ -1097,7 +1319,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "0c442bde-afec-44aa-ba4e-998143c00be0",
+								"id": "9a0303d1-4ac1-4b35-8028-3756a2323267",
 								"exec": [
 									""
 								],
@@ -1162,7 +1384,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "83a69205-3d20-4b95-9bc6-efa7f66e5eb7",
+								"id": "dc05d7d7-6cdf-48db-9800-c5186d697ecb",
 								"exec": [
 									""
 								],
@@ -1227,7 +1449,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "6e25fd3f-957a-4fb7-9845-b61652501234",
+								"id": "a8a885e2-360e-440f-beb5-3acdca7049ff",
 								"exec": [
 									""
 								],
@@ -1284,7 +1506,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "761c5bf9-05cc-47d5-b6ba-ae65adf1cedf",
+								"id": "54d214fe-91a4-49be-97ea-f0e42b9b55f0",
 								"exec": [
 									""
 								],
@@ -1350,7 +1572,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b5ac3573-7965-4eb7-b7ca-028e45f27920",
+								"id": "586d7fa7-9b52-4cbe-8df8-4b7f89d4d324",
 								"exec": [
 									""
 								],
@@ -1412,7 +1634,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d1eb72d6-ff4a-4c0e-a3ed-f280bda3650f",
+								"id": "7a9d82fd-82e0-41a0-960d-67b7b7729857",
 								"exec": [
 									""
 								],
@@ -1477,7 +1699,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e129fbde-5447-4499-8f0c-e7b2708c218b",
+								"id": "ddbf6920-e7e6-4a9c-a100-4107821899b5",
 								"exec": [
 									""
 								],
@@ -1538,7 +1760,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d660e49e-2c5f-404b-86ae-485d9cbfff91",
+								"id": "27e5cc3d-094f-40f6-a028-240165aa84d3",
 								"exec": [
 									""
 								],
@@ -1616,7 +1838,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "48dd1372-9b51-4c5e-8927-da1e1ab5796f",
+								"id": "97565784-3220-483e-93e9-b7d25e6710f2",
 								"exec": [
 									"",
 									""
@@ -1669,7 +1891,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "72b98bab-8173-4b55-8471-a320a58c5d21",
+								"id": "66fd3523-6889-4d46-bacc-99c5b1776b34",
 								"exec": [
 									""
 								],
@@ -1730,7 +1952,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c70726ac-aaa1-485b-8fe1-279f0e2a3f14",
+								"id": "3bc1b147-1d93-4855-838c-4b6b166fe582",
 								"exec": [
 									""
 								],
@@ -1791,7 +2013,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "8f547f0e-46a2-4c05-af47-b15900650b83",
+								"id": "4abc603f-a242-4663-99b6-cfb3e327d247",
 								"exec": [
 									""
 								],
@@ -1861,7 +2083,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "4226d77e-49fd-4ce9-8303-d64e02b3aca8",
+								"id": "b138e6fb-5fa4-4156-bcd9-4cd2ff5b635e",
 								"exec": [
 									""
 								],
@@ -1935,7 +2157,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e19d8f4a-b4cb-41a9-b734-8af29a222049",
+								"id": "9fa3d4a7-dd2e-42f3-875b-7a870ee99526",
 								"exec": [
 									"",
 									""
@@ -1996,7 +2218,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2e5064d8-a570-4f5a-a9ab-0691d879bd37",
+								"id": "ac83b1af-cf3f-4e39-a0f4-1b252488180e",
 								"exec": [
 									"",
 									""
@@ -2073,7 +2295,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e9f5e60e-3676-45f5-92c3-a2fc0c4089ed",
+								"id": "ddf1f411-9433-4ec0-a450-1ec2ea6bbbab",
 								"exec": [
 									"",
 									""
@@ -2146,7 +2368,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "28f441da-6b89-4bcb-96b1-aebcfcb61cd8",
+								"id": "53c22d52-dbb7-42d6-b0f9-effdbd060491",
 								"exec": [
 									"",
 									""
@@ -2301,7 +2523,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "beaa7962-00e6-41c3-9562-7548dcdbd089",
+				"id": "a0520c81-e47f-4231-bc6c-6f9ea16dd5d0",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -2359,7 +2581,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "fed9c17c-63f5-4465-9e1d-aacc47f7f7df",
+				"id": "b4ccb505-b291-4670-8c5d-ea3df5d4fdb4",
 				"type": "text/javascript",
 				"exec": [
 					""
