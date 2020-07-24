@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "35f47feb-b909-4d40-9582-dc91529511d9",
+		"_postman_id": "619babbe-3bf3-4be6-8245-8c48c63343a7",
 		"name": "Binance delivery futures API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/futures/en/\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -686,6 +686,111 @@
 						"description": "Get present open interest of a specific symbol."
 					},
 					"response": []
+				},
+				{
+					"name": "Open Interest Statistics (MARKET DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/futures/data/openInterestHist?pair=&contractType=ALL&period=5m&limit=&startTime=&endTime=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"futures",
+								"data",
+								"openInterestHist"
+							],
+							"query": [
+								{
+									"key": "pair",
+									"value": ""
+								},
+								{
+									"key": "contractType",
+									"value": "ALL",
+									"description": "ALL,CURRENT_QUARTER,NEXT_QUARTER"
+								},
+								{
+									"key": "period",
+									"value": "5m",
+									"description": "\"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\""
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Default 30,Max 500"
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								}
+							]
+						},
+						"description": "Get present open interest of a specific symbol."
+					},
+					"response": []
+				},
+				{
+					"name": "Top Trader Long/Short Ratio (Accounts) (MARKET DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/futures/data/topLongShortAccountRatio?pair=&period=5m&limit=&startTime=&endTime=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"futures",
+								"data",
+								"topLongShortAccountRatio"
+							],
+							"query": [
+								{
+									"key": "pair",
+									"value": ""
+								},
+								{
+									"key": "period",
+									"value": "5m",
+									"description": "\"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\""
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Default 30,Max 500"
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								}
+							]
+						},
+						"description": "Get present open interest of a specific symbol."
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -699,7 +804,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "84d41fcf-c1b0-40bb-9737-f62b0701e37e",
+								"id": "84a3d4ee-fd5b-44a1-903c-2f454a6205f6",
 								"exec": [
 									""
 								],
@@ -758,7 +863,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2341737b-095d-4a3b-a29b-cb09ede05072",
+								"id": "3be2d6ec-bf78-4960-8cc9-0787a1c1837c",
 								"exec": [
 									""
 								],
@@ -812,7 +917,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c7efa797-752e-47ca-adfa-865417426b29",
+								"id": "279cf5dd-012e-4fc9-9f9f-015e850833ae",
 								"exec": [
 									""
 								],
@@ -934,7 +1039,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c2fbfa2c-b276-4bd3-b40d-296b2af83d67",
+								"id": "722cf71c-dcd1-4c89-a0f5-4103f1033a14",
 								"exec": [
 									""
 								],
@@ -992,7 +1097,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "8f6db1ea-4a5c-425c-81ee-01307f503c2b",
+								"id": "0c442bde-afec-44aa-ba4e-998143c00be0",
 								"exec": [
 									""
 								],
@@ -1057,7 +1162,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "31694793-b40d-4caf-9cd3-4c7f87573237",
+								"id": "83a69205-3d20-4b95-9bc6-efa7f66e5eb7",
 								"exec": [
 									""
 								],
@@ -1122,7 +1227,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b63bcea4-6a2c-421b-878f-140103bd70cc",
+								"id": "6e25fd3f-957a-4fb7-9845-b61652501234",
 								"exec": [
 									""
 								],
@@ -1179,7 +1284,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "5f49a8fa-6887-45ef-994f-0fa89e4dcc26",
+								"id": "761c5bf9-05cc-47d5-b6ba-ae65adf1cedf",
 								"exec": [
 									""
 								],
@@ -1245,7 +1350,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "6a03711b-e523-4a99-9651-4f7662bec4ef",
+								"id": "b5ac3573-7965-4eb7-b7ca-028e45f27920",
 								"exec": [
 									""
 								],
@@ -1307,7 +1412,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "666f4719-e9a1-4c82-b0a3-cc3e1729591a",
+								"id": "d1eb72d6-ff4a-4c0e-a3ed-f280bda3650f",
 								"exec": [
 									""
 								],
@@ -1372,7 +1477,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d23d1813-50a2-4504-87ca-5a780beba849",
+								"id": "e129fbde-5447-4499-8f0c-e7b2708c218b",
 								"exec": [
 									""
 								],
@@ -1433,7 +1538,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "0b4a0fd4-0585-463a-92e1-daa921e2469d",
+								"id": "d660e49e-2c5f-404b-86ae-485d9cbfff91",
 								"exec": [
 									""
 								],
@@ -1511,7 +1616,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "123aef08-d68a-485e-8394-ad9a46268983",
+								"id": "48dd1372-9b51-4c5e-8927-da1e1ab5796f",
 								"exec": [
 									"",
 									""
@@ -1564,7 +1669,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "738a5197-8e1f-4dbe-905c-6e821538dcee",
+								"id": "72b98bab-8173-4b55-8471-a320a58c5d21",
 								"exec": [
 									""
 								],
@@ -1625,7 +1730,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "110f7382-b99d-4349-8bee-fd4f889ccc84",
+								"id": "c70726ac-aaa1-485b-8fe1-279f0e2a3f14",
 								"exec": [
 									""
 								],
@@ -1686,7 +1791,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "652572a9-308b-4bf9-8668-f963779ae10e",
+								"id": "8f547f0e-46a2-4c05-af47-b15900650b83",
 								"exec": [
 									""
 								],
@@ -1756,7 +1861,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "6c3b9a87-0f39-4090-a31a-4a58cbad9997",
+								"id": "4226d77e-49fd-4ce9-8303-d64e02b3aca8",
 								"exec": [
 									""
 								],
@@ -1830,7 +1935,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f0c16dfa-287f-4b88-8b46-8f365b49c5dd",
+								"id": "e19d8f4a-b4cb-41a9-b734-8af29a222049",
 								"exec": [
 									"",
 									""
@@ -1891,7 +1996,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "6c50a082-0df8-4ea1-9469-e28d431ae744",
+								"id": "2e5064d8-a570-4f5a-a9ab-0691d879bd37",
 								"exec": [
 									"",
 									""
@@ -1968,7 +2073,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "79e670aa-b1e9-449c-8d09-2b8af601a69a",
+								"id": "e9f5e60e-3676-45f5-92c3-a2fc0c4089ed",
 								"exec": [
 									"",
 									""
@@ -2041,7 +2146,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "56cb95f7-5e8b-4824-8c9c-b728e55aef73",
+								"id": "28f441da-6b89-4bcb-96b1-aebcfcb61cd8",
 								"exec": [
 									"",
 									""
@@ -2196,7 +2301,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "749f6f54-3f89-4d59-927e-ad5ce6d486b1",
+				"id": "beaa7962-00e6-41c3-9562-7548dcdbd089",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -2254,7 +2359,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "f650adb4-07d3-497c-9c7b-1271470492bd",
+				"id": "fed9c17c-63f5-4465-9e1d-aacc47f7f7df",
 				"type": "text/javascript",
 				"exec": [
 					""
