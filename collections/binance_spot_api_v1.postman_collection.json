@@ -3367,7 +3367,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{url}}/sapi/v1/userDataStream/isolated?listenKey=",
+											"raw": "{{url}}/sapi/v1/userDataStream/isolated?listenKey=&symbol=",
 											"host": [
 												"{{url}}"
 											],
@@ -3380,6 +3380,10 @@
 											"query": [
 												{
 													"key": "listenKey",
+													"value": ""
+												},
+												{
+													"key": "symbol",
 													"value": ""
 												}
 											]
@@ -3404,7 +3408,7 @@
 											}
 										],
 										"url": {
-											"raw": "{{url}}/sapi/v1/userDataStream/isolated?listenKey=",
+											"raw": "{{url}}/sapi/v1/userDataStream/isolated?listenKey=&symbol",
 											"host": [
 												"{{url}}"
 											],
@@ -3418,6 +3422,10 @@
 												{
 													"key": "listenKey",
 													"value": ""
+												},
+												{
+													"key": "symbol",
+													"value": null
 												}
 											]
 										}
@@ -5182,17 +5190,18 @@
 										},
 										{
 											"key": "symbol",
-											"value": ""
+											"value": "",
+											"description": "isolated symbol"
 										},
 										{
 											"key": "transFrom",
 											"value": "",
-											"description": "\"MARGIN\" "
+											"description": "\"SPOT\", \"ISOLATED_MARGIN\""
 										},
 										{
 											"key": "transTo",
 											"value": "",
-											"description": "\"MARGIN\""
+											"description": "\"SPOT\", \"ISOLATED_MARGIN\""
 										},
 										{
 											"key": "amount",
@@ -5228,7 +5237,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/sapi/v1/margin/isolated/transfer?symbol=BTCUSDT&transFrom=SPOT&transTo=ISOLATED_MARGIN&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+									"raw": "{{url}}/sapi/v1/margin/isolated/transfer?asset=&symbol=&transFrom=&transTo=&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
 									"host": [
 										"{{url}}"
 									],
@@ -5242,22 +5251,21 @@
 									"query": [
 										{
 											"key": "asset",
-											"value": "BTC",
-											"disabled": true
+											"value": ""
 										},
 										{
 											"key": "symbol",
-											"value": "BTCUSDT"
+											"value": ""
 										},
 										{
 											"key": "transFrom",
-											"value": "SPOT",
-											"description": "\"MARGIN\" todo"
+											"value": "",
+											"description": "\"SPOT\", \"ISOLATED_MARGIN\""
 										},
 										{
 											"key": "transTo",
-											"value": "ISOLATED_MARGIN",
-											"description": "\"MARGIN\""
+											"value": "",
+											"description": "\"SPOT\", \"ISOLATED_MARGIN\""
 										},
 										{
 											"key": "startTime",
@@ -5349,7 +5357,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/sapi/v1/margin/isolated/pair?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
+									"raw": "{{url}}/sapi/v1/margin/isolated/pair?symbol=&timestamp={{timestamp}}&signature={{signature}}",
 									"host": [
 										"{{url}}"
 									],
@@ -5363,7 +5371,7 @@
 									"query": [
 										{
 											"key": "symbol",
-											"value": "BTCUSDT"
+											"value": ""
 										},
 										{
 											"key": "timestamp",
@@ -5517,7 +5525,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/loan?asset=&amount&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/loan?asset=&isIsolated=&symbol=&amount=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5533,8 +5541,18 @@
 									"value": ""
 								},
 								{
+									"key": "isIsolated",
+									"value": "",
+									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”"
+								},
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "isolated symbol"
+								},
+								{
 									"key": "amount",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -5566,7 +5584,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/repay?asset=&amount&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/repay?asset=&isIsolated=&symbol=&amount=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5582,8 +5600,18 @@
 									"value": ""
 								},
 								{
+									"key": "isIsolated",
+									"value": "",
+									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”"
+								},
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "isolated symbol"
+								},
+								{
 									"key": "amount",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -5832,7 +5860,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/order?symbol=BTCUSDT&side=SELL&type=LIMIT&quantity=&price=9000&stopPrice&newClientOrderId&icebergQty&newOrderRespType&sideEffectType&timeInForce=GTC&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/order?symbol=&isIsolated=&side=&type=&quantity=&price=&stopPrice=&newClientOrderId=&icebergQty=&newOrderRespType=&sideEffectType=&timeInForce=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5845,15 +5873,20 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTCUSDT"
+									"value": ""
+								},
+								{
+									"key": "isIsolated",
+									"value": "",
+									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”"
 								},
 								{
 									"key": "side",
-									"value": "SELL"
+									"value": ""
 								},
 								{
 									"key": "type",
-									"value": "LIMIT"
+									"value": ""
 								},
 								{
 									"key": "quantity",
@@ -5861,31 +5894,31 @@
 								},
 								{
 									"key": "price",
-									"value": "9000"
+									"value": ""
 								},
 								{
 									"key": "stopPrice",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "newClientOrderId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "icebergQty",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "newOrderRespType",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "sideEffectType",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "timeInForce",
-									"value": "GTC"
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -5917,7 +5950,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/order?symbol=BTCUSDT&orderId&origClientOrderId&newClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/order?symbol=&isIsolated=&orderId=&origClientOrderId=&newClientOrderId=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5930,19 +5963,24 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTCUSDT"
+									"value": ""
+								},
+								{
+									"key": "isIsolated",
+									"value": "",
+									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”"
 								},
 								{
 									"key": "orderId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "origClientOrderId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "newClientOrderId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -6042,7 +6080,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/loan?asset=BTC&txId&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/loan?asset=&isolatedSymbol=&txId=&startTime=&endTime=&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6055,19 +6093,23 @@
 							"query": [
 								{
 									"key": "asset",
-									"value": "BTC"
+									"value": ""
+								},
+								{
+									"key": "isolatedSymbol",
+									"value": ""
 								},
 								{
 									"key": "txId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "current",
@@ -6107,7 +6149,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/repay?asset=BTC&txId&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/repay?asset=&isolatedSymbol=&txId=&startTime=&endTime=&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6120,19 +6162,23 @@
 							"query": [
 								{
 									"key": "asset",
-									"value": "BTC"
+									"value": ""
+								},
+								{
+									"key": "isolatedSymbol",
+									"value": ""
 								},
 								{
 									"key": "txId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "current",
@@ -6172,7 +6218,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/interestHistory?asset=BTC&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/interestHistory?asset=&isolatedSymbol=&startTime=&endTime=&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6185,15 +6231,19 @@
 							"query": [
 								{
 									"key": "asset",
-									"value": "BTC"
+									"value": ""
+								},
+								{
+									"key": "isolatedSymbol",
+									"value": ""
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "current",
@@ -6233,7 +6283,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/forceLiquidationRec?startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/forceLiquidationRec?startTime=&endTime=&isolatedSymbol=&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6246,11 +6296,15 @@
 							"query": [
 								{
 									"key": "startTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": ""
+								},
+								{
+									"key": "isolatedSymbol",
+									"value": ""
 								},
 								{
 									"key": "current",
@@ -6331,7 +6385,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/order?symbol=&orderId=&origClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/order?symbol=&isIsolated=&orderId=&origClientOrderId=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6347,12 +6401,16 @@
 									"value": ""
 								},
 								{
+									"key": "isIsolated",
+									"value": ""
+								},
+								{
 									"key": "orderId",
 									"value": ""
 								},
 								{
 									"key": "origClientOrderId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -6384,7 +6442,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/openOrders?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/openOrders?symbol=&isIsolated=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6397,6 +6455,10 @@
 							"query": [
 								{
 									"key": "symbol",
+									"value": ""
+								},
+								{
+									"key": "isIsolated",
 									"value": ""
 								},
 								{
@@ -6429,7 +6491,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/allOrders?symbol=BTCUSDT&orderId&startTime&endTime&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/allOrders?symbol=&isIsolated=&orderId=&startTime=&endTime=&limit=500&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6442,24 +6504,28 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTCUSDT"
+									"value": ""
+								},
+								{
+									"key": "isIsolated",
+									"value": ""
 								},
 								{
 									"key": "orderId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": "",
+									"description": "Default 500; max 1000."
 								},
 								{
 									"key": "limit",
-									"value": "500",
-									"description": "Default 500; max 1000."
+									"value": "500"
 								},
 								{
 									"key": "timestamp",
@@ -6491,7 +6557,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/myTrades?symbol=&startTime&endTime&fromId&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/myTrades?symbol=&isIsolated=&startTime=&endTime=&fromId=&limit=500&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6507,21 +6573,25 @@
 									"value": ""
 								},
 								{
+									"key": "isIsolated",
+									"value": ""
+								},
+								{
 									"key": "startTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "fromId",
-									"value": null
+									"value": "",
+									"description": "Default 500; max 1000."
 								},
 								{
 									"key": "limit",
-									"value": "500",
-									"description": "Default 500; max 1000."
+									"value": "500"
 								},
 								{
 									"key": "timestamp",
@@ -6553,7 +6623,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/maxBorrowable?asset=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/maxBorrowable?asset=&isolatedSymbol=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6566,6 +6636,10 @@
 							"query": [
 								{
 									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "isolatedSymbol",
 									"value": ""
 								},
 								{
@@ -6598,7 +6672,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/maxTransferable?asset=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/maxTransferable?asset=&isolatedSymbol=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6611,6 +6685,10 @@
 							"query": [
 								{
 									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "isolatedSymbol",
 									"value": ""
 								},
 								{
