@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7bd42943-a34d-4575-b9be-d202770fb2f6",
+		"_postman_id": "beb8ab1e-dc79-4004-8123-47faffb2f7d3",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -3175,7 +3175,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "0d365259-6524-4df3-b285-3ab989afbc7e",
+						"id": "5b7ec0b1-3b71-4841-b8b6-90578c57d423",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -3185,7 +3185,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "97cb864f-6a8e-4837-95b5-97cab9042801",
+						"id": "3b646f68-beae-4cf1-bc35-4008d702e799",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -3311,106 +3311,239 @@
 					"name": "Margin",
 					"item": [
 						{
-							"name": "Create New Listen Key",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
+							"name": "isolated",
+							"item": [
+								{
+									"name": "Create New Isolated Margin Account Listen Key",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "X-MBX-APIKEY",
+												"type": "text",
+												"value": "{{binance-api-key}}"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/sapi/v1/userDataStream/isolated?symbol=BTCUSDT",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"sapi",
+												"v1",
+												"userDataStream",
+												"isolated"
+											],
+											"query": [
+												{
+													"key": "symbol",
+													"value": "BTCUSDT"
+												}
+											]
+										}
 									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/userDataStream",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"userDataStream"
-									]
+									"response": []
+								},
+								{
+									"name": "Renew Isolated Margin Account Listen Key",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "X-MBX-APIKEY",
+												"type": "text",
+												"value": "{{binance-api-key}}"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/sapi/v1/userDataStream/isolated?listenKey=&symbol=",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"sapi",
+												"v1",
+												"userDataStream",
+												"isolated"
+											],
+											"query": [
+												{
+													"key": "listenKey",
+													"value": ""
+												},
+												{
+													"key": "symbol",
+													"value": ""
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Isolated Margin Account Listen Key",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "X-MBX-APIKEY",
+												"type": "text",
+												"value": "{{binance-api-key}}"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/sapi/v1/userDataStream/isolated?listenKey=&symbol",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"sapi",
+												"v1",
+												"userDataStream",
+												"isolated"
+											],
+											"query": [
+												{
+													"key": "listenKey",
+													"value": ""
+												},
+												{
+													"key": "symbol",
+													"value": null
+												}
+											]
+										}
+									},
+									"response": []
 								}
-							},
-							"response": []
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
 						},
 						{
-							"name": "Renew Listen Key",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/userDataStream?listenKey=",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"userDataStream"
-									],
-									"query": [
-										{
-											"key": "listenKey",
-											"value": ""
+							"name": "cross",
+							"item": [
+								{
+									"name": "Create New Listen Key",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "X-MBX-APIKEY",
+												"type": "text",
+												"value": "{{binance-api-key}}"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/sapi/v1/userDataStream",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"sapi",
+												"v1",
+												"userDataStream"
+											]
 										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Delete Listen Key",
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
 									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/userDataStream?listenKey=",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"userDataStream"
-									],
-									"query": [
-										{
-											"key": "listenKey",
-											"value": ""
+									"response": []
+								},
+								{
+									"name": "Renew Listen Key",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "X-MBX-APIKEY",
+												"type": "text",
+												"value": "{{binance-api-key}}"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/sapi/v1/userDataStream?listenKey=",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"sapi",
+												"v1",
+												"userDataStream"
+											],
+											"query": [
+												{
+													"key": "listenKey",
+													"value": ""
+												}
+											]
 										}
-									]
+									},
+									"response": []
+								},
+								{
+									"name": "Delete Listen Key",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "application/json"
+											},
+											{
+												"key": "X-MBX-APIKEY",
+												"type": "text",
+												"value": "{{binance-api-key}}"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/sapi/v1/userDataStream?listenKey=",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"sapi",
+												"v1",
+												"userDataStream"
+											],
+											"query": [
+												{
+													"key": "listenKey",
+													"value": ""
+												}
+											]
+										}
+									},
+									"response": []
 								}
-							},
-							"response": []
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -4970,6 +5103,358 @@
 			"name": "Margin",
 			"item": [
 				{
+					"name": "isolated",
+					"item": [
+						{
+							"name": "Create Isolated Margin Account (MARGIN)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v1/margin/isolated/create?base=&quote=&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v1",
+										"margin",
+										"isolated",
+										"create"
+									],
+									"query": [
+										{
+											"key": "base",
+											"value": ""
+										},
+										{
+											"key": "quote",
+											"value": ""
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Isolated Margin Account Transfer (MARGIN)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v1/margin/isolated/create?asset=&symbol=&transFrom=&transTo=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v1",
+										"margin",
+										"isolated",
+										"create"
+									],
+									"query": [
+										{
+											"key": "asset",
+											"value": ""
+										},
+										{
+											"key": "symbol",
+											"value": "",
+											"description": "isolated symbol"
+										},
+										{
+											"key": "transFrom",
+											"value": "",
+											"description": "\"SPOT\", \"ISOLATED_MARGIN\""
+										},
+										{
+											"key": "transTo",
+											"value": "",
+											"description": "\"SPOT\", \"ISOLATED_MARGIN\""
+										},
+										{
+											"key": "amount",
+											"value": ""
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Isolated Margin Account Transfer History (USER_DATA)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v1/margin/isolated/transfer?asset=&symbol=&transFrom=&transTo=&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v1",
+										"margin",
+										"isolated",
+										"transfer"
+									],
+									"query": [
+										{
+											"key": "asset",
+											"value": ""
+										},
+										{
+											"key": "symbol",
+											"value": ""
+										},
+										{
+											"key": "transFrom",
+											"value": "",
+											"description": "\"SPOT\", \"ISOLATED_MARGIN\""
+										},
+										{
+											"key": "transTo",
+											"value": "",
+											"description": "\"SPOT\", \"ISOLATED_MARGIN\""
+										},
+										{
+											"key": "startTime",
+											"value": null
+										},
+										{
+											"key": "endTime",
+											"value": null
+										},
+										{
+											"key": "current",
+											"value": "1",
+											"description": "Currently querying page. Start from 1. Default:1"
+										},
+										{
+											"key": "size",
+											"value": "10",
+											"description": "Default:10 Max:100"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Query Isolated Margin Account Details (USER_DATA)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v1/margin/isolated/account?timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v1",
+										"margin",
+										"isolated",
+										"account"
+									],
+									"query": [
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Query Isolated Margin Pair (MARKET_DATA)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v1/margin/isolated/pair?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v1",
+										"margin",
+										"isolated",
+										"pair"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": ""
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Isolated Margin Pairs (MARKET_DATA)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v1/margin/isolated/allPairs?timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v1",
+										"margin",
+										"isolated",
+										"allPairs"
+									],
+									"query": [
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c41443cc-5ba9-4b5c-a34a-50b7a45bdafb",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "fad1afdb-9e55-414c-977c-5f962fc75663",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
 					"name": "Margin Account Transfer (MARGIN)",
 					"request": {
 						"method": "POST",
@@ -5040,7 +5525,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/loan?asset=&amount&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/loan?asset=&isIsolated=&symbol=&amount=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5056,8 +5541,18 @@
 									"value": ""
 								},
 								{
+									"key": "isIsolated",
+									"value": "",
+									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”"
+								},
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "isolated symbol"
+								},
+								{
 									"key": "amount",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -5089,7 +5584,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/repay?asset=&amount&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/repay?asset=&isIsolated=&symbol=&amount=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5105,8 +5600,18 @@
 									"value": ""
 								},
 								{
+									"key": "isIsolated",
+									"value": "",
+									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”"
+								},
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "isolated symbol"
+								},
+								{
 									"key": "amount",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -5355,7 +5860,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/order?symbol=BTCUSDT&side=SELL&type=LIMIT&quantity=&price=9000&stopPrice&newClientOrderId&icebergQty&newOrderRespType&sideEffectType&timeInForce=GTC&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/order?symbol=&isIsolated=&side=&type=&quantity=&price=&stopPrice=&newClientOrderId=&icebergQty=&newOrderRespType=&sideEffectType=&timeInForce=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5368,15 +5873,20 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTCUSDT"
+									"value": ""
+								},
+								{
+									"key": "isIsolated",
+									"value": "",
+									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”"
 								},
 								{
 									"key": "side",
-									"value": "SELL"
+									"value": ""
 								},
 								{
 									"key": "type",
-									"value": "LIMIT"
+									"value": ""
 								},
 								{
 									"key": "quantity",
@@ -5384,31 +5894,31 @@
 								},
 								{
 									"key": "price",
-									"value": "9000"
+									"value": ""
 								},
 								{
 									"key": "stopPrice",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "newClientOrderId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "icebergQty",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "newOrderRespType",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "sideEffectType",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "timeInForce",
-									"value": "GTC"
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -5440,7 +5950,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/order?symbol=BTCUSDT&orderId&origClientOrderId&newClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/order?symbol=&isIsolated=&orderId=&origClientOrderId=&newClientOrderId=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5453,19 +5963,24 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTCUSDT"
+									"value": ""
+								},
+								{
+									"key": "isIsolated",
+									"value": "",
+									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”"
 								},
 								{
 									"key": "orderId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "origClientOrderId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "newClientOrderId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -5565,7 +6080,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/loan?asset=BTC&txId&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/loan?asset=&isolatedSymbol=&txId=&startTime=&endTime=&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5578,19 +6093,23 @@
 							"query": [
 								{
 									"key": "asset",
-									"value": "BTC"
+									"value": ""
+								},
+								{
+									"key": "isolatedSymbol",
+									"value": ""
 								},
 								{
 									"key": "txId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "current",
@@ -5630,7 +6149,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/repay?asset=BTC&txId&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/repay?asset=&isolatedSymbol=&txId=&startTime=&endTime=&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5643,19 +6162,23 @@
 							"query": [
 								{
 									"key": "asset",
-									"value": "BTC"
+									"value": ""
+								},
+								{
+									"key": "isolatedSymbol",
+									"value": ""
 								},
 								{
 									"key": "txId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "current",
@@ -5695,7 +6218,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/interestHistory?asset=BTC&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/interestHistory?asset=&isolatedSymbol=&startTime=&endTime=&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5708,15 +6231,19 @@
 							"query": [
 								{
 									"key": "asset",
-									"value": "BTC"
+									"value": ""
+								},
+								{
+									"key": "isolatedSymbol",
+									"value": ""
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "current",
@@ -5756,7 +6283,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/forceLiquidationRec?startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/forceLiquidationRec?startTime=&endTime=&isolatedSymbol=&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5769,11 +6296,15 @@
 							"query": [
 								{
 									"key": "startTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": ""
+								},
+								{
+									"key": "isolatedSymbol",
+									"value": ""
 								},
 								{
 									"key": "current",
@@ -5854,7 +6385,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/order?symbol=&orderId=&origClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/order?symbol=&isIsolated=&orderId=&origClientOrderId=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5870,12 +6401,16 @@
 									"value": ""
 								},
 								{
+									"key": "isIsolated",
+									"value": ""
+								},
+								{
 									"key": "orderId",
 									"value": ""
 								},
 								{
 									"key": "origClientOrderId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -5907,7 +6442,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/openOrders?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/openOrders?symbol=&isIsolated=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5920,6 +6455,10 @@
 							"query": [
 								{
 									"key": "symbol",
+									"value": ""
+								},
+								{
+									"key": "isIsolated",
 									"value": ""
 								},
 								{
@@ -5952,7 +6491,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/allOrders?symbol=BTCUSDT&orderId&startTime&endTime&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/allOrders?symbol=&isIsolated=&orderId=&startTime=&endTime=&limit=500&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5965,24 +6504,28 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTCUSDT"
+									"value": ""
+								},
+								{
+									"key": "isIsolated",
+									"value": ""
 								},
 								{
 									"key": "orderId",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": "",
+									"description": "Default 500; max 1000."
 								},
 								{
 									"key": "limit",
-									"value": "500",
-									"description": "Default 500; max 1000."
+									"value": "500"
 								},
 								{
 									"key": "timestamp",
@@ -6014,7 +6557,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/myTrades?symbol=&startTime&endTime&fromId&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/myTrades?symbol=&isIsolated=&startTime=&endTime=&fromId=&limit=500&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6030,21 +6573,25 @@
 									"value": ""
 								},
 								{
+									"key": "isIsolated",
+									"value": ""
+								},
+								{
 									"key": "startTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "fromId",
-									"value": null
+									"value": "",
+									"description": "Default 500; max 1000."
 								},
 								{
 									"key": "limit",
-									"value": "500",
-									"description": "Default 500; max 1000."
+									"value": "500"
 								},
 								{
 									"key": "timestamp",
@@ -6076,7 +6623,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/maxBorrowable?asset=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/maxBorrowable?asset=&isolatedSymbol=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6089,6 +6636,10 @@
 							"query": [
 								{
 									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "isolatedSymbol",
 									"value": ""
 								},
 								{
@@ -6121,7 +6672,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/maxTransferable?asset=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/maxTransferable?asset=&isolatedSymbol=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6134,6 +6685,10 @@
 							"query": [
 								{
 									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "isolatedSymbol",
 									"value": ""
 								},
 								{
@@ -6550,7 +7105,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "ee1251ab-36db-46d0-a6e1-763d4a369d02",
+				"id": "22a5a75c-cd49-4d01-90d6-293b3bc053d0",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -6611,7 +7166,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "96d41498-c814-4a08-921a-f2948c560c3b",
+				"id": "96a33368-91c8-4782-9d73-5671b9817275",
 				"type": "text/javascript",
 				"exec": [
 					""
