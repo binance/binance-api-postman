@@ -29,7 +29,7 @@ https://academy.binance.com/economics/binance-api-series-pt-1-spot-trading-with-
 
 ## FAQ
 ### Error: `Could not get any response`
-- Either you haven't setup the environment or the environment is not selected. Please find the step above to setup the environment.
+You haven't imported the environment file, or you've imported it but haven't selected it from the dropdown. Please follow the the steps above to import and select the environment in Postman.
 
 ### Error: `API-key format invalid.`
 - API key is not set.
