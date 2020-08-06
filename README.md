@@ -23,6 +23,7 @@ We also provide a Postman environment (JSON configuration file), which can be co
     <p align="center"><img src="https://raw.githubusercontent.com/binance-exchange/binance-api-postman/assets/postman/4.png" alt="Screenshot of Postman for Mac, showing how imported environments can be selected from a dropdown ."/></p>
 
 ## Guide for using the Binance API with Postman
+A guide to using the Binance Spot API Postman Collections can be found here:
 
 https://academy.binance.com/economics/binance-api-series-pt-1-spot-trading-with-postman
 
