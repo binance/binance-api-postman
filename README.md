@@ -43,7 +43,6 @@ Likely causes:
 - You've selected parameters for which no value was passed. If you aren't using a parameter, uncheck it.
 
 ### Error: `Mandatory parameter 'xxxx' was not sent, was empty/null, or malformed.`
-- The mandatory parameter is missing. Please refer to the API document and pass all required parameters.
 
 ### How to debug or find out request URL
 - Open Postman console `(CMD/CTRL + ALT + C)`, each request will print request parameters and URL.
@@ -51,6 +50,7 @@ Likely causes:
 
 ## Is Postman safe to use
 We suggest users to develop their own application to work with Binance API. However Postman is a good tool for those who want to easily experience APIs. These best pratices are recommended:
+Your request is missing a parameter that the API requires. Please refer to the API documentation, and pass all mandatory parameters in your requests.
 
 - Don't use collections from distrust channel.
 - Review the json file before using it.
