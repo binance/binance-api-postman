@@ -38,9 +38,9 @@ Likely causes:
 - You have not selected `X-MBX-APIKEY` in your Postman `Headers`.
 
 ### Error: `Signature for this request is not valid.`
-These are the likely reasons that can cause this error:
-- Secret key is not set.
-- Parameters are selected, but didn't pass any value. Uncheck the parameter if you don't use it.
+Likely causes:
+- You haven't set your secret key.
+- You've selected parameters for which no value was passed. If you aren't using a parameter, uncheck it.
 
 ### Error: `Mandatory parameter 'xxxx' was not sent, was empty/null, or malformed.`
 - The mandatory parameter is missing. Please refer to the API document and pass all required parameters.
