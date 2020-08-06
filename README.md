@@ -5,9 +5,7 @@
 Binance now offers several Postman Collections for quick and easy usage of our RESTful APIs. <br>
 We also provide a Postman environment (JSON configuration file), which can be conveniently imported for use with your own API and secret keys.
 
-## How to import collection
-- Download the collections
-- Import the collection into Postman APP
+## How to import Collections
 
 ## How to import environment
 - Download the environment json file
@@ -20,6 +18,8 @@ We also provide a Postman environment (JSON configuration file), which can be co
 - Set the API key and secret key. Leave timestamp and signature empty.
     Please DON'T set into `INTIAL VALUE` column, otherwise postman will upload into your personal postman account. Don't leave `INTIAL VALUE` empty, postman can copy the `CURRENT VALUE` into here.
     <p align="center"><img src="https://raw.githubusercontent.com/binance-exchange/binance-api-postman/assets/postman/3.png"/></p>
+- Download the Collections.
+- Import the Collections into the Postman app.
     
 - Select the environment from the dropdown.
     <p align="center"><img src="https://raw.githubusercontent.com/binance-exchange/binance-api-postman/assets/postman/4.png"/></p>
