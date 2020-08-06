@@ -32,9 +32,10 @@ https://academy.binance.com/economics/binance-api-series-pt-1-spot-trading-with-
 You haven't imported the environment file, or you've imported it but haven't selected it from the dropdown. Please follow the the steps above to import and select the environment in Postman.
 
 ### Error: `API-key format invalid.`
-- API key is not set.
-- API key is not correct.
-- In Postman `Headers`, the `X-MBX-APIKEY` is not selected.
+Likely causes:
+- Your API key is not set.
+- Your API key is not correct.
+- You have not selected `X-MBX-APIKEY` in your Postman `Headers`.
 
 ### Error: `Signature for this request is not valid.`
 These are the likely reasons that can cause this error:
