@@ -7,9 +7,6 @@ We also provide a Postman environment (JSON configuration file), which can be co
 
 ## How to import Collections
 
-## How to import environment
-- Download the environment json file
-- Open the postman app
     
 - Click the button `Manage Environments`(gear icon) from the top right of Postman console (Postman Mac version)
     <p align="center"><img src="https://raw.githubusercontent.com/binance-exchange/binance-api-postman/assets/postman/1.png"/></p>
@@ -20,6 +17,9 @@ We also provide a Postman environment (JSON configuration file), which can be co
     <p align="center"><img src="https://raw.githubusercontent.com/binance-exchange/binance-api-postman/assets/postman/3.png"/></p>
 - Download the Collections.
 - Import the Collections into the Postman app.
+## How to import the environment
+- Download the environment JSON file.
+- Open the Postman app.
     
 - Select the environment from the dropdown.
     <p align="center"><img src="https://raw.githubusercontent.com/binance-exchange/binance-api-postman/assets/postman/4.png"/></p>
