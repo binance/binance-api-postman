@@ -19,8 +19,8 @@ We also provide a Postman environment (JSON configuration file), which can be co
 - On the `Manage Environments` pop-up page, click `Import`. Select the environment file you downloaded, then click `Add`.
 - Set your API key and secret key. **Please remember** to also set the `Current Value` column (see screenshot); otherwise, Postman will upload into your personal Postman account. (The `Timestamp`, `Signature`, `Initial Value` fields can be left empty. Postman will fill in `Initial Value` with what you provide in `Current Value`.)
     
-- Select the environment from the dropdown.
     <p align="center"><img src="https://raw.githubusercontent.com/binance-exchange/binance-api-postman/assets/postman/4.png"/></p>
+- Select your newly-added environment from the environment dropdown menu. On Mac, this is at top right, to the left of the `Manage Environments` gear icon.
 
 ## Guide for using the Binance API with Postman
 
