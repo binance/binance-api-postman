@@ -44,10 +44,6 @@ Likely causes:
 
 ### Error: `Mandatory parameter 'xxxx' was not sent, was empty/null, or malformed.`
 
-### How to debug or find out request URL
-- Open Postman console `(CMD/CTRL + ALT + C)`, each request will print request parameters and URL.
-- Edit Pre-request scripts for debugging.
-
 ## Is Postman safe to use
 We suggest users to develop their own application to work with Binance API. However Postman is a good tool for those who want to easily experience APIs. These best pratices are recommended:
 Your request is missing a parameter that the API requires. Please refer to the API documentation, and pass all mandatory parameters in your requests.
@@ -57,6 +53,9 @@ Your request is missing a parameter that the API requires. Please refer to the A
 - Don't use if any code that you don't understand.
 - Make sure that withdrawals are not enabled on your API keys. 
 - Delete API key after use. 
+### How can I debug a request, or find the URL it uses?
+- Open the Postman console `(CMD/CTRL + ALT + C)`. Each request will print out its parameters and URL.
+- To debug, edit your `Pre-request` scripts.
 
 ## My question isn't here
 Please open an issue [here](https://github.com/binance-exchange/binance-api-postman/issues).
