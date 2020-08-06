@@ -2,8 +2,8 @@
 
 [Postman](https://getpostman.com) is an API Collaboration Platform.
 
-Binance now has several Postman Collections for quick and easy usage of our REST-based APIs. <br>
-The environment hosted here can be imported for easy changing of API public key, secret key. 
+Binance now offers several Postman Collections for quick and easy usage of our RESTful APIs. <br>
+We also provide a Postman environment (JSON configuration file), which can be conveniently imported for use with your own API and secret keys.
 
 ## How to import collection
 - Download the collections
