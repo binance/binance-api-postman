@@ -1,1070 +1,16 @@
 {
 	"info": {
-		"_postman_id": "beb8ab1e-dc79-4004-8123-47faffb2f7d3",
+		"_postman_id": "02a3b56e-51fe-4d5d-a648-7cd52945bb23",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Wallet",
+			"name": "Corporate ( sub-account )",
 			"item": [
 				{
-					"name": "sub-account",
-					"item": [
-						{
-							"name": "Query Sub-account List(For Master Account)",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/wapi/v3/sub-account/list.html?email&status=enabled&page=1&limit=500&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"wapi",
-										"v3",
-										"sub-account",
-										"list.html"
-									],
-									"query": [
-										{
-											"key": "email",
-											"value": null
-										},
-										{
-											"key": "status",
-											"value": "enabled"
-										},
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "500"
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Query Sub-account Transfer History(For Master Account)",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/wapi/v3/sub-account/transfer/history.html?email&startTime&endTime&page=1&limit=500&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"wapi",
-										"v3",
-										"sub-account",
-										"transfer",
-										"history.html"
-									],
-									"query": [
-										{
-											"key": "email",
-											"value": null
-										},
-										{
-											"key": "startTime",
-											"value": null
-										},
-										{
-											"key": "endTime",
-											"value": null
-										},
-										{
-											"key": "page",
-											"value": "1"
-										},
-										{
-											"key": "limit",
-											"value": "500"
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Sub-account Transfer(For Master Account)",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/wapi/v3/sub-account/transfer.html?fromEmail&toEmail&asset&amount=&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"wapi",
-										"v3",
-										"sub-account",
-										"transfer.html"
-									],
-									"query": [
-										{
-											"key": "fromEmail",
-											"value": null
-										},
-										{
-											"key": "toEmail",
-											"value": null
-										},
-										{
-											"key": "asset",
-											"value": null
-										},
-										{
-											"key": "amount",
-											"value": ""
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Query Sub-account Assets(For Master Account)",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/wapi/v3/sub-account/assets.html?email&symbol&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"wapi",
-										"v3",
-										"sub-account",
-										"assets.html"
-									],
-									"query": [
-										{
-											"key": "email",
-											"value": null
-										},
-										{
-											"key": "symbol",
-											"value": null
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Sub-account Deposit Address (For Master Account)",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/capital/deposit/subAddress?email&coin&network&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"capital",
-										"deposit",
-										"subAddress"
-									],
-									"query": [
-										{
-											"key": "email",
-											"value": null,
-											"description": "Sub account email"
-										},
-										{
-											"key": "coin",
-											"value": null
-										},
-										{
-											"key": "network",
-											"value": null
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Sub-account Deposit History (For Master Account)",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/capital/deposit/subHisrec?email&coin&network&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"capital",
-										"deposit",
-										"subHisrec"
-									],
-									"query": [
-										{
-											"key": "email",
-											"value": null,
-											"description": "Sub account email"
-										},
-										{
-											"key": "coin",
-											"value": null
-										},
-										{
-											"key": "network",
-											"value": null
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Sub-account's Status on Margin/Futures(For Master Account)",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/sub-account/status?email&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"sub-account",
-										"status"
-									],
-									"query": [
-										{
-											"key": "email",
-											"value": null
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Enable Margin for Sub-account (For Master Account)",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/sub-account/margin/enable?email=&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"sub-account",
-										"margin",
-										"enable"
-									],
-									"query": [
-										{
-											"key": "email",
-											"value": ""
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Detail on Sub-account's Margin Account (For Master Account)",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/sub-account/margin/account?email=&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"sub-account",
-										"margin",
-										"account"
-									],
-									"query": [
-										{
-											"key": "email",
-											"value": ""
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Summary of Sub-account's Margin Account (For Master Account)",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/sub-account/margin/accountSummary?timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"sub-account",
-										"margin",
-										"accountSummary"
-									],
-									"query": [
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Enable Futures for Sub-account (For Master Account)",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/sub-account/futures/enable?email&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"sub-account",
-										"futures",
-										"enable"
-									],
-									"query": [
-										{
-											"key": "email",
-											"value": null
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Detail on Sub-account's Futures Account (For Master Account)",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/sub-account/futures/account?email=&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"sub-account",
-										"futures",
-										"account"
-									],
-									"query": [
-										{
-											"key": "email",
-											"value": ""
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Summary of Sub-account's Futures Account (For Master Account)",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/sub-account/futures/accountSummary?timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"sub-account",
-										"futures",
-										"accountSummary"
-									],
-									"query": [
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Get Futures Postion-Risk of Sub-account (For Master Account)",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/sub-account/futures/positionRisk?email=&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"sub-account",
-										"futures",
-										"positionRisk"
-									],
-									"query": [
-										{
-											"key": "email",
-											"value": ""
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Futures Transfer for Sub-account（For Master Account)",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/sub-account/futures/transfer?email=&asset&amount&type&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"sub-account",
-										"futures",
-										"transfer"
-									],
-									"query": [
-										{
-											"key": "email",
-											"value": ""
-										},
-										{
-											"key": "asset",
-											"value": null
-										},
-										{
-											"key": "amount",
-											"value": null
-										},
-										{
-											"key": "type",
-											"value": null
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Margin Transfer for Sub-account（For Master Account",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/sub-account/margin/transfer?email=&asset&amount&type&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"sub-account",
-										"margin",
-										"transfer"
-									],
-									"query": [
-										{
-											"key": "email",
-											"value": ""
-										},
-										{
-											"key": "asset",
-											"value": null
-										},
-										{
-											"key": "amount",
-											"value": null
-										},
-										{
-											"key": "type",
-											"value": null
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Transfer to Sub-account of Same Master（For Sub-account）",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/sub-account/transfer/subToSub?email=&asset&amount&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"sub-account",
-										"transfer",
-										"subToSub"
-									],
-									"query": [
-										{
-											"key": "email",
-											"value": ""
-										},
-										{
-											"key": "asset",
-											"value": null
-										},
-										{
-											"key": "amount",
-											"value": null
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Transfer to Master（For Sub-account）",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/sub-account/transfer/subToMaster?asset&amount&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"sub-account",
-										"transfer",
-										"subToMaster"
-									],
-									"query": [
-										{
-											"key": "asset",
-											"value": null
-										},
-										{
-											"key": "amount",
-											"value": null
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Sub-account Transfer History (For Sub-account)",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/sub-account/transfer/subUserHistory?asset=&type=&startTime=&endTime=&limit=500&amount=&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"sub-account",
-										"transfer",
-										"subUserHistory"
-									],
-									"query": [
-										{
-											"key": "asset",
-											"value": ""
-										},
-										{
-											"key": "type",
-											"value": ""
-										},
-										{
-											"key": "startTime",
-											"value": ""
-										},
-										{
-											"key": "endTime",
-											"value": ""
-										},
-										{
-											"key": "limit",
-											"value": "500"
-										},
-										{
-											"key": "amount",
-											"value": ""
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
-				},
-				{
-					"name": "System Status (System)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/systemStatus.html",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"systemStatus.html"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "All Coins' Information (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/capital/config/getall?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"capital",
-								"config",
-								"getall"
-							],
-							"query": [
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Daily Account Snapshot (USER_DATA)",
+					"name": "Query Sub-account List(For Master Account)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1080,35 +26,32 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/accountSnapshot?type=SPOT&limit=5&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/wapi/v3/sub-account/list.html?email&status=enabled&page=1&limit=500&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"sapi",
-								"v1",
-								"accountSnapshot"
+								"wapi",
+								"v3",
+								"sub-account",
+								"list.html"
 							],
 							"query": [
 								{
-									"key": "type",
-									"value": "SPOT",
-									"description": "\"SPOT\", \"MARGIN\", \"FUTURES\""
+									"key": "email",
+									"value": null
 								},
 								{
-									"key": "startTime",
-									"value": null,
-									"disabled": true
+									"key": "status",
+									"value": "enabled"
 								},
 								{
-									"key": "endTime",
-									"value": null,
-									"disabled": true
+									"key": "page",
+									"value": "1"
 								},
 								{
 									"key": "limit",
-									"value": "5",
-									"description": "min 5, max 30, default 5"
+									"value": "500"
 								},
 								{
 									"key": "timestamp",
@@ -1124,233 +67,7 @@
 					"response": []
 				},
 				{
-					"name": "Disable Fast Withdraw Switch (USER_DATA)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/account/disableFastWithdrawSwitch?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"account",
-								"disableFastWithdrawSwitch"
-							],
-							"query": [
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Enable Fast Withdraw Switch (USER_DATA)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/account/enableFastWithdrawSwitch?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"account",
-								"enableFastWithdrawSwitch"
-							],
-							"query": [
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Withdraw [SAPI]",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/capital/withdraw/apply?coin=&network=&address=&addressTag=&amount=&transactionFeeFlag=&name=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"capital",
-								"withdraw",
-								"apply"
-							],
-							"query": [
-								{
-									"key": "coin",
-									"value": ""
-								},
-								{
-									"key": "network",
-									"value": ""
-								},
-								{
-									"key": "address",
-									"value": ""
-								},
-								{
-									"key": "addressTag",
-									"value": ""
-								},
-								{
-									"key": "amount",
-									"value": ""
-								},
-								{
-									"key": "transactionFeeFlag",
-									"value": "",
-									"description": "Boolean value, default: false"
-								},
-								{
-									"key": "name",
-									"value": ""
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Withdraw",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/withdraw.html?asset=&withdrawOrderId=&network=&address=&addressTag=&amount=&transactionFeeFlag=&name=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"withdraw.html"
-							],
-							"query": [
-								{
-									"key": "asset",
-									"value": ""
-								},
-								{
-									"key": "withdrawOrderId",
-									"value": ""
-								},
-								{
-									"key": "network",
-									"value": ""
-								},
-								{
-									"key": "address",
-									"value": ""
-								},
-								{
-									"key": "addressTag",
-									"value": ""
-								},
-								{
-									"key": "amount",
-									"value": ""
-								},
-								{
-									"key": "transactionFeeFlag",
-									"value": "",
-									"description": "Boolean value, default: false"
-								},
-								{
-									"key": "name",
-									"value": ""
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Deposit History（supporting network） (USER_DATA)",
+					"name": "Query Sub-account Transfer History(For Master Account)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1366,7 +83,175 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/capital/deposit/hisrec?coin=BTC&status&startTime&endTime&addressTag=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/wapi/v3/sub-account/transfer/history.html?email&startTime&endTime&page=1&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wapi",
+								"v3",
+								"sub-account",
+								"transfer",
+								"history.html"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": null
+								},
+								{
+									"key": "startTime",
+									"value": null
+								},
+								{
+									"key": "endTime",
+									"value": null
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "500"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sub-account Transfer(For Master Account)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/wapi/v3/sub-account/transfer.html?fromEmail&toEmail&asset&amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wapi",
+								"v3",
+								"sub-account",
+								"transfer.html"
+							],
+							"query": [
+								{
+									"key": "fromEmail",
+									"value": null
+								},
+								{
+									"key": "toEmail",
+									"value": null
+								},
+								{
+									"key": "asset",
+									"value": null
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Sub-account Assets(For Master Account)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/wapi/v3/sub-account/assets.html?email&symbol&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wapi",
+								"v3",
+								"sub-account",
+								"assets.html"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": null
+								},
+								{
+									"key": "symbol",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sub-account Deposit Address (For Master Account)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/capital/deposit/subAddress?email&coin&network&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1375,255 +260,17 @@
 								"v1",
 								"capital",
 								"deposit",
-								"hisrec"
+								"subAddress"
 							],
 							"query": [
+								{
+									"key": "email",
+									"value": null,
+									"description": "Sub account email"
+								},
 								{
 									"key": "coin",
-									"value": "BTC"
-								},
-								{
-									"key": "status",
 									"value": null
-								},
-								{
-									"key": "startTime",
-									"value": null
-								},
-								{
-									"key": "endTime",
-									"value": null
-								},
-								{
-									"key": "addressTag",
-									"value": ""
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Deposit History (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/depositHistory.html?asset=BTC&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"depositHistory.html"
-							],
-							"query": [
-								{
-									"key": "asset",
-									"value": "BTC"
-								},
-								{
-									"key": "status",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "startTime",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "endTime",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Withdraw History (supporting network) (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/capital/withdraw/history?coin=BTC&status=&offset=&limit=100&startTime=&endTime=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"capital",
-								"withdraw",
-								"history"
-							],
-							"query": [
-								{
-									"key": "coin",
-									"value": "BTC"
-								},
-								{
-									"key": "status",
-									"value": ""
-								},
-								{
-									"key": "offset",
-									"value": ""
-								},
-								{
-									"key": "limit",
-									"value": "100"
-								},
-								{
-									"key": "startTime",
-									"value": ""
-								},
-								{
-									"key": "endTime",
-									"value": ""
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Withdraw History (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/withdrawHistory.html?asset=BTC&status&startTime&endTime&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"withdrawHistory.html"
-							],
-							"query": [
-								{
-									"key": "asset",
-									"value": "BTC"
-								},
-								{
-									"key": "status",
-									"value": null
-								},
-								{
-									"key": "startTime",
-									"value": null
-								},
-								{
-									"key": "endTime",
-									"value": null
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Deposit Address (supporting network) (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/capital/deposit/address?coin=BTC&network&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"capital",
-								"deposit",
-								"address"
-							],
-							"query": [
-								{
-									"key": "coin",
-									"value": "BTC"
 								},
 								{
 									"key": "network",
@@ -1643,7 +290,7 @@
 					"response": []
 				},
 				{
-					"name": "Deposit Address (USER_DATA)",
+					"name": "Get Sub-account Deposit History (For Master Account)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1659,1032 +306,29 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/wapi/v3/depositAddress.html?asset=BTC&status&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"depositAddress.html"
-							],
-							"query": [
-								{
-									"key": "asset",
-									"value": "BTC"
-								},
-								{
-									"key": "status",
-									"value": null
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Account Status (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/accountStatus.html?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"accountStatus.html"
-							],
-							"query": [
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Account API Trading Status (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/apiTradingStatus.html?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"apiTradingStatus.html"
-							],
-							"query": [
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DustLog (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/userAssetDribbletLog.html?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"userAssetDribbletLog.html"
-							],
-							"query": [
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Trade Fee (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/tradeFee.html?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"tradeFee.html"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Asset Detail (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/assetDetail.html?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"assetDetail.html"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Dust Transfer (USER_DATA)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/asset/dust?asset=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/capital/deposit/subHisrec?email&coin&network&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
 								"v1",
-								"asset",
-								"dust"
+								"capital",
+								"deposit",
+								"subHisrec"
 							],
 							"query": [
 								{
-									"key": "asset",
-									"value": ""
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Asset Dividend Record (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/asset/assetDividend?asset&startTime&endTime&limit=20&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"asset",
-								"assetDividend"
-							],
-							"query": [
-								{
-									"key": "asset",
-									"value": null
-								},
-								{
-									"key": "startTime",
-									"value": null
-								},
-								{
-									"key": "endTime",
-									"value": null
-								},
-								{
-									"key": "limit",
-									"value": "20"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Market",
-			"item": [
-				{
-					"name": "Test Connectivity",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/ping",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"ping"
-							]
-						},
-						"description": "Test connectivity to the Rest API."
-					},
-					"response": []
-				},
-				{
-					"name": "Check Server Time",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/time",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"time"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": "",
-									"disabled": true
-								}
-							]
-						},
-						"description": "Test connectivity to the Rest API and get the current server time."
-					},
-					"response": []
-				},
-				{
-					"name": "Exchange Information",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/exchangeInfo",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"exchangeInfo"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": "",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Order Book",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/depth?symbol=BTCUSDT&limit=100",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"depth"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "limit",
-									"value": "100",
-									"description": "Default 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500, 1000, 5000]"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Recent Trades List",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/trades?symbol=BTCUSDT&limit=500",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"trades"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "limit",
-									"value": "500",
-									"description": "Default 500; max 1000."
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Old Trade Lookup",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/historicalTrades?symbol=BTCUSDT&limit=500&fromId",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"historicalTrades"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "limit",
-									"value": "500",
-									"description": "Default 500; max 1000."
-								},
-								{
-									"key": "fromId",
-									"value": null
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Compressed/Aggregate Trades List",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/aggTrades?symbol=BTCUSDT&limit=500",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"aggTrades"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "fromId",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "startTime",
+									"key": "email",
 									"value": null,
-									"disabled": true
+									"description": "Sub account email"
 								},
 								{
-									"key": "endTime",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "500",
-									"description": "Default 500; max 1000."
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Kline/Candlestick Data",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/klines?symbol=BTCUSDT&interval=1m&limit=500",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"klines"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "interval",
-									"value": "1m"
-								},
-								{
-									"key": "startTime",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "endTime",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "500",
-									"description": "Default 500; max 1000."
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Current Average Price",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/avgPrice?symbol=BTCUSDT",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"avgPrice"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "24hr Ticker Price Change Statistics",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/ticker/24hr?symbol=BTCUSDT",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"ticker",
-								"24hr"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Symbol Price Ticker",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/ticker/price?symbol=BTCUSDT",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"ticker",
-								"price"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Symbol Order Book Ticker",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/ticker/bookTicker?symbol=BTCUSDT",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"ticker",
-								"bookTicker"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Savings",
-			"item": [
-				{
-					"name": "Get Flexible Product List (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/lending/daily/product/list?status=ALL&featured=ALL&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"lending",
-								"daily",
-								"product",
-								"list"
-							],
-							"query": [
-								{
-									"key": "status",
-									"value": "ALL",
-									"description": "\"ALL\", \"SUBSCRIBABLE\", \"UNSUBSCRIBABLE\"; default: 'ALL'"
-								},
-								{
-									"key": "featured",
-									"value": "ALL"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Left Daily Purchase Quota of Flexible Product (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/lending/daily/userLeftQuota?productId=USDT001&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"lending",
-								"daily",
-								"userLeftQuota"
-							],
-							"query": [
-								{
-									"key": "productId",
-									"value": "USDT001"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Purchase Flexible Product (USER_DATA)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/lending/daily/purchase?productId=&amount=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"lending",
-								"daily",
-								"purchase"
-							],
-							"query": [
-								{
-									"key": "productId",
-									"value": ""
-								},
-								{
-									"key": "amount",
-									"value": ""
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Left Daily Redemption Quota of Flexible Product",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/lending/daily/userRedemptionQuota?productId=USDT001&type=FAST&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"lending",
-								"daily",
-								"userRedemptionQuota"
-							],
-							"query": [
-								{
-									"key": "productId",
-									"value": "USDT001"
-								},
-								{
-									"key": "type",
-									"value": "FAST"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Redeem Flexible Product (USER_DATA)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/lending/daily/redeem?productId=USDT001&amount&type&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"lending",
-								"daily",
-								"redeem"
-							],
-							"query": [
-								{
-									"key": "productId",
-									"value": "USDT001"
-								},
-								{
-									"key": "amount",
+									"key": "coin",
 									"value": null
 								},
 								{
-									"key": "type",
+									"key": "network",
 									"value": null
 								},
 								{
@@ -2701,7 +345,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Flexible Product Position (USER_DATA)",
+					"name": "Get Sub-account's Status on Margin/Futures(For Master Account)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2717,22 +361,20 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/lending/daily/token/position?asset=USDT&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/status?email&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
 								"v1",
-								"lending",
-								"daily",
-								"token",
-								"position"
+								"sub-account",
+								"status"
 							],
 							"query": [
 								{
-									"key": "asset",
-									"value": "USDT"
+									"key": "email",
+									"value": null
 								},
 								{
 									"key": "timestamp",
@@ -2748,83 +390,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Fixed and Customized Fixed Project List(USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/lending/project/list?asset=USDT&type=REGULAR&status=ALL&isSortAsc=true&sortBy=START_TIME&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"lending",
-								"project",
-								"list"
-							],
-							"query": [
-								{
-									"key": "asset",
-									"value": "USDT"
-								},
-								{
-									"key": "type",
-									"value": "REGULAR",
-									"description": "\"REGULAR\", \"CUSTOMIZED_FIXED\""
-								},
-								{
-									"key": "status",
-									"value": "ALL",
-									"description": "ALL\", \"SUBSCRIBABLE\", \"UNSUBSCRIBABLE\"; default \"ALL\""
-								},
-								{
-									"key": "isSortAsc",
-									"value": "true",
-									"description": "default \"true\""
-								},
-								{
-									"key": "sortBy",
-									"value": "START_TIME",
-									"description": "\"START_TIME\", \"LOT_SIZE\", \"INTEREST_RATE\", \"DURATION\"; default \"START_TIME"
-								},
-								{
-									"key": "current",
-									"value": "1",
-									"description": "Currently querying page. Start from 1. Default:1"
-								},
-								{
-									"key": "size",
-									"value": "10",
-									"description": "Default:10, Max:100"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Purchase Customized Fixed Project (USER_DATA)",
+					"name": "Enable Margin for Sub-account (For Master Account)",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2840,24 +406,20 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/lending/customizedFixed/purchase?projectId=&lot=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/margin/enable?email=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
 								"v1",
-								"lending",
-								"customizedFixed",
-								"purchase"
+								"sub-account",
+								"margin",
+								"enable"
 							],
 							"query": [
 								{
-									"key": "projectId",
-									"value": ""
-								},
-								{
-									"key": "lot",
+									"key": "email",
 									"value": ""
 								},
 								{
@@ -2874,7 +436,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Customized Fixed Project Position (USER_DATA)",
+					"name": "Get Detail on Sub-account's Margin Account (For Master Account)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2890,75 +452,23 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/lending/project/position/list?asset=USDT&projectId=&status=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/margin/account?email=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
 								"v1",
-								"lending",
-								"project",
-								"position",
-								"list"
-							],
-							"query": [
-								{
-									"key": "asset",
-									"value": "USDT"
-								},
-								{
-									"key": "projectId",
-									"value": ""
-								},
-								{
-									"key": "status",
-									"value": "",
-									"description": "\"HOLDING\", \"REDEEMED\""
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Lending Account (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/lending/union/account?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"lending",
-								"union",
+								"sub-account",
+								"margin",
 								"account"
 							],
 							"query": [
 								{
+									"key": "email",
+									"value": ""
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
 								},
@@ -2972,7 +482,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Purchase Record (USER_DATA)",
+					"name": "Get Summary of Sub-account's Margin Account (For Master Account)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2988,41 +498,63 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/lending/union/purchaseRecord?lendingType=DAILY&asset&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/margin/accountSummary?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
 								"v1",
-								"lending",
-								"union",
-								"purchaseRecord"
+								"sub-account",
+								"margin",
+								"accountSummary"
 							],
 							"query": [
 								{
-									"key": "lendingType",
-									"value": "DAILY"
+									"key": "timestamp",
+									"value": "{{timestamp}}"
 								},
 								{
-									"key": "asset",
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enable Futures for Sub-account (For Master Account)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/futures/enable?email&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"futures",
+								"enable"
+							],
+							"query": [
+								{
+									"key": "email",
 									"value": null
-								},
-								{
-									"key": "startTime",
-									"value": null
-								},
-								{
-									"key": "endTime",
-									"value": null
-								},
-								{
-									"key": "current",
-									"value": "1"
-								},
-								{
-									"key": "size",
-									"value": "10"
 								},
 								{
 									"key": "timestamp",
@@ -3038,7 +570,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Redemption Record (USER_DATA)",
+					"name": "Get Detail on Sub-account's Futures Account (For Master Account)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3054,41 +586,21 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/lending/union/redemptionRecord?lendingType=DAILY&asset&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/futures/account?email=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
 								"v1",
-								"lending",
-								"union",
-								"redemptionRecord"
+								"sub-account",
+								"futures",
+								"account"
 							],
 							"query": [
 								{
-									"key": "lendingType",
-									"value": "DAILY"
-								},
-								{
-									"key": "asset",
-									"value": null
-								},
-								{
-									"key": "startTime",
-									"value": null
-								},
-								{
-									"key": "endTime",
-									"value": null
-								},
-								{
-									"key": "current",
-									"value": "1"
-								},
-								{
-									"key": "size",
-									"value": "10"
+									"key": "email",
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -3104,7 +616,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Interest History (USER_DATA)",
+					"name": "Get Summary of Sub-account's Futures Account (For Master Account)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -3120,41 +632,63 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/lending/union/interestHistory?lendingType=DAILY&asset&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/futures/accountSummary?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
 								"v1",
-								"lending",
-								"union",
-								"interestHistory"
+								"sub-account",
+								"futures",
+								"accountSummary"
 							],
 							"query": [
 								{
-									"key": "lendingType",
-									"value": "DAILY"
+									"key": "timestamp",
+									"value": "{{timestamp}}"
 								},
 								{
-									"key": "asset",
-									"value": null
-								},
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Futures Postion-Risk of Sub-account (For Master Account)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/futures/positionRisk?email=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"futures",
+								"positionRisk"
+							],
+							"query": [
 								{
-									"key": "startTime",
-									"value": null
-								},
-								{
-									"key": "endTime",
-									"value": null
-								},
-								{
-									"key": "current",
-									"value": "1"
-								},
-								{
-									"key": "size",
-									"value": "10"
+									"key": "email",
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -3168,29 +702,348 @@
 						}
 					},
 					"response": []
-				}
-			],
-			"description": "Previously it's lending products.",
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "5b7ec0b1-3b71-4841-b8b6-90578c57d423",
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
 				},
 				{
-					"listen": "test",
-					"script": {
-						"id": "3b646f68-beae-4cf1-bc35-4008d702e799",
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
+					"name": "Futures Transfer for Sub-account（For Master Account)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/futures/transfer?email=&asset&amount&type&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"futures",
+								"transfer"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": ""
+								},
+								{
+									"key": "asset",
+									"value": null
+								},
+								{
+									"key": "amount",
+									"value": null
+								},
+								{
+									"key": "type",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Margin Transfer for Sub-account（For Master Account",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/margin/transfer?email=&asset&amount&type&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"margin",
+								"transfer"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": ""
+								},
+								{
+									"key": "asset",
+									"value": null
+								},
+								{
+									"key": "amount",
+									"value": null
+								},
+								{
+									"key": "type",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transfer to Sub-account of Same Master（For Sub-account）",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/transfer/subToSub?email=&asset&amount&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"transfer",
+								"subToSub"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": ""
+								},
+								{
+									"key": "asset",
+									"value": null
+								},
+								{
+									"key": "amount",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Transfer to Master（For Sub-account）",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/transfer/subToMaster?asset&amount&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"transfer",
+								"subToMaster"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": null
+								},
+								{
+									"key": "amount",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sub-account Transfer History (For Sub-account)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/transfer/subUserHistory?asset=&type=&startTime=&endTime=&limit=500&amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"transfer",
+								"subUserHistory"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "type",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": "500"
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Sub-account Spot Assets Summary (For Master Account)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/spotSummary?email=&page=&size=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"spotSummary"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": "",
+									"description": "default 1"
+								},
+								{
+									"key": "size",
+									"value": "",
+									"description": "default 10, max 20"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Get BTC valued asset summary of subaccouts."
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -4268,12 +2121,79 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Trade",
+			"name": "Wallet",
 			"item": [
 				{
-					"name": "Test New Order (TRADE)",
+					"name": "System Status (System)",
 					"request": {
-						"method": "POST",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/wapi/v3/systemStatus.html",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wapi",
+								"v3",
+								"systemStatus.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Coins' Information (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/capital/config/getall?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"capital",
+								"config",
+								"getall"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Daily Account Snapshot (USER_DATA)",
+					"request": {
+						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -4287,64 +2207,35 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/order/test?symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=0.01&price=9000&newClientOrderId=my_order_id_1&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/accountSnapshot?type=SPOT&limit=5&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"api",
-								"v3",
-								"order",
-								"test"
+								"sapi",
+								"v1",
+								"accountSnapshot"
 							],
 							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "side",
-									"value": "SELL"
-								},
 								{
 									"key": "type",
-									"value": "LIMIT"
+									"value": "SPOT",
+									"description": "\"SPOT\", \"MARGIN\", \"FUTURES\""
 								},
 								{
-									"key": "timeInForce",
-									"value": "GTC"
-								},
-								{
-									"key": "quantity",
-									"value": "0.01"
-								},
-								{
-									"key": "quoteOrderQty",
+									"key": "startTime",
 									"value": null,
 									"disabled": true
 								},
 								{
-									"key": "price",
-									"value": "9000"
-								},
-								{
-									"key": "newClientOrderId",
-									"value": "my_order_id_1"
-								},
-								{
-									"key": "stopPrice",
+									"key": "endTime",
 									"value": null,
 									"disabled": true
 								},
 								{
-									"key": "icebergQty",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "newOrderRespType",
-									"value": null,
-									"disabled": true
+									"key": "limit",
+									"value": "5",
+									"description": "min 5, max 30, default 5"
 								},
 								{
 									"key": "timestamp",
@@ -4360,7 +2251,7 @@
 					"response": []
 				},
 				{
-					"name": "New Order",
+					"name": "Disable Fast Withdraw Switch (USER_DATA)",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -4376,64 +2267,17 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/order?symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=0.01&price=9000&newClientOrderId=my_order_id_1&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/account/disableFastWithdrawSwitch?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"api",
-								"v3",
-								"order"
+								"sapi",
+								"v1",
+								"account",
+								"disableFastWithdrawSwitch"
 							],
 							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "side",
-									"value": "SELL"
-								},
-								{
-									"key": "type",
-									"value": "LIMIT"
-								},
-								{
-									"key": "timeInForce",
-									"value": "GTC"
-								},
-								{
-									"key": "quantity",
-									"value": "0.01"
-								},
-								{
-									"key": "quoteOrderQty",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "price",
-									"value": "9000"
-								},
-								{
-									"key": "newClientOrderId",
-									"value": "my_order_id_1"
-								},
-								{
-									"key": "stopPrice",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "icebergQty",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "newOrderRespType",
-									"value": null,
-									"disabled": true
-								},
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
@@ -4448,263 +2292,7 @@
 					"response": []
 				},
 				{
-					"name": "Cancel Order",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/order?symbol=BTCUSDT&orderId&origClientOrderId&newClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"order"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "orderId",
-									"value": null
-								},
-								{
-									"key": "origClientOrderId",
-									"value": null
-								},
-								{
-									"key": "newClientOrderId",
-									"value": null
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Cancel all Open Orders on a Symbol (TRADE)",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/openOrders?symbol=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"openOrders"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": ""
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Query Order (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/order?symbol=BTCUSDT&orderId=&origClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"order"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "orderId",
-									"value": ""
-								},
-								{
-									"key": "origClientOrderId",
-									"value": null
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Current Open Orders (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/openOrders?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"openOrders"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "All Orders (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/allOrders?symbol=BTCUSDT&orderId&startTime&endTime&limit=500&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"allOrders"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "orderId",
-									"value": null
-								},
-								{
-									"key": "startTime",
-									"value": null
-								},
-								{
-									"key": "endTime",
-									"value": null
-								},
-								{
-									"key": "limit",
-									"value": "500"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "New OCO (TRADE)",
+					"name": "Enable Fast Withdraw Switch (USER_DATA)",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -4720,69 +2308,17 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/order/oco?symbol=BTCUSDT&listClientOrderId&side=&quantity=&limitClientOrderId&price&limitIcebergQty&stopClientOrderId&stopPrice&stopLimitPrice&stopIcebergQty&stopLimitTimeInForce&newOrderRespType&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/account/enableFastWithdrawSwitch?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"api",
-								"v3",
-								"order",
-								"oco"
+								"sapi",
+								"v1",
+								"account",
+								"enableFastWithdrawSwitch"
 							],
 							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "listClientOrderId",
-									"value": null
-								},
-								{
-									"key": "side",
-									"value": ""
-								},
-								{
-									"key": "quantity",
-									"value": ""
-								},
-								{
-									"key": "limitClientOrderId",
-									"value": null
-								},
-								{
-									"key": "price",
-									"value": null
-								},
-								{
-									"key": "limitIcebergQty",
-									"value": null
-								},
-								{
-									"key": "stopClientOrderId",
-									"value": null
-								},
-								{
-									"key": "stopPrice",
-									"value": null
-								},
-								{
-									"key": "stopLimitPrice",
-									"value": null
-								},
-								{
-									"key": "stopIcebergQty",
-									"value": null
-								},
-								{
-									"key": "stopLimitTimeInForce",
-									"value": null
-								},
-								{
-									"key": "newOrderRespType",
-									"value": null
-								},
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
@@ -4797,9 +2333,9 @@
 					"response": []
 				},
 				{
-					"name": "Cancel OCO (TRADE)",
+					"name": "Withdraw [SAPI]",
 					"request": {
-						"method": "DELETE",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -4813,31 +2349,46 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/orderList?symbol=BTCUSDT&orderListId&listClientOrderId&newClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/capital/withdraw/apply?coin=&network=&address=&addressTag=&amount=&transactionFeeFlag=&name=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"api",
-								"v3",
-								"orderList"
+								"sapi",
+								"v1",
+								"capital",
+								"withdraw",
+								"apply"
 							],
 							"query": [
 								{
-									"key": "symbol",
-									"value": "BTCUSDT"
+									"key": "coin",
+									"value": ""
 								},
 								{
-									"key": "orderListId",
-									"value": null
+									"key": "network",
+									"value": ""
 								},
 								{
-									"key": "listClientOrderId",
-									"value": null
+									"key": "address",
+									"value": ""
 								},
 								{
-									"key": "newClientOrderId",
-									"value": null
+									"key": "addressTag",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "transactionFeeFlag",
+									"value": "",
+									"description": "Boolean value, default: false"
+								},
+								{
+									"key": "name",
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -4853,7 +2404,80 @@
 					"response": []
 				},
 				{
-					"name": "Query OCO (USER_DATA)",
+					"name": "Withdraw",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/wapi/v3/withdraw.html?asset=&withdrawOrderId=&network=&address=&addressTag=&amount=&transactionFeeFlag=&name=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wapi",
+								"v3",
+								"withdraw.html"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "withdrawOrderId",
+									"value": ""
+								},
+								{
+									"key": "network",
+									"value": ""
+								},
+								{
+									"key": "address",
+									"value": ""
+								},
+								{
+									"key": "addressTag",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "transactionFeeFlag",
+									"value": "",
+									"description": "Boolean value, default: false"
+								},
+								{
+									"key": "name",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deposit History（supporting network） (USER_DATA)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4869,22 +2493,217 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/orderList?orderListId&origClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/capital/deposit/hisrec?coin=BTC&status&startTime&endTime&addressTag=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"api",
-								"v3",
-								"orderList"
+								"sapi",
+								"v1",
+								"capital",
+								"deposit",
+								"hisrec"
 							],
 							"query": [
 								{
-									"key": "orderListId",
+									"key": "coin",
+									"value": "BTC"
+								},
+								{
+									"key": "status",
 									"value": null
 								},
 								{
-									"key": "origClientOrderId",
+									"key": "startTime",
+									"value": null
+								},
+								{
+									"key": "endTime",
+									"value": null
+								},
+								{
+									"key": "addressTag",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deposit History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/wapi/v3/depositHistory.html?asset=BTC&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wapi",
+								"v3",
+								"depositHistory.html"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": "BTC"
+								},
+								{
+									"key": "status",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Withdraw History (supporting network) (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/capital/withdraw/history?coin=BTC&status=&offset=&limit=100&startTime=&endTime=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"capital",
+								"withdraw",
+								"history"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC"
+								},
+								{
+									"key": "status",
+									"value": ""
+								},
+								{
+									"key": "offset",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": "100"
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Withdraw History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/wapi/v3/withdrawHistory.html?asset=BTC&status&startTime&endTime&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wapi",
+								"v3",
+								"withdrawHistory.html"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": "BTC"
+								},
+								{
+									"key": "status",
+									"value": null
+								},
+								{
+									"key": "startTime",
+									"value": null
+								},
+								{
+									"key": "endTime",
 									"value": null
 								},
 								{
@@ -4901,7 +2720,7 @@
 					"response": []
 				},
 				{
-					"name": "Query all OCO (USER_DATA)",
+					"name": "Deposit Address (supporting network) (USER_DATA)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -4917,18 +2736,370 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/allOrderList?fromId&startTime&endTime&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/capital/deposit/address?coin=BTC&network&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"api",
-								"v3",
-								"allOrderList"
+								"sapi",
+								"v1",
+								"capital",
+								"deposit",
+								"address"
 							],
 							"query": [
 								{
-									"key": "fromId",
+									"key": "coin",
+									"value": "BTC"
+								},
+								{
+									"key": "network",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deposit Address (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/wapi/v3/depositAddress.html?asset=BTC&status&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wapi",
+								"v3",
+								"depositAddress.html"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": "BTC"
+								},
+								{
+									"key": "status",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account Status (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/wapi/v3/accountStatus.html?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wapi",
+								"v3",
+								"accountStatus.html"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account API Trading Status (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/wapi/v3/apiTradingStatus.html?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wapi",
+								"v3",
+								"apiTradingStatus.html"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DustLog (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/wapi/v3/userAssetDribbletLog.html?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wapi",
+								"v3",
+								"userAssetDribbletLog.html"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Trade Fee (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/wapi/v3/tradeFee.html?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wapi",
+								"v3",
+								"tradeFee.html"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Asset Detail (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/wapi/v3/assetDetail.html?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wapi",
+								"v3",
+								"assetDetail.html"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dust Transfer (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/asset/dust?asset=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"asset",
+								"dust"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Asset Dividend Record (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/asset/assetDividend?asset&startTime&endTime&limit=20&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"asset",
+								"assetDividend"
+							],
+							"query": [
+								{
+									"key": "asset",
 									"value": null
 								},
 								{
@@ -4941,147 +3112,7 @@
 								},
 								{
 									"key": "limit",
-									"value": "500"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Query Open OCO (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/openOrderList?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"openOrderList"
-							],
-							"query": [
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Account Information (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/account?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"account"
-							],
-							"query": [
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Account Trade List (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/api/v3/myTrades?symbol=BTCUSDT&startTime&endTime&fromId&limit=500&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v3",
-								"myTrades"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "startTime",
-									"value": null
-								},
-								{
-									"key": "endTime",
-									"value": null
-								},
-								{
-									"key": "fromId",
-									"value": null
-								},
-								{
-									"key": "limit",
-									"value": "500"
+									"value": "20"
 								},
 								{
 									"key": "timestamp",
@@ -5315,7 +3346,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/sapi/v1/margin/isolated/account?timestamp={{timestamp}}&signature={{signature}}",
+									"raw": "{{url}}/sapi/v1/margin/isolated/account?symbols=&timestamp={{timestamp}}&signature={{signature}}",
 									"host": [
 										"{{url}}"
 									],
@@ -5327,6 +3358,10 @@
 										"account"
 									],
 									"query": [
+										{
+											"key": "symbols",
+											"value": ""
+										},
 										{
 											"key": "timestamp",
 											"value": "{{timestamp}}"
@@ -5433,7 +3468,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c41443cc-5ba9-4b5c-a34a-50b7a45bdafb",
+								"id": "7345f406-6135-4b89-87e4-0eeb20347a97",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5443,7 +3478,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "fad1afdb-9e55-414c-977c-5f962fc75663",
+								"id": "c2e0b087-7342-46e4-90ad-005afb0e197b",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -6708,6 +4743,448 @@
 			"protocolProfileBehavior": {}
 		},
 		{
+			"name": "Market",
+			"item": [
+				{
+					"name": "Test Connectivity",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/ping",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"ping"
+							]
+						},
+						"description": "Test connectivity to the Rest API."
+					},
+					"response": []
+				},
+				{
+					"name": "Check Server Time",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/time",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"time"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Test connectivity to the Rest API and get the current server time."
+					},
+					"response": []
+				},
+				{
+					"name": "Exchange Information",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/exchangeInfo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"exchangeInfo"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Order Book",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/depth?symbol=BTCUSDT&limit=100",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"depth"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "limit",
+									"value": "100",
+									"description": "Default 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500, 1000, 5000]"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recent Trades List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/trades?symbol=BTCUSDT&limit=500",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"trades"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "limit",
+									"value": "500",
+									"description": "Default 500; max 1000."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Old Trade Lookup",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/historicalTrades?symbol=BTCUSDT&limit=500&fromId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"historicalTrades"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "limit",
+									"value": "500",
+									"description": "Default 500; max 1000."
+								},
+								{
+									"key": "fromId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Compressed/Aggregate Trades List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/aggTrades?symbol=BTCUSDT&limit=500",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"aggTrades"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "fromId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "500",
+									"description": "Default 500; max 1000."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kline/Candlestick Data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/klines?symbol=BTCUSDT&interval=1m&limit=500",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"klines"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "interval",
+									"value": "1m"
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "500",
+									"description": "Default 500; max 1000."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Current Average Price",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/avgPrice?symbol=BTCUSDT",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"avgPrice"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "24hr Ticker Price Change Statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/ticker/24hr?symbol=BTCUSDT",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"ticker",
+								"24hr"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Symbol Price Ticker",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/ticker/price?symbol=BTCUSDT",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"ticker",
+								"price"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Symbol Order Book Ticker",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/ticker/bookTicker?symbol=BTCUSDT",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"ticker",
+								"bookTicker"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
 			"name": "Mining",
 			"item": [
 				{
@@ -7099,13 +5576,1595 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Savings",
+			"item": [
+				{
+					"name": "Get Flexible Product List (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/daily/product/list?status=ALL&featured=ALL&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"daily",
+								"product",
+								"list"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "ALL",
+									"description": "\"ALL\", \"SUBSCRIBABLE\", \"UNSUBSCRIBABLE\"; default: 'ALL'"
+								},
+								{
+									"key": "featured",
+									"value": "ALL"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Left Daily Purchase Quota of Flexible Product (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/daily/userLeftQuota?productId=USDT001&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"daily",
+								"userLeftQuota"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "USDT001"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Purchase Flexible Product (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/daily/purchase?productId=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"daily",
+								"purchase"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Left Daily Redemption Quota of Flexible Product",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/daily/userRedemptionQuota?productId=USDT001&type=FAST&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"daily",
+								"userRedemptionQuota"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "USDT001"
+								},
+								{
+									"key": "type",
+									"value": "FAST"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Redeem Flexible Product (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/daily/redeem?productId=USDT001&amount&type&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"daily",
+								"redeem"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "USDT001"
+								},
+								{
+									"key": "amount",
+									"value": null
+								},
+								{
+									"key": "type",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Flexible Product Position (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/daily/token/position?asset=USDT&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"daily",
+								"token",
+								"position"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": "USDT"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Fixed and Customized Fixed Project List(USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/project/list?asset=USDT&type=REGULAR&status=ALL&isSortAsc=true&sortBy=START_TIME&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"project",
+								"list"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": "USDT"
+								},
+								{
+									"key": "type",
+									"value": "REGULAR",
+									"description": "\"REGULAR\", \"CUSTOMIZED_FIXED\""
+								},
+								{
+									"key": "status",
+									"value": "ALL",
+									"description": "ALL\", \"SUBSCRIBABLE\", \"UNSUBSCRIBABLE\"; default \"ALL\""
+								},
+								{
+									"key": "isSortAsc",
+									"value": "true",
+									"description": "default \"true\""
+								},
+								{
+									"key": "sortBy",
+									"value": "START_TIME",
+									"description": "\"START_TIME\", \"LOT_SIZE\", \"INTEREST_RATE\", \"DURATION\"; default \"START_TIME"
+								},
+								{
+									"key": "current",
+									"value": "1",
+									"description": "Currently querying page. Start from 1. Default:1"
+								},
+								{
+									"key": "size",
+									"value": "10",
+									"description": "Default:10, Max:100"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Purchase Customized Fixed Project (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/customizedFixed/purchase?projectId=&lot=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"customizedFixed",
+								"purchase"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": ""
+								},
+								{
+									"key": "lot",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customized Fixed Project Position (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/project/position/list?asset=USDT&projectId=&status=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"project",
+								"position",
+								"list"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": "USDT"
+								},
+								{
+									"key": "projectId",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": "",
+									"description": "\"HOLDING\", \"REDEEMED\""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lending Account (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/union/account?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"union",
+								"account"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Purchase Record (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/union/purchaseRecord?lendingType=DAILY&asset&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"union",
+								"purchaseRecord"
+							],
+							"query": [
+								{
+									"key": "lendingType",
+									"value": "DAILY"
+								},
+								{
+									"key": "asset",
+									"value": null
+								},
+								{
+									"key": "startTime",
+									"value": null
+								},
+								{
+									"key": "endTime",
+									"value": null
+								},
+								{
+									"key": "current",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Redemption Record (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/union/redemptionRecord?lendingType=DAILY&asset&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"union",
+								"redemptionRecord"
+							],
+							"query": [
+								{
+									"key": "lendingType",
+									"value": "DAILY"
+								},
+								{
+									"key": "asset",
+									"value": null
+								},
+								{
+									"key": "startTime",
+									"value": null
+								},
+								{
+									"key": "endTime",
+									"value": null
+								},
+								{
+									"key": "current",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Interest History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/union/interestHistory?lendingType=DAILY&asset&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"union",
+								"interestHistory"
+							],
+							"query": [
+								{
+									"key": "lendingType",
+									"value": "DAILY"
+								},
+								{
+									"key": "asset",
+									"value": null
+								},
+								{
+									"key": "startTime",
+									"value": null
+								},
+								{
+									"key": "endTime",
+									"value": null
+								},
+								{
+									"key": "current",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Previously it's lending products.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "df623cd9-fb2d-47d7-937f-07bec8dc7feb",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "437eca22-e7ca-47b5-909b-27760fcd5655",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Trade",
+			"item": [
+				{
+					"name": "Test New Order (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/order/test?symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=0.01&price=9000&newClientOrderId=my_order_id_1&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"order",
+								"test"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "side",
+									"value": "SELL"
+								},
+								{
+									"key": "type",
+									"value": "LIMIT"
+								},
+								{
+									"key": "timeInForce",
+									"value": "GTC"
+								},
+								{
+									"key": "quantity",
+									"value": "0.01"
+								},
+								{
+									"key": "quoteOrderQty",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "9000"
+								},
+								{
+									"key": "newClientOrderId",
+									"value": "my_order_id_1"
+								},
+								{
+									"key": "stopPrice",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "icebergQty",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "newOrderRespType",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/order?symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=0.01&price=9000&newClientOrderId=my_order_id_1&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"order"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "side",
+									"value": "SELL"
+								},
+								{
+									"key": "type",
+									"value": "LIMIT"
+								},
+								{
+									"key": "timeInForce",
+									"value": "GTC"
+								},
+								{
+									"key": "quantity",
+									"value": "0.01"
+								},
+								{
+									"key": "quoteOrderQty",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "9000"
+								},
+								{
+									"key": "newClientOrderId",
+									"value": "my_order_id_1"
+								},
+								{
+									"key": "stopPrice",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "icebergQty",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "newOrderRespType",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Order",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/order?symbol=BTCUSDT&orderId&origClientOrderId&newClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"order"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "orderId",
+									"value": null
+								},
+								{
+									"key": "origClientOrderId",
+									"value": null
+								},
+								{
+									"key": "newClientOrderId",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel all Open Orders on a Symbol (TRADE)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/openOrders?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"openOrders"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Order (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/order?symbol=BTCUSDT&orderId=&origClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"order"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "orderId",
+									"value": ""
+								},
+								{
+									"key": "origClientOrderId",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Current Open Orders (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/openOrders?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"openOrders"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Orders (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/allOrders?symbol=BTCUSDT&orderId&startTime&endTime&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"allOrders"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "orderId",
+									"value": null
+								},
+								{
+									"key": "startTime",
+									"value": null
+								},
+								{
+									"key": "endTime",
+									"value": null
+								},
+								{
+									"key": "limit",
+									"value": "500"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New OCO (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/order/oco?symbol=BTCUSDT&listClientOrderId&side=&quantity=&limitClientOrderId&price&limitIcebergQty&stopClientOrderId&stopPrice&stopLimitPrice&stopIcebergQty&stopLimitTimeInForce&newOrderRespType&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"order",
+								"oco"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "listClientOrderId",
+									"value": null
+								},
+								{
+									"key": "side",
+									"value": ""
+								},
+								{
+									"key": "quantity",
+									"value": ""
+								},
+								{
+									"key": "limitClientOrderId",
+									"value": null
+								},
+								{
+									"key": "price",
+									"value": null
+								},
+								{
+									"key": "limitIcebergQty",
+									"value": null
+								},
+								{
+									"key": "stopClientOrderId",
+									"value": null
+								},
+								{
+									"key": "stopPrice",
+									"value": null
+								},
+								{
+									"key": "stopLimitPrice",
+									"value": null
+								},
+								{
+									"key": "stopIcebergQty",
+									"value": null
+								},
+								{
+									"key": "stopLimitTimeInForce",
+									"value": null
+								},
+								{
+									"key": "newOrderRespType",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel OCO (TRADE)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/orderList?symbol=BTCUSDT&orderListId&listClientOrderId&newClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"orderList"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "orderListId",
+									"value": null
+								},
+								{
+									"key": "listClientOrderId",
+									"value": null
+								},
+								{
+									"key": "newClientOrderId",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query OCO (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/orderList?orderListId&origClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"orderList"
+							],
+							"query": [
+								{
+									"key": "orderListId",
+									"value": null
+								},
+								{
+									"key": "origClientOrderId",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query all OCO (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/allOrderList?fromId&startTime&endTime&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"allOrderList"
+							],
+							"query": [
+								{
+									"key": "fromId",
+									"value": null
+								},
+								{
+									"key": "startTime",
+									"value": null
+								},
+								{
+									"key": "endTime",
+									"value": null
+								},
+								{
+									"key": "limit",
+									"value": "500"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Open OCO (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/openOrderList?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"openOrderList"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account Information (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/account?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"account"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account Trade List (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/myTrades?symbol=BTCUSDT&startTime&endTime&fromId&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"myTrades"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "startTime",
+									"value": null
+								},
+								{
+									"key": "endTime",
+									"value": null
+								},
+								{
+									"key": "fromId",
+									"value": null
+								},
+								{
+									"key": "limit",
+									"value": "500"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "22a5a75c-cd49-4d01-90d6-293b3bc053d0",
+				"id": "a39155e3-173e-45a7-9fd6-074e73810010",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -7166,7 +7225,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "96a33368-91c8-4782-9d73-5671b9817275",
+				"id": "a8254b2f-0525-4eba-bd7d-eb5d3c4ff959",
 				"type": "text/javascript",
 				"exec": [
 					""
