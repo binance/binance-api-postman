@@ -1,11 +1,279 @@
 {
 	"info": {
-		"_postman_id": "02a3b56e-51fe-4d5d-a648-7cd52945bb23",
+		"_postman_id": "cc0f3456-ef92-48d8-8103-f939b40f7ce9",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "Blvt",
+			"item": [
+				{
+					"name": "Leverage token info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/blvt/tokenInfo?tokenName=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"blvt",
+								"tokenInfo"
+							],
+							"query": [
+								{
+									"key": "tokenName",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Subscribe BLVT",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/blvt/subscribe?tokenName=&cost=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"blvt",
+								"subscribe"
+							],
+							"query": [
+								{
+									"key": "tokenName",
+									"value": ""
+								},
+								{
+									"key": "cost",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Subscription Record",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/blvt/subscribe/record?tokenName=&id=&startTime=&endTime=&limit=1000&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"blvt",
+								"subscribe",
+								"record"
+							],
+							"query": [
+								{
+									"key": "tokenName",
+									"value": ""
+								},
+								{
+									"key": "id",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": "1000",
+									"description": "default  1000 ， max1000"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Redeem BLVT",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/blvt/redeem?tokenName=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"blvt",
+								"redeem"
+							],
+							"query": [
+								{
+									"key": "tokenName",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Redemption Record",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/blvt/redeem/record?tokenName=&id=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"blvt",
+								"redeem",
+								"record"
+							],
+							"query": [
+								{
+									"key": "tokenName",
+									"value": ""
+								},
+								{
+									"key": "id",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "default  1000 ， max1000"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Leverage token",
+			"protocolProfileBehavior": {}
+		},
 		{
 			"name": "Corporate ( sub-account )",
 			"item": [
@@ -3468,7 +3736,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "7345f406-6135-4b89-87e4-0eeb20347a97",
+								"id": "3f0e9b5d-c325-436d-82b9-ef9f2189757b",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -3478,7 +3746,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c2e0b087-7342-46e4-90ad-005afb0e197b",
+								"id": "6a1873bc-fce9-4c01-b1c6-663f6ef5082a",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -6307,7 +6575,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "df623cd9-fb2d-47d7-937f-07bec8dc7feb",
+						"id": "0e28c1b8-e9fc-43bc-a938-461d669572b4",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -6317,7 +6585,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "437eca22-e7ca-47b5-909b-27760fcd5655",
+						"id": "8eadb88e-5d3c-4b9d-ae24-b5fb5491f447",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -7164,7 +7432,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "a39155e3-173e-45a7-9fd6-074e73810010",
+				"id": "163dde69-c0f6-47f7-96e5-6312265b094d",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -7225,7 +7493,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "a8254b2f-0525-4eba-bd7d-eb5d3c4ff959",
+				"id": "3d210e93-dc93-4f61-ae33-90ad76a8a8e5",
 				"type": "text/javascript",
 				"exec": [
 					""
