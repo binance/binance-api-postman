@@ -335,7 +335,7 @@
 					"response": []
 				},
 				{
-					"name": "Query Sub-account Transfer History(For Master Account)",
+					"name": "Query Sub-account Spot Asset Transfer History(For Master Account)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -397,7 +397,7 @@
 					"response": []
 				},
 				{
-					"name": "Sub-account Transfer(For Master Account)",
+					"name": "Sub-account Spot Asset Transfer(For Master Account)",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -431,6 +431,137 @@
 								{
 									"key": "toEmail",
 									"value": null
+								},
+								{
+									"key": "asset",
+									"value": null
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Sub-account Futures Asset Transfer History(For Master Account)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/futures/internalTransfer?email&futuresType&startTime&endTime&page=1&limit=50&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"futures",
+								"internalTransfer"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": null
+								},
+								{
+									"key": "futuresType",
+									"value": null
+								},
+								{
+									"key": "startTime",
+									"value": null
+								},
+								{
+									"key": "endTime",
+									"value": null
+								},
+								{
+									"key": "page",
+									"value": "",
+									"description": "default 1"
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "default 50, max 500"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sub-account Futures Asset Transfer(For Master Account)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/futures/internalTransfer?fromEmail&toEmail&futuresType&asset&amount&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"futures",
+								"internalTransfer"
+							],
+							"query": [
+								{
+									"key": "fromEmail",
+									"value": null
+								},
+								{
+									"key": "toEmail",
+									"value": null
+								},
+								{
+									"key": "futuresType",
+									"value": null,
+									"description": "1:USDT-margined Futures，2: Coin-margined Futures"
 								},
 								{
 									"key": "asset",
@@ -499,6 +630,62 @@
 								}
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Sub-account Spot Assets Summary (For Master Account)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/spotSummary?email=&page=&size=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"spotSummary"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": "",
+									"description": "default 1"
+								},
+								{
+									"key": "size",
+									"value": "",
+									"description": "default 10, max 20"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Get BTC valued asset summary of subaccouts."
 					},
 					"response": []
 				},
@@ -1254,62 +1441,6 @@
 								}
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "Query Sub-account Spot Assets Summary (For Master Account)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/sub-account/spotSummary?email=&page=&size=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"sub-account",
-								"spotSummary"
-							],
-							"query": [
-								{
-									"key": "email",
-									"value": ""
-								},
-								{
-									"key": "page",
-									"value": "",
-									"description": "default 1"
-								},
-								{
-									"key": "size",
-									"value": "",
-									"description": "default 10, max 20"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						},
-						"description": "Get BTC valued asset summary of subaccouts."
 					},
 					"response": []
 				}
@@ -3598,7 +3729,7 @@
 							"response": []
 						},
 						{
-							"name": "Query Isolated Margin Account Details (USER_DATA)",
+							"name": "Query Isolated Margin Account Info (USER_DATA)",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -3628,7 +3759,8 @@
 									"query": [
 										{
 											"key": "symbols",
-											"value": ""
+											"value": "",
+											"description": "Max 5 symbols can be sent; separated by ','. e.g. 'BTCUSDT,BNBUSDT,ADAUSDT'"
 										},
 										{
 											"key": "timestamp",
