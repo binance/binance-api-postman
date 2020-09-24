@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cc0f3456-ef92-48d8-8103-f939b40f7ce9",
+		"_postman_id": "29682f61-ba0c-46e0-b05d-6f5d77f170ee",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -275,6 +275,440 @@
 			"protocolProfileBehavior": {}
 		},
 		{
+			"name": "Bswap",
+			"item": [
+				{
+					"name": "List All Swap Pools",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bswap/pools",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bswap",
+								"pools"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get liquidity information of a pool (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bswap/liquidity?poolId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bswap",
+								"liquidity"
+							],
+							"query": [
+								{
+									"key": "poolId",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Liquidity (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bswap/liquidityAdd?poolId=&asset=&quantity=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bswap",
+								"liquidityAdd"
+							],
+							"query": [
+								{
+									"key": "poolId",
+									"value": ""
+								},
+								{
+									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "quantity",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Liquidity (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bswap/liquidityRemove?poolId=&type=&asset=&shareAmount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bswap",
+								"liquidityRemove"
+							],
+							"query": [
+								{
+									"key": "poolId",
+									"value": ""
+								},
+								{
+									"key": "type",
+									"value": "",
+									"description": "SINGLE for single asset removal, COMBINATION for combination of all coins removal"
+								},
+								{
+									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "shareAmount",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Liquidity Operation Record (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bswap/liquidityOps?operationId=&poolId=&operation=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bswap",
+								"liquidityOps"
+							],
+							"query": [
+								{
+									"key": "operationId",
+									"value": ""
+								},
+								{
+									"key": "poolId",
+									"value": ""
+								},
+								{
+									"key": "operation",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Request Quote (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bswap/quote?quoteAsset=&baseAsset=&quoteQty=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bswap",
+								"quote"
+							],
+							"query": [
+								{
+									"key": "quoteAsset",
+									"value": ""
+								},
+								{
+									"key": "baseAsset",
+									"value": ""
+								},
+								{
+									"key": "quoteQty",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swap (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bswap/swap?quoteAsset=&baseAsset=&quoteQty=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bswap",
+								"swap"
+							],
+							"query": [
+								{
+									"key": "quoteAsset",
+									"value": ""
+								},
+								{
+									"key": "baseAsset",
+									"value": ""
+								},
+								{
+									"key": "quoteQty",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Swap History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bswap/swap?swapId=&startTime=&endTime=&status=&quoteAsset=&baseAsset=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bswap",
+								"swap"
+							],
+							"query": [
+								{
+									"key": "swapId",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": "",
+									"description": "0: pending for swap, 1: success, 2: failed"
+								},
+								{
+									"key": "quoteAsset",
+									"value": ""
+								},
+								{
+									"key": "baseAsset",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
 			"name": "Corporate ( sub-account )",
 			"item": [
 				{
@@ -470,7 +904,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/sub-account/futures/internalTransfer?email&futuresType&startTime&endTime&page=1&limit=50&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/futures/internalTransfer?email&futuresType&startTime&endTime&page=&limit=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -538,7 +972,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/sub-account/futures/internalTransfer?fromEmail&toEmail&futuresType&asset&amount&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/futures/internalTransfer?fromEmail&toEmail&futuresType&asset&amount=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3868,7 +4302,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "3f0e9b5d-c325-436d-82b9-ef9f2189757b",
+								"id": "16e3be49-71c1-41fa-aace-140457399ea8",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -3878,7 +4312,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "6a1873bc-fce9-4c01-b1c6-663f6ef5082a",
+								"id": "d36efd71-b4c6-439e-9671-1e2e666f7e55",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -6707,7 +7141,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "0e28c1b8-e9fc-43bc-a938-461d669572b4",
+						"id": "ea083070-6d4a-4986-850c-46b89e148832",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -6717,7 +7151,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8eadb88e-5d3c-4b9d-ae24-b5fb5491f447",
+						"id": "74a5b90b-7723-4a2b-b85e-f6e773b28c81",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -7564,7 +7998,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "163dde69-c0f6-47f7-96e5-6312265b094d",
+				"id": "c05c3156-c00e-496b-bfa1-ef661ce4b117",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -7625,7 +8059,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "3d210e93-dc93-4f61-ae33-90ad76a8a8e5",
+				"id": "3a5381a9-624b-41d4-8d5d-a905a8115bcc",
 				"type": "text/javascript",
 				"exec": [
 					""
