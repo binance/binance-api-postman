@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "29682f61-ba0c-46e0-b05d-6f5d77f170ee",
+		"_postman_id": "ab3fbe39-43a2-4972-8485-7419ba170a38",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -4302,7 +4302,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "16e3be49-71c1-41fa-aace-140457399ea8",
+								"id": "822498c5-6722-4d13-a8f2-e2bd99e2135a",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -4312,7 +4312,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d36efd71-b4c6-439e-9671-1e2e666f7e55",
+								"id": "0882d44c-ba7c-4b99-8c36-97d1b19bd9c2",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -6749,7 +6749,7 @@
 								{
 									"key": "type",
 									"value": "REGULAR",
-									"description": "\"REGULAR\", \"CUSTOMIZED_FIXED\""
+									"description": "\"ACTIVITY\", \"CUSTOMIZED_FIXED\""
 								},
 								{
 									"key": "status",
@@ -7134,6 +7134,59 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Change Fixed/Activity Position to Daily Position(USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/positionChanged?projectId=&lot=&positionId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"positionChanged"
+							],
+							"query": [
+								{
+									"key": "projectId",
+									"value": ""
+								},
+								{
+									"key": "lot",
+									"value": ""
+								},
+								{
+									"key": "positionId",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "Previously it's lending products.",
@@ -7141,7 +7194,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "ea083070-6d4a-4986-850c-46b89e148832",
+						"id": "182e7e45-f00c-49af-b86f-bbf302bfa77e",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -7151,7 +7204,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "74a5b90b-7723-4a2b-b85e-f6e773b28c81",
+						"id": "89e0100b-6ff7-42d5-8491-300486acc754",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -7998,7 +8051,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "c05c3156-c00e-496b-bfa1-ef661ce4b117",
+				"id": "1820a3bd-3f86-432c-a24f-b9069c7ba2ea",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -8059,7 +8112,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "3a5381a9-624b-41d4-8d5d-a905a8115bcc",
+				"id": "d59b8b65-4445-4c13-8a7b-0f92691b8458",
 				"type": "text/javascript",
 				"exec": [
 					""
