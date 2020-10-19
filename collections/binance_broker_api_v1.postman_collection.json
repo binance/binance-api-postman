@@ -640,7 +640,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/transfer?fromId=&told=&clientTranId=&asset=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/transfer?fromId=&toId=&clientTranId=&asset=&amount=&timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -656,7 +656,7 @@
 							"value": ""
 						},
 						{
-							"key": "told",
+							"key": "toId",
 							"value": ""
 						},
 						{
