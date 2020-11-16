@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "858909ea-4aa4-4428-b6a7-15f10c88e66a",
+		"_postman_id": "a992acec-57af-4fea-b6aa-520f568c6fee",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -1863,6 +1863,138 @@
 								},
 								{
 									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Universal Transfer (For Master Account)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/universalTransfer?fromEmail=&toEmail=&fromAccountType=&toAccountType=&asset=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"universalTransfer"
+							],
+							"query": [
+								{
+									"key": "fromEmail",
+									"value": ""
+								},
+								{
+									"key": "toEmail",
+									"value": ""
+								},
+								{
+									"key": "fromAccountType",
+									"value": "",
+									"description": "\"SPOT\",\"USDT_FUTURE\",\"COIN_FUTURE\""
+								},
+								{
+									"key": "toAccountType",
+									"value": "",
+									"description": "\"SPOT\",\"USDT_FUTURE\",\"COIN_FUTURE\""
+								},
+								{
+									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Universal Transfer History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/universalTransfer?fromEmail=&toEmail=&startTime=&endTime=&page=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"universalTransfer"
+							],
+							"query": [
+								{
+									"key": "fromEmail",
+									"value": ""
+								},
+								{
+									"key": "toEmail",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
 									"value": ""
 								},
 								{
@@ -4560,7 +4692,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b29b41a4-4d65-46c6-a958-17bdde0a03e3",
+								"id": "3b1e47d0-5518-4b82-9395-e3b68e686efc",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -4570,7 +4702,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5db2614f-7237-4f88-9390-56bd93a85db6",
+								"id": "a2b6566d-d042-40a4-a509-d18822816e1b",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5818,6 +5950,96 @@
 									"key": "isolatedSymbol",
 									"value": ""
 								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle BNB Burn On Spot Trade And Margin Interest (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bnbBurn?spotBNBBurn=&interestBNBBurn=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bnbBurn"
+							],
+							"query": [
+								{
+									"key": "spotBNBBurn",
+									"value": "",
+									"description": "\"true\" or \"false\""
+								},
+								{
+									"key": "interestBNBBurn",
+									"value": "",
+									"description": "\"true\" or \"false\""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get BNB Burn Status (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bnbBurn?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bnbBurn"
+							],
+							"query": [
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
@@ -7452,7 +7674,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "3c7ab196-56eb-49cc-9c69-4bbde36bad83",
+						"id": "167c47a8-b4cd-4c18-bca8-62b9a055fa26",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -7462,7 +7684,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "4ee0d571-9c4c-496f-bdbc-90625d84f345",
+						"id": "d7a39a22-22ad-4bb6-bed7-2768bcb81a1e",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -8309,7 +8531,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "458b1dc0-bee8-4339-809c-665ad7b09f2c",
+				"id": "64ce823d-b6a1-4f02-af8b-85b2bd1da2a6",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -8370,7 +8592,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "ed0a17dc-7f4d-4453-8226-6d0df6dae9ee",
+				"id": "57ef9c3a-e9ed-4671-9424-dc8c6f3ee85a",
 				"type": "text/javascript",
 				"exec": [
 					""
