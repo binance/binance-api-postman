@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "557988ac-ca82-470b-961b-e27efe25aaeb",
+		"_postman_id": "8574e151-351d-454c-b589-cf66e392281a",
 		"name": "Binance perpetual future API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/futures/en/\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -579,51 +579,6 @@
 					"response": []
 				},
 				{
-					"name": "Notional and Leverage Brackets (MARKET_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/fapi/v1/leverageBracket?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"fapi",
-								"v1",
-								"leverageBracket"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						},
-						"description": "Get present open interest of a specific symbol."
-					},
-					"response": []
-				},
-				{
 					"name": "Open Interest Statistics (MARKET_DATA)",
 					"request": {
 						"method": "GET",
@@ -946,6 +901,43 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Composite Index Symbol Information",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/indexInfo?symbol=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"indexInfo"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "token name"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -959,7 +951,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "6f694406-3073-4604-bf2d-02dbd8fa070d",
+								"id": "b41f6112-e0c8-45eb-aedd-428493a3548f",
 								"exec": [
 									"",
 									""
@@ -1012,7 +1004,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "95c43d37-1f9b-4425-9849-8863100f86ce",
+								"id": "ca314a6b-987f-48dd-aa3c-12cfbef9feea",
 								"exec": [
 									"",
 									""
@@ -1087,7 +1079,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "396374f5-b795-4228-8d3e-88235ec46fe7",
+								"id": "d0c77295-1438-4c4e-9ce2-3f48e5412ddf",
 								"exec": [
 									"",
 									""
@@ -1140,7 +1132,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "24351de5-5c56-4abf-8376-3b729845a14a",
+								"id": "ff51d3df-5d18-4b04-8655-b57632bffbc2",
 								"exec": [
 									"",
 									""
@@ -1216,7 +1208,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9f2f8eb6-da02-45c8-95b3-6a6ff8b10f0d",
+								"id": "4166f6d8-215d-4964-b009-6bcfc2ecff43",
 								"exec": [
 									"",
 									""
@@ -1291,7 +1283,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "ca582d9b-40a0-4e00-8150-464c920071d3",
+								"id": "08737ed9-d65f-4838-b3bc-5eee822a4a02",
 								"exec": [
 									"",
 									""
@@ -1366,7 +1358,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b82c512e-1c91-4d46-8350-a06623518c81",
+								"id": "68f70025-d4aa-4356-a05a-dab2d64a1a9c",
 								"exec": [
 									"",
 									""
@@ -1412,6 +1404,108 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Notional and Leverage Brackets (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/leverageBracket?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"leverageBracket"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Get present open interest of a specific symbol."
+					},
+					"response": []
+				},
+				{
+					"name": "Position ADL Quantile Estimation (USER_DATA)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "eabd3d98-a982-482b-ae1c-88229cdadb2f",
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/adlQuantile?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"adlQuantile"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -1425,7 +1519,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a0975648-a8bd-4f44-b372-eae1e5e0752c",
+								"id": "a3ad91b3-c32f-4820-b372-7d82aadf89b8",
 								"exec": [
 									""
 								],
@@ -1544,7 +1638,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "dffcb9bc-14f5-4440-ba20-30a59f6cd0d9",
+								"id": "4b56ec8a-0311-4a78-a656-ea99bef34733",
 								"exec": [
 									""
 								],
@@ -1602,7 +1696,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "f4c6317a-ce80-4e8d-8e76-09ca7c69c405",
+								"id": "d5478d58-a14b-48cf-9fc2-31df011696eb",
 								"exec": [
 									""
 								],
@@ -1663,7 +1757,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "16e88a9c-4b9d-4667-9fc3-3db5a05c612f",
+								"id": "91c14061-edd2-408f-b4f6-6d7f85396040",
 								"exec": [
 									""
 								],
@@ -1724,7 +1818,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2a4da197-47cc-43a1-af55-3c4d242fc097",
+								"id": "f8465e1e-89a7-459f-a80d-beeebefe8664",
 								"exec": [
 									""
 								],
@@ -1781,7 +1875,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "50c9d9e7-0920-419c-9c66-bc1a1a16d436",
+								"id": "dc536142-0db3-4a13-b87f-8ce83cb07432",
 								"exec": [
 									""
 								],
@@ -1843,7 +1937,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "47ae91c7-2805-4852-a10c-985ed3811ec9",
+								"id": "60c03c0b-c419-4baf-aa12-1d65f645ee47",
 								"exec": [
 									""
 								],
@@ -1910,7 +2004,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "3f091868-c3ce-4114-8d40-008c8ff2ce16",
+								"id": "7e571929-999b-4cbf-8875-6a724623df6d",
 								"exec": [
 									""
 								],
@@ -1967,7 +2061,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "77f09d82-3f52-4ef4-afeb-cf6171a28099",
+								"id": "89583b5f-c6c9-4558-b197-62f6464ab361",
 								"exec": [
 									""
 								],
@@ -2032,7 +2126,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "144ddb1a-310e-4375-8b9a-9b7e5513faa1",
+								"id": "7583880b-6502-47d8-b57f-9e47976add35",
 								"exec": [
 									""
 								],
@@ -2099,6 +2193,79 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "User's Force Orders (USER_DATA)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "ee828f3b-03df-4182-99d6-54b85e572bc4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/forceOrders?symbol=&autoCloseType=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"forceOrders"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": ""
+								},
+								{
+									"key": "autoCloseType",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -2112,7 +2279,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "517d74ab-eb89-4303-927c-7f11d2bcac1b",
+								"id": "c441b10b-6641-4d76-91f5-4ff1d362fb4f",
 								"exec": [
 									""
 								],
@@ -2173,7 +2340,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2ae3ee53-4f26-4593-8f8b-96957244b213",
+								"id": "71a69503-7680-4ea5-8cc7-7603274d7036",
 								"exec": [
 									""
 								],
@@ -2234,7 +2401,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "77b32017-3273-4b9f-a7ff-09f2991ced23",
+								"id": "18f37a2e-3e20-4f4c-922a-12e5ded31095",
 								"exec": [
 									""
 								],
@@ -2304,7 +2471,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a5171887-f142-4959-bdea-430c1fc739a7",
+								"id": "8f74ea50-f4db-4017-a53c-4c6290085913",
 								"exec": [
 									""
 								],
@@ -2378,7 +2545,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a3f8f01d-6aa7-46aa-be24-d0d1ba5a1640",
+								"id": "08f5d6d3-26d0-43d2-acb8-5344ed2e1c01",
 								"exec": [
 									""
 								],
@@ -2437,7 +2604,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "18be1b45-d130-4c47-af58-808e24511ea2",
+								"id": "3980a2cf-7d67-4f27-a0c8-b8be5c199629",
 								"exec": [
 									""
 								],
@@ -2472,6 +2639,63 @@
 								"dual"
 							],
 							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User API Trading Quantitative Rules Indicators (USER_DATA)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "c7553d61-84d1-4520-a18e-ff25b1651a68",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/apiTradingStatus?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"apiTradingStatus"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": ""
+								},
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
@@ -2596,7 +2820,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "70696d02-992c-412e-88bc-dab4ff43e2ca",
+										"id": "1af4b937-675e-4356-a1ed-940517b9c540",
 										"exec": [
 											"",
 											""
@@ -2653,7 +2877,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "2c9bac3a-ef4f-46ae-9b31-530f030c1e85",
+										"id": "6c3d41f4-1265-453a-9b96-1e8749402a3d",
 										"exec": [
 											"",
 											""
@@ -2706,7 +2930,7 @@
 								{
 									"listen": "prerequest",
 									"script": {
-										"id": "06457a90-e368-4c21-bf50-9728ae08b41a",
+										"id": "54932574-7418-4010-a298-8847be57b320",
 										"exec": [
 											"",
 											""
@@ -2765,7 +2989,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "15bcb331-796b-402c-884b-5fff76d1ca86",
+				"id": "f881e099-cbdb-4799-9af8-79b087e66feb",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -2823,7 +3047,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "f2945bc0-3d5c-4f73-b58e-3bf78ff79785",
+				"id": "209eda3c-84a1-4680-9ad6-87f2fa35b956",
 				"type": "text/javascript",
 				"exec": [
 					""
