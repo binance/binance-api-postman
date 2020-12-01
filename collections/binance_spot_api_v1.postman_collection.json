@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a992acec-57af-4fea-b6aa-520f568c6fee",
+		"_postman_id": "32c107f5-ae7b-4ce6-b2cb-f8f3f7cd0ab1",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -4692,7 +4692,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "3b1e47d0-5518-4b82-9395-e3b68e686efc",
+								"id": "3821bb25-b2df-4dda-8022-a610f949f0bd",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -4702,7 +4702,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a2b6566d-d042-40a4-a509-d18822816e1b",
+								"id": "4c5e4fc9-d445-4497-8e67-d31d1a1bdab0",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5339,7 +5339,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/loan?asset=&isolatedSymbol=&txId=&startTime=&endTime=&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/loan?asset=&isolatedSymbol=&txId=&startTime=&endTime=&current=1&size=10&archived=false&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5379,6 +5379,11 @@
 									"value": "10"
 								},
 								{
+									"key": "archived",
+									"value": "false",
+									"description": "Default: false. Set to true for archived data from 6 months ago"
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
 								},
@@ -5408,7 +5413,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/repay?asset=&isolatedSymbol=&txId=&startTime=&endTime=&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/repay?asset=&isolatedSymbol=&txId=&startTime=&endTime=&current=1&size=10&archived=false&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5448,6 +5453,11 @@
 									"value": "10"
 								},
 								{
+									"key": "archived",
+									"value": "false",
+									"description": "Default: false. Set to true for archived data from 6 months ago"
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
 								},
@@ -5477,7 +5487,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/interestHistory?asset=&isolatedSymbol=&startTime=&endTime=&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/interestHistory?asset=&isolatedSymbol=&startTime=&endTime=&current=1&size=10&archived=false&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5511,6 +5521,11 @@
 								{
 									"key": "size",
 									"value": "10"
+								},
+								{
+									"key": "archived",
+									"value": "false",
+									"description": "Default: false. Set to true for archived data from 6 months ago"
 								},
 								{
 									"key": "timestamp",
@@ -7674,7 +7689,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "167c47a8-b4cd-4c18-bca8-62b9a055fa26",
+						"id": "54a6b025-84cb-4e93-86c3-81786077c59f",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -7684,7 +7699,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d7a39a22-22ad-4bb6-bed7-2768bcb81a1e",
+						"id": "43552dae-36a1-45f2-bf77-e07262ea0c10",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -8531,7 +8546,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "64ce823d-b6a1-4f02-af8b-85b2bd1da2a6",
+				"id": "3caf56a1-c7a7-414e-89fe-7676cc3b98ff",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -8592,7 +8607,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "57ef9c3a-e9ed-4671-9424-dc8c6f3ee85a",
+				"id": "7459c7e9-c901-44f2-b7ca-b37c75b8bad4",
 				"type": "text/javascript",
 				"exec": [
 					""
