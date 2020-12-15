@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "32c107f5-ae7b-4ce6-b2cb-f8f3f7cd0ab1",
+		"_postman_id": "b4458413-2f3d-47a3-b958-d29fb89f16f8",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -256,6 +256,51 @@
 									"key": "limit",
 									"value": "",
 									"description": "default  1000 ， max1000"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get BLVT User Limit Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/blvt/userLimit?tokenName=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"blvt",
+								"userLimit"
+							],
+							"query": [
+								{
+									"key": "tokenName",
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -4692,7 +4737,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "3821bb25-b2df-4dda-8022-a610f949f0bd",
+								"id": "257b2ccb-e86a-40cc-a464-4316ec049778",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -4702,7 +4747,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4c5e4fc9-d445-4497-8e67-d31d1a1bdab0",
+								"id": "92bc80c3-318b-4632-a50f-31e32e318df2",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5119,7 +5164,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/order?symbol=&isIsolated=&side=&type=&quantity=&price=&stopPrice=&newClientOrderId=&icebergQty=&newOrderRespType=&sideEffectType=&timeInForce=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/order?symbol=&isIsolated=&side=&type=&quantity=&quoteOrderQty=&price=&stopPrice=&newClientOrderId=&icebergQty=&newOrderRespType=&sideEffectType=&timeInForce=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5149,6 +5194,10 @@
 								},
 								{
 									"key": "quantity",
+									"value": ""
+								},
+								{
+									"key": "quoteOrderQty",
 									"value": ""
 								},
 								{
@@ -7689,7 +7738,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "54a6b025-84cb-4e93-86c3-81786077c59f",
+						"id": "fd708020-dbd9-4cd2-852d-c27ef5b37ca4",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -7699,7 +7748,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "43552dae-36a1-45f2-bf77-e07262ea0c10",
+						"id": "05dcc899-74e9-477c-b340-60c09c038cc9",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -8540,13 +8589,184 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "v2",
+			"item": [
+				{
+					"name": "Corporate ( sub-account )",
+					"item": [
+						{
+							"name": "Get Detail on Sub-account's Futures Account V2 (For Master Account)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v2/sub-account/futures/account?email=&futuresType=1&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v2",
+										"sub-account",
+										"futures",
+										"account"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": ""
+										},
+										{
+											"key": "futuresType",
+											"value": "1",
+											"description": "1:USDT Margined Futures, 2:COIN Margined Futures"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Summary of Sub-account's Futures Account V2 (For Master Account)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v2/sub-account/futures/accountSummary?futuresType=&page=1&limit=10&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v2",
+										"sub-account",
+										"futures",
+										"accountSummary"
+									],
+									"query": [
+										{
+											"key": "futuresType",
+											"value": "",
+											"description": "1:USDT Margined Futures, 2:COIN Margined Futures"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10",
+											"description": "default:10, max:20"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Futures Postion-Risk of Sub-account V2 (For Master Account)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v2/sub-account/futures/positionRisk?email=&futuresType=1&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v2",
+										"sub-account",
+										"futures",
+										"positionRisk"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": ""
+										},
+										{
+											"key": "futuresType",
+											"value": "1",
+											"description": "1:USDT Margined Futures, 2:COIN Margined Futures"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "3caf56a1-c7a7-414e-89fe-7676cc3b98ff",
+				"id": "c90a7307-c350-43cc-b014-87edbdf66a8c",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -8607,7 +8827,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "7459c7e9-c901-44f2-b7ca-b37c75b8bad4",
+				"id": "32829121-dd97-4e32-854e-667b958e08d5",
 				"type": "text/javascript",
 				"exec": [
 					""
