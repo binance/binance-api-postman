@@ -1862,10 +1862,6 @@
 									"value": "500"
 								},
 								{
-									"key": "amount",
-									"value": ""
-								},
-								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
 								},
