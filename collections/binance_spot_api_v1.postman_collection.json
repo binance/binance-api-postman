@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ab3fbe39-43a2-4972-8485-7419ba170a38",
+		"_postman_id": "b4458413-2f3d-47a3-b958-d29fb89f16f8",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -256,6 +256,51 @@
 									"key": "limit",
 									"value": "",
 									"description": "default  1000 ， max1000"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get BLVT User Limit Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/blvt/userLimit?tokenName=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"blvt",
+								"userLimit"
+							],
+							"query": [
+								{
+									"key": "tokenName",
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -1877,6 +1922,138 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Universal Transfer (For Master Account)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/universalTransfer?fromEmail=&toEmail=&fromAccountType=&toAccountType=&asset=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"universalTransfer"
+							],
+							"query": [
+								{
+									"key": "fromEmail",
+									"value": ""
+								},
+								{
+									"key": "toEmail",
+									"value": ""
+								},
+								{
+									"key": "fromAccountType",
+									"value": "",
+									"description": "\"SPOT\",\"USDT_FUTURE\",\"COIN_FUTURE\""
+								},
+								{
+									"key": "toAccountType",
+									"value": "",
+									"description": "\"SPOT\",\"USDT_FUTURE\",\"COIN_FUTURE\""
+								},
+								{
+									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Universal Transfer History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/universalTransfer?fromEmail=&toEmail=&startTime=&endTime=&page=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"universalTransfer"
+							],
+							"query": [
+								{
+									"key": "fromEmail",
+									"value": ""
+								},
+								{
+									"key": "toEmail",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -2931,6 +3108,264 @@
 								},
 								{
 									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Collateral Repay Limit (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/futures/loan/collateralRepayLimit?coin=&collateralCoin=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"futures",
+								"loan",
+								"collateralRepayLimit"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": ""
+								},
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Collateral Repay Quote (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/futures/loan/collateralRepay?coin=&collateralCoin=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"futures",
+								"loan",
+								"collateralRepay"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": ""
+								},
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Repay with Collateral (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/futures/loan/collateralRepay?quoteId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"futures",
+								"loan",
+								"collateralRepay"
+							],
+							"query": [
+								{
+									"key": "quoteId",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Collateral Repayment Result (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/futures/loan/collateralRepayResult?quoteId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"futures",
+								"loan",
+								"collateralRepayResult"
+							],
+							"query": [
+								{
+									"key": "quoteId",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cross-Collateral Interest History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/futures/loan/interestHistory?collateralCoin=&startTime=&endTime=&current=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"futures",
+								"loan",
+								"interestHistory"
+							],
+							"query": [
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "current",
 									"value": ""
 								},
 								{
@@ -4302,7 +4737,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "822498c5-6722-4d13-a8f2-e2bd99e2135a",
+								"id": "257b2ccb-e86a-40cc-a464-4316ec049778",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -4312,7 +4747,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0882d44c-ba7c-4b99-8c36-97d1b19bd9c2",
+								"id": "92bc80c3-318b-4632-a50f-31e32e318df2",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -4729,7 +5164,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/order?symbol=&isIsolated=&side=&type=&quantity=&price=&stopPrice=&newClientOrderId=&icebergQty=&newOrderRespType=&sideEffectType=&timeInForce=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/order?symbol=&isIsolated=&side=&type=&quantity=&quoteOrderQty=&price=&stopPrice=&newClientOrderId=&icebergQty=&newOrderRespType=&sideEffectType=&timeInForce=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -4759,6 +5194,10 @@
 								},
 								{
 									"key": "quantity",
+									"value": ""
+								},
+								{
+									"key": "quoteOrderQty",
 									"value": ""
 								},
 								{
@@ -4949,7 +5388,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/loan?asset=&isolatedSymbol=&txId=&startTime=&endTime=&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/loan?asset=&isolatedSymbol=&txId=&startTime=&endTime=&current=1&size=10&archived=false&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -4989,6 +5428,11 @@
 									"value": "10"
 								},
 								{
+									"key": "archived",
+									"value": "false",
+									"description": "Default: false. Set to true for archived data from 6 months ago"
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
 								},
@@ -5018,7 +5462,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/repay?asset=&isolatedSymbol=&txId=&startTime=&endTime=&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/repay?asset=&isolatedSymbol=&txId=&startTime=&endTime=&current=1&size=10&archived=false&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5058,6 +5502,11 @@
 									"value": "10"
 								},
 								{
+									"key": "archived",
+									"value": "false",
+									"description": "Default: false. Set to true for archived data from 6 months ago"
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
 								},
@@ -5087,7 +5536,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/interestHistory?asset=&isolatedSymbol=&startTime=&endTime=&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/interestHistory?asset=&isolatedSymbol=&startTime=&endTime=&current=1&size=10&archived=false&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5121,6 +5570,11 @@
 								{
 									"key": "size",
 									"value": "10"
+								},
+								{
+									"key": "archived",
+									"value": "false",
+									"description": "Default: false. Set to true for archived data from 6 months ago"
 								},
 								{
 									"key": "timestamp",
@@ -5560,6 +6014,96 @@
 									"key": "isolatedSymbol",
 									"value": ""
 								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle BNB Burn On Spot Trade And Margin Interest (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bnbBurn?spotBNBBurn=&interestBNBBurn=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bnbBurn"
+							],
+							"query": [
+								{
+									"key": "spotBNBBurn",
+									"value": "",
+									"description": "\"true\" or \"false\""
+								},
+								{
+									"key": "interestBNBBurn",
+									"value": "",
+									"description": "\"true\" or \"false\""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get BNB Burn Status (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bnbBurn?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bnbBurn"
+							],
+							"query": [
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
@@ -7194,7 +7738,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "182e7e45-f00c-49af-b86f-bbf302bfa77e",
+						"id": "fd708020-dbd9-4cd2-852d-c27ef5b37ca4",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -7204,7 +7748,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "89e0100b-6ff7-42d5-8491-300486acc754",
+						"id": "05dcc899-74e9-477c-b340-60c09c038cc9",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -8045,13 +8589,184 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "v2",
+			"item": [
+				{
+					"name": "Corporate ( sub-account )",
+					"item": [
+						{
+							"name": "Get Detail on Sub-account's Futures Account V2 (For Master Account)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v2/sub-account/futures/account?email=&futuresType=1&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v2",
+										"sub-account",
+										"futures",
+										"account"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": ""
+										},
+										{
+											"key": "futuresType",
+											"value": "1",
+											"description": "1:USDT Margined Futures, 2:COIN Margined Futures"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Summary of Sub-account's Futures Account V2 (For Master Account)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v2/sub-account/futures/accountSummary?futuresType=&page=1&limit=10&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v2",
+										"sub-account",
+										"futures",
+										"accountSummary"
+									],
+									"query": [
+										{
+											"key": "futuresType",
+											"value": "",
+											"description": "1:USDT Margined Futures, 2:COIN Margined Futures"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10",
+											"description": "default:10, max:20"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Futures Postion-Risk of Sub-account V2 (For Master Account)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v2/sub-account/futures/positionRisk?email=&futuresType=1&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v2",
+										"sub-account",
+										"futures",
+										"positionRisk"
+									],
+									"query": [
+										{
+											"key": "email",
+											"value": ""
+										},
+										{
+											"key": "futuresType",
+											"value": "1",
+											"description": "1:USDT Margined Futures, 2:COIN Margined Futures"
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "1820a3bd-3f86-432c-a24f-b9069c7ba2ea",
+				"id": "c90a7307-c350-43cc-b014-87edbdf66a8c",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -8112,7 +8827,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "d59b8b65-4445-4c13-8a7b-0f92691b8458",
+				"id": "32829121-dd97-4e32-854e-667b958e08d5",
 				"type": "text/javascript",
 				"exec": [
 					""
