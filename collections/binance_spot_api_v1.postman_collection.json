@@ -1874,7 +1874,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/sub-account/transfer/subUserHistory?asset=&type=&startTime=&endTime=&limit=500&amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/transfer/subUserHistory?asset=&type=&startTime=&endTime=&limit=500&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -4262,7 +4262,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/wapi/v3/assetDetail.html?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/wapi/v3/assetDetail.html?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -4272,10 +4272,6 @@
 								"assetDetail.html"
 							],
 							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
