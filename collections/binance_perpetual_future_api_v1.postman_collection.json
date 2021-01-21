@@ -147,7 +147,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/trades?symbol=BTCUSDT&limit=500&fromId=''",
+							"raw": "{{url}}/fapi/v1/trades?symbol=BTCUSDT&limit=500",
 							"host": [
 								"{{url}}"
 							],
@@ -165,10 +165,6 @@
 									"key": "limit",
 									"value": "500",
 									"description": "Default 500; max 1000."
-								},
-								{
-									"key": "fromId",
-									"value": "''"
 								}
 							]
 						}
