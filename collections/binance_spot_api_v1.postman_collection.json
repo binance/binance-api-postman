@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b4458413-2f3d-47a3-b958-d29fb89f16f8",
+		"_postman_id": "5ef65e03-b6e8-40fb-8c5a-aec980bb64d2",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -830,29 +830,34 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/wapi/v3/sub-account/transfer/history.html?email&startTime&endTime&page=1&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/sub/transfer/history?fromEmail=&toEmail=&startTime=&endTime=&page=1&limit=500&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"wapi",
-								"v3",
+								"sapi",
+								"v1",
 								"sub-account",
+								"sub",
 								"transfer",
-								"history.html"
+								"history"
 							],
 							"query": [
 								{
-									"key": "email",
-									"value": null
+									"key": "fromEmail",
+									"value": ""
+								},
+								{
+									"key": "toEmail",
+									"value": ""
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "page",
@@ -4386,6 +4391,120 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "User Universal Transfer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/asset/transfer?type=&asset=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"asset",
+								"transfer"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": ""
+								},
+								{
+									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query User Universal Transfer History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/asset/transfer?type=&startTime=&endTime=&current=&size=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"asset",
+								"transfer"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "current",
+									"value": ""
+								},
+								{
+									"key": "size",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -4729,7 +4848,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "257b2ccb-e86a-40cc-a464-4316ec049778",
+								"id": "06a064c3-c8d6-4b0a-936c-30a67e5ff782",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -4739,7 +4858,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "92bc80c3-318b-4632-a50f-31e32e318df2",
+								"id": "8cef4e4e-779c-4770-9733-7ba7213582cb",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5281,6 +5400,56 @@
 								{
 									"key": "newClientOrderId",
 									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Margin Account Cancel all Open Orders on a Symbol",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/margin/openOrders?symbol=&isIsolated=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"margin",
+								"openOrders"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": ""
+								},
+								{
+									"key": "isIsolated",
+									"value": "",
+									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”"
 								},
 								{
 									"key": "timestamp",
@@ -6943,6 +7112,306 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Extra Bonus List (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/mining/payment/other?algo=&userName=&coin=&startDate=&endDate=&pageIndex=&PageSize=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"mining",
+								"payment",
+								"other"
+							],
+							"query": [
+								{
+									"key": "algo",
+									"value": "",
+									"description": "Algorithm(sha256)"
+								},
+								{
+									"key": "userName",
+									"value": "",
+									"description": "Mining account"
+								},
+								{
+									"key": "coin",
+									"value": ""
+								},
+								{
+									"key": "startDate",
+									"value": ""
+								},
+								{
+									"key": "endDate",
+									"value": ""
+								},
+								{
+									"key": "pageIndex",
+									"value": ""
+								},
+								{
+									"key": "PageSize",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hashrate Resale List (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/mining/hash-transfer/config/details/list?pageIndex=&PageSize=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"mining",
+								"hash-transfer",
+								"config",
+								"details",
+								"list"
+							],
+							"query": [
+								{
+									"key": "pageIndex",
+									"value": ""
+								},
+								{
+									"key": "PageSize",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hashrate Resale Details (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/mining/hash-transfer/profit/details?configId=&userName=&pageIndex=&PageSize=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"mining",
+								"hash-transfer",
+								"profit",
+								"details"
+							],
+							"query": [
+								{
+									"key": "configId",
+									"value": ""
+								},
+								{
+									"key": "userName",
+									"value": ""
+								},
+								{
+									"key": "pageIndex",
+									"value": ""
+								},
+								{
+									"key": "PageSize",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Hashrate Resale Request (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/mining/hash-transfer/config?userName=&algo=&startDate=&endDate=&toPoolUser=&hashRate=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"mining",
+								"hash-transfer",
+								"config"
+							],
+							"query": [
+								{
+									"key": "userName",
+									"value": ""
+								},
+								{
+									"key": "algo",
+									"value": ""
+								},
+								{
+									"key": "startDate",
+									"value": ""
+								},
+								{
+									"key": "endDate",
+									"value": ""
+								},
+								{
+									"key": "toPoolUser",
+									"value": ""
+								},
+								{
+									"key": "hashRate",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Hashrate Resale configuration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/mining/hash-transfer/config/cancel?configId=&userName=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"mining",
+								"hash-transfer",
+								"config",
+								"cancel"
+							],
+							"query": [
+								{
+									"key": "configId",
+									"value": ""
+								},
+								{
+									"key": "userName",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -7730,7 +8199,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "fd708020-dbd9-4cd2-852d-c27ef5b37ca4",
+						"id": "321b4eb9-71f5-4db7-91e0-b6953df473b1",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -7740,7 +8209,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "05dcc899-74e9-477c-b340-60c09c038cc9",
+						"id": "503e0a7d-b13a-49ba-a232-4b072484de4e",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -8758,7 +9227,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "c90a7307-c350-43cc-b014-87edbdf66a8c",
+				"id": "e458ea24-9e66-42d0-a1c4-72ea0847c833",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -8819,7 +9288,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "32829121-dd97-4e32-854e-667b958e08d5",
+				"id": "dc79d196-0c4c-4179-9882-fa3970607bff",
 				"type": "text/javascript",
 				"exec": [
 					""
