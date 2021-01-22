@@ -7114,6 +7114,76 @@
 					"response": []
 				},
 				{
+					"name": "Earnings List(USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/mining/payment/list?algo=&userName=&coin=&startDate=&endDate=&pageIndex=&pageSize=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"mining",
+								"payment",
+								"list"
+							],
+							"query": [
+								{
+									"key": "algo",
+									"value": ""
+								},
+								{
+									"key": "userName",
+									"value": ""
+								},
+								{
+									"key": "coin",
+									"value": ""
+								},
+								{
+									"key": "startDate",
+									"value": ""
+								},
+								{
+									"key": "endDate",
+									"value": ""
+								},
+								{
+									"key": "pageIndex",
+									"value": ""
+								},
+								{
+									"key": "pageSize",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Extra Bonus List (USER_DATA)",
 					"request": {
 						"method": "GET",
