@@ -322,7 +322,7 @@
 					"response": []
 				},
 				{
-					"name": "Continues Contract Kline/Candlestick Data",
+					"name": "Continuous Contract Kline/Candlestick Data",
 					"request": {
 						"method": "GET",
 						"header": [
