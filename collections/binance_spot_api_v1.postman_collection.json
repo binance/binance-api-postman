@@ -757,6 +757,124 @@
 			"name": "Corporate ( sub-account )",
 			"item": [
 				{
+					"name": "Create a Virtual Sub-account(For Master Account)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/virtualSubAccount?subAccountString=&recvWindow=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"virtualSubAccount"
+							],
+							"query": [
+								{
+									"key": "subAccountString",
+									"value": "",
+									"description":"Please input a string. We will create a virtual email using that string for you to register"
+								},
+								{
+									"key": "recvWindow",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"description": "This request will generate a virtual sub account under your master account. You need to enable \"trade\" option for the api key which requests this endpoint.",
+					"response": []
+				},
+				{
+					"name": "Query Sub-account List SAPI(For Master Account)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/list?email=&isFreeze=&page=&limit=&recvWindow=&imestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"list"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "isFreeze",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Query Sub-account List(For Master Account)",
 					"request": {
 						"method": "GET",
@@ -2055,6 +2173,63 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Enable Leverage Token for Sub-account (For Master Account)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/blvt/enable?email=&enableBlvt=&recvWindow=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"blvt",
+								"enable"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "",
+									"description": "Sub-account email"
+								},
+								{
+									"key": "enableBlvt",
+									"value": "",
+									"description": "Only true for now"
+								},
+								{
+									"key": "recvWindow",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -2810,6 +2985,48 @@
 					"response": []
 				},
 				{
+					"name": "Cross-Collateral Wallet V2 (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v2/futures/loan/wallet?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v2",
+								"futures",
+								"loan",
+								"wallet"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Cross-Collateral Information (USER_DATA)",
 					"request": {
 						"method": "GET",
@@ -2838,6 +3055,56 @@
 								"configs"
 							],
 							"query": [
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cross-Collateral Information V2 (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v2/futures/loan/configs?collateralCoin=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v2",
+								"futures",
+								"loan",
+								"configs"
+							],
+							"query": [
+								{
+									"key": "loanCoin",
+									"value": ""
+								},
 								{
 									"key": "collateralCoin",
 									"value": ""
@@ -2911,6 +3178,65 @@
 					"response": []
 				},
 				{
+					"name": "Calculate Rate After Adjust Cross-Collateral LTV V2 (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v2/futures/loan/calcAdjustLevel?collateralCoin=&amount=&direction=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v2",
+								"futures",
+								"loan",
+								"calcAdjustLevel"
+							],
+							"query": [
+								{
+									"key": "loanCoin",
+									"value": ""
+								},
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "direction",
+									"value": "",
+									"description": "\"ADDITIONAL\", \"REDUCED\""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get Max Amount for Adjust Cross-Collateral LTV (USER_DATA)",
 					"request": {
 						"method": "GET",
@@ -2939,6 +3265,56 @@
 								"calcMaxAdjustAmount"
 							],
 							"query": [
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Max Amount for Adjust Cross-Collateral LTV V2 (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v2/futures/loan/calcMaxAdjustAmount?collateralCoin=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v2",
+								"futures",
+								"loan",
+								"calcMaxAdjustAmount"
+							],
+							"query": [
+								{
+									"key": "loanCoin",
+									"value": ""
+								},
 								{
 									"key": "collateralCoin",
 									"value": ""
@@ -3012,6 +3388,65 @@
 					"response": []
 				},
 				{
+					"name": "Adjust Cross-Collateral LTV V2 (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v2/futures/loan/adjustCollateral?collateralCoin=&amount=&direction=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v2",
+								"futures",
+								"loan",
+								"adjustCollateral"
+							],
+							"query": [
+								{
+									"key": "loanCoin",
+									"value": ""
+								},
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "direction",
+									"value": "",
+									"description": "\"ADDITIONAL\", \"REDUCED\""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Adjust Cross-Collateral LTV History (USER_DATA)",
 					"request": {
 						"method": "GET",
@@ -3041,6 +3476,10 @@
 								"history"
 							],
 							"query": [
+								{
+									"key": "loanCoin",
+									"value": ""
+								},
 								{
 									"key": "collateralCoin",
 									"value": ""
@@ -3099,6 +3538,10 @@
 								"liquidationHistory"
 							],
 							"query": [
+								{
+									"key": "loanCoin",
+									"value": ""
+								},
 								{
 									"key": "collateralCoin",
 									"value": ""
@@ -6265,6 +6708,81 @@
 								"bnbBurn"
 							],
 							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Margin Interest Rate History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/margin/interestRateHistory?asset=&vipLevel=&startTime=&endTime=&limit=&recvWindow=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"margin",
+								"interestRateHistory"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "vipLevel",
+									"value": "",
+									"description": "Default: user's vip level",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"description": "Default: 7 days ago",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"description": "Default: present. Maximum range: 3 months.",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Default: 20. Maximum: 100",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "",
+									"description": "No more than 60000",
+									"disabled": true
+								},
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"

@@ -374,6 +374,112 @@
 					"response": []
 				},
 				{
+					"name": "Index Price Kline/Candlestick Data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/indexPriceKlines?pair=BTCUSDT&limit=500&interval=1m",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"indexPriceKlines"
+							],
+							"query": [
+								{
+									"key": "pair",
+									"value": "BTCUSDT"
+								},
+								
+								{
+									"key": "interval",
+									"value": "1h",
+									"description": "1m, 1h, 1d"
+								},
+								{
+									"key": "startTime",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "500",
+									"description": "Default 500; max 1500."
+								}
+							]
+						},
+						"description": "Kline/candlestick bars for the index price of a pair. Klines are uniquely identified by their open time."
+					},
+					"response": []
+				},
+				{
+					"name": "Mark Price Kline/Candlestick Data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/markPriceKlines?symbol=BTCUSDT&limit=500&interval=1m",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"markPriceKlines"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BTCUSDT"
+								},
+								
+								{
+									"key": "interval",
+									"value": "1h",
+									"description": "1m, 1h, 1d"
+								},
+								{
+									"key": "startTime",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "500",
+									"description": "Default 500; max 1500."
+								}
+							]
+						},
+						"description": "Kline/candlestick bars for the mark price of a symbol. Klines are uniquely identified by their open time."
+					},
+					"response": []
+				},
+				{
 					"name": "Mark Price (MARKET_DATA)",
 					"request": {
 						"method": "GET",
