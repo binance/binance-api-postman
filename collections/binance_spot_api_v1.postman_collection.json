@@ -4061,7 +4061,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/capital/withdraw/apply?coin=&network=&address=&addressTag=&amount=&transactionFeeFlag=&name=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/capital/withdraw/apply?coin=&withdrawOrderId=&network=&address=&addressTag=&amount=&transactionFeeFlag=&name=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -4075,6 +4075,10 @@
 							"query": [
 								{
 									"key": "coin",
+									"value": ""
+								},
+								{
+									"key": "withdrawOrderId",
 									"value": ""
 								},
 								{
