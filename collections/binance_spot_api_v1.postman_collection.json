@@ -1252,7 +1252,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v3/sub-account/assets?email=email_address&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v3/sub-account/assets?email=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1265,7 +1265,7 @@
 							"query": [
 								{
 									"key": "email",
-									"value": "email_address"
+									"value": ""
 								},
 								{
 									"key": "recvWindow",
