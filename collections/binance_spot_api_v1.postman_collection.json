@@ -5354,7 +5354,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/sapi/v1/margin/isolated/create?asset=&symbol=&transFrom=&transTo=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+									"raw": "{{url}}/sapi/v1/margin/isolated/transfer?asset=&symbol=&transFrom=&transTo=&amount=&timestamp={{timestamp}}&signature={{signature}}",
 									"host": [
 										"{{url}}"
 									],
@@ -5363,7 +5363,7 @@
 										"v1",
 										"margin",
 										"isolated",
-										"create"
+										"transfer"
 									],
 									"query": [
 										{
