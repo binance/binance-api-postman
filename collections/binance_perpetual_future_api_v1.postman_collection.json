@@ -1105,9 +1105,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a5e3aaf5-db8a-4809-9de7-5c4543451a21",
 								"exec": [
-									"",
 									""
 								],
 								"type": "text/javascript"
@@ -1129,16 +1127,21 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/account?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v2/account?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"fapi",
-								"v1",
+								"v2",
 								"account"
 							],
 							"query": [
+								{
+									"key": "recvWindow",
+									"value": null,
+									"disabled": true
+								},
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
@@ -1233,9 +1236,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e90c6c8a-fa48-4d88-9c20-cf414749071a",
 								"exec": [
-									"",
 									""
 								],
 								"type": "text/javascript"
@@ -1257,16 +1258,26 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/positionRisk?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v2/positionRisk?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"fapi",
-								"v1",
+								"v2",
 								"positionRisk"
 							],
 							"query": [
+								{
+									"key": "symbol",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": null,
+									"disabled": true
+								},
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
@@ -1512,9 +1523,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "dab0d5ad-8274-4ee2-8b6f-8c53a6405baf",
 								"exec": [
-									"",
 									""
 								],
 								"type": "text/javascript"
@@ -1536,16 +1545,21 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/balance?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v2/balance?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"fapi",
-								"v1",
+								"v2",
 								"balance"
 							],
 							"query": [
+								{
+									"key": "recvWindow",
+									"value": null,
+									"disabled": true
+								},
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
