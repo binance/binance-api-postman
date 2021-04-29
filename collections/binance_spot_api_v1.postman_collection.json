@@ -5288,56 +5288,6 @@
 					"name": "isolated",
 					"item": [
 						{
-							"name": "Create Isolated Margin Account (MARGIN)",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/margin/isolated/create?base=&quote=&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"margin",
-										"isolated",
-										"create"
-									],
-									"query": [
-										{
-											"key": "base",
-											"value": ""
-										},
-										{
-											"key": "quote",
-											"value": ""
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Isolated Margin Account Transfer (MARGIN)",
 							"request": {
 								"method": "POST",
