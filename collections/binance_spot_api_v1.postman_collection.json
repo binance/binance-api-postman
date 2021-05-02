@@ -875,63 +875,6 @@
 					"response": []
 				},
 				{
-					"name": "Query Sub-account List(For Master Account)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/sub-account/list.html?email&status=enabled&page=1&limit=500&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"sub-account",
-								"list.html"
-							],
-							"query": [
-								{
-									"key": "email",
-									"value": null
-								},
-								{
-									"key": "status",
-									"value": "enabled"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "500"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Query Sub-account Spot Asset Transfer History(For Master Account)",
 					"request": {
 						"method": "GET",
@@ -984,63 +927,6 @@
 								{
 									"key": "limit",
 									"value": "500"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Sub-account Spot Asset Transfer(For Master Account)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/sub-account/transfer.html?fromEmail&toEmail&asset&amount=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"sub-account",
-								"transfer.html"
-							],
-							"query": [
-								{
-									"key": "fromEmail",
-									"value": null
-								},
-								{
-									"key": "toEmail",
-									"value": null
-								},
-								{
-									"key": "asset",
-									"value": null
-								},
-								{
-									"key": "amount",
-									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -1172,55 +1058,6 @@
 								{
 									"key": "amount",
 									"value": ""
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Query Sub-account Assets(For Master Account)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/sub-account/assets.html?email&symbol&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"sub-account",
-								"assets.html"
-							],
-							"query": [
-								{
-									"key": "email",
-									"value": null
-								},
-								{
-									"key": "symbol",
-									"value": null
 								},
 								{
 									"key": "timestamp",
@@ -3886,31 +3723,6 @@
 			"name": "Wallet",
 			"item": [
 				{
-					"name": "System Status (System)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/systemStatus.html",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"systemStatus.html"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "System Status(SAPI) (System)",
 					"request": {
 						"method": "GET",
@@ -4196,79 +4008,6 @@
 					"response": []
 				},
 				{
-					"name": "Withdraw",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/withdraw.html?asset=&withdrawOrderId=&network=&address=&addressTag=&amount=&transactionFeeFlag=&name=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"withdraw.html"
-							],
-							"query": [
-								{
-									"key": "asset",
-									"value": ""
-								},
-								{
-									"key": "withdrawOrderId",
-									"value": ""
-								},
-								{
-									"key": "network",
-									"value": ""
-								},
-								{
-									"key": "address",
-									"value": ""
-								},
-								{
-									"key": "addressTag",
-									"value": ""
-								},
-								{
-									"key": "amount",
-									"value": ""
-								},
-								{
-									"key": "transactionFeeFlag",
-									"value": "",
-									"description": "Boolean value, default: false"
-								},
-								{
-									"key": "name",
-									"value": ""
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Deposit History（supporting network） (USER_DATA)",
 					"request": {
 						"method": "GET",
@@ -4316,65 +4055,6 @@
 								{
 									"key": "addressTag",
 									"value": ""
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Deposit History (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/depositHistory.html?asset=BTC&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"depositHistory.html"
-							],
-							"query": [
-								{
-									"key": "asset",
-									"value": "BTC"
-								},
-								{
-									"key": "status",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "startTime",
-									"value": null,
-									"disabled": true
-								},
-								{
-									"key": "endTime",
-									"value": null,
-									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -4456,62 +4136,6 @@
 					"response": []
 				},
 				{
-					"name": "Withdraw History (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/withdrawHistory.html?asset=BTC&status&startTime&endTime&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"withdrawHistory.html"
-							],
-							"query": [
-								{
-									"key": "asset",
-									"value": "BTC"
-								},
-								{
-									"key": "status",
-									"value": null
-								},
-								{
-									"key": "startTime",
-									"value": null
-								},
-								{
-									"key": "endTime",
-									"value": null
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Deposit Address (supporting network) (USER_DATA)",
 					"request": {
 						"method": "GET",
@@ -4548,94 +4172,6 @@
 									"key": "network",
 									"value": null
 								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Deposit Address (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/depositAddress.html?asset=BTC&status&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"depositAddress.html"
-							],
-							"query": [
-								{
-									"key": "asset",
-									"value": "BTC"
-								},
-								{
-									"key": "status",
-									"value": null
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Account Status (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/accountStatus.html?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"accountStatus.html"
-							],
-							"query": [
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
@@ -4695,46 +4231,6 @@
 					"response": []
 				},
 				{
-					"name": "Account API Trading Status (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/apiTradingStatus.html?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"apiTradingStatus.html"
-							],
-							"query": [
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Account API Trading Status(SAPI) (USER_DATA)",
 					"request": {
 						"method": "GET",
@@ -4767,46 +4263,6 @@
 									"value": null,
 									"disabled": true
 								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "DustLog (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/userAssetDribbletLog.html?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"userAssetDribbletLog.html"
-							],
-							"query": [
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
@@ -4877,50 +4333,6 @@
 					"response": []
 				},
 				{
-					"name": "Trade Fee (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/tradeFee.html?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"tradeFee.html"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": "BTCUSDT"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Trade Fee(SAPI) (USER_DATA)",
 					"request": {
 						"method": "GET",
@@ -4958,46 +4370,6 @@
 									"value": null,
 									"disabled": true
 								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Asset Detail (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/wapi/v3/assetDetail.html?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"wapi",
-								"v3",
-								"assetDetail.html"
-							],
-							"query": [
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
@@ -5287,56 +4659,6 @@
 				{
 					"name": "isolated",
 					"item": [
-						{
-							"name": "Create Isolated Margin Account (MARGIN)",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									},
-									{
-										"key": "X-MBX-APIKEY",
-										"type": "text",
-										"value": "{{binance-api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/sapi/v1/margin/isolated/create?base=&quote=&timestamp={{timestamp}}&signature={{signature}}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"sapi",
-										"v1",
-										"margin",
-										"isolated",
-										"create"
-									],
-									"query": [
-										{
-											"key": "base",
-											"value": ""
-										},
-										{
-											"key": "quote",
-											"value": ""
-										},
-										{
-											"key": "timestamp",
-											"value": "{{timestamp}}"
-										},
-										{
-											"key": "signature",
-											"value": "{{signature}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
 						{
 							"name": "Isolated Margin Account Transfer (MARGIN)",
 							"request": {
