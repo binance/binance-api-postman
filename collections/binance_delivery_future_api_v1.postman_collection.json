@@ -188,12 +188,12 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/historicalTrades?symbol=&limit=",
+							"raw": "{{url}}/dapi/v1/historicalTrades?symbol=&limit=",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"fapi",
+								"dapi",
 								"v1",
 								"historicalTrades"
 							],
