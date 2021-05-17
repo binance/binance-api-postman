@@ -6494,7 +6494,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/exchangeInfo",
+							"raw": "{{url}}/api/v3/exchangeInfo?symbol=BNBBTC&symbols=[\"BTCUSDT\",\"BNBBTC\"]",
 							"host": [
 								"{{url}}"
 							],
@@ -6505,8 +6505,14 @@
 							],
 							"query": [
 								{
-									"key": "",
-									"value": "",
+									"key": "symbol",
+									"value": "BNBBTC",
+									"disabled": true
+								},
+								{
+									"key": "symbols",
+									"value": "[\"BTCUSDT\",\"BNBBTC\"]",
+									"description": "add double quote for each symbol in list",
 									"disabled": true
 								}
 							]
