@@ -54,6 +54,7 @@ Likely causes:
 Likely causes:
 - You haven't set your secret key.
 - You've selected parameters for which no value was passed. If you aren't using a parameter, uncheck it.
+- The parameter `signature` is not at the last of the parameter list.
 
 ### Error: `Mandatory parameter 'xxxx' was not sent, was empty/null, or malformed.`
 Your request is missing a parameter that the API requires. Please refer to the API documentation, and pass all mandatory parameters in your requests.
