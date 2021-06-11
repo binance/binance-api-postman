@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5ef65e03-b6e8-40fb-8c5a-aec980bb64d2",
+		"_postman_id": "83362713-d0fc-4de4-97e6-57e4b21a40b0",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -316,8 +316,7 @@
 					"response": []
 				}
 			],
-			"description": "Leverage token",
-			"protocolProfileBehavior": {}
+			"description": "Leverage token"
 		},
 		{
 			"name": "Bswap",
@@ -750,8 +749,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Corporate ( sub-account )",
@@ -773,7 +771,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/sub-account/virtualSubAccount?subAccountString=&recvWindow=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/virtualSubAccount?subAccountString=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -787,7 +785,7 @@
 								{
 									"key": "subAccountString",
 									"value": "",
-									"description":"Please input a string. We will create a virtual email using that string for you to register"
+									"description": "Please input a string. We will create a virtual email using that string for you to register"
 								},
 								{
 									"key": "recvWindow",
@@ -805,7 +803,6 @@
 							]
 						}
 					},
-					"description": "This request will generate a virtual sub account under your master account. You need to enable \"trade\" option for the api key which requests this endpoint.",
 					"response": []
 				},
 				{
@@ -825,7 +822,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/sub-account/list?email=&isFreeze=&page=&limit=&recvWindow=&imestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/list?email=&isFreeze=&page=&limit=&recvWindow=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -838,28 +835,23 @@
 							"query": [
 								{
 									"key": "email",
-									"value": "",
-									"disabled": true
+									"value": ""
 								},
 								{
 									"key": "isFreeze",
-									"value": "",
-									"disabled": true
+									"value": ""
 								},
 								{
 									"key": "page",
-									"value": "",
-									"disabled": true
+									"value": ""
 								},
 								{
 									"key": "limit",
-									"value": "",
-									"disabled": true
+									"value": ""
 								},
 								{
 									"key": "recvWindow",
-									"value": "",
-									"disabled": true
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -2078,7 +2070,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/sub-account/blvt/enable?email=&enableBlvt=&recvWindow=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/blvt/enable?email=&enableBlvt=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2118,8 +2110,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Data Stream",
@@ -2229,9 +2220,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Margin",
@@ -2358,9 +2347,7 @@
 									},
 									"response": []
 								}
-							],
-							"protocolProfileBehavior": {},
-							"_postman_isSubFolder": true
+							]
 						},
 						{
 							"name": "cross",
@@ -2467,16 +2454,11 @@
 									},
 									"response": []
 								}
-							],
-							"protocolProfileBehavior": {},
-							"_postman_isSubFolder": true
+							]
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Futures",
@@ -2976,7 +2958,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v2/futures/loan/configs?collateralCoin=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v2/futures/loan/configs?loanCoin=&collateralCoin=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3081,7 +3063,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v2/futures/loan/calcAdjustLevel?collateralCoin=&amount=&direction=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v2/futures/loan/calcAdjustLevel?loanCoin=&collateralCoin=&amount=&direction=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3186,7 +3168,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v2/futures/loan/calcMaxAdjustAmount?collateralCoin=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v2/futures/loan/calcMaxAdjustAmount?loanCoin=&collateralCoin=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3291,7 +3273,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v2/futures/loan/adjustCollateral?collateralCoin=&amount=&direction=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v2/futures/loan/adjustCollateral?loanCoin=&collateralCoin=&amount=&direction=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3350,7 +3332,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/futures/loan/adjustCollateral/history?collateralCoin=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/futures/loan/adjustCollateral/history?loanCoin=&collateralCoin=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3413,7 +3395,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/futures/loan/liquidationHistory?collateralCoin=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/futures/loan/liquidationHistory?loanCoin=&collateralCoin=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3716,8 +3698,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Wallet",
@@ -4650,8 +4631,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Margin",
@@ -4942,7 +4922,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "06a064c3-c8d6-4b0a-936c-30a67e5ff782",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -4952,16 +4931,13 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8cef4e4e-779c-4770-9733-7ba7213582cb",
 								"type": "text/javascript",
 								"exec": [
 									""
 								]
 							}
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Margin Account Transfer (MARGIN)",
@@ -6407,32 +6383,27 @@
 								{
 									"key": "vipLevel",
 									"value": "",
-									"description": "Default: user's vip level",
-									"disabled": true
+									"description": "Default: user's vip level"
 								},
 								{
 									"key": "startTime",
 									"value": "",
-									"description": "Default: 7 days ago",
-									"disabled": true
+									"description": "Default: 7 days ago"
 								},
 								{
 									"key": "endTime",
 									"value": "",
-									"description": "Default: present. Maximum range: 3 months.",
-									"disabled": true
+									"description": "Default: present. Maximum range: 3 months."
 								},
 								{
 									"key": "limit",
 									"value": "",
-									"description": "Default: 20. Maximum: 100",
-									"disabled": true
+									"description": "Default: 20. Maximum: 100"
 								},
 								{
 									"key": "recvWindow",
 									"value": "",
-									"description": "No more than 60000",
-									"disabled": true
+									"description": "No more than 60000"
 								},
 								{
 									"key": "timestamp",
@@ -6447,8 +6418,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Market",
@@ -6524,7 +6494,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/exchangeInfo",
+							"raw": "{{url}}/api/v3/exchangeInfo?symbol=BNBBTC&symbols=[\"BTCUSDT\",\"BNBBTC\"]",
 							"host": [
 								"{{url}}"
 							],
@@ -6535,8 +6505,14 @@
 							],
 							"query": [
 								{
-									"key": "",
-									"value": "",
+									"key": "symbol",
+									"value": "BNBBTC",
+									"disabled": true
+								},
+								{
+									"key": "symbols",
+									"value": "[\"BTCUSDT\",\"BNBBTC\"]",
+									"description": "add double quote for each symbol in list",
 									"disabled": true
 								}
 							]
@@ -6889,8 +6865,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Mining",
@@ -7652,8 +7627,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Savings",
@@ -7974,7 +7948,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/lending/project/list?asset=USDT&type=REGULAR&status=ALL&isSortAsc=true&sortBy=START_TIME&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/lending/project/list?asset=USDT&type=ACTIVITY&status=ALL&isSortAsc=true&sortBy=START_TIME&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -7992,7 +7966,7 @@
 								},
 								{
 									"key": "type",
-									"value": "REGULAR",
+									"value": "ACTIVITY",
 									"description": "\"ACTIVITY\", \"CUSTOMIZED_FIXED\""
 								},
 								{
@@ -8438,7 +8412,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "321b4eb9-71f5-4db7-91e0-b6953df473b1",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -8448,15 +8421,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "503e0a7d-b13a-49ba-a232-4b072484de4e",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Trade",
@@ -9287,8 +9258,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "v2",
@@ -9454,19 +9424,15 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "e458ea24-9e66-42d0-a1c4-72ea0847c833",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -9527,13 +9493,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "dc79d196-0c4c-4179-9882-fa3970607bff",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
