@@ -34,6 +34,7 @@
 有几种可能性:
 - `Secret key`没有设置。
 - 选中的参数没有赋值。如果不需要的参数，请不要选中。
+- `signature`参数不在参数列表的最后。
 
 ### 错误: `Mandatory parameter 'xxxx' was not sent, was empty/null, or malformed.`
 - 没有传入必须的参数。请参看API文档，里面参数的详细说明。
