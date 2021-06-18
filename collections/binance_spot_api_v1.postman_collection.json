@@ -7828,6 +7828,16 @@
 									"value": "ALL"
 								},
 								{
+									"key": "current",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "",
+									"disabled": true
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
 								},
