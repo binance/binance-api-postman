@@ -4817,11 +4817,13 @@
 							"query": [
 								{
 									"key": "asset",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "needBtcValuation",
 									"value": "",
+									"disabled": true,
 									"description": "true or false"
 								},
 								{
