@@ -4786,6 +4786,56 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Funding Wallet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/asset/get-funding-asset?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"asset",
+								"get-funding-asset"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "needBtcValuation",
+									"value": "",
+									"description": "true or false"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
