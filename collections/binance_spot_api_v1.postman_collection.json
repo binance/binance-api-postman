@@ -4880,9 +4880,9 @@
 					"response": []
 				},
 				{
-					"name": "Funding Wallet",
+					"name": "API Key Permission",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -4896,26 +4896,17 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/asset/get-funding-asset?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/account/apiRestrictions?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
 								"v1",
-								"asset",
-								"get-funding-asset"
+								"account",
+								"apiRestrictions"
 							],
 							"query": [
-								{
-									"key": "asset",
-									"value": ""
-								},
-								{
-									"key": "needBtcValuation",
-									"value": "",
-									"description": "true or false"
-								},
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
