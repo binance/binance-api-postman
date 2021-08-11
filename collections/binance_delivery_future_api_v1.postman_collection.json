@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "755cdd4e-2b09-4c3d-bf97-f63b2643253d",
+		"_postman_id": "4675ee17-4b0c-4fbd-a2bc-b14ed46386e6",
 		"name": "Binance delivery futures API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/futures/en/\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -55,13 +55,6 @@
 								"dapi",
 								"v1",
 								"time"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": "",
-									"disabled": true
-								}
 							]
 						}
 					},
@@ -87,13 +80,6 @@
 								"dapi",
 								"v1",
 								"exchangeInfo"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": "",
-									"disabled": true
-								}
 							]
 						}
 					},
@@ -147,7 +133,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/trades?symbol=&limit=500",
+							"raw": "{{url}}/dapi/v1/trades?symbol=",
 							"host": [
 								"{{url}}"
 							],
@@ -164,7 +150,8 @@
 								{
 									"key": "limit",
 									"value": "500",
-									"description": "Default 500; max 1000."
+									"description": "Default 500; max 1000.",
+									"disabled": true
 								}
 							]
 						}
@@ -188,7 +175,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/historicalTrades?symbol=&limit=",
+							"raw": "{{url}}/dapi/v1/historicalTrades?symbol=",
 							"host": [
 								"{{url}}"
 							],
@@ -205,7 +192,8 @@
 								{
 									"key": "limit",
 									"value": "",
-									"description": "Default 500; max 1000."
+									"description": "Default 500; max 1000.",
+									"disabled": true
 								},
 								{
 									"key": "fromId",
@@ -230,7 +218,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/aggTrades?symbol=&limit=500&fromId&startTime&endTime",
+							"raw": "{{url}}/dapi/v1/aggTrades?symbol=",
 							"host": [
 								"{{url}}"
 							],
@@ -245,21 +233,25 @@
 									"value": ""
 								},
 								{
-									"key": "limit",
-									"value": "500",
-									"description": "Default 500; max 1000."
-								},
-								{
 									"key": "fromId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "500",
+									"description": "Default 500; max 1000.",
+									"disabled": true
 								}
 							]
 						}
@@ -278,7 +270,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/premiumIndex?symbol=&pair=",
+							"raw": "{{url}}/dapi/v1/premiumIndex",
 							"host": [
 								"{{url}}"
 							],
@@ -290,11 +282,13 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "pair",
-									"value": ""
+									"value": "",
+									"disabled": true
 								}
 							]
 						}
@@ -313,7 +307,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/fundingRate?symbol=&startTime=&endTime=&limit=",
+							"raw": "{{url}}/dapi/v1/fundingRate?symbol=",
 							"host": [
 								"{{url}}"
 							],
@@ -329,16 +323,19 @@
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
 									"value": "",
-									"description": "Default 100; max 1000"
+									"description": "Default 100; max 1000",
+									"disabled": true
 								}
 							]
 						}
@@ -357,7 +354,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/klines?symbol=&limit=&interval=&startTime&endTime",
+							"raw": "{{url}}/dapi/v1/klines?symbol=&interval=",
 							"host": [
 								"{{url}}"
 							],
@@ -372,22 +369,25 @@
 									"value": ""
 								},
 								{
-									"key": "limit",
-									"value": "",
-									"description": "Default 500; max 1500."
-								},
-								{
 									"key": "interval",
 									"value": "",
 									"description": "1m, 1h, 1d, etc"
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Default 500; max 1500.",
+									"disabled": true
 								}
 							]
 						},
@@ -407,7 +407,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/continuousKlines?pair=&contractType=&interval=&startTime&endTime&limit",
+							"raw": "{{url}}/dapi/v1/continuousKlines?pair=&contractType=&interval=",
 							"host": [
 								"{{url}}"
 							],
@@ -431,15 +431,18 @@
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": null
+									"value": null,
+									"disabled": true
 								}
 							]
 						}
@@ -458,7 +461,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/indexPriceKlines?pair=&interval=&startTime&endTime&limit",
+							"raw": "{{url}}/dapi/v1/indexPriceKlines?pair=&interval=",
 							"host": [
 								"{{url}}"
 							],
@@ -478,15 +481,18 @@
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": null
+									"value": null,
+									"disabled": true
 								}
 							]
 						}
@@ -505,7 +511,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/markPriceKlines?symbol=&interval=&startTime=&endTime=&limit=",
+							"raw": "{{url}}/dapi/v1/markPriceKlines?symbol=&interval=",
 							"host": [
 								"{{url}}"
 							],
@@ -525,15 +531,18 @@
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "",
+									"disabled": true
 								}
 							]
 						}
@@ -552,7 +561,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/ticker/24hr?symbol=&pair",
+							"raw": "{{url}}/dapi/v1/ticker/24hr",
 							"host": [
 								"{{url}}"
 							],
@@ -565,11 +574,13 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "pair",
-									"value": null
+									"value": null,
+									"disabled": true
 								}
 							]
 						},
@@ -589,7 +600,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/ticker/price?symbol=&pair",
+							"raw": "{{url}}/dapi/v1/ticker/price",
 							"host": [
 								"{{url}}"
 							],
@@ -602,11 +613,13 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "pair",
-									"value": null
+									"value": null,
+									"disabled": true
 								}
 							]
 						},
@@ -626,7 +639,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/ticker/bookTicker?symbol=&pair",
+							"raw": "{{url}}/dapi/v1/ticker/bookTicker",
 							"host": [
 								"{{url}}"
 							],
@@ -639,11 +652,13 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "pair",
-									"value": null
+									"value": null,
+									"disabled": true
 								}
 							]
 						},
@@ -743,7 +758,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/futures/data/openInterestHist?pair=&contractType=ALL&period=5m&limit=&startTime=&endTime=",
+							"raw": "{{url}}/futures/data/openInterestHist?pair=&contractType=ALL&period=5m",
 							"host": [
 								"{{url}}"
 							],
@@ -770,15 +785,18 @@
 								{
 									"key": "limit",
 									"value": "",
-									"description": "Default 30,Max 500"
+									"description": "Default 30,Max 500",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								}
 							]
 						},
@@ -798,7 +816,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/futures/data/topLongShortAccountRatio?pair=&period=5m&limit=&startTime=&endTime=",
+							"raw": "{{url}}/futures/data/topLongShortAccountRatio?pair=&period=5m",
 							"host": [
 								"{{url}}"
 							],
@@ -820,15 +838,18 @@
 								{
 									"key": "limit",
 									"value": "",
-									"description": "Default 30,Max 500"
+									"description": "Default 30,Max 500",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								}
 							]
 						},
@@ -954,7 +975,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/futures/data/takerBuySellVol?pair=&period=5m&contractType=ALL",
+							"raw": "{{url}}/futures/data/takerBuySellVol?pair=&contractType=ALL&period=5m",
 							"host": [
 								"{{url}}"
 							],
@@ -969,14 +990,14 @@
 									"value": ""
 								},
 								{
-									"key": "period",
-									"value": "5m",
-									"description": "\"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\""
-								},
-								{
 									"key": "contractType",
 									"value": "ALL",
 									"description": "ALL,CURRENT_QUARTER,NEXT_QUARTER"
+								},
+								{
+									"key": "period",
+									"value": "5m",
+									"description": "\"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\""
 								},
 								{
 									"key": "limit",
@@ -1012,7 +1033,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/futures/data/basis?pair=&period=5m&contractType=CURRENT_QUARTER",
+							"raw": "{{url}}/futures/data/basis?pair=&contractType=CURRENT_QUARTER&period=5m",
 							"host": [
 								"{{url}}"
 							],
@@ -1027,14 +1048,14 @@
 									"value": ""
 								},
 								{
-									"key": "period",
-									"value": "5m",
-									"description": "\"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\""
-								},
-								{
 									"key": "contractType",
 									"value": "CURRENT_QUARTER",
 									"description": "CURRENT_QUARTER,NEXT_QUARTER"
+								},
+								{
+									"key": "period",
+									"value": "5m",
+									"description": "\"5m\",\"15m\",\"30m\",\"1h\",\"2h\",\"4h\",\"6h\",\"12h\",\"1d\""
 								},
 								{
 									"key": "limit",
@@ -1058,8 +1079,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Trade",
@@ -1070,7 +1090,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a5bbbe41-e5d7-4773-a879-3ef9c140d20b",
 								"exec": [
 									""
 								],
@@ -1129,7 +1148,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "979be84e-d05f-4f99-b8f6-2a2b7439a50e",
 								"exec": [
 									""
 								],
@@ -1183,7 +1201,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "8a179332-7190-46a2-a7a9-fc5877051ad5",
 								"exec": [
 									""
 								],
@@ -1207,7 +1224,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/order?symbol=&side=&positionSide=&type=&timeInForce=&quantity=&reduceOnly=&price=&newClientOrderId=&stopPrice=&closePosition=&activationPrice=&callbackRate=&workingType=CONTRACT_PRICE&priceProtect=&newOrderRespType=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/dapi/v1/order?symbol=&side=&type=&quantity=&price=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1228,7 +1245,8 @@
 								{
 									"key": "positionSide",
 									"value": "",
-									"description": "Default BOTH for One-way Mode ;\nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode."
+									"description": "Default BOTH for One-way Mode ;\nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode.",
+									"disabled": true
 								},
 								{
 									"key": "type",
@@ -1236,7 +1254,8 @@
 								},
 								{
 									"key": "timeInForce",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "quantity",
@@ -1244,7 +1263,8 @@
 								},
 								{
 									"key": "reduceOnly",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "price",
@@ -1252,38 +1272,46 @@
 								},
 								{
 									"key": "newClientOrderId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "stopPrice",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "closePosition",
 									"value": "",
-									"description": "true, false；Close-All，used with STOP_MARKET or TAKE_PROFIT_MARKET."
+									"description": "true, false；Close-All，used with STOP_MARKET or TAKE_PROFIT_MARKET.",
+									"disabled": true
 								},
 								{
 									"key": "activationPrice",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "callbackRate",
 									"value": "",
-									"description": "Used with TRAILING_STOP_MARKET orders, min 0.1, max 5 where 1 for 1%"
+									"description": "Used with TRAILING_STOP_MARKET orders, min 0.1, max 5 where 1 for 1%",
+									"disabled": true
 								},
 								{
 									"key": "workingType",
 									"value": "CONTRACT_PRICE",
-									"description": "stopPrice triggered by: \"MARK_PRICE\", \"CONTRACT_PRICE\". Default \"CONTRACT_PRICE\""
+									"description": "stopPrice triggered by: \"MARK_PRICE\", \"CONTRACT_PRICE\". Default \"CONTRACT_PRICE\"",
+									"disabled": true
 								},
 								{
 									"key": "priceProtect",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "newOrderRespType",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1305,7 +1333,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "fea04591-84fe-4182-94c8-795268994762",
 								"exec": [
 									""
 								],
@@ -1363,7 +1390,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "0bb462b5-4de8-41db-a5c5-84d8179175f7",
 								"exec": [
 									""
 								],
@@ -1387,7 +1413,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/order?symbol=&orderId=&origClientOrderId=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/dapi/v1/order?symbol=&orderId=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1407,7 +1433,8 @@
 								},
 								{
 									"key": "origClientOrderId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1428,7 +1455,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "d586b3de-e2d8-428f-b8ba-d3f36d4cdcd8",
 								"exec": [
 									""
 								],
@@ -1452,7 +1478,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/order?symbol=&orderId=&origClientOrderId=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/dapi/v1/order?symbol=&orderId=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1472,7 +1498,8 @@
 								},
 								{
 									"key": "origClientOrderId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1493,7 +1520,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a2a1cf2a-3f4d-4d23-a491-9319c324aef0",
 								"exec": [
 									""
 								],
@@ -1550,7 +1576,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "82ed0a6f-7f71-445c-8354-87825b53a9f8",
 								"exec": [
 									""
 								],
@@ -1574,7 +1599,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/batchOrders?symbol=&orderIdList=&origClientOrderIdList=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/dapi/v1/batchOrders?symbol=&orderIdList=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1595,7 +1620,8 @@
 								},
 								{
 									"key": "origClientOrderIdList",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1616,7 +1642,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "daa0e5c7-8c3d-44d2-986f-c1ad5a7c02ec",
 								"exec": [
 									""
 								],
@@ -1678,7 +1703,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "1a86df1e-a709-419e-940f-6591fbf98b2b",
 								"exec": [
 									""
 								],
@@ -1702,7 +1726,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/openOrder?symbol=&orderId=&origClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/dapi/v1/openOrder?symbol=&orderId=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1722,7 +1746,8 @@
 								},
 								{
 									"key": "origClientOrderId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1743,7 +1768,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "1c2d676f-0aa7-4ba2-860f-6d45d4920ca1",
 								"exec": [
 									""
 								],
@@ -1767,7 +1791,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/openOrders?symbol=&pair=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/dapi/v1/openOrders?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1779,11 +1803,13 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "pair",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1804,7 +1830,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a56fc65d-7a81-4009-b22c-37e019298b62",
 								"exec": [
 									""
 								],
@@ -1828,7 +1853,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/allOrders?symbol=&pair=&orderId=&startTime=&endTime=&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/dapi/v1/allOrders?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1840,28 +1865,34 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "pair",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "orderId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
 									"value": "500",
-									"description": "Default 500; max 1000."
+									"description": "Default 500; max 1000.",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1882,7 +1913,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e13201d6-95fb-44f3-9012-d3f3346430c5",
 								"exec": [
 									"",
 									""
@@ -1935,7 +1965,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "61cdb1dc-d0c4-46ee-bb8f-76510fb620b4",
 								"exec": [
 									""
 								],
@@ -1996,7 +2025,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "e51c1ac2-55fb-404b-89e0-b7c17c921398",
 								"exec": [
 									""
 								],
@@ -2057,7 +2085,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "8451b197-7675-40a6-9425-2b6a9da039c0",
 								"exec": [
 									""
 								],
@@ -2081,7 +2108,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/positionMargin?symbol=&positionSide=&amount=&type=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/dapi/v1/positionMargin?symbol=&amount=&type=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2098,7 +2125,8 @@
 								{
 									"key": "positionSide",
 									"value": "",
-									"description": "Default BOTH for One-way Mode ; \nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode."
+									"description": "Default BOTH for One-way Mode ; \nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode.",
+									"disabled": true
 								},
 								{
 									"key": "amount",
@@ -2127,7 +2155,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "a905d27b-cfb9-462a-a8e0-c38f9e6cb57b",
 								"exec": [
 									""
 								],
@@ -2151,7 +2178,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/positionMargin/history?symbol=&type=&startTime=&endTime=&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/dapi/v1/positionMargin/history?symbol=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2168,19 +2195,23 @@
 								},
 								{
 									"key": "type",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": "500"
+									"value": "500",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -2201,7 +2232,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "98bc1995-4f4f-4f56-8516-0295aa7b4ae0",
 								"exec": [
 									"",
 									""
@@ -2225,7 +2255,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/positionRisk?marginAsset=&pair=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/dapi/v1/positionRisk?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2237,11 +2267,13 @@
 							"query": [
 								{
 									"key": "marginAsset",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "pair",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -2262,7 +2294,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "0fe3c444-b798-47e0-8daa-533a90fc41c3",
 								"exec": [
 									"",
 									""
@@ -2286,7 +2317,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/userTrades?symbol=&pair=&startTime=&endTime=&fromId=&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/dapi/v1/userTrades?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2298,27 +2329,33 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "pair",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "fromId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": "500"
+									"value": "500",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -2339,7 +2376,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "fd1fb2a2-c748-42ed-aead-a7184acaf175",
 								"exec": [
 									"",
 									""
@@ -2363,7 +2399,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/income?symbol=&incomeType=&startTime&endTime&limit=100&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/dapi/v1/income?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2375,23 +2411,28 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "incomeType",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": "100"
+									"value": "100",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -2412,7 +2453,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "37e86654-e7c9-42ce-98d0-dd315e0cee5c",
 								"exec": [
 									"",
 									""
@@ -2436,7 +2476,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/leverageBracket?pair=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/dapi/v1/leverageBracket?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2448,7 +2488,8 @@
 							"query": [
 								{
 									"key": "pair",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -2469,7 +2510,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "1c61474f-9c43-4ed8-af66-d75eea26f7f6",
 								"exec": [
 									"",
 									""
@@ -2493,7 +2533,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/forceOrders?symbol=&autoCloseType=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/dapi/v1/forceOrders?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2505,25 +2545,30 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "autoCloseType",
 									"value": "",
-									"description": "\"LIQUIDATION\" for liquidation orders, \"ADL\" for ADL orders."
+									"description": "\"LIQUIDATION\" for liquidation orders, \"ADL\" for ADL orders.",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
 									"value": "",
-									"description": "Default 50; max 100."
+									"description": "Default 50; max 100.",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -2544,7 +2589,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "84ab3fc6-7126-4f78-86a1-06f1c42cac87",
 								"exec": [
 									"",
 									""
@@ -2568,7 +2612,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/dapi/v1/adlQuantile?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/dapi/v1/adlQuantile?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2580,7 +2624,8 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -2595,8 +2640,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Data Stream",
@@ -2691,15 +2735,13 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "8ff2be8e-e3b1-4b85-9a40-7e9a9ae251d4",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -2757,13 +2799,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "a0a8f887-8797-4197-bf56-bcd0a6f01f0f",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

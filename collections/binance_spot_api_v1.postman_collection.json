@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9b90d2d4-d15b-4f63-bb93-c5a4112d2d79",
+		"_postman_id": "bcaffa5a-5fd2-459c-8c87-28c086991b41",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -26,7 +26,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/blvt/tokenInfo?tokenName=",
+							"raw": "{{url}}/sapi/v1/blvt/tokenInfo",
 							"host": [
 								"{{url}}"
 							],
@@ -39,7 +39,8 @@
 							"query": [
 								{
 									"key": "tokenName",
-									"value": ""
+									"value": "",
+									"disabled": true
 								}
 							]
 						}
@@ -112,7 +113,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/blvt/subscribe/record?tokenName=&id=&startTime=&endTime=&limit=1000&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/blvt/subscribe/record?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -126,24 +127,29 @@
 							"query": [
 								{
 									"key": "tokenName",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "id",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
 									"value": "1000",
-									"description": "default  1000 ， max1000"
+									"description": "default  1000 ， max1000",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -224,7 +230,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/blvt/redeem/record?tokenName=&id=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/blvt/redeem/record?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -238,24 +244,29 @@
 							"query": [
 								{
 									"key": "tokenName",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "id",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
 									"value": "",
-									"description": "default  1000 ， max1000"
+									"description": "default  1000 ， max1000",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -287,7 +298,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/blvt/userLimit?tokenName=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/blvt/userLimit?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -300,7 +311,8 @@
 							"query": [
 								{
 									"key": "tokenName",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -369,7 +381,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/liquidity?poolId=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/bswap/liquidity?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -382,7 +394,8 @@
 							"query": [
 								{
 									"key": "poolId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -467,7 +480,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/liquidityRemove?poolId=&type=&asset=&shareAmount=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/bswap/liquidityRemove?poolId=&type=&shareAmount=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -489,7 +502,8 @@
 								},
 								{
 									"key": "asset",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "shareAmount",
@@ -525,7 +539,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/liquidityOps?operationId=&poolId=&operation=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/bswap/liquidityOps?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -538,27 +552,33 @@
 							"query": [
 								{
 									"key": "operationId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "poolId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "operation",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -696,7 +716,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/swap?swapId=&startTime=&endTime=&status=&quoteAsset=&baseAsset=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/bswap/swap?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -709,32 +729,113 @@
 							"query": [
 								{
 									"key": "swapId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "status",
 									"value": "",
-									"description": "0: pending for swap, 1: success, 2: failed"
+									"description": "0: pending for swap, 1: success, 2: failed",
+									"disabled": true
 								},
 								{
 									"key": "quoteAsset",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "baseAsset",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "C2C",
+			"item": [
+				{
+					"name": "Get C2C Trade History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/c2c/orderMatch/listUserOrderHistory?tradeType=BUY&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"c2c",
+								"orderMatch",
+								"listUserOrderHistory"
+							],
+							"query": [
+								{
+									"key": "tradeType",
+									"value": "BUY",
+									"description": "BUY, SELL"
+								},
+								{
+									"key": "startTimestamp",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "endTimestamp",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "",
+									"description": "default 1",
+									"disabled": true
+								},
+								{
+									"key": "rows",
+									"value": "",
+									"description": "default 100, max 100",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -896,7 +997,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/sub-account/list?email=&isFreeze=&page=&limit=&recvWindow=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/list?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -909,23 +1010,28 @@
 							"query": [
 								{
 									"key": "email",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "isFreeze",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "page",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "recvWindow",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -957,7 +1063,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/sub-account/sub/transfer/history?fromEmail=&toEmail=&startTime=&endTime=&page=1&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/sub/transfer/history?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -972,27 +1078,33 @@
 							"query": [
 								{
 									"key": "fromEmail",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "toEmail",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "page",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": "500"
+									"value": "500",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1024,7 +1136,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/sub-account/futures/internalTransfer?email&futuresType&startTime&endTime&page=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/futures/internalTransfer?email&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1042,25 +1154,30 @@
 								},
 								{
 									"key": "futuresType",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "page",
 									"value": "",
-									"description": "default 1"
+									"description": "default 1",
+									"disabled": true
 								},
 								{
 									"key": "limit",
 									"value": "",
-									"description": "default 50, max 500"
+									"description": "default 50, max 500",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1205,7 +1322,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/sub-account/spotSummary?email=&page=&size=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/spotSummary?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1218,17 +1335,20 @@
 							"query": [
 								{
 									"key": "email",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "page",
 									"value": "",
-									"description": "default 1"
+									"description": "default 1",
+									"disabled": true
 								},
 								{
 									"key": "size",
 									"value": "",
-									"description": "default 10, max 20"
+									"description": "default 10, max 20",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1261,7 +1381,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/capital/deposit/subAddress?email&coin&network&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/capital/deposit/subAddress?email&coin&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1284,7 +1404,8 @@
 								},
 								{
 									"key": "network",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1316,7 +1437,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/capital/deposit/subHisrec?email&coin&network&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/capital/deposit/subHisrec?email&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1335,11 +1456,35 @@
 								},
 								{
 									"key": "coin",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
-									"key": "network",
-									"value": null
+									"key": "status",
+									"value": null,
+									"description": "0(0:pending, 6:credited but cannot withdraw, 1:success)",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": null,
+									"description": "default:0",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1371,7 +1516,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/sub-account/status?email&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/status?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1384,7 +1529,8 @@
 							"query": [
 								{
 									"key": "email",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1846,7 +1992,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/sub-account/transfer/subToSub?email=&asset&amount&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/transfer/subToSub?toEmail=&asset&amount&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1859,7 +2005,7 @@
 							],
 							"query": [
 								{
-									"key": "email",
+									"key": "toEmail",
 									"value": ""
 								},
 								{
@@ -1950,7 +2096,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/sub-account/transfer/subUserHistory?asset=&type=&startTime=&endTime=&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/transfer/subUserHistory?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1964,23 +2110,28 @@
 							"query": [
 								{
 									"key": "asset",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "type",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": "500"
+									"value": "500",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -2012,7 +2163,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/sub-account/universalTransfer?fromEmail=&toEmail=&fromAccountType=&toAccountType=&asset=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/universalTransfer?fromAccountType=&toAccountType=&asset=&amount=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2025,11 +2176,13 @@
 							"query": [
 								{
 									"key": "fromEmail",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "toEmail",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "fromAccountType",
@@ -2079,7 +2232,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/sub-account/universalTransfer?fromEmail=&toEmail=&startTime=&endTime=&page=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/sub-account/universalTransfer?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2092,27 +2245,33 @@
 							"query": [
 								{
 									"key": "fromEmail",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "toEmail",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "page",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -2905,7 +3064,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/futures/transfer?asset=&startTime&endTime&current=&size=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/futures/transfer?asset=&startTime&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2926,16 +3085,19 @@
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "current",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "size",
 									"value": "",
-									"description": "Default:10 Max:100"
+									"description": "Default:10 Max:100",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -3026,7 +3188,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/futures/loan/borrow/history?coin=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/futures/loan/borrow/history?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3041,19 +3203,23 @@
 							"query": [
 								{
 									"key": "coin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -3140,7 +3306,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/futures/loan/repay/history?coin=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/futures/loan/repay/history?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3155,19 +3321,23 @@
 							"query": [
 								{
 									"key": "coin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -3283,7 +3453,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/futures/loan/configs?collateralCoin=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/futures/loan/configs?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3297,7 +3467,8 @@
 							"query": [
 								{
 									"key": "collateralCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -3329,7 +3500,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v2/futures/loan/configs?loanCoin=&collateralCoin=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v2/futures/loan/configs?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3343,11 +3514,13 @@
 							"query": [
 								{
 									"key": "loanCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "collateralCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -3703,7 +3876,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/futures/loan/adjustCollateral/history?loanCoin=&collateralCoin=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/futures/loan/adjustCollateral/history?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3718,23 +3891,28 @@
 							"query": [
 								{
 									"key": "loanCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "collateralCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -3766,7 +3944,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/futures/loan/liquidationHistory?loanCoin=&collateralCoin=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/futures/loan/liquidationHistory?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3780,23 +3958,28 @@
 							"query": [
 								{
 									"key": "loanCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "collateralCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -4024,7 +4207,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/futures/loan/interestHistory?collateralCoin=&startTime=&endTime=&current=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/futures/loan/interestHistory?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -4038,23 +4221,28 @@
 							"query": [
 								{
 									"key": "collateralCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "current",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -4159,7 +4347,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/accountSnapshot?type=SPOT&limit=5&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/accountSnapshot?type=SPOT&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -4187,7 +4375,8 @@
 								{
 									"key": "limit",
 									"value": "5",
-									"description": "min 5, max 30, default 5"
+									"description": "min 5, max 30, default 5",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -4320,8 +4509,8 @@
 								{
 									"key": "withdrawOrderId",
 									"value": "",
-									"disabled": true,
-									"description": "client id for withdraw"
+									"description": "client id for withdraw",
+									"disabled": true
 								},
 								{
 									"key": "network",
@@ -4335,8 +4524,8 @@
 								{
 									"key": "addressTag",
 									"value": "",
-									"disabled": true,
-									"description": "Secondary address identifier for coins like XRP,XMR etc."
+									"description": "Secondary address identifier for coins like XRP,XMR etc.",
+									"disabled": true
 								},
 								{
 									"key": "amount",
@@ -4345,14 +4534,14 @@
 								{
 									"key": "transactionFeeFlag",
 									"value": "",
-									"disabled": true,
-									"description": "Boolean value, default: false"
+									"description": "Boolean value, default: false",
+									"disabled": true
 								},
 								{
 									"key": "name",
 									"value": "",
-									"disabled": true,
-									"description": "Description of the address."
+									"description": "Description of the address.",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -4418,14 +4607,14 @@
 								{
 									"key": "offset",
 									"value": null,
-									"disabled": true,
-									"description": "Default:0"
+									"description": "Default:0",
+									"disabled": true
 								},
 								{
 									"key": "limit",
 									"value": null,
-									"disabled": true,
-									"description": "Default:1000, Max:1000"
+									"description": "Default:1000, Max:1000",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -4457,7 +4646,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/capital/withdraw/history?coin=BTC&limit=100&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/capital/withdraw/history?coin=BTC&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -4476,8 +4665,8 @@
 								{
 									"key": "status",
 									"value": null,
-									"disabled": true,
-									"description": "0:Email Sent,1:Cancelled 2:Awaiting Approval 3:Rejected 4:Processing 5:Failure 6:Completed"
+									"description": "0:Email Sent,1:Cancelled 2:Awaiting Approval 3:Rejected 4:Processing 5:Failure 6:Completed",
+									"disabled": true
 								},
 								{
 									"key": "offset",
@@ -4487,20 +4676,20 @@
 								{
 									"key": "limit",
 									"value": "100",
-									"description": "Default: 1000, Max: 1000"
+									"description": "Default: 1000, Max: 1000",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
 									"value": null,
-									"disabled": true,
-									"description": "Default: 90 days from current timestamp"
-
+									"description": "Default: 90 days from current timestamp",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
 									"value": null,
-									"disabled": true,
-									"description": "Default: present timestamp"
+									"description": "Default: present timestamp",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -4583,7 +4772,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/account/status?recvWindow=5000&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/account/status?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -4777,7 +4966,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/asset/assetDividend?limit=20&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/asset/assetDividend?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -4805,7 +4994,8 @@
 								},
 								{
 									"key": "limit",
-									"value": "20"
+									"value": "20",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -5020,14 +5210,14 @@
 								{
 									"key": "current",
 									"value": "",
-									"disabled": true,
-									"description": "Default 1"
+									"description": "Default 1",
+									"disabled": true
 								},
 								{
 									"key": "size",
 									"value": "",
-									"disabled": true,
-									"description": "Default 10, Max 100"
+									"description": "Default 10, Max 100",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -5078,8 +5268,8 @@
 								{
 									"key": "needBtcValuation",
 									"value": "",
-									"disabled": true,
-									"description": "true or false"
+									"description": "true or false",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -5514,7 +5704,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/loan?asset=&isIsolated=&symbol=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/loan?asset=&amount=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5532,12 +5722,14 @@
 								{
 									"key": "isIsolated",
 									"value": "",
-									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”"
+									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”",
+									"disabled": true
 								},
 								{
 									"key": "symbol",
 									"value": "",
-									"description": "isolated symbol"
+									"description": "isolated symbol",
+									"disabled": true
 								},
 								{
 									"key": "amount",
@@ -5573,7 +5765,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/repay?asset=&isIsolated=&symbol=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/repay?asset=&amount=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5591,12 +5783,14 @@
 								{
 									"key": "isIsolated",
 									"value": "",
-									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”"
+									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”",
+									"disabled": true
 								},
 								{
 									"key": "symbol",
 									"value": "",
-									"description": "isolated symbol"
+									"description": "isolated symbol",
+									"disabled": true
 								},
 								{
 									"key": "amount",
@@ -5632,7 +5826,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/asset?asset=BTC&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/asset?asset=BTC",
 							"host": [
 								"{{url}}"
 							],
@@ -5646,14 +5840,6 @@
 								{
 									"key": "asset",
 									"value": "BTC"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
 								}
 							]
 						}
@@ -5677,7 +5863,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/pair?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/pair?symbol=BTCUSDT",
 							"host": [
 								"{{url}}"
 							],
@@ -5691,14 +5877,6 @@
 								{
 									"key": "symbol",
 									"value": "BTCUSDT"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
 								}
 							]
 						}
@@ -5722,7 +5900,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/allAssets?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/allAssets",
 							"host": [
 								"{{url}}"
 							],
@@ -5731,16 +5909,6 @@
 								"v1",
 								"margin",
 								"allAssets"
-							],
-							"query": [
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
 							]
 						}
 					},
@@ -5763,7 +5931,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/allPairs?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/allPairs",
 							"host": [
 								"{{url}}"
 							],
@@ -5772,16 +5940,6 @@
 								"v1",
 								"margin",
 								"allPairs"
-							],
-							"query": [
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
 							]
 						}
 					},
@@ -5804,7 +5962,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/priceIndex?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/priceIndex?symbol=BTCUSDT",
 							"host": [
 								"{{url}}"
 							],
@@ -5818,14 +5976,6 @@
 								{
 									"key": "symbol",
 									"value": "BTCUSDT"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
 								}
 							]
 						}
@@ -5849,7 +5999,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/order?symbol=&isIsolated=&side=&type=&quantity=&quoteOrderQty=&price=&stopPrice=&newClientOrderId=&icebergQty=&newOrderRespType=&sideEffectType=&timeInForce=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/order?symbol=&side=&type=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5867,7 +6017,8 @@
 								{
 									"key": "isIsolated",
 									"value": "",
-									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”"
+									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”",
+									"disabled": true
 								},
 								{
 									"key": "side",
@@ -5879,39 +6030,48 @@
 								},
 								{
 									"key": "quantity",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "quoteOrderQty",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "price",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "stopPrice",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "newClientOrderId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "icebergQty",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "newOrderRespType",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "sideEffectType",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timeInForce",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -5943,7 +6103,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/order?symbol=&isIsolated=&orderId=&origClientOrderId=&newClientOrderId=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/order?symbol=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -5961,19 +6121,23 @@
 								{
 									"key": "isIsolated",
 									"value": "",
-									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”"
+									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”",
+									"disabled": true
 								},
 								{
 									"key": "orderId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "origClientOrderId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "newClientOrderId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -6005,7 +6169,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/openOrders?symbol=&isIsolated=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/openOrders?symbol=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6023,7 +6187,8 @@
 								{
 									"key": "isIsolated",
 									"value": "",
-									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”"
+									"description": "\"TRUE\", \"FALSE\"，default: “FALSE”",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -6055,7 +6220,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/transfer?asset=BTCUSDT&type&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/transfer?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6068,30 +6233,36 @@
 							"query": [
 								{
 									"key": "asset",
-									"value": "BTCUSDT"
+									"value": "BTCUSDT",
+									"disabled": true
 								},
 								{
 									"key": "type",
 									"value": null,
-									"description": "Tranfer Type: ROLL_IN, ROLL_OUT"
+									"description": "Tranfer Type: ROLL_IN, ROLL_OUT",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "current",
 									"value": "1",
-									"description": "Currently querying page. Start from 1. Default:1"
+									"description": "Currently querying page. Start from 1. Default:1",
+									"disabled": true
 								},
 								{
 									"key": "size",
 									"value": "10",
-									"description": "Default:10 Max:100"
+									"description": "Default:10 Max:100",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -6123,7 +6294,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/loan?asset=&isolatedSymbol=&txId=&startTime=&endTime=&current=1&size=10&archived=false&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/loan?asset=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6140,32 +6311,39 @@
 								},
 								{
 									"key": "isolatedSymbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "txId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "current",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "size",
-									"value": "10"
+									"value": "10",
+									"disabled": true
 								},
 								{
 									"key": "archived",
 									"value": "false",
-									"description": "Default: false. Set to true for archived data from 6 months ago"
+									"description": "Default: false. Set to true for archived data from 6 months ago",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -6197,7 +6375,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/repay?asset=&isolatedSymbol=&txId=&startTime=&endTime=&current=1&size=10&archived=false&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/repay?asset=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6214,32 +6392,39 @@
 								},
 								{
 									"key": "isolatedSymbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "txId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "current",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "size",
-									"value": "10"
+									"value": "10",
+									"disabled": true
 								},
 								{
 									"key": "archived",
 									"value": "false",
-									"description": "Default: false. Set to true for archived data from 6 months ago"
+									"description": "Default: false. Set to true for archived data from 6 months ago",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -6271,7 +6456,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/interestHistory?asset=&isolatedSymbol=&startTime=&endTime=&current=1&size=10&archived=false&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/interestHistory?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6284,32 +6469,39 @@
 							"query": [
 								{
 									"key": "asset",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "isolatedSymbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "current",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "size",
-									"value": "10"
+									"value": "10",
+									"disabled": true
 								},
 								{
 									"key": "archived",
 									"value": "false",
-									"description": "Default: false. Set to true for archived data from 6 months ago"
+									"description": "Default: false. Set to true for archived data from 6 months ago",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -6443,7 +6635,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/order?symbol=&isIsolated=&orderId=&origClientOrderId=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/order?symbol=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6460,15 +6652,18 @@
 								},
 								{
 									"key": "isIsolated",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "orderId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "origClientOrderId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -6500,7 +6695,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/openOrders?symbol=&isIsolated=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/openOrders?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6513,11 +6708,13 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "isIsolated",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -6549,7 +6746,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/allOrders?symbol=&isIsolated=&orderId=&startTime=&endTime=&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/allOrders?symbol=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6566,24 +6763,29 @@
 								},
 								{
 									"key": "isIsolated",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "orderId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
 									"value": "",
-									"description": "Default 500; max 1000."
+									"description": "Default 500; max 1000.",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": "500"
+									"value": "500",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -6615,7 +6817,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/myTrades?symbol=&isIsolated=&startTime=&endTime=&fromId=&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/myTrades?symbol=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6632,24 +6834,29 @@
 								},
 								{
 									"key": "isIsolated",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "fromId",
 									"value": "",
-									"description": "Default 500; max 1000."
+									"description": "Default 500; max 1000.",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": "500"
+									"value": "500",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -6681,7 +6888,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/maxBorrowable?asset=&isolatedSymbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/maxBorrowable?asset=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6698,7 +6905,8 @@
 								},
 								{
 									"key": "isolatedSymbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -6730,7 +6938,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/maxTransferable?asset=&isolatedSymbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/maxTransferable?asset=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6747,7 +6955,8 @@
 								},
 								{
 									"key": "isolatedSymbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -6779,7 +6988,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/bnbBurn?spotBNBBurn=&interestBNBBurn=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/bnbBurn?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6792,12 +7001,14 @@
 								{
 									"key": "spotBNBBurn",
 									"value": "",
-									"description": "\"true\" or \"false\""
+									"description": "\"true\" or \"false\"",
+									"disabled": true
 								},
 								{
 									"key": "interestBNBBurn",
 									"value": "",
-									"description": "\"true\" or \"false\""
+									"description": "\"true\" or \"false\"",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -6869,7 +7080,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/interestRateHistory?asset=&vipLevel=&startTime=&endTime=&limit=&recvWindow=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/interestRateHistory?asset=&recvWindow=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6887,22 +7098,26 @@
 								{
 									"key": "vipLevel",
 									"value": "",
-									"description": "Default: user's vip level"
+									"description": "Default: user's vip level",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
 									"value": "",
-									"description": "Default: 7 days ago"
+									"description": "Default: 7 days ago",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
 									"value": "",
-									"description": "Default: present. Maximum range: 3 months."
+									"description": "Default: present. Maximum range: 3 months.",
+									"disabled": true
 								},
 								{
 									"key": "limit",
 									"value": "",
-									"description": "Default: 20. Maximum: 100"
+									"description": "Default: 20. Maximum: 100",
+									"disabled": true
 								},
 								{
 									"key": "recvWindow",
@@ -6973,13 +7188,6 @@
 								"api",
 								"v3",
 								"time"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": "",
-									"disabled": true
-								}
 							]
 						},
 						"description": "Test connectivity to the Rest API and get the current server time."
@@ -6998,7 +7206,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/exchangeInfo?symbol=BNBBTC&symbols=[\"BTCUSDT\",\"BNBBTC\"]",
+							"raw": "{{url}}/api/v3/exchangeInfo",
 							"host": [
 								"{{url}}"
 							],
@@ -7036,7 +7244,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/depth?symbol=BTCUSDT&limit=100",
+							"raw": "{{url}}/api/v3/depth?symbol=BTCUSDT",
 							"host": [
 								"{{url}}"
 							],
@@ -7053,7 +7261,8 @@
 								{
 									"key": "limit",
 									"value": "100",
-									"description": "Default 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500, 1000, 5000]"
+									"description": "Default 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500, 1000, 5000]",
+									"disabled": true
 								}
 							]
 						}
@@ -7072,7 +7281,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/trades?symbol=BTCUSDT&limit=500",
+							"raw": "{{url}}/api/v3/trades?symbol=BTCUSDT",
 							"host": [
 								"{{url}}"
 							],
@@ -7089,7 +7298,8 @@
 								{
 									"key": "limit",
 									"value": "500",
-									"description": "Default 500; max 1000."
+									"description": "Default 500; max 1000.",
+									"disabled": true
 								}
 							]
 						}
@@ -7113,7 +7323,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/historicalTrades?symbol=BTCUSDT&limit=500&fromId",
+							"raw": "{{url}}/api/v3/historicalTrades?symbol=BTCUSDT",
 							"host": [
 								"{{url}}"
 							],
@@ -7130,11 +7340,13 @@
 								{
 									"key": "limit",
 									"value": "500",
-									"description": "Default 500; max 1000."
+									"description": "Default 500; max 1000.",
+									"disabled": true
 								},
 								{
 									"key": "fromId",
-									"value": null
+									"value": null,
+									"disabled": true
 								}
 							]
 						}
@@ -7153,7 +7365,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/aggTrades?symbol=BTCUSDT&limit=500",
+							"raw": "{{url}}/api/v3/aggTrades?symbol=BTCUSDT",
 							"host": [
 								"{{url}}"
 							],
@@ -7185,7 +7397,8 @@
 								{
 									"key": "limit",
 									"value": "500",
-									"description": "Default 500; max 1000."
+									"description": "Default 500; max 1000.",
+									"disabled": true
 								}
 							]
 						}
@@ -7204,7 +7417,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/klines?symbol=BTCUSDT&interval=1m&limit=500",
+							"raw": "{{url}}/api/v3/klines?symbol=BTCUSDT&interval=1m",
 							"host": [
 								"{{url}}"
 							],
@@ -7235,7 +7448,8 @@
 								{
 									"key": "limit",
 									"value": "500",
-									"description": "Default 500; max 1000."
+									"description": "Default 500; max 1000.",
+									"disabled": true
 								}
 							]
 						}
@@ -7285,7 +7499,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/ticker/24hr?symbol=BTCUSDT",
+							"raw": "{{url}}/api/v3/ticker/24hr",
 							"host": [
 								"{{url}}"
 							],
@@ -7298,7 +7512,8 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTCUSDT"
+									"value": "BTCUSDT",
+									"disabled": true
 								}
 							]
 						}
@@ -7317,7 +7532,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/ticker/price?symbol=BTCUSDT",
+							"raw": "{{url}}/api/v3/ticker/price",
 							"host": [
 								"{{url}}"
 							],
@@ -7330,7 +7545,8 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTCUSDT"
+									"value": "BTCUSDT",
+									"disabled": true
 								}
 							]
 						}
@@ -7349,7 +7565,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/ticker/bookTicker?symbol=BTCUSDT",
+							"raw": "{{url}}/api/v3/ticker/bookTicker",
 							"host": [
 								"{{url}}"
 							],
@@ -7362,7 +7578,8 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTCUSDT"
+									"value": "BTCUSDT",
+									"disabled": true
 								}
 							]
 						}
@@ -7532,7 +7749,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/mining/worker/list?algo=&userName=&pageIndex=&sort=&sortColumn=&workerStatus=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/mining/worker/list?algo=&userName=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -7557,22 +7774,26 @@
 								{
 									"key": "pageIndex",
 									"value": "",
-									"description": "Page number，default is first page，start form 1"
+									"description": "Page number，default is first page，start form 1",
+									"disabled": true
 								},
 								{
 									"key": "sort",
 									"value": "",
-									"description": "sort sequence（default=0）0 positive sequence，1 negative sequence"
+									"description": "sort sequence（default=0）0 positive sequence，1 negative sequence",
+									"disabled": true
 								},
 								{
 									"key": "sortColumn",
 									"value": "",
-									"description": "sort sequence（default=0）0 positive sequence，1 negative sequence"
+									"description": "sort sequence（default=0）0 positive sequence，1 negative sequence",
+									"disabled": true
 								},
 								{
 									"key": "workerStatus",
 									"value": "",
-									"description": "miners status（default=0）0 all，1 valid，2 invalid，3failure"
+									"description": "miners status（default=0）0 all，1 valid，2 invalid，3failure",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -7588,7 +7809,7 @@
 					"response": []
 				},
 				{
-					"name": "Revenue List (USER_DATA)",
+					"name": "Earnings List (USER_DATA)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -7604,7 +7825,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/mining/payment/list?algo=&userName=&coin=&startDate=&endDate=&pageIndex=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/mining/payment/list?algo=&userName=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -7628,195 +7849,28 @@
 								},
 								{
 									"key": "coin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startDate",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endDate",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "pageIndex",
-									"value": ""
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Statistic List (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/mining/statistics/user/status?algo=&userName=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"mining",
-								"statistics",
-								"user",
-								"status"
-							],
-							"query": [
-								{
-									"key": "algo",
 									"value": "",
-									"description": "Algorithm(sha256)"
-								},
-								{
-									"key": "userName",
-									"value": "",
-									"description": "Mining account"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Account List (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/mining/statistics/user/list?algo=&userName=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"mining",
-								"statistics",
-								"user",
-								"list"
-							],
-							"query": [
-								{
-									"key": "algo",
-									"value": "",
-									"description": "Algorithm(sha256)"
-								},
-								{
-									"key": "userName",
-									"value": "",
-									"description": "Mining account"
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Earnings List(USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/mining/payment/list?algo=&userName=&coin=&startDate=&endDate=&pageIndex=&pageSize=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"mining",
-								"payment",
-								"list"
-							],
-							"query": [
-								{
-									"key": "algo",
-									"value": ""
-								},
-								{
-									"key": "userName",
-									"value": ""
-								},
-								{
-									"key": "coin",
-									"value": ""
-								},
-								{
-									"key": "startDate",
-									"value": ""
-								},
-								{
-									"key": "endDate",
-									"value": ""
-								},
-								{
-									"key": "pageIndex",
-									"value": ""
+									"disabled": true
 								},
 								{
 									"key": "pageSize",
-									"value": ""
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -7848,7 +7902,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/mining/payment/other?algo=&userName=&coin=&startDate=&endDate=&pageIndex=&PageSize=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/mining/payment/other?algo=&userName=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -7872,23 +7926,28 @@
 								},
 								{
 									"key": "coin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startDate",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endDate",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "pageIndex",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
-									"key": "PageSize",
-									"value": ""
+									"key": "pageSize",
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -7920,7 +7979,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/mining/hash-transfer/config/details/list?pageIndex=&PageSize=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/mining/hash-transfer/config/details/list?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -7936,11 +7995,13 @@
 							"query": [
 								{
 									"key": "pageIndex",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
-									"key": "PageSize",
-									"value": ""
+									"key": "pageSize",
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -7972,7 +8033,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/mining/hash-transfer/profit/details?configId=&userName=&pageIndex=&PageSize=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/mining/hash-transfer/profit/details?configId=&userName=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -7995,11 +8056,13 @@
 								},
 								{
 									"key": "pageIndex",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
-									"key": "PageSize",
-									"value": ""
+									"key": "pageSize",
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -8130,6 +8193,112 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Statistic List (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/mining/statistics/user/status?algo=&userName=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"mining",
+								"statistics",
+								"user",
+								"status"
+							],
+							"query": [
+								{
+									"key": "algo",
+									"value": "",
+									"description": "Algorithm(sha256)"
+								},
+								{
+									"key": "userName",
+									"value": "",
+									"description": "Mining account"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account List (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/mining/statistics/user/list?algo=&userName=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"mining",
+								"statistics",
+								"user",
+								"list"
+							],
+							"query": [
+								{
+									"key": "algo",
+									"value": "",
+									"description": "Algorithm(sha256)"
+								},
+								{
+									"key": "userName",
+									"value": "",
+									"description": "Mining account"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -8153,7 +8322,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/lending/daily/product/list?status=ALL&featured=ALL&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/lending/daily/product/list?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -8169,11 +8338,13 @@
 								{
 									"key": "status",
 									"value": "ALL",
-									"description": "\"ALL\", \"SUBSCRIBABLE\", \"UNSUBSCRIBABLE\"; default: 'ALL'"
+									"description": "\"ALL\", \"SUBSCRIBABLE\", \"UNSUBSCRIBABLE\"; default: 'ALL'",
+									"disabled": true
 								},
 								{
 									"key": "featured",
-									"value": "ALL"
+									"value": "ALL",
+									"disabled": true
 								},
 								{
 									"key": "current",
@@ -8462,7 +8633,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/lending/project/list?asset=USDT&type=ACTIVITY&status=ALL&isSortAsc=true&sortBy=START_TIME&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/lending/project/list?type=ACTIVITY&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -8476,7 +8647,8 @@
 							"query": [
 								{
 									"key": "asset",
-									"value": "USDT"
+									"value": "USDT",
+									"disabled": true
 								},
 								{
 									"key": "type",
@@ -8486,27 +8658,32 @@
 								{
 									"key": "status",
 									"value": "ALL",
-									"description": "ALL\", \"SUBSCRIBABLE\", \"UNSUBSCRIBABLE\"; default \"ALL\""
+									"description": "ALL\", \"SUBSCRIBABLE\", \"UNSUBSCRIBABLE\"; default \"ALL\"",
+									"disabled": true
 								},
 								{
 									"key": "isSortAsc",
 									"value": "true",
-									"description": "default \"true\""
+									"description": "default \"true\"",
+									"disabled": true
 								},
 								{
 									"key": "sortBy",
 									"value": "START_TIME",
-									"description": "\"START_TIME\", \"LOT_SIZE\", \"INTEREST_RATE\", \"DURATION\"; default \"START_TIME"
+									"description": "\"START_TIME\", \"LOT_SIZE\", \"INTEREST_RATE\", \"DURATION\"; default \"START_TIME",
+									"disabled": true
 								},
 								{
 									"key": "current",
 									"value": "1",
-									"description": "Currently querying page. Start from 1. Default:1"
+									"description": "Currently querying page. Start from 1. Default:1",
+									"disabled": true
 								},
 								{
 									"key": "size",
 									"value": "10",
-									"description": "Default:10, Max:100"
+									"description": "Default:10, Max:100",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -8588,7 +8765,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/lending/project/position/list?asset=USDT&projectId=&status=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/lending/project/position/list?asset=USDT&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -8607,12 +8784,14 @@
 								},
 								{
 									"key": "projectId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "status",
 									"value": "",
-									"description": "\"HOLDING\", \"REDEEMED\""
+									"description": "\"HOLDING\", \"REDEEMED\"",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -8686,7 +8865,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/lending/union/purchaseRecord?lendingType=DAILY&asset&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/lending/union/purchaseRecord?lendingType=DAILY&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -8704,23 +8883,28 @@
 								},
 								{
 									"key": "asset",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "current",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "size",
-									"value": "10"
+									"value": "10",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -8752,7 +8936,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/lending/union/redemptionRecord?lendingType=DAILY&asset&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/lending/union/redemptionRecord?lendingType=DAILY&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -8770,23 +8954,28 @@
 								},
 								{
 									"key": "asset",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "current",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "size",
-									"value": "10"
+									"value": "10",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -8818,7 +9007,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/lending/union/interestHistory?lendingType=DAILY&asset&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/lending/union/interestHistory?lendingType=DAILY&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -8836,23 +9025,28 @@
 								},
 								{
 									"key": "asset",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "current",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "size",
-									"value": "10"
+									"value": "10",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -8884,7 +9078,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/lending/positionChanged?projectId=&lot=&positionId=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/lending/positionChanged?projectId=&lot=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -8905,7 +9099,8 @@
 								},
 								{
 									"key": "positionId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -8963,7 +9158,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/order/test?symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=0.01&price=9000&newClientOrderId=my_order_id_1&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/api/v3/order/test?symbol=BTCUSDT&side=SELL&type=LIMIT&quantity=0.01&price=9000&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -8988,7 +9183,8 @@
 								},
 								{
 									"key": "timeInForce",
-									"value": "GTC"
+									"value": "GTC",
+									"disabled": true
 								},
 								{
 									"key": "quantity",
@@ -9005,7 +9201,8 @@
 								},
 								{
 									"key": "newClientOrderId",
-									"value": "my_order_id_1"
+									"value": "my_order_id_1",
+									"disabled": true
 								},
 								{
 									"key": "stopPrice",
@@ -9052,7 +9249,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/order?symbol=BTCUSDT&side=SELL&type=LIMIT&timeInForce=GTC&quantity=0.01&price=9000&newClientOrderId=my_order_id_1&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/api/v3/order?symbol=BTCUSDT&side=SELL&type=LIMIT&quantity=0.01&price=9000&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -9076,7 +9273,8 @@
 								},
 								{
 									"key": "timeInForce",
-									"value": "GTC"
+									"value": "GTC",
+									"disabled": true
 								},
 								{
 									"key": "quantity",
@@ -9093,7 +9291,8 @@
 								},
 								{
 									"key": "newClientOrderId",
-									"value": "my_order_id_1"
+									"value": "my_order_id_1",
+									"disabled": true
 								},
 								{
 									"key": "stopPrice",
@@ -9140,7 +9339,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/order?symbol=BTCUSDT&orderId&origClientOrderId&newClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/api/v3/order?symbol=BTCUSDT&orderId&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -9160,11 +9359,13 @@
 								},
 								{
 									"key": "origClientOrderId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "newClientOrderId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -9240,7 +9441,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/order?symbol=BTCUSDT&orderId=&origClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/api/v3/order?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -9256,11 +9457,13 @@
 								},
 								{
 									"key": "orderId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "origClientOrderId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -9292,7 +9495,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/openOrders?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/api/v3/openOrders?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -9304,7 +9507,8 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTCUSDT"
+									"value": "BTCUSDT",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -9336,7 +9540,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/allOrders?symbol=BTCUSDT&orderId&startTime&endTime&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/api/v3/allOrders?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -9352,19 +9556,23 @@
 								},
 								{
 									"key": "orderId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": "500"
+									"value": "500",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -9396,7 +9604,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/order/oco?symbol=BTCUSDT&listClientOrderId&side=&quantity=&limitClientOrderId&price&limitIcebergQty&stopClientOrderId&stopPrice&stopLimitPrice&stopIcebergQty&stopLimitTimeInForce&newOrderRespType&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/api/v3/order/oco?symbol=BTCUSDT&side=&quantity=&price&stopPrice&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -9413,7 +9621,8 @@
 								},
 								{
 									"key": "listClientOrderId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "side",
@@ -9425,7 +9634,8 @@
 								},
 								{
 									"key": "limitClientOrderId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "price",
@@ -9433,11 +9643,13 @@
 								},
 								{
 									"key": "limitIcebergQty",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "stopClientOrderId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "stopPrice",
@@ -9445,19 +9657,23 @@
 								},
 								{
 									"key": "stopLimitPrice",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "stopIcebergQty",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "stopLimitTimeInForce",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "newOrderRespType",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -9489,7 +9705,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/orderList?symbol=BTCUSDT&orderListId&listClientOrderId&newClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/api/v3/orderList?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -9505,15 +9721,18 @@
 								},
 								{
 									"key": "orderListId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "listClientOrderId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "newClientOrderId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -9545,7 +9764,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/orderList?orderListId&origClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/api/v3/orderList?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -9557,11 +9776,13 @@
 							"query": [
 								{
 									"key": "orderListId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "origClientOrderId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -9593,7 +9814,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/allOrderList?fromId&startTime&endTime&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/api/v3/allOrderList?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -9605,19 +9826,23 @@
 							"query": [
 								{
 									"key": "fromId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": "500"
+									"value": "500",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -9729,7 +9954,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/myTrades?symbol=BTCUSDT&startTime&endTime&fromId&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/api/v3/myTrades?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -9745,19 +9970,23 @@
 								},
 								{
 									"key": "startTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "fromId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": "500"
+									"value": "500",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",

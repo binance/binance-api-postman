@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8ae1974a-215f-46c7-a605-2fbb990299b6",
+		"_postman_id": "a8b7c0a5-be90-42dc-b0b3-d64666563621",
 		"name": "Binance perpetual future API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/futures/en/\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -55,13 +55,6 @@
 								"fapi",
 								"v1",
 								"time"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": "",
-									"disabled": true
-								}
 							]
 						}
 					},
@@ -87,13 +80,6 @@
 								"fapi",
 								"v1",
 								"exchangeInfo"
-							],
-							"query": [
-								{
-									"key": "",
-									"value": "",
-									"disabled": true
-								}
 							]
 						}
 					},
@@ -111,7 +97,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/depth?symbol=BTCUSDT&limit=100",
+							"raw": "{{url}}/fapi/v1/depth?symbol=BTCUSDT",
 							"host": [
 								"{{url}}"
 							],
@@ -128,7 +114,8 @@
 								{
 									"key": "limit",
 									"value": "100",
-									"description": "Default 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500, 1000]"
+									"description": "Default 100; max 1000. Valid limits:[5, 10, 20, 50, 100, 500, 1000]",
+									"disabled": true
 								}
 							]
 						}
@@ -147,7 +134,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/trades?symbol=BTCUSDT&limit=500",
+							"raw": "{{url}}/fapi/v1/trades?symbol=BTCUSDT",
 							"host": [
 								"{{url}}"
 							],
@@ -164,7 +151,8 @@
 								{
 									"key": "limit",
 									"value": "500",
-									"description": "Default 500; max 1000."
+									"description": "Default 500; max 1000.",
+									"disabled": true
 								}
 							]
 						}
@@ -188,7 +176,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/historicalTrades?symbol=BTCUSDT&limit=100",
+							"raw": "{{url}}/fapi/v1/historicalTrades?symbol=BTCUSDT",
 							"host": [
 								"{{url}}"
 							],
@@ -205,7 +193,8 @@
 								{
 									"key": "limit",
 									"value": "100",
-									"description": "Default 500; max 1000."
+									"description": "Default 500; max 1000.",
+									"disabled": true
 								},
 								{
 									"key": "fromId",
@@ -230,7 +219,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/aggTrades?symbol=BTCUSDT&limit=500",
+							"raw": "{{url}}/fapi/v1/aggTrades?symbol=BTCUSDT",
 							"host": [
 								"{{url}}"
 							],
@@ -245,11 +234,6 @@
 									"value": "BTCUSDT"
 								},
 								{
-									"key": "limit",
-									"value": "500",
-									"description": "Default 500; max 1000."
-								},
-								{
 									"key": "fromId",
 									"value": null,
 									"disabled": true
@@ -262,6 +246,12 @@
 								{
 									"key": "endTime",
 									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "500",
+									"description": "Default 500; max 1000.",
 									"disabled": true
 								}
 							]
@@ -281,7 +271,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/klines?symbol=BTCUSDT&limit=500&interval=1h",
+							"raw": "{{url}}/fapi/v1/klines?symbol=BTCUSDT&interval=1h",
 							"host": [
 								"{{url}}"
 							],
@@ -296,11 +286,6 @@
 									"value": "BTCUSDT"
 								},
 								{
-									"key": "limit",
-									"value": "500",
-									"description": "Default 500; max 1500."
-								},
-								{
 									"key": "interval",
 									"value": "1h",
 									"description": "1m, 1h, 1d"
@@ -313,6 +298,12 @@
 								{
 									"key": "endTime",
 									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "500",
+									"description": "Default 500; max 1500.",
 									"disabled": true
 								}
 							]
@@ -333,7 +324,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/continuousKlines?pair=&contractType=&interval=&startTime=&endTime=&limit=",
+							"raw": "{{url}}/fapi/v1/continuousKlines?pair=&contractType=&interval=",
 							"host": [
 								"{{url}}"
 							],
@@ -357,15 +348,18 @@
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "",
+									"disabled": true
 								}
 							]
 						},
@@ -385,7 +379,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/indexPriceKlines?pair=BTCUSDT&limit=500&interval=1m",
+							"raw": "{{url}}/fapi/v1/indexPriceKlines?pair=BTCUSDT&interval=1h",
 							"host": [
 								"{{url}}"
 							],
@@ -399,7 +393,6 @@
 									"key": "pair",
 									"value": "BTCUSDT"
 								},
-								
 								{
 									"key": "interval",
 									"value": "1h",
@@ -418,7 +411,8 @@
 								{
 									"key": "limit",
 									"value": "500",
-									"description": "Default 500; max 1500."
+									"description": "Default 500; max 1500.",
+									"disabled": true
 								}
 							]
 						},
@@ -438,7 +432,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/markPriceKlines?symbol=BTCUSDT&limit=500&interval=1m",
+							"raw": "{{url}}/fapi/v1/markPriceKlines?symbol=BTCUSDT&interval=1h",
 							"host": [
 								"{{url}}"
 							],
@@ -452,7 +446,6 @@
 									"key": "symbol",
 									"value": "BTCUSDT"
 								},
-								
 								{
 									"key": "interval",
 									"value": "1h",
@@ -471,7 +464,8 @@
 								{
 									"key": "limit",
 									"value": "500",
-									"description": "Default 500; max 1500."
+									"description": "Default 500; max 1500.",
+									"disabled": true
 								}
 							]
 						},
@@ -491,7 +485,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/premiumIndex?symbol=",
+							"raw": "{{url}}/fapi/v1/premiumIndex",
 							"host": [
 								"{{url}}"
 							],
@@ -503,7 +497,8 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								}
 							]
 						},
@@ -523,7 +518,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/fundingRate?symbol=BTCUSDT&limit=100",
+							"raw": "{{url}}/fapi/v1/fundingRate",
 							"host": [
 								"{{url}}"
 							],
@@ -535,7 +530,8 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTCUSDT"
+									"value": "BTCUSDT",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
@@ -549,7 +545,8 @@
 								},
 								{
 									"key": "limit",
-									"value": "100"
+									"value": "100",
+									"disabled": true
 								}
 							]
 						},
@@ -569,7 +566,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/ticker/24hr?symbol=",
+							"raw": "{{url}}/fapi/v1/ticker/24hr",
 							"host": [
 								"{{url}}"
 							],
@@ -582,7 +579,8 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								}
 							]
 						},
@@ -602,7 +600,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/ticker/24hr?symbol=",
+							"raw": "{{url}}/fapi/v1/ticker/24hr",
 							"host": [
 								"{{url}}"
 							],
@@ -615,7 +613,8 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								}
 							]
 						},
@@ -635,7 +634,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/ticker/bookTicker?symbol=",
+							"raw": "{{url}}/fapi/v1/ticker/bookTicker",
 							"host": [
 								"{{url}}"
 							],
@@ -648,7 +647,8 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								}
 							]
 						},
@@ -749,7 +749,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/futures/data/openInterestHist?symbol=BTCUSDT&period=&limit=30&startTime=&endTime=",
+							"raw": "{{url}}/futures/data/openInterestHist?symbol=BTCUSDT&period=",
 							"host": [
 								"{{url}}"
 							],
@@ -770,15 +770,18 @@
 								},
 								{
 									"key": "limit",
-									"value": "30"
+									"value": "30",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								}
 							]
 						},
@@ -803,7 +806,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/futures/data/topLongShortAccountRatio?symbol=BTCUSDT&period=&limit=30&startTime=&endTime=",
+							"raw": "{{url}}/futures/data/topLongShortAccountRatio?symbol=BTCUSDT&period=",
 							"host": [
 								"{{url}}"
 							],
@@ -824,15 +827,18 @@
 								},
 								{
 									"key": "limit",
-									"value": "30"
+									"value": "30",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								}
 							]
 						},
@@ -857,7 +863,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/futures/data/topLongShortPositionRatio?symbol=BTCUSDT&period=&limit=30&startTime=&endTime=",
+							"raw": "{{url}}/futures/data/topLongShortPositionRatio?symbol=BTCUSDT&period=",
 							"host": [
 								"{{url}}"
 							],
@@ -878,15 +884,18 @@
 								},
 								{
 									"key": "limit",
-									"value": "30"
+									"value": "30",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								}
 							]
 						},
@@ -911,7 +920,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/futures/data/globalLongShortAccountRatio?symbol=BTCUSDT&period=&limit=30&startTime=&endTime=",
+							"raw": "{{url}}/futures/data/globalLongShortAccountRatio?symbol=BTCUSDT&period=",
 							"host": [
 								"{{url}}"
 							],
@@ -932,15 +941,18 @@
 								},
 								{
 									"key": "limit",
-									"value": "30"
+									"value": "30",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								}
 							]
 						},
@@ -965,7 +977,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/futures/data/takerlongshortRatio?symbol=BTCUSDT&period=5m&limit=30&startTime=&endTime=",
+							"raw": "{{url}}/futures/data/takerlongshortRatio?symbol=BTCUSDT&period=5m",
 							"host": [
 								"{{url}}"
 							],
@@ -987,15 +999,18 @@
 								{
 									"key": "limit",
 									"value": "30",
-									"description": "default 30, max 500"
+									"description": "default 30, max 500",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								}
 							]
 						}
@@ -1019,7 +1034,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/lvtKlines?symbol=&interval=&startTime=&endTime=&limit=",
+							"raw": "{{url}}/fapi/v1/lvtKlines?symbol=&interval=",
 							"host": [
 								"{{url}}"
 							],
@@ -1040,16 +1055,19 @@
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
 									"value": "",
-									"description": "default 500, max 1000"
+									"description": "default 500, max 1000",
+									"disabled": true
 								}
 							]
 						}
@@ -1073,7 +1091,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/indexInfo?symbol=",
+							"raw": "{{url}}/fapi/v1/indexInfo",
 							"host": [
 								"{{url}}"
 							],
@@ -1086,15 +1104,15 @@
 								{
 									"key": "symbol",
 									"value": "",
-									"description": "token name"
+									"description": "token name",
+									"disabled": true
 								}
 							]
 						}
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Account",
@@ -1161,7 +1179,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "7bd98653-9b90-44cd-b053-795a16eb2b34",
 								"exec": [
 									"",
 									""
@@ -1185,7 +1202,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/income?symbol=BTCUSDT&incomeType=REALIZED_PNL&limit=100&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/income?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1197,11 +1214,13 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTCUSDT"
+									"value": "BTCUSDT",
+									"disabled": true
 								},
 								{
 									"key": "incomeType",
-									"value": "REALIZED_PNL"
+									"value": "REALIZED_PNL",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
@@ -1215,7 +1234,8 @@
 								},
 								{
 									"key": "limit",
-									"value": "100"
+									"value": "100",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1297,7 +1317,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "c0acfd08-92e8-4870-a683-0903cf025081",
 								"exec": [
 									"",
 									""
@@ -1321,7 +1340,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/userTrades?symbol=BTCUSDT&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/userTrades?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1352,7 +1371,8 @@
 								},
 								{
 									"key": "limit",
-									"value": "500"
+									"value": "500",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1373,7 +1393,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "938ae3ad-faab-4256-8708-a63c0910c0cc",
 								"exec": [
 									"",
 									""
@@ -1397,7 +1416,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/income?symbol=BTCUSDT&incomeType=REALIZED_PNL&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/income?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1409,11 +1428,13 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTCUSDT"
+									"value": "BTCUSDT",
+									"disabled": true
 								},
 								{
 									"key": "incomeType",
-									"value": "REALIZED_PNL"
+									"value": "REALIZED_PNL",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
@@ -1427,7 +1448,8 @@
 								},
 								{
 									"key": "limit",
-									"value": "500"
+									"value": "500",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1448,7 +1470,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "45a897fb-2496-4b8e-a7e3-dd754dbcf4d9",
 								"exec": [
 									"",
 									""
@@ -1590,7 +1611,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/leverageBracket?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/leverageBracket?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1602,7 +1623,8 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTCUSDT"
+									"value": "BTCUSDT",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1624,7 +1646,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "23e39840-eb02-4401-a5c1-b115d8d16d38",
 								"exec": [
 									"",
 									""
@@ -1648,7 +1669,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/adlQuantile?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/adlQuantile?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1660,7 +1681,8 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1681,7 +1703,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "95eef7d6-dcca-4b6d-ac8a-5199cb412c68",
 								"exec": [
 									"",
 									""
@@ -1837,8 +1858,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Order",
@@ -1849,7 +1869,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9d4e3d88-6196-4f55-b54e-e283a13d6b74",
 								"exec": [
 									""
 								],
@@ -1873,7 +1892,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/order?symbol=&side=&positionSide=&type=&timeInForce=&quantity=&reduceOnly=&price=&newClientOrderId=&stopPrice=&closePosition=&activationPrice=&callbackRate=&workingType=CONTRACT_PRICE&newOrderRespType=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/order?symbol=&side=&type=&quantity=&price=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -1894,7 +1913,8 @@
 								{
 									"key": "positionSide",
 									"value": "",
-									"description": "Default BOTH for One-way Mode ;\nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode."
+									"description": "Default BOTH for One-way Mode ;\nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode.",
+									"disabled": true
 								},
 								{
 									"key": "type",
@@ -1902,7 +1922,8 @@
 								},
 								{
 									"key": "timeInForce",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "quantity",
@@ -1910,7 +1931,8 @@
 								},
 								{
 									"key": "reduceOnly",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "price",
@@ -1918,35 +1940,42 @@
 								},
 								{
 									"key": "newClientOrderId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "stopPrice",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "closePosition",
 									"value": "",
-									"description": "true, false；Close-All，used with STOP_MARKET or TAKE_PROFIT_MARKET."
+									"description": "true, false；Close-All，used with STOP_MARKET or TAKE_PROFIT_MARKET.",
+									"disabled": true
 								},
 								{
 									"key": "activationPrice",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "callbackRate",
 									"value": "",
-									"description": "Used with TRAILING_STOP_MARKET orders, min 0.1, max 5 where 1 for 1%"
+									"description": "Used with TRAILING_STOP_MARKET orders, min 0.1, max 5 where 1 for 1%",
+									"disabled": true
 								},
 								{
 									"key": "workingType",
 									"value": "CONTRACT_PRICE",
-									"description": "stopPrice triggered by: \"MARK_PRICE\", \"CONTRACT_PRICE\". Default \"CONTRACT_PRICE\""
+									"description": "stopPrice triggered by: \"MARK_PRICE\", \"CONTRACT_PRICE\". Default \"CONTRACT_PRICE\"",
+									"disabled": true
 								},
 								{
 									"key": "newOrderRespType",
 									"value": "",
-									"description": "\"ACK\", \"RESULT\", default \"ACK\""
+									"description": "\"ACK\", \"RESULT\", default \"ACK\"",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -1968,7 +1997,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "b34691ad-9b2b-48a9-b87e-ac250c5dc062",
 								"exec": [
 									""
 								],
@@ -2026,7 +2054,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "8eec1e41-ff2f-4b3f-aa06-ec839b1cec7d",
 								"exec": [
 									""
 								],
@@ -2050,7 +2077,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/order?symbol=BTCUSDT&orderId=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/order?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2066,7 +2093,13 @@
 								},
 								{
 									"key": "orderId",
-									"value": ""
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "origClientOrderId",
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -2087,7 +2120,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "9143be04-defc-459a-981f-2ffcfe94acba",
 								"exec": [
 									""
 								],
@@ -2111,7 +2143,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/order?symbol=BTCUSDT&orderId=1192355366&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/order?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2127,7 +2159,13 @@
 								},
 								{
 									"key": "orderId",
-									"value": "1192355366"
+									"value": "1192355366",
+									"disabled": true
+								},
+								{
+									"key": "origClientOrderId",
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -2148,7 +2186,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "86cb9b9c-29f9-4de8-9221-befbfa641a32",
 								"exec": [
 									""
 								],
@@ -2205,7 +2242,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "8d8a7dd1-7219-4836-90a8-d922d9420e67",
 								"exec": [
 									""
 								],
@@ -2267,7 +2303,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "967523ed-a42d-493f-900c-3628dfc373ad",
 								"exec": [
 									""
 								],
@@ -2334,7 +2369,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "7dab918e-4245-4e80-b76d-b7effd11e97a",
 								"exec": [
 									""
 								],
@@ -2358,7 +2392,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/openOrders?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/openOrders?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2370,7 +2404,8 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": "BTCUSDT"
+									"value": "BTCUSDT",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -2391,7 +2426,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "36d9f743-40a2-42ee-8f86-87b1807d219c",
 								"exec": [
 									""
 								],
@@ -2415,7 +2449,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/openOrder?symbol=&orderId=&origClientOrderId&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/openOrder?symbol=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2431,11 +2465,13 @@
 								},
 								{
 									"key": "orderId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "origClientOrderId",
-									"value": null
+									"value": null,
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -2456,7 +2492,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "07f2518d-ba93-417e-bee3-180574716ea1",
 								"exec": [
 									""
 								],
@@ -2480,7 +2515,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/allOrders?symbol=&orderId=&startTime=&endTime=&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/allOrders?symbol=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2496,20 +2531,24 @@
 								},
 								{
 									"key": "orderId",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
 									"value": "500",
-									"description": "Default 500; max 1000."
+									"description": "Default 500; max 1000.",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -2530,7 +2569,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "6b5e2069-2a28-48e2-ac06-af99ab29ede0",
 								"exec": [
 									""
 								],
@@ -2554,7 +2592,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/forceOrders?symbol=&autoCloseType=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/forceOrders?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2566,23 +2604,28 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "autoCloseType",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -2597,8 +2640,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Trade",
@@ -2609,7 +2651,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "5247eece-2f6c-4274-9c98-f3ea42496ccb",
 								"exec": [
 									""
 								],
@@ -2670,7 +2711,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "91240ee3-4e8c-4de8-878d-d21cb010d104",
 								"exec": [
 									""
 								],
@@ -2731,7 +2771,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "32946918-f836-4f03-8c38-9ff1b3ea9df0",
 								"exec": [
 									""
 								],
@@ -2755,7 +2794,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/positionMargin?symbol=BTCUSDT&positionSide=&amount=100&type=1&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/positionMargin?symbol=BTCUSDT&amount=100&type=1&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2772,7 +2811,8 @@
 								{
 									"key": "positionSide",
 									"value": "",
-									"description": "Default BOTH for One-way Mode ; \nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode."
+									"description": "Default BOTH for One-way Mode ; \nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode.",
+									"disabled": true
 								},
 								{
 									"key": "amount",
@@ -2801,7 +2841,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "fc9852f3-7c1a-40ea-9450-74fb9c573ce4",
 								"exec": [
 									""
 								],
@@ -2825,7 +2864,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/positionMargin/history?symbol=BTCUSDT&type=1&startTime=&endTime=&limit=500&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/positionMargin/history?symbol=BTCUSDT&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2842,19 +2881,23 @@
 								},
 								{
 									"key": "type",
-									"value": "1"
+									"value": "1",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": "500"
+									"value": "500",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -2875,7 +2918,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "37266432-4b65-4497-af63-2ca628ef48ed",
 								"exec": [
 									""
 								],
@@ -2934,7 +2976,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "cd08e1a8-c241-42d1-b730-9b0edf086fc9",
 								"exec": [
 									""
 								],
@@ -2988,7 +3029,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2fbaf78d-f8ff-4448-b477-4a279e87e964",
 								"exec": [
 									""
 								],
@@ -3012,7 +3052,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/apiTradingStatus?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/fapi/v1/apiTradingStatus?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -3024,7 +3064,8 @@
 							"query": [
 								{
 									"key": "symbol",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -3039,8 +3080,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Data Stream",
@@ -3135,15 +3175,13 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
 	],
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "73c46ce3-821c-4424-a988-2879e7105bad",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -3201,13 +3239,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "226a0392-bead-4106-893c-87f82aa1c8ca",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

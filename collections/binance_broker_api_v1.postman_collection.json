@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8fc1b4b9-b00d-4469-93b3-84087388ac9e",
+		"_postman_id": "c2ab70a9-1a3a-416b-a065-9114f1b2ff61",
 		"name": "Binance Broker API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/Brokerage-API/General",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -23,7 +23,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/subAccount?timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/subAccount?tag&timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -34,6 +34,11 @@
 						"subAccount"
 					],
 					"query": [
+						{
+							"key": "tag",
+							"value": null,
+							"description": "tag length should be less than 32"
+						},
 						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
@@ -166,7 +171,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/subAccountApi?subAccountId=&canTrade=&marginTrade=&futuresTrade=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/subAccountApi?subAccountId=&canTrade=&timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -187,11 +192,13 @@
 						},
 						{
 							"key": "marginTrade",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "futuresTrade",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -272,7 +279,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/subAccountApi?subAccountId=&subAccountApiKey=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/subAccountApi?subAccountId=&timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -289,7 +296,20 @@
 						},
 						{
 							"key": "subAccountApiKey",
-							"value": ""
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": null,
+							"description": "default 1",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": null,
+							"description": "default 500, max 500",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -382,7 +402,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/subAccount?subAccountId=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/subAccount?timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -395,7 +415,20 @@
 					"query": [
 						{
 							"key": "subAccountId",
-							"value": ""
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": null,
+							"description": "default 1",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": null,
+							"description": "default 500",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -427,7 +460,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/subAccountApi/commission?subAccountId=&makerCommission=&takerCommission=&marginMakerCommission=&marginTakerCommission=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/subAccountApi/commission?subAccountId=&makerCommission=&takerCommission=&timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -453,11 +486,13 @@
 						},
 						{
 							"key": "marginMakerCommission",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "marginTakerCommission",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -548,7 +583,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/subAccountApi/commission/futures?subAccountId=&symbol=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/subAccountApi/commission/futures?subAccountId=&timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -567,7 +602,8 @@
 						},
 						{
 							"key": "symbol",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -640,7 +676,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/transfer?fromId=&toId=&clientTranId=&asset=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/transfer?asset=&amount=&timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -653,15 +689,18 @@
 					"query": [
 						{
 							"key": "fromId",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "toId",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "clientTranId",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "asset",
@@ -701,7 +740,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/transfer?subAccountId=&clientTradId=&startTime=&endTime=&page=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/transfer?timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -713,28 +752,44 @@
 					],
 					"query": [
 						{
-							"key": "subAccountId",
-							"value": ""
+							"key": "fromId",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "toId",
+							"value": null,
+							"disabled": true
 						},
 						{
 							"key": "clientTradId",
-							"value": ""
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "showAllStatus",
+							"value": null,
+							"disabled": true
 						},
 						{
 							"key": "startTime",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "endTime",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "page",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "limit",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -766,7 +821,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/rebate/recentRecord?subAccountId=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/rebate/recentRecord?subAccountId=&startTime=&endTime=&page&size=&timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -791,8 +846,14 @@
 							"value": ""
 						},
 						{
-							"key": "limit",
-							"value": ""
+							"key": "page",
+							"value": null,
+							"description": "default 1"
+						},
+						{
+							"key": "size",
+							"value": "",
+							"description": "default 500, max 500"
 						},
 						{
 							"key": "timestamp",
@@ -824,7 +885,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/rebate/historicalRecord?subAccountId=&startTime=&endTime=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/rebate/historicalRecord?timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -838,15 +899,18 @@
 					"query": [
 						{
 							"key": "subAccountId",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "startTime",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "endTime",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -878,7 +942,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/rebate/historicalRecord?subAccountId=&startTime=&endTime=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/rebate/historicalRecord?timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -892,19 +956,23 @@
 					"query": [
 						{
 							"key": "subAccountId",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "startTime",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "endTime",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "limit",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -1085,7 +1153,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/subAccount/depositHist?subAccountId=&coin=&status=&startTime=&endTime=&limit=&offset=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/subAccount/depositHist?timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -1099,31 +1167,38 @@
 					"query": [
 						{
 							"key": "subAccountId",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "coin",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "status",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "startTime",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "endTime",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "limit",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "offset",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -1155,7 +1230,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/subAccount/spotSummary?subAccountId=&page=&size=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/subAccount/spotSummary?timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -1169,15 +1244,18 @@
 					"query": [
 						{
 							"key": "subAccountId",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "page",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "size",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -1209,7 +1287,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/subAccount/marginSummary?subAccountId=&page=&size=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/subAccount/marginSummary?timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -1223,15 +1301,18 @@
 					"query": [
 						{
 							"key": "subAccountId",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "page",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "size",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -1263,7 +1344,7 @@
 					}
 				],
 				"url": {
-					"raw": "{{url}}/sapi/v1/broker/subAccount/futuresSummary?subAccountId=&page=&size=&timestamp={{timestamp}}&signature={{signature}}",
+					"raw": "{{url}}/sapi/v1/broker/subAccount/futuresSummary?timestamp={{timestamp}}&signature={{signature}}",
 					"host": [
 						"{{url}}"
 					],
@@ -1277,15 +1358,18 @@
 					"query": [
 						{
 							"key": "subAccountId",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "page",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "size",
-							"value": ""
+							"value": "",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -1305,7 +1389,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "3fbfbd8c-6197-44ab-908f-4971862faadc",
 				"type": "text/javascript",
 				"exec": [
 					"const ts  = Date.now();",
@@ -1366,13 +1449,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "71541026-2f73-43c3-9af5-c664e157b066",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
