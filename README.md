@@ -20,7 +20,7 @@ We also provide a Postman environment (JSON configuration file), which can be co
 - Select the `Environments` tab on the left, choose an environment, and set your Api Key and Secret by changing the `Current Value` column (see screenshot); otherwise, Postman will upload your credentials into your personal Postman account. (The `Timestamp`, `Signature`, `Initial Value` fields can be left empty. Postman will fill in `Initial Value` with what you provide in `Current Value`.)
     <p align="center"><img src="assets/4.png" alt="Screenshot of Postman for Mac, showing where the user should fill in their API and secret keys."/></p>
     
-- Select your newly-added environment from the environment dropdown menu. On Mac, this is at top right, to the left of the5eye icon.
+- Select your newly-added environment from the environment dropdown menu. On Mac, this is at top right, to the left of the eye icon.
     <p align="center"><img src="assets/5.png" alt="Screenshot of Postman for Mac, showing how imported environments can be selected from a dropdown ."/></p>
 
 ## Guide for using the Binance API with Postman
