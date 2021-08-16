@@ -5,22 +5,23 @@
 Binance now offers several Postman Collections for quick and easy usage of our RESTful APIs. <br>
 We also provide a Postman environment (JSON configuration file), which can be conveniently imported for use with your own API and secret keys.
 
-## How to import Collections
+## How to import Configuration
 
-- Download the Collections.
-- Import the Collections into the Postman app.
-## How to import the environment
-- Download the environment JSON file.
-- Open the Postman app.
-- Click the `Manage Environments` button (gear icon). On Postman for Mac, for example, the button is at the top right of the Postman console:
-    <p align="center"><img src="https://raw.githubusercontent.com/binance/binance-api-postman/assets/postman/1.png" alt="Screenshot of Postman for Mac, with 'Manage Environments' button pointed out at top right."/></p>
-- On the `Manage Environments` pop-up page, click `Import`. Select the environment file you downloaded, then click `Add`.
-   <p align="center"><img src="https://raw.githubusercontent.com/binance/binance-api-postman/assets/postman/2.png" alt="Screenshot of of Postman for Mac, showing the Manage Environments screen after the Spot API environment file is imported. "/></p>
-- Set your API key and secret key. **Please remember** to also set the `Current Value` column (see screenshot); otherwise, Postman will upload into your personal Postman account. (The `Timestamp`, `Signature`, `Initial Value` fields can be left empty. Postman will fill in `Initial Value` with what you provide in `Current Value`.)
-    <p align="center"><img src="https://raw.githubusercontent.com/binance/binance-api-postman/assets/postman/3.png" alt="Screenshot of Postman for Mac, showing where the user should fill in their API and secret keys."/></p>
+- Download the Repository.
+- Click the `Import` button. On Postman for Mac, for example, the button is at the top left:
+    <p align="center"><img src="assets/1.png" alt="Screenshot of Postman for Mac, with 'Import' button pointed out at top left."/></p>
+
+- On the `Import` pop-up page, select the `Folder` tab. Click the `Choose folder from your computer` button and choose the root folder of the downloaded repository.
+   <p align="center"><img src="assets/2.png" alt="Screenshot of of Postman for Mac, showing the Import screen."/></p>
+
+- Select which collections and environments you would like to import and click the `Import` button.
+   <p align="center"><img src="assets/3.png" alt="Screenshot of of Postman for Mac, showing the Import screen after selecting the folder."/></p>
+
+- Select the `Environments` tab on the left, choose an environment, and set your Api Key and Secret by changing the `Current Value` column (see screenshot); otherwise, Postman will upload your credentials into your personal Postman account. (The `Timestamp`, `Signature`, `Initial Value` fields can be left empty. Postman will fill in `Initial Value` with what you provide in `Current Value`.)
+    <p align="center"><img src="assets/4.png" alt="Screenshot of Postman for Mac, showing where the user should fill in their API and secret keys."/></p>
     
-- Select your newly-added environment from the environment dropdown menu. On Mac, this is at top right, to the left of the `Manage Environments` gear icon.
-    <p align="center"><img src="https://raw.githubusercontent.com/binance/binance-api-postman/assets/postman/4.png" alt="Screenshot of Postman for Mac, showing how imported environments can be selected from a dropdown ."/></p>
+- Select your newly-added environment from the environment dropdown menu. On Mac, this is at top right, to the left of the eye icon.
+    <p align="center"><img src="assets/5.png" alt="Screenshot of Postman for Mac, showing how imported environments can be selected from a dropdown ."/></p>
 
 ## Guide for using the Binance API with Postman
 A guide to using the Binance Spot API Postman Collections can be found here:
