@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4675ee17-4b0c-4fbd-a2bc-b14ed46386e6",
+		"_postman_id": "2ed379b6-03ac-4cec-b928-61e982e7c39a",
 		"name": "Binance delivery futures API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/futures/en/\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -1328,6 +1328,89 @@
 					"response": []
 				},
 				{
+					"name": "Modify Order (TRADE)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/dapi/v1/order?symbol=&side=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dapi",
+								"v1",
+								"order"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "origClientOrderId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "symbol",
+									"value": ""
+								},
+								{
+									"key": "side",
+									"value": "",
+									"description": "SELL, BUY"
+								},
+								{
+									"key": "quantity",
+									"value": "",
+									"description": "Order quantity, cannot be sent with closePosition=true",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "https://binance-docs.github.io/apidocs/futures/en/#new-order-trade"
+					},
+					"response": []
+				},
+				{
 					"name": "Place Multiple Orders (TRADE)",
 					"event": [
 						{
@@ -1378,6 +1461,147 @@
 									"key": "signature",
 									"value": "{{signature}}",
 									"description": "Default BOTH for One-way Mode ;\nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Multiple Orders (TRADE)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/dapi/v1/batchOrders?batchOrders=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dapi",
+								"v1",
+								"batchOrders"
+							],
+							"query": [
+								{
+									"key": "batchOrders",
+									"value": "",
+									"description": "order list. Max 5 orders"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Default BOTH for One-way Mode ;\nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Modify History (USER_DATA)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/dapi/v1/orderAmendment?symbol=&orderId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dapi",
+								"v1",
+								"orderAmendment"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": ""
+								},
+								{
+									"key": "orderId",
+									"value": ""
+								},
+								{
+									"key": "origClientOrderId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": null,
+									"description": "Timestamp in ms to get modification history from INCLUSIVE",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": null,
+									"description": "Timestamp in ms to get modification history until INCLUSIVE",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": null,
+									"description": "Default 50; max 100",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
 								}
 							]
 						}
