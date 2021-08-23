@@ -8,7 +8,7 @@
 
 
 ## 如何导入和配置
-- 下载存储库到本地。
+- 下载 `binance-api-postman` 存储库到本地。
 
 - 单击 `Import` 按钮。 例如，在 Mac 版 Postman 上，按钮位于左上角：
     <p align="center"><img src="assets/1.png" alt="Mac 版 Postman 的屏幕截图，左上角指出了 'Import' 按钮。"/></p>
@@ -32,7 +32,7 @@ https://academy.binance.com/economics/binance-api-series-pt-1-spot-trading-with-
 
 
 ## Postman 安全实践
-为了保护帐户安全，建议采取以下最佳安全实践： 
+为了确保账户安全，建议采取以下最佳安全实践： 
 
 - 不要使用从未知来源获得的 Postman Collections。
 - 在使用前要检查好 Environment JSON 文件。
@@ -44,7 +44,7 @@ https://academy.binance.com/economics/binance-api-series-pt-1-spot-trading-with-
 ## 常见问题
 **Q:** 为什么我得不到任何回应？
 
-你没有设置 environment，或者设置了但是没有选中。请按照上面的步骤设置好你的 environment。
+检查是否已导入 environment 设置并从列表中选择对应的environment。请按照上面的步骤设置好你的 environment。
 
 **Q:** 如何debug或者怎么查看请求的URL？
 
@@ -67,7 +67,7 @@ https://academy.binance.com/economics/binance-api-series-pt-1-spot-trading-with-
 
 **Q:** 错误 `Mandatory parameter 'xxxx' was not sent, was empty/null, or malformed.`
 
-请参阅 API 文档以仔细检查所有必需参数的说明。
+请参阅 API 文档以仔细检查所有必需参数。
 
 
 ## 有疑问
