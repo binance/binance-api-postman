@@ -8,7 +8,7 @@
 
 
 ## 如何导入和配置
-- 下载存储库到本地。
+- 下载 `binance-api-postman` 存储库到本地。
 
 - 单击 `Import` 按钮。 例如，在 Mac 版 Postman 上，按钮位于左上角：
     <p align="center"><img src="assets/1.png" alt="Mac 版 Postman 的屏幕截图，左上角指出了 'Import' 按钮。"/></p>

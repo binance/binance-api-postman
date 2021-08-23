@@ -7,7 +7,7 @@ Binance now offers several Postman Collections and Environments (JSON files) for
 You only need to import and set up with your own API and secret keys to begin.
 
 ## How to import and configure
-- Download the Repository.
+- Download the `binance-api-postman` repository.
 
 - Click the `Import` button. On Postman for Mac, for example, the button is at the top left:
     <p align="center"><img src="assets/1.png" alt="Screenshot of Postman for Mac, with 'Import' button pointed out at top left."/></p>
@@ -47,7 +47,7 @@ You haven't imported the environment file or you've imported it but haven't sele
 
 **Q:** How can I debug a request or find the used URL?
 
-- Open the Postman's console to find requests parameters and URL.
+- Open the Postman's console to find requests' parameters and URL.
 - Debugging can be done by editing the `Pre-request Script` tab.
 
 **Q:** Error `API-key format invalid.`
