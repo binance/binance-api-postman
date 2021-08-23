@@ -47,7 +47,7 @@ You haven't imported the environment file or you've imported it but haven't sele
 
 **Q:** How can I debug a request or find the used URL?
 
-- Open the Postman's console to find requests's parameters and URL.
+- Open the Postman's console to find requests parameters and URL.
 - Debugging can be done by editing the `Pre-request Script` tab.
 
 **Q:** Error `API-key format invalid.`
@@ -70,5 +70,5 @@ Please refer to the API documentation to double check all the mandatory paramete
 
 
 ## My question isn't here
-If you don't find answer here, please consult https://dev.binance.vision/ for similar questions from the community or 
+If you don't find your answer here, please consult https://dev.binance.vision/ for similar questions from the community or 
 open an issue [here](https://github.com/binance/binance-api-postman/issues).
