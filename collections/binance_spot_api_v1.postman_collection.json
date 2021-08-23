@@ -5153,6 +5153,18 @@
 									"value": ""
 								},
 								{
+									"key": "fromSymbol",
+									"value": null,
+									"description": "Must be sent when type are ISOLATEDMARGIN_MARGIN and ISOLATEDMARGIN_ISOLATEDMARGIN",
+									"disabled": true
+								},
+								{
+									"key": "toSymbol",
+									"value": null,
+									"description": "Must be sent when type are MARGIN_ISOLATEDMARGIN and ISOLATEDMARGIN_ISOLATEDMARGIN",
+									"disabled": true
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
 								},
@@ -5217,6 +5229,18 @@
 									"key": "size",
 									"value": "",
 									"description": "Default 10, Max 100",
+									"disabled": true
+								},
+								{
+									"key": "fromSymbol",
+									"value": null,
+									"description": "Must be sent when type are ISOLATEDMARGIN_MARGIN and ISOLATEDMARGIN_ISOLATEDMARGIN",
+									"disabled": true
+								},
+								{
+									"key": "toSymbol",
+									"value": null,
+									"description": "Must be sent when type are MARGIN_ISOLATEDMARGIN and ISOLATEDMARGIN_ISOLATEDMARGIN",
 									"disabled": true
 								},
 								{
