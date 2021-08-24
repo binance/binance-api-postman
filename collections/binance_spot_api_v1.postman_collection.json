@@ -7195,7 +7195,7 @@
 									"value": "BTCUSDT"
 								},
 								{
-									"key": "isolated",
+									"key": "isIsolated",
 									"value": null,
 									"description": "For isolated margin or not, \"TRUE\", \"FALSE\"，default \"FALSE\"",
 									"disabled": true
@@ -7314,7 +7314,7 @@
 									"value": "BTCUSDT"
 								},
 								{
-									"key": "isolated",
+									"key": "isIsolated",
 									"value": null,
 									"description": "For isolated margin or not, \"TRUE\", \"FALSE\"，default \"FALSE\"",
 									"disabled": true
@@ -7379,7 +7379,7 @@
 							],
 							"query": [
 								{
-									"key": "isolated",
+									"key": "isIsolated",
 									"value": null,
 									"description": "For isolated margin or not, \"TRUE\", \"FALSE\"，default \"FALSE\"",
 									"disabled": true
@@ -7444,7 +7444,7 @@
 							],
 							"query": [
 								{
-									"key": "isolated",
+									"key": "isIsolated",
 									"value": null,
 									"description": "For isolated margin or not, \"TRUE\", \"FALSE\"，default \"FALSE\"",
 									"disabled": true
@@ -7519,7 +7519,7 @@
 							],
 							"query": [
 								{
-									"key": "isolated",
+									"key": "isIsolated",
 									"value": null,
 									"description": "For isolated margin or not, \"TRUE\", \"FALSE\"，default \"FALSE\"",
 									"disabled": true
