@@ -600,7 +600,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/ticker/24hr",
+							"raw": "{{url}}/fapi/v1/ticker/price",
 							"host": [
 								"{{url}}"
 							],
