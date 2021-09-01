@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0a787f84-404c-4973-9af8-1bd55f63cd08",
+		"_postman_id": "e61e5503-9272-4a18-80fc-1833a41c1413",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -4587,6 +4587,12 @@
 								{
 									"key": "coin",
 									"value": "BTC"
+								},
+								{
+									"key": "withdrawOrderId",
+									"value": "",
+									"description": "Client id for withdraw",
+									"disabled": true
 								},
 								{
 									"key": "status",
