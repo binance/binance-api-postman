@@ -4591,7 +4591,6 @@
 								{
 									"key": "withdrawOrderId",
 									"value": "",
-									"description": "Client id for withdraw",
 									"disabled": true
 								},
 								{
