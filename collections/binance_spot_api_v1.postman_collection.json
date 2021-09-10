@@ -5341,6 +5341,11 @@
 											"value": ""
 										},
 										{
+											"key": "recvWindow",
+											"value": null,
+											"disabled": true
+										},
+										{
 											"key": "timestamp",
 											"value": "{{timestamp}}"
 										},
@@ -5370,7 +5375,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/sapi/v1/margin/isolated/transfer?asset=&symbol=&transFrom=&transTo=&startTime&endTime&current=1&size=10&timestamp={{timestamp}}&signature={{signature}}",
+									"raw": "{{url}}/sapi/v1/margin/isolated/transfer?symbol=&timestamp={{timestamp}}&signature={{signature}}",
 									"host": [
 										"{{url}}"
 									],
@@ -5384,7 +5389,8 @@
 									"query": [
 										{
 											"key": "asset",
-											"value": ""
+											"value": "",
+											"disabled": true
 										},
 										{
 											"key": "symbol",
@@ -5393,30 +5399,41 @@
 										{
 											"key": "transFrom",
 											"value": "",
-											"description": "\"SPOT\", \"ISOLATED_MARGIN\""
+											"description": "\"SPOT\", \"ISOLATED_MARGIN\"",
+											"disabled": true
 										},
 										{
 											"key": "transTo",
 											"value": "",
-											"description": "\"SPOT\", \"ISOLATED_MARGIN\""
+											"description": "\"SPOT\", \"ISOLATED_MARGIN\"",
+											"disabled": true
 										},
 										{
 											"key": "startTime",
-											"value": null
+											"value": null,
+											"disabled": true
 										},
 										{
 											"key": "endTime",
-											"value": null
+											"value": null,
+											"disabled": true
 										},
 										{
 											"key": "current",
 											"value": "1",
-											"description": "Currently querying page. Start from 1. Default:1"
+											"description": "Currently querying page. Start from 1. Default:1",
+											"disabled": true
 										},
 										{
 											"key": "size",
 											"value": "10",
-											"description": "Default:10 Max:100"
+											"description": "Default:10 Max:100",
+											"disabled": true
+										},
+										{
+											"key": "recvWindow",
+											"value": null,
+											"disabled": true
 										},
 										{
 											"key": "timestamp",
@@ -5448,7 +5465,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/sapi/v1/margin/isolated/account?symbols=&timestamp={{timestamp}}&signature={{signature}}",
+									"raw": "{{url}}/sapi/v1/margin/isolated/account?timestamp={{timestamp}}&signature={{signature}}",
 									"host": [
 										"{{url}}"
 									],
@@ -5463,7 +5480,13 @@
 										{
 											"key": "symbols",
 											"value": "",
-											"description": "Max 5 symbols can be sent; separated by ','. e.g. 'BTCUSDT,BNBUSDT,ADAUSDT'"
+											"description": "Max 5 symbols can be sent; separated by ','. e.g. 'BTCUSDT,BNBUSDT,ADAUSDT'",
+											"disabled": true
+										},
+										{
+											"key": "recvWindow",
+											"value": "",
+											"disabled": true
 										},
 										{
 											"key": "timestamp",
@@ -5512,6 +5535,11 @@
 											"value": ""
 										},
 										{
+											"key": "recvWindow",
+											"value": null,
+											"disabled": true
+										},
+										{
 											"key": "timestamp",
 											"value": "{{timestamp}}"
 										},
@@ -5553,6 +5581,160 @@
 										"allPairs"
 									],
 									"query": [
+										{
+											"key": "recvWindow",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Disable Isolated Margin Account (TRADE)",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v1/margin/isolated/account?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v1",
+										"margin",
+										"isolated",
+										"account"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": ""
+										},
+										{
+											"key": "recvWindow",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Enable Isolated Margin Account (TRADE)",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v1/margin/isolated/account?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v1",
+										"margin",
+										"isolated",
+										"account"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": ""
+										},
+										{
+											"key": "recvWindow",
+											"value": null,
+											"disabled": true
+										},
+										{
+											"key": "timestamp",
+											"value": "{{timestamp}}"
+										},
+										{
+											"key": "signature",
+											"value": "{{signature}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Query Enabled Isolated Margin Account Limit (USER_DATA)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "X-MBX-APIKEY",
+										"type": "text",
+										"value": "{{binance-api-key}}"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/sapi/v1/margin/isolated/accountLimit?timestamp={{timestamp}}&signature={{signature}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"sapi",
+										"v1",
+										"margin",
+										"isolated",
+										"accountLimit"
+									],
+									"query": [
+										{
+											"key": "recvWindow",
+											"value": "",
+											"disabled": true
+										},
 										{
 											"key": "timestamp",
 											"value": "{{timestamp}}"
