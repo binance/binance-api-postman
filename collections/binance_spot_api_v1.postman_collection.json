@@ -775,6 +775,199 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Pool Configure (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bswap/swap?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bswap",
+								"swap"
+							],
+							"query": [
+								{
+									"key": "swapId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "",
+									"description": "0: pending for swap, 1: success, 2: failed",
+									"disabled": true
+								},
+								{
+									"key": "quoteAsset",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "baseAsset",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Liquidity Preview (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bswap/addLiquidityPreview?poolId=&type=&quoteAsset=&quoteQty=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bswap",
+								"addLiquidityPreview"
+							],
+							"query": [
+								{
+									"key": "poolId",
+									"value": ""
+								},
+								{
+									"key": "type",
+									"value": "",
+									"description": "\"SINGLE\" for adding a single token;\"COMBINATION\" for adding dual tokens"
+								},
+								{
+									"key": "quoteAsset",
+									"value": ""
+								},
+								{
+									"key": "quoteQty",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Liquidity Preview (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bswap/removeLiquidityPreview?poolId=&type=&quoteAsset=&shareAmount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bswap",
+								"removeLiquidityPreview"
+							],
+							"query": [
+								{
+									"key": "poolId",
+									"value": ""
+								},
+								{
+									"key": "type",
+									"value": "",
+									"description": "Type is \"SINGLE\", remove and obtain a single token;Type is \"COMBINATION\", remove and obtain dual token."
+								},
+								{
+									"key": "quoteAsset",
+									"value": ""
+								},
+								{
+									"key": "shareAmount",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
