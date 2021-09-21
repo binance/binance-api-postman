@@ -793,7 +793,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/swap?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/bswap/poolConfigure?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -801,42 +801,11 @@
 								"sapi",
 								"v1",
 								"bswap",
-								"swap"
+								"poolConfigure"
 							],
 							"query": [
 								{
-									"key": "swapId",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "startTime",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "endTime",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "status",
-									"value": "",
-									"description": "0: pending for swap, 1: success, 2: failed",
-									"disabled": true
-								},
-								{
-									"key": "quoteAsset",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "baseAsset",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "limit",
+									"key": "poolId",
 									"value": "",
 									"disabled": true
 								},
