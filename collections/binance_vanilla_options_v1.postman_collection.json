@@ -1,0 +1,1428 @@
+{
+	"info": {
+		"_postman_id": "57f53501-5531-458a-92cc-0f5d549471d0",
+		"name": "Binance vanilla options API",
+		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/voptions/en",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Quoting",
+			"item": [
+				{
+					"name": "Test connectivity",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/ping",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get server time",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/time",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"time"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get current trading pair info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/optionInfo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"optionInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get current limit info and trading pair info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/exchangeInfo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"exchangeInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get the spot index price",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/index?underlying=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"index"
+							],
+							"query": [
+								{
+									"key": "underlying",
+									"value": "",
+									"description": "Spot pair（Option contract underlying asset）"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get the latest price",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/ticker",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"ticker"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Option trading pair",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get the latest mark price",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/mark",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"mark"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Option trading pair",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Depth information",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/depth?symbol=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"depth"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Option trading pair"
+								},
+								{
+									"key": "limit",
+									"value": null,
+									"description": "Default:100 Max:1000.Optional value:[10, 20, 50, 100, 500, 1000]",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Candle data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/klines?symbol=&interval=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"klines"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Option trading pair"
+								},
+								{
+									"key": "interval",
+									"value": "",
+									"description": "Time Interval"
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"description": "Start Time",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"description": "End Time",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Number of records Default:500 Max:1500",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Recently completed Option trades",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/trades?symbol=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"trades"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Option trading pair"
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Number of records Default:100 Max:500",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query trade history",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/historicalTrades?symbol=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"historicalTrades"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Option trading pair"
+								},
+								{
+									"key": "fromId",
+									"value": "",
+									"description": "The UniqueId ID from which to return. The latest deal record is returned by default",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Number of records Default:100 Max:500",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Account asset info (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/account?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"account"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Funds transfer (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/transfer?currency=&type=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"transfer"
+							],
+							"query": [
+								{
+									"key": "currency",
+									"value": "",
+									"description": "Asset type"
+								},
+								{
+									"key": "type",
+									"value": "",
+									"description": "IN: Transfer from spot account to option account OUT: Transfer from option account to spot account"
+								},
+								{
+									"key": "amount",
+									"value": "",
+									"description": "Amount"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Option holdings info (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/position?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"position"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Option trading pair",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Account funding flow (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/bill?currency=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"bill"
+							],
+							"query": [
+								{
+									"key": "currency",
+									"value": "",
+									"description": "Asset type"
+								},
+								{
+									"key": "recordId",
+									"value": "",
+									"description": "Return the recordId and subsequent data, the latest data is returned by default",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"description": "Start Time",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"description": "End Time",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Number of result sets returned Default:100 Max:1000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Option order (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/order?symbol=&side=&type=&quantity=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"order"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Option trading pair"
+								},
+								{
+									"key": "side",
+									"value": "",
+									"description": "Buy/sell direction: SELL, BUY"
+								},
+								{
+									"key": "type",
+									"value": "",
+									"description": "Order Type: LIMIT, MARKET"
+								},
+								{
+									"key": "quantity",
+									"value": "",
+									"description": "Order Quantity"
+								},
+								{
+									"key": "price",
+									"value": "",
+									"description": "Order Price",
+									"disabled": true
+								},
+								{
+									"key": "timeInForce",
+									"value": "",
+									"description": "Time in force method（Default GTC)",
+									"disabled": true
+								},
+								{
+									"key": "reduceOnly",
+									"value": "",
+									"description": "Reduce Only（Default false)",
+									"disabled": true
+								},
+								{
+									"key": "postOnly",
+									"value": "",
+									"description": "Post Only（Default false）",
+									"disabled": true
+								},
+								{
+									"key": "newOrderRespType",
+									"value": "",
+									"description": "\"ACK\", \"RESULT\", Default \"ACK\"",
+									"disabled": true
+								},
+								{
+									"key": "clientOrderId",
+									"value": "",
+									"description": "User-defined order ID cannot be repeated in pending orders",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Place Multiple Option orders (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/batchOrders?orders=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"batchOrders"
+							],
+							"query": [
+								{
+									"key": "orders",
+									"value": "",
+									"description": "order list. Max 5 orders"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Option order (TRADE)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/order?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"order"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Option trading pair"
+								},
+								{
+									"key": "orderId",
+									"value": "",
+									"description": "Order ID",
+									"disabled": true
+								},
+								{
+									"key": "clientOrderId",
+									"value": "",
+									"description": "User-defined order ID",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Multiple Option orders (TRADE)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/batchOrders?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"batchOrders"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Option trading pair"
+								},
+								{
+									"key": "orderIds",
+									"value": "",
+									"description": "Order ID",
+									"disabled": true
+								},
+								{
+									"key": "clientOrderIds",
+									"value": "",
+									"description": "User-defined order ID",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel all Option orders (TRADE)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/allOpenOrders?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"allOpenOrders"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Option trading pair"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Option order (TRADE)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/order?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"order"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Option trading pair"
+								},
+								{
+									"key": "orderId",
+									"value": "",
+									"description": "Order ID",
+									"disabled": true
+								},
+								{
+									"key": "clientOrderId",
+									"value": "",
+									"description": "User-defined order ID",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query current pending Option orders (TRADE)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/openOrders?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"openOrders"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Option trading pair"
+								},
+								{
+									"key": "orderId",
+									"value": "",
+									"description": "Returns the orderId and subsequent orders, the most recent order is returned by default",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"description": "Start Time",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"description": "End Time",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Number of result sets returned Default:100 Max:1000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Option order history (TRADE)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/historyOrders?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"historyOrders"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Option trading pair"
+								},
+								{
+									"key": "orderId",
+									"value": "",
+									"description": "Returns the orderId and subsequent orders, the most recent order is returned by default",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"description": "Start Time",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"description": "End Time",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Number of result sets returned Default:100 Max:1000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Option Trade List (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/userTrades?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"userTrades"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Option trading pair"
+								},
+								{
+									"key": "fromId",
+									"value": "",
+									"description": "Trade id to fetch from. Default gets most recent trades.",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"description": "Start Time",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"description": "End Time",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Default 100; max 1000.",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Data Stream",
+			"item": [
+				{
+					"name": "Generate Listen Key (USER_STREAM)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/userDataStream?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"userDataStream"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Extend Listen Key validity period (USER_STREAM)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/userDataStream?listenKey=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"userDataStream"
+							],
+							"query": [
+								{
+									"key": "listenKey",
+									"value": "",
+									"description": "listenKey"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Listen Key (USER_STREAM)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/vapi/v1/userDataStream?listenKey=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"vapi",
+								"v1",
+								"userDataStream"
+							],
+							"query": [
+								{
+									"key": "listenKey",
+									"value": "",
+									"description": "listenKey"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"const ts  = Date.now();",
+					"pm.environment.set(\"timestamp\", ts);",
+					"",
+					"let paramsObject = {};",
+					"",
+					"const binance_api_secret = pm.environment.get(\"binance-api-secret\");",
+					"",
+					"const parameters = pm.request.url.query;",
+					"",
+					"parameters.map((param) => {",
+					"    if (param.key != 'signature' && ",
+					"        param.key != 'timestamp' && ",
+					"        !is_empty(param.value) &&",
+					"        !is_disabled(param.disabled)) {",
+					"            paramsObject[param.key] = param.value;",
+					"            //console.log(encodeURIComponent(param.value));",
+					"            //pm.environment.set(param.key, encodeURIComponent(param.value));",
+					"    }",
+					"})",
+					"        ",
+					"Object.assign(paramsObject, {'timestamp': ts});",
+					"",
+					"if (binance_api_secret) {",
+					"    const queryString = Object.keys(paramsObject).map((key) => {",
+					"        return `${key}=${paramsObject[key]}`;",
+					"    }).join('&');",
+					"    console.log(queryString);",
+					"    const signature = CryptoJS.HmacSHA256(queryString, binance_api_secret).toString();",
+					"    pm.environment.set(\"signature\", signature);",
+					"}",
+					"",
+					"",
+					"function is_disabled(str) {",
+					"    return str == true;",
+					"}",
+					"",
+					"function is_empty(str) {",
+					"    if (typeof str == 'undefined' ||",
+					"        !str || ",
+					"        str.length === 0 || ",
+					"        str === \"\" ||",
+					"        !/[^\\s]/.test(str) ||",
+					"        /^\\s*$/.test(str) ||",
+					"        str.replace(/\\s/g,\"\") === \"\")",
+					"    {",
+					"        return true;",
+					"    }",
+					"    else",
+					"    {",
+					"        return false;",
+					"    }",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
