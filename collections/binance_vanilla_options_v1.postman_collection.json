@@ -194,18 +194,9 @@
 							],
 							"query": [
 								{
-									"key": "subAccountId",
+									"key": "symbol",
 									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "page",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "size",
-									"value": "",
+									"description": "Option trading pair",
 									"disabled": true
 								}
 							]
@@ -609,7 +600,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/vapi/v1/bill?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/vapi/v1/bill?currency=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -622,8 +613,7 @@
 								{
 									"key": "currency",
 									"value": "",
-									"description": "Asset type",
-									"disabled": true
+									"description": "Asset type"
 								},
 								{
 									"key": "recordId",
@@ -1319,7 +1309,7 @@
 				{
 					"name": "Delete Listen Key (USER_STREAM)",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [
 							{
 								"key": "Content-Type",
