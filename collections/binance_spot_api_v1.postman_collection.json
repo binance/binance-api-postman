@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e61e5503-9272-4a18-80fc-1833a41c1413",
+		"_postman_id": "8632cec4-e17e-43f8-9aa7-592f57f906be",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -10675,6 +10675,47 @@
 									"value": "500",
 									"disabled": true
 								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query Current Order Count Usage (TRADE)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/rateLimit/order?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"rateLimit",
+								"order"
+							],
+							"query": [
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
