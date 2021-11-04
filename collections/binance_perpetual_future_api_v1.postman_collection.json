@@ -1111,7 +1111,41 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Multi-Assets Mode Asset Index",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/assetIndex",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"assetIndex"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Asset pair",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
 				}
+
 			]
 		},
 		{
