@@ -5664,7 +5664,7 @@
 							"response": []
 						},
 						{
-							"name": "Query Isolated Margin Pair (MARKET_DATA)",
+							"name": "Query Isolated Margin Symbol (USER_DATA)",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -5715,7 +5715,7 @@
 							"response": []
 						},
 						{
-							"name": "Get All Isolated Margin Pairs (MARKET_DATA)",
+							"name": "Get All Isolated Margin Symbol (USER_DATA)",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -6146,7 +6146,7 @@
 					"response": []
 				},
 				{
-					"name": "Query Margin Pair (MARKET_DATA)",
+					"name": "Query Cross Margin Pair (MARKET_DATA)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -6214,7 +6214,7 @@
 					"response": []
 				},
 				{
-					"name": "Get All Margin Pairs (MARKET_DATA)",
+					"name": "Get All Cross Margin Pairs (MARKET_DATA)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -7988,7 +7988,7 @@
 					"response": []
 				},
 				{
-					"name": "Old Trade Lookup",
+					"name": "Old Trade Lookup (MARKET_DATA)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -7999,8 +7999,8 @@
 							},
 							{
 								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
+								"type": "text",
+								"value": "{{binance-api-key}}"
 							}
 						],
 						"url": {
@@ -8289,7 +8289,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/mining/pub/algoList?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/mining/pub/algoList?timestamp={{timestamp}}",
 							"host": [
 								"{{url}}"
 							],
@@ -8304,10 +8304,6 @@
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
 								}
 							]
 						}
@@ -8331,7 +8327,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/mining/pub/coinList?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/mining/pub/coinList?timestamp={{timestamp}}",
 							"host": [
 								"{{url}}"
 							],
@@ -8346,10 +8342,6 @@
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
 								}
 							]
 						}

@@ -18,11 +18,6 @@
 								"key": "Content-Type",
 								"type": "text",
 								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
 							}
 						],
 						"url": {
@@ -48,11 +43,6 @@
 								"key": "Content-Type",
 								"type": "text",
 								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
 							}
 						],
 						"url": {
@@ -78,11 +68,6 @@
 								"key": "Content-Type",
 								"type": "text",
 								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
 							}
 						],
 						"url": {
@@ -108,11 +93,6 @@
 								"key": "Content-Type",
 								"type": "text",
 								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
 							}
 						],
 						"url": {
@@ -138,11 +118,6 @@
 								"key": "Content-Type",
 								"type": "text",
 								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
 							}
 						],
 						"url": {
@@ -175,11 +150,6 @@
 								"key": "Content-Type",
 								"type": "text",
 								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
 							}
 						],
 						"url": {
@@ -213,11 +183,6 @@
 								"key": "Content-Type",
 								"type": "text",
 								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
 							}
 						],
 						"url": {
@@ -251,11 +216,6 @@
 								"key": "Content-Type",
 								"type": "text",
 								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
 							}
 						],
 						"url": {
@@ -294,11 +254,6 @@
 								"key": "Content-Type",
 								"type": "text",
 								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
 							}
 						],
 						"url": {
@@ -354,11 +309,6 @@
 								"key": "Content-Type",
 								"type": "text",
 								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
 							}
 						],
 						"url": {
@@ -397,11 +347,6 @@
 								"key": "Content-Type",
 								"type": "text",
 								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
 							}
 						],
 						"url": {
