@@ -61,7 +61,7 @@
 					"response": []
 				},
 				{
-					"name": "Exchange Information (MARKET_DATA)",
+					"name": "Exchange Information",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -86,7 +86,7 @@
 					"response": []
 				},
 				{
-					"name": "Order Book (MARKET_DATA)",
+					"name": "Order Book",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -123,7 +123,7 @@
 					"response": []
 				},
 				{
-					"name": "Recent Trades List (MARKET_DATA)",
+					"name": "Recent Trades List",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -208,7 +208,7 @@
 					"response": []
 				},
 				{
-					"name": "Compressed/Aggregate Trades List (MARKET_DATA)",
+					"name": "Compressed/Aggregate Trades List",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -260,7 +260,7 @@
 					"response": []
 				},
 				{
-					"name": "Kline/Candlestick Data (MARKET_DATA)",
+					"name": "Kline/Candlestick Data",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -474,7 +474,7 @@
 					"response": []
 				},
 				{
-					"name": "Mark Price (MARKET_DATA)",
+					"name": "Mark Price",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -507,7 +507,7 @@
 					"response": []
 				},
 				{
-					"name": "Get Funding Rate History (MARKET_DATA)",
+					"name": "Get Funding Rate History",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -555,7 +555,7 @@
 					"response": []
 				},
 				{
-					"name": "24hr Ticker Price Change Statistics (MARKET_DATA)",
+					"name": "24hr Ticker Price Change Statistics",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -589,7 +589,7 @@
 					"response": []
 				},
 				{
-					"name": "Symbol Price Ticker (MARKET_DATA)",
+					"name": "Symbol Price Ticker",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -623,7 +623,7 @@
 					"response": []
 				},
 				{
-					"name": "Symbol Order Book Ticker (MARKET_DATA)",
+					"name": "Symbol Order Book Ticker",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -657,51 +657,7 @@
 					"response": []
 				},
 				{
-					"name": "Get all Liquidation Orders (MARKET_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/fapi/v1/allForceOrders?symbol=&startTime&endTime&limit=100",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"fapi",
-								"v1",
-								"allForceOrders"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"value": ""
-								},
-								{
-									"key": "startTime",
-									"value": null
-								},
-								{
-									"key": "endTime",
-									"value": null
-								},
-								{
-									"key": "limit",
-									"value": "100",
-									"description": "Default:100 Max:1000"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Open Interest (MARKET_DATA)",
+					"name": "Open Interest",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -733,7 +689,7 @@
 					"response": []
 				},
 				{
-					"name": "Open Interest Statistics (MARKET_DATA)",
+					"name": "Open Interest Statistics",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -790,7 +746,7 @@
 					"response": []
 				},
 				{
-					"name": "Top Trader Long/Short Ratio (Accounts) (MARKET_DATA)",
+					"name": "Top Trader Long/Short Ratio (Accounts)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -798,11 +754,6 @@
 								"key": "Content-Type",
 								"type": "text",
 								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
 							}
 						],
 						"url": {
@@ -847,7 +798,7 @@
 					"response": []
 				},
 				{
-					"name": "Top Trader Long/Short Ratio (Positions) (MARKET_DATA)",
+					"name": "Top Trader Long/Short Ratio (Positions)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -855,11 +806,6 @@
 								"key": "Content-Type",
 								"type": "text",
 								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
 							}
 						],
 						"url": {
@@ -904,7 +850,7 @@
 					"response": []
 				},
 				{
-					"name": "Long/Short Ratio (MARKET_DATA)",
+					"name": "Long/Short Ratio",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -961,7 +907,7 @@
 					"response": []
 				},
 				{
-					"name": "Taker Buy/Sell Volume (MARKET_DATA)",
+					"name": "Taker Buy/Sell Volume",
 					"request": {
 						"method": "GET",
 						"header": [
