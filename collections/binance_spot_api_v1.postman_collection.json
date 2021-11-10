@@ -2590,6 +2590,78 @@
 			]
 		},
 		{
+			"name": "Crypto Loans",
+			"item": [
+				{
+					"name": "Get Crypto Loans Income History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/income?asset=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"income"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "type",
+									"value": null,
+									"description": "All types will be returned by default. Enum：borrowIn ,collateralSpent, repayAmount, collateralReturn, addCollateral, removeCollateral, collateralReturnAfterLiquidation",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "default 20, max 100",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Data Stream",
 			"item": [
 				{
