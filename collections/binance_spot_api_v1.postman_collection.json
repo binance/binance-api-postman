@@ -4632,6 +4632,12 @@
 									"disabled": true
 								},
 								{
+									"key": "walletType",
+									"value": null,
+									"description": "The wallet type for withdraw，0-spot wallet ，1-funding wallet.Default spot wallet",
+									"disabled": true
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
 								},
