@@ -28,8 +28,7 @@
 
 
 ## 在Postman上使用 Binance Spot API Collection 的教程
-https://academy.binance.com/economics/binance-api-series-pt-1-spot-trading-with-postman
-
+https://academy.binance.com/en/articles/binance-api-series-pt-1-spot-trading-with-postman
 
 ## Postman 安全实践
 为了确保账户安全，建议采取以下最佳安全实践： 
