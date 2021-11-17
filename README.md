@@ -26,9 +26,8 @@ You only need to import and set up with your own API and secret keys to begin.
     <p align="center"><img src="assets/5.png" alt="Screenshot of Postman for Mac, showing how imported environments can be selected from a dropdown ."/></p>
 
 
-## Binance Spot API with Postman Tutorial 
-https://academy.binance.com/economics/binance-api-series-pt-1-spot-trading-with-postman
-
+## Binance Spot API with Postman Tutorial
+https://academy.binance.com/en/articles/binance-api-series-pt-1-spot-trading-with-postman
 
 ## Postman safety practices
 The following practices are advised to secure your account's safety:
