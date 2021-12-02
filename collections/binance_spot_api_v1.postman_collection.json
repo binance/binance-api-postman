@@ -2662,6 +2662,68 @@
 			]
 		},
 		{
+			"name": "Pay",
+			"item": [
+				{
+					"name": "Get Pay Trade History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/pay/transactions?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"pay",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "startTimestamp",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "endTimestamp",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "default 100, max 100",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Data Stream",
 			"item": [
 				{
