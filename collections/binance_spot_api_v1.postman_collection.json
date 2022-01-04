@@ -937,6 +937,173 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Unclaimed Rewards Record (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bswap/unclaimedRewards?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bswap",
+								"unclaimedRewards"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "",
+									"description": "0: Swap rewards,1:Liquidity rewards, default to 0",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Claim rewards (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bswap/claimRewards?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bswap",
+								"claimRewards"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "",
+									"description": "0: Swap rewards,1:Liquidity rewards, default to 0",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Claimed History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/bswap/claimedHistory?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"bswap",
+								"claimedHistory"
+							],
+							"query": [
+								{
+									"key": "poolId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "assetRewards",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "",
+									"description": "0: Swap rewards,1:Liquidity rewards, default to 0",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Default 3, max 100",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -9873,6 +10040,77 @@
 									"key": "userName",
 									"value": "",
 									"description": "Mining account"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mining Account Earning (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/mining/payment/uid?algo=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"mining",
+								"payment",
+								"uid"
+							],
+							"query": [
+								{
+									"key": "algo",
+									"value": "",
+									"description": "Algorithm(sha256)"
+								},
+								{
+									"key": "startDate",
+									"value": "",
+									"description": "Millisecond timestamp",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "",
+									"description": "Millisecond timestamp",
+									"disabled": true
+								},
+								{
+									"key": "pageIndex",
+									"value": "",
+									"description": "Default 1",
+									"disabled": true
+								},
+								{
+									"key": "pageSize",
+									"value": "",
+									"description": "Min 10,Max 200",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
