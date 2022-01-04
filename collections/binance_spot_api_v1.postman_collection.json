@@ -8339,12 +8339,6 @@
 									"disabled": true
 								},
 								{
-									"key": "limit",
-									"value": "",
-									"description": "Default: 20. Maximum: 100",
-									"disabled": true
-								},
-								{
 									"key": "recvWindow",
 									"value": "",
 									"description": "No more than 60000"
