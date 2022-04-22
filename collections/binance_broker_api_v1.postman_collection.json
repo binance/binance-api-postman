@@ -40,6 +40,12 @@
 							"description": "tag length should be less than 32"
 						},
 						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
+						},
+						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
 						},
@@ -91,6 +97,12 @@
 							"description": "only true for now"
 						},
 						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
+						},
+						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
 						},
@@ -140,6 +152,12 @@
 							"key": "futures",
 							"value": "",
 							"description": "only true for now"
+						},
+						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -201,6 +219,12 @@
 							"disabled": true
 						},
 						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
+						},
+						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
 						},
@@ -248,6 +272,12 @@
 						{
 							"key": "subAccountApiKey",
 							"value": ""
+						},
+						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -312,6 +342,12 @@
 							"disabled": true
 						},
 						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
+						},
+						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
 						},
@@ -373,6 +409,12 @@
 							"value": ""
 						},
 						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
+						},
+						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
 						},
@@ -428,6 +470,12 @@
 							"key": "size",
 							"value": null,
 							"description": "default 500",
+							"disabled": true
+						},
+						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
 							"disabled": true
 						},
 						{
@@ -495,6 +543,12 @@
 							"disabled": true
 						},
 						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
+						},
+						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
 						},
@@ -554,6 +608,12 @@
 							"value": ""
 						},
 						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
+						},
+						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
 						},
@@ -606,6 +666,12 @@
 							"disabled": true
 						},
 						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
+						},
+						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
 						},
@@ -646,6 +712,12 @@
 						"info"
 					],
 					"query": [
+						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
+						},
 						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
@@ -709,6 +781,12 @@
 						{
 							"key": "amount",
 							"value": ""
+						},
+						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -792,6 +870,12 @@
 							"disabled": true
 						},
 						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
+						},
+						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
 						},
@@ -856,6 +940,12 @@
 							"description": "default 500, max 500"
 						},
 						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
+						},
+						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
 						},
@@ -910,6 +1000,12 @@
 						{
 							"key": "endTime",
 							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
 							"disabled": true
 						},
 						{
@@ -975,6 +1071,12 @@
 							"disabled": true
 						},
 						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
+						},
+						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
 						},
@@ -1024,6 +1126,12 @@
 						{
 							"key": "spotBNBBurn",
 							"value": ""
+						},
+						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -1077,6 +1185,12 @@
 							"value": ""
 						},
 						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
+						},
+						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
 						},
@@ -1122,6 +1236,12 @@
 						{
 							"key": "subAccountId",
 							"value": ""
+						},
+						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
 						},
 						{
 							"key": "timestamp",
@@ -1201,6 +1321,12 @@
 							"disabled": true
 						},
 						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
+						},
+						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
 						},
@@ -1255,6 +1381,12 @@
 						{
 							"key": "size",
 							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
 							"disabled": true
 						},
 						{
@@ -1315,6 +1447,12 @@
 							"disabled": true
 						},
 						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
+							"disabled": true
+						},
+						{
 							"key": "timestamp",
 							"value": "{{timestamp}}"
 						},
@@ -1369,6 +1507,12 @@
 						{
 							"key": "size",
 							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "recvWindow",
+							"value": "5000",
+							"description": "The value cannot be greater than 60000",
 							"disabled": true
 						},
 						{
