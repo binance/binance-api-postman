@@ -415,6 +415,12 @@
 							],
 							"query": [
 								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
 								},
@@ -470,6 +476,12 @@
 									"description": "Amount"
 								},
 								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
 								},
@@ -513,6 +525,12 @@
 									"key": "symbol",
 									"value": "",
 									"description": "Option trading pair",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
 									"disabled": true
 								},
 								{
@@ -582,6 +600,12 @@
 									"key": "limit",
 									"value": "",
 									"description": "Number of result sets returned Default:100 Max:1000",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
 									"disabled": true
 								},
 								{
@@ -681,6 +705,12 @@
 									"disabled": true
 								},
 								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
 								},
@@ -724,6 +754,12 @@
 									"key": "orders",
 									"value": "",
 									"description": "order list. Max 5 orders"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -780,6 +816,12 @@
 									"key": "clientOrderId",
 									"value": "",
 									"description": "User-defined order ID",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
 									"disabled": true
 								},
 								{
@@ -840,6 +882,12 @@
 									"disabled": true
 								},
 								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
 								},
@@ -883,6 +931,12 @@
 									"key": "symbol",
 									"value": "",
 									"description": "Option trading pair"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
@@ -939,6 +993,12 @@
 									"key": "clientOrderId",
 									"value": "",
 									"description": "User-defined order ID",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
 									"disabled": true
 								},
 								{
@@ -1011,6 +1071,12 @@
 									"disabled": true
 								},
 								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
 								},
@@ -1077,6 +1143,12 @@
 									"key": "limit",
 									"value": "",
 									"description": "Number of result sets returned Default:100 Max:1000",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
 									"disabled": true
 								},
 								{
@@ -1149,6 +1221,12 @@
 									"disabled": true
 								},
 								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
 								},
@@ -1193,6 +1271,12 @@
 								"userDataStream"
 							],
 							"query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
@@ -1239,6 +1323,12 @@
 									"description": "listenKey"
 								},
 								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}"
 								},
@@ -1282,6 +1372,12 @@
 									"key": "listenKey",
 									"value": "",
 									"description": "listenKey"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
 								},
 								{
 									"key": "timestamp",
