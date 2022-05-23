@@ -386,7 +386,7 @@
 				}],
 			"description": "Binance Leveraged Tokens Endpoints"
 		},
-			{
+		{
 			"name": "BSwap",
 			"item": [
 				{
@@ -670,7 +670,7 @@
 								},
 								{
 									"key": "limit",
-									"value": "500",
+									"value": "100",
 									"description": "Default 500; max 1000.",
 									"disabled": true
 								},
@@ -1296,7 +1296,7 @@
 				}],
 			"description": "Binance Swap Endpoints"
 		},
-			{
+		{
 			"name": "C2C",
 			"item": [
 				{
@@ -1330,7 +1330,8 @@
 							"query": [
 								{
 									"key": "tradeType",
-									"value": ""
+									"value": "",
+									"description": "BUY, SELL"
 								},
 								{
 									"key": "startTimestamp",
@@ -1380,7 +1381,7 @@
 				}],
 			"description": "Consumer-To-Consumer Endpoints"
 		},
-			{
+		{
 			"name": "Convert",
 			"item": [
 				{
@@ -1451,7 +1452,7 @@
 				}],
 			"description": "Convert Endpoints"
 		},
-			{
+		{
 			"name": "Crypto Loans",
 			"item": [
 				{
@@ -1534,7 +1535,7 @@
 				}],
 			"description": "Crypto Loans Endpoints"
 		},
-			{
+		{
 			"name": "Fiat",
 			"item": [
 				{
@@ -1695,7 +1696,7 @@
 				}],
 			"description": "Fiat Endpoints"
 		},
-			{
+		{
 			"name": "Futures",
 			"item": [
 				{
@@ -1903,7 +1904,7 @@
 								}
 							]
 						},
-						"description": ""
+						"description": "Borrow asset for Cross-Collateral."
 					},
 					"response": []
 				},
@@ -1976,7 +1977,7 @@
 								}
 							]
 						},
-						"description": ""
+						"description": "Get Cross-Collateral Borrow History."
 					},
 					"response": []
 				},
@@ -2039,7 +2040,7 @@
 								}
 							]
 						},
-						"description": ""
+						"description": "Repay Transaction."
 					},
 					"response": []
 				},
@@ -2112,7 +2113,7 @@
 								}
 							]
 						},
-						"description": ""
+						"description": "Get Cross-Collateral Repayment History."
 					},
 					"response": []
 				},
@@ -2163,7 +2164,7 @@
 								}
 							]
 						},
-						"description": ""
+						"description": "Get Cross-Collateral Wallet."
 					},
 					"response": []
 				},
@@ -2214,7 +2215,7 @@
 								}
 							]
 						},
-						"description": ""
+						"description": "Get Cross-Collateral Wallet V2."
 					},
 					"response": []
 				},
@@ -2270,7 +2271,7 @@
 								}
 							]
 						},
-						"description": ""
+						"description": "Get Cross-Collateral Information."
 					},
 					"response": []
 				},
@@ -2331,7 +2332,7 @@
 								}
 							]
 						},
-						"description": ""
+						"description": "Get Cross-Collateral Information V2."
 					},
 					"response": []
 				},
@@ -2395,7 +2396,7 @@
 								}
 							]
 						},
-						"description": ""
+						"description": "Calculate Collateral Rate after adjust Cross-Collateral LTV."
 					},
 					"response": []
 				},
@@ -2463,7 +2464,7 @@
 								}
 							]
 						},
-						"description": ""
+						"description": "Calculate Collateral Rate after adjust Cross-Collateral LTV V2."
 					},
 					"response": []
 				},
@@ -2518,7 +2519,7 @@
 								}
 							]
 						},
-						"description": ""
+						"description": "Get Max Amount for Adjust Cross-Collateral LTV."
 					},
 					"response": []
 				},
@@ -2577,7 +2578,7 @@
 								}
 							]
 						},
-						"description": ""
+						"description": "Get Max Amount for Adjust Cross-Collateral LTV V2."
 					},
 					"response": []
 				},
@@ -2641,7 +2642,7 @@
 								}
 							]
 						},
-						"description": ""
+						"description": "Adjust Cross-Collateral LTV."
 					},
 					"response": []
 				},
@@ -2709,7 +2710,7 @@
 								}
 							]
 						},
-						"description": ""
+						"description": "Adjust Cross-Collateral LTV V2."
 					},
 					"response": []
 				},
@@ -2787,7 +2788,7 @@
 								}
 							]
 						},
-						"description": ""
+						"description": "Get Adjust Cross-Collateral LTV History."
 					},
 					"response": []
 				},
@@ -2864,7 +2865,7 @@
 								}
 							]
 						},
-						"description": ""
+						"description": "Get Cross-Collateral Liquidation History."
 					},
 					"response": []
 				},
@@ -3181,7 +3182,7 @@
 				}],
 			"description": ""
 		},
-			{
+		{
 			"name": "Futures Algo",
 			"item": [
 				{
@@ -3276,6 +3277,101 @@
 							]
 						},
 						"description": "Send in a VP new order. Only support on USDⓈ-M Contracts.\n\nWeight(IP): 3000\n\n- Max open orders allowed: 10 orders.\n- Leverage of symbols and position mode will be the same as your futures account settings. You can set up through the trading page or fapi.\n- Receiving \"success\": true does not mean that your order will be executed. Please use the query order endpoints（GET sapi/v1/algo/futures/openOrders or GET sapi/v1/algo/futures/historicalOrders） to check the order status. For example: Your futures balance is insufficient, or open position with reduce only or position side is inconsistent with your own setting. In these cases you will receive \"success\": true, but the order status will be expired after we check it."
+					},
+					"response": []
+				},
+				{
+					"name": "Time-Weighted Average Price New Order (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/algo/futures/newOrderTwap?symbol=&side=&quantity=&duration=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"algo",
+								"futures",
+								"newOrderTwap"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Trading symbol eg. BTCUSDT"
+								},
+								{
+									"key": "side",
+									"value": "",
+									"description": "Trading side ( BUY or SELL )"
+								},
+								{
+									"key": "positionSide",
+									"value": "",
+									"description": "Default BOTH for One-way Mode ; LONG or SHORT for Hedge Mode. It must be sent in Hedge Mode.",
+									"disabled": true
+								},
+								{
+									"key": "quantity",
+									"value": "",
+									"description": "Quantity of base asset; The notional (quantity * mark price(base asset)) must be more than the equivalent of 10,000 USDT and less than the equivalent of 1,000,000 USDT"
+								},
+								{
+									"key": "duration",
+									"value": "",
+									"description": "Duration for TWAP orders in seconds. [300, 86400];Less than 5min => defaults to 5 min; Greater than 24h => defaults to 24h"
+								},
+								{
+									"key": "clientAlgoId",
+									"value": "",
+									"description": "A unique id among Algo orders (length should be 32 characters)， If it is not sent, we will give default value",
+									"disabled": true
+								},
+								{
+									"key": "reduceOnly",
+									"value": "",
+									"description": "`true` or `false`. Default `false`; Cannot be sent in Hedge Mode; Cannot be sent when you open a position",
+									"disabled": true
+								},
+								{
+									"key": "limitPrice",
+									"value": "",
+									"description": "Limit price of the order; If it is not sent, will place order by market price by default",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Send in a Twap new order. Only support on USDⓈ-M Contracts.\n\nWeight(UID): 3000"
 					},
 					"response": []
 				},
@@ -3542,7 +3638,7 @@
 				}],
 			"description": ""
 		},
-			{
+		{
 			"name": "Gift Card",
 			"item": [
 				{
@@ -3639,6 +3735,12 @@
 									"description": "Binance Code"
 								},
 								{
+									"key": "externalUid",
+									"value": "",
+									"description": "Each external unique ID represents a unique user on the partner platform. The function helps you to identify the redemption behavior of different users, such as redemption frequency and amount. It also helps risk and limit control of a single account, such as daily limit on redemption volume, frequency, and incorrect number of entries. This will also prevent a single user account reach the partner's daily redemption limits. We strongly recommend you to use this feature and transfer us the User ID of your users if you have different users redeeming Binance codes on your platform. To protect user data privacy, you may choose to transfer the user id in any desired format (max. 400 characters).",
+									"disabled": true
+								},
+								{
 									"key": "recvWindow",
 									"value": "5000",
 									"description": "The value cannot be greater than 60000",
@@ -3714,10 +3816,61 @@
 						"description": "This API is for verifying whether the Binance Code is valid or not by entering Binance Code or reference number.\n\nPlease note that if you enter the wrong binance code 5 times within an hour, you will no longer be able to verify any binance code for that hour.\n\nWeight(IP): 1"
 					},
 					"response": []
+				},
+				{
+					"name": "Fetch RSA Public Key (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/giftcard/cryptography/rsa-public-key?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"giftcard",
+								"cryptography",
+								"rsa-public-key"
+							],
+							"query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "This API is for fetching the RSA Public Key.\nThis RSA Public key will be used to encrypt the card code.\nPlease note that the RSA Public key fetched is valid only for the current day.\n\nWeight(IP): 1"
+					},
+					"response": []
 				}],
 			"description": "Gift Card Endpoints"
 		},
-			{
+		{
 			"name": "Margin",
 			"item": [
 				{
@@ -4476,7 +4629,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/order?symbol=BNBUSDT&side=SELL&type=&quantity=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/order?symbol=BNBUSDT&side=SELL&type=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -4509,7 +4662,8 @@
 								},
 								{
 									"key": "quantity",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "quoteOrderQty",
@@ -5799,6 +5953,12 @@
 									"disabled": true
 								},
 								{
+									"key": "archived",
+									"value": "",
+									"description": "Default: false. Set to true for archived data from 6 months ago",
+									"disabled": true
+								},
+								{
 									"key": "recvWindow",
 									"value": "5000",
 									"description": "The value cannot be greater than 60000",
@@ -6585,10 +6745,73 @@
 						"description": "Get isolated margin tier data collection with any tier as https://www.binance.com/en/margin-data\n\nWeight(IP): 1"
 					},
 					"response": []
+				},
+				{
+					"name": "Query Current Margin Order Count Usage (TRADE)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/margin/rateLimit/order?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"margin",
+								"rateLimit",
+								"order"
+							],
+							"query": [
+								{
+									"key": "isIsolated",
+									"value": "",
+									"description": "* `TRUE` - For isolated margin\n* `FALSE` - Default, not for isolated margin",
+									"disabled": true
+								},
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "isolated symbol, mandatory for isolated margin",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Displays the user's current margin order count usage for all intervals.\n\nWeight(IP): 20"
+					},
+					"response": []
 				}],
 			"description": "Margin Account/Trade"
 		},
-			{
+		{
 			"name": "Market",
 			"item": [
 				{
@@ -6984,6 +7207,11 @@
 									"value": "BNBUSDT",
 									"description": "Trading symbol, e.g. BNBUSDT",
 									"disabled": true
+								},
+								{
+									"key": "symbols",
+									"value": "",
+									"disabled": true
 								}
 							]
 						},
@@ -7018,6 +7246,11 @@
 									"key": "symbol",
 									"value": "BNBUSDT",
 									"description": "Trading symbol, e.g. BNBUSDT",
+									"disabled": true
+								},
+								{
+									"key": "symbols",
+									"value": "",
 									"disabled": true
 								}
 							]
@@ -7054,6 +7287,11 @@
 									"value": "BNBUSDT",
 									"description": "Trading symbol, e.g. BNBUSDT",
 									"disabled": true
+								},
+								{
+									"key": "symbols",
+									"value": "",
+									"disabled": true
 								}
 							]
 						},
@@ -7063,7 +7301,7 @@
 				}],
 			"description": "Market Data"
 		},
-			{
+		{
 			"name": "Mining",
 			"item": [
 				{
@@ -7083,7 +7321,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/mining/pub/algoList?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/mining/pub/algoList",
 							"host": [
 								"{{url}}"
 							],
@@ -7093,24 +7331,6 @@
 								"mining",
 								"pub",
 								"algoList"
-							],
-							"query": [
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
 							]
 						},
 						"description": "Weight(IP): 1"
@@ -7134,7 +7354,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/mining/pub/coinList?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/mining/pub/coinList",
 							"host": [
 								"{{url}}"
 							],
@@ -7144,24 +7364,6 @@
 								"mining",
 								"pub",
 								"coinList"
-							],
-							"query": [
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
 							]
 						},
 						"description": "Weight(IP): 1"
@@ -7991,7 +8193,7 @@
 				}],
 			"description": "Mining Endpoints"
 		},
-			{
+		{
 			"name": "NFT",
 			"item": [
 				{
@@ -8289,7 +8491,7 @@
 				}],
 			"description": "NFT Endpoints"
 		},
-			{
+		{
 			"name": "Pay",
 			"item": [
 				{
@@ -8362,7 +8564,62 @@
 				}],
 			"description": "Pay Endpoints"
 		},
-			{
+		{
+			"name": "Portfolio Margin",
+			"item": [
+				{
+					"name": "Get Portfolio Margin Account Info (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/portfolio/account?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"portfolio",
+								"account"
+							],
+							"query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Weight(IP): 1"
+					},
+					"response": []
+				}],
+			"description": "The Binance Portfolio Margin Program is a cross-asset margin program supporting consolidated margin balance across trading products with over 200+ effective crypto collaterals. It is designed for professional traders, market makers, and institutional users looking to actively trade & hedge cross-asset and optimize risk-management in a consolidated setup."
+		},
+		{
 			"name": "Rebate",
 			"item": [
 				{
@@ -8435,7 +8692,7 @@
 				}],
 			"description": "Rebate Endpoints"
 		},
-			{
+		{
 			"name": "Savings",
 			"item": [
 				{
@@ -8663,7 +8920,8 @@
 								},
 								{
 									"key": "type",
-									"value": ""
+									"value": "",
+									"description": "\"FAST\", \"NORMAL\""
 								},
 								{
 									"key": "recvWindow",
@@ -8726,7 +8984,8 @@
 								},
 								{
 									"key": "type",
-									"value": ""
+									"value": "",
+									"description": "\"FAST\", \"NORMAL\""
 								},
 								{
 									"key": "recvWindow",
@@ -8842,7 +9101,8 @@
 								},
 								{
 									"key": "type",
-									"value": ""
+									"value": "",
+									"description": "\"ACTIVITY\", \"CUSTOMIZED_FIXED\""
 								},
 								{
 									"key": "status",
@@ -9393,7 +9653,511 @@
 				}],
 			"description": "Savings Endpoints"
 		},
-			{
+		{
+			"name": "Staking",
+			"item": [
+				{
+					"name": "Get Staking Product List (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/staking/productList?product=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"staking",
+								"productList"
+							],
+							"query": [
+								{
+									"key": "product",
+									"value": "",
+									"description": "* `STAKING` - for Locked Staking\n* `F_DEFI` - for flexible DeFi Staking\n* `L_DEFI` - for locked DeFi Staking"
+								},
+								{
+									"key": "asset",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "current",
+									"value": "",
+									"description": "Currently querying page. Start from 1. Default:1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "",
+									"description": "Default:10, Max:100",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Get available Staking product list.\n\nWeight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Purchase Staking Product (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/staking/purchase?product=&productId=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"staking",
+								"purchase"
+							],
+							"query": [
+								{
+									"key": "product",
+									"value": "",
+									"description": "* `STAKING` - for Locked Staking\n* `F_DEFI` - for flexible DeFi Staking\n* `L_DEFI` - for locked DeFi Staking"
+								},
+								{
+									"key": "productId",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "renewable",
+									"value": "",
+									"description": "true or false, default false. Active if product is `STAKING` or `L_DEFI`",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Weight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Redeem Staking Product (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/staking/redeem?product=&productId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"staking",
+								"redeem"
+							],
+							"query": [
+								{
+									"key": "product",
+									"value": "",
+									"description": "* `STAKING` - for Locked Staking\n* `F_DEFI` - for flexible DeFi Staking\n* `L_DEFI` - for locked DeFi Staking"
+								},
+								{
+									"key": "positionId",
+									"value": "",
+									"description": "Mandatory if product is `STAKING` or `L_DEFI`",
+									"disabled": true
+								},
+								{
+									"key": "productId",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": "",
+									"description": "Mandatory if product is `F_DEFI`",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Redeem Staking product. Locked staking and Locked DeFI staking belong to early redemption, redeeming in advance will result in loss of interest that you have earned.\n\nWeight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Staking Product Position (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/staking/position?product=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"staking",
+								"position"
+							],
+							"query": [
+								{
+									"key": "product",
+									"value": "",
+									"description": "* `STAKING` - for Locked Staking\n* `F_DEFI` - for flexible DeFi Staking\n* `L_DEFI` - for locked DeFi Staking"
+								},
+								{
+									"key": "productId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "asset",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "current",
+									"value": "",
+									"description": "Currently querying the page. Start from 1. Default:1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "",
+									"description": "Default:10, Max:100",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Weight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Staking History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/staking/stakingRecord?product=&txnType=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"staking",
+								"stakingRecord"
+							],
+							"query": [
+								{
+									"key": "product",
+									"value": "",
+									"description": "* `STAKING` - for Locked Staking\n* `F_DEFI` - for flexible DeFi Staking\n* `L_DEFI` - for locked DeFi Staking"
+								},
+								{
+									"key": "txnType",
+									"value": "",
+									"description": "`SUBSCRIPTION`, `REDEMPTION`, `INTEREST`"
+								},
+								{
+									"key": "asset",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "current",
+									"value": "",
+									"description": "Currently querying the page. Start from 1. Default:1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "",
+									"description": "Default:10, Max:100",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Weight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Set Auto Staking (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/staking/setAutoStaking?product=&positionId=&renewable=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"staking",
+								"setAutoStaking"
+							],
+							"query": [
+								{
+									"key": "product",
+									"value": "",
+									"description": "* `STAKING` - for Locked Staking\n* `L_DEFI` - for locked DeFi Staking"
+								},
+								{
+									"key": "positionId",
+									"value": ""
+								},
+								{
+									"key": "renewable",
+									"value": "",
+									"description": "true or false"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Set auto staking on Locked Staking or Locked DeFi Staking\n\nWeight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Personal Left Quota of Staking Product (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/staking/personalLeftQuota?product=&productId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"staking",
+								"personalLeftQuota"
+							],
+							"query": [
+								{
+									"key": "product",
+									"value": "",
+									"description": "* `STAKING` - for Locked Staking\n* `F_DEFI` - for flexible DeFi Staking\n* `L_DEFI` - for locked DeFi Staking"
+								},
+								{
+									"key": "productId",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Weight(IP): 1"
+					},
+					"response": []
+				}],
+			"description": ""
+		},
+		{
 			"name": "Sub-Account",
 			"item": [
 				{
@@ -11781,7 +12545,7 @@
 				}],
 			"description": "Sub-account Endpoints"
 		},
-			{
+		{
 			"name": "Trade",
 			"item": [
 				{
@@ -11858,7 +12622,7 @@
 								},
 								{
 									"key": "stopPrice",
-									"value": "",
+									"value": "20.01",
 									"description": "Used with STOP_LOSS, STOP_LOSS_LIMIT, TAKE_PROFIT, and TAKE_PROFIT_LIMIT orders.",
 									"disabled": true
 								},
@@ -12047,7 +12811,7 @@
 								},
 								{
 									"key": "trailingDelta",
-									"value": "20.01",
+									"value": "",
 									"description": "Used with STOP_LOSS, STOP_LOSS_LIMIT, TAKE_PROFIT, and TAKE_PROFIT_LIMIT orders.",
 									"disabled": true
 								},
@@ -12906,7 +13670,7 @@
 				}],
 			"description": "Account/Trade"
 		},
-			{
+		{
 			"name": "User Data Stream",
 			"item": [
 				{
@@ -12960,7 +13724,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/v3/userDataStream",
+									"raw": "{{url}}/api/v3/userDataStream?listenKey=listen-key",
 									"host": [
 										"{{url}}"
 									],
@@ -12972,9 +13736,8 @@
 									"query": [
 										{
 											"key": "listenKey",
-											"value": "pqia91ma19a5s61cv6a81va65sdf19v8a65a1a5s61cv6a81va65sdf19v8a65a1",
-											"description": "User websocket listen key",
-											"disabled": true
+											"value": "listen-key",
+											"description": "User websocket listen key"
 										}
 									]
 								},
@@ -12999,7 +13762,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/v3/userDataStream",
+									"raw": "{{url}}/api/v3/userDataStream?listenKey=listen-key",
 									"host": [
 										"{{url}}"
 									],
@@ -13011,9 +13774,8 @@
 									"query": [
 										{
 											"key": "listenKey",
-											"value": "pqia91ma19a5s61cv6a81va65sdf19v8a65a1a5s61cv6a81va65sdf19v8a65a1",
-											"description": "User websocket listen key",
-											"disabled": true
+											"value": "listen-key",
+											"description": "User websocket listen key"
 										}
 									]
 								},
@@ -13074,7 +13836,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/sapi/v1/userDataStream",
+									"raw": "{{url}}/sapi/v1/userDataStream?listenKey=listen-key",
 									"host": [
 										"{{url}}"
 									],
@@ -13086,9 +13848,8 @@
 									"query": [
 										{
 											"key": "listenKey",
-											"value": "pqia91ma19a5s61cv6a81va65sdf19v8a65a1a5s61cv6a81va65sdf19v8a65a1",
-											"description": "User websocket listen key",
-											"disabled": true
+											"value": "listen-key",
+											"description": "User websocket listen key"
 										}
 									]
 								},
@@ -13113,7 +13874,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/sapi/v1/userDataStream",
+									"raw": "{{url}}/sapi/v1/userDataStream?listenKey=listen-key",
 									"host": [
 										"{{url}}"
 									],
@@ -13125,9 +13886,8 @@
 									"query": [
 										{
 											"key": "listenKey",
-											"value": "pqia91ma19a5s61cv6a81va65sdf19v8a65a1a5s61cv6a81va65sdf19v8a65a1",
-											"description": "User websocket listen key",
-											"disabled": true
+											"value": "listen-key",
+											"description": "User websocket listen key"
 										}
 									]
 								},
@@ -13157,7 +13917,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/sapi/v1/userDataStream/isolated",
+									"raw": "{{url}}/sapi/v1/userDataStream/isolated?symbol=BTCUSDT",
 									"host": [
 										"{{url}}"
 									],
@@ -13166,6 +13926,12 @@
 										"v1",
 										"userDataStream",
 										"isolated"
+									],
+									"query": [
+										{
+											"key": "symbol",
+											"value": "BTCUSDT"
+										}
 									]
 								},
 								"description": "Start a new user data stream.\nThe stream will close after 60 minutes unless a keepalive is sent. If the account has an active `listenKey`, that `listenKey` will be returned and its validity will be extended for 60 minutes.\n\nWeight: 1"
@@ -13189,7 +13955,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/sapi/v1/userDataStream/isolated",
+									"raw": "{{url}}/sapi/v1/userDataStream/isolated?symbol=BTCUSDT&listenKey=listen-key",
 									"host": [
 										"{{url}}"
 									],
@@ -13201,10 +13967,13 @@
 									],
 									"query": [
 										{
+											"key": "symbol",
+											"value": "BTCUSDT"
+										},
+										{
 											"key": "listenKey",
-											"value": "pqia91ma19a5s61cv6a81va65sdf19v8a65a1a5s61cv6a81va65sdf19v8a65a1",
-											"description": "User websocket listen key",
-											"disabled": true
+											"value": "listen-key",
+											"description": "User websocket listen key"
 										}
 									]
 								},
@@ -13229,7 +13998,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/sapi/v1/userDataStream/isolated",
+									"raw": "{{url}}/sapi/v1/userDataStream/isolated?symbol=BTCUSDT&listenKey=listen-key",
 									"host": [
 										"{{url}}"
 									],
@@ -13241,10 +14010,13 @@
 									],
 									"query": [
 										{
+											"key": "symbol",
+											"value": "BTCUSDT"
+										},
+										{
 											"key": "listenKey",
-											"value": "pqia91ma19a5s61cv6a81va65sdf19v8a65a1a5s61cv6a81va65sdf19v8a65a1",
-											"description": "User websocket listen key",
-											"disabled": true
+											"value": "listen-key",
+											"description": "User websocket listen key"
 										}
 									]
 								},
@@ -13256,7 +14028,7 @@
 				}],
 			"description": ""
 		},
-			{
+		{
 			"name": "Wallet",
 			"item": [
 				{
@@ -13366,7 +14138,8 @@
 							"query": [
 								{
 									"key": "type",
-									"value": ""
+									"value": "",
+									"description": "\"SPOT\", \"MARGIN\", \"FUTURES\""
 								},
 								{
 									"key": "startTime",
@@ -14311,7 +15084,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/asset/transfer?type=MAIN_C2C&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/asset/transfer?type=MAIN_UMFUTURE&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -14324,7 +15097,7 @@
 							"query": [
 								{
 									"key": "type",
-									"value": "MAIN_C2C",
+									"value": "MAIN_UMFUTURE",
 									"description": "Universal transfer type"
 								},
 								{
@@ -14402,7 +15175,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/asset/transfer?type=MAIN_C2C&asset=BTC&amount=1.01&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/asset/transfer?type=MAIN_UMFUTURE&asset=BTC&amount=1.01&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -14415,7 +15188,7 @@
 							"query": [
 								{
 									"key": "type",
-									"value": "MAIN_C2C",
+									"value": "MAIN_UMFUTURE",
 									"description": "Universal transfer type"
 								},
 								{
