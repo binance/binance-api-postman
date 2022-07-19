@@ -2984,6 +2984,127 @@
 					"response": []
 				},
 				{
+					"name": "Change Multi-Assets Mode (TRADE)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/multiAssetsMargin?multiAssetsMargin=true&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"multiAssetsMargin"
+							],
+							"query": [
+								{
+									"key": "multiAssetsMargin",
+									"value": "true",
+									"description": "\"true\": Multi-Assets Mode; \"false\": Single-Asset Mode"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current Multi-Assets Mode (USER_DATA)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/multiAssetsMargin?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"multiAssetsMargin"
+							],
+							"query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "User API Trading Quantitative Rules Indicators (USER_DATA)",
 					"event": [
 						{
@@ -3136,6 +3257,42 @@
 								"fapi",
 								"v1",
 								"listenKey"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Portfolio Margin",
+			"item": [
+				{
+					"name": "Portfolio Margin Exchange Information",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/pmExchangeInfo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"pmExchangeInfo"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"disabled": true
+								}
 							]
 						}
 					},

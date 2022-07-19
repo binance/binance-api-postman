@@ -1446,7 +1446,7 @@
 								}
 							]
 						},
-						"description": "- The max interval between startTime and endTime is 30 days.\n\nWeight(UID): 3000"
+						"description": "- The max interval between startTime and endTime is 30 days.\n\nWeight(UID): 100"
 					},
 					"response": []
 				}],
@@ -6806,6 +6806,68 @@
 							]
 						},
 						"description": "Displays the user's current margin order count usage for all intervals.\n\nWeight(IP): 20"
+					},
+					"response": []
+				},
+				{
+					"name": "Margin Dustlog (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/margin/dribblet?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"margin",
+								"dribblet"
+							],
+							"query": [
+								{
+									"key": "startTime",
+									"value": "",
+									"description": "UTC timestamp in ms",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"description": "UTC timestamp in ms",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Query the historical information of user's margin account small-value asset conversion BNB.\n\nWeight(IP): 1"
 					},
 					"response": []
 				}],
@@ -15477,6 +15539,67 @@
 							]
 						},
 						"description": "- Currently supports querying the following business assets：Binance Pay, Binance Card, Binance Gift Card, Stock Token\n\nWeight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "User Asset (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v3/asset/getUserAsset?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v3",
+								"asset",
+								"getUserAsset"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": "BNB",
+									"description": "If asset is blank, then query all positive assets user have.",
+									"disabled": true
+								},
+								{
+									"key": "needBtcValuation",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Get user assets, just for positive data.\n\nWeight(IP): 5"
 					},
 					"response": []
 				},
