@@ -14579,7 +14579,7 @@
 							"query": [
 								{
 									"key": "type",
-									"value": "",
+									"value": "SPOT",
 									"description": "\"SPOT\", \"MARGIN\", \"FUTURES\""
 								},
 								{
