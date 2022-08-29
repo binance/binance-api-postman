@@ -7209,6 +7209,59 @@
 					"response": []
 				},
 				{
+					"name": "UIKlines",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/uiKlines?symbol=BNBUSDT&interval=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"uiKlines"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BNBUSDT"
+								},
+								{
+									"key": "interval",
+									"value": "",
+									"description": "kline intervals"
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "500",
+									"description": "Default 500; max 1000.",
+									"disabled": true
+								}
+							]
+						},
+						"description": "The request is similar to klines having the same parameters and response.\n\nuiKlines return modified kline data, optimized for presentation of candlestick charts."
+					},
+					"response": []
+				},
+				{
 					"name": "Current Average Price",
 					"request": {
 						"method": "GET",
@@ -7273,6 +7326,12 @@
 								{
 									"key": "symbols",
 									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "BNBUSDT",
+									"description": "Supported values: FULL or MINI.\nIf none provided, the default is FULL",
 									"disabled": true
 								}
 							]
@@ -7399,6 +7458,12 @@
 									"key": "windowSize",
 									"value": "",
 									"description": "Defaults to 1d if no parameter provided.\nSupported windowSize values:\n1m,2m....59m for minutes\n1h, 2h....23h - for hours\n1d...7d - for days.\n\nUnits cannot be combined (e.g. 1d2h is not allowed)",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "",
+									"description": "Supported values: FULL or MINI.\nIf none provided, the default is FULL",
 									"disabled": true
 								}
 							]
@@ -14579,7 +14644,7 @@
 							"query": [
 								{
 									"key": "type",
-									"value": "",
+									"value": "SPOT",
 									"description": "\"SPOT\", \"MARGIN\", \"FUTURES\""
 								},
 								{
