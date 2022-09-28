@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "9b22864c-c1e4-4537-97ae-a8c00effc5ed",
+		"_postman_id": "108de511-d659-4721-8eb2-19b3a0ede091",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23566881"
 	},
 	"item": [
 		{
@@ -383,7 +384,8 @@
 						"description": "Weight(IP): 1"
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "Binance Leveraged Tokens Endpoints"
 		},
 		{
@@ -1293,7 +1295,8 @@
 						"description": "Get history of claimed rewards.\n \nWeight(UID): 1000"
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "Binance Swap Endpoints"
 		},
 		{
@@ -1378,7 +1381,8 @@
 						"description": "- If startTimestamp and endTimestamp are not sent, the recent 30-day data will be returned.\n- The max interval between startTimestamp and endTimestamp is 30 days.\n\nWeight(IP): 1"
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "Consumer-To-Consumer Endpoints"
 		},
 		{
@@ -1449,7 +1453,8 @@
 						"description": "- The max interval between startTime and endTime is 30 days.\n\nWeight(UID): 100"
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "Convert Endpoints"
 		},
 		{
@@ -1532,7 +1537,477 @@
 						"description": "- If startTime and endTime are not sent, the recent 7-day data will be returned.\n- The max interval between startTime and endTime is 30 days.\n\nWeight(UID): 6000"
 					},
 					"response": []
-				}],
+				},
+				{
+					"name": "Borrow - Crypto Loan Borrow (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/borrow?loanCoin&collateralCoin&loanTerm&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"borrow"
+							],
+							"query": [
+								{
+									"key": "loanAmount",
+									"value": "",
+									"description": "Mandatory when collateralAmount is empty",
+									"disabled": true
+								},
+								{
+									"key": "collateralAmount",
+									"value": "",
+									"description": "Mandatory when loanAmount is empty",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "loanCoin",
+									"value": null
+								},
+								{
+									"key": "collateralCoin",
+									"value": null
+								},
+								{
+									"key": "loanTerm",
+									"value": null
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrow - Get Loan Borrow History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/borrow/history?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"borrow",
+								"history"
+							],
+							"query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								},
+								{
+									"key": "loanCoin",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "collateralCoin",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "orderId",
+									"value": "",
+									"description": "orderId in POST /sapi/v1/loan/borrow",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "current",
+									"value": "",
+									"description": "Current querying page. Start from 1; default: 1; max: 1000",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Default: 10; max: 100.",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrow - Get Loan Ongoing Orders (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/ongoing/orders?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"ongoing",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								},
+								{
+									"key": "loanCoin",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "collateralCoin",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "orderId",
+									"value": "",
+									"description": "orderId in POST /sapi/v1/loan/borrow",
+									"disabled": true
+								},
+								{
+									"key": "current",
+									"value": "",
+									"description": "Current querying page. Start from 1; default: 1; max: 1000",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Default: 10; max: 100.",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Repay - Crypto Loan Repay (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/repay?timestamp={{timestamp}}&signature={{signature}}&orderId=&amount",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"repay"
+							],
+							"query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								},
+								{
+									"key": "collateralReturn",
+									"value": "",
+									"description": "Default: TRUE. TRUE: Return extra collateral to spot account; FALSE: Keep extra collateral in the order.",
+									"disabled": true
+								},
+								{
+									"key": "orderId",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": null
+								},
+								{
+									"key": "type",
+									"value": null,
+									"description": "Default: 1. 1 for \"repay with borrowed coin\"; 2 for \"repay with collateral\".",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Repay - Get Loan Repayment History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/repay/history?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"repay",
+								"history"
+							],
+							"query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								},
+								{
+									"key": "loanCoin",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "collateralCoin",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "orderId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "current",
+									"value": "",
+									"description": "Current querying page. Start from 1; default: 1; max: 1000",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Default: 10; max: 100.",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adjust LTV - Crypto Loan Adjust LTV (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/adjust/ltv?timestamp={{timestamp}}&signature={{signature}}&orderId=&amount&direction",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"adjust",
+								"ltv"
+							],
+							"query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								},
+								{
+									"key": "orderId",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": null
+								},
+								{
+									"key": "direction",
+									"value": null,
+									"description": "\"ADDITIONAL\", \"REDUCED\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adjust LTV - Get Loan LTV Adjustment History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/ltv/adjustment/history?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"ltv",
+								"adjustment",
+								"history"
+							],
+							"query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								},
+								{
+									"key": "loanCoin",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "collateralCoin",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "orderId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "current",
+									"value": "",
+									"description": "Current querying page. Start from 1; default: 1; max: 1000",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Default: 10; max: 100.",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
 			"description": "Crypto Loans Endpoints"
 		},
 		{
@@ -1693,7 +2168,8 @@
 						"description": "- If beginTime and endTime are not sent, the recent 30-day data will be returned.\n\nWeight(IP): 1"
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "Fiat Endpoints"
 		},
 		{
@@ -2114,57 +2590,6 @@
 							]
 						},
 						"description": "Get Cross-Collateral Repayment History."
-					},
-					"response": []
-				},
-				{
-					"name": "Cross-Collateral Wallet (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/futures/loan/wallet?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"futures",
-								"loan",
-								"wallet"
-							],
-							"query": [
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Get Cross-Collateral Wallet."
 					},
 					"response": []
 				},
@@ -3175,12 +3600,11 @@
 									"description": "Signature"
 								}
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
-				}],
-			"description": ""
+				}
+			]
 		},
 		{
 			"name": "Futures Algo",
@@ -3635,8 +4059,8 @@
 						"description": "Get respective sub orders for a specified algoId\n\nWeight(IP): 1"
 					},
 					"response": []
-				}],
-			"description": ""
+				}
+			]
 		},
 		{
 			"name": "Gift Card",
@@ -3867,7 +4291,8 @@
 						"description": "This API is for fetching the RSA Public Key.\nThis RSA Public key will be used to encrypt the card code.\nPlease note that the RSA Public key fetched is valid only for the current day.\n\nWeight(IP): 1"
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "Gift Card Endpoints"
 		},
 		{
@@ -5981,6 +6406,60 @@
 					"response": []
 				},
 				{
+					"name": "Get Summary of Margin account (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/margin/tradeCoeff?email=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"margin",
+								"tradeCoeff"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "- If `isolatedSymbol` is not sent, crossed margin data will be sent.\n\nWeight(IP): 50"
+					},
+					"response": []
+				},
+				{
 					"name": "Isolated Margin Account Transfer (MARGIN)",
 					"request": {
 						"method": "POST",
@@ -6870,7 +7349,8 @@
 						"description": "Query the historical information of user's margin account small-value asset conversion BNB.\n\nWeight(IP): 1"
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "Margin Account/Trade"
 		},
 		{
@@ -6959,6 +7439,12 @@
 								{
 									"key": "symbols",
 									"value": "[\"BTCUSDT\",\"BNBBTC\"]",
+									"disabled": true
+								},
+								{
+									"key": "permissions",
+									"value": null,
+									"description": "Display symbols with the permissions matching provided parameter. (eg.SPOT, MARGIN, LEVERAGED)",
 									"disabled": true
 								}
 							]
@@ -7471,7 +7957,8 @@
 						"description": "The window used to compute statistics is typically slightly wider than requested windowSize.\n\nopenTime for /api/v3/ticker always starts on a minute, while the closeTime is the current time of the request. As such, the effective window might be up to 1 minute wider than requested.\n\nE.g. If the closeTime is 1641287867099 (January 04, 2022 09:17:47:099 UTC) , and the windowSize is 1d. the openTime will be: 1641201420000 (January 3, 2022, 09:17:00 UTC)\n\nWeight(IP): 2 for each requested symbol regardless of windowSize.\n\nThe weight for this request will cap at 100 once the number of symbols in the request is more than 50."
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "Market Data"
 		},
 		{
@@ -8363,7 +8850,8 @@
 						"description": "Weight(IP): 5"
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "Mining Endpoints"
 		},
 		{
@@ -8661,7 +9149,8 @@
 						"description": "Weight(UID): 3000"
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "NFT Endpoints"
 		},
 		{
@@ -8734,7 +9223,8 @@
 						"description": "- If startTimestamp and endTimestamp are not sent, the recent 90 days' data will be returned.\n- The max interval between startTimestamp and endTimestamp is 90 days.\n- Support for querying orders within the last 18 months.\n\nWeight(UID): 3000"
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "Pay Endpoints"
 		},
 		{
@@ -8921,7 +9411,8 @@
 						"description": "Repay Portfolio Margin Bankruptcy Loan.\n\nWeight(UID): 3000"
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "The Binance Portfolio Margin Program is a cross-asset margin program supporting consolidated margin balance across trading products with over 200+ effective crypto collaterals. It is designed for professional traders, market makers, and institutional users looking to actively trade & hedge cross-asset and optimize risk-management in a consolidated setup."
 		},
 		{
@@ -8994,7 +9485,8 @@
 						"description": "- The max interval between startTime and endTime is 90 days.\n- If startTime and endTime are not sent, the recent 7 days' data will be returned.\n- The earliest startTime is supported on June 10, 2020\n\nWeight(UID): 3000"
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "Rebate Endpoints"
 		},
 		{
@@ -9955,7 +10447,8 @@
 						"description": "- PositionId is mandatory parameter for fixed position.\n\nWeight(IP): 1"
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "Savings Endpoints"
 		},
 		{
@@ -10459,8 +10952,8 @@
 						"description": "Weight(IP): 1"
 					},
 					"response": []
-				}],
-			"description": ""
+				}
+			]
 		},
 		{
 			"name": "Sub-Account",
@@ -12649,6 +13142,12 @@
 									"key": "signature",
 									"value": "{{signature}}",
 									"description": "Signature"
+								},
+								{
+									"key": "thirdParty",
+									"value": null,
+									"description": "Third Party",
+									"disabled": true
 								}
 							]
 						},
@@ -12775,6 +13274,12 @@
 									"key": "signature",
 									"value": "{{signature}}",
 									"description": "Signature"
+								},
+								{
+									"key": "thirdPartyName",
+									"value": null,
+									"description": "Third Party Name",
+									"disabled": true
 								}
 							]
 						},
@@ -12841,13 +13346,20 @@
 									"key": "signature",
 									"value": "{{signature}}",
 									"description": "Signature"
+								},
+								{
+									"key": "thirdPartyName",
+									"value": null,
+									"description": "Third Party Name",
+									"disabled": true
 								}
 							]
 						},
 						"description": "Weight(UID): 3000"
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "Sub-account Endpoints"
 		},
 		{
@@ -12928,7 +13440,6 @@
 								{
 									"key": "strategyId",
 									"value": "",
-									"description": "",
 									"disabled": true
 								},
 								{
@@ -13147,7 +13658,6 @@
 								{
 									"key": "strategyId",
 									"value": "",
-									"description": "",
 									"disabled": true
 								},
 								{
@@ -13276,7 +13786,6 @@
 								{
 									"key": "strategyId",
 									"value": "",
-									"description": "",
 									"disabled": true
 								},
 								{
@@ -13646,7 +14155,6 @@
 								{
 									"key": "limitStrategyId",
 									"value": "",
-									"description": "",
 									"disabled": true
 								},
 								{
@@ -13683,7 +14191,6 @@
 								{
 									"key": "stopStrategyId",
 									"value": "",
-									"description": "",
 									"disabled": true
 								},
 								{
@@ -14173,7 +14680,8 @@
 						"description": "Displays the user's current order count usage for all intervals.\n\nWeight(IP): 20"
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "Account/Trade"
 		},
 		{
@@ -14288,7 +14796,8 @@
 								"description": "Close out a user data stream.\n\nWeight: 1"
 							},
 							"response": []
-						}],
+						}
+					],
 					"description": "User Data Stream"
 				},
 				{
@@ -14400,7 +14909,8 @@
 								"description": "Close out a user data stream.\n\nWeight: 1"
 							},
 							"response": []
-						}],
+						}
+					],
 					"description": "Margin User Data Stream"
 				},
 				{
@@ -14529,10 +15039,11 @@
 								"description": "Close out a user data stream.\n\nWeight: 1"
 							},
 							"response": []
-						}],
+						}
+					],
 					"description": "Isolated User Data Stream"
-				}],
-			"description": ""
+				}
+			]
 		},
 		{
 			"name": "Wallet",
@@ -14632,7 +15143,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/accountSnapshot?type=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/accountSnapshot?type=SPOT&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -15909,7 +16420,8 @@
 						"description": "Weight(IP): 1"
 					},
 					"response": []
-				}],
+				}
+			],
 			"description": "Wallet Endpoints"
 		}
 	],
