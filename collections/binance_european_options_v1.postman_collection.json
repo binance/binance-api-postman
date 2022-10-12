@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "bba473d4-d421-443e-aed9-4b506847f664",
+		"_postman_id": "254e420d-5499-47db-b05c-e0d487c82245",
 		"name": "Binance european options API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/voptions/en",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -1225,7 +1225,7 @@
 							"path": [
 								"eapi",
 								"v1",
-								"order"
+								"exerciseRecord"
 							],
 							"query": [
 								{
