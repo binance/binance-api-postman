@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2f085d13-a2e0-4379-943f-6fce56bdba12",
+		"_postman_id": "5733c8d5-e949-4bc9-a8e0-38ff480b389e",
 		"name": "Binance spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -1389,6 +1389,299 @@
 			"name": "Convert",
 			"item": [
 				{
+					"name": "List All Convert Pairs (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/convert/exchangeInfo?fromAsset=&toAsset=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"convert",
+								"exchangeInfo"
+							],
+							"query": [
+								{
+									"key": "fromAsset",
+									"value": "",
+									"description": "User spends coin"
+								},
+								{
+									"key": "toAsset",
+									"value": "",
+									"description": "User receives coin"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "- The max interval between startTime and endTime is 30 days.\n\nWeight(UID): 100"
+					},
+					"response": []
+				},
+				{
+					"name": "Query order quantity precision per asset (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/convert/assetInfo?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"convert",
+								"assetInfo"
+							],
+							"query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "- The max interval between startTime and endTime is 30 days.\n\nWeight(UID): 100"
+					},
+					"response": []
+				},
+				{
+					"name": "Send quote request (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/convert/getQuote?fromAsset=&toAsset=&fromAmount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"convert",
+								"getQuote"
+							],
+							"query": [
+								{
+									"key": "fromAsset",
+									"value": ""
+								},
+								{
+									"key": "toAsset",
+									"value": ""
+								},
+								{
+									"key": "fromAmount",
+									"value": "",
+									"description": "When specified, it is the amount you will be debited after the conversion"
+								},
+								{
+									"key": "toAmount",
+									"value": "",
+									"description": "When specified, it is the amount you will be credited after the conversion",
+									"disabled": true
+								},
+								{
+									"key": "validTime",
+									"value": "10s",
+									"description": "10s, 30s, 1m, 2m, default 10s",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "- The max interval between startTime and endTime is 30 days.\n\nWeight(UID): 100"
+					},
+					"response": []
+				},
+				{
+					"name": "Accept Quote (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/convert/acceptQuote?quoteId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"convert",
+								"acceptQuote"
+							],
+							"query": [
+								{
+									"key": "quoteId",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "- The max interval between startTime and endTime is 30 days.\n\nWeight(UID): 100"
+					},
+					"response": []
+				},
+				{
+					"name": "Order status (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/convert/orderStatus?orderId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"convert",
+								"orderStatus"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "- The max interval between startTime and endTime is 30 days.\n\nWeight(UID): 100"
+					},
+					"response": []
+				},
+				{
 					"name": "Get Convert Trade History (USER_DATA)",
 					"request": {
 						"method": "GET",
@@ -1575,15 +1868,15 @@
 								},
 								{
 									"key": "loanCoin",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "collateralCoin",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "loanTerm",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "timestamp",
@@ -1789,11 +2082,11 @@
 								},
 								{
 									"key": "amount",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "type",
-									"value": null,
+									"value": "",
 									"description": "Default: 1. 1 for \"repay with borrowed coin\"; 2 for \"repay with collateral\".",
 									"disabled": true
 								}
@@ -1865,12 +2158,12 @@
 								},
 								{
 									"key": "startTime",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": null,
+									"value": "",
 									"disabled": true
 								}
 							]
@@ -1918,11 +2211,11 @@
 								},
 								{
 									"key": "amount",
-									"value": null
+									"value": ""
 								},
 								{
 									"key": "direction",
-									"value": null,
+									"value": "",
 									"description": "\"ADDITIONAL\", \"REDUCED\""
 								}
 							]
@@ -1994,13 +2287,221 @@
 								},
 								{
 									"key": "startTime",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": null,
+									"value": "",
 									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Loanable Assets Data (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/loanable/data?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"loanable",
+								"data"
+							],
+							"query": [
+								{
+									"key": "loanCoin",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "vipLevel",
+									"value": "",
+									"description": "Default: user's vip level. Send \"-1\" to check specified configuration",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Collateral Assets Data (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/collateral/data?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"collateral",
+								"data"
+							],
+							"query": [
+								{
+									"key": "collateralCoin",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "vipLevel",
+									"value": "",
+									"description": "Default: user's vip level. Send \"-1\" to check specified configuration",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Collateral Repay Rate (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/repay/collateral/rate?loanCoin=&collateralCoin=&repayAmount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"repay",
+								"collateral",
+								"rate"
+							],
+							"query": [
+								{
+									"key": "loanCoin",
+									"value": ""
+								},
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "repayAmount",
+									"value": "",
+									"description": "repay amount of loanCoin"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crypto Loan Customize Margin Call (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/customize/margin_call?marginCall=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"customize",
+								"margin_call"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "",
+									"description": "Mandatory when collateralCoin is empty. Send either orderId or collateralCoin, if both parameters are sent, take orderId only",
+									"disabled": true
+								},
+								{
+									"key": "collateralCoin",
+									"value": null,
+									"description": "Mandatory when orderID is empty. Send either orderId or collateralCoin, if both parameters are sent, take orderId only.",
+									"disabled": true
+								},
+								{
+									"key": "marginCall",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
 								}
 							]
 						}
@@ -2347,7 +2848,7 @@
 							"query": [
 								{
 									"key": "coin",
-									"value": "",
+									"value": null,
 									"disabled": true
 								},
 								{
@@ -2384,7 +2885,7 @@
 								}
 							]
 						},
-						"description": "Get Cross-Collateral Borrow History."
+						"description": "Weight(IP): 10"
 					},
 					"response": []
 				},
@@ -3327,6 +3828,71 @@
 					"response": []
 				},
 				{
+					"name": "Buy a Binance Code (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/giftcard/buyCode?baseToken=&faceToken=&baseTokenAmount&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"giftcard",
+								"buyCode"
+							],
+							"query": [
+								{
+									"key": "baseToken",
+									"value": "",
+									"description": "The token you want to pay, example: BUSD"
+								},
+								{
+									"key": "faceToken",
+									"value": "",
+									"description": "The token you want to buy, example: BNB. If faceToken = baseToken, it's the same as createCode endpoint."
+								},
+								{
+									"key": "baseTokenAmount",
+									"value": null,
+									"description": "The base token asset quantity, example : 1.002"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "This API is for redeeming the Binance Code. Once redeemed, the coins will be deposited in your funding wallet.\n\nPlease note that if you enter the wrong code 5 times within 24 hours, you will no longer be able to redeem any Binance Code that day.\n\nWeight(IP): 1"
+					},
+					"response": []
+				},
+				{
 					"name": "Verify a Binance Code (USER_DATA)",
 					"request": {
 						"method": "GET",
@@ -3358,6 +3924,62 @@
 									"key": "referenceNo",
 									"value": "",
 									"description": "reference number"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "This API is for verifying whether the Binance Code is valid or not by entering Binance Code or reference number.\n\nPlease note that if you enter the wrong binance code 5 times within an hour, you will no longer be able to verify any binance code for that hour.\n\nWeight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Token Limit (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/giftcard/buyCode/token-limit?baseToken=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"giftcard",
+								"buyCode",
+								"token-limit"
+							],
+							"query": [
+								{
+									"key": "baseToken",
+									"value": "",
+									"description": "The token you want to pay, example: BUSD"
 								},
 								{
 									"key": "recvWindow",
@@ -6583,7 +7205,7 @@
 								},
 								{
 									"key": "permissions",
-									"value": null,
+									"value": "",
 									"description": "Display symbols with the permissions matching provided parameter. (eg.SPOT, MARGIN, LEVERAGED)",
 									"disabled": true
 								}
@@ -12285,7 +12907,7 @@
 								},
 								{
 									"key": "thirdParty",
-									"value": null,
+									"value": "",
 									"description": "Third Party",
 									"disabled": true
 								}
@@ -12417,7 +13039,7 @@
 								},
 								{
 									"key": "thirdPartyName",
-									"value": null,
+									"value": "",
 									"description": "Third Party Name",
 									"disabled": true
 								}
@@ -12489,13 +13111,142 @@
 								},
 								{
 									"key": "thirdPartyName",
-									"value": null,
+									"value": "",
 									"description": "Third Party Name",
 									"disabled": true
 								}
 							]
 						},
 						"description": "Weight(UID): 3000"
+					},
+					"response": []
+				},
+				{
+					"name": "Query Sub-Account API key Third Party IP whitelist (For Master Account)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/sub-account/apiRestrictions/ipRestriction/thirdPartyList?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"sub-account",
+								"apiRestrictions",
+								"ipRestriction",
+								"thirdPartyList"
+							],
+							"query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Weight(UID): 3000"
+					},
+					"response": []
+				},
+				{
+					"name": "Update IP Restriction for Sub-Account API key (For Master Account)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v2/sub-account/subAccountApi/ipRestriction?email=&subAccountApiKey=&status=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v2",
+								"sub-account",
+								"subAccountApi",
+								"ipRestriction"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "",
+									"description": "Sub-account email"
+								},
+								{
+									"key": "subAccountApiKey",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": "",
+									"description": "IP Restriction status. 1 = IP Unrestricted. 2 = Restrict access to trusted IPs only. 3 = Restrict access to users' trusted third party IPs only"
+								},
+								{
+									"key": "thirdPartyName",
+									"value": "",
+									"description": "Insert Name of a Third Party",
+									"disabled": true
+								},
+								{
+									"key": "ipAddress",
+									"value": "",
+									"description": "Insert static IP in batch, separated by commas.",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Before the usage of this endpoint, please ensure `POST /sapi/v1/sub-account/subAccountApi/ipRestriction` was used to enable the IP restriction.\n\nWeight(UID): 3000"
 					},
 					"response": []
 				}
@@ -12574,7 +13325,7 @@
 								{
 									"key": "newClientOrderId",
 									"value": "",
-									"description": "Used to uniquely identify this cancel. Automatically generated by default",
+									"description": "A unique id among open orders. Automatically generated if not sent.",
 									"disabled": true
 								},
 								{
@@ -12920,7 +13671,7 @@
 								{
 									"key": "newClientOrderId",
 									"value": "",
-									"description": "Used to uniquely identify this cancel. Automatically generated by default",
+									"description": "A unique id among open orders. Automatically generated if not sent.",
 									"disabled": true
 								},
 								{
@@ -15560,9 +16311,562 @@
 						"description": "Weight(IP): 1"
 					},
 					"response": []
+				},
+				{
+					"name": "BUSD Convert (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/asset/convert-transfer?clientTranId=&asset=BNB&amount=&targetAsset=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"asset",
+								"convert-transfer"
+							],
+							"query": [
+								{
+									"key": "clientTranId",
+									"value": "",
+									"description": "The unique user-defined transaction id, min length 20"
+								},
+								{
+									"key": "asset",
+									"value": "BNB",
+									"description": "The current asset"
+								},
+								{
+									"key": "amount",
+									"value": "",
+									"description": "The amount must be positive number"
+								},
+								{
+									"key": "targetAsset",
+									"value": "",
+									"description": "Target asset you want to convert"
+								},
+								{
+									"key": "accountType",
+									"value": "",
+									"description": "Only MAIN and CARD, default MAIN",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Get user assets, just for positive data.\n\nWeight(IP): 5"
+					},
+					"response": []
+				},
+				{
+					"name": "BUSD Convert History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/asset/convert-transfer/queryByPage?startTime=&endTime=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"asset",
+								"convert-transfer",
+								"queryByPage"
+							],
+							"query": [
+								{
+									"key": "tranId",
+									"value": "",
+									"description": "The transaction id",
+									"disabled": true
+								},
+								{
+									"key": "clientTranId",
+									"value": "",
+									"description": "The user-defined transaction id",
+									"disabled": true
+								},
+								{
+									"key": "asset",
+									"value": "BNB",
+									"description": "The current asset",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"description": "inclusive, unit: ms"
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"description": "exclusive, unit: ms"
+								},
+								{
+									"key": "accountType",
+									"value": "",
+									"description": "Only MAIN and CARD, default MAIN",
+									"disabled": true
+								},
+								{
+									"key": "current",
+									"value": "",
+									"description": "current page, default 1, the min value is 1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "",
+									"description": "page size, default 10, the max value is 100",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Get user assets, just for positive data.\n\nWeight(IP): 5"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cloud-Mining payment and refund history (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/asset/ledger-transfer/cloud-mining/queryByPage?startTime=&endTime=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"asset",
+								"ledger-transfer",
+								"cloud-mining",
+								"queryByPage"
+							],
+							"query": [
+								{
+									"key": "tranId",
+									"value": "",
+									"description": "The transaction id",
+									"disabled": true
+								},
+								{
+									"key": "clientTranId",
+									"value": "",
+									"description": "The unique flag",
+									"disabled": true
+								},
+								{
+									"key": "asset",
+									"value": "BNB",
+									"description": "If it is blank, we will query all assets",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"description": "inclusive, unit: ms"
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"description": "exclusive, unit: ms"
+								},
+								{
+									"key": "current",
+									"value": "",
+									"description": "current page, default 1, the min value is 1",
+									"disabled": true
+								},
+								{
+									"key": "size",
+									"value": "",
+									"description": "page size, default 10, the max value is 100",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Get user assets, just for positive data.\n\nWeight(IP): 5"
+					},
+					"response": []
 				}
 			],
 			"description": "Wallet Endpoints"
+		},
+		{
+			"name": "VIP Loans",
+			"item": [
+				{
+					"name": "Get VIP Loan Ongoing Orders (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/vip/ongoing/orders?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"vip",
+								"ongoing",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "collateralAccountId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "loanCoin",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "collateralCoin",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "current",
+									"value": "1",
+									"description": "Currently querying page. Start from 1, Default:1, Max: 1000.",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "- If startTime and endTime are not sent, the recent 7-day data will be returned.\n- The max interval between startTime and endTime is 30 days.\n\nWeight(UID): 6000"
+					},
+					"response": []
+				},
+				{
+					"name": "VIP Loan Repay (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/vip/repay?orderId=&amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"vip",
+								"repay"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "- If startTime and endTime are not sent, the recent 7-day data will be returned.\n- The max interval between startTime and endTime is 30 days.\n\nWeight(UID): 6000"
+					},
+					"response": []
+				},
+				{
+					"name": "Get VIP Loan Repayment History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/vip/repay/history?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"vip",
+								"repay",
+								"history"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "loanCoin",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "current",
+									"value": "1",
+									"description": "Currently querying page. Start from 1, Default:1, Max: 1000.",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Default: 10, Max: 100",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "- If startTime and endTime are not sent, the recent 7-day data will be returned.\n- The max interval between startTime and endTime is 30 days.\n\nWeight(UID): 6000"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Locked Value of VIP Collateral Account (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/vip/collateral/account?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"vip",
+								"collateral",
+								"account"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "collateralAccountId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "- If startTime and endTime are not sent, the recent 7-day data will be returned.\n- The max interval between startTime and endTime is 30 days.\n\nWeight(UID): 6000"
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
