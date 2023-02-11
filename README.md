@@ -61,7 +61,7 @@ Likely causes:
 Likely causes:
 - Secret key is not set.
 - Request was made with at least one empty parameter.
-- `signature` is not the last parameter in the parameters list.
+- `timestamp`&`signature` is not the last parameter in the parameters list.
 
 **Q:** Error `Mandatory parameter 'xxxx' was not sent, was empty/null, or malformed.`
 
