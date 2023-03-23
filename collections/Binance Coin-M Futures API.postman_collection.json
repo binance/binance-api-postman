@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "a7d81b74-fdd1-45b8-bd13-eb07e11ffd36",
-		"name": "Binance delivery futures API",
+		"_postman_id": "561533bd-a7c9-414a-8101-29cb7024d182",
+		"name": "Binance Coin-M Futures API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/futures/en/\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "23566881"
+		"_exporter_id": "10130460"
 	},
 	"item": [
 		{
@@ -3190,7 +3190,6 @@
 					"",
 					"parameters.map((param) => {",
 					"    if (param.key != 'signature' && ",
-					"        param.key != 'timestamp' && ",
 					"        !is_empty(param.value) &&",
 					"        !is_disabled(param.disabled)) {",
 					"            paramsObject[param.key] = param.value;",

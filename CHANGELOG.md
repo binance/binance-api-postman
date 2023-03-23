@@ -1,8 +1,12 @@
 # Changelog
 
-# 1.10.0 - 2022-12-23
-## Spot API Collection
-### Added
+## 1.11.0 - 2023-03-24
+- Rename collections
+- Fix an bug that if the timestamp is not in the last second position, the request could return error.
+
+## 1.10.0 - 2022-12-23
+### Spot API Collection
+#### Added
 VIP Loans:
 - `GET /sapi/v1/loan/vip/collateral/account`: Check Locked Value of VIP Collateral Account
 - `GET /sapi/v1/loan/vip/ongoing/orders`: Get VIP Loan Ongoing
