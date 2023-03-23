@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "5733c8d5-e949-4bc9-a8e0-38ff480b389e",
-		"name": "Binance spot API",
+		"_postman_id": "41cefd3a-b3d7-4fb4-b1e3-3b010bdbf070",
+		"name": "Binance Spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "23566881"
+		"_exporter_id": "10130460"
 	},
 	"item": [
 		{
@@ -1837,7 +1837,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/sapi/v1/loan/borrow?loanCoin&collateralCoin&loanTerm&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/loan/borrow?loanCoin=&collateralCoin=&loanTerm=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2043,7 +2043,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/sapi/v1/loan/repay?timestamp={{timestamp}}&signature={{signature}}&orderId=&amount",
+							"raw": "{{url}}/sapi/v1/loan/repay?timestamp={{timestamp}}&signature={{signature}}&orderId=&amount=",
 							"host": [
 								"{{url}}"
 							],
@@ -2177,7 +2177,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/sapi/v1/loan/adjust/ltv?timestamp={{timestamp}}&signature={{signature}}&orderId=&amount&direction",
+							"raw": "{{url}}/sapi/v1/loan/adjust/ltv?timestamp={{timestamp}}&signature={{signature}}&orderId=&amount=&direction=",
 							"host": [
 								"{{url}}"
 							],
@@ -14406,7 +14406,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/account?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/api/v3/account?recvWindow=5000&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -14419,8 +14419,7 @@
 								{
 									"key": "recvWindow",
 									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
+									"description": "The value cannot be greater than 60000"
 								},
 								{
 									"key": "timestamp",
@@ -16886,7 +16885,6 @@
 					"",
 					"parameters.map((param) => {",
 					"    if (param.key != 'signature' && ",
-					"        param.key != 'timestamp' && ",
 					"        !is_empty(param.value) &&",
 					"        !is_disabled(param.disabled)) {",
 					"            paramsObject[param.key] = param.value;",
