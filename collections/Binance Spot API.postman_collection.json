@@ -2600,7 +2600,7 @@
 								},
 								{
 									"key": "collateralCoin",
-									"value": "",
+									"value": null,
 									"description": "Mandatory when orderID is empty. Send either orderId or collateralCoin, if both parameters are sent, take orderId only.",
 									"disabled": true
 								},
@@ -2969,7 +2969,7 @@
 							"query": [
 								{
 									"key": "coin",
-									"value": "",
+									"value": null,
 									"disabled": true
 								},
 								{
@@ -3988,7 +3988,7 @@
 								},
 								{
 									"key": "baseTokenAmount",
-									"value": "",
+									"value": null,
 									"description": "The base token asset quantity, example : 1.002"
 								},
 								{
@@ -16887,7 +16887,7 @@
 								},
 								{
 									"key": "endTime",
-									"value": "",
+									"value": null,
 									"disabled": true
 								},
 								{
