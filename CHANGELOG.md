@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.11.1 - 2023-04-14
+- Added missing X-MBX-APIKEY and Content Type headers to the Crypto Loan endpoints
+
 ## 1.11.0 - 2023-03-24
 - Rename collections
 - Fix an bug that if the timestamp is not in the last second position, the request could return error.

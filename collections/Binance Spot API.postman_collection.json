@@ -1835,7 +1835,18 @@
 					"name": "Borrow - Crypto Loan Borrow (TRADE)",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/sapi/v1/loan/borrow?loanCoin=&collateralCoin=&loanTerm=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
@@ -1897,7 +1908,18 @@
 					"name": "Borrow - Get Loan Borrow History (USER_DATA)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/sapi/v1/loan/borrow/history?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
@@ -1974,7 +1996,18 @@
 					"name": "Borrow - Get Loan Ongoing Orders (USER_DATA)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/sapi/v1/loan/ongoing/orders?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
@@ -2041,7 +2074,18 @@
 					"name": "Repay - Crypto Loan Repay (TRADE)",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/sapi/v1/loan/repay?timestamp={{timestamp}}&signature={{signature}}&orderId=&amount=",
 							"host": [
@@ -2099,7 +2143,18 @@
 					"name": "Repay - Get Loan Repayment History (USER_DATA)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/sapi/v1/loan/repay/history?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
@@ -2175,7 +2230,18 @@
 					"name": "Adjust LTV - Crypto Loan Adjust LTV (TRADE)",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/sapi/v1/loan/adjust/ltv?timestamp={{timestamp}}&signature={{signature}}&orderId=&amount=&direction=",
 							"host": [
@@ -2227,7 +2293,18 @@
 					"name": "Adjust LTV - Get Loan LTV Adjustment History (USER_DATA)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/sapi/v1/loan/ltv/adjustment/history?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
@@ -2304,7 +2381,18 @@
 					"name": "Get Loanable Assets Data (USER_DATA)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/sapi/v1/loan/loanable/data?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
@@ -2354,7 +2442,18 @@
 					"name": "Get Collateral Assets Data (USER_DATA)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/sapi/v1/loan/collateral/data?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
@@ -2404,7 +2503,18 @@
 					"name": "Check Collateral Repay Rate (USER_DATA)",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/sapi/v1/loan/repay/collateral/rate?loanCoin=&collateralCoin=&repayAmount=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
@@ -2457,7 +2567,18 @@
 					"name": "Crypto Loan Customize Margin Call (TRADE)",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/sapi/v1/loan/customize/margin_call?marginCall=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
