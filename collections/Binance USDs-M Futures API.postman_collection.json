@@ -1856,6 +1856,91 @@
 					"response": []
 				},
 				{
+					"name": "Modify Order (TRADE)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/order?symbol=&side=&type=&quantity=&price=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"order"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "origClientOrderId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "symbol",
+									"value": ""
+								},
+								{
+									"key": "side",
+									"value": ""
+								},
+								{
+									"key": "quantity",
+									"value": ""
+								},
+								{
+									"key": "price",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Either orderId or origClientOrderId must be sent, and the orderId will prevail if both are sent.\nBoth quantity and price must be sent, which is different from dapi modify order endpoint.\nWhen the new quantity or price doesn't satisfy PRICE_FILTER / PERCENT_FILTER / LOT_SIZE, amendment will be rejected and the order will stay as it is.\nHowever the order will be cancelled by the amendment in the following situations:\n- when the order is in partially filled status and the new quantity <= executedQty\n- When the order is GTX and the new price will cause it to be executed immediately\nOne order can only be modfied for less than 10000 times\n\nWeight: 1"
+					},
+					"response": []
+				},
+				{
 					"name": "Place Multiple Orders (TRADE)",
 					"event": [
 						{
@@ -1915,6 +2000,438 @@
 								}
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "Modify Multiple Orders (TRADE)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/batchOrders?batchOrders=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"batchOrders"
+							],
+							"query": [
+								{
+									"key": "batchOrders",
+									"value": "",
+									"description": "order list. Max 5 orders"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Default BOTH for One-way Mode ;\nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode."
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Order Modify History (USER_DATA)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/orderAmendment?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"orderAmendment"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": ""
+								},
+								{
+									"key": "orderId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "origClientOrderId",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"description": "Timestamp in ms to get modification history from INCLUSIVE",
+									"disabled": true
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"description": "Timestamp in ms to get modification history from INCLUSIVE",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "",
+									"description": "Default 50; max 100",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Default BOTH for One-way Mode ;\nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode."
+								}
+							]
+						},
+						"description": "Get order modification history\nEither orderId or origClientOrderId must be sent, and the orderId will prevail if both are sent.\n\nWeight: 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Download Id For Futures Order History (USER_DATA)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/order/asyn?startTime=&endTime=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"order",
+								"asyn"
+							],
+							"query": [
+								{
+									"key": "startTime",
+									"value": "",
+									"description": "Timestamp in ms"
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"description": "Timestamp in ms"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Default BOTH for One-way Mode ;\nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode."
+								}
+							]
+						},
+						"description": "Request Limitation is 10 times per month, shared by front end download page and rest api\nThe time between startTime and endTime can not be longer than 1 year\nWeight: 5"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Futures Order History Download Link by Id (USER_DATA)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/order/asyn/id?downloadId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"order",
+								"asyn",
+								"id"
+							],
+							"query": [
+								{
+									"key": "downloadId",
+									"value": "",
+									"description": "get by download id api"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Default BOTH for One-way Mode ;\nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode."
+								}
+							]
+						},
+						"description": "Download link expiration: 24h\nWeight: 5"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Download Id For Futures Trade History (USER_DATA)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/trade/asyn?startTime=&endTime=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"trade",
+								"asyn"
+							],
+							"query": [
+								{
+									"key": "startTime",
+									"value": "",
+									"description": "Timestamp in ms"
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"description": "Timestamp in ms"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Default BOTH for One-way Mode ;\nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode."
+								}
+							]
+						},
+						"description": "Request Limitation is 5 times per month, shared by front end download page and rest api\nThe time between startTime and endTime can not be longer than 1 year\nWeight: 5"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Futures Trade Download Link by Id (USER_DATA)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/trade/asyn/id?downloadId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"trade",
+								"asyn",
+								"id"
+							],
+							"query": [
+								{
+									"key": "downloadId",
+									"value": "",
+									"description": "Timestamp in ms"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Default BOTH for One-way Mode ;\nLONG or SHORT for Hedge Mode. It must be sent with Hedge Mode."
+								}
+							]
+						},
+						"description": "Download link expiration: 24h\nWeight: 5"
 					},
 					"response": []
 				},
@@ -3267,37 +3784,6 @@
 		{
 			"name": "Portfolio Margin",
 			"item": [
-				{
-					"name": "Portfolio Margin Exchange Information",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/fapi/v1/pmExchangeInfo",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"fapi",
-								"v1",
-								"pmExchangeInfo"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "Portfolio Margin Account Information",
 					"event": [

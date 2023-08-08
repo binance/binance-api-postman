@@ -388,6 +388,12 @@
 							],
 							"query": [
 								{
+									"key": "underlying",
+									"value": "",
+									"description": "Underlying index like BTCUSDT",
+									"disabled": true
+								},
+								{
 									"key": "startTime",
 									"value": "",
 									"description": "Start Time",
@@ -459,68 +465,6 @@
 								}
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "Funds Transfer (TRADE)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"type": "text",
-								"value": "{{binance-api-key}}"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/eapi/v1/transfer?currency=&type=&amount=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"eapi",
-								"v1",
-								"transfer"
-							],
-							"query": [
-								{
-									"key": "currency",
-									"value": "",
-									"description": "Asset type, e.g USDT"
-								},
-								{
-									"key": "type",
-									"value": "",
-									"description": "IN: Transfer from spot account to option account OUT: Transfer from option account to spot account"
-								},
-								{
-									"key": "amount",
-									"value": "",
-									"description": "Amount"
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}"
-								}
-							]
-						},
-						"description": "Transfer fund between spot and option account."
 					},
 					"response": []
 				},
@@ -682,6 +626,70 @@
 							]
 						},
 						"description": "Send multiple option orders."
+					},
+					"response": []
+				},
+				{
+					"name": "Query Single Order (TRADE)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/eapi/v1/order?symbol=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"eapi",
+								"v1",
+								"order"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "Option trading pair, e.g BTC-200730-9000-C"
+								},
+								{
+									"key": "orderId",
+									"value": "",
+									"description": "Order id",
+									"disabled": true
+								},
+								{
+									"key": "clientOrderId",
+									"value": "5000",
+									"description": "User-defined order ID cannot be repeated in pending orders",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Check an order status."
 					},
 					"response": []
 				},
@@ -1344,6 +1352,118 @@
 							]
 						},
 						"description": "Query account funding flows."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Download Id For Option Transaction History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/eapi/v1/income/asyn?startTime=&endTime=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"eapi",
+								"v1",
+								"income",
+								"asyn"
+							],
+							"query": [
+								{
+									"key": "startTime",
+									"value": "",
+									"description": "Timestamp in ms"
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"description": "Timestamp in ms"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Request Limitation is 5 times per month, shared by front end download page and rest api\nThe time between startTime and endTime can not be longer than 1 year\n\nWeight: 5"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Option Transaction History Download Link by Id (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/eapi/v1/income/asyn/id?downloadId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"eapi",
+								"v1",
+								"income",
+								"asyn",
+								"id"
+							],
+							"query": [
+								{
+									"key": "downloadId",
+									"value": "",
+									"description": "get by download id api"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Download link expiration: 24h\n\nWeight: 5"
 					},
 					"response": []
 				}
