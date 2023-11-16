@@ -1,6 +1,75 @@
 # Changelog
 
-## 1.12.0 - 2023-08-08
+
+## 1.13.0 -2023-11-16
+
+#### Update
+- `GET /dapi/v1/income` Add parameter `page` for pagination
+- `GET /fapi/v1/income` Add parameter page for pagination
+- Add optional parameter `goodTillDate` in the endpoints below to set order's goodTillDate :
+	- `POST /fapi/v1/order`
+- Add optional parameter `priceMatc`h in the endpoints below to set order's priceMatch mode:
+	- `POST /fapi/v1/order`
+- Add optional parameter `selfTradePreventionMode` in the endpoints below to set order's STP mode:
+	- `POST /fapi/v1/order`
+- `POST /sapi/v1/loan/vip/borrow` add field isFlexibleRate to borrow using flexible rate loan
+- `POST /sapi/v1/simple-earn/flexible/subscribe` new parameter sourceAccount
+- `POST /sapi/v1/simple-earn/locked/subscribe` new parameter sourceAccount
+- `POST /sapi/v1/simple-earn/flexible/redeem` new parameter destAccount
+- Changes to Margin Endpoint `GET /sapi/v1/margin/isolated/transfer`:
+	- Add request field `type`
+	- Delete request field `transFrom`, `transTo`
+- `POST /sapi/v1/portfolio/repay` add paramater from
+
+#### Add
+- `GET /dapi/v1/income/asyn` get Download Id For Futures Transaction History
+- `GET /dapi/v1/income/asyn/id` to get Futures Transaction History Download Link by Id
+- `GET /dapi/v1/fundingInfo` query adjusted funding info
+- `GET /dapi/v1/constituents` query index constituents
+- `GET /futures/data/delivery-price` query quarterly contract settlement price
+- `GET /fapi/v1/fundingInfo` query adjusted funding info
+- `GET /fapi/v1/constituents` query index constituents
+- `GET /futures/data/delivery-price` query quarterly contract settlement price
+- `GET /futures/data/basis` query basis data
+- New endpoints for order placement using SOR:
+	- `POST /api/v3/sor/order`
+	- `POST /api/v3/sor/order/test`
+- `GET /api/v3/myAllocations`
+- `POST /sapi/v1/loan/flexible/borrow` flexible Loan borrow
+- `GET /sapi/v1/loan/flexible/ongoing/orders` get flexible loan ongoing orders
+- `GET /sapi/v1/loan/flexible/borrow/history` Get flexible loan borrow history
+- `POST /sapi/v1/loan/flexible/repay` flexible loan repay
+- `POST /sapi/v1/loan/flexible/repay/history` Get flexible loan repayment history
+- `POST /sapi/v1/loan/flexible/adjust/ltv` adjust flexible Loan adjust LTV
+- `GET /sapi/v1/loan/flexible/ltv/adjustment/history` Get Flexible loan LTV adjustment history
+- `GET /sapi/v1/loan/flexible/loanable/data` Get flexible loan assets data
+- `GET /sapi/v1/loan/flexible/collateral/data` Get flexible loan collateral assets data
+- `GET /sapi/v1/margin/capital-flow` Get cross or isolated margin capital flow
+- `GET /sapi/v1/portfolio/margin-asset-leverage` Get Portfolio Margin Asset Leverage
+- `GET /sapi/v1/lending/auto-invest/index/info` query index details
+- `GET /sapi/v1/lending/auto-invest/index/user-summary` query index linked plan position details
+- `POST /sapi/v1/lending/auto-invest/one-off` One Time transaction
+- `GET /sapi/v1/lending/auto-invest/one-off/status` query one-time transaction status
+- `POST /sapi/v1/lending/auto-invest/redeem` index linked plan redemption
+- `GET /sapi/v1/lending/auto-invest/redeem/history` query index Linked plan Redemption history
+- `GET /sapi/v1/lending/auto-invest/rebalance/history` query index linked plan rebalance details
+- `GET /sapi/v1/asset/wallet/balance` query user wallet balance
+- `GET /sapi/v1/asset/custody/transfer-history` query user delegation history(For Master Account)
+- `GET /sapi/v1/futures/histDataLink` query futures ticklevel orderbook historicak data download link
+- `GET /sapi/v1/loan/vip/request/interestRate` Get Borrow Interest Rate
+- `GET /sapi/v1/margin/available-inventory` Query margin available inventory
+- `POST /sapi/v1/margin/manual-liquidation` Margin manual liquidation
+
+#### Delete
+- `GET /sapi/v1/futures/loan/borrow/history`
+- `GET /sapi/v1/futures/loan/repay/history`
+- `GET /sapi/v2/futures/loan/wallet`
+- `GET /sapi/v1/futures/loan/adjustCollateral/history`
+- `GET /sapi/v1/futures/loan/liquidationHistory`
+- `GET /sapi/v1/futures/loan/interestHistory`
+
+
+## 1.12.0 - 2023-08-07
 
 ### Spot API Collection
 #### Added

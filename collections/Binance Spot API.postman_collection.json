@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "41cefd3a-b3d7-4fb4-b1e3-3b010bdbf070",
+		"_postman_id": "385fa3e1-9187-4ecd-8b67-5605b162dc79",
 		"name": "Binance Spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -2628,6 +2628,592 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Borrow - Flexible Loan Borrow (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/flexible/borrow?loanCoin=&loanAmount=&collateralAmount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"flexible",
+								"borrow"
+							],
+							"query": [
+								{
+									"key": "loanCoin",
+									"value": ""
+								},
+								{
+									"key": "loanAmount",
+									"value": ""
+								},
+								{
+									"key": "collateralCoin",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "collateralAmount",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "UTC timestamp in ms",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "Signature"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrow - Get Flexible Loan Ongoing Orders (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/flexible/ongoing/orders?loanCoin=&collateralCoin=&current=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"flexible",
+								"ongoing",
+								"orders"
+							],
+							"query": [
+								{
+									"key": "loanCoin",
+									"value": ""
+								},
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "current",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "UTC timestamp in ms",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "Signature"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Borrow - Get Flexible Loan Borrow History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/flexible/borrow/history?loanCoin=&collateralCoin=&startTime=&endTime=&current=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"flexible",
+								"borrow",
+								"history"
+							],
+							"query": [
+								{
+									"key": "loanCoin",
+									"value": ""
+								},
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "current",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Repay - Flexible Loan Repay (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/flexible/repay?loanCoin=&collateralCoin=&repayAmount=&collateralReturn=&fullRepayment=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"flexible",
+								"repay"
+							],
+							"query": [
+								{
+									"key": "loanCoin",
+									"value": ""
+								},
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "repayAmount",
+									"value": ""
+								},
+								{
+									"key": "collateralReturn",
+									"value": ""
+								},
+								{
+									"key": "fullRepayment",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Repay - Get Flexible Loan Repayment History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/flexible/repay/history?loanCoin=&collateralCoin=&startTime=&endTime=&current=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"flexible",
+								"repay",
+								"history"
+							],
+							"query": [
+								{
+									"key": "loanCoin",
+									"value": ""
+								},
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "current",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adjust LTV - Flexible Loan Adjust LTV (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/flexible/adjust/ltv?loanCoin=&collateralCoin=&adjustmentAmount=&direction=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"flexible",
+								"adjust",
+								"ltv"
+							],
+							"query": [
+								{
+									"key": "loanCoin",
+									"value": ""
+								},
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "adjustmentAmount",
+									"value": ""
+								},
+								{
+									"key": "direction",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adjust LTV - Get Flexible Loan LTV Adjustment History (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/flexible/ltv/adjustment/history?loanCoin=&collateralCoin=&startTime=&endTime=&current=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"flexible",
+								"ltv",
+								"adjustment",
+								"history"
+							],
+							"query": [
+								{
+									"key": "loanCoin",
+									"value": ""
+								},
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "current",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Flexible Loan Assets Data (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/flexible/ltv/adjustment/history?loanCoin=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"flexible",
+								"ltv",
+								"adjustment",
+								"history"
+							],
+							"query": [
+								{
+									"key": "loanCoin",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Flexible Loan Collateral Assets Data (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/flexible/ltv/adjustment/history?collateralCoin=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"flexible",
+								"ltv",
+								"adjustment",
+								"history"
+							],
+							"query": [
+								{
+									"key": "collateralCoin",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"description": "Crypto Loans Endpoints"
@@ -2938,7 +3524,7 @@
 					"response": []
 				},
 				{
-					"name": "Cross-Collateral Borrow History (USER_DATA)",
+					"name": "Get Future TickLevel Orderbook Historical Data Download Link (USER_DATA)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2954,7 +3540,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/futures/loan/borrow/history?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/futures/histDataLink?symbol=&dataType=&startTime=&endTime=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -2962,404 +3548,41 @@
 								"sapi",
 								"v1",
 								"futures",
-								"loan",
-								"borrow",
-								"history"
+								"histDataLink"
 							],
 							"query": [
 								{
-									"key": "coin",
-									"value": null,
-									"disabled": true
+									"key": "symbol",
+									"value": ""
+								},
+								{
+									"key": "dataType",
+									"value": ""
 								},
 								{
 									"key": "startTime",
-									"value": "",
-									"disabled": true
+									"value": ""
 								},
 								{
 									"key": "endTime",
 									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "",
-									"description": "default 500, max 1000",
-									"disabled": true
+									"description": "Currently querying page. Start from 1. Default:1"
 								},
 								{
 									"key": "recvWindow",
 									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Weight(IP): 10"
-					},
-					"response": []
-				},
-				{
-					"name": "Cross-Collateral Repayment History (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/futures/loan/repay/history?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"futures",
-								"loan",
-								"repay",
-								"history"
-							],
-							"query": [
-								{
-									"key": "coin",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "startTime",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "endTime",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "",
-									"description": "default 500, max 1000",
-									"disabled": true
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Get Cross-Collateral Repayment History."
-					},
-					"response": []
-				},
-				{
-					"name": "Cross-Collateral Wallet V2 (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v2/futures/loan/wallet?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v2",
-								"futures",
-								"loan",
-								"wallet"
-							],
-							"query": [
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Get Cross-Collateral Wallet V2."
-					},
-					"response": []
-				},
-				{
-					"name": "Adjust Cross-Collateral LTV History (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/futures/loan/adjustCollateral/history?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"futures",
-								"loan",
-								"adjustCollateral",
-								"history"
-							],
-							"query": [
-								{
-									"key": "loanCoin",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "collateralCoin",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "startTime",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "endTime",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "",
-									"description": "default 500, max 1000",
-									"disabled": true
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Get Adjust Cross-Collateral LTV History."
-					},
-					"response": []
-				},
-				{
-					"name": "Cross-Collateral Liquidation History (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/futures/loan/liquidationHistory?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"futures",
-								"loan",
-								"liquidationHistory"
-							],
-							"query": [
-								{
-									"key": "loanCoin",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "collateralCoin",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "startTime",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "endTime",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "",
-									"description": "default 500, max 1000",
-									"disabled": true
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Get Cross-Collateral Liquidation History."
-					},
-					"response": []
-				},
-				{
-					"name": "Cross-Collateral Interest History (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/futures/loan/interestHistory?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"futures",
-								"loan",
-								"interestHistory"
-							],
-							"query": [
-								{
-									"key": "collateralCoin",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "startTime",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "endTime",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "current",
-									"value": "",
-									"description": "Currently querying page. Start from 1. Default:1",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "",
 									"description": "Default:500 Max:1000",
 									"disabled": true
 								},
 								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
 									"key": "timestamp",
 									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
+									"description": "The value cannot be greater than 60000"
 								},
 								{
 									"key": "signature",
 									"value": "{{signature}}",
-									"description": "Signature"
+									"description": "UTC timestamp in ms"
 								}
 							]
 						}
@@ -4121,7 +4344,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/algo/spot/subOrders?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/algo/spot/subOrders?algoId=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6622,7 +6845,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/isolated/transfer?symbol=BNBUSDT&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/isolated/transfer?symbol=BNBUSDT&type=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6645,19 +6868,12 @@
 									"description": "Trading symbol, e.g. BNBUSDT"
 								},
 								{
-									"key": "transFrom",
-									"value": "SPOT",
-									"disabled": true
-								},
-								{
-									"key": "transTo",
-									"value": "ISOLATED_MARGIN",
-									"disabled": true
+									"key": "type",
+									"value": ""
 								},
 								{
 									"key": "startTime",
 									"value": "",
-									"description": "UTC timestamp in ms",
 									"disabled": true
 								},
 								{
@@ -6669,36 +6885,36 @@
 								{
 									"key": "current",
 									"value": "1",
-									"description": "Current querying page. Start from 1. Default:1",
+									"description": "UTC timestamp in ms",
 									"disabled": true
 								},
 								{
 									"key": "size",
 									"value": "100",
-									"description": "Default:10 Max:100",
+									"description": "Current querying page. Start from 1. Default:1",
 									"disabled": true
 								},
 								{
 									"key": "archived",
 									"value": "",
-									"description": "Default: false. Set to true for archived data from 6 months ago",
+									"description": "Default:10 Max:100",
 									"disabled": true
 								},
 								{
 									"key": "recvWindow",
 									"value": "5000",
-									"description": "The value cannot be greater than 60000",
+									"description": "Default: false. Set to true for archived data from 6 months ago",
 									"disabled": true
 								},
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
+									"description": "The value cannot be greater than 60000"
 								},
 								{
 									"key": "signature",
 									"value": "{{signature}}",
-									"description": "Signature"
+									"description": "UTC timestamp in ms"
 								}
 							]
 						},
@@ -8064,6 +8280,183 @@
 									"key": "signature",
 									"value": "{{signature}}",
 									"description": "Signature"
+								}
+							]
+						},
+						"description": "Get tokens or symbols delist schedule for cross margin and isolated margin\n\nWeight(UID): 100"
+					},
+					"response": []
+				},
+				{
+					"name": "Get cross or isolated margin capital flow(USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/margin/capital-flow?asset=&symbol=&type=&startTime=&endTime=&fromId=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"margin",
+								"capital-flow"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "symbol",
+									"value": ""
+								},
+								{
+									"key": "type",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "fromId",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Get tokens or symbols delist schedule for cross margin and isolated margin\n\nWeight(UID): 100"
+					},
+					"response": []
+				},
+				{
+					"name": "Query Margin Available Inventory (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/margin/available-inventory?type=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"margin",
+								"available-inventory"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Get tokens or symbols delist schedule for cross margin and isolated margin\n\nWeight(UID): 100"
+					},
+					"response": []
+				},
+				{
+					"name": "Margin manual liquidation(MARGIN)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/margin/manual-liquidation?type=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"margin",
+								"manual-liquidation"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
 								}
 							]
 						},
@@ -10100,7 +10493,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/portfolio/repay?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/portfolio/repay?from=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -10112,24 +10505,28 @@
 							],
 							"query": [
 								{
+									"key": "from",
+									"value": "",
+									"description": "The value cannot be greater than 60000"
+								},
+								{
 									"key": "recvWindow",
 									"value": "5000",
-									"description": "The value cannot be greater than 60000",
+									"description": "UTC timestamp in ms",
 									"disabled": true
 								},
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
+									"description": "Signature"
 								},
 								{
 									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
+									"value": "{{signature}}"
 								}
 							]
 						},
-						"description": "Repay Portfolio Margin Bankruptcy Loan.\n\nWeight(UID): 3000"
+						"description": "Repay futures Negative Balance\n\nWeight(IP): 1500"
 					},
 					"response": []
 				},
@@ -10543,6 +10940,56 @@
 								"v1",
 								"portfolio",
 								"repay-futures-negative-balance"
+							],
+							"query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Repay futures Negative Balance\n\nWeight(IP): 1500"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Portfolio Margin Asset Leverage (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/portfolio/margin-asset-leverage?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"portfolio",
+								"margin-asset-leverage"
 							],
 							"query": [
 								{
@@ -15791,6 +16238,313 @@
 						"description": "Displays the user's current order count usage for all intervals.\n\nWeight(IP): 20"
 					},
 					"response": []
+				},
+				{
+					"name": "New order using SOR (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/sor/order?symbol=BNBUSDT&side=SELL&type=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"sor",
+								"order"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BNBUSDT",
+									"description": "Trading symbol, e.g. BNBUSDT"
+								},
+								{
+									"key": "side",
+									"value": "SELL"
+								},
+								{
+									"key": "type",
+									"value": "",
+									"description": "Order type"
+								},
+								{
+									"key": "timeInForce",
+									"value": "",
+									"description": "Order time in force",
+									"disabled": true
+								},
+								{
+									"key": "quantity",
+									"value": "",
+									"description": "Order quantity",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "",
+									"description": "Quote quantity",
+									"disabled": true
+								},
+								{
+									"key": "newClientOrderId",
+									"value": "",
+									"description": "Order price",
+									"disabled": true
+								},
+								{
+									"key": "strategyId",
+									"value": "",
+									"description": "A unique id among open orders. Automatically generated if not sent.",
+									"disabled": true
+								},
+								{
+									"key": "strategyType",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "icebergQty",
+									"value": "",
+									"description": "The value cannot be less than 1000000",
+									"disabled": true
+								},
+								{
+									"key": "newOrderRespType",
+									"value": "",
+									"description": "Used with STOP_LOSS, STOP_LOSS_LIMIT, TAKE_PROFIT, and TAKE_PROFIT_LIMIT orders.",
+									"disabled": true
+								},
+								{
+									"key": "selfTradePreventionMode",
+									"value": "",
+									"description": "Used with STOP_LOSS, STOP_LOSS_LIMIT, TAKE_PROFIT, and TAKE_PROFIT_LIMIT orders.",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "Used with LIMIT, STOP_LOSS_LIMIT, and TAKE_PROFIT_LIMIT to create an iceberg order.",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "Set the response JSON. MARKET and LIMIT order types default to FULL, all other orders default to ACK."
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "The value cannot be greater than 60000"
+								}
+							]
+						},
+						"description": "Test new order creation and signature/recvWindow long.\nCreates and validates a new order but does not send it into the matching engine.\n\nWeight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Test New order using SOR (TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/sor/order/test?symbol=BNBUSDT&side=SELL&type=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"sor",
+								"order",
+								"test"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "BNBUSDT",
+									"description": "Trading symbol, e.g. BNBUSDT"
+								},
+								{
+									"key": "side",
+									"value": "SELL"
+								},
+								{
+									"key": "type",
+									"value": "",
+									"description": "Order type"
+								},
+								{
+									"key": "timeInForce",
+									"value": "",
+									"description": "Order time in force",
+									"disabled": true
+								},
+								{
+									"key": "quantity",
+									"value": "",
+									"description": "Order quantity",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "",
+									"description": "Quote quantity",
+									"disabled": true
+								},
+								{
+									"key": "newClientOrderId",
+									"value": "",
+									"description": "Order price",
+									"disabled": true
+								},
+								{
+									"key": "strategyId",
+									"value": "",
+									"description": "A unique id among open orders. Automatically generated if not sent.",
+									"disabled": true
+								},
+								{
+									"key": "strategyType",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "icebergQty",
+									"value": "",
+									"description": "The value cannot be less than 1000000",
+									"disabled": true
+								},
+								{
+									"key": "newOrderRespType",
+									"value": "",
+									"description": "Used with STOP_LOSS, STOP_LOSS_LIMIT, TAKE_PROFIT, and TAKE_PROFIT_LIMIT orders.",
+									"disabled": true
+								},
+								{
+									"key": "selfTradePreventionMode",
+									"value": "",
+									"description": "Used with STOP_LOSS, STOP_LOSS_LIMIT, TAKE_PROFIT, and TAKE_PROFIT_LIMIT orders.",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "Used with LIMIT, STOP_LOSS_LIMIT, and TAKE_PROFIT_LIMIT to create an iceberg order.",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "Set the response JSON. MARKET and LIMIT order types default to FULL, all other orders default to ACK."
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "The value cannot be greater than 60000"
+								}
+							]
+						},
+						"description": "Test new order creation and signature/recvWindow long.\nCreates and validates a new order but does not send it into the matching engine.\n\nWeight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Query Allocations (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v3/myAllocations?symbol=&startTime=&endTime=&fromAllocationId=&limit=&orderId=&recvWindow=5000&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"myAllocations"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": "",
+									"description": "The value cannot be greater than 60000"
+								},
+								{
+									"key": "startTime",
+									"value": "",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"description": "Signature"
+								},
+								{
+									"key": "fromAllocationId",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "orderId",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Get current account information.\n\nWeight(IP): 10"
+					},
+					"response": []
 				}
 			],
 			"description": "Account/Trade"
@@ -16339,20 +17093,25 @@
 									"disabled": true
 								},
 								{
-									"key": "recvWindow",
+									"key": "sourceAccount",
 									"value": "",
 									"description": "no more than 60000",
 									"disabled": true
 								},
 								{
+									"key": "recvWindow",
+									"value": "",
+									"description": "UTC timestamp in ms",
+									"disabled": true
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
+									"description": "Signature"
 								},
 								{
 									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
+									"value": "{{signature}}"
 								}
 							]
 						},
@@ -16404,20 +17163,25 @@
 									"disabled": true
 								},
 								{
-									"key": "recvWindow",
+									"key": "sourceAccount",
 									"value": "",
 									"description": "no more than 60000",
 									"disabled": true
 								},
 								{
+									"key": "recvWindow",
+									"value": "",
+									"description": "UTC timestamp in ms",
+									"disabled": true
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
+									"description": "Signature"
 								},
 								{
 									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
+									"value": "{{signature}}"
 								}
 							]
 						},
@@ -16471,20 +17235,25 @@
 									"disabled": true
 								},
 								{
-									"key": "recvWindow",
+									"key": "destAccount",
 									"value": "",
 									"description": "no more than 60000",
 									"disabled": true
 								},
 								{
+									"key": "recvWindow",
+									"value": "",
+									"description": "UTC timestamp in ms",
+									"disabled": true
+								},
+								{
 									"key": "timestamp",
 									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
+									"description": "Signature"
 								},
 								{
 									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
+									"value": "{{signature}}"
 								}
 							]
 						},
@@ -17106,7 +17875,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/simple-earn/flexible/history/rewardsRecord?type=&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/simple-earn/flexible/history/rewardsRecord?signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -17173,7 +17942,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/simple-earn/locked/history/rewardsRecord?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/simple-earn/locked/history/redemptionRecord?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -18497,6 +19266,447 @@
 									"key": "signature",
 									"value": "{{signature}}",
 									"description": "Signature"
+								}
+							]
+						},
+						"description": "Query subscription transaction history of a plan\n\nMax span between startTime and endTime is 30days\n\nIf both startTime and endTime are null, then default is 30days\n\nWeight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Query Index Details(USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/auto-invest/index/info?indexId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"auto-invest",
+								"index",
+								"info"
+							],
+							"query": [
+								{
+									"key": "indexId",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Query subscription transaction history of a plan\n\nMax span between startTime and endTime is 30days\n\nIf both startTime and endTime are null, then default is 30days\n\nWeight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Query Index Linked Plan Position Details(USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/auto-invest/index/user-summary?indexId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"auto-invest",
+								"index",
+								"user-summary"
+							],
+							"query": [
+								{
+									"key": "indexId",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Query subscription transaction history of a plan\n\nMax span between startTime and endTime is 30days\n\nIf both startTime and endTime are null, then default is 30days\n\nWeight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "One Time Transaction(TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/auto-invest/one-off?sourceType=&requestId=&subscriptionAmount=&sourceAsset=&flexibleAllowedToUse=&planId=&indexId=&details=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"auto-invest",
+								"one-off"
+							],
+							"query": [
+								{
+									"key": "sourceType",
+									"value": ""
+								},
+								{
+									"key": "requestId",
+									"value": ""
+								},
+								{
+									"key": "subscriptionAmount",
+									"value": ""
+								},
+								{
+									"key": "sourceAsset",
+									"value": ""
+								},
+								{
+									"key": "flexibleAllowedToUse",
+									"value": ""
+								},
+								{
+									"key": "planId",
+									"value": ""
+								},
+								{
+									"key": "indexId",
+									"value": ""
+								},
+								{
+									"key": "details",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Query subscription transaction history of a plan\n\nMax span between startTime and endTime is 30days\n\nIf both startTime and endTime are null, then default is 30days\n\nWeight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Query One-Time Transaction Status(USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/auto-invest/one-off/status?transactionId=&requestId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"auto-invest",
+								"one-off",
+								"status"
+							],
+							"query": [
+								{
+									"key": "transactionId",
+									"value": ""
+								},
+								{
+									"key": "requestId",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Query subscription transaction history of a plan\n\nMax span between startTime and endTime is 30days\n\nIf both startTime and endTime are null, then default is 30days\n\nWeight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Index Linked Plan Redemption(TRADE)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/auto-invest/redeem?indexId=&requestId=&redemptionPercentage=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"auto-invest",
+								"redeem"
+							],
+							"query": [
+								{
+									"key": "indexId",
+									"value": ""
+								},
+								{
+									"key": "requestId",
+									"value": ""
+								},
+								{
+									"key": "redemptionPercentage",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Query subscription transaction history of a plan\n\nMax span between startTime and endTime is 30days\n\nIf both startTime and endTime are null, then default is 30days\n\nWeight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Index Linked Plan Redemption(USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/auto-invest/redeem/history?requestId=&startTime=&endTime=&current=&asset=&size=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"auto-invest",
+								"redeem",
+								"history"
+							],
+							"query": [
+								{
+									"key": "requestId",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "current",
+									"value": ""
+								},
+								{
+									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "size",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Query subscription transaction history of a plan\n\nMax span between startTime and endTime is 30days\n\nIf both startTime and endTime are null, then default is 30days\n\nWeight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Index Linked Plan Rebalance Details(USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/lending/auto-invest/rebalance/history?startTime=&endTime=&current=&size=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"lending",
+								"auto-invest",
+								"rebalance",
+								"history"
+							],
+							"query": [
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "current",
+									"value": ""
+								},
+								{
+									"key": "size",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
 								}
 							]
 						},
@@ -19833,7 +21043,6 @@
 					},
 					"response": []
 				},
-
 				{
 					"name": "BUSD Convert (TRADE)",
 					"request": {
@@ -20302,6 +21511,126 @@
 						"description": "Apply deposit credit for expired address (One click arrival)\n\nParams need to be in the POST body\n\nWeight(IP): 1"
 					},
 					"response": []
+				},
+				{
+					"name": "Query User Wallet Balance (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/asset/wallet/balance?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"asset",
+								"wallet",
+								"balance"
+							],
+							"query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "Signature"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Apply deposit credit for expired address (One click arrival)\n\nParams need to be in the POST body\n\nWeight(IP): 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Query User Delegation History(For Master Account)(USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/asset/custody/transfer-history?email=&startTime=&endTime=&type=&asset=&current=&size=&recvWindow=5000&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"asset",
+								"custody",
+								"transfer-history"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "",
+									"description": "Signature"
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "type",
+									"value": ""
+								},
+								{
+									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "current",
+									"value": ""
+								},
+								{
+									"key": "size",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "Apply deposit credit for expired address (One click arrival)\n\nParams need to be in the POST body\n\nWeight(IP): 1"
+					},
+					"response": []
 				}
 			],
 			"description": "Wallet Endpoints"
@@ -20669,7 +21998,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/loan/vip/borrow?loanAccountId=&loanCoin=&loanAmount=&collateralAccountId=&collateralCoin=&loanTerm=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/loan/vip/borrow?loanAccountId=&loanCoin=&loanAmount=&collateralAccountId=&collateralCoin=&isFlexibleRate=&loanTerm=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -20704,25 +22033,29 @@
 									"description": "Multiple split by ,"
 								},
 								{
-									"key": "loanTerm",
+									"key": "isFlexibleRate",
 									"value": "",
 									"description": "30/60 days"
 								},
 								{
+									"key": "loanTerm",
+									"value": "",
+									"description": "The value cannot be greater than 60000"
+								},
+								{
 									"key": "recvWindow",
 									"value": "5000",
-									"description": "The value cannot be greater than 60000",
+									"description": "UTC timestamp in ms",
 									"disabled": true
 								},
 								{
 									"key": "timestamp",
 									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
+									"description": "Signature"
 								},
 								{
 									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
+									"value": "{{signature}}"
 								}
 							]
 						},
@@ -20891,6 +22224,63 @@
 									"value": "",
 									"description": "Default: 10, Max: 100",
 									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Weight(UID): 400"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Borrow Interest Rate (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/loan/vip/request/interestRate?loanCoin=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"loan",
+								"vip",
+								"request",
+								"interestRate"
+							],
+							"query": [
+								{
+									"key": "loanCoin",
+									"value": "",
+									"description": "Currently querying page. Start from 1, Default:1, Max: 1000"
 								},
 								{
 									"key": "recvWindow",
