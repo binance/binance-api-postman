@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "561533bd-a7c9-414a-8101-29cb7024d182",
+		"_postman_id": "1185515b-5855-4c79-aec9-00b7003984c8",
 		"name": "Binance Coin-M Futures API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/futures/en/\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -1025,6 +1025,96 @@
 									"key": "endTime",
 									"value": "",
 									"disabled": true
+								}
+							]
+						},
+						"description": "Get present open interest of a specific symbol."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Funding Rate Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/dapi/v1/fundingInfo",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dapi",
+								"v1",
+								"fundingInfo"
+							]
+						},
+						"description": "Get present open interest of a specific symbol."
+					},
+					"response": []
+				},
+				{
+					"name": "Query Index Price Constituents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/dapi/v1/fundingInfo?symbol=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dapi",
+								"v1",
+								"fundingInfo"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": ""
+								}
+							]
+						},
+						"description": "Get present open interest of a specific symbol."
+					},
+					"response": []
+				},
+				{
+					"name": "Quarterly Contract Settlement Price",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/dapi/v1/fundingInfo?pair=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dapi",
+								"v1",
+								"fundingInfo"
+							],
+							"query": [
+								{
+									"key": "pair",
+									"value": ""
 								}
 							]
 						},
@@ -2730,23 +2820,28 @@
 								},
 								{
 									"key": "startTime",
-									"value": null,
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": null,
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "",
 									"disabled": true
 								},
 								{
 									"key": "limit",
 									"value": "100",
+									"description": "The value cannot be greater than 60000",
 									"disabled": true
 								},
 								{
 									"key": "recvWindow",
 									"value": "5000",
-									"description": "The value cannot be greater than 60000",
 									"disabled": true
 								},
 								{
@@ -2958,6 +3053,135 @@
 									"key": "recvWindow",
 									"value": "5000",
 									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Download Id For Futures Transaction History (USER_DATA)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/dapi/v1/income/asyn?startTime=&endTime=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dapi",
+								"v1",
+								"income",
+								"asyn"
+							],
+							"query": [
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": "",
+									"description": "The value cannot be greater than 60000"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Futures Transaction History Download Link by Id (USER_DATA)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/dapi/v1/income/asyn?downloadId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"dapi",
+								"v1",
+								"income",
+								"asyn"
+							],
+							"query": [
+								{
+									"key": "downloadId",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
 									"disabled": true
 								},
 								{
