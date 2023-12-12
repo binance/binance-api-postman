@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.14.0 - 2023-12-12
+
+### Spot
+#### Add
+- `GET /api/v3/account/commission`
+- `GET /api/v3/ticker/tradingDay`
+- `GET /sapi/v1/margin/leverageBracket`
+- `GET /sapi/v1/capital/deposit/address/list`
+
+#### Update
+- `GET /api/v3/klines` and `GET /api/v3/uiKlines` have a new optional parameter timeZone.
+- `POST /api/v3/order/test` and `POST /api/v3/sor/order/test` have a new optional parameter computeCommissionRates.
+
+### UM Futures
+- Replace `GET /fapi/v1/ticker/price` by `GET /fapi/v2/ticker/price`
 
 ## 1.13.0 -2023-11-16
 

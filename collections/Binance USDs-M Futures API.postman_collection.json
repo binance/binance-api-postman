@@ -590,7 +590,7 @@
 					"response": []
 				},
 				{
-					"name": "Symbol Price Ticker",
+					"name": "Symbol Price Ticker V2",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -601,13 +601,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/fapi/v1/ticker/price",
+							"raw": "{{url}}/fapi/v2/ticker/price",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"fapi",
-								"v1",
+								"v2",
 								"ticker",
 								"price"
 							],
