@@ -1,6 +1,23 @@
 # Changelog
 
 ## 1.15.0 - 2024-01-31
+### Add
+- `POST /sapi/v1/convert/limit/placeOrder`
+- `POST /sapi/v1/convert/limit/cancelOrder`
+- `GET /sapi/v1/convert/limit/queryOpenOrders`
+- `GET /sapi/v1/spot/delist-schedule`
+- `POST /sapi/v1/margin/borrow-repay`
+- `GET /sapi/v1/margin/borrow-repay`
+
+### Updated
+- `GET /sapi/v1/asset/dribblet` add parameter `accountType`
+- `POST /sapi/v1/asset/dust-btc` add parameter `accountType`
+- `POST /sapi/v1/asset/dust` add parameter `accountType`
+- `GET /sapi/v1/margin/transfer` add parameter `isolatedSymbol`
+- `GET /sapi/v1/margin/allAssets` add parameter `asset`
+- `GET /sapi/v1/margin/allPairs` add parameter `symbol`
+- `GET /sapi/v1/margin/isolated/allPairs` add parameter `symbol`
+
 ### Deleted
 - `GET /sapi/v1/bswap/pools`
 - `GET /sapi/v1/bswap/liquidity`

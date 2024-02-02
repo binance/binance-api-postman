@@ -389,917 +389,6 @@
 			"description": "Binance Leveraged Tokens Endpoints"
 		},
 		{
-			"name": "BSwap",
-			"item": [
-				{
-					"name": "List All Swap Pools (MARKET_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/pools",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"bswap",
-								"pools"
-							]
-						},
-						"description": "Get metadata about all swap pools.\n\nWeight(IP): 1"
-					},
-					"response": []
-				},
-				{
-					"name": "Get liquidity information of a pool (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/liquidity?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"bswap",
-								"liquidity"
-							],
-							"query": [
-								{
-									"key": "poolId",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Get liquidity information and user share of a pool.\n\nWeight(IP):\n- `1` for one pool;\n- `10` when the poolId parameter is omitted;"
-					},
-					"response": []
-				},
-				{
-					"name": "Add Liquidity (TRADE)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/liquidityAdd?poolId=&asset=BTC&quantity=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"bswap",
-								"liquidityAdd"
-							],
-							"query": [
-								{
-									"key": "poolId",
-									"value": ""
-								},
-								{
-									"key": "type",
-									"value": "Single",
-									"description": "* `Single` - to add a single token\n* `Combination` - to add dual tokens",
-									"disabled": true
-								},
-								{
-									"key": "asset",
-									"value": "BTC"
-								},
-								{
-									"key": "quantity",
-									"value": ""
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Add liquidity to a pool.\n\nWeight(UID): 1000 (Additional: 3 times one second)"
-					},
-					"response": []
-				},
-				{
-					"name": "Remove Liquidity (TRADE)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/liquidityRemove?poolId=&type=SINGLE&shareAmount=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"bswap",
-								"liquidityRemove"
-							],
-							"query": [
-								{
-									"key": "poolId",
-									"value": ""
-								},
-								{
-									"key": "type",
-									"value": "SINGLE",
-									"description": "* `SINGLE` - for single asset removal\n* `COMBINATION` - for combination of all coins removal"
-								},
-								{
-									"key": "asset",
-									"value": "BNB",
-									"description": "Mandatory for single asset removal",
-									"disabled": true
-								},
-								{
-									"key": "shareAmount",
-									"value": ""
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Remove liquidity from a pool, `type` include `SINGLE` and `COMBINATION`, asset is mandatory for single asset removal\n\nWeight(UID): 1000 (Additional: 3 times one second)"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Liquidity Operation Record (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/liquidityOps?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"bswap",
-								"liquidityOps"
-							],
-							"query": [
-								{
-									"key": "operationId",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "poolId",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "operation",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "startTime",
-									"value": "",
-									"description": "UTC timestamp in ms",
-									"disabled": true
-								},
-								{
-									"key": "endTime",
-									"value": "",
-									"description": "UTC timestamp in ms",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "100",
-									"description": "Default 500; max 1000.",
-									"disabled": true
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Get liquidity operation (add/remove) records.\n\nWeight(UID): 3000"
-					},
-					"response": []
-				},
-				{
-					"name": "Request Quote (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/quote?quoteAsset=USDT&baseAsset=BUSD&quoteQty=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"bswap",
-								"quote"
-							],
-							"query": [
-								{
-									"key": "quoteAsset",
-									"value": "USDT"
-								},
-								{
-									"key": "baseAsset",
-									"value": "BUSD"
-								},
-								{
-									"key": "quoteQty",
-									"value": ""
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Request a quote for swap quote asset (selling asset) for base asset (buying asset), essentially price/exchange rates.\n\nquoteQty is quantity of quote asset (to sell).\n\nPlease be noted the quote is for reference only, the actual price will change as the liquidity changes, it's recommended to swap immediate after request a quote for slippage prevention.\n\nWeight(UID): 150"
-					},
-					"response": []
-				},
-				{
-					"name": "Swap (TRADE)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/swap?quoteAsset=USDT&baseAsset=BUSD&quoteQty=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"bswap",
-								"swap"
-							],
-							"query": [
-								{
-									"key": "quoteAsset",
-									"value": "USDT"
-								},
-								{
-									"key": "baseAsset",
-									"value": "BUSD"
-								},
-								{
-									"key": "quoteQty",
-									"value": ""
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Swap `quoteAsset` for `baseAsset`.\n\nWeight(UID): 1000 (Additional: 3 times one second)"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Swap History (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/swap?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"bswap",
-								"swap"
-							],
-							"query": [
-								{
-									"key": "swapId",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "startTime",
-									"value": "",
-									"description": "UTC timestamp in ms",
-									"disabled": true
-								},
-								{
-									"key": "endTime",
-									"value": "",
-									"description": "UTC timestamp in ms",
-									"disabled": true
-								},
-								{
-									"key": "status",
-									"value": "",
-									"description": "* `0` - pending for swap\n* `1` - success\n* `2` - failed",
-									"disabled": true
-								},
-								{
-									"key": "quoteAsset",
-									"value": "USDT",
-									"disabled": true
-								},
-								{
-									"key": "baseAsset",
-									"value": "BUSD",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "",
-									"description": "default 3, max 100",
-									"disabled": true
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Get swap history.\n\nWeight(UID): 3000"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Pool Configure (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/poolConfigure?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"bswap",
-								"poolConfigure"
-							],
-							"query": [
-								{
-									"key": "poolId",
-									"value": "2",
-									"disabled": true
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Weight(IP): 150"
-					},
-					"response": []
-				},
-				{
-					"name": "Add Liquidity Preview (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/addLiquidityPreview?poolId=2&type=SINGLE&quoteAsset=USDT&quoteQty=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"bswap",
-								"addLiquidityPreview"
-							],
-							"query": [
-								{
-									"key": "poolId",
-									"value": "2"
-								},
-								{
-									"key": "type",
-									"value": "SINGLE",
-									"description": "* `SINGLE` - for adding a single token\n* `COMBINATION` - for adding dual tokens"
-								},
-								{
-									"key": "quoteAsset",
-									"value": "USDT"
-								},
-								{
-									"key": "quoteQty",
-									"value": ""
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Calculate expected share amount for adding liquidity in single or dual token.\n\nWeight(IP): 150"
-					},
-					"response": []
-				},
-				{
-					"name": "Remove Liquidity Preview (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/removeLiquidityPreview?poolId=2&type=SINGLE&quoteAsset=USDT&shareAmount=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"bswap",
-								"removeLiquidityPreview"
-							],
-							"query": [
-								{
-									"key": "poolId",
-									"value": "2"
-								},
-								{
-									"key": "type",
-									"value": "SINGLE",
-									"description": "* `SINGLE` - remove and obtain a single token\n* `COMBINATION` - remove and obtain dual token"
-								},
-								{
-									"key": "quoteAsset",
-									"value": "USDT"
-								},
-								{
-									"key": "shareAmount",
-									"value": ""
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Calculate the expected asset amount of single token redemption or dual token redemption.\n\nWeight(IP): 150"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Unclaimed Rewards Record (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/unclaimedRewards?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"bswap",
-								"unclaimedRewards"
-							],
-							"query": [
-								{
-									"key": "type",
-									"value": "0",
-									"description": "0: Swap rewards, 1: Liquidity rewards, default to 0",
-									"disabled": true
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Get unclaimed rewards record.\n \nWeight(UID): 1000"
-					},
-					"response": []
-				},
-				{
-					"name": "Claim Rewards (TRADE)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/claimRewards?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"bswap",
-								"claimRewards"
-							],
-							"query": [
-								{
-									"key": "type",
-									"value": "0",
-									"description": "0: Swap rewards, 1: Liquidity rewards, default to 0",
-									"disabled": true
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Claim swap rewards or liquidity rewards\n \nWeight(UID): 1000"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Claimed History (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/bswap/claimedHistory?timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"bswap",
-								"claimedHistory"
-							],
-							"query": [
-								{
-									"key": "poolId",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "assetRewards",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "type",
-									"value": "0",
-									"description": "0: Swap rewards, 1: Liquidity rewards, default to 0",
-									"disabled": true
-								},
-								{
-									"key": "startTime",
-									"value": "",
-									"description": "UTC timestamp in ms",
-									"disabled": true
-								},
-								{
-									"key": "endTime",
-									"value": "",
-									"description": "UTC timestamp in ms",
-									"disabled": true
-								},
-								{
-									"key": "limit",
-									"value": "",
-									"description": "Default 3, max 100",
-									"disabled": true
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Get history of claimed rewards.\n \nWeight(UID): 1000"
-					},
-					"response": []
-				}
-			],
-			"description": "Binance Swap Endpoints"
-		},
-		{
 			"name": "C2C",
 			"item": [
 				{
@@ -1740,6 +829,186 @@
 									"key": "signature",
 									"value": "{{signature}}",
 									"description": "Signature"
+								}
+							]
+						},
+						"description": "- The max interval between startTime and endTime is 30 days.\n\nWeight(UID): 100"
+					},
+					"response": []
+				},
+				{
+					"name": "Place limit order (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/convert/limit/placeOrder?baseAsset=&quoteAsset=&limitPrice=&baseAmount=&quoteAmount=&side=&walletType=&expiredType=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"convert",
+								"limit",
+								"placeOrder"
+							],
+							"query": [
+								{
+									"key": "baseAsset",
+									"value": ""
+								},
+								{
+									"key": "quoteAsset",
+									"value": ""
+								},
+								{
+									"key": "limitPrice",
+									"value": ""
+								},
+								{
+									"key": "baseAmount",
+									"value": ""
+								},
+								{
+									"key": "quoteAmount",
+									"value": ""
+								},
+								{
+									"key": "side",
+									"value": ""
+								},
+								{
+									"key": "walletType",
+									"value": ""
+								},
+								{
+									"key": "expiredType",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "- The max interval between startTime and endTime is 30 days.\n\nWeight(UID): 100"
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel limit order (USER_DATA)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/convert/limit/cancelOrder?orderId=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"convert",
+								"limit",
+								"cancelOrder"
+							],
+							"query": [
+								{
+									"key": "orderId",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": "- The max interval between startTime and endTime is 30 days.\n\nWeight(UID): 100"
+					},
+					"response": []
+				},
+				{
+					"name": "Query limit open orders (USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/convert/limit/queryOpenOrders?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"convert",
+								"limit",
+								"queryOpenOrders"
+							],
+							"query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
 								}
 							]
 						},
@@ -4862,7 +4131,7 @@
 									"disabled": true
 								},
 								{
-									"key": "archived",
+									"key": "isolatedSymbol",
 									"value": "",
 									"description": "Default: false. Set to true for archived data from 6 months ago",
 									"disabled": true
@@ -4906,7 +4175,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/allAssets",
+							"raw": "{{url}}/sapi/v1/margin/allAssets?asset",
 							"host": [
 								"{{url}}"
 							],
@@ -4915,6 +4184,12 @@
 								"v1",
 								"margin",
 								"allAssets"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": null
+								}
 							]
 						},
 						"description": "Weight(IP): 1"
@@ -4938,7 +4213,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/allPairs",
+							"raw": "{{url}}/sapi/v1/margin/allPairs?symbol",
 							"host": [
 								"{{url}}"
 							],
@@ -4947,6 +4222,12 @@
 								"v1",
 								"margin",
 								"allPairs"
+							],
+							"query": [
+								{
+									"key": "symbol",
+									"value": null
+								}
 							]
 						},
 						"description": "Weight(IP): 1"
@@ -6647,7 +5928,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/margin/isolated/allPairs?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/margin/isolated/allPairs?symbol=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -6660,20 +5941,21 @@
 							],
 							"query": [
 								{
+									"key": "symbol",
+									"value": ""
+								},
+								{
 									"key": "recvWindow",
 									"value": "5000",
-									"description": "The value cannot be greater than 60000",
 									"disabled": true
 								},
 								{
 									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
+									"value": "{{timestamp}}"
 								},
 								{
 									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
+									"value": "{{signature}}"
 								}
 							]
 						},
@@ -7629,6 +6911,148 @@
 								"v1",
 								"margin",
 								"leverageBracket"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Margin account borrow/repay(MARGIN)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/margin/borrow-repay?asset=&isIsolated=&symbol=&amount=&type=&recvWindow=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"margin",
+								"borrow-repay"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "isIsolated",
+									"value": ""
+								},
+								{
+									"key": "symbol",
+									"value": ""
+								},
+								{
+									"key": "amount",
+									"value": ""
+								},
+								{
+									"key": "type",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Query borrow/repay records in Margin account(USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/margin/borrow-repay?asset=&isolatedSymbol=&txId=&startTime=&endTime=&current=&size=&type=&recvWindow=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"margin",
+								"borrow-repay"
+							],
+							"query": [
+								{
+									"key": "asset",
+									"value": ""
+								},
+								{
+									"key": "isolatedSymbol",
+									"value": ""
+								},
+								{
+									"key": "txId",
+									"value": ""
+								},
+								{
+									"key": "startTime",
+									"value": ""
+								},
+								{
+									"key": "endTime",
+									"value": ""
+								},
+								{
+									"key": "current",
+									"value": ""
+								},
+								{
+									"key": "size",
+									"value": ""
+								},
+								{
+									"key": "type",
+									"value": ""
+								},
+								{
+									"key": "recvWindow",
+									"value": ""
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
 							]
 						}
 					},
@@ -10607,510 +10031,6 @@
 				}
 			],
 			"description": "Savings Endpoints"
-		},
-		{
-			"name": "Staking",
-			"item": [
-				{
-					"name": "Get Staking Product List (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/staking/productList?product=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"staking",
-								"productList"
-							],
-							"query": [
-								{
-									"key": "product",
-									"value": "",
-									"description": "* `STAKING` - for Locked Staking\n* `F_DEFI` - for flexible DeFi Staking\n* `L_DEFI` - for locked DeFi Staking"
-								},
-								{
-									"key": "asset",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "current",
-									"value": "",
-									"description": "Currently querying page. Start from 1. Default:1",
-									"disabled": true
-								},
-								{
-									"key": "size",
-									"value": "",
-									"description": "Default:10, Max:100",
-									"disabled": true
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Get available Staking product list.\n\nWeight(IP): 1"
-					},
-					"response": []
-				},
-				{
-					"name": "Purchase Staking Product (USER_DATA)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/staking/purchase?product=&productId=&amount=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"staking",
-								"purchase"
-							],
-							"query": [
-								{
-									"key": "product",
-									"value": "",
-									"description": "* `STAKING` - for Locked Staking\n* `F_DEFI` - for flexible DeFi Staking\n* `L_DEFI` - for locked DeFi Staking"
-								},
-								{
-									"key": "productId",
-									"value": ""
-								},
-								{
-									"key": "amount",
-									"value": ""
-								},
-								{
-									"key": "renewable",
-									"value": "",
-									"description": "true or false, default false. Active if product is `STAKING` or `L_DEFI`",
-									"disabled": true
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Weight(IP): 1"
-					},
-					"response": []
-				},
-				{
-					"name": "Redeem Staking Product (USER_DATA)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/staking/redeem?product=&productId=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"staking",
-								"redeem"
-							],
-							"query": [
-								{
-									"key": "product",
-									"value": "",
-									"description": "* `STAKING` - for Locked Staking\n* `F_DEFI` - for flexible DeFi Staking\n* `L_DEFI` - for locked DeFi Staking"
-								},
-								{
-									"key": "positionId",
-									"value": "",
-									"description": "Mandatory if product is `STAKING` or `L_DEFI`",
-									"disabled": true
-								},
-								{
-									"key": "productId",
-									"value": ""
-								},
-								{
-									"key": "amount",
-									"value": "",
-									"description": "Mandatory if product is `F_DEFI`",
-									"disabled": true
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Redeem Staking product. Locked staking and Locked DeFI staking belong to early redemption, redeeming in advance will result in loss of interest that you have earned.\n\nWeight(IP): 1"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Staking Product Position (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/staking/position?product=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"staking",
-								"position"
-							],
-							"query": [
-								{
-									"key": "product",
-									"value": "",
-									"description": "* `STAKING` - for Locked Staking\n* `F_DEFI` - for flexible DeFi Staking\n* `L_DEFI` - for locked DeFi Staking"
-								},
-								{
-									"key": "productId",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "asset",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "current",
-									"value": "",
-									"description": "Currently querying the page. Start from 1. Default:1",
-									"disabled": true
-								},
-								{
-									"key": "size",
-									"value": "",
-									"description": "Default:10, Max:100",
-									"disabled": true
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Weight(IP): 1"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Staking History (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/staking/stakingRecord?product=&txnType=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"staking",
-								"stakingRecord"
-							],
-							"query": [
-								{
-									"key": "product",
-									"value": "",
-									"description": "* `STAKING` - for Locked Staking\n* `F_DEFI` - for flexible DeFi Staking\n* `L_DEFI` - for locked DeFi Staking"
-								},
-								{
-									"key": "txnType",
-									"value": "",
-									"description": "`SUBSCRIPTION`, `REDEMPTION`, `INTEREST`"
-								},
-								{
-									"key": "asset",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "startTime",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "endTime",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "current",
-									"value": "",
-									"description": "Currently querying the page. Start from 1. Default:1",
-									"disabled": true
-								},
-								{
-									"key": "size",
-									"value": "",
-									"description": "Default:10, Max:100",
-									"disabled": true
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Weight(IP): 1"
-					},
-					"response": []
-				},
-				{
-					"name": "Set Auto Staking (USER_DATA)",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/staking/setAutoStaking?product=&positionId=&renewable=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"staking",
-								"setAutoStaking"
-							],
-							"query": [
-								{
-									"key": "product",
-									"value": "",
-									"description": "* `STAKING` - for Locked Staking\n* `L_DEFI` - for locked DeFi Staking"
-								},
-								{
-									"key": "positionId",
-									"value": ""
-								},
-								{
-									"key": "renewable",
-									"value": "",
-									"description": "true or false"
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Set auto staking on Locked Staking or Locked DeFi Staking\n\nWeight(IP): 1"
-					},
-					"response": []
-				},
-				{
-					"name": "Get Personal Left Quota of Staking Product (USER_DATA)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							},
-							{
-								"key": "X-MBX-APIKEY",
-								"value": "{{binance-api-key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/staking/personalLeftQuota?product=&productId=&timestamp={{timestamp}}&signature={{signature}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sapi",
-								"v1",
-								"staking",
-								"personalLeftQuota"
-							],
-							"query": [
-								{
-									"key": "product",
-									"value": "",
-									"description": "* `STAKING` - for Locked Staking\n* `F_DEFI` - for flexible DeFi Staking\n* `L_DEFI` - for locked DeFi Staking"
-								},
-								{
-									"key": "productId",
-									"value": ""
-								},
-								{
-									"key": "recvWindow",
-									"value": "",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
-								}
-							]
-						},
-						"description": "Weight(IP): 1"
-					},
-					"response": []
-				}
-			]
 		},
 		{
 			"name": "Sub-Account",
@@ -19711,7 +18631,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/asset/dribblet?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/asset/dribblet?accountType=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -19723,32 +18643,31 @@
 							],
 							"query": [
 								{
+									"key": "accountType",
+									"value": ""
+								},
+								{
 									"key": "startTime",
 									"value": "",
-									"description": "UTC timestamp in ms",
 									"disabled": true
 								},
 								{
 									"key": "endTime",
 									"value": "",
-									"description": "UTC timestamp in ms",
 									"disabled": true
 								},
 								{
 									"key": "recvWindow",
 									"value": "5000",
-									"description": "The value cannot be greater than 60000",
 									"disabled": true
 								},
 								{
 									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
+									"value": "{{timestamp}}"
 								},
 								{
 									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
+									"value": "{{signature}}"
 								}
 							]
 						},
@@ -19773,7 +18692,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/asset/dust-btc?timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/asset/dust-btc?accountType=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -19785,20 +18704,21 @@
 							],
 							"query": [
 								{
+									"key": "accountType",
+									"value": ""
+								},
+								{
 									"key": "recvWindow",
 									"value": "5000",
-									"description": "The value cannot be greater than 60000",
 									"disabled": true
 								},
 								{
 									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
+									"value": "{{timestamp}}"
 								},
 								{
 									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
+									"value": "{{signature}}"
 								}
 							]
 						},
@@ -19823,7 +18743,7 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/asset/dust?asset=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v1/asset/dust?accountType=&asset=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
@@ -19835,25 +18755,25 @@
 							],
 							"query": [
 								{
+									"key": "accountType",
+									"value": ""
+								},
+								{
 									"key": "asset",
-									"value": "",
-									"description": "The asset being converted. For example, asset=BTC&asset=USDT"
+									"value": ""
 								},
 								{
 									"key": "recvWindow",
 									"value": "5000",
-									"description": "The value cannot be greater than 60000",
 									"disabled": true
 								},
 								{
 									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
+									"value": "{{timestamp}}"
 								},
 								{
 									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
+									"value": "{{signature}}"
 								}
 							]
 						},
@@ -20971,6 +19891,37 @@
 									"key": "signature",
 									"value": "{{signature}}"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get symbols delist schedule for spot (MARKET_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/spot/delist-schedule",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"spot",
+								"delist-schedule"
 							]
 						}
 					},
