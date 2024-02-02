@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.15.0 - 2024-01-31
+## 1.15.0 - 2024-02-02
 ### Add
 - `POST /sapi/v1/convert/limit/placeOrder`
 - `POST /sapi/v1/convert/limit/cancelOrder`
