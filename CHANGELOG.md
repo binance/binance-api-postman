@@ -1,5 +1,43 @@
 # Changelog
 
+## 1.15.0 - 2024-01-31
+### Deleted
+- `GET /sapi/v1/bswap/pools`
+- `GET /sapi/v1/bswap/liquidity`
+- `POST /sapi/v1/bswap/liquidityAdd`
+- `POST /sapi/v1/bswap/liquidityRemove`
+- `GET /sapi/v1/bswap/liquidityOps`
+- `GET /sapi/v1/bswap/quote`
+- `POST /sapi/v1/bswap/swap`
+- `GET /sapi/v1/bswap/swap`
+- `GET /sapi/v1/bswap/poolConfigure`
+- `GET /sapi/v1/bswap/addLiquidityPreview`
+- `GET /sapi/v1/bswap/removeLiquidityPreview`
+- `GET /sapi/v1/bswap/unclaimedRewards`
+- `POST /sapi/v1/bswap/claimRewards`
+- `GET /sapi/v1/bswap/claimedHistory`
+- `GET /sapi/v1/staking/productList`
+- `POST /sapi/v1/staking/purchase`
+- `POST /sapi/v1/staking/redeem`
+- `GET /sapi/v1/staking/position`
+- `GET /sapi/v1/staking/stakingRecord`
+- `POST /sapi/v1/staking/setAutoStaking`
+- `GET /sapi/v1/staking/personalLeftQuota`
+- `POST /sapi/v1/margin/transfer`
+- `POST /sapi/v1/margin/isolated/transfer`
+- `POST /sapi/v1/margin/loan` 
+- `POST /sapi/v1/margin/repay`
+- `GET /sapi/v1/margin/isolated/transfer`
+- `GET /sapi/v1/margin/asset`
+- `GET /sapi/v1/margin/pair`
+- `GET /sapi/v1/margin/isolated/pair`
+- `GET /sapi/v1/margin/loan`
+- `GET /sapi/v1/margin/repay`
+- `GET /sapi/v1/margin/dribblet`
+- `GET /sapi/v1/margin/dust`
+- `POST /sapi/v1/margin/dust`
+
+
 ## 1.14.0 - 2023-12-12
 
 ### Spot
