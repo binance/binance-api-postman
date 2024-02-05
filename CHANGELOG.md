@@ -1,15 +1,85 @@
 # Changelog
 
+## 1.15.0 - 2024-02-05
+
+### Spot
+#### Added
+**Margin**
+- `POST /sapi/v1/margin/borrow-repay`
+- `GET /sapi/v1/margin/borrow-repay`
+
+**Wallet**
+- `GET /sapi/v1/spot/delist-schedule`
+
+**Convert**
+- `POST /sapi/v1/convert/limit/placeOrder`
+- `POST /sapi/v1/convert/limit/cancelOrder`
+- `GET /sapi/v1/convert/limit/queryOpenOrders`
+
+#### Updated
+- Add optional parameter `accountType` in the endpoints below:
+    - `GET /sapi/v1/asset/dribblet`
+    - `POST /sapi/v1/asset/dust-btc`
+    - `POST /sapi/v1/asset/dust`
+- Add optional parameter `symbol` in the endpoints below:
+    - `GET /sapi/v1/margin/allPairs`
+    - `GET /sapi/v1/margin/isolated/allPairs`
+- `GET /sapi/v1/margin/transfer` add optional parameter `isolatedSymbol`
+- `GET /sapi/v1/margin/allAssets` add optional parameter `asset`
+
+#### Deleted
+**Bswap**
+- `GET /sapi/v1/bswap/pools`
+- `GET /sapi/v1/bswap/liquidity`
+- `POST /sapi/v1/bswap/liquidityAdd`
+- `POST /sapi/v1/bswap/liquidityRemove`
+- `GET /sapi/v1/bswap/liquidityOps`
+- `GET /sapi/v1/bswap/quote`
+- `POST /sapi/v1/bswap/swap`
+- `GET /sapi/v1/bswap/swap`
+- `GET /sapi/v1/bswap/poolConfigure`
+- `GET /sapi/v1/bswap/addLiquidityPreview`
+- `GET /sapi/v1/bswap/removeLiquidityPreview`
+- `GET /sapi/v1/bswap/unclaimedRewards`
+- `POST /sapi/v1/bswap/claimRewards`
+- `GET /sapi/v1/bswap/claimedHistory`
+
+**Margin**
+- `POST /sapi/v1/margin/transfer` will be removed, please replace with `POST /sapi/v1/asset/transfer` universal transfer
+- `POST /sapi/v1/margin/isolated/transfer` will be removed, please replace with `POST /sapi/v1/asset/transfer` universal transfer
+- `POST /sapi/v1/margin/loan` will be removed, please replace with the new `POST /sapi/v1/margin/borrow-repay` borrowing and repayment interface
+- `POST /sapi/v1/margin/repay` will be removed, please replace with the new `POST /sapi/v1/margin/borrow-repay` borrowing and repayment interface
+- `GET /sapi/v1/margin/isolated/transfer` will be removed, please replace it with `GET /sapi/v1/margin/transfer` to get total margin transfer history
+- `GET /sapi/v1/margin/asset` will be removed, please replace with `GET /sapi/v1/margin/allAssets`
+- `GET /sapi/v1/margin/pair` will be removed, please replace with `GET /sapi/v1/margin/allPairs`
+- `GET /sapi/v1/margin/isolated/pair` will be removed, please replace with `GET /sapi/v1/margin/isolated/allPairs`
+- `GET /sapi/v1/margin/loan` will be removed, please replace with `GET /sapi/v1/margin/borrow-repay`
+- `GET /sapi/v1/margin/repay` will be removed, please replace with `GET /sapi/v1/margin/borrow-repay`
+- `GET /sapi/v1/margin/dribblet` will be removed, please replace with `GET /sapi/v1/asset/dribblet`
+- `GET /sapi/v1/margin/dust` will be removed, please replace with `POST /sapi/v1/asset/dust-btc`
+- `POST /sapi/v1/margin/dust` will be removed, please replace with `POST /sapi/v1/asset/dust`
+
+
+**Staking**
+- `GET /sapi/v1/staking/productList`
+- `POST /sapi/v1/staking/purchase`
+- `POST /sapi/v1/staking/redeem`
+- `GET /sapi/v1/staking/position`
+- `GET /sapi/v1/staking/stakingRecord`
+- `POST /sapi/v1/staking/setAutoStaking`
+- `GET /sapi/v1/staking/personalLeftQuota`
+
+
 ## 1.14.0 - 2023-12-12
 
 ### Spot
-#### Add
+#### Added
 - `GET /api/v3/account/commission`
 - `GET /api/v3/ticker/tradingDay`
 - `GET /sapi/v1/margin/leverageBracket`
 - `GET /sapi/v1/capital/deposit/address/list`
 
-#### Update
+#### Updated
 - `GET /api/v3/klines` and `GET /api/v3/uiKlines` have a new optional parameter timeZone.
 - `POST /api/v3/order/test` and `POST /api/v3/sor/order/test` have a new optional parameter computeCommissionRates.
 
@@ -18,7 +88,7 @@
 
 ## 1.13.0 -2023-11-16
 
-#### Update
+#### Updated
 - `GET /dapi/v1/income` Add parameter `page` for pagination
 - `GET /fapi/v1/income` Add parameter page for pagination
 - Add optional parameter `goodTillDate` in the endpoints below to set order's goodTillDate :
@@ -36,7 +106,7 @@
 	- Delete request field `transFrom`, `transTo`
 - `POST /sapi/v1/portfolio/repay` add paramater from
 
-#### Add
+#### Added
 - `GET /dapi/v1/income/asyn` get Download Id For Futures Transaction History
 - `GET /dapi/v1/income/asyn/id` to get Futures Transaction History Download Link by Id
 - `GET /dapi/v1/fundingInfo` query adjusted funding info
@@ -75,7 +145,7 @@
 - `GET /sapi/v1/margin/available-inventory` Query margin available inventory
 - `POST /sapi/v1/margin/manual-liquidation` Margin manual liquidation
 
-#### Delete
+#### Deleted
 - `GET /sapi/v1/futures/loan/borrow/history`
 - `GET /sapi/v1/futures/loan/repay/history`
 - `GET /sapi/v2/futures/loan/wallet`
