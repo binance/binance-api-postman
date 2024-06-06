@@ -1754,6 +1754,53 @@
 					},
 					"response": []
 				},
+                {
+                    "name": "Query User Rate Limit (USER_DATA)",
+                    "request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/rateLimit/order?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"rateLimit",
+                                "order"
+							],
+                            "query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+                            ]
+						},
+                        "description": "Weight: 1"
+					},
+					"response": []
+                },
 				{
 					"name": "Get Current Multi-Assets Mode",
 					"event": [
@@ -2083,6 +2130,12 @@
 									"key": "price",
 									"value": ""
 								},
+                                {
+                                    "key": "priceMatch",
+                                    "value": "",
+                                    "description": "only avaliable for LIMIT/STOP/TAKE_PROFIT order;\ncan be set to OPPONENT/ OPPONENT_5/ OPPONENT_10/ OPPONENT_20: /QUEUE/ QUEUE_5/ QUEUE_10/ QUEUE_20;\nCan't be passed together with price",
+                                    "disabled": true
+                                },
 								{
 									"key": "recvWindow",
 									"value": "5000",
@@ -3784,6 +3837,127 @@
 					},
 					"response": []
 				},
+                {
+                    "name": "Toggle BNB Burn On Futures Trade (TRADE)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/feeBurn?feeBurn=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"feeBurn"
+							],
+							"query": [
+								{
+									"key": "feeBurn",
+									"value": "",
+                                    "description": "\"true\": Fee Discount On; \"false\": Fee Discount Off"
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						}
+					},
+					"response": []
+                },
+                {
+                    "name": "Get BNB Burn Status (USER_DATA)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"type": "text",
+								"value": "{{binance-api-key}}"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/fapi/v1/feeBurn?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fapi",
+								"v1",
+								"feeBurn"
+							],
+							"query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+                        "description": "Get user's BNB Fee Discount (Fee Discount On or Fee Discount Off ) on EVERY symbol\n\nWeight: 30"
+					},
+					"response": []
+                },
 				{
 					"name": "User API Trading Quantitative Rules Indicators (USER_DATA)",
 					"event": [

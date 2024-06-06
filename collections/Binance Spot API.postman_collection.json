@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d7dfc8fc-e946-43aa-a889-b03c9c7e7a51",
+		"_postman_id": "2e407d5e-b011-46cb-853a-538ffd42c797",
 		"name": "Binance Spot API",
 		"description": "Binance official supported Postman collections.<br/>\n- API documents: https://binance-docs.github.io/apidocs/spot/en/#change-log\n- Telegram: https://t.me/binance_api_english\n- Open Issue at: https://github.com/binance-exchange/binance-api-postman",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -514,22 +514,6 @@
 									"key": "toAsset",
 									"value": "",
 									"description": "User receives coin"
-								},
-								{
-									"key": "recvWindow",
-									"value": "5000",
-									"description": "The value cannot be greater than 60000",
-									"disabled": true
-								},
-								{
-									"key": "timestamp",
-									"value": "{{timestamp}}",
-									"description": "UTC timestamp in ms"
-								},
-								{
-									"key": "signature",
-									"value": "{{signature}}",
-									"description": "Signature"
 								}
 							]
 						},
@@ -1936,13 +1920,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/loan/flexible/borrow?loanCoin=&loanAmount=&collateralAmount=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v2/loan/flexible/borrow?loanCoin=&collateralCoin=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
-								"v1",
+								"v2",
 								"loan",
 								"flexible",
 								"borrow"
@@ -1954,16 +1938,19 @@
 								},
 								{
 									"key": "loanAmount",
-									"value": ""
+									"value": "",
+                                    "description": "Mandatory when collateralAmount is empty",
+                                    "disabled": true
 								},
 								{
 									"key": "collateralCoin",
-									"value": "",
-									"disabled": true
+									"value": ""
 								},
 								{
 									"key": "collateralAmount",
-									"value": ""
+									"value": "",
+                                    "description": "Mandatory when loanAmount is empty",
+									"disabled": true
 								},
 								{
 									"key": "recvWindow",
@@ -1981,7 +1968,8 @@
 									"value": "{{signature}}"
 								}
 							]
-						}
+						},
+                        "description": "Weight(UID): 6000\n\nRequest Limit: 1 time/2 seconds per UID"
 					},
 					"response": []
 				},
@@ -2002,13 +1990,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/loan/flexible/ongoing/orders?loanCoin=&collateralCoin=&current=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v2/loan/flexible/ongoing/orders?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
-								"v1",
+								"v2",
 								"loan",
 								"flexible",
 								"ongoing",
@@ -2017,19 +2005,25 @@
 							"query": [
 								{
 									"key": "loanCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "collateralCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "current",
-									"value": ""
+									"value": "",
+                                    "description": "Current querying page. Start from 1; default: 1; max: 1000",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "",
+                                    "description": "Default: 10; max: 100",
+									"disabled": true
 								},
 								{
 									"key": "recvWindow",
@@ -2047,7 +2041,8 @@
 									"value": "{{signature}}"
 								}
 							]
-						}
+						},
+                        "description": "Weight(IP): 300"
 					},
 					"response": []
 				},
@@ -2068,13 +2063,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/loan/flexible/borrow/history?loanCoin=&collateralCoin=&startTime=&endTime=&current=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v2/loan/flexible/borrow/history?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
-								"v1",
+								"v2",
 								"loan",
 								"flexible",
 								"borrow",
@@ -2083,27 +2078,35 @@
 							"query": [
 								{
 									"key": "loanCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "collateralCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "current",
-									"value": ""
+									"value": "",
+                                    "description": "Current querying page. Start from 1; default: 1; max: 1000",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "",
+                                    "description": "Default: 10; max: 100",
+									"disabled": true
 								},
 								{
 									"key": "recvWindow",
@@ -2119,7 +2122,8 @@
 									"value": "{{signature}}"
 								}
 							]
-						}
+						},
+                        "description": "If startTime and endTime are not sent, the recent 90-day data will be returned.\nThe max interval between startTime and endTime is 180 days.\n\nWeight(IP): 400"
 					},
 					"response": []
 				},
@@ -2140,13 +2144,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/loan/flexible/repay?loanCoin=&collateralCoin=&repayAmount=&collateralReturn=&fullRepayment=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v2/loan/flexible/repay?loanCoin=&collateralCoin=&repayAmount=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
-								"v1",
+								"v2",
 								"loan",
 								"flexible",
 								"repay"
@@ -2166,11 +2170,15 @@
 								},
 								{
 									"key": "collateralReturn",
-									"value": ""
+									"value": "",
+                                    "description": "Default: TRUE.\nTRUE: Return extra collateral to earn account;\nFALSE: Keep extra collateral in the order, and lower LTV.",
+									"disabled": true
 								},
 								{
 									"key": "fullRepayment",
-									"value": ""
+									"value": "",
+                                    "description": "Default: FALSE.\nTRUE: Full repayment;\nFALSE: Partial repayment, based on loanAmount",
+									"disabled": true
 								},
 								{
 									"key": "recvWindow",
@@ -2186,7 +2194,8 @@
 									"value": "{{signature}}"
 								}
 							]
-						}
+						},
+                        "description": "repayAmount is mandatory even fullRepayment = FALSE\n\nWeight(UID): 6000"
 					},
 					"response": []
 				},
@@ -2207,13 +2216,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/loan/flexible/repay/history?loanCoin=&collateralCoin=&startTime=&endTime=&current=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v2/loan/flexible/repay/history?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
-								"v1",
+								"v2",
 								"loan",
 								"flexible",
 								"repay",
@@ -2222,27 +2231,35 @@
 							"query": [
 								{
 									"key": "loanCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "collateralCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "current",
-									"value": ""
+									"value": "",
+                                    "description": "Current querying page. Start from 1; default: 1; max: 1000",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "",
+                                    "description": "Default: 10; max: 100",
+									"disabled": true
 								},
 								{
 									"key": "recvWindow",
@@ -2258,7 +2275,8 @@
 									"value": "{{signature}}"
 								}
 							]
-						}
+						},
+                        "description": "If startTime and endTime are not sent, the recent 90-day data will be returned.\nThe max interval between startTime and endTime is 180 days.\n\nWeight(IP): 400"
 					},
 					"response": []
 				},
@@ -2279,13 +2297,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/loan/flexible/adjust/ltv?loanCoin=&collateralCoin=&adjustmentAmount=&direction=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v2/loan/flexible/adjust/ltv?loanCoin=&collateralCoin=&adjustmentAmount=&direction=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
-								"v1",
+								"v2",
 								"loan",
 								"flexible",
 								"adjust",
@@ -2306,7 +2324,8 @@
 								},
 								{
 									"key": "direction",
-									"value": ""
+									"value": "",
+                                    "description": "\"ADDITIONAL\", \"REDUCED\""
 								},
 								{
 									"key": "recvWindow",
@@ -2322,7 +2341,8 @@
 									"value": "{{signature}}"
 								}
 							]
-						}
+						},
+                        "description": "API Key needs Spot & Margin Trading permission for this endpoint\n\nWeight(UID): 6000\n\nRequest Limit: 1 time/2 seconds per UID"
 					},
 					"response": []
 				},
@@ -2343,13 +2363,13 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/loan/flexible/ltv/adjustment/history?loanCoin=&collateralCoin=&startTime=&endTime=&current=&limit=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v2/loan/flexible/ltv/adjustment/history?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
-								"v1",
+								"v2",
 								"loan",
 								"flexible",
 								"ltv",
@@ -2359,27 +2379,35 @@
 							"query": [
 								{
 									"key": "loanCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "collateralCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "startTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "endTime",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "current",
-									"value": ""
+									"value": "",
+                                    "description": "Current querying page. Start from 1; default: 1; max: 1000",
+									"disabled": true
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "",
+                                    "description": "Default: 10; max: 100",
+									"disabled": true
 								},
 								{
 									"key": "recvWindow",
@@ -2395,7 +2423,8 @@
 									"value": "{{signature}}"
 								}
 							]
-						}
+						},
+                        "description": "If startTime and endTime are not sent, the recent 90-day data will be returned.\nThe max interval between startTime and endTime is 180 days.\n\nWeight(IP): 400"
 					},
 					"response": []
 				},
@@ -2416,23 +2445,23 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/loan/flexible/ltv/adjustment/history?loanCoin=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v2/loan/flexible/loanable/data?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
-								"v1",
+								"v2",
 								"loan",
 								"flexible",
-								"ltv",
-								"adjustment",
-								"history"
+								"loanable",
+								"data"
 							],
 							"query": [
 								{
 									"key": "loanCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "recvWindow",
@@ -2448,7 +2477,8 @@
 									"value": "{{signature}}"
 								}
 							]
-						}
+						},
+                        "description": "Get interest rate and borrow limit of flexible loanable assets. The borrow limit is shown in USD value.\n\nWeight(IP): 400\n\nRequest Limit: 1 time/2 seconds per UID"
 					},
 					"response": []
 				},
@@ -2469,23 +2499,23 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/sapi/v1/loan/flexible/ltv/adjustment/history?collateralCoin=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/sapi/v2/loan/flexible/collateral/data?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"sapi",
-								"v1",
+								"v2",
 								"loan",
 								"flexible",
-								"ltv",
-								"adjustment",
-								"history"
+								"collateral",
+								"data"
 							],
 							"query": [
 								{
 									"key": "collateralCoin",
-									"value": ""
+									"value": "",
+									"disabled": true
 								},
 								{
 									"key": "recvWindow",
@@ -2501,7 +2531,8 @@
 									"value": "{{signature}}"
 								}
 							]
-						}
+						},
+                        "description": "Get LTV information and collateral limit of flexible loan's collateral assets. The collateral limit is shown in USD value.\n\nWeight(IP): 400\n\nRequest Limit: 1 time/2 seconds per UID"
 					},
 					"response": []
 				}
@@ -6967,7 +6998,7 @@
 							}
                         ],
                         "url": {
-                            "raw": "{{url}}//sapi/v1/margin/borrow-repay?asset=&isIsolated=&symbol=&amount=&type=BORROW&timestamp={{timestamp}}&signature={{signature}}",
+                            "raw": "{{url}}/sapi/v1/margin/borrow-repay?asset=&isIsolated=&symbol=&amount=&type=BORROW&timestamp={{timestamp}}&signature={{signature}}",
                             "host": [
                                 "{{url}}"
                             ],
@@ -7287,7 +7318,7 @@
 								}
 							]
 						},
-						"description": "Get recent trades.\n\nWeight(IP): 1"
+						"description": "Get recent trades.\n\nWeight(IP): 25"
 					},
 					"response": []
 				},
@@ -7337,7 +7368,7 @@
 								}
 							]
 						},
-						"description": "Get older market trades.\n\nWeight(IP): 5"
+						"description": "Get older market trades.\n\nWeight(IP): 25"
 					},
 					"response": []
 				},
@@ -13862,7 +13893,7 @@
 					"response": []
 				},
 				{
-					"name": "New OCO (TRADE)",
+					"name": "New Order List - OCO (TRADE)",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -13878,14 +13909,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{url}}/api/v3/order/oco?symbol=BNBUSDT&side=SELL&quantity=&price=&stopPrice=&timestamp={{timestamp}}&signature={{signature}}",
+							"raw": "{{url}}/api/v3/orderList/oco?symbol=BNBUSDT&side=SELL&quantity=&aboveType=&belowType=&timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"api",
 								"v3",
-								"order",
+								"orderList",
 								"oco"
 							],
 							"query": [
@@ -13908,73 +13939,106 @@
 									"key": "quantity",
 									"value": ""
 								},
+                                {
+                                    "key": "aboveType",
+                                    "value": "",
+                                    "description": "Supported values : STOP_LOSS_LIMIT, STOP_LOSS, LIMIT_MAKER"
+                                },
+                                {
+                                    "key": "aboveClientOrderId",
+                                    "value": "",
+                                    "description": "Arbitrary unique ID among open orders for the above leg order. Automatically generated if not sent",
+                                    "disabled": true
+                                },
 								{
-									"key": "limitClientOrderId",
+									"key": "aboveIcebergQty",
 									"value": "",
-									"description": "A unique Id for the limit order",
+									"description": "Note that this can only be used if aboveTimeInForce is GTC.",
 									"disabled": true
 								},
 								{
-									"key": "limitStrategyId",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "limitStrategyType",
-									"value": "",
-									"description": "The value cannot be less than 1000000",
-									"disabled": true
-								},
-								{
-									"key": "price",
-									"value": "",
-									"description": "Order price"
-								},
-								{
-									"key": "limitIcebergQty",
+									"key": "abovePrice",
 									"value": "",
 									"disabled": true
 								},
 								{
-									"key": "trailingDelta",
+									"key": "aboveStopPrice",
+									"value": "",
+									"description": "Can be used if aboveType is STOP_LOSS or STOP_LOSS_LIMIT.\nEither aboveStopPrice or aboveTrailingDelta or both, must be specified.",
+									"disabled": true
+								},
+								{
+									"key": "aboveTrailingDelta",
 									"value": "",
 									"disabled": true
 								},
 								{
-									"key": "stopClientOrderId",
+									"key": "aboveTimeInForce",
 									"value": "",
-									"description": "A unique Id for the stop loss/stop loss limit leg",
+                                    "description": "Required if the aboveType is STOP_LOSS_LIMIT.",
 									"disabled": true
 								},
 								{
-									"key": "stopPrice",
-									"value": ""
+									"key": "aboveStrategyId",
+									"value": "",
+                                    "description": "Arbitrary numeric value identifying the above leg order within an order strategy.",
+									"disabled": true
 								},
 								{
-									"key": "stopStrategyId",
+									"key": "aboveStrategyType",
+									"value": "",
+									"description": "Arbitrary numeric value identifying the above leg order strategy.\nValues smaller than 1000000 are reserved and cannot be used.",
+									"disabled": true
+								},
+								{
+									"key": "belowType",
+									"value": "",
+                                    "description": "Supported values : STOP_LOSS_LIMIT, STOP_LOSS, LIMIT_MAKER"
+								},
+								{
+									"key": "belowClientOrderId",
+									"value": "",
+                                    "description": "Arbitrary unique ID among open orders for the below leg order. Automatically generated if not sent",
+									"disabled": true
+								},
+								{
+									"key": "belowIcebergQty",
+									"value": "",
+									"description": "Note that this can only be used if belowTimeInForce is GTC.",
+									"disabled": true
+								},
+								{
+									"key": "belowPrice",
 									"value": "",
 									"disabled": true
 								},
 								{
-									"key": "stopStrategyType",
+									"key": "belowStopPrice",
 									"value": "",
-									"description": "The value cannot be less than 1000000",
+                                    "description": "Can be used if belowType is STOP_LOSS or STOP_LOSS_LIMIT.\nEither belowStopPrice or belowTrailingDelta or both, must be specified.",
 									"disabled": true
 								},
 								{
-									"key": "stopLimitPrice",
-									"value": "",
-									"description": "If provided, stopLimitTimeInForce is required.",
-									"disabled": true
-								},
-								{
-									"key": "stopIcebergQty",
+									"key": "belowTrailingDelta",
 									"value": "",
 									"disabled": true
 								},
 								{
-									"key": "stopLimitTimeInForce",
+									"key": "belowTimeInForce",
 									"value": "",
+                                    "description": "Required if the belowType is STOP_LOSS_LIMIT.",
+									"disabled": true
+								},
+								{
+									"key": "belowStrategyId",
+									"value": "",
+                                    "description": "Arbitrary numeric value identifying the below leg order within an order strategy.",
+									"disabled": true
+								},
+								{
+									"key": "belowStrategyType",
+									"value": "",
+                                    "description": "Arbitrary numeric value identifying the below leg order strategy.\nValues smaller than 1000000 are reserved and cannot be used.",
 									"disabled": true
 								},
 								{
@@ -14007,7 +14071,7 @@
 								}
 							]
 						},
-						"description": "Send in a new OCO\n\n- Price Restrictions:\n  - `SELL`: Limit Price > Last Price > Stop Price\n  - `BUY`: Limit Price < Last Price < Stop Price\n- Quantity Restrictions:\n    - Both legs must have the same quantity\n    - `ICEBERG` quantities however do not have to be the same\n- Order Rate Limit\n    - `OCO` counts as 2 orders against the order rate limit.\n    \nWeight(IP): 1"
+						"description": "Send in an one-cancels-the-other (OCO) pair, where activation of one order immediately cancels the other.\n\n - An OCO has 2 legs called the above leg and below leg.\n - One of the legs must be a LIMIT_MAKER order and the other leg must be STOP_LOSS or STOP_LOSS_LIMIT order.\n - Price Restrictions:\n    - If the OCO is on the SELL side: LIMIT_MAKER price > Last Traded Price > stopPrice\n    - If the OCO is on the BUY side: LIMIT_MAKER price < Last Traded Price < stopPrice\n - OCO counts as 2 orders against the order rate limit.\nResponse format for orderReports is selected using the newOrderRespType parameter. The response example is for the RESULT response type. See POST /api/v3/order for more examples.\nWeight(IP): 1"
 					},
 					"response": []
 				},
@@ -14293,6 +14357,12 @@
 								"account"
 							],
 							"query": [
+                                {
+                                    "key": "omitZeroBalances",
+                                    "value": "",
+                                    "description": "When set to true, emits only the non-zero balances of an account.\nDefault value: false",
+									"disabled": true
+                                },
 								{
 									"key": "recvWindow",
 									"value": "5000",
@@ -16783,6 +16853,342 @@
 			],
 			"description": "The endpoints allow you to interact with Binance Simple Earn.\n\nFor more information on this, please refer to the Binance Simple Earn page"
 		},
+        {
+            "name": "Dual Investment",
+            "item": [
+                {
+                    "name": "Get Dual Investment product list(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/dci/product/list?optionType=&exercisedCoin=&investCoin=&timestamp={{timestamp}}&signature={{signature}}",
+                            "host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "dci",
+                                "product",
+                                "list"
+                            ],
+                            "query": [
+                                {
+                                    "key": "optionType",
+                                    "value": "",
+                                    "description": "Input CALL or PUT"
+                                },
+                                {
+                                    "key": "exercisedCoin",
+                                    "value": "",
+                                    "description": "Target exercised asset, e.g.:\nif you subscribe to a high sell product (call option), you should input:\noptionType:CALL,\nexercisedCoin:USDT,\ninvestCoin:BNB;\nif you subscribe to a low buy product (put option), you should input:\noptionType:PUT,\nexercisedCoin:BNB,\ninvestCoin:USDT"
+                                },
+                                {
+                                    "key": "investCoin",
+                                    "value": "",
+                                    "description": "Asset used for subscribing, e.g.:\nif you subscribe to a high sell product (call option), you should input:\noptionType:CALL,\nexercisedCoin:USDT,\ninvestCoin:BNB;\nif you subscribe to a low buy product (put option), you should input:\noptionType:PUT,\nexercisedCoin:BNB,\ninvestCoin:USDT"
+                                },
+                                {
+                                    "key": "pageSize",
+                                    "value": "",
+                                    "description": "Default: 10, Max: 100",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pageIndex",
+                                    "value": "",
+                                    "description": "Default: 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "",
+                                    "description": "The value cannot be greater than 60000",
+                                    "disabled": true
+                                },
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+                            ]
+                        },
+                        "description": "Get Dual Investment product list\n\nWeight(IP): 1"
+                    },
+					"response": []
+                },
+                {
+                    "name": "Subscribe Dual Investment products(USER_DATA)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/dci/product/subscribe?id=&orderId=&depositAmount=&autoCompoundPlan=&timestamp={{timestamp}}&signature={{signature}}",
+                            "host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "dci",
+                                "product",
+                                "subscribe"
+                            ],
+                            "query": [
+                                {
+                                    "key": "id",
+                                    "value": "",
+                                    "description": "get id from /sapi/v1/dci/product/list"
+                                },
+                                {
+                                    "key": "orderId",
+                                    "value": "",
+                                    "description": "get orderId from /sapi/v1/dci/product/list"
+                                },
+                                {
+                                    "key": "depositAmount",
+                                    "value": "",
+                                    "description": "the amount for subscribing"
+                                },
+                                {
+                                    "key": "autoCompoundPlan",
+                                    "value": "",
+                                    "description": "NONE: switch off the plan,\nSTANDARD:standard plan,\nADVANCED:advanced plan"
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "",
+                                    "description": "The value cannot be greater than 60000",
+                                    "disabled": true
+                                },
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+                        },
+                        "description": "Subscribe Dual Investment products\n\nWeight(IP): 1"
+                    },
+					"response": []
+                },
+                {
+                    "name": "Get Dual Investment positions(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/dci/product/positions?timestamp={{timestamp}}&signature={{signature}}",
+                            "host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "dci",
+                                "product",
+                                "positions"
+                            ],
+                            "query": [
+                                {
+                                    "key": "status",
+                                    "value": "",
+                                    "description": "PENDING: Products are purchasing, will give results later;\nPURCHASE_SUCCESS: purchase successfully;\nSETTLED: Products are finish settling;\nPURCHASE_FAIL: fail to purchase;\nREFUNDING: refund ongoing;\nREFUND_SUCCESS: refund to spot account successfully;\nSETTLING: Products are settling. If don't fill this field, will response all the position status.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pageSize",
+                                    "value": "",
+                                    "description": "Default: 10, Max: 100",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pageIndex",
+                                    "value": "",
+                                    "description": "Default: 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "",
+                                    "description": "The value cannot be greater than 60000",
+                                    "disabled": true
+                                },
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+                            ]
+                        },
+                        "description": "Get Dual Investment positions (batch)\n\nWeight(IP): 1"
+					},
+					"response": []
+                },
+                {
+                    "name": "Check Dual Investment accounts(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/dci/product/accounts?timestamp={{timestamp}}&signature={{signature}}",
+                            "host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "dci",
+                                "product",
+                                "accounts"
+                            ],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "",
+                                    "description": "The value cannot be greater than 60000",
+                                    "disabled": true
+                                },
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+                        },
+                        "description": "Check Dual Investment accounts\n\nWeight(IP): 1"
+                    },
+					"response": []
+                },
+                {
+                    "name": "Change Auto-Compound status(USER_DATA)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/dci/product/auto_compound/edit-status?positionId=&autoCompoundPlan=&timestamp={{timestamp}}&signature={{signature}}",
+                            "host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "dci",
+                                "product",
+                                "auto_compound",
+                                "edit-status"
+                            ],
+                            "query": [
+                                {
+                                    "key": "positionId",
+                                    "value": "",
+                                    "description": "get positionId from /sapi/v1/dci/product/positions"
+                                },
+                                {
+                                    "key": "autoCompoundPlan",
+                                    "value": "",
+                                    "description": "NONE: switch off the plan,\nSTANDARD:standard plan,\nADVANCED:advanced plan"
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "",
+                                    "description": "The value cannot be greater than 60000",
+                                    "disabled": true
+                                },
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+						},
+						"description": "Change Auto-Compound status\n\nWeight(IP): 1\n\nRate Limit: Maximum 1 time/s per account"
+					},
+					"response": []
+                }
+            ]
+        },
 		{
 			"name": "Auto-Invest",
 			"item": [
@@ -17979,6 +18385,804 @@
 			],
 			"description": "Account/Trade"
 		},
+        {
+            "name": "Staking",
+            "item": [
+                {
+                    "name": "Subscribe ETH Staking V2(TRADE)",
+                    "request": {
+                        "method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v2/eth-staking/eth/stake?amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v2",
+                                "eth-staking",
+                                "eth",
+                                "stake"
+                            ],
+                            "query": [
+                                {
+                                    "key": "amount",
+                                    "value": "",
+                                    "description": "Amount in ETH, limit 4 decimals"
+                                },
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+                            ]
+                        },
+                        "description": "Stake ETH to get WBETH\n- You need to open Enable Spot & Margin Trading permission for the API Key which requests this endpoint.\n\nWeight(IP): 150"
+                    },
+					"response": []
+                },
+                {
+                    "name": "Redeem ETH (TRADE)",
+                    "request": {
+                        "method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/eth-staking/eth/redeem?amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "eth-staking",
+                                "eth",
+                                "redeem"
+                            ],
+                            "query": [
+                                {
+                                    "key": "asset",
+                                    "value": "",
+                                    "description": "WBETH or BETH, default to BETH",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "amount",
+                                    "value": "",
+                                    "description": "Amount in BETH, limit 8 decimals"
+                                },
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+                            ]
+                        },
+                        "description": "Redeem WBETH or BETH and get ETH\n- You need to open Enable Spot & Margin Trading permission for the API Key which requests this endpoint.\n\nWeight(IP): 150"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get ETH staking history (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/eth-staking/eth/history/stakingHistory?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "eth-staking",
+                                "eth",
+                                "history",
+                                "stakingHistory"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startTime",
+                                    "value": "",
+                                    "required": false
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "",
+                                    "required": false
+                                },
+                                {
+                                    "key": "current",
+                                    "value": "",
+                                    "description": "Currently querying page. Start from 1. Default: 1",
+                                    "required": false
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "",
+                                    "description": "Default:10, Max:100",
+                                    "required": false
+                                },
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+                            ]
+                        },
+                        "description": "- The time between startTime and endTime cannot be longer than 3 months.\nIf startTime and endTime are both not sent, then the last 30 days' data will be returned.\nIf startTime is sent but endTime is not sent, the next 30 days' data beginning from startTime will be returned.\nIf endTime is sent but startTime is not sent, the 30 days' data before endTime will be returned.\n\nWeight(IP): 150"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get ETH redemption history (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/eth-staking/eth/history/redemptionHistory?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "eth-staking",
+                                "eth",
+                                "history",
+                                "redemptionHistory"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startTime",
+                                    "value": "",
+                                    "required": false
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "",
+                                    "required": false
+                                },
+                                {
+                                    "key": "current",
+                                    "value": "",
+                                    "description": "Currently querying page. Start from 1. Default: 1",
+                                    "required": false
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "",
+                                    "description": "Default:10, Max:100",
+                                    "required": false
+                                },
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+                            ]
+                        },
+                        "description": "- The time between startTime and endTime cannot be longer than 3 months.\nIf startTime and endTime are both not sent, then the last 30 days' data will be returned.\nIf startTime is sent but endTime is not sent, the next 30 days' data beginning from startTime will be returned.\nIf endTime is sent but startTime is not sent, the 30 days' data before endTime will be returned.\n\nWeight(IP): 150"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get BETH rewards distribution history(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/eth-staking/eth/history/rewardsHistory?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "eth-staking",
+                                "eth",
+                                "history",
+                                "rewardsHistory"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startTime",
+                                    "value": "",
+                                    "required": false
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "",
+                                    "required": false
+                                },
+                                {
+                                    "key": "current",
+                                    "value": "",
+                                    "description": "Currently querying page. Start from 1. Default: 1",
+                                    "required": false
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "",
+                                    "description": "Default:10, Max:100",
+                                    "required": false
+                                },
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+                            ]
+                        },
+                        "description": "- The time between startTime and endTime cannot be longer than 3 months.\nIf startTime and endTime are both not sent, then the last 30 days' data will be returned.\nIf startTime is sent but endTime is not sent, the next 30 days' data beginning from startTime will be returned.\nIf endTime is sent but startTime is not sent, the 30 days' data before endTime will be returned.\n\nWeight(IP): 150"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get current ETH staking quota (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/eth-staking/eth/quota?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "eth-staking",
+                                "eth",
+                                "quota"
+                            ],
+                            "query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+                            ]
+                        },
+                        "description": "Weight(IP): 150"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get WBETH Rate History (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/eth-staking/eth/history/rateHistory?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "eth-staking",
+                                "eth",
+                                "history",
+                                "rateHistory"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startTime",
+                                    "value": "",
+                                    "required": false
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "",
+                                    "required": false
+                                },
+                                {
+                                    "key": "current",
+                                    "value": "",
+                                    "description": "Currently querying page. Start from 1. Default: 1",
+                                    "required": false
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "",
+                                    "description": "Default:10, Max:100",
+                                    "required": false
+                                },
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+                            ]
+                        },
+                        "description": "- The time between startTime and endTime cannot be longer than 3 months.\n- If startTime and endTime are both not sent, then the last 30 days' data will be returned.\n- If startTime is sent but endTime is not sent, the next 30 days' data beginning from startTime will be returned.\n- If endTime is sent but startTime is not sent, the 30 days' data before endTime will be returned.\n\nWeight(IP): 150"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "ETH Staking account V2(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v2/eth-staking/account?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v2",
+                                "eth-staking",
+                                "account"
+                            ],
+                            "query": [
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+							]
+                        },
+                        "description": "Weight(IP): 150"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Wrap BETH(TRADE)",
+                    "request": {
+                        "method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/eth-staking/wbeth/wrap?amount=&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "eth-staking",
+                                "wbeth",
+                                "wrap"
+                            ],
+                            "query": [
+                                {
+                                    "key": "amount",
+                                    "value": "",
+                                    "description": "Amount in BETH, limit 4 decimals"
+                                },
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+                            ]
+                        },
+                        "description": "- You need to open Enable Spot & Margin Trading permission for the API Key which requests this endpoint.\n\nWeight(IP): 150"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get WBETH wrap history (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/eth-staking/wbeth/history/wrapHistory?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "eth-staking",
+                                "wbeth",
+                                "history",
+                                "wrapHistory"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startTime",
+                                    "value": "",
+                                    "required": false
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "",
+                                    "required": false
+                                },
+                                {
+                                    "key": "current",
+                                    "value": "",
+                                    "description": "Currently querying page. Start from 1. Default: 1",
+                                    "required": false
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "",
+                                    "description": "Default:10, Max:100",
+                                    "required": false
+                                },
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+                            ]
+                        },
+                        "description": "- The time between startTime and endTime cannot be longer than 3 months.\n- If startTime and endTime are both not sent, then the last 30 days' data will be returned.\n- If startTime is sent but endTime is not sent, the next 30 days' data beginning from startTime will be returned.\n- If endTime is sent but startTime is not sent, the 30 days' data before endTime will be returned.\n\nWeight(IP): 150"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get WBETH unwrap history (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/eth-staking/wbeth/history/unwrapHistory?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "eth-staking",
+                                "wbeth",
+                                "history",
+                                "unwrapHistory"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startTime",
+                                    "value": "",
+                                    "required": false
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "",
+                                    "required": false
+                                },
+                                {
+                                    "key": "current",
+                                    "value": "",
+                                    "description": "Currently querying page. Start from 1. Default: 1",
+                                    "required": false
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "",
+                                    "description": "Default:10, Max:100",
+                                    "required": false
+                                },
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+                            ]
+                        },
+                        "description": "- The time between startTime and endTime cannot be longer than 3 months.\n- If startTime and endTime are both not sent, then the last 30 days' data will be returned.\n- If startTime is sent but endTime is not sent, the next 30 days' data beginning from startTime will be returned.\n- If endTime is sent but startTime is not sent, the 30 days' data before endTime will be returned.\n\nWeight(IP): 150"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get WBETH rewards history(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/eth-staking/eth/history/wbethRewardsHistory?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "eth-staking",
+                                "eth",
+                                "history",
+                                "wbethRewardsHistory"
+                            ],
+                            "query": [
+                                {
+                                    "key": "startTime",
+                                    "value": "",
+                                    "required": false
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "",
+                                    "required": false
+                                },
+                                {
+                                    "key": "current",
+                                    "value": "",
+                                    "description": "Currently querying page. Start from 1. Default: 1",
+                                    "required": false
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "",
+                                    "description": "Default:10, Max:100",
+                                    "required": false
+                                },
+								{
+									"key": "recvWindow",
+									"value": "5000",
+									"description": "The value cannot be greater than 60000",
+									"disabled": true
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+                            ]
+                        },
+                        "description": "- The time between startTime and endTime cannot be longer than 3 months.\n- If startTime and endTime are both not sent, then the last 30 days' data will be returned.\n- If startTime is sent but endTime is not sent, the next 30 days' data beginning from startTime will be returned.\n- If endTime is sent but startTime is not sent, the 30 days' data before endTime will be returned.\n\nWeight(IP): 150"
+                    },
+                    "response": []
+                }
+            ]
+        },
 		{
 			"name": "Wallet",
 			"item": [
@@ -19792,6 +20996,63 @@
 					},
 					"response": []
 				},
+                {
+					"name": "Fetch deposit address list with network(USER_DATA)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/sapi/v1/capital/deposit/address/list?coin=BTC&recvWindow=5000&timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sapi",
+								"v1",
+								"capital",
+								"deposit",
+								"address",
+								"list"
+							],
+							"query": [
+								{
+									"key": "coin",
+									"value": "BTC"
+								},
+								{
+									"key": "network",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "recvWindow",
+									"value": "5000"
+								},
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
 				{
 					"name": "Query User Wallet Balance (USER_DATA)",
 					"request": {
@@ -19960,10 +21221,56 @@
                     "response": []
                     
                 },
-				{
-					"name": "Fetch deposit address list with network(USER_DATA)",
-					"request": {
-						"method": "GET",
+                {
+                    "name": "Fetch withdraw address list (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "X-MBX-APIKEY",
+								"value": "{{binance-api-key}}",
+								"type": "text"
+							}
+						],
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/capital/withdraw/address/list?timestamp={{timestamp}}&signature={{signature}}",
+							"host": [
+								"{{url}}"
+							],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "capital",
+                                "withdraw",
+                                "address",
+                                "list"
+                            ],
+                            "query": [
+								{
+									"key": "timestamp",
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
+								},
+								{
+									"key": "signature",
+									"value": "{{signature}}",
+									"description": "Signature"
+								}
+                            ]
+                        },
+						"description": "Fetch withdraw address list\n\nWeight(IP): 10"
+					},
+					"response": []
+                },
+                {
+                    "name": "Account info (USER_DATA)",
+                    "request": {
+                        "method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -19976,47 +21283,40 @@
 								"type": "text"
 							}
 						],
-						"url": {
-							"raw": "{{url}}/sapi/v1/capital/deposit/address/list?coin=BTC&recvWindow=5000&timestamp={{timestamp}}&signature={{signature}}",
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/account/info?timestamp={{timestamp}}&signature={{signature}}",
 							"host": [
 								"{{url}}"
 							],
-							"path": [
-								"sapi",
-								"v1",
-								"capital",
-								"deposit",
-								"address",
-								"list"
-							],
-							"query": [
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "account",
+                                "info"
+                            ],
+                            "query": [
 								{
-									"key": "coin",
-									"value": "BTC"
-								},
-								{
-									"key": "network",
+									"key": "recvWindow",
 									"value": "",
+									"description": "no more than 60000",
 									"disabled": true
 								},
 								{
-									"key": "recvWindow",
-									"value": "5000"
-								},
-								{
 									"key": "timestamp",
-									"value": "{{timestamp}}"
+									"value": "{{timestamp}}",
+									"description": "UTC timestamp in ms"
 								},
 								{
 									"key": "signature",
-									"value": "{{signature}}"
+									"value": "{{signature}}",
+									"description": "Signature"
 								}
 							]
 						},
-						"description": ""
+						"description": "Fetch account info detail.\n\nWeight(IP): 1"
 					},
 					"response": []
-				}
+                }
 			],
 			"description": "Wallet Endpoints"
 		},

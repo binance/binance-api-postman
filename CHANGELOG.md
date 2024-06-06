@@ -1,5 +1,86 @@
 # Changelog
 
+## 1.16.0 - 2024-06-06
+
+### Spot
+#### Added
+**Dual Investment**
+- `GET /sapi/v1/dci/product/list`
+- `POST /sapi/v1/dci/product/subscribe`
+- `GET /sapi/v1/dci/product/positions`
+- `GET /sapi/v1/dci/product/accounts`
+- `POST /sapi/v1/dci/product/auto_compound/edit-status`
+
+**Loan**
+- `POST /sapi/v2/loan/flexible/borrow`
+- `GET /sapi/v2/loan/flexible/ongoing/orders`
+- `GET /sapi/v2/loan/flexible/borrow/history`
+- `POST /sapi/v2/loan/flexible/repay`
+- `GET /sapi/v2/loan/flexible/repay/history`
+- `POST /sapi/v2/loan/flexible/adjust/ltv`
+- `GET /sapi/v2/loan/flexible/ltv/adjustment/history`
+- `GET /sapi/v2/loan/flexible/loanable/data`
+- `GET /sapi/v2/loan/flexible/collateral/data`
+
+**Staking**
+- `POST /sapi/v1/eth-staking/eth/stake`
+- `POST /sapi/v2/eth-staking/eth/stake`
+- `POST /sapi/v1/eth-staking/eth/redeem`
+- `GET /sapi/v1/eth-staking/eth/history/stakingHistory`
+- `GET /sapi/v1/eth-staking/eth/history/redemptionHistory`
+- `GET /sapi/v1/eth-staking/eth/history/rewardsHistory`
+- `GET /sapi/v1/eth-staking/eth/quota `
+- `GET /sapi/v1/eth-staking/eth/history/rateHistory`
+- `GET /sapi/v2/eth-staking/account`
+- `POST /sapi/v1/eth-staking/wbeth/wrap`
+- `GET /sapi/v1/eth-staking/wbeth/history/wrapHistory`
+- `GET /sapi/v1/eth-staking/wbeth/history/unwrapHistory`
+- `GET /sapi/v1/eth-staking/eth/history/wbethRewardsHistory`
+
+**Trade**
+- `POST /api/v3/orderList/oco`
+
+**Wallet**
+- `GET /sapi/v1/capital/withdraw/address/list`
+- `GET /sapi/v1/account/info`
+
+#### Updated
+**Convert**
+- `GET /sapi/v1/convert/exchangeInfo`: Remove `recvWindow`, `timestamp` and `signature` parameters
+
+**Trade**
+- `GET /api/v3/account`
+- `GET /api/v3/trades`
+- `GET /api/v3/historicalTrades`
+
+#### Deleted
+**Loan**
+- `POST /sapi/v1/loan/flexible/borrow`
+- `GET /sapi/v1/loan/flexible/ongoing/orders`
+- `GET /sapi/v1/loan/flexible/borrow/history`
+- `POST /sapi/v1/loan/flexible/repay`
+- `GET /sapi/v1/loan/flexible/repay/history`
+- `POST /sapi/v1/loan/flexible/adjust/ltv`
+- `GET /sapi/v1/loan/flexible/ltv/adjustment/history`
+- `GET /sapi/v1/loan/flexible/loanable/data`
+- `GET /sapi/v1/loan/flexible/collateral/data`
+
+**Trade**
+- `POST /api/v3/order/oco`
+
+### USD-M Futures
+#### Added
+**Account**
+- `GET /fapi/v1/rateLimit/order`
+
+**Trade**
+- `POST /fapi/v1/feeBurn`
+- `GET /fapi/v1/feeBurn`
+
+#### Updated
+**Order**
+- `PUT /fapi/v1/order`
+
 ## 1.15.0 - 2024-02-05
 
 ### Spot
