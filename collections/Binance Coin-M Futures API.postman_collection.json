@@ -3298,41 +3298,6 @@
 			"name": "Portfolio Margin",
 			"item": [
 				{
-					"name": "Portfolio Margin Exchange Information",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "{{url}}/dapi/v1/pmExchangeInfo",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"dapi",
-								"v1",
-								"pmExchangeInfo"
-							],
-							"query": [
-								{
-									"key": "symbol",
-									"disabled": true
-								},
-								{
-									"key": "pair",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Portfolio Margin Account Information",
 					"event": [
 						{
