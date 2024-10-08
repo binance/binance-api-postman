@@ -1,5 +1,51 @@
 # Changelog
 
+## 1.17.0 - 2024-10-08
+
+### Spot
+#### Added
+**Trade**
+- `POST /api/v3/orderList/oto`
+- `POST /api/v3/orderList/otoco`
+
+**Margin**
+- `POST /sapi/v1/margin/order/oto`
+- `POST /sapi/v1/margin/order/otoco`
+
+**Portfolio Margin**
+- `GET /sapi/v2/portfolio/collateralRate`
+
+**Simple Earn**
+- `POST /sapi/v1/simple-earn/locked/setRedeemOption`
+
+**Copy Trading**
+- `GET /sapi/v1/copyTrading/futures/userStatus`
+- `GET /sapi/v1/copyTrading/futures/leadSymbol`
+
+#### Updated
+**Simple Earn**
+- `POST /sapi/v1/simple-earn/locked/subscribe` new parameter: `redeemTo`
+
+### USDs-Margined Futures
+#### Added
+**Account**
+- `GET /fapi/v1/accountConfig`
+- `GET /fapi/v1/symbolConfig`
+
+**Convert**
+- `GET /fapi/v1/convert/exchangeInfo`
+- `POST /fapi/v1/convert/getQuote`
+- `POST /fapi/v1/convert/acceptQuote`
+- `GET /fapi/v1/convert/orderStatus`
+
+#### Updated
+**Account**
+- Updated deprecated endpoints `GET /fapi/v2/balance`, `GET /fapi/v2/account` and `GET /fapi/v2/positionRisk` to `GET /fapi/v3/account`, `GET /fapi/v3/balance` and`GET /fapi/v3/positionRisk`
+
+### Coin-Margined Futures
+#### Deleted
+- `GET /dapi/v1/pmExchangeInfo`
+
 ## 1.16.0 - 2024-06-06
 
 ### Spot
@@ -23,7 +69,6 @@
 - `GET /sapi/v2/loan/flexible/collateral/data`
 
 **Staking**
-- `POST /sapi/v1/eth-staking/eth/stake`
 - `POST /sapi/v2/eth-staking/eth/stake`
 - `POST /sapi/v1/eth-staking/eth/redeem`
 - `GET /sapi/v1/eth-staking/eth/history/stakingHistory`
