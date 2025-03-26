@@ -1,0 +1,3505 @@
+{
+    "info": {
+        "name": "Binance Spot REST API",
+        "description": {
+            "content": "OpenAPI Specifications for the Binance Spot REST API\n\nAPI documents:\n  - [Github rest-api documentation file](https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md)\n  - [General API information for rest-api on website](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information)\n",
+            "type": "text/markdown"
+        },
+        "version": "1.0.0",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "exec": [
+                    "const ts = Date.now();",
+                    "let paramsObject = {};",
+                    "const environment = pm.environment.get('environment');",
+                    "const api_key = pm.environment.get('api-key');",
+                    "const api_secret = pm.environment.get('api-secret');",
+                    "const parameters = pm.request.url.query;",
+                    "pm.request.url.host = environment === 'production' ? [pm.variables.get('prod_url')] : [pm.variables.get('testnet_url')];",
+                    "parameters.each((param) => {",
+                    "if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+                    "paramsObject[param.key] = param.value;}});",
+                    "Object.assign(paramsObject, { 'timestamp': ts });",
+                    "if (parameters.has('signature') && api_secret) {",
+                    "const queryString = Object.keys(paramsObject).map((key) => `${key}=${paramsObject[key]}`).join('&');",
+                    "console.log(queryString);",
+                    "const signature = CryptoJS.HmacSHA256(queryString, api_secret).toString();",
+                    "// Update the query parameters directly",
+                    "setOrUpdateQueryParam('timestamp', ts.toString());",
+                    "setOrUpdateQueryParam('signature', signature);",
+                    "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);}",
+                    "function setOrUpdateQueryParam(key, value) {",
+                    "let params = pm.request.url.query;",
+                    "let param = params.find(param => param.key === key);",
+                    "if (param) param.value = value;",
+                    "else pm.request.url.query.add({ key: key, value: value });\n}",
+                    "function setOrUpdateHeaderParam(key, value) {",
+                    "let headers = pm.request.headers;",
+                    "let header = headers.find(header => header.key === key);",
+                    "if (header) header.value = value;",
+                    "else pm.request.headers.add({ key: key, value: value });\n}",
+                    "function is_disabled(str) {\nreturn str === true;\n}",
+                    "function is_empty(str) {",
+                    "return typeof str === 'undefined' ||!str || str.length === 0 || str === '' ||!/[^\\s]/.test(str) ||/^\\s*$/.test(str) ||str.replace(/\\s/g,'') === '';}"
+                ],
+                "type": "text/javascript"
+            }
+        }
+    ],
+    "item": [
+        {
+            "name": "Account",
+            "item": [
+                {
+                    "name": "Account information",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/account",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "account"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "omitZeroBalances",
+                                    "value": "false",
+                                    "description": "When set to `true`, emits only the non-zero balances of an account. <br>Default value: `false`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Commission Rates",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/account/commission",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "account", "commission"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Allocations",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/myAllocations",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "myAllocations"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1735693200000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1735693200000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "fromAllocationId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "500",
+                                    "description": "Default 500; max 1000.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "orderId",
+                                    "value": "1",
+                                    "description": "This can only be used in combination with `symbol`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Prevented Matches",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/myPreventedMatches",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "myPreventedMatches"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "preventedMatchId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "orderId",
+                                    "value": "1",
+                                    "description": "This can only be used in combination with `symbol`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "fromPreventedMatchId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "500",
+                                    "description": "Default 500; max 1000.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Account trade list",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/myTrades",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "myTrades"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "orderId",
+                                    "value": "1",
+                                    "description": "This can only be used in combination with `symbol`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1735693200000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1735693200000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "fromId",
+                                    "value": "1",
+                                    "description": "TradeId to fetch from. Default gets most recent trades.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "500",
+                                    "description": "Default 500; max 1000.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Unfilled Order Count",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/rateLimit/order",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "rateLimit", "order"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Trade",
+            "item": [
+                {
+                    "name": "Query all Order lists",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/allOrderList",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "allOrderList"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "fromId",
+                                    "value": "1",
+                                    "description": "TradeId to fetch from. Default gets most recent trades.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1735693200000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1735693200000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "500",
+                                    "description": "Default 500; max 1000.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "All orders",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/allOrders",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "allOrders"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "orderId",
+                                    "value": "1",
+                                    "description": "This can only be used in combination with `symbol`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1735693200000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1735693200000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "500",
+                                    "description": "Default 500; max 1000.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Open Order lists",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/openOrderList",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "openOrderList"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel All Open Orders on a Symbol",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/openOrders",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "openOrders"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Current open orders",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/openOrders",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "openOrders"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel order",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/order",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "order"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "orderId",
+                                    "value": "1",
+                                    "description": "This can only be used in combination with `symbol`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "origClientOrderId",
+                                    "value": "origClientOrderId_example",
+                                    "description": "Either ```orderListId``` or ```listClientOrderId``` must be provided",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "newClientOrderId",
+                                    "value": "newClientOrderId_example",
+                                    "description": "A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "cancelRestrictions",
+                                    "value": "ONLY_NEW",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query order",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/order",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "order"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "orderId",
+                                    "value": "1",
+                                    "description": "This can only be used in combination with `symbol`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "origClientOrderId",
+                                    "value": "origClientOrderId_example",
+                                    "description": "Either ```orderListId``` or ```listClientOrderId``` must be provided",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "New order",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/order",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "order"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "BUY",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "MARKET",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timeInForce",
+                                    "value": "GTC",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "quantity",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "quoteOrderQty",
+                                    "value": "1.0",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "400",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "newClientOrderId",
+                                    "value": "newClientOrderId_example",
+                                    "description": "A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "strategyId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "strategyType",
+                                    "value": "1",
+                                    "description": "The value cannot be less than `1000000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "stopPrice",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "trailingDelta",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "icebergQty",
+                                    "value": "1.0",
+                                    "description": "Used with `LIMIT` to create an iceberg order.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "newOrderRespType",
+                                    "value": "ACK",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "selfTradePreventionMode",
+                                    "value": "NONE",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel an Existing Order and Send a New Order",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/order/cancelReplace",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "order", "cancelReplace"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "BUY",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "MARKET",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "cancelReplaceMode",
+                                    "value": "STOP_ON_FAILURE",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timeInForce",
+                                    "value": "GTC",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "quantity",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "quoteOrderQty",
+                                    "value": "1.0",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "400",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "cancelNewClientOrderId",
+                                    "value": "cancelNewClientOrderId_example",
+                                    "description": "Used to uniquely identify this cancel. Automatically generated by default.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "cancelOrigClientOrderId",
+                                    "value": "cancelOrigClientOrderId_example",
+                                    "description": "Either the `cancelOrigClientOrderId` or `cancelOrderId` must be provided. If both are provided, `cancelOrderId` takes precedence.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "cancelOrderId",
+                                    "value": "1",
+                                    "description": "Either the `cancelOrigClientOrderId` or `cancelOrderId` must be provided. If both are provided, `cancelOrderId` takes precedence.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "newClientOrderId",
+                                    "value": "newClientOrderId_example",
+                                    "description": "A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "strategyId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "strategyType",
+                                    "value": "1",
+                                    "description": "The value cannot be less than `1000000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "stopPrice",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "trailingDelta",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "icebergQty",
+                                    "value": "1.0",
+                                    "description": "Used with `LIMIT` to create an iceberg order.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "newOrderRespType",
+                                    "value": "ACK",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "selfTradePreventionMode",
+                                    "value": "NONE",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "cancelRestrictions",
+                                    "value": "ONLY_NEW",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "orderRateLimitExceededMode",
+                                    "value": "DO_NOTHING",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "New OCO - Deprecated",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/order/oco",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "order", "oco"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "listClientOrderId",
+                                    "value": "listClientOrderId_example",
+                                    "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. <br>A new order list with the same listClientOrderId is accepted only when the previous one is filled or completely expired. <br> `listClientOrderId` is distinct from the `workingClientOrderId`, `pendingAboveClientOrderId`, and the `pendingBelowClientOrderId`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "BUY",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "quantity",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limitClientOrderId",
+                                    "value": "limitClientOrderId_example",
+                                    "description": "A unique Id for the limit order",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "400",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limitStrategyId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limitStrategyType",
+                                    "value": "1",
+                                    "description": "The value cannot be less than `1000000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limitIcebergQty",
+                                    "value": "1.0",
+                                    "description": "Used to make the `LIMIT_MAKER` leg an iceberg order.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "trailingDelta",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "stopClientOrderId",
+                                    "value": "stopClientOrderId_example",
+                                    "description": "A unique Id for the stop loss/stop loss limit leg",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "stopPrice",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "stopStrategyId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "stopStrategyType",
+                                    "value": "1",
+                                    "description": "The value cannot be less than `1000000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "stopLimitPrice",
+                                    "value": "1.0",
+                                    "description": "If provided, `stopLimitTimeInForce` is required.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "stopIcebergQty",
+                                    "value": "1.0",
+                                    "description": "Used with `STOP_LOSS_LIMIT` leg to make an iceberg order.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "stopLimitTimeInForce",
+                                    "value": "GTC",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "newOrderRespType",
+                                    "value": "ACK",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "selfTradePreventionMode",
+                                    "value": "NONE",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Test new order",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/order/test",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "order", "test"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "computeCommissionRates",
+                                    "value": "false",
+                                    "description": "Default: `false`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel Order list",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/orderList",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "orderList"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "orderListId",
+                                    "value": "1",
+                                    "description": "Either```orderListId```or```listClientOrderId```mustbeprovided",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "listClientOrderId",
+                                    "value": "listClientOrderId_example",
+                                    "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. <br>A new order list with the same listClientOrderId is accepted only when the previous one is filled or completely expired. <br> `listClientOrderId` is distinct from the `workingClientOrderId`, `pendingAboveClientOrderId`, and the `pendingBelowClientOrderId`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "newClientOrderId",
+                                    "value": "newClientOrderId_example",
+                                    "description": "A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Order list",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/orderList",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "orderList"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "orderListId",
+                                    "value": "1",
+                                    "description": "Either```orderListId```or```listClientOrderId```mustbeprovided",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "origClientOrderId",
+                                    "value": "origClientOrderId_example",
+                                    "description": "Either ```orderListId``` or ```listClientOrderId``` must be provided",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "New Order list - OCO",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/orderList/oco",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "orderList", "oco"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "listClientOrderId",
+                                    "value": "listClientOrderId_example",
+                                    "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. <br>A new order list with the same listClientOrderId is accepted only when the previous one is filled or completely expired. <br> `listClientOrderId` is distinct from the `workingClientOrderId`, `pendingAboveClientOrderId`, and the `pendingBelowClientOrderId`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "BUY",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "quantity",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "aboveType",
+                                    "value": "STOP_LOSS_LIMIT",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "aboveClientOrderId",
+                                    "value": "aboveClientOrderId_example",
+                                    "description": "Arbitrary unique ID among open orders for the above order. Automatically generated if not sent",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "aboveIcebergQty",
+                                    "value": "1",
+                                    "description": "Note that this can only be used if `aboveTimeInForce` is `GTC`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "abovePrice",
+                                    "value": "1.0",
+                                    "description": "Can be used if `aboveType` is `STOP_LOSS_LIMIT` , `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price. ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "aboveStopPrice",
+                                    "value": "1.0",
+                                    "description": "Can be used if `aboveType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT` <br>Either `aboveStopPrice` or `aboveTrailingDelta` or both, must be specified.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "aboveTrailingDelta",
+                                    "value": "1",
+                                    "description": "See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md).",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "aboveTimeInForce",
+                                    "value": "1.0",
+                                    "description": "Required if `aboveType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "aboveStrategyId",
+                                    "value": "1",
+                                    "description": "Arbitrary numeric value identifying the above order within an order strategy. ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "aboveStrategyType",
+                                    "value": "1",
+                                    "description": "Arbitrary numeric value identifying the above order strategy. <br>Values smaller than 1000000 are reserved and cannot be used.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "belowType",
+                                    "value": "STOP_LOSS",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "belowClientOrderId",
+                                    "value": "belowClientOrderId_example",
+                                    "description": "Arbitrary unique ID among open orders for the below order. Automatically generated if not sent",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "belowIcebergQty",
+                                    "value": "1",
+                                    "description": "Note that this can only be used if `belowTimeInForce` is `GTC`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "belowPrice",
+                                    "value": "1.0",
+                                    "description": "Can be used if `belowType` is `STOP_LOSS_LIMIT` , `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "belowStopPrice",
+                                    "value": "1.0",
+                                    "description": "Can be used if `belowType` is `STOP_LOSS`, `STOP_LOSS_LIMIT, TAKE_PROFIT` or `TAKE_PROFIT_LIMIT` <br>Either belowStopPrice or belowTrailingDelta or both, must be specified.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "belowTrailingDelta",
+                                    "value": "1",
+                                    "description": "See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md). ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "belowTimeInForce",
+                                    "value": "belowType",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "belowStrategyId",
+                                    "value": "1",
+                                    "description": "Arbitrary numeric value identifying the below order within an order strategy. ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "belowStrategyType",
+                                    "value": "1",
+                                    "description": "Arbitrary numeric value identifying the below order strategy. <br>Values smaller than 1000000 are reserved and cannot be used.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "newOrderRespType",
+                                    "value": "ACK",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "selfTradePreventionMode",
+                                    "value": "NONE",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "New Order list - OTO",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/orderList/oto",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "orderList", "oto"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "listClientOrderId",
+                                    "value": "listClientOrderId_example",
+                                    "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. <br>A new order list with the same listClientOrderId is accepted only when the previous one is filled or completely expired. <br> `listClientOrderId` is distinct from the `workingClientOrderId`, `pendingAboveClientOrderId`, and the `pendingBelowClientOrderId`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "newOrderRespType",
+                                    "value": "ACK",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "selfTradePreventionMode",
+                                    "value": "NONE",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingType",
+                                    "value": "LIMIT",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingSide",
+                                    "value": "BUY",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingClientOrderId",
+                                    "value": "workingClientOrderId_example",
+                                    "description": "Arbitrary unique ID among open orders for the working order.<br> Automatically generated if not sent.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingPrice",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "workingQuantity",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "workingIcebergQty",
+                                    "value": "1.0",
+                                    "description": "This can only be used if `workingTimeInForce` is `GTC`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingTimeInForce",
+                                    "value": "GTC",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingStrategyId",
+                                    "value": "1",
+                                    "description": "Arbitrary numeric value identifying the working order within an order strategy.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingStrategyType",
+                                    "value": "1",
+                                    "description": "Arbitrary numeric value identifying the working order strategy. <br> Values smaller than 1000000 are reserved and cannot be used.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingType",
+                                    "value": "LIMIT",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingSide",
+                                    "value": "BUY",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingClientOrderId",
+                                    "value": "pendingClientOrderId_example",
+                                    "description": "Arbitrary unique ID among open orders for the pending order.<br> Automatically generated if not sent.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingPrice",
+                                    "value": "1.0",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingStopPrice",
+                                    "value": "1.0",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingTrailingDelta",
+                                    "value": "1.0",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingQuantity",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "pendingIcebergQty",
+                                    "value": "1.0",
+                                    "description": "This can only be used if `pendingTimeInForce` is `GTC` or if `pendingType` is `LIMIT_MAKER`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingTimeInForce",
+                                    "value": "GTC",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingStrategyId",
+                                    "value": "1",
+                                    "description": "Arbitrary numeric value identifying the pending order within an order strategy.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingStrategyType",
+                                    "value": "1",
+                                    "description": "Arbitrary numeric value identifying the pending order strategy. <br> Values smaller than 1000000 are reserved and cannot be used.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "New Order list - OTOCO",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/orderList/otoco",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "orderList", "otoco"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "listClientOrderId",
+                                    "value": "listClientOrderId_example",
+                                    "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. <br>A new order list with the same listClientOrderId is accepted only when the previous one is filled or completely expired. <br> `listClientOrderId` is distinct from the `workingClientOrderId`, `pendingAboveClientOrderId`, and the `pendingBelowClientOrderId`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "newOrderRespType",
+                                    "value": "ACK",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "selfTradePreventionMode",
+                                    "value": "NONE",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingType",
+                                    "value": "LIMIT",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingSide",
+                                    "value": "BUY",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingClientOrderId",
+                                    "value": "workingClientOrderId_example",
+                                    "description": "Arbitrary unique ID among open orders for the working order.<br> Automatically generated if not sent.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingPrice",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "workingQuantity",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "workingIcebergQty",
+                                    "value": "1.0",
+                                    "description": "This can only be used if `workingTimeInForce` is `GTC`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingTimeInForce",
+                                    "value": "GTC",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingStrategyId",
+                                    "value": "1",
+                                    "description": "Arbitrary numeric value identifying the working order within an order strategy.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingStrategyType",
+                                    "value": "1",
+                                    "description": "Arbitrary numeric value identifying the working order strategy. <br> Values smaller than 1000000 are reserved and cannot be used.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingSide",
+                                    "value": "BUY",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingQuantity",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "pendingAboveType",
+                                    "value": "STOP_LOSS_LIMIT",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingAboveClientOrderId",
+                                    "value": "pendingAboveClientOrderId_example",
+                                    "description": "Arbitrary unique ID among open orders for the pending above order.<br> Automatically generated if not sent.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingAbovePrice",
+                                    "value": "1.0",
+                                    "description": "Can be used if `pendingAboveType` is `STOP_LOSS_LIMIT` , `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price. ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingAboveStopPrice",
+                                    "value": "1.0",
+                                    "description": "Can be used if `pendingAboveType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingAboveTrailingDelta",
+                                    "value": "1.0",
+                                    "description": "See [Trailing Stop FAQ](faqs/trailing-stop-faq.md)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingAboveIcebergQty",
+                                    "value": "1.0",
+                                    "description": "This can only be used if `pendingAboveTimeInForce` is `GTC` or if `pendingAboveType` is `LIMIT_MAKER`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingAboveTimeInForce",
+                                    "value": "GTC",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingAboveStrategyId",
+                                    "value": "1",
+                                    "description": "Arbitrary numeric value identifying the pending above order within an order strategy.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingAboveStrategyType",
+                                    "value": "1",
+                                    "description": "Arbitrary numeric value identifying the pending above order strategy. <br> Values smaller than 1000000 are reserved and cannot be used.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingBelowType",
+                                    "value": "STOP_LOSS",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingBelowClientOrderId",
+                                    "value": "pendingBelowClientOrderId_example",
+                                    "description": "Arbitrary unique ID among open orders for the pending below order.<br> Automatically generated if not sent.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingBelowPrice",
+                                    "value": "1.0",
+                                    "description": "Can be used if `pendingBelowType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT` to specify limit price",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingBelowStopPrice",
+                                    "value": "1.0",
+                                    "description": "Can be used if `pendingBelowType` is `STOP_LOSS`, `STOP_LOSS_LIMIT, TAKE_PROFIT or TAKE_PROFIT_LIMIT`. <br> Either `pendingBelowStopPrice` or `pendingBelowTrailingDelta` or both, must be specified.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingBelowTrailingDelta",
+                                    "value": "1.0",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingBelowIcebergQty",
+                                    "value": "1.0",
+                                    "description": "This can only be used if `pendingBelowTimeInForce` is `GTC`, or if `pendingBelowType` is `LIMIT_MAKER`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingBelowTimeInForce",
+                                    "value": "GTC",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingBelowStrategyId",
+                                    "value": "1",
+                                    "description": "Arbitrary numeric value identifying the pending below order within an order strategy.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingBelowStrategyType",
+                                    "value": "1",
+                                    "description": "Arbitrary numeric value identifying the pending below order strategy. <br> Values smaller than 1000000 are reserved and cannot be used.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "New order using SOR",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/sor/order",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "sor", "order"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "BUY",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "MARKET",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timeInForce",
+                                    "value": "GTC",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "quantity",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "400",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "newClientOrderId",
+                                    "value": "newClientOrderId_example",
+                                    "description": "A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "strategyId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "strategyType",
+                                    "value": "1",
+                                    "description": "The value cannot be less than `1000000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "icebergQty",
+                                    "value": "1.0",
+                                    "description": "Used with `LIMIT` to create an iceberg order.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "newOrderRespType",
+                                    "value": "ACK",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "selfTradePreventionMode",
+                                    "value": "NONE",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Test new order using SOR",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/sor/order/test",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "sor", "order", "test"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "computeCommissionRates",
+                                    "value": "false",
+                                    "description": "Default: `false`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Userdatastream",
+            "item": [
+                {
+                    "name": "Close user data stream",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/userDataStream",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "userDataStream"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "listenKey",
+                                    "value": "listenKey",
+                                    "description": "",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Start user data stream",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/userDataStream",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "userDataStream"],
+                            "variable": [],
+                            "query": []
+                        }
+                    }
+                },
+                {
+                    "name": "Keepalive user data stream",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/userDataStream",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "userDataStream"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "listenKey",
+                                    "value": "listenKey",
+                                    "description": "",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "General",
+            "item": [
+                {
+                    "name": "Exchange information",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/exchangeInfo",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "exchangeInfo"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "symbols",
+                                    "value": "",
+                                    "description": "List of symbols to query",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "permissions",
+                                    "value": "",
+                                    "description": "Examples: curl -X GET \"https://api.binance.com/api/v3/exchangeInfo?permissions=SPOT\" <br/> or <br/> curl -X GET \"https://api.binance.com/api/v3/exchangeInfo?permissions=%5B%22MARGIN%22%2C%22LEVERAGED%22%5D\" <br/> or <br/> curl -g -X GET 'https://api.binance.com/api/v3/exchangeInfo?permissions=[\"MARGIN\",\"LEVERAGED\"]' ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "showPermissionSets",
+                                    "value": "true",
+                                    "description": "Controls whether the content of the `permissionSets` field is populated or not. Defaults to `true`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "symbolStatus",
+                                    "value": "PRE_TRADING",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Test connectivity",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/ping",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "ping"],
+                            "variable": [],
+                            "query": []
+                        }
+                    }
+                },
+                {
+                    "name": "Check server time",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/time",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "time"],
+                            "variable": [],
+                            "query": []
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Market",
+            "item": [
+                {
+                    "name": "Compressed/Aggregate trades list",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/aggTrades",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "aggTrades"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "fromId",
+                                    "value": "1",
+                                    "description": "TradeId to fetch from. Default gets most recent trades.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1735693200000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1735693200000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "500",
+                                    "description": "Default 500; max 1000.",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Current average price",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/avgPrice",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "avgPrice"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Order book",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/depth",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "depth"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "500",
+                                    "description": "Default 500; max 1000.",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Old trade lookup",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/historicalTrades",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "historicalTrades"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "500",
+                                    "description": "Default 500; max 1000.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "fromId",
+                                    "value": "1",
+                                    "description": "TradeId to fetch from. Default gets most recent trades.",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Kline/Candlestick data",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/klines",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "klines"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "interval",
+                                    "value": "INTERVAL_1s",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1735693200000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1735693200000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timeZone",
+                                    "value": "timeZone_example",
+                                    "description": "Default: 0 (UTC)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "500",
+                                    "description": "Default 500; max 1000.",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Rolling window price change statistics",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/ticker",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "ticker"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "symbols",
+                                    "value": "",
+                                    "description": "List of symbols to query",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "windowSize",
+                                    "value": "WINDOW_SIZE_1m",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "FULL",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "24hr ticker price change statistics",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/ticker/24hr",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "ticker", "24hr"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "symbols",
+                                    "value": "",
+                                    "description": "List of symbols to query",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "FULL",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Symbol order book ticker",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/ticker/bookTicker",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "ticker", "bookTicker"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "symbols",
+                                    "value": "",
+                                    "description": "List of symbols to query",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Symbol price ticker",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/ticker/price",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "ticker", "price"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "symbols",
+                                    "value": "",
+                                    "description": "List of symbols to query",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Trading Day Ticker",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/ticker/tradingDay",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "ticker", "tradingDay"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "symbols",
+                                    "value": "",
+                                    "description": "List of symbols to query",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timeZone",
+                                    "value": "timeZone_example",
+                                    "description": "Default: 0 (UTC)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "FULL",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Recent trades list",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/trades",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "trades"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "500",
+                                    "description": "Default 500; max 1000.",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "UIKlines",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/uiKlines",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "uiKlines"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "interval",
+                                    "value": "INTERVAL_1s",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1735693200000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1735693200000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timeZone",
+                                    "value": "timeZone_example",
+                                    "description": "Default: 0 (UTC)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "500",
+                                    "description": "Default 500; max 1000.",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+
+    "variable": [
+        {
+            "key": "prod_url",
+            "value": "https://api.binance.com",
+            "type": "string"
+        },
+
+        {
+            "key": "testnet_url",
+            "value": "https://testnet.binance.vision",
+            "type": "string"
+        }
+    ]
+}

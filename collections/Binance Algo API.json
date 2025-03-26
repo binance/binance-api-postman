@@ -1,0 +1,930 @@
+{
+    "info": {
+        "name": "Binance Algo REST API",
+        "description": {
+            "content": "OpenAPI Specification for the Binance Algo REST API",
+            "type": "text/markdown"
+        },
+        "version": "1.0.0",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "exec": [
+                    "const ts = Date.now();",
+                    "let paramsObject = {};",
+                    "const environment = pm.environment.get('environment');",
+                    "const api_key = pm.environment.get('api-key');",
+                    "const api_secret = pm.environment.get('api-secret');",
+                    "const parameters = pm.request.url.query;",
+                    "pm.request.url.host = environment === 'production' ? [pm.variables.get('prod_url')] : [pm.variables.get('testnet_url')];",
+                    "parameters.each((param) => {",
+                    "if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+                    "paramsObject[param.key] = param.value;}});",
+                    "Object.assign(paramsObject, { 'timestamp': ts });",
+                    "if (parameters.has('signature') && api_secret) {",
+                    "const queryString = Object.keys(paramsObject).map((key) => `${key}=${paramsObject[key]}`).join('&');",
+                    "console.log(queryString);",
+                    "const signature = CryptoJS.HmacSHA256(queryString, api_secret).toString();",
+                    "// Update the query parameters directly",
+                    "setOrUpdateQueryParam('timestamp', ts.toString());",
+                    "setOrUpdateQueryParam('signature', signature);",
+                    "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);}",
+                    "function setOrUpdateQueryParam(key, value) {",
+                    "let params = pm.request.url.query;",
+                    "let param = params.find(param => param.key === key);",
+                    "if (param) param.value = value;",
+                    "else pm.request.url.query.add({ key: key, value: value });\n}",
+                    "function setOrUpdateHeaderParam(key, value) {",
+                    "let headers = pm.request.headers;",
+                    "let header = headers.find(header => header.key === key);",
+                    "if (header) header.value = value;",
+                    "else pm.request.headers.add({ key: key, value: value });\n}",
+                    "function is_disabled(str) {\nreturn str === true;\n}",
+                    "function is_empty(str) {",
+                    "return typeof str === 'undefined' ||!str || str.length === 0 || str === '' ||!/[^\\s]/.test(str) ||/^\\s*$/.test(str) ||str.replace(/\\s/g,'') === '';}"
+                ],
+                "type": "text/javascript"
+            }
+        }
+    ],
+    "item": [
+        {
+            "name": "Future-Algo",
+            "item": [
+                {
+                    "name": "Query Historical Algo Orders(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/algo/futures/historicalOrders",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "algo", "futures", "historicalOrders"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BTCUSDT",
+                                    "description": "Trading symbol eg. BTCUSDT",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "BUY",
+                                    "description": "BUY or SELL",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "in milliseconds  eg.1641522717552",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "in milliseconds  eg.1641522526562",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Default is 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pageSize",
+                                    "value": "100",
+                                    "description": "MIN 1, MAX 100; Default 100",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Time-Weighted Average Price(Twap) New Order(TRADE)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/algo/futures/newOrderTwap",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "algo", "futures", "newOrderTwap"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BTCUSDT",
+                                    "description": "Trading symbol eg. BTCUSDT",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "BUY",
+                                    "description": "Trading side ( BUY or SELL )",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "positionSide",
+                                    "value": "BOTH",
+                                    "description": "Default `BOTH` for One-way Mode ; `LONG` or `SHORT` for Hedge Mode. It must be sent in Hedge Mode.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "quantity",
+                                    "value": "1",
+                                    "description": "Quantity of base asset; Maximum notional per order is 200k, 2mm or 10mm, depending on symbol. Please reduce your size if you order is above the maximum notional per order.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "duration",
+                                    "value": "5000",
+                                    "description": "Duration for TWAP orders in seconds. [300, 86400]",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "clientAlgoId",
+                                    "value": "1",
+                                    "description": "A unique id among Algo orders (length should be 32 characters)， If it is not sent, we will give default value",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "reduceOnly",
+                                    "value": "false",
+                                    "description": "\"true\" or \"false\". Default \"false\"; Cannot be sent in Hedge Mode; Cannot be sent when you open a position",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limitPrice",
+                                    "value": "1",
+                                    "description": "Limit price of the order; If it is not sent, will place order by market price by default",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Volume Participation(VP) New Order (TRADE)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/algo/futures/newOrderVp",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "algo", "futures", "newOrderVp"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BTCUSDT",
+                                    "description": "Trading symbol eg. BTCUSDT",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "BUY",
+                                    "description": "Trading side ( BUY or SELL )",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "positionSide",
+                                    "value": "BOTH",
+                                    "description": "Default `BOTH` for One-way Mode ; `LONG` or `SHORT` for Hedge Mode. It must be sent in Hedge Mode.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "quantity",
+                                    "value": "1",
+                                    "description": "Quantity of base asset; Maximum notional per order is 200k, 2mm or 10mm, depending on symbol. Please reduce your size if you order is above the maximum notional per order.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "urgency",
+                                    "value": "LOW",
+                                    "description": "Represent the relative speed of the current execution; ENUM: LOW, MEDIUM, HIGH",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "clientAlgoId",
+                                    "value": "1",
+                                    "description": "A unique id among Algo orders (length should be 32 characters)， If it is not sent, we will give default value",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "reduceOnly",
+                                    "value": "false",
+                                    "description": "\"true\" or \"false\". Default \"false\"; Cannot be sent in Hedge Mode; Cannot be sent when you open a position",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limitPrice",
+                                    "value": "1",
+                                    "description": "Limit price of the order; If it is not sent, will place order by market price by default",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Current Algo Open Orders(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/algo/futures/openOrders",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "algo", "futures", "openOrders"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel Algo Order(TRADE)",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/algo/futures/order",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "algo", "futures", "order"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "algoId",
+                                    "value": "1",
+                                    "description": "eg. 14511",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Sub Orders(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/algo/futures/subOrders",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "algo", "futures", "subOrders"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "algoId",
+                                    "value": "1",
+                                    "description": "eg. 14511",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Default is 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pageSize",
+                                    "value": "100",
+                                    "description": "MIN 1, MAX 100; Default 100",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Spot-Algo",
+            "item": [
+                {
+                    "name": "Query Historical Algo Orders(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/algo/spot/historicalOrders",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "algo", "spot", "historicalOrders"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BTCUSDT",
+                                    "description": "Trading symbol eg. BTCUSDT",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "BUY",
+                                    "description": "BUY or SELL",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "in milliseconds  eg.1641522717552",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "in milliseconds  eg.1641522526562",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Default is 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pageSize",
+                                    "value": "100",
+                                    "description": "MIN 1, MAX 100; Default 100",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Time-Weighted Average Price(Twap) New Order(TRADE)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/algo/spot/newOrderTwap",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "algo", "spot", "newOrderTwap"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BTCUSDT",
+                                    "description": "Trading symbol eg. BTCUSDT",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "BUY",
+                                    "description": "Trading side ( BUY or SELL )",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "quantity",
+                                    "value": "1",
+                                    "description": "Quantity of base asset; Maximum notional per order is 200k, 2mm or 10mm, depending on symbol. Please reduce your size if you order is above the maximum notional per order.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "duration",
+                                    "value": "5000",
+                                    "description": "Duration for TWAP orders in seconds. [300, 86400]",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "clientAlgoId",
+                                    "value": "1",
+                                    "description": "A unique id among Algo orders (length should be 32 characters)， If it is not sent, we will give default value",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limitPrice",
+                                    "value": "1",
+                                    "description": "Limit price of the order; If it is not sent, will place order by market price by default",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Current Algo Open Orders(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/algo/spot/openOrders",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "algo", "spot", "openOrders"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel Algo Order(TRADE)",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/algo/spot/order",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "algo", "spot", "order"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "algoId",
+                                    "value": "1",
+                                    "description": "eg. 14511",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Sub Orders(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/algo/spot/subOrders",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "algo", "spot", "subOrders"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "algoId",
+                                    "value": "1",
+                                    "description": "eg. 14511",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Default is 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pageSize",
+                                    "value": "100",
+                                    "description": "MIN 1, MAX 100; Default 100",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+
+    "variable": [
+        {
+            "key": "prod_url",
+            "value": "https://api.binance.com",
+            "type": "string"
+        },
+
+        {
+            "key": "testnet_url",
+            "value": "https://testnet.binance.vision",
+            "type": "string"
+        }
+    ]
+}

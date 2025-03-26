@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0 - 2025-03-26
+
+- Added collections for all supported public APIs
+- Updated and simplified environments
+
 ## 1.17.0 - 2024-10-08
 
 ### Spot

@@ -1,0 +1,1023 @@
+{
+    "info": {
+        "name": "Binance Mining REST API",
+        "description": {
+            "content": "OpenAPI Specification for the Binance Mining REST API",
+            "type": "text/markdown"
+        },
+        "version": "1.0.0",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "exec": [
+                    "const ts = Date.now();",
+                    "let paramsObject = {};",
+                    "const environment = pm.environment.get('environment');",
+                    "const api_key = pm.environment.get('api-key');",
+                    "const api_secret = pm.environment.get('api-secret');",
+                    "const parameters = pm.request.url.query;",
+                    "pm.request.url.host = environment === 'production' ? [pm.variables.get('prod_url')] : [pm.variables.get('testnet_url')];",
+                    "parameters.each((param) => {",
+                    "if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+                    "paramsObject[param.key] = param.value;}});",
+                    "Object.assign(paramsObject, { 'timestamp': ts });",
+                    "if (parameters.has('signature') && api_secret) {",
+                    "const queryString = Object.keys(paramsObject).map((key) => `${key}=${paramsObject[key]}`).join('&');",
+                    "console.log(queryString);",
+                    "const signature = CryptoJS.HmacSHA256(queryString, api_secret).toString();",
+                    "// Update the query parameters directly",
+                    "setOrUpdateQueryParam('timestamp', ts.toString());",
+                    "setOrUpdateQueryParam('signature', signature);",
+                    "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);}",
+                    "function setOrUpdateQueryParam(key, value) {",
+                    "let params = pm.request.url.query;",
+                    "let param = params.find(param => param.key === key);",
+                    "if (param) param.value = value;",
+                    "else pm.request.url.query.add({ key: key, value: value });\n}",
+                    "function setOrUpdateHeaderParam(key, value) {",
+                    "let headers = pm.request.headers;",
+                    "let header = headers.find(header => header.key === key);",
+                    "if (header) header.value = value;",
+                    "else pm.request.headers.add({ key: key, value: value });\n}",
+                    "function is_disabled(str) {\nreturn str === true;\n}",
+                    "function is_empty(str) {",
+                    "return typeof str === 'undefined' ||!str || str.length === 0 || str === '' ||!/[^\\s]/.test(str) ||/^\\s*$/.test(str) ||str.replace(/\\s/g,'') === '';}"
+                ],
+                "type": "text/javascript"
+            }
+        }
+    ],
+    "item": [
+        {
+            "name": "Mining",
+            "item": [
+                {
+                    "name": "Hashrate Resale Request(USER_DATA)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/mining/hash-transfer/config",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "mining", "hash-transfer", "config"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "userName",
+                                    "value": "userName_example",
+                                    "description": "Mining account test",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "algo",
+                                    "value": "algo_example",
+                                    "description": "Algorithm(sha256) sha256",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "789",
+                                    "description": "Resale End Time (Millisecond timestamp) 1617659086000",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "startDate",
+                                    "value": "789",
+                                    "description": "Resale Start Time(Millisecond timestamp) 1607659086000",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "toPoolUser",
+                                    "value": "toPoolUser_example",
+                                    "description": "Mining Account S19pro",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "hashRate",
+                                    "value": "789",
+                                    "description": "Resale hashrate h/s must be transferred (BTC is greater than 500000000000 ETH is greater than 500000) 100000000",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel hashrate resale configuration(USER_DATA)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/mining/hash-transfer/config/cancel",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "mining", "hash-transfer", "config", "cancel"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "configId",
+                                    "value": "1",
+                                    "description": "Mining ID 168",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "userName",
+                                    "value": "userName_example",
+                                    "description": "Mining account test",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Hashrate Resale List",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/mining/hash-transfer/config/details/list",
+                            "host": ["{{url}}"],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "mining",
+                                "hash-transfer",
+                                "config",
+                                "details",
+                                "list"
+                            ],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "pageIndex",
+                                    "value": "1",
+                                    "description": "Page number, empty default first page, starting from 1 ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pageSize",
+                                    "value": "789",
+                                    "description": "Min 10,Max 200 ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Hashrate Resale Detail(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/mining/hash-transfer/profit/details",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "mining", "hash-transfer", "profit", "details"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "configId",
+                                    "value": "1",
+                                    "description": "Mining ID 168",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "userName",
+                                    "value": "userName_example",
+                                    "description": "Mining account test",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "pageIndex",
+                                    "value": "1",
+                                    "description": "Page number, empty default first page, starting from 1 ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pageSize",
+                                    "value": "789",
+                                    "description": "Min 10,Max 200 ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Earnings List(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/mining/payment/list",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "mining", "payment", "list"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "algo",
+                                    "value": "algo_example",
+                                    "description": "Algorithm(sha256) sha256",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "userName",
+                                    "value": "userName_example",
+                                    "description": "Mining account test",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "coin",
+                                    "value": "coin_example",
+                                    "description": "Coin Name ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startDate",
+                                    "value": "789",
+                                    "description": "Millisecond timestamp ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "789",
+                                    "description": "Millisecond timestamp ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pageIndex",
+                                    "value": "1",
+                                    "description": "Page number, empty default first page, starting from 1 ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pageSize",
+                                    "value": "789",
+                                    "description": "Min 10,Max 200 ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Extra Bonus List(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/mining/payment/other",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "mining", "payment", "other"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "algo",
+                                    "value": "algo_example",
+                                    "description": "Algorithm(sha256) sha256",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "userName",
+                                    "value": "userName_example",
+                                    "description": "Mining account test",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "coin",
+                                    "value": "coin_example",
+                                    "description": "Coin Name ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startDate",
+                                    "value": "789",
+                                    "description": "Millisecond timestamp ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "789",
+                                    "description": "Millisecond timestamp ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pageIndex",
+                                    "value": "1",
+                                    "description": "Page number, empty default first page, starting from 1 ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pageSize",
+                                    "value": "789",
+                                    "description": "Min 10,Max 200 ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Mining Account Earning(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/mining/payment/uid",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "mining", "payment", "uid"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "algo",
+                                    "value": "algo_example",
+                                    "description": "Algorithm(sha256) sha256",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "startDate",
+                                    "value": "789",
+                                    "description": "Millisecond timestamp ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endDate",
+                                    "value": "789",
+                                    "description": "Millisecond timestamp ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pageIndex",
+                                    "value": "1",
+                                    "description": "Page number, empty default first page, starting from 1 ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pageSize",
+                                    "value": "789",
+                                    "description": "Min 10,Max 200 ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Acquiring Algorithm(MARKET_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/mining/pub/algoList",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "mining", "pub", "algoList"],
+                            "variable": [],
+                            "query": []
+                        }
+                    }
+                },
+                {
+                    "name": "Acquiring CoinName(MARKET_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/mining/pub/coinList",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "mining", "pub", "coinList"],
+                            "variable": [],
+                            "query": []
+                        }
+                    }
+                },
+                {
+                    "name": "Account List(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/mining/statistics/user/list",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "mining", "statistics", "user", "list"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "algo",
+                                    "value": "algo_example",
+                                    "description": "Algorithm(sha256) sha256",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "userName",
+                                    "value": "userName_example",
+                                    "description": "Mining account test",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Statistic List(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/mining/statistics/user/status",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "mining", "statistics", "user", "status"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "algo",
+                                    "value": "algo_example",
+                                    "description": "Algorithm(sha256) sha256",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "userName",
+                                    "value": "userName_example",
+                                    "description": "Mining account test",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Request for Detail Miner List(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/mining/worker/detail",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "mining", "worker", "detail"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "algo",
+                                    "value": "algo_example",
+                                    "description": "Algorithm(sha256) sha256",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "userName",
+                                    "value": "userName_example",
+                                    "description": "Mining account test",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "workerName",
+                                    "value": "workerName_example",
+                                    "description": "Miner’s name(required) bhdc1.16A10404B",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Request for Miner List(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/mining/worker/list",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "mining", "worker", "list"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "algo",
+                                    "value": "algo_example",
+                                    "description": "Algorithm(sha256) sha256",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "userName",
+                                    "value": "userName_example",
+                                    "description": "Mining account test",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "pageIndex",
+                                    "value": "1",
+                                    "description": "Page number, empty default first page, starting from 1 ",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "sort",
+                                    "value": "0",
+                                    "description": "sort sequence(default=0)0 positive sequence，1 negative sequence",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "sortColumn",
+                                    "value": "1",
+                                    "description": "Sort by( default 1): <br></br>1: miner name, <br></br>2: real-time computing power, <br></br>3: daily average computing power, <br></br>4: real-time rejection rate, <br></br>5: last submission time",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workerStatus",
+                                    "value": "0",
+                                    "description": "miners status(default=0),0 all，1 valid，2 invalid，3 failure",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+
+    "variable": [
+        {
+            "key": "prod_url",
+            "value": "https://api.binance.com",
+            "type": "string"
+        },
+
+        {
+            "key": "testnet_url",
+            "value": "https://testnet.binance.vision",
+            "type": "string"
+        }
+    ]
+}
