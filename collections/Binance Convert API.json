@@ -1,0 +1,688 @@
+{
+    "info": {
+        "name": "Binance Convert REST API",
+        "description": {
+            "content": "OpenAPI Specification for the Binance Convert REST API",
+            "type": "text/markdown"
+        },
+        "version": "1.0.0",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "exec": [
+                    "const ts = Date.now();",
+                    "let paramsObject = {};",
+                    "const environment = pm.environment.get('environment');",
+                    "const api_key = pm.environment.get('api-key');",
+                    "const api_secret = pm.environment.get('api-secret');",
+                    "const parameters = pm.request.url.query;",
+                    "pm.request.url.host = environment === 'production' ? [pm.variables.get('prod_url')] : [pm.variables.get('testnet_url')];",
+                    "parameters.each((param) => {",
+                    "if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+                    "paramsObject[param.key] = param.value;}});",
+                    "Object.assign(paramsObject, { 'timestamp': ts });",
+                    "if (parameters.has('signature') && api_secret) {",
+                    "const queryString = Object.keys(paramsObject).map((key) => `${key}=${paramsObject[key]}`).join('&');",
+                    "console.log(queryString);",
+                    "const signature = CryptoJS.HmacSHA256(queryString, api_secret).toString();",
+                    "// Update the query parameters directly",
+                    "setOrUpdateQueryParam('timestamp', ts.toString());",
+                    "setOrUpdateQueryParam('signature', signature);",
+                    "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);}",
+                    "function setOrUpdateQueryParam(key, value) {",
+                    "let params = pm.request.url.query;",
+                    "let param = params.find(param => param.key === key);",
+                    "if (param) param.value = value;",
+                    "else pm.request.url.query.add({ key: key, value: value });\n}",
+                    "function setOrUpdateHeaderParam(key, value) {",
+                    "let headers = pm.request.headers;",
+                    "let header = headers.find(header => header.key === key);",
+                    "if (header) header.value = value;",
+                    "else pm.request.headers.add({ key: key, value: value });\n}",
+                    "function is_disabled(str) {\nreturn str === true;\n}",
+                    "function is_empty(str) {",
+                    "return typeof str === 'undefined' ||!str || str.length === 0 || str === '' ||!/[^\\s]/.test(str) ||/^\\s*$/.test(str) ||str.replace(/\\s/g,'') === '';}"
+                ],
+                "type": "text/javascript"
+            }
+        }
+    ],
+    "item": [
+        {
+            "name": "Trade",
+            "item": [
+                {
+                    "name": "Accept Quote (TRADE)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/convert/acceptQuote",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "convert", "acceptQuote"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "quoteId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than 60000",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Send Quote Request(USER_DATA)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/convert/getQuote",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "convert", "getQuote"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "fromAsset",
+                                    "value": "fromAsset_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "toAsset",
+                                    "value": "toAsset_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "fromAmount",
+                                    "value": "1",
+                                    "description": "When specified, it is the amount you will be debited after the conversion",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "toAmount",
+                                    "value": "1",
+                                    "description": "When specified, it is the amount you will be credited after the conversion",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "walletType",
+                                    "value": "SPOT",
+                                    "description": "SPOT or FUNDING. Default is SPOT",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "validTime",
+                                    "value": "10s",
+                                    "description": "10s, 30s, 1m, default 10s",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than 60000",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel limit order (USER_DATA)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/convert/limit/cancelOrder",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "convert", "limit", "cancelOrder"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "orderId",
+                                    "value": "1",
+                                    "description": "The orderId from `placeOrder` api",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than 60000",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Place limit order (USER_DATA)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/convert/limit/placeOrder",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "convert", "limit", "placeOrder"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "baseAsset",
+                                    "value": "baseAsset_example",
+                                    "description": "base asset (use the response `fromIsBase` from `GET /sapi/v1/convert/exchangeInfo` api to check which one is baseAsset )",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "quoteAsset",
+                                    "value": "quoteAsset_example",
+                                    "description": "quote asset",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limitPrice",
+                                    "value": "1",
+                                    "description": "Symbol limit price (from baseAsset to quoteAsset)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "baseAmount",
+                                    "value": "1",
+                                    "description": "Base asset amount.  (One of `baseAmount` or `quoteAmount` is required)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "quoteAmount",
+                                    "value": "1",
+                                    "description": "Quote asset amount.  (One of `baseAmount` or `quoteAmount` is required)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "BUY",
+                                    "description": "`BUY` or `SELL`",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "walletType",
+                                    "value": "SPOT",
+                                    "description": "SPOT or FUNDING. Default is SPOT",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "expiredType",
+                                    "value": "expiredType_example",
+                                    "description": "1_D, 3_D, 7_D, 30_D  (D means day)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than 60000",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query limit open orders (USER_DATA)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/convert/limit/queryOpenOrders",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "convert", "limit", "queryOpenOrders"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than 60000",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Order status(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/convert/orderStatus",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "convert", "orderStatus"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "orderId",
+                                    "value": "1",
+                                    "description": "Either orderId or quoteId is required",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "quoteId",
+                                    "value": "1",
+                                    "description": "Either orderId or quoteId is required",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Convert Trade History(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/convert/tradeFlow",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "convert", "tradeFlow"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "100",
+                                    "description": "Default 100, Max 1000",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than 60000",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Market-Data",
+            "item": [
+                {
+                    "name": "Query order quantity precision per asset(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/convert/assetInfo",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "convert", "assetInfo"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than 60000",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "List All Convert Pairs",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/convert/exchangeInfo",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "convert", "exchangeInfo"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "fromAsset",
+                                    "value": "fromAsset_example",
+                                    "description": "User spends coin",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "toAsset",
+                                    "value": "toAsset_example",
+                                    "description": "User receives coin",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+
+    "variable": [
+        {
+            "key": "prod_url",
+            "value": "https://api.binance.com",
+            "type": "string"
+        },
+
+        {
+            "key": "testnet_url",
+            "value": "https://testnet.binance.vision",
+            "type": "string"
+        }
+    ]
+}

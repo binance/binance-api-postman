@@ -1,0 +1,2995 @@
+{
+    "info": {
+        "name": "Binance Sub Account REST API",
+        "description": {
+            "content": "OpenAPI Specification for the Binance Sub Account REST API",
+            "type": "text/markdown"
+        },
+        "version": "1.0.0",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "exec": [
+                    "const ts = Date.now();",
+                    "let paramsObject = {};",
+                    "const environment = pm.environment.get('environment');",
+                    "const api_key = pm.environment.get('api-key');",
+                    "const api_secret = pm.environment.get('api-secret');",
+                    "const parameters = pm.request.url.query;",
+                    "pm.request.url.host = environment === 'production' ? [pm.variables.get('prod_url')] : [pm.variables.get('testnet_url')];",
+                    "parameters.each((param) => {",
+                    "if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+                    "paramsObject[param.key] = param.value;}});",
+                    "Object.assign(paramsObject, { 'timestamp': ts });",
+                    "if (parameters.has('signature') && api_secret) {",
+                    "const queryString = Object.keys(paramsObject).map((key) => `${key}=${paramsObject[key]}`).join('&');",
+                    "console.log(queryString);",
+                    "const signature = CryptoJS.HmacSHA256(queryString, api_secret).toString();",
+                    "// Update the query parameters directly",
+                    "setOrUpdateQueryParam('timestamp', ts.toString());",
+                    "setOrUpdateQueryParam('signature', signature);",
+                    "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);}",
+                    "function setOrUpdateQueryParam(key, value) {",
+                    "let params = pm.request.url.query;",
+                    "let param = params.find(param => param.key === key);",
+                    "if (param) param.value = value;",
+                    "else pm.request.url.query.add({ key: key, value: value });\n}",
+                    "function setOrUpdateHeaderParam(key, value) {",
+                    "let headers = pm.request.headers;",
+                    "let header = headers.find(header => header.key === key);",
+                    "if (header) header.value = value;",
+                    "else pm.request.headers.add({ key: key, value: value });\n}",
+                    "function is_disabled(str) {\nreturn str === true;\n}",
+                    "function is_empty(str) {",
+                    "return typeof str === 'undefined' ||!str || str.length === 0 || str === '' ||!/[^\\s]/.test(str) ||/^\\s*$/.test(str) ||str.replace(/\\s/g,'') === '';}"
+                ],
+                "type": "text/javascript"
+            }
+        }
+    ],
+    "item": [
+        {
+            "name": "Managed-Sub-Account",
+            "item": [
+                {
+                    "name": "Query Managed Sub-account Snapshot(For Investor Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/managed-subaccount/accountSnapshot",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "managed-subaccount", "accountSnapshot"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "type_example",
+                                    "description": "\"SPOT\", \"MARGIN\"（cross）, \"FUTURES\"（UM）",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "1",
+                                    "description": "Default value: 1, Max value: 200",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Managed Sub-account Asset Details(For Investor Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/managed-subaccount/asset",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "managed-subaccount", "asset"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Deposit Assets Into The Managed Sub-account(For Investor Master Account)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/managed-subaccount/deposit",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "managed-subaccount", "deposit"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "toEmail",
+                                    "value": "toEmail_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "asset",
+                                    "value": "asset_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "amount",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Managed Sub-account Deposit Address (For Investor Master Account)(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/managed-subaccount/deposit/address",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "managed-subaccount", "deposit", "address"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "coin",
+                                    "value": "coin_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "network",
+                                    "value": "network_example",
+                                    "description": "networks can be found in `GET /sapi/v1/capital/deposit/address`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "amount",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Managed Sub-account Futures Asset Details(For Investor Master Account)(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/managed-subaccount/fetch-future-asset",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "managed-subaccount", "fetch-future-asset"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "accountType",
+                                    "value": "accountType_example",
+                                    "description": "No input or input \"MARGIN\" to get Cross Margin account details. Input \"ISOLATED_MARGIN\" to get Isolated Margin account details.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Managed Sub-account List(For Investor)(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/managed-subaccount/info",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "managed-subaccount", "info"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "email_example",
+                                    "description": "Managed sub-account email",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Default value: 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "1",
+                                    "description": "Default value: 1, Max value: 200",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Managed Sub-account Margin Asset Details(For Investor Master Account)(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/managed-subaccount/marginAsset",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "managed-subaccount", "marginAsset"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "accountType",
+                                    "value": "accountType_example",
+                                    "description": "No input or input \"MARGIN\" to get Cross Margin account details. Input \"ISOLATED_MARGIN\" to get Isolated Margin account details.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Managed Sub Account Transfer Log (For Trading Team Sub Account)(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/managed-subaccount/query-trans-log",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "managed-subaccount", "query-trans-log"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "Start Time",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "End Time (The start time and end time interval cannot exceed half a year)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "789",
+                                    "description": "Page",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "789",
+                                    "description": "Limit (Max: 500)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "transfers",
+                                    "value": "transfers_example",
+                                    "description": "Transfer Direction (FROM/TO)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "transferFunctionAccountType",
+                                    "value": "transferFunctionAccountType_example",
+                                    "description": "Transfer function account type (SPOT/MARGIN/ISOLATED_MARGIN/USDT_FUTURE/COIN_FUTURE)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Managed Sub Account Transfer Log(For Investor Master Account)(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/managed-subaccount/queryTransLogForInvestor",
+                            "host": ["{{url}}"],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "managed-subaccount",
+                                "queryTransLogForInvestor"
+                            ],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "Start Time",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "End Time (The start time and end time interval cannot exceed half a year)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "789",
+                                    "description": "Page",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "789",
+                                    "description": "Limit (Max: 500)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "transfers",
+                                    "value": "transfers_example",
+                                    "description": "Transfer Direction (FROM/TO)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "transferFunctionAccountType",
+                                    "value": "transferFunctionAccountType_example",
+                                    "description": "Transfer function account type (SPOT/MARGIN/ISOLATED_MARGIN/USDT_FUTURE/COIN_FUTURE)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Managed Sub Account Transfer Log(For Trading Team Master Account)(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/managed-subaccount/queryTransLogForTradeParent",
+                            "host": ["{{url}}"],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "managed-subaccount",
+                                "queryTransLogForTradeParent"
+                            ],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "Start Time",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "End Time (The start time and end time interval cannot exceed half a year)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "789",
+                                    "description": "Page",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "789",
+                                    "description": "Limit (Max: 500)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "transfers",
+                                    "value": "transfers_example",
+                                    "description": "Transfer Direction (FROM/TO)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "transferFunctionAccountType",
+                                    "value": "transferFunctionAccountType_example",
+                                    "description": "Transfer function account type (SPOT/MARGIN/ISOLATED_MARGIN/USDT_FUTURE/COIN_FUTURE)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Withdrawl Assets From The Managed Sub-account(For Investor Master Account)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/managed-subaccount/withdraw",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "managed-subaccount", "withdraw"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "fromEmail",
+                                    "value": "fromEmail_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "asset",
+                                    "value": "asset_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "amount",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "transferDate",
+                                    "value": "789",
+                                    "description": "Withdrawals is automatically occur on the transfer date(UTC0). If a date is not selected, the withdrawal occurs right now",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Asset-Management",
+            "item": [
+                {
+                    "name": "Get Sub-account Deposit Address(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/capital/deposit/subAddress",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "capital", "deposit", "subAddress"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "coin",
+                                    "value": "coin_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "network",
+                                    "value": "network_example",
+                                    "description": "networks can be found in `GET /sapi/v1/capital/deposit/address`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "amount",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Sub-account Deposit History(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/capital/deposit/subHisrec",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "capital", "deposit", "subHisrec"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "coin",
+                                    "value": "coin_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "status",
+                                    "value": "789",
+                                    "description": "0(0:pending,6: credited but cannot withdraw,7:Wrong Deposit,8:Waiting User confirm,1:success)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "1",
+                                    "description": "Default value: 1, Max value: 200",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "offset",
+                                    "value": "0",
+                                    "description": "default:0",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "txId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Detail on Sub-account's Futures Account(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/futures/account",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "futures", "account"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Summary of Sub-account's Futures Account(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/futures/accountSummary",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "futures", "accountSummary"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Sub-account Futures Asset Transfer History(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/futures/internalTransfer",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "futures", "internalTransfer"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "futuresType",
+                                    "value": "789",
+                                    "description": "1:USDT-margined Futures，2: Coin-margined Futures",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Default value: 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "1",
+                                    "description": "Default value: 1, Max value: 200",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Sub-account Futures Asset Transfer(For Master Account)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/futures/internalTransfer",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "futures", "internalTransfer"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "fromEmail",
+                                    "value": "fromEmail_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "toEmail",
+                                    "value": "toEmail_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "futuresType",
+                                    "value": "789",
+                                    "description": "1:USDT-margined Futures，2: Coin-margined Futures",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "asset",
+                                    "value": "asset_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "amount",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Futures Transfer for Sub-account(For Master Account)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/futures/transfer",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "futures", "transfer"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "asset",
+                                    "value": "asset_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "amount",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "789",
+                                    "description": "1: transfer from subaccount's  spot account to margin account 2: transfer from subaccount's margin account to its spot account",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Detail on Sub-account's Margin Account(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/margin/account",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "margin", "account"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Summary of Sub-account's Margin Account(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/margin/accountSummary",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "margin", "accountSummary"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Margin Transfer for Sub-account(For Master Account)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/margin/transfer",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "margin", "transfer"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "asset",
+                                    "value": "asset_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "amount",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "789",
+                                    "description": "1: transfer from subaccount's  spot account to margin account 2: transfer from subaccount's margin account to its spot account",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Sub-account Spot Assets Summary(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/spotSummary",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "spotSummary"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "email_example",
+                                    "description": "Managed sub-account email",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Default value: 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "10",
+                                    "description": "default 10, max 20",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Sub-account Spot Asset Transfer History(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/sub/transfer/history",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "sub", "transfer", "history"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "fromEmail",
+                                    "value": "fromEmail_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "toEmail",
+                                    "value": "toEmail_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Default value: 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "1",
+                                    "description": "Default value: 1, Max value: 200",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Transfer to Master(For Sub-account)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/transfer/subToMaster",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "transfer", "subToMaster"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "asset",
+                                    "value": "asset_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "amount",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Transfer to Sub-account of Same Master(For Sub-account)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/transfer/subToSub",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "transfer", "subToSub"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "toEmail",
+                                    "value": "toEmail_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "asset",
+                                    "value": "asset_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "amount",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Sub-account Transfer History(For Sub-account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/transfer/subUserHistory",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "transfer", "subUserHistory"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "asset",
+                                    "value": "asset_example",
+                                    "description": "If not sent, result of all assets will be returned",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "789",
+                                    "description": "1: transfer in, 2: transfer out",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "1",
+                                    "description": "Default value: 1, Max value: 200",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "returnFailHistory",
+                                    "value": "false",
+                                    "description": "Default `False`, return PROCESS and SUCCESS status history; If `True`,return PROCESS and SUCCESS and FAILURE status history",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Universal Transfer History(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/universalTransfer",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "universalTransfer"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "fromEmail",
+                                    "value": "fromEmail_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "toEmail",
+                                    "value": "toEmail_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "clientTranId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Default value: 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "1",
+                                    "description": "Default value: 1, Max value: 200",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Universal Transfer(For Master Account)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/universalTransfer",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "universalTransfer"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "fromEmail",
+                                    "value": "fromEmail_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "toEmail",
+                                    "value": "toEmail_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "fromAccountType",
+                                    "value": "fromAccountType_example",
+                                    "description": "\"SPOT\",\"USDT_FUTURE\",\"COIN_FUTURE\",\"MARGIN\"(Cross),\"ISOLATED_MARGIN\"",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "toAccountType",
+                                    "value": "toAccountType_example",
+                                    "description": "\"SPOT\",\"USDT_FUTURE\",\"COIN_FUTURE\",\"MARGIN\"(Cross),\"ISOLATED_MARGIN\"",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "clientTranId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "symbol",
+                                    "value": "symbol_example",
+                                    "description": "Only supported under ISOLATED_MARGIN type",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "asset",
+                                    "value": "asset_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "amount",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Detail on Sub-account's Futures Account V2(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v2/sub-account/futures/account",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v2", "sub-account", "futures", "account"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "futuresType",
+                                    "value": "789",
+                                    "description": "1:USDT-margined Futures，2: Coin-margined Futures",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Summary of Sub-account's Futures Account V2(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v2/sub-account/futures/accountSummary",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v2", "sub-account", "futures", "accountSummary"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "futuresType",
+                                    "value": "789",
+                                    "description": "1:USDT-margined Futures，2: Coin-margined Futures",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Default value: 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "1",
+                                    "description": "Default value: 1, Max value: 200",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Sub-account Assets(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v3/sub-account/assets",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v3", "sub-account", "assets"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Sub-account Assets (For Master Account)(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v4/sub-account/assets",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v4", "sub-account", "assets"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Account-Management",
+            "item": [
+                {
+                    "name": "Enable Leverage Token for Sub-account(For Master Account)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/blvt/enable",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "blvt", "enable"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "enableBlvt",
+                                    "value": "true",
+                                    "description": "Only true for now",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Enable Options for Sub-account(For Master Account)(USER_DATA)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/eoptions/enable",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "eoptions", "enable"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Enable Futures for Sub-account(For Master Account)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/futures/enable",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "futures", "enable"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Futures Position-Risk of Sub-account(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/futures/positionRisk",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "futures", "positionRisk"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Sub-account List(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/list",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "list"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "email_example",
+                                    "description": "Managed sub-account email",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "isFreeze",
+                                    "value": "isFreeze_example",
+                                    "description": "true or false",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "1",
+                                    "description": "Default value: 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "1",
+                                    "description": "Default value: 1, Max value: 200",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Enable Margin for Sub-account(For Master Account)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/margin/enable",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "margin", "enable"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Sub-account's Status on Margin Or Futures(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/status",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "status"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "email_example",
+                                    "description": "Managed sub-account email",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Sub-account Transaction Statistics(For Master Account)(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/transaction-statistics",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "transaction-statistics"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Create a Virtual Sub-account(For Master Account)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/virtualSubAccount",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "virtualSubAccount"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "subAccountString",
+                                    "value": "subAccountString_example",
+                                    "description": "Please input a string. We will create a virtual email using that string for you to register",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Futures Position-Risk of Sub-account V2(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v2/sub-account/futures/positionRisk",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v2", "sub-account", "futures", "positionRisk"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "futuresType",
+                                    "value": "789",
+                                    "description": "1:USDT-margined Futures，2: Coin-margined Futures",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Api-Management",
+            "item": [
+                {
+                    "name": "Get IP Restriction for a Sub-account API Key(For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/subAccountApi/ipRestriction",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "subAccountApi", "ipRestriction"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "subAccountApiKey",
+                                    "value": "subAccountApiKey_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete IP List For a Sub-account API Key(For Master Account)",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/subAccountApi/ipRestriction/ipList",
+                            "host": ["{{url}}"],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "sub-account",
+                                "subAccountApi",
+                                "ipRestriction",
+                                "ipList"
+                            ],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "subAccountApiKey",
+                                    "value": "subAccountApiKey_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "ipAddress",
+                                    "value": "ipAddress_example",
+                                    "description": "Can be added in batches, separated by commas",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Add IP Restriction for Sub-Account API key(For Master Account)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v2/sub-account/subAccountApi/ipRestriction",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v2", "sub-account", "subAccountApi", "ipRestriction"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "email",
+                                    "value": "sub-account-email@email.com",
+                                    "description": "[Sub-account email](#email-address)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "subAccountApiKey",
+                                    "value": "subAccountApiKey_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "status",
+                                    "value": "status_example",
+                                    "description": "IP Restriction status. 1 = IP Unrestricted. 2 = Restrict access to trusted IPs only.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "ipAddress",
+                                    "value": "ipAddress_example",
+                                    "description": "Can be added in batches, separated by commas",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+
+    "variable": [
+        {
+            "key": "prod_url",
+            "value": "https://api.binance.com",
+            "type": "string"
+        },
+
+        {
+            "key": "testnet_url",
+            "value": "https://testnet.binance.vision",
+            "type": "string"
+        }
+    ]
+}
