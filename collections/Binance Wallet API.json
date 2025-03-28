@@ -553,6 +553,249 @@
             "name": "Travel-Rule",
             "item": [
                 {
+                    "name": "Submit Deposit Questionnaire (For local entities that require travel rule) (supporting network) (USER_DATA)",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/localentity/broker/deposit/provide-info",
+                            "host": ["{{url}}"],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "localentity",
+                                "broker",
+                                "deposit",
+                                "provide-info"
+                            ],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "subAccountId",
+                                    "value": "1",
+                                    "description": "External user ID.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "depositId",
+                                    "value": "1",
+                                    "description": "Wallet deposit ID.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "questionnaire",
+                                    "value": "questionnaire_example",
+                                    "description": "JSON format questionnaire answers.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "beneficiaryPii",
+                                    "value": "beneficiaryPii_example",
+                                    "description": "JSON format beneficiary Pii.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "network",
+                                    "value": "network_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "coin",
+                                    "value": "coin_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "amount",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "address",
+                                    "value": "address_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "addressTag",
+                                    "value": "addressTag_example",
+                                    "description": "Secondary address identifier for coins like XRP,XMR etc.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "signature_example",
+                                    "description": "Must be the last parameter.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Broker Withdraw (for brokers of local entities that require travel rule) (USER_DATA)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/localentity/broker/withdraw/apply",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "localentity", "broker", "withdraw", "apply"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "subAccountId",
+                                    "value": "1",
+                                    "description": "External user ID.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "address",
+                                    "value": "address_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "addressTag",
+                                    "value": "addressTag_example",
+                                    "description": "Secondary address identifier for coins like XRP,XMR etc.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "network",
+                                    "value": "network_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "coin",
+                                    "value": "coin_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "addressName",
+                                    "value": "addressName_example",
+                                    "description": "Description of the address. Address book cap is 200, space in name should be encoded into `%20`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "amount",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "withdrawOrderId",
+                                    "value": "1",
+                                    "description": "withdrawID defined by the client (i.e. client's internal withdrawID)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "transactionFeeFlag",
+                                    "value": "false",
+                                    "description": "When making internal transfer, `true` for returning the fee to the destination account; `false` for returning the fee back to the departure account. Default `false`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "walletType",
+                                    "value": "0",
+                                    "description": "The wallet type for withdraw，0-spot wallet ，1-funding wallet. Default walletType is the current \"selected wallet\" under wallet->Fiat and Spot/Funding->Deposit",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "questionnaire",
+                                    "value": "questionnaire_example",
+                                    "description": "JSON format questionnaire answers.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "originatorPii",
+                                    "value": "originatorPii_example",
+                                    "description": "JSON format originator Pii, see StandardPii section below",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "signature_example",
+                                    "description": "Must be the last parameter.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "Deposit History (for local entities that required travel rule) (supporting network) (USER_DATA)",
                     "request": {
                         "method": "GET",
@@ -703,7 +946,7 @@
                                 {
                                     "key": "tranId",
                                     "value": "1",
-                                    "description": "Wallet tran Id",
+                                    "description": "Wallet tran ID",
                                     "disabled": false
                                 },
                                 {
@@ -1008,7 +1251,7 @@
                     }
                 },
                 {
-                    "name": "Withdraw History (for local entities that require travel rule) (supporting network) (USER_DATA)",
+                    "name": "Withdraw History V2 (for local entities that require travel rule) (supporting network) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [

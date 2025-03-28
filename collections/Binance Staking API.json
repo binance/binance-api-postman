@@ -1469,67 +1469,6 @@
                     }
                 },
                 {
-                    "name": "Unwrap WBETH(TRADE)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/eth-staking/wbeth/unwrap",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "eth-staking", "wbeth", "unwrap"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "amount",
-                                    "value": "1",
-                                    "description": "Amount in SOL.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
                     "name": "Wrap BETH(TRADE)",
                     "request": {
                         "method": "POST",
