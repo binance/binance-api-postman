@@ -1269,6 +1269,146 @@
                     }
                 },
                 {
+                    "name": "Get Move Position History for Sub-account (For Master Account)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/futures/move-position",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "futures", "move-position"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "symbol_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "789",
+                                    "description": "Page",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "row",
+                                    "value": "789",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Move Position for Sub-account (For Master Account)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            },
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/sub-account/futures/move-position",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "sub-account", "futures", "move-position"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "fromUserEmail",
+                                    "value": "fromUserEmail_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "toUserEmail",
+                                    "value": "toUserEmail_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "productType",
+                                    "value": "productType_example",
+                                    "description": "Only support UM",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "orderArgs",
+                                    "value": "",
+                                    "description": "Max 10 positions supported. When input request parameter,orderArgs.symbol should be STRING, orderArgs.quantity should be BIGDECIMAL, and orderArgs.positionSide should be STRING, positionSide support BOTH,LONG and SHORT. Each entry should be like orderArgs[0].symbol=BTCUSDT,orderArgs[0].quantity=0.001,orderArgs[0].positionSide=BOTH. Example of the request parameter array: orderArgs[0].symbol=BTCUSDT orderArgs[0].quantity=0.001 orderArgs[0].positionSide=BOTH orderArgs[1].symbol=ETHUSDT orderArgs[1].quantity=0.01 orderArgs[1].positionSide=BOTH",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "Futures Transfer for Sub-account(For Master Account)",
                     "request": {
                         "method": "POST",
