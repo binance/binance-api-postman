@@ -1,5 +1,32 @@
 # Changelog
 
+## 2.2.0 - 2025-04-10
+
+### Added
+
+**Spot**
+
+- `PUT /api/v3/order/amend/keepPriority`
+
+### Changed
+
+- Remove `testnet_url` from products that don't support it.
+
+## 2.1.0 - 2025-03-28
+
+#### Added
+**Sub-Account**
+- `GET /sapi/v1/sub-account/futures/move-position`
+- `POST /sapi/v1/sub-account/futures/move-position`
+
+**Wallet**
+- `GET /sapi/v1/localentity/broker/deposit/provide-info`
+- `POST /sapi/v1/localentity/broker/withdraw/apply`
+
+#### Removed
+**Staking**
+- `POST /sapi/v1/eth-staking/wbeth/unwrap`
+
 ## 2.0.0 - 2025-03-26
 
 - Added collections for all supported public APIs
