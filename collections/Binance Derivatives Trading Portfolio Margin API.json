@@ -60,15 +60,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -115,15 +115,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -176,15 +176,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -231,15 +231,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -292,15 +292,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -359,15 +359,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -414,15 +414,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -475,15 +475,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -566,15 +566,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -633,15 +633,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -694,15 +694,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -761,15 +761,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -822,15 +822,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -877,15 +877,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -968,15 +968,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1065,15 +1065,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1126,15 +1126,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1187,15 +1187,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1284,15 +1284,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1363,15 +1363,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1430,15 +1430,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1485,15 +1485,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1540,15 +1540,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1601,15 +1601,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1656,15 +1656,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1711,15 +1711,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1766,15 +1766,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1827,15 +1827,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1888,15 +1888,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1979,15 +1979,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2046,15 +2046,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2107,15 +2107,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2174,15 +2174,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2235,15 +2235,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2302,15 +2302,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2363,15 +2363,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2424,15 +2424,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2485,15 +2485,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2540,15 +2540,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2601,15 +2601,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2668,15 +2668,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2729,15 +2729,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2789,15 +2789,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2850,15 +2850,15 @@
                         "method": "DELETE",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2911,15 +2911,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3002,15 +3002,15 @@
                         "method": "DELETE",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3063,15 +3063,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3148,15 +3148,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3221,15 +3221,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3282,15 +3282,15 @@
                         "method": "DELETE",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3355,15 +3355,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3494,15 +3494,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3567,15 +3567,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3652,15 +3652,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3725,15 +3725,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3792,15 +3792,15 @@
                         "method": "DELETE",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3865,15 +3865,15 @@
                         "method": "PUT",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3962,15 +3962,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -4083,15 +4083,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -4156,15 +4156,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -4247,15 +4247,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -4338,15 +4338,15 @@
                         "method": "DELETE",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -4399,15 +4399,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -4478,15 +4478,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -4563,15 +4563,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -4642,15 +4642,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -4733,15 +4733,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -4788,15 +4788,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -4849,15 +4849,15 @@
                         "method": "DELETE",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -4928,15 +4928,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -5067,15 +5067,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -5140,15 +5140,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -5279,15 +5279,15 @@
                         "method": "DELETE",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -5358,15 +5358,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -5425,15 +5425,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -5498,15 +5498,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -5565,15 +5565,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -5632,15 +5632,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -5693,15 +5693,15 @@
                         "method": "DELETE",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -5754,15 +5754,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -5839,15 +5839,15 @@
                         "method": "DELETE",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -5900,15 +5900,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -5985,15 +5985,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -6058,15 +6058,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -6119,15 +6119,15 @@
                         "method": "DELETE",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -6192,15 +6192,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -6349,15 +6349,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -6422,15 +6422,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -6477,15 +6477,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -6538,15 +6538,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -6623,15 +6623,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -6696,15 +6696,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -6757,15 +6757,15 @@
                         "method": "DELETE",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -6830,15 +6830,15 @@
                         "method": "PUT",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -6927,15 +6927,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -7060,15 +7060,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -7133,15 +7133,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -7224,15 +7224,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -7314,12 +7314,6 @@
                         "method": "DELETE",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
@@ -7349,12 +7343,6 @@
                     "request": {
                         "method": "PUT",
                         "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
                             {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
@@ -7386,15 +7374,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -7426,12 +7414,6 @@
                     "request": {
                         "method": "GET",
                         "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
                             {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
@@ -7467,10 +7449,9 @@
             "value": "https://papi.binance.com",
             "type": "string"
         },
-
         {
             "key": "testnet_url",
-            "value": "https://testnet.binancefuture.com",
+            "value": "https://papi.binance.com",
             "type": "string"
         }
     ]
