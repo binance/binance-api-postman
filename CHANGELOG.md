@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.2.0 - 2025-04-10
+
+### Added
+
+**Spot**
+
+- `PUT /api/v3/order/amend/keepPriority`
+
+### Changed
+
+- Remove `testnet_url` from products that don't support it.
+
 ## 2.0.0 - 2025-03-26
 
 - Added collections for all supported public APIs
