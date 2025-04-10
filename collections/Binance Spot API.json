@@ -60,15 +60,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -121,15 +121,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -176,15 +176,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -212,13 +212,13 @@
                                 {
                                     "key": "startTime",
                                     "value": "1735693200000",
-                                    "description": "",
+                                    "description": "Timestamp in ms to get aggregate trades from INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "endTime",
                                     "value": "1735693200000",
-                                    "description": "",
+                                    "description": "Timestamp in ms to get aggregate trades until INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
@@ -230,13 +230,13 @@
                                 {
                                     "key": "limit",
                                     "value": "500",
-                                    "description": "Default 500; max 1000.",
+                                    "description": "Default: 500; Maximum: 1000.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "orderId",
                                     "value": "1",
-                                    "description": "This can only be used in combination with `symbol`.",
+                                    "description": "",
                                     "disabled": true
                                 },
                                 {
@@ -267,15 +267,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -309,7 +309,7 @@
                                 {
                                     "key": "orderId",
                                     "value": "1",
-                                    "description": "This can only be used in combination with `symbol`.",
+                                    "description": "",
                                     "disabled": true
                                 },
                                 {
@@ -321,7 +321,7 @@
                                 {
                                     "key": "limit",
                                     "value": "500",
-                                    "description": "Default 500; max 1000.",
+                                    "description": "Default: 500; Maximum: 1000.",
                                     "disabled": true
                                 },
                                 {
@@ -352,15 +352,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -388,31 +388,110 @@
                                 {
                                     "key": "orderId",
                                     "value": "1",
-                                    "description": "This can only be used in combination with `symbol`.",
+                                    "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "startTime",
                                     "value": "1735693200000",
-                                    "description": "",
+                                    "description": "Timestamp in ms to get aggregate trades from INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "endTime",
                                     "value": "1735693200000",
-                                    "description": "",
+                                    "description": "Timestamp in ms to get aggregate trades until INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "fromId",
                                     "value": "1",
-                                    "description": "TradeId to fetch from. Default gets most recent trades.",
+                                    "description": "ID to get aggregate trades from INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "limit",
                                     "value": "500",
-                                    "description": "Default 500; max 1000.",
+                                    "description": "Default: 500; Maximum: 1000.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Order Amendments",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/order/amendments",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "order", "amendments"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "orderId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "fromExecutionId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "500",
+                                    "description": "Default:500; Maximum: 1000 ",
                                     "disabled": true
                                 },
                                 {
@@ -443,15 +522,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -503,15 +582,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -533,25 +612,25 @@
                                 {
                                     "key": "fromId",
                                     "value": "1",
-                                    "description": "TradeId to fetch from. Default gets most recent trades.",
+                                    "description": "ID to get aggregate trades from INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "startTime",
                                     "value": "1735693200000",
-                                    "description": "",
+                                    "description": "Timestamp in ms to get aggregate trades from INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "endTime",
                                     "value": "1735693200000",
-                                    "description": "",
+                                    "description": "Timestamp in ms to get aggregate trades until INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "limit",
                                     "value": "500",
-                                    "description": "Default 500; max 1000.",
+                                    "description": "Default: 500; Maximum: 1000.",
                                     "disabled": true
                                 },
                                 {
@@ -582,15 +661,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -618,25 +697,25 @@
                                 {
                                     "key": "orderId",
                                     "value": "1",
-                                    "description": "This can only be used in combination with `symbol`.",
+                                    "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "startTime",
                                     "value": "1735693200000",
-                                    "description": "",
+                                    "description": "Timestamp in ms to get aggregate trades from INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "endTime",
                                     "value": "1735693200000",
-                                    "description": "",
+                                    "description": "Timestamp in ms to get aggregate trades until INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "limit",
                                     "value": "500",
-                                    "description": "Default 500; max 1000.",
+                                    "description": "Default: 500; Maximum: 1000.",
                                     "disabled": true
                                 },
                                 {
@@ -667,15 +746,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -722,15 +801,15 @@
                         "method": "DELETE",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -783,15 +862,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -813,8 +892,8 @@
                                 {
                                     "key": "symbol",
                                     "value": "BNBUSDT",
-                                    "description": "",
-                                    "disabled": false
+                                    "description": "Symbol to query",
+                                    "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
@@ -844,15 +923,15 @@
                         "method": "DELETE",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -880,13 +959,13 @@
                                 {
                                     "key": "orderId",
                                     "value": "1",
-                                    "description": "This can only be used in combination with `symbol`.",
+                                    "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "origClientOrderId",
                                     "value": "origClientOrderId_example",
-                                    "description": "Either ```orderListId``` or ```listClientOrderId``` must be provided",
+                                    "description": "",
                                     "disabled": true
                                 },
                                 {
@@ -929,15 +1008,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -965,13 +1044,13 @@
                                 {
                                     "key": "orderId",
                                     "value": "1",
-                                    "description": "This can only be used in combination with `symbol`.",
+                                    "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "origClientOrderId",
                                     "value": "origClientOrderId_example",
-                                    "description": "Either ```orderListId``` or ```listClientOrderId``` must be provided",
+                                    "description": "",
                                     "disabled": true
                                 },
                                 {
@@ -1002,15 +1081,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1055,9 +1134,9 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
-                                    "disabled": false
+                                    "disabled": true
                                 },
                                 {
                                     "key": "quoteOrderQty",
@@ -1067,7 +1146,7 @@
                                 },
                                 {
                                     "key": "price",
-                                    "value": "400",
+                                    "value": "400.0",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -1091,20 +1170,20 @@
                                 },
                                 {
                                     "key": "stopPrice",
-                                    "value": "1",
-                                    "description": "",
-                                    "disabled": false
+                                    "value": "1.0",
+                                    "description": "Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.",
+                                    "disabled": true
                                 },
                                 {
                                     "key": "trailingDelta",
                                     "value": "1",
-                                    "description": "",
+                                    "description": "Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "icebergQty",
                                     "value": "1.0",
-                                    "description": "Used with `LIMIT` to create an iceberg order.",
+                                    "description": "Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order.",
                                     "disabled": true
                                 },
                                 {
@@ -1142,20 +1221,105 @@
                     }
                 },
                 {
-                    "name": "Cancel an Existing Order and Send a New Order",
+                    "name": "Order Amend Keep Priority",
                     "request": {
-                        "method": "POST",
+                        "method": "PUT",
                         "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
                             {
                                 "key": "Accept",
                                 "value": "application/json",
                                 "description": "",
                                 "disabled": false
-                            },
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/order/amend/keepPriority",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "order", "amend", "keepPriority"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "orderId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "origClientOrderId",
+                                    "value": "origClientOrderId_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "newClientOrderId",
+                                    "value": "newClientOrderId_example",
+                                    "description": "A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "newQty",
+                                    "value": "1.0",
+                                    "description": "`newQty` must be greater than 0 and less than the order's quantity.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than ```60000```",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel an Existing Order and Send a New Order",
+                    "request": {
+                        "method": "POST",
+                        "header": [
                             {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1206,9 +1370,9 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
-                                    "disabled": false
+                                    "disabled": true
                                 },
                                 {
                                     "key": "quoteOrderQty",
@@ -1218,7 +1382,7 @@
                                 },
                                 {
                                     "key": "price",
-                                    "value": "400",
+                                    "value": "400.0",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -1231,13 +1395,13 @@
                                 {
                                     "key": "cancelOrigClientOrderId",
                                     "value": "cancelOrigClientOrderId_example",
-                                    "description": "Either the `cancelOrigClientOrderId` or `cancelOrderId` must be provided. If both are provided, `cancelOrderId` takes precedence.",
+                                    "description": "Either `cancelOrderId` or `cancelOrigClientOrderId` must be sent. <br></br> If both `cancelOrderId` and `cancelOrigClientOrderId` parameters are provided, the `cancelOrderId` is searched first, then the `cancelOrigClientOrderId` from that result is checked against that order. <br></br> If both conditions are not met the request will be rejected.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "cancelOrderId",
                                     "value": "1",
-                                    "description": "Either the `cancelOrigClientOrderId` or `cancelOrderId` must be provided. If both are provided, `cancelOrderId` takes precedence.",
+                                    "description": "Either `cancelOrderId` or `cancelOrigClientOrderId` must be sent. <br></br>If both `cancelOrderId` and `cancelOrigClientOrderId` parameters are provided, the `cancelOrderId` is searched first, then the `cancelOrigClientOrderId` from that result is checked against that order. <br></br>If both conditions are not met the request will be rejected.",
                                     "disabled": true
                                 },
                                 {
@@ -1260,20 +1424,20 @@
                                 },
                                 {
                                     "key": "stopPrice",
-                                    "value": "1",
-                                    "description": "",
-                                    "disabled": false
+                                    "value": "1.0",
+                                    "description": "Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.",
+                                    "disabled": true
                                 },
                                 {
                                     "key": "trailingDelta",
                                     "value": "1",
-                                    "description": "",
+                                    "description": "Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "icebergQty",
                                     "value": "1.0",
-                                    "description": "Used with `LIMIT` to create an iceberg order.",
+                                    "description": "Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order.",
                                     "disabled": true
                                 },
                                 {
@@ -1328,15 +1492,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1364,7 +1528,7 @@
                                 {
                                     "key": "listClientOrderId",
                                     "value": "listClientOrderId_example",
-                                    "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. <br>A new order list with the same listClientOrderId is accepted only when the previous one is filled or completely expired. <br> `listClientOrderId` is distinct from the `workingClientOrderId`, `pendingAboveClientOrderId`, and the `pendingBelowClientOrderId`.",
+                                    "description": "A unique Id for the entire orderList",
                                     "disabled": true
                                 },
                                 {
@@ -1375,7 +1539,7 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -1387,9 +1551,9 @@
                                 },
                                 {
                                     "key": "price",
-                                    "value": "400",
+                                    "value": "1.0",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "limitStrategyId",
@@ -1412,7 +1576,7 @@
                                 {
                                     "key": "trailingDelta",
                                     "value": "1",
-                                    "description": "",
+                                    "description": "Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.",
                                     "disabled": true
                                 },
                                 {
@@ -1423,7 +1587,7 @@
                                 },
                                 {
                                     "key": "stopPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -1497,15 +1661,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1552,15 +1716,15 @@
                         "method": "DELETE",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1588,13 +1752,13 @@
                                 {
                                     "key": "orderListId",
                                     "value": "1",
-                                    "description": "Either```orderListId```or```listClientOrderId```mustbeprovided",
+                                    "description": "Either ```orderListId``` or ```listClientOrderId``` must be provided",
                                     "disabled": true
                                 },
                                 {
                                     "key": "listClientOrderId",
                                     "value": "listClientOrderId_example",
-                                    "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. <br>A new order list with the same listClientOrderId is accepted only when the previous one is filled or completely expired. <br> `listClientOrderId` is distinct from the `workingClientOrderId`, `pendingAboveClientOrderId`, and the `pendingBelowClientOrderId`.",
+                                    "description": "A unique Id for the entire orderList",
                                     "disabled": true
                                 },
                                 {
@@ -1631,15 +1795,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1661,13 +1825,13 @@
                                 {
                                     "key": "orderListId",
                                     "value": "1",
-                                    "description": "Either```orderListId```or```listClientOrderId```mustbeprovided",
+                                    "description": "Either ```orderListId``` or ```listClientOrderId``` must be provided",
                                     "disabled": true
                                 },
                                 {
                                     "key": "origClientOrderId",
                                     "value": "origClientOrderId_example",
-                                    "description": "Either ```orderListId``` or ```listClientOrderId``` must be provided",
+                                    "description": "",
                                     "disabled": true
                                 },
                                 {
@@ -1698,15 +1862,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1734,7 +1898,7 @@
                                 {
                                     "key": "listClientOrderId",
                                     "value": "listClientOrderId_example",
-                                    "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. <br>A new order list with the same listClientOrderId is accepted only when the previous one is filled or completely expired. <br> `listClientOrderId` is distinct from the `workingClientOrderId`, `pendingAboveClientOrderId`, and the `pendingBelowClientOrderId`.",
+                                    "description": "A unique Id for the entire orderList",
                                     "disabled": true
                                 },
                                 {
@@ -1745,7 +1909,7 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -1770,7 +1934,7 @@
                                 {
                                     "key": "abovePrice",
                                     "value": "1.0",
-                                    "description": "Can be used if `aboveType` is `STOP_LOSS_LIMIT` , `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price. ",
+                                    "description": "Can be used if `aboveType` is `STOP_LOSS_LIMIT` , `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price.",
                                     "disabled": true
                                 },
                                 {
@@ -1794,7 +1958,7 @@
                                 {
                                     "key": "aboveStrategyId",
                                     "value": "1",
-                                    "description": "Arbitrary numeric value identifying the above order within an order strategy. ",
+                                    "description": "Arbitrary numeric value identifying the above order within an order strategy.",
                                     "disabled": true
                                 },
                                 {
@@ -1836,7 +2000,7 @@
                                 {
                                     "key": "belowTrailingDelta",
                                     "value": "1",
-                                    "description": "See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md). ",
+                                    "description": "See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md).",
                                     "disabled": true
                                 },
                                 {
@@ -1848,7 +2012,7 @@
                                 {
                                     "key": "belowStrategyId",
                                     "value": "1",
-                                    "description": "Arbitrary numeric value identifying the below order within an order strategy. ",
+                                    "description": "Arbitrary numeric value identifying the below order within an order strategy.",
                                     "disabled": true
                                 },
                                 {
@@ -1897,15 +2061,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -1933,7 +2097,7 @@
                                 {
                                     "key": "listClientOrderId",
                                     "value": "listClientOrderId_example",
-                                    "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. <br>A new order list with the same listClientOrderId is accepted only when the previous one is filled or completely expired. <br> `listClientOrderId` is distinct from the `workingClientOrderId`, `pendingAboveClientOrderId`, and the `pendingBelowClientOrderId`.",
+                                    "description": "A unique Id for the entire orderList",
                                     "disabled": true
                                 },
                                 {
@@ -1968,20 +2132,20 @@
                                 },
                                 {
                                     "key": "workingPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "workingQuantity",
-                                    "value": "1",
-                                    "description": "",
+                                    "value": "1.0",
+                                    "description": "Sets the quantity for the working order.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "workingIcebergQty",
                                     "value": "1.0",
-                                    "description": "This can only be used if `workingTimeInForce` is `GTC`.",
+                                    "description": "This can only be used if `workingTimeInForce` is `GTC`, or if `workingType` is `LIMIT_MAKER`.",
                                     "disabled": true
                                 },
                                 {
@@ -2040,8 +2204,8 @@
                                 },
                                 {
                                     "key": "pendingQuantity",
-                                    "value": "1",
-                                    "description": "",
+                                    "value": "1.0",
+                                    "description": "Sets the quantity for the pending order.",
                                     "disabled": false
                                 },
                                 {
@@ -2096,15 +2260,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2132,7 +2296,7 @@
                                 {
                                     "key": "listClientOrderId",
                                     "value": "listClientOrderId_example",
-                                    "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. <br>A new order list with the same listClientOrderId is accepted only when the previous one is filled or completely expired. <br> `listClientOrderId` is distinct from the `workingClientOrderId`, `pendingAboveClientOrderId`, and the `pendingBelowClientOrderId`.",
+                                    "description": "A unique Id for the entire orderList",
                                     "disabled": true
                                 },
                                 {
@@ -2167,20 +2331,20 @@
                                 },
                                 {
                                     "key": "workingPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "workingQuantity",
-                                    "value": "1",
-                                    "description": "",
+                                    "value": "1.0",
+                                    "description": "Sets the quantity for the working order.",
                                     "disabled": false
                                 },
                                 {
                                     "key": "workingIcebergQty",
                                     "value": "1.0",
-                                    "description": "This can only be used if `workingTimeInForce` is `GTC`.",
+                                    "description": "This can only be used if `workingTimeInForce` is `GTC`, or if `workingType` is `LIMIT_MAKER`.",
                                     "disabled": true
                                 },
                                 {
@@ -2209,8 +2373,8 @@
                                 },
                                 {
                                     "key": "pendingQuantity",
-                                    "value": "1",
-                                    "description": "",
+                                    "value": "1.0",
+                                    "description": "Sets the quantity for the pending order.",
                                     "disabled": false
                                 },
                                 {
@@ -2228,7 +2392,7 @@
                                 {
                                     "key": "pendingAbovePrice",
                                     "value": "1.0",
-                                    "description": "Can be used if `pendingAboveType` is `STOP_LOSS_LIMIT` , `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price. ",
+                                    "description": "Can be used if `pendingAboveType` is `STOP_LOSS_LIMIT` , `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price.",
                                     "disabled": true
                                 },
                                 {
@@ -2349,15 +2513,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2402,13 +2566,13 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "price",
-                                    "value": "400",
+                                    "value": "400.0",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -2433,7 +2597,7 @@
                                 {
                                     "key": "icebergQty",
                                     "value": "1.0",
-                                    "description": "Used with `LIMIT` to create an iceberg order.",
+                                    "description": "Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order.",
                                     "disabled": true
                                 },
                                 {
@@ -2476,15 +2640,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2528,19 +2692,151 @@
             ]
         },
         {
-            "name": "Userdatastream",
+            "name": "General",
+            "item": [
+                {
+                    "name": "Exchange information",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/exchangeInfo",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "exchangeInfo"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "Symbol to query",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "symbols",
+                                    "value": "",
+                                    "description": "List of symbols to query",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "permissions",
+                                    "value": "",
+                                    "description": "List of permissions to query",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "showPermissionSets",
+                                    "value": "true",
+                                    "description": "Controls whether the content of the `permissionSets` field is populated or not. Defaults to `true`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "symbolStatus",
+                                    "value": "PRE_TRADING",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Test connectivity",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/ping",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "ping"],
+                            "variable": [],
+                            "query": []
+                        }
+                    }
+                },
+                {
+                    "name": "Check server time",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/time",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "time"],
+                            "variable": [],
+                            "query": []
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "UserDataStream",
             "item": [
                 {
                     "name": "Close user data stream",
                     "request": {
                         "method": "DELETE",
                         "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
                             {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
@@ -2579,15 +2875,15 @@
                         "method": "POST",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2614,12 +2910,6 @@
                     "request": {
                         "method": "PUT",
                         "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
                             {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
@@ -2655,150 +2945,6 @@
             ]
         },
         {
-            "name": "General",
-            "item": [
-                {
-                    "name": "Exchange information",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
-                        },
-                        "url": {
-                            "raw": "{{url}}/api/v3/exchangeInfo",
-                            "host": ["{{url}}"],
-                            "path": ["api", "v3", "exchangeInfo"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "symbol",
-                                    "value": "BNBUSDT",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "symbols",
-                                    "value": "",
-                                    "description": "List of symbols to query",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "permissions",
-                                    "value": "",
-                                    "description": "Examples: curl -X GET \"https://api.binance.com/api/v3/exchangeInfo?permissions=SPOT\" <br/> or <br/> curl -X GET \"https://api.binance.com/api/v3/exchangeInfo?permissions=%5B%22MARGIN%22%2C%22LEVERAGED%22%5D\" <br/> or <br/> curl -g -X GET 'https://api.binance.com/api/v3/exchangeInfo?permissions=[\"MARGIN\",\"LEVERAGED\"]' ",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "showPermissionSets",
-                                    "value": "true",
-                                    "description": "Controls whether the content of the `permissionSets` field is populated or not. Defaults to `true`",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "symbolStatus",
-                                    "value": "PRE_TRADING",
-                                    "description": "",
-                                    "disabled": true
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Test connectivity",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
-                        },
-                        "url": {
-                            "raw": "{{url}}/api/v3/ping",
-                            "host": ["{{url}}"],
-                            "path": ["api", "v3", "ping"],
-                            "variable": [],
-                            "query": []
-                        }
-                    }
-                },
-                {
-                    "name": "Check server time",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
-                        },
-                        "url": {
-                            "raw": "{{url}}/api/v3/time",
-                            "host": ["{{url}}"],
-                            "path": ["api", "v3", "time"],
-                            "variable": [],
-                            "query": []
-                        }
-                    }
-                }
-            ]
-        },
-        {
             "name": "Market",
             "item": [
                 {
@@ -2807,15 +2953,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2843,25 +2989,25 @@
                                 {
                                     "key": "fromId",
                                     "value": "1",
-                                    "description": "TradeId to fetch from. Default gets most recent trades.",
+                                    "description": "ID to get aggregate trades from INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "startTime",
                                     "value": "1735693200000",
-                                    "description": "",
+                                    "description": "Timestamp in ms to get aggregate trades from INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "endTime",
                                     "value": "1735693200000",
-                                    "description": "",
+                                    "description": "Timestamp in ms to get aggregate trades until INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "limit",
                                     "value": "500",
-                                    "description": "Default 500; max 1000.",
+                                    "description": "Default: 500; Maximum: 1000.",
                                     "disabled": true
                                 }
                             ]
@@ -2874,15 +3020,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2917,15 +3063,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -2953,7 +3099,7 @@
                                 {
                                     "key": "limit",
                                     "value": "500",
-                                    "description": "Default 500; max 1000.",
+                                    "description": "Default: 500; Maximum: 1000.",
                                     "disabled": true
                                 }
                             ]
@@ -2966,15 +3112,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3002,13 +3148,13 @@
                                 {
                                     "key": "limit",
                                     "value": "500",
-                                    "description": "Default 500; max 1000.",
+                                    "description": "Default: 500; Maximum: 1000.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "fromId",
                                     "value": "1",
-                                    "description": "TradeId to fetch from. Default gets most recent trades.",
+                                    "description": "ID to get aggregate trades from INCLUSIVE.",
                                     "disabled": true
                                 }
                             ]
@@ -3021,15 +3167,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3063,13 +3209,13 @@
                                 {
                                     "key": "startTime",
                                     "value": "1735693200000",
-                                    "description": "",
+                                    "description": "Timestamp in ms to get aggregate trades from INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "endTime",
                                     "value": "1735693200000",
-                                    "description": "",
+                                    "description": "Timestamp in ms to get aggregate trades until INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
@@ -3081,7 +3227,7 @@
                                 {
                                     "key": "limit",
                                     "value": "500",
-                                    "description": "Default 500; max 1000.",
+                                    "description": "Default: 500; Maximum: 1000.",
                                     "disabled": true
                                 }
                             ]
@@ -3094,15 +3240,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3124,8 +3270,8 @@
                                 {
                                     "key": "symbol",
                                     "value": "BNBUSDT",
-                                    "description": "",
-                                    "disabled": false
+                                    "description": "Symbol to query",
+                                    "disabled": true
                                 },
                                 {
                                     "key": "symbols",
@@ -3155,15 +3301,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3185,8 +3331,8 @@
                                 {
                                     "key": "symbol",
                                     "value": "BNBUSDT",
-                                    "description": "",
-                                    "disabled": false
+                                    "description": "Symbol to query",
+                                    "disabled": true
                                 },
                                 {
                                     "key": "symbols",
@@ -3210,15 +3356,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3240,8 +3386,8 @@
                                 {
                                     "key": "symbol",
                                     "value": "BNBUSDT",
-                                    "description": "",
-                                    "disabled": false
+                                    "description": "Symbol to query",
+                                    "disabled": true
                                 },
                                 {
                                     "key": "symbols",
@@ -3259,15 +3405,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3289,8 +3435,8 @@
                                 {
                                     "key": "symbol",
                                     "value": "BNBUSDT",
-                                    "description": "",
-                                    "disabled": false
+                                    "description": "Symbol to query",
+                                    "disabled": true
                                 },
                                 {
                                     "key": "symbols",
@@ -3308,15 +3454,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3338,8 +3484,8 @@
                                 {
                                     "key": "symbol",
                                     "value": "BNBUSDT",
-                                    "description": "",
-                                    "disabled": false
+                                    "description": "Symbol to query",
+                                    "disabled": true
                                 },
                                 {
                                     "key": "symbols",
@@ -3369,15 +3515,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3405,7 +3551,7 @@
                                 {
                                     "key": "limit",
                                     "value": "500",
-                                    "description": "Default 500; max 1000.",
+                                    "description": "Default: 500; Maximum: 1000.",
                                     "disabled": true
                                 }
                             ]
@@ -3418,15 +3564,15 @@
                         "method": "GET",
                         "header": [
                             {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            },
-                            {
                                 "key": "X-MBX-APIKEY",
                                 "value": "",
                                 "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
                                 "disabled": false
                             }
                         ],
@@ -3460,13 +3606,13 @@
                                 {
                                     "key": "startTime",
                                     "value": "1735693200000",
-                                    "description": "",
+                                    "description": "Timestamp in ms to get aggregate trades from INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "endTime",
                                     "value": "1735693200000",
-                                    "description": "",
+                                    "description": "Timestamp in ms to get aggregate trades until INCLUSIVE.",
                                     "disabled": true
                                 },
                                 {
@@ -3478,7 +3624,7 @@
                                 {
                                     "key": "limit",
                                     "value": "500",
-                                    "description": "Default 500; max 1000.",
+                                    "description": "Default: 500; Maximum: 1000.",
                                     "disabled": true
                                 }
                             ]
@@ -3495,10 +3641,9 @@
             "value": "https://api.binance.com",
             "type": "string"
         },
-
         {
             "key": "testnet_url",
-            "value": "https://testnet.binance.vision",
+            "value": "https://api.binance.com",
             "type": "string"
         }
     ]
