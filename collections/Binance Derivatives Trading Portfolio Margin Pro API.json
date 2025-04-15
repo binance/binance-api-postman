@@ -354,6 +354,146 @@
                     }
                 },
                 {
+                    "name": "Get Transferable Earn Asset Balance for Portfolio Margin (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/portfolio/earn-asset-balance",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "portfolio", "earn-asset-balance"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "asset",
+                                    "value": "asset_example",
+                                    "description": "`LDUSDT` only",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "transferType",
+                                    "value": "transferType_example",
+                                    "description": "`EARN_TO_FUTURE` /`FUTURE_TO_EARN`",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Transfer LDUSDT for Portfolio Margin(TRADE)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/portfolio/earn-asset-balance",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "portfolio", "earn-asset-balance"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "asset",
+                                    "value": "asset_example",
+                                    "description": "`LDUSDT` only",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "transferType",
+                                    "value": "transferType_example",
+                                    "description": "`EARN_TO_FUTURE` /`FUTURE_TO_EARN`",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "amount",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "Query Portfolio Margin Pro Negative Balance Interest History(USER_DATA)",
                     "request": {
                         "method": "GET",
