@@ -1549,6 +1549,24 @@
                                     "disabled": false
                                 },
                                 {
+                                    "key": "current",
+                                    "value": "1",
+                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "10",
+                                    "description": "Default:10, Max:100",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
                                     "key": "timestamp",
                                     "value": "",
                                     "description": "UTC timestamp in ms",
