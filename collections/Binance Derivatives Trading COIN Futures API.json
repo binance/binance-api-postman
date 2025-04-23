@@ -15,11 +15,11 @@
                 "exec": [
                     "const ts = Date.now();",
                     "let paramsObject = {};",
-                    "const environment = pm.environment.get('environment');",
+                    "const postmanEnvironment = pm.environment.get('environment');",
                     "const api_key = pm.environment.get('api-key');",
                     "const api_secret = pm.environment.get('api-secret');",
                     "const parameters = pm.request.url.query;",
-                    "pm.request.url.host = environment === 'production' ? [pm.variables.get('prod_url')] : [pm.variables.get('testnet_url')];",
+                    "pm.request.url.host = postmanEnvironment === 'production' ? [pm.variables.get('prod_url')] : [pm.variables.get('testnet_url')];",
                     "parameters.each((param) => {",
                     "if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
                     "paramsObject[param.key] = param.value;}});",
@@ -1927,7 +1927,7 @@
                                 {
                                     "key": "callbackRate",
                                     "value": "1",
-                                    "description": "Used with `TRAILING_STOP_MARKET` orders, min 0.1, max 5 where 1 for 1%",
+                                    "description": "Used with `TRAILING_STOP_MARKET` orders, min 0.1, max 10 where 1 for 1%",
                                     "disabled": true
                                 },
                                 {

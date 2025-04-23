@@ -15,7 +15,7 @@
                 "exec": [
                     "const ts = Date.now();",
                     "let paramsObject = {};",
-                    "const environment = pm.environment.get('environment');",
+                    "const postmanEnvironment = pm.environment.get('environment');",
                     "const api_key = pm.environment.get('api-key');",
                     "const api_secret = pm.environment.get('api-secret');",
                     "const parameters = pm.request.url.query;",
@@ -689,12 +689,6 @@
                             "path": ["sapi", "v1", "localentity", "broker", "withdraw", "apply"],
                             "variable": [],
                             "query": [
-                                {
-                                    "key": "subAccountId",
-                                    "value": "1",
-                                    "description": "External user ID.",
-                                    "disabled": false
-                                },
                                 {
                                     "key": "address",
                                     "value": "address_example",
@@ -3038,6 +3032,55 @@
                                     "description": "",
                                     "disabled": true
                                 },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Fetch withdraw quota (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/capital/withdraw/quota",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "capital", "withdraw", "quota"],
+                            "variable": [],
+                            "query": [
                                 {
                                     "key": "timestamp",
                                     "value": "",
