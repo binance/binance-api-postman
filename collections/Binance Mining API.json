@@ -15,7 +15,7 @@
                 "exec": [
                     "const ts = Date.now();",
                     "let paramsObject = {};",
-                    "const environment = pm.environment.get('environment');",
+                    "const postmanEnvironment = pm.environment.get('environment');",
                     "const api_key = pm.environment.get('api-key');",
                     "const api_secret = pm.environment.get('api-secret');",
                     "const parameters = pm.request.url.query;",

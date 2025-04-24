@@ -15,11 +15,11 @@
                 "exec": [
                     "const ts = Date.now();",
                     "let paramsObject = {};",
-                    "const environment = pm.environment.get('environment');",
+                    "const postmanEnvironment = pm.environment.get('environment');",
                     "const api_key = pm.environment.get('api-key');",
                     "const api_secret = pm.environment.get('api-secret');",
                     "const parameters = pm.request.url.query;",
-                    "pm.request.url.host = environment === 'production' ? [pm.variables.get('prod_url')] : [pm.variables.get('testnet_url')];",
+                    "pm.request.url.host = postmanEnvironment === 'production' ? [pm.variables.get('prod_url')] : [pm.variables.get('testnet_url')];",
                     "parameters.each((param) => {",
                     "if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
                     "paramsObject[param.key] = param.value;}});",

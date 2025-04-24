@@ -15,7 +15,7 @@
                 "exec": [
                     "const ts = Date.now();",
                     "let paramsObject = {};",
-                    "const environment = pm.environment.get('environment');",
+                    "const postmanEnvironment = pm.environment.get('environment');",
                     "const api_key = pm.environment.get('api-key');",
                     "const api_secret = pm.environment.get('api-secret');",
                     "const parameters = pm.request.url.query;",
@@ -55,7 +55,7 @@
             "name": "Managed-Sub-Account",
             "item": [
                 {
-                    "name": "Query Managed Sub-account Snapshot(For Investor Master Account)",
+                    "name": "Query Managed Sub-account Snapshot (For Investor Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -122,13 +122,25 @@
                                     "value": "5000",
                                     "description": "",
                                     "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
                                 }
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Query Managed Sub-account Asset Details(For Investor Master Account)",
+                    "name": "Query Managed Sub-account Asset Details (For Investor Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -171,13 +183,25 @@
                                     "value": "5000",
                                     "description": "",
                                     "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
                                 }
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Deposit Assets Into The Managed Sub-account(For Investor Master Account)",
+                    "name": "Deposit Assets Into The Managed Sub-account (For Investor Master Account) (USER_DATA)",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -232,13 +256,25 @@
                                     "value": "5000",
                                     "description": "",
                                     "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
                                 }
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Get Managed Sub-account Deposit Address (For Investor Master Account)(USER_DATA)",
+                    "name": "Get Managed Sub-account Deposit Address (For Investor Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -317,7 +353,7 @@
                     }
                 },
                 {
-                    "name": "Query Managed Sub-account Futures Asset Details(For Investor Master Account)(USER_DATA)",
+                    "name": "Query Managed Sub-account Futures Asset Details (For Investor Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -378,7 +414,7 @@
                     }
                 },
                 {
-                    "name": "Query Managed Sub-account List(For Investor)(USER_DATA)",
+                    "name": "Query Managed Sub-account List (For Investor) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -451,7 +487,7 @@
                     }
                 },
                 {
-                    "name": "Query Managed Sub-account Margin Asset Details(For Investor Master Account)(USER_DATA)",
+                    "name": "Query Managed Sub-account Margin Asset Details (For Investor Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -512,7 +548,7 @@
                     }
                 },
                 {
-                    "name": "Query Managed Sub Account Transfer Log (For Trading Team Sub Account)(USER_DATA)",
+                    "name": "Query Managed Sub Account Transfer Log (For Trading Team Sub Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -603,7 +639,7 @@
                     }
                 },
                 {
-                    "name": "Query Managed Sub Account Transfer Log(For Investor Master Account)(USER_DATA)",
+                    "name": "Query Managed Sub Account Transfer Log (For Investor Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -699,7 +735,7 @@
                     }
                 },
                 {
-                    "name": "Query Managed Sub Account Transfer Log(For Trading Team Master Account)(USER_DATA)",
+                    "name": "Query Managed Sub Account Transfer Log (For Trading Team Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -795,7 +831,7 @@
                     }
                 },
                 {
-                    "name": "Withdrawl Assets From The Managed Sub-account(For Investor Master Account)",
+                    "name": "Withdrawl Assets From The Managed Sub-account (For Investor Master Account) (USER_DATA)",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -856,6 +892,18 @@
                                     "value": "5000",
                                     "description": "",
                                     "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
                                 }
                             ]
                         }
@@ -867,7 +915,7 @@
             "name": "Asset-Management",
             "item": [
                 {
-                    "name": "Get Sub-account Deposit Address(For Master Account)",
+                    "name": "Get Sub-account Deposit Address (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -946,7 +994,7 @@
                     }
                 },
                 {
-                    "name": "Get Sub-account Deposit History(For Master Account)",
+                    "name": "Get Sub-account Deposit History (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -1049,7 +1097,7 @@
                     }
                 },
                 {
-                    "name": "Get Detail on Sub-account's Futures Account(For Master Account)",
+                    "name": "Get Detail on Sub-account's Futures Account (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -1110,7 +1158,7 @@
                     }
                 },
                 {
-                    "name": "Get Summary of Sub-account's Futures Account(For Master Account)",
+                    "name": "Get Summary of Sub-account's Futures Account (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -1165,7 +1213,7 @@
                     }
                 },
                 {
-                    "name": "Query Sub-account Futures Asset Transfer History(For Master Account)",
+                    "name": "Query Sub-account Futures Asset Transfer History (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -1256,7 +1304,7 @@
                     }
                 },
                 {
-                    "name": "Sub-account Futures Asset Transfer(For Master Account)",
+                    "name": "Sub-account Futures Asset Transfer (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -1341,7 +1389,7 @@
                     }
                 },
                 {
-                    "name": "Get Move Position History for Sub-account (For Master Account)",
+                    "name": "Get Move Position History for Sub-account (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -1426,7 +1474,7 @@
                     }
                 },
                 {
-                    "name": "Move Position for Sub-account (For Master Account)",
+                    "name": "Move Position for Sub-account (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -1505,7 +1553,7 @@
                     }
                 },
                 {
-                    "name": "Futures Transfer for Sub-account(For Master Account)",
+                    "name": "Futures Transfer for Sub-account (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -1584,7 +1632,7 @@
                     }
                 },
                 {
-                    "name": "Get Detail on Sub-account's Margin Account(For Master Account)",
+                    "name": "Get Detail on Sub-account's Margin Account (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -1645,7 +1693,7 @@
                     }
                 },
                 {
-                    "name": "Get Summary of Sub-account's Margin Account(For Master Account)",
+                    "name": "Get Summary of Sub-account's Margin Account (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -1700,7 +1748,7 @@
                     }
                 },
                 {
-                    "name": "Margin Transfer for Sub-account(For Master Account)",
+                    "name": "Margin Transfer for Sub-account (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -1779,7 +1827,7 @@
                     }
                 },
                 {
-                    "name": "Query Sub-account Spot Assets Summary(For Master Account)",
+                    "name": "Query Sub-account Spot Assets Summary (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -1852,7 +1900,7 @@
                     }
                 },
                 {
-                    "name": "Query Sub-account Spot Asset Transfer History(For Master Account)",
+                    "name": "Query Sub-account Spot Asset Transfer History (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -1943,7 +1991,7 @@
                     }
                 },
                 {
-                    "name": "Transfer to Master(For Sub-account)",
+                    "name": "Transfer to Master (For Sub-account) (USER_DATA)",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -1992,13 +2040,25 @@
                                     "value": "5000",
                                     "description": "",
                                     "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
                                 }
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Transfer to Sub-account of Same Master(For Sub-account)",
+                    "name": "Transfer to Sub-account of Same Master (For Sub-account) (USER_DATA)",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -2053,13 +2113,25 @@
                                     "value": "5000",
                                     "description": "",
                                     "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
                                 }
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Sub-account Transfer History(For Sub-account)",
+                    "name": "Sub-account Transfer History (For Sub-account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -2132,13 +2204,25 @@
                                     "value": "5000",
                                     "description": "",
                                     "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
                                 }
                             ]
                         }
                     }
                 },
                 {
-                    "name": "Query Universal Transfer History(For Master Account)",
+                    "name": "Query Universal Transfer History (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -2235,7 +2319,7 @@
                     }
                 },
                 {
-                    "name": "Universal Transfer(For Master Account)",
+                    "name": "Universal Transfer (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -2338,7 +2422,7 @@
                     }
                 },
                 {
-                    "name": "Get Detail on Sub-account's Futures Account V2(For Master Account)",
+                    "name": "Get Detail on Sub-account's Futures Account V2 (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -2405,7 +2489,7 @@
                     }
                 },
                 {
-                    "name": "Get Summary of Sub-account's Futures Account V2(For Master Account)",
+                    "name": "Get Summary of Sub-account's Futures Account V2 (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -2478,7 +2562,7 @@
                     }
                 },
                 {
-                    "name": "Query Sub-account Assets(For Master Account)",
+                    "name": "Query Sub-account Assets (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -2539,7 +2623,7 @@
                     }
                 },
                 {
-                    "name": "Query Sub-account Assets (For Master Account)(USER_DATA)",
+                    "name": "Query Sub-account Assets (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -2605,7 +2689,7 @@
             "name": "Account-Management",
             "item": [
                 {
-                    "name": "Enable Leverage Token for Sub-account(For Master Account)",
+                    "name": "Enable Leverage Token for Sub-account (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -2672,7 +2756,7 @@
                     }
                 },
                 {
-                    "name": "Enable Options for Sub-account(For Master Account)(USER_DATA)",
+                    "name": "Enable Options for Sub-account (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -2733,7 +2817,7 @@
                     }
                 },
                 {
-                    "name": "Enable Futures for Sub-account(For Master Account)",
+                    "name": "Enable Futures for Sub-account (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -2794,7 +2878,7 @@
                     }
                 },
                 {
-                    "name": "Get Futures Position-Risk of Sub-account(For Master Account)",
+                    "name": "Get Futures Position-Risk of Sub-account (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -2855,7 +2939,7 @@
                     }
                 },
                 {
-                    "name": "Query Sub-account List(For Master Account)",
+                    "name": "Query Sub-account List (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -2934,7 +3018,7 @@
                     }
                 },
                 {
-                    "name": "Enable Margin for Sub-account(For Master Account)",
+                    "name": "Enable Margin for Sub-account (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -2995,7 +3079,7 @@
                     }
                 },
                 {
-                    "name": "Get Sub-account's Status on Margin Or Futures(For Master Account)",
+                    "name": "Get Sub-account's Status on Margin Or Futures (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -3056,7 +3140,7 @@
                     }
                 },
                 {
-                    "name": "Query Sub-account Transaction Statistics(For Master Account)(USER_DATA)",
+                    "name": "Query Sub-account Transaction Statistics (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -3117,7 +3201,7 @@
                     }
                 },
                 {
-                    "name": "Create a Virtual Sub-account(For Master Account)",
+                    "name": "Create a Virtual Sub-account (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -3178,7 +3262,7 @@
                     }
                 },
                 {
-                    "name": "Get Futures Position-Risk of Sub-account V2(For Master Account)",
+                    "name": "Get Futures Position-Risk of Sub-account V2 (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -3250,7 +3334,7 @@
             "name": "Api-Management",
             "item": [
                 {
-                    "name": "Get IP Restriction for a Sub-account API Key(For Master Account)",
+                    "name": "Get IP Restriction for a Sub-account API Key (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -3317,7 +3401,7 @@
                     }
                 },
                 {
-                    "name": "Delete IP List For a Sub-account API Key(For Master Account)",
+                    "name": "Delete IP List For a Sub-account API Key (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "DELETE",
                         "header": [
@@ -3397,7 +3481,7 @@
                     }
                 },
                 {
-                    "name": "Add IP Restriction for Sub-Account API key(For Master Account)",
+                    "name": "Add IP Restriction for Sub-Account API key (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "POST",
                         "header": [
