@@ -4340,6 +4340,49 @@
                     }
                 },
                 {
+                    "name": "Query Insurance Fund Balance Snapshot",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/fapi/v1/insuranceBalance",
+                            "host": ["{{url}}"],
+                            "path": ["fapi", "v1", "insuranceBalance"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "symbol_example",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "Kline/Candlestick Data",
                     "request": {
                         "method": "GET",
@@ -5443,7 +5486,7 @@
         },
         {
             "key": "testnet_url",
-            "value": "https://fapi.binance.com",
+            "value": "https://testnet.binancefuture.com",
             "type": "string"
         }
     ]
