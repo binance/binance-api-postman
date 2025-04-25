@@ -7451,7 +7451,7 @@
         },
         {
             "key": "testnet_url",
-            "value": "https://papi.binance.com",
+            "value": "https://testnet.binancefuture.com",
             "type": "string"
         }
     ]

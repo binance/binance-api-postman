@@ -4181,7 +4181,7 @@
         },
         {
             "key": "testnet_url",
-            "value": "https://dapi.binance.com",
+            "value": "https://testnet.binancefuture.com",
             "type": "string"
         }
     ]

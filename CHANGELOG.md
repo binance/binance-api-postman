@@ -1,5 +1,17 @@
 # Changelog
 
+## 5.0.0 - 2025-04-25
+
+### Added
+
+**Derivatives Trading USDS Futures**
+
+- `GET /fapi/v1/insuranceBalance`
+
+### Fixed
+
+- Fixed bug with with the testnet URLs.
+
 ## 4.0.0 - 2025-04-23
 
 ### Added

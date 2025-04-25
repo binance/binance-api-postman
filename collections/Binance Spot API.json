@@ -2753,7 +2753,7 @@
                                 },
                                 {
                                     "key": "symbolStatus",
-                                    "value": "PRE_TRADING",
+                                    "value": "TRADING",
                                     "description": "",
                                     "disabled": true
                                 }
@@ -3643,7 +3643,7 @@
         },
         {
             "key": "testnet_url",
-            "value": "https://api.binance.com",
+            "value": "https://testnet.binance.vision",
             "type": "string"
         }
     ]
