@@ -2366,13 +2366,13 @@
                                 {
                                     "key": "fromAccountType",
                                     "value": "fromAccountType_example",
-                                    "description": "\"SPOT\",\"USDT_FUTURE\",\"COIN_FUTURE\",\"MARGIN\"(Cross),\"ISOLATED_MARGIN\"",
+                                    "description": "\"SPOT\",\"USDT_FUTURE\",\"COIN_FUTURE\",\"MARGIN\"(Cross),\"ISOLATED_MARGIN\",\"ALPHA\"",
                                     "disabled": false
                                 },
                                 {
                                     "key": "toAccountType",
                                     "value": "toAccountType_example",
-                                    "description": "\"SPOT\",\"USDT_FUTURE\",\"COIN_FUTURE\",\"MARGIN\"(Cross),\"ISOLATED_MARGIN\"",
+                                    "description": "\"SPOT\",\"USDT_FUTURE\",\"COIN_FUTURE\",\"MARGIN\"(Cross),\"ISOLATED_MARGIN\",\"ALPHA\"",
                                     "disabled": false
                                 },
                                 {

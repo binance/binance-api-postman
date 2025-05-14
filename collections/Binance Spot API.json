@@ -1118,13 +1118,13 @@
                                     "key": "side",
                                     "value": "BUY",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "type",
                                     "value": "MARKET",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "timeInForce",
@@ -1348,19 +1348,19 @@
                                     "key": "side",
                                     "value": "BUY",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "type",
                                     "value": "MARKET",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "cancelReplaceMode",
                                     "value": "STOP_ON_FAILURE",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "timeInForce",
@@ -1535,7 +1535,7 @@
                                     "key": "side",
                                     "value": "BUY",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "quantity",
@@ -1905,7 +1905,7 @@
                                     "key": "side",
                                     "value": "BUY",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "quantity",
@@ -1917,7 +1917,7 @@
                                     "key": "aboveType",
                                     "value": "STOP_LOSS_LIMIT",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "aboveClientOrderId",
@@ -1971,7 +1971,7 @@
                                     "key": "belowType",
                                     "value": "STOP_LOSS",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "belowClientOrderId",
@@ -2116,13 +2116,13 @@
                                     "key": "workingType",
                                     "value": "LIMIT",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "workingSide",
                                     "value": "BUY",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "workingClientOrderId",
@@ -2170,13 +2170,13 @@
                                     "key": "pendingType",
                                     "value": "LIMIT",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "pendingSide",
                                     "value": "BUY",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "pendingClientOrderId",
@@ -2315,13 +2315,13 @@
                                     "key": "workingType",
                                     "value": "LIMIT",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "workingSide",
                                     "value": "BUY",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "workingClientOrderId",
@@ -2369,7 +2369,7 @@
                                     "key": "pendingSide",
                                     "value": "BUY",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "pendingQuantity",
@@ -2381,7 +2381,7 @@
                                     "key": "pendingAboveType",
                                     "value": "STOP_LOSS_LIMIT",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "pendingAboveClientOrderId",
@@ -2550,13 +2550,13 @@
                                     "key": "side",
                                     "value": "BUY",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "type",
                                     "value": "MARKET",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "timeInForce",
@@ -3204,7 +3204,7 @@
                                     "key": "interval",
                                     "value": "INTERVAL_1s",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "startTime",
@@ -3601,7 +3601,7 @@
                                     "key": "interval",
                                     "value": "INTERVAL_1s",
                                     "description": "",
-                                    "disabled": true
+                                    "disabled": false
                                 },
                                 {
                                     "key": "startTime",
