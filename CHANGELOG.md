@@ -1,5 +1,11 @@
 # Changelog
 
+## 6.0.1 - 2025-05-16
+
+### Changed
+
+- Updated signing script using `Web Crypto API` instead of `CryptoJS`.
+
 ## 6.0.0 - 2025-05-14
 
 ### Changed
