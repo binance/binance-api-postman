@@ -1748,6 +1748,12 @@
                                     "disabled": true
                                 },
                                 {
+                                    "key": "repaymentType",
+                                    "value": "1",
+                                    "description": "Default: 1. 1: Repayment with loan asset; 2: Repayment with collateral",
+                                    "disabled": true
+                                },
+                                {
                                     "key": "recvWindow",
                                     "value": "5000",
                                     "description": "",

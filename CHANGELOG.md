@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.0.0 - 2025-05-19
+
+### Changed (1)
+
+- Added parameter `repaymentType` for `POST /sapi/v2/loan/flexible/repay`
+
 ## 6.0.1 - 2025-05-16
 
 ### Changed
