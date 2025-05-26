@@ -771,9 +771,9 @@
                             }
                         },
                         "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/pmLoan-history",
+                            "raw": "{{url}}/sapi/v1/portfolio/pmloan-history",
                             "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "pmLoan-history"],
+                            "path": ["sapi", "v1", "portfolio", "pmloan-history"],
                             "variable": [],
                             "query": [
                                 {
