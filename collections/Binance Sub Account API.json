@@ -3498,8 +3498,8 @@
                                 {
                                     "key": "ipAddress",
                                     "value": "ipAddress_example",
-                                    "description": "Can be added in batches, separated by commas",
-                                    "disabled": true
+                                    "description": "IPs to be deleted. Can be added in batches, separated by commas",
+                                    "disabled": false
                                 },
                                 {
                                     "key": "recvWindow",
@@ -3577,7 +3577,7 @@
                                 {
                                     "key": "ipAddress",
                                     "value": "ipAddress_example",
-                                    "description": "Can be added in batches, separated by commas",
+                                    "description": "Insert static IP in batch, separated by commas.",
                                     "disabled": true
                                 },
                                 {

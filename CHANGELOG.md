@@ -1,5 +1,18 @@
 # Changelog
 
+## 8.0.0 - 2025-05-26
+
+### Changed (2)
+
+- Updated `GET /sapi/v1/portfolio/pmLoan-history` to `GET /sapi/v1/portfolio/pmloan-history`
+- Modified parameter `ipAddress` for the following endpoints:
+  - `POST /sapi/v2/sub-account/subAccountApi/ipRestriction`
+  - `DELETE /sapi/v1/sub-account/subAccountApi/ipRestriction/ipList`
+
+### Removed (1)
+
+- `POST /sapi/v2/loan/flexible/repay/collateral`
+
 ## 7.0.0 - 2025-05-19
 
 ### Changed (1)
