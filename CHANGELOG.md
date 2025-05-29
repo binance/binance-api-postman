@@ -1,5 +1,17 @@
 # Changelog
 
+## 9.0.0 - 2025-05-29
+
+### Changed (1)
+
+- Marked as signed the following endpoints:
+  - `GET /sapi/v1/lending/auto-invest/target-asset/roi/list`
+  - `POST /sapi/v1/portfolio/repay`
+  - `GET /sapi/v1/dci/product/list`
+  - `GET /sapi/v1/mining/hash-transfer/config/details/list`
+  - `GET /sapi/v1/pay/transactions`
+  - `GET /sapi/v1/simple-earn/locked/position`
+
 ## 8.0.0 - 2025-05-26
 
 ### Changed (2)

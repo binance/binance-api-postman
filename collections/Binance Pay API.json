@@ -33,6 +33,9 @@
                     "// add timestamp",
                     "Object.assign(paramsObject, { timestamp: ts });",
                     "",
+                    "// set api key",
+                    "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
+                    "",
                     "// only sign if a signature param was declared and we have a secret",
                     "if (parameters.has('signature') && api_secret) {",
                     "    // canonical query string",
@@ -55,7 +58,6 @@
                     "        // update request",
                     "        setOrUpdateQueryParam('timestamp', ts.toString());",
                     "        setOrUpdateQueryParam('signature', signature);",
-                    "        setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
                     "    })();",
                     "}",
                     "",
@@ -153,6 +155,18 @@
                                     "value": "5000",
                                     "description": "",
                                     "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
                                 }
                             ]
                         }
