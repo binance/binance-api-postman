@@ -21,7 +21,7 @@
                     "const parameters = pm.request.url.query;",
                     "",
                     "// set host based on env",
-                    "pm.request.url.host = postmanEnvironment === 'production' ? [pm.variables.get('prod_url')] : [pm.variables.get('testnet_url')];",
+                    "pm.request.url.host = [pm.variables.get('prod_url')];",
                     "",
                     "// build paramsObject (skip any existing signature)",
                     "parameters.each((param) => {",
@@ -32,6 +32,9 @@
                     "",
                     "// add timestamp",
                     "Object.assign(paramsObject, { timestamp: ts });",
+                    "",
+                    "// set api key",
+                    "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
                     "",
                     "// only sign if a signature param was declared and we have a secret",
                     "if (parameters.has('signature') && api_secret) {",
@@ -55,7 +58,6 @@
                     "        // update request",
                     "        setOrUpdateQueryParam('timestamp', ts.toString());",
                     "        setOrUpdateQueryParam('signature', signature);",
-                    "        setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
                     "    })();",
                     "}",
                     "",
@@ -939,6 +941,18 @@
                                     "value": "5000",
                                     "description": "",
                                     "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
                                 }
                             ]
                         }
@@ -1371,12 +1385,7 @@
     "variable": [
         {
             "key": "prod_url",
-            "value": "https://fapi.binance.com",
-            "type": "string"
-        },
-        {
-            "key": "testnet_url",
-            "value": "https://testnet.binancefuture.com",
+            "value": "https://api.binance.com",
             "type": "string"
         }
     ]
