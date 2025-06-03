@@ -1520,6 +1520,12 @@
                                     "disabled": true
                                 },
                                 {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
                                     "key": "timestamp",
                                     "value": "",
                                     "description": "UTC timestamp in ms",
