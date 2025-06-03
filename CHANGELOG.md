@@ -1,5 +1,24 @@
 # Changelog
 
+## 10.0.0 - 2025-06-03
+
+### Changed (1)
+
+- Added parameter `recvWindow`
+  - affected endpoints:
+    - `GET /sapi/v1/simple-earn/flexible/history/redemptionRecord`
+   
+### Removed (8)
+
+- `GET /fapi/v1/lvtKlines`
+- `GET /sapi/v1/loan/collateral/data`
+- `GET /sapi/v1/loan/loanable/data`
+- `GET /sapi/v1/loan/ongoing/orders`
+- `POST /sapi/v1/loan/adjust/ltv`
+- `POST /sapi/v1/loan/borrow`
+- `POST /sapi/v1/loan/customize/margin_call`
+- `POST /sapi/v1/loan/repay`
+
 ## 9.0.0 - 2025-05-29
 
 ### Changed (1)
