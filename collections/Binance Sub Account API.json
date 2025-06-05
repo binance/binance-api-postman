@@ -43,22 +43,20 @@
                     "        .map((key) => `${key}=${paramsObject[key]}`)",
                     "        .join('&');",
                     "",
-                    "    (async () => {",
-                    "        const encoder = new TextEncoder();",
-                    "        const keyData = encoder.encode(api_secret);",
-                    "        const msgData = encoder.encode(queryString);",
+                    "    const encoder = new TextEncoder();",
+                    "    const keyData = encoder.encode(api_secret);",
+                    "    const msgData = encoder.encode(queryString);",
                     "",
-                    "        const cryptoKey = await crypto.subtle.importKey(\"raw\", keyData, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);",
-                    "        const signatureBuffer = await crypto.subtle.sign('HMAC', cryptoKey, msgData);",
+                    "    const cryptoKey = await crypto.subtle.importKey('raw', keyData, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);",
+                    "    const signatureBuffer = await crypto.subtle.sign('HMAC', cryptoKey, msgData);",
                     "",
-                    "        const signature = Array.from(new Uint8Array(signatureBuffer))",
-                    "            .map((b) => b.toString(16).padStart(2, '0'))",
-                    "            .join('');",
+                    "    const signature = Array.from(new Uint8Array(signatureBuffer))",
+                    "        .map((b) => b.toString(16).padStart(2, '0'))",
+                    "        .join('');",
                     "",
-                    "        // update request",
-                    "        setOrUpdateQueryParam('timestamp', ts.toString());",
-                    "        setOrUpdateQueryParam('signature', signature);",
-                    "    })();",
+                    "    // update request",
+                    "    setOrUpdateQueryParam('timestamp', ts.toString());",
+                    "    setOrUpdateQueryParam('signature', signature);",
                     "}",
                     "",
                     "function setOrUpdateQueryParam(key, value) {",
@@ -2734,73 +2732,6 @@
             "name": "Account-Management",
             "item": [
                 {
-                    "name": "Enable Leverage Token for Sub-account (For Master Account) (USER_DATA)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/sub-account/blvt/enable",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "sub-account", "blvt", "enable"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "email",
-                                    "value": "sub-account-email@email.com",
-                                    "description": "[Sub-account email](#email-address)",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "enableBlvt",
-                                    "value": "true",
-                                    "description": "Only true for now",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
                     "name": "Enable Options for Sub-account (For Master Account) (USER_DATA)",
                     "request": {
                         "method": "POST",
@@ -3039,67 +2970,6 @@
                                     "value": "1",
                                     "description": "Default value: 1, Max value: 200",
                                     "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Enable Margin for Sub-account (For Master Account) (USER_DATA)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/sub-account/margin/enable",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "sub-account", "margin", "enable"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "email",
-                                    "value": "sub-account-email@email.com",
-                                    "description": "[Sub-account email](#email-address)",
-                                    "disabled": false
                                 },
                                 {
                                     "key": "recvWindow",

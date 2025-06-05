@@ -1,5 +1,16 @@
 # Changelog
 
+## 11.0.0 - 2025-06-05
+
+### Changed (1)
+
+- Fixed async signature generation script race condition.
+
+### Removed (2)
+
+- `POST /sapi/v1/sub-account/blvt/enable`
+- `POST /sapi/v1/sub-account/margin/enable`
+
 ## 10.0.0 - 2025-06-03
 
 ### Changed (1)
@@ -7,7 +18,7 @@
 - Added parameter `recvWindow`
   - affected endpoints:
     - `GET /sapi/v1/simple-earn/flexible/history/redemptionRecord`
-   
+
 ### Removed (8)
 
 - `GET /fapi/v1/lvtKlines`
