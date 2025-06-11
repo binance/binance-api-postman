@@ -1,5 +1,11 @@
 # Changelog
 
+## 12.0.0 - 2025-06-11
+
+### Added (1)
+
+- `GET /sapi/v1/addressVerify/list`
+
 ## 11.0.0 - 2025-06-05
 
 ### Changed (1)
