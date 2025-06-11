@@ -584,6 +584,55 @@
             "name": "Travel-Rule",
             "item": [
                 {
+                    "name": "Fetch address verification list (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/addressVerify/list",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "addressVerify", "list"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "Submit Deposit Questionnaire (For local entities that require travel rule) (supporting network) (USER_DATA)",
                     "request": {
                         "method": "PUT",
@@ -1087,7 +1136,7 @@
                                 {
                                     "key": "withdrawOrderId",
                                     "value": "1",
-                                    "description": "",
+                                    "description": "client side id for withdrawal, if provided in POST `/sapi/v1/capital/withdraw/apply`, can be used here for query.",
                                     "disabled": true
                                 },
                                 {
@@ -1208,7 +1257,7 @@
                                 {
                                     "key": "withdrawOrderId",
                                     "value": "1",
-                                    "description": "",
+                                    "description": "client side id for withdrawal, if provided in POST `/sapi/v1/capital/withdraw/apply`, can be used here for query.",
                                     "disabled": true
                                 },
                                 {
@@ -1323,7 +1372,7 @@
                                 {
                                     "key": "withdrawOrderId",
                                     "value": "1",
-                                    "description": "",
+                                    "description": "client side id for withdrawal, if provided in POST `/sapi/v1/capital/withdraw/apply`, can be used here for query.",
                                     "disabled": true
                                 },
                                 {
@@ -2921,7 +2970,7 @@
                                 {
                                     "key": "withdrawOrderId",
                                     "value": "1",
-                                    "description": "",
+                                    "description": "client side id for withdrawal, if provided in POST `/sapi/v1/capital/withdraw/apply`, can be used here for query.",
                                     "disabled": true
                                 },
                                 {
@@ -3030,7 +3079,7 @@
                                 {
                                     "key": "withdrawOrderId",
                                     "value": "1",
-                                    "description": "",
+                                    "description": "client side id for withdrawal, if provided in POST `/sapi/v1/capital/withdraw/apply`, can be used here for query.",
                                     "disabled": true
                                 },
                                 {
