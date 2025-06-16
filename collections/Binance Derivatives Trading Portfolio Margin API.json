@@ -364,7 +364,7 @@
                             "query": [
                                 {
                                     "key": "amount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -3457,7 +3457,7 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -3469,7 +3469,7 @@
                                 },
                                 {
                                     "key": "price",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -3493,19 +3493,19 @@
                                 },
                                 {
                                     "key": "stopPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "activationPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Used with `TRAILING_STOP_MARKET` orders, default as the mark price",
                                     "disabled": true
                                 },
                                 {
                                     "key": "callbackRate",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Used with `TRAILING_STOP_MARKET` orders, min 0.1, max 5 where 1 for 1%",
                                     "disabled": true
                                 },
@@ -3961,13 +3961,13 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Order quantity",
                                     "disabled": false
                                 },
                                 {
                                     "key": "price",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -4064,7 +4064,7 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -4076,7 +4076,7 @@
                                 },
                                 {
                                     "key": "price",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -5018,25 +5018,25 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "quoteOrderQty",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "price",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "stopPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders.",
                                     "disabled": true
                                 },
@@ -5054,7 +5054,7 @@
                                 },
                                 {
                                     "key": "icebergQty",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order",
                                     "disabled": true
                                 },
@@ -5230,7 +5230,7 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Order quantity",
                                     "disabled": false
                                 },
@@ -5242,13 +5242,13 @@
                                 },
                                 {
                                     "key": "price",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limitIcebergQty",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -5260,19 +5260,19 @@
                                 },
                                 {
                                     "key": "stopPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "stopLimitPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "If provided, stopLimitTimeInForce is required.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "stopIcebergQty",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -5576,7 +5576,7 @@
                                 },
                                 {
                                     "key": "amount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -5643,7 +5643,7 @@
                                 },
                                 {
                                     "key": "amount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -6294,7 +6294,7 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -6306,7 +6306,7 @@
                                 },
                                 {
                                     "key": "price",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -6330,19 +6330,19 @@
                                 },
                                 {
                                     "key": "stopPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "activationPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Used with `TRAILING_STOP_MARKET` orders, default as the mark price",
                                     "disabled": true
                                 },
                                 {
                                     "key": "callbackRate",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Used with `TRAILING_STOP_MARKET` orders, min 0.1, max 5 where 1 for 1%",
                                     "disabled": true
                                 },
@@ -6926,13 +6926,13 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Order quantity",
                                     "disabled": false
                                 },
                                 {
                                     "key": "price",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -7029,7 +7029,7 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -7041,7 +7041,7 @@
                                 },
                                 {
                                     "key": "price",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },

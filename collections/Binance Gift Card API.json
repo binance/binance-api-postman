@@ -144,7 +144,7 @@
                                 },
                                 {
                                     "key": "baseTokenAmount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "The base token asset quantity, example : 1.002",
                                     "disabled": false
                                 },
@@ -272,7 +272,7 @@
                                 },
                                 {
                                     "key": "amount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "The amount of the token contained in the Binance Gift Card",
                                     "disabled": false
                                 },

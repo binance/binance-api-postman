@@ -1,5 +1,11 @@
 # Changelog
 
+## 13.0.0 - 2025-06-16
+
+### Added (1)
+
+- `GET /sapi/v1/margin/list-schedule`
+
 ## 12.0.0 - 2025-06-11
 
 ### Added (1)

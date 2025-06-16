@@ -2085,25 +2085,25 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "quoteOrderQty",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "price",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "stopPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.",
                                     "disabled": true
                                 },
@@ -2115,7 +2115,7 @@
                                 },
                                 {
                                     "key": "icebergQty",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order.",
                                     "disabled": true
                                 },
@@ -2309,7 +2309,7 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -2321,13 +2321,13 @@
                                 },
                                 {
                                     "key": "price",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "limitIcebergQty",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -2339,19 +2339,19 @@
                                 },
                                 {
                                     "key": "stopPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "stopLimitPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "If provided, `stopLimitTimeInForce` is required.",
                                     "disabled": true
                                 },
                                 {
                                     "key": "stopIcebergQty",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -2502,19 +2502,19 @@
                                 },
                                 {
                                     "key": "workingPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "workingQuantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "workingIcebergQty",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "This can only be used if `workingTimeInForce` is `GTC`.",
                                     "disabled": false
                                 },
@@ -2544,31 +2544,31 @@
                                 },
                                 {
                                     "key": "pendingPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "pendingStopPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "pendingTrailingDelta",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "pendingQuantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "pendingIcebergQty",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "This can only be used if `pendingTimeInForce` is `GTC`.",
                                     "disabled": true
                                 },
@@ -2689,19 +2689,19 @@
                                 },
                                 {
                                     "key": "workingPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "workingQuantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
                                 {
                                     "key": "workingIcebergQty",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "This can only be used if `workingTimeInForce` is `GTC`.",
                                     "disabled": true
                                 },
@@ -2719,7 +2719,7 @@
                                 },
                                 {
                                     "key": "pendingQuantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -2737,25 +2737,25 @@
                                 },
                                 {
                                     "key": "pendingAbovePrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "pendingAboveStopPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "pendingAboveTrailingDelta",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "pendingAboveIcebergQty",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "This can only be used if `pendingAboveTimeInForce` is `GTC`.",
                                     "disabled": true
                                 },
@@ -2779,25 +2779,25 @@
                                 },
                                 {
                                     "key": "pendingBelowPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "pendingBelowStopPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "pendingBelowTrailingDelta",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "pendingBelowIcebergQty",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "This can only be used if `pendingBelowTimeInForce` is `GTC`.",
                                     "disabled": true
                                 },
@@ -4440,6 +4440,49 @@
                             "path": ["sapi", "v1", "margin", "leverageBracket"],
                             "variable": [],
                             "query": []
+                        }
+                    }
+                },
+                {
+                    "name": "Get list Schedule (MARKET_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/margin/list-schedule",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "margin", "list-schedule"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "No more than 60000",
+                                    "disabled": true
+                                }
+                            ]
                         }
                     }
                 },

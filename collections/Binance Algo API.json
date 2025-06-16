@@ -241,7 +241,7 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Quantity of base asset; Maximum notional per order is 200k, 2mm or 10mm, depending on symbol. Please reduce your size if you order is above the maximum notional per order.",
                                     "disabled": false
                                 },
@@ -265,7 +265,7 @@
                                 },
                                 {
                                     "key": "limitPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Limit price of the order; If it is not sent, will place order by market price by default",
                                     "disabled": true
                                 },
@@ -344,7 +344,7 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Quantity of base asset; Maximum notional per order is 200k, 2mm or 10mm, depending on symbol. Please reduce your size if you order is above the maximum notional per order.",
                                     "disabled": false
                                 },
@@ -368,7 +368,7 @@
                                 },
                                 {
                                     "key": "limitPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Limit price of the order; If it is not sent, will place order by market price by default",
                                     "disabled": true
                                 },
@@ -726,7 +726,7 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Quantity of base asset; Maximum notional per order is 200k, 2mm or 10mm, depending on symbol. Please reduce your size if you order is above the maximum notional per order.",
                                     "disabled": false
                                 },
@@ -744,7 +744,7 @@
                                 },
                                 {
                                     "key": "limitPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Limit price of the order; If it is not sent, will place order by market price by default",
                                     "disabled": true
                                 },

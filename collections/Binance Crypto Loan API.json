@@ -423,7 +423,7 @@
                                 },
                                 {
                                     "key": "repayAmount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "repay amount of loanCoin",
                                     "disabled": false
                                 },
@@ -598,7 +598,7 @@
                                 },
                                 {
                                     "key": "adjustmentAmount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -1226,7 +1226,7 @@
                                 },
                                 {
                                     "key": "repayAmount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "repay amount of loanCoin",
                                     "disabled": false
                                 },

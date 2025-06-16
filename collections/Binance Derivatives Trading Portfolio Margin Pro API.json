@@ -364,7 +364,7 @@
                             "query": [
                                 {
                                     "key": "amount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -510,7 +510,7 @@
                                 },
                                 {
                                     "key": "amount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -662,7 +662,7 @@
                                 },
                                 {
                                     "key": "amount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -869,7 +869,7 @@
                                 },
                                 {
                                     "key": "amount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },

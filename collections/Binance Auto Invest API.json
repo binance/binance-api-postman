@@ -309,7 +309,7 @@
                                 },
                                 {
                                     "key": "subscriptionAmount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -491,7 +491,7 @@
                                 },
                                 {
                                     "key": "subscriptionAmount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -588,7 +588,7 @@
                                 },
                                 {
                                     "key": "subscriptionAmount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },

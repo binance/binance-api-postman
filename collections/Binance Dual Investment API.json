@@ -346,7 +346,7 @@
                                 },
                                 {
                                     "key": "depositAmount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "the amount for subscribing",
                                     "disabled": false
                                 },
