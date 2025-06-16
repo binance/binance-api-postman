@@ -1001,13 +1001,13 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Order Quantity",
                                     "disabled": false
                                 },
                                 {
                                     "key": "price",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Order Price",
                                     "disabled": true
                                 },
@@ -1712,13 +1712,13 @@
                                 },
                                 {
                                     "key": "qtyLimit",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "quantity limit",
                                     "disabled": true
                                 },
                                 {
                                     "key": "deltaLimit",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "net delta limit",
                                     "disabled": true
                                 },
@@ -1924,13 +1924,13 @@
                                 },
                                 {
                                     "key": "price",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Order Price",
                                     "disabled": false
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Order Quantity",
                                     "disabled": false
                                 },

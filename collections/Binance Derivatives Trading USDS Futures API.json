@@ -2392,13 +2392,13 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Order quantity, cannot be sent with `closePosition=true`",
                                     "disabled": false
                                 },
                                 {
                                     "key": "price",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -2495,7 +2495,7 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Cannot be sent with `closePosition`=`true`(Close-All)",
                                     "disabled": true
                                 },
@@ -2507,7 +2507,7 @@
                                 },
                                 {
                                     "key": "price",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -2519,7 +2519,7 @@
                                 },
                                 {
                                     "key": "stopPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders.",
                                     "disabled": true
                                 },
@@ -2531,13 +2531,13 @@
                                 },
                                 {
                                     "key": "activationPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Used with `TRAILING_STOP_MARKET` orders, default as the latest price(supporting different `workingType`)",
                                     "disabled": true
                                 },
                                 {
                                     "key": "callbackRate",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Used with `TRAILING_STOP_MARKET` orders, min 0.1, max 10 where 1 for 1%",
                                     "disabled": true
                                 },
@@ -2737,7 +2737,7 @@
                                 },
                                 {
                                     "key": "quantity",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Cannot be sent with `closePosition`=`true`(Close-All)",
                                     "disabled": true
                                 },
@@ -2749,7 +2749,7 @@
                                 },
                                 {
                                     "key": "price",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -2761,7 +2761,7 @@
                                 },
                                 {
                                     "key": "stopPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders.",
                                     "disabled": true
                                 },
@@ -2773,13 +2773,13 @@
                                 },
                                 {
                                     "key": "activationPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Used with `TRAILING_STOP_MARKET` orders, default as the latest price(supporting different `workingType`)",
                                     "disabled": true
                                 },
                                 {
                                     "key": "callbackRate",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Used with `TRAILING_STOP_MARKET` orders, min 0.1, max 10 where 1 for 1%",
                                     "disabled": true
                                 },
@@ -2979,7 +2979,7 @@
                                 },
                                 {
                                     "key": "amount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "",
                                     "disabled": false
                                 },
@@ -3532,13 +3532,13 @@
                                 },
                                 {
                                     "key": "fromAmount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "When specified, it is the amount you will be debited after the conversion",
                                     "disabled": true
                                 },
                                 {
                                     "key": "toAmount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "When specified, it is the amount you will be credited after the conversion",
                                     "disabled": true
                                 },

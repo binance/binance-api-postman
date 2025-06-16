@@ -205,13 +205,13 @@
                                 },
                                 {
                                     "key": "fromAmount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "When specified, it is the amount you will be debited after the conversion",
                                     "disabled": true
                                 },
                                 {
                                     "key": "toAmount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "When specified, it is the amount you will be credited after the conversion",
                                     "disabled": true
                                 },
@@ -357,19 +357,19 @@
                                 },
                                 {
                                     "key": "limitPrice",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Symbol limit price (from baseAsset to quoteAsset)",
                                     "disabled": false
                                 },
                                 {
                                     "key": "baseAmount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Base asset amount.  (One of `baseAmount` or `quoteAmount` is required)",
                                     "disabled": true
                                 },
                                 {
                                     "key": "quoteAmount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Quote asset amount.  (One of `baseAmount` or `quoteAmount` is required)",
                                     "disabled": true
                                 },

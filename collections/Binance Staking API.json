@@ -788,7 +788,7 @@
                             "query": [
                                 {
                                     "key": "amount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Amount in SOL.",
                                     "disabled": false
                                 },
@@ -849,7 +849,7 @@
                             "query": [
                                 {
                                     "key": "amount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Amount in SOL.",
                                     "disabled": false
                                 },
@@ -1307,7 +1307,7 @@
                             "query": [
                                 {
                                     "key": "amount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Amount in SOL.",
                                     "disabled": false
                                 },
@@ -1546,7 +1546,7 @@
                             "query": [
                                 {
                                     "key": "amount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Amount in SOL.",
                                     "disabled": false
                                 },
@@ -1662,7 +1662,7 @@
                             "query": [
                                 {
                                     "key": "amount",
-                                    "value": "1",
+                                    "value": "1.0",
                                     "description": "Amount in SOL.",
                                     "disabled": false
                                 },
