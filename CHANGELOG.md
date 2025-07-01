@@ -1,5 +1,22 @@
 # Changelog
 
+## 14.0.0 - 2025-07-01
+
+### Added (12)
+
+- `GET /sapi/v1/onchain-yields/account`
+- `GET /sapi/v1/onchain-yields/locked/history/redemptionRecord`
+- `GET /sapi/v1/onchain-yields/locked/history/rewardsRecord`
+- `GET /sapi/v1/onchain-yields/locked/history/subscriptionRecord`
+- `GET /sapi/v1/onchain-yields/locked/list`
+- `GET /sapi/v1/onchain-yields/locked/personalLeftQuota`
+- `GET /sapi/v1/onchain-yields/locked/position`
+- `GET /sapi/v1/onchain-yields/locked/subscriptionPreview`
+- `POST /sapi/v1/onchain-yields/locked/redeem`
+- `POST /sapi/v1/onchain-yields/locked/setAutoSubscribe`
+- `POST /sapi/v1/onchain-yields/locked/setRedeemOption`
+- `POST /sapi/v1/onchain-yields/locked/subscribe`
+
 ## 13.0.0 - 2025-06-16
 
 ### Added (1)
