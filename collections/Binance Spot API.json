@@ -1805,6 +1805,102 @@
                                     "disabled": true
                                 },
                                 {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "BUY",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "MARKET",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "timeInForce",
+                                    "value": "GTC",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "quantity",
+                                    "value": "1.0",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "quoteOrderQty",
+                                    "value": "1.0",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "400.0",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "newClientOrderId",
+                                    "value": "newClientOrderId_example",
+                                    "description": "A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "strategyId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "strategyType",
+                                    "value": "1",
+                                    "description": "The value cannot be less than `1000000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "stopPrice",
+                                    "value": "1.0",
+                                    "description": "Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "trailingDelta",
+                                    "value": "1",
+                                    "description": "See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md).",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "icebergQty",
+                                    "value": "1.0",
+                                    "description": "Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "newOrderRespType",
+                                    "value": "ACK",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "selfTradePreventionMode",
+                                    "value": "NONE",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than `60000`",
+                                    "disabled": true
+                                },
+                                {
                                     "key": "timestamp",
                                     "value": "",
                                     "description": "UTC timestamp in ms",

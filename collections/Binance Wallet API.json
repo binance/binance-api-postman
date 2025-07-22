@@ -617,6 +617,12 @@
                             "variable": [],
                             "query": [
                                 {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
                                     "key": "timestamp",
                                     "value": "",
                                     "description": "UTC timestamp in ms",
@@ -1046,7 +1052,62 @@
                     }
                 },
                 {
-                    "name": "Onboarded VASP list (for local entities that require travel rule) (supporting network) (USER_DATA)",
+                    "name": "Check Questionnaire Requirements (for local entities that require travel rule) (supporting network) (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/localentity/questionnaire-requirements",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "localentity", "questionnaire-requirements"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "VASP list (for local entities that require travel rule) (supporting network) (USER_DATA)",
                     "request": {
                         "method": "GET",
                         "header": [
@@ -1078,6 +1139,12 @@
                             "path": ["sapi", "v1", "localentity", "vasp"],
                             "variable": [],
                             "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
                                 {
                                     "key": "timestamp",
                                     "value": "",
