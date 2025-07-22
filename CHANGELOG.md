@@ -1,5 +1,37 @@
 # Changelog
 
+## 15.0.0 - 2025-07-22
+
+### Added (1)
+
+- `GET /sapi/v1/localentity/questionnaire-requirements`
+
+### Changed (2)
+
+- Added parameter `recvWindow`
+  - affected endpoints:
+    - `GET /sapi/v1/addressVerify/list`
+    - `GET /sapi/v1/localentity/vasp`
+
+- Added parameters:
+  - `icebergQty`
+  - `newClientOrderId`
+  - `newClientOrderId`
+  - `price`
+  - `quantity`
+  - `quoteOrderQty`
+  - `recvWindow`
+  - `selfTradePreventionMode`
+  - `side`
+  - `stopPrice`
+  - `stopLimitPrice`
+  - `stopLimitTimeInForce`
+  - `newOrderRespType`
+  - `workingType`
+  - `type`
+  - affected endpoints:
+    - `POST /api/v3/order/test`
+
 ## 14.0.0 - 2025-07-01
 
 ### Added (12)
