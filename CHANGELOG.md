@@ -1,5 +1,11 @@
 # Changelog
 
+## 16.0.0 - 2025-07-23
+
+### Changed (1)
+
+- Added missing parameters on `POST /api/v3/order/test`
+
 ## 15.0.0 - 2025-07-22
 
 ### Added (1)
