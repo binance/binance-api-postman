@@ -3100,7 +3100,7 @@
                                 },
                                 {
                                     "key": "isIsolated",
-                                    "value": "",
+                                    "value": "FALSE",
                                     "description": "`TRUE` for Isolated Margin, `FALSE` for Cross Margin, Default `FALSE`",
                                     "disabled": false
                                 },
@@ -3525,7 +3525,7 @@
                                 },
                                 {
                                     "key": "isIsolated",
-                                    "value": "true",
+                                    "value": "false",
                                     "description": "for isolated margin or not, \"TRUE\", \"FALSE\"",
                                     "disabled": false
                                 },
@@ -4438,6 +4438,42 @@
                             "raw": "{{url}}/sapi/v1/margin/leverageBracket",
                             "host": ["{{url}}"],
                             "path": ["sapi", "v1", "margin", "leverageBracket"],
+                            "variable": [],
+                            "query": []
+                        }
+                    }
+                },
+                {
+                    "name": "Get Limit Price Pairs(MARKET_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/margin/limit-price-pairs",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "margin", "limit-price-pairs"],
                             "variable": [],
                             "query": []
                         }
