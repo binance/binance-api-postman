@@ -1309,6 +1309,24 @@
                                     "disabled": true
                                 },
                                 {
+                                    "key": "pegPriceType",
+                                    "value": "PRIMARY_PEG",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pegOffsetValue",
+                                    "value": "1",
+                                    "description": "Priceleveltopegthepriceto(max:100).<br>See[PeggedOrdersInfo](#pegged-orders-info)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pegOffsetType",
+                                    "value": "PRICE_LEVEL",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
                                     "key": "recvWindow",
                                     "value": "5000",
                                     "description": "The value cannot be greater than `60000`",
@@ -1575,6 +1593,24 @@
                                     "disabled": true
                                 },
                                 {
+                                    "key": "pegPriceType",
+                                    "value": "PRIMARY_PEG",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pegOffsetValue",
+                                    "value": "1",
+                                    "description": "Priceleveltopegthepriceto(max:100).<br>See[PeggedOrdersInfo](#pegged-orders-info)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pegOffsetType",
+                                    "value": "PRICE_LEVEL",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
                                     "key": "recvWindow",
                                     "value": "5000",
                                     "description": "The value cannot be greater than `60000`",
@@ -1801,7 +1837,7 @@
                                 {
                                     "key": "computeCommissionRates",
                                     "value": "false",
-                                    "description": "Default: `false`",
+                                    "description": "Default: `false` <br> See [Commissions FAQ](faqs/commission_faq.md#test-order-diferences) to learn more.",
                                     "disabled": true
                                 },
                                 {
@@ -1891,6 +1927,24 @@
                                 {
                                     "key": "selfTradePreventionMode",
                                     "value": "NONE",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pegPriceType",
+                                    "value": "PRIMARY_PEG",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pegOffsetValue",
+                                    "value": "1",
+                                    "description": "Priceleveltopegthepriceto(max:100).<br>See[PeggedOrdersInfo](#pegged-orders-info)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pegOffsetType",
+                                    "value": "PRICE_LEVEL",
                                     "description": "",
                                     "disabled": true
                                 },
@@ -2107,6 +2161,24 @@
                                     "disabled": true
                                 },
                                 {
+                                    "key": "abovePegPriceType",
+                                    "value": "PRIMARY_PEG",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "abovePegOffsetType",
+                                    "value": "PRICE_LEVEL",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "abovePegOffsetValue",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
                                     "key": "belowType",
                                     "value": "STOP_LOSS",
                                     "description": "",
@@ -2158,6 +2230,24 @@
                                     "key": "belowStrategyType",
                                     "value": "1",
                                     "description": "Arbitrary numeric value identifying the below order strategy. <br>Values smaller than 1000000 are reserved and cannot be used.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "belowPegPriceType",
+                                    "value": "PRIMARY_PEG",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "belowPegOffsetType",
+                                    "value": "PRICE_LEVEL",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "belowPegOffsetValue",
+                                    "value": "1",
+                                    "description": "",
                                     "disabled": true
                                 },
                                 {
@@ -2306,6 +2396,24 @@
                                     "disabled": true
                                 },
                                 {
+                                    "key": "workingPegPriceType",
+                                    "value": "PRIMARY_PEG",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingPegOffsetType",
+                                    "value": "PRICE_LEVEL",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingPegOffsetValue",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
                                     "key": "pendingType",
                                     "value": "LIMIT",
                                     "description": "",
@@ -2369,6 +2477,24 @@
                                     "key": "pendingStrategyType",
                                     "value": "1",
                                     "description": "Arbitrary numeric value identifying the pending order strategy. <br> Values smaller than 1000000 are reserved and cannot be used.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingPegPriceType",
+                                    "value": "PRIMARY_PEG",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingPegOffsetType",
+                                    "value": "PRICE_LEVEL",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingPegOffsetValue",
+                                    "value": "1",
+                                    "description": "",
                                     "disabled": true
                                 },
                                 {
@@ -2505,6 +2631,24 @@
                                     "disabled": true
                                 },
                                 {
+                                    "key": "workingPegPriceType",
+                                    "value": "PRIMARY_PEG",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingPegOffsetType",
+                                    "value": "PRICE_LEVEL",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingPegOffsetValue",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
                                     "key": "pendingSide",
                                     "value": "BUY",
                                     "description": "",
@@ -2571,6 +2715,24 @@
                                     "disabled": true
                                 },
                                 {
+                                    "key": "pendingAbovePegPriceType",
+                                    "value": "PRIMARY_PEG",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingAbovePegOffsetType",
+                                    "value": "PRICE_LEVEL",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingAbovePegOffsetValue",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
                                     "key": "pendingBelowType",
                                     "value": "STOP_LOSS",
                                     "description": "",
@@ -2622,6 +2784,24 @@
                                     "key": "pendingBelowStrategyType",
                                     "value": "1",
                                     "description": "Arbitrary numeric value identifying the pending below order strategy. <br> Values smaller than 1000000 are reserved and cannot be used.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingBelowPegPriceType",
+                                    "value": "PRIMARY_PEG",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingBelowPegOffsetType",
+                                    "value": "PRICE_LEVEL",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "pendingBelowPegOffsetValue",
+                                    "value": "1",
+                                    "description": "",
                                     "disabled": true
                                 },
                                 {
@@ -2809,7 +2989,7 @@
                                 {
                                     "key": "computeCommissionRates",
                                     "value": "false",
-                                    "description": "Default: `false`",
+                                    "description": "Default: `false` <br> See [Commissions FAQ](faqs/commission_faq.md#test-order-diferences) to learn more.",
                                     "disabled": true
                                 },
                                 {
