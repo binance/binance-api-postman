@@ -1,5 +1,11 @@
 # Changelog
 
+## 18.0.0 - 2025-08-19
+
+### Changed (1)
+
+- Updated `type` example in `/sapi/v1/simple-earn/flexible/history/rewardsRecord` endpoint
+
 ## 17.0.0 - 2025-08-18
 
 ### Added (1)

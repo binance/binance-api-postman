@@ -1605,8 +1605,8 @@
                                 },
                                 {
                                     "key": "type",
-                                    "value": "Bonus",
-                                    "description": "`Bonus` - Bonus tiered APR, `REALTIME` Real-time APR, `REWARDS` Historical rewards,`ALL`(set to default)",
+                                    "value": "BONUS",
+                                    "description": "`BONUS` - Bonus tiered APR, `REALTIME` Real-time APR, `REWARDS` Historical rewards,`ALL`(set to default)",
                                     "disabled": false
                                 },
                                 {
