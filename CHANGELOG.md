@@ -1,5 +1,19 @@
 # Changelog
 
+## 19.0.0 - 2025-08-26
+
+### Changed (3)
+
+- Added parameter `loanTerm`
+  - affected endpoints:
+    - `POST /sapi/v1/loan/vip/borrow`
+- Added parameter `collateralAmount`
+  - affected endpoints:
+    - `POST /sapi/v2/loan/flexible/borrow`
+- Added parameter `loanAmount`
+  - affected endpoints:
+    - `POST /sapi/v2/loan/flexible/borrow`
+
 ## 18.0.0 - 2025-08-19
 
 ### Changed (1)

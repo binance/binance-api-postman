@@ -167,6 +167,12 @@
                                     "disabled": false
                                 },
                                 {
+                                    "key": "loanTerm",
+                                    "value": "789",
+                                    "description": "Mandatory for fixed rate. Optional for fixed interest rate. Eg: 30/60 days",
+                                    "disabled": true
+                                },
+                                {
                                     "key": "recvWindow",
                                     "value": "5000",
                                     "description": "",

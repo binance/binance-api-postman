@@ -670,10 +670,22 @@
                                     "disabled": false
                                 },
                                 {
+                                    "key": "loanAmount",
+                                    "value": "1.0",
+                                    "description": "Mandatory when collateralAmount is empty",
+                                    "disabled": true
+                                },
+                                {
                                     "key": "collateralCoin",
                                     "value": "collateralCoin_example",
                                     "description": "",
                                     "disabled": false
+                                },
+                                {
+                                    "key": "collateralAmount",
+                                    "value": "1.0",
+                                    "description": "Mandatory when loanAmount is empty",
+                                    "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
