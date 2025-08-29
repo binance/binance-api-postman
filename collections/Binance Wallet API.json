@@ -1392,6 +1392,109 @@
                     }
                 },
                 {
+                    "name": "Deposit History V2 (for local entities that required travel rule) (supporting network) (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v2/localentity/deposit/history",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v2", "localentity", "deposit", "history"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "depositId",
+                                    "value": "1",
+                                    "description": "Comma(,) separated list of wallet tran Ids.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "txId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "network",
+                                    "value": "network_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "coin",
+                                    "value": "coin_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "retrieveQuestionnaire",
+                                    "value": "true",
+                                    "description": "true: return `questionnaire` within response.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "offset",
+                                    "value": "0",
+                                    "description": "Default: 0",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "7",
+                                    "description": "min 7, max 30, default 7",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "Withdraw History V2 (for local entities that require travel rule) (supporting network) (USER_DATA)",
                     "request": {
                         "method": "GET",
