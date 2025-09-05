@@ -1,5 +1,18 @@
 # Changelog
 
+## 21.0.0 - 2025-09-05
+
+### Added (8)
+
+- `GET /sapi/v1/rwusd/account`
+- `GET /sapi/v1/rwusd/history/rateHistory`
+- `GET /sapi/v1/rwusd/history/redemptionHistory`
+- `GET /sapi/v1/rwusd/history/rewardsHistory`
+- `GET /sapi/v1/rwusd/history/subscriptionHistory`
+- `GET /sapi/v1/rwusd/quota`
+- `POST /sapi/v1/rwusd/redeem`
+- `POST /sapi/v1/rwusd/subscribe`
+
 ## 20.0.0 - 2025-08-29
 
 ### Added (1)
