@@ -1,5 +1,13 @@
 # Changelog
 
+## 22.0.0 - 2025-09-09
+
+### Added (3)
+
+- `GET /sapi/v1/soft-staking/history/rewardsRecord`
+- `GET /sapi/v1/soft-staking/list`
+- `GET /sapi/v1/soft-staking/set`
+
 ## 21.0.0 - 2025-09-05
 
 ### Added (8)
