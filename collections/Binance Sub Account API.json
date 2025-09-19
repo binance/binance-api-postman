@@ -3102,9 +3102,9 @@
                             "query": [
                                 {
                                     "key": "email",
-                                    "value": "sub-account-email@email.com",
-                                    "description": "[Sub-account email](#email-address)",
-                                    "disabled": false
+                                    "value": "email_example",
+                                    "description": "Managed sub-account email",
+                                    "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",

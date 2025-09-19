@@ -2,7 +2,7 @@
 
 ## 23.0.0 - 2025-09-19
 
-### Changed (2)
+### Changed (3)
 
 - Modified parameter `recvWindow`:
   - type `integer` → `number`
@@ -35,6 +35,11 @@
     - `POST /api/v3/sor/order/test`
 
 - Update `/sapi/v1/convert/limit/queryOpenOrders` HTTP method (`GET` from `POST`)
+
+- Modified parameter `email`:
+  - required: `true` → `false`
+  - affected endpoints:
+    - `GET /sapi/v1/sub-account/transaction-statistics`
 
 ## 22.0.0 - 2025-09-09
 
