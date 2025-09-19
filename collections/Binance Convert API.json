@@ -429,7 +429,7 @@
                 {
                     "name": "Query limit open orders (USER_DATA)",
                     "request": {
-                        "method": "POST",
+                        "method": "GET",
                         "header": [
                             {
                                 "key": "X-MBX-APIKEY",

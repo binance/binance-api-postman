@@ -1,5 +1,11 @@
 # Changelog
 
+## 23.0.0 - 2025-09-19
+
+### Changed (1)
+
+- Update `/sapi/v1/convert/limit/queryOpenOrders` HTTP method (`GET` from `POST`)
+
 ## 22.0.0 - 2025-09-09
 
 ### Added (3)
