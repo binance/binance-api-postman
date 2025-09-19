@@ -151,8 +151,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -285,8 +285,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -370,8 +370,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -461,8 +461,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -546,8 +546,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -637,8 +637,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -692,8 +692,8 @@
                             "query": [
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -753,8 +753,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -826,8 +826,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -905,8 +905,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -972,8 +972,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -1027,8 +1027,8 @@
                             "query": [
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -1093,8 +1093,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -1178,8 +1178,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -1341,8 +1341,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -1426,8 +1426,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -1625,8 +1625,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -1794,8 +1794,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -1963,8 +1963,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -2042,8 +2042,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -2277,8 +2277,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -2512,8 +2512,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -2819,8 +2819,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -2946,8 +2946,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {
@@ -3079,8 +3079,8 @@
                                 },
                                 {
                                     "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                                     "disabled": true
                                 },
                                 {

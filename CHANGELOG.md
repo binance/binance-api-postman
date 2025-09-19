@@ -2,7 +2,37 @@
 
 ## 23.0.0 - 2025-09-19
 
-### Changed (1)
+### Changed (2)
+
+- Modified parameter `recvWindow`:
+  - type `integer` → `number`
+  - format `int64` → `float`
+  - affected endpoints:
+    - `GET /api/v3/account`
+    - `GET /api/v3/allOrderList`
+    - `GET /api/v3/allOrders`
+    - `GET /api/v3/myAllocations`
+    - `GET /api/v3/myPreventedMatches`
+    - `GET /api/v3/myTrades`
+    - `GET /api/v3/openOrderList`
+    - `DELETE /api/v3/openOrders`
+    - `GET /api/v3/openOrders`
+    - `DELETE /api/v3/order`
+    - `GET /api/v3/order`
+    - `POST /api/v3/order`
+    - `PUT /api/v3/order/amend/keepPriority`
+    - `GET /api/v3/order/amendments`
+    - `POST /api/v3/order/cancelReplace`
+    - `POST /api/v3/order/oco`
+    - `POST /api/v3/order/test`
+    - `DELETE /api/v3/orderList`
+    - `GET /api/v3/orderList`
+    - `POST /api/v3/orderList/oco`
+    - `POST /api/v3/orderList/oto`
+    - `POST /api/v3/orderList/otoco`
+    - `GET /api/v3/rateLimit/order`
+    - `POST /api/v3/sor/order`
+    - `POST /api/v3/sor/order/test`
 
 - Update `/sapi/v1/convert/limit/queryOpenOrders` HTTP method (`GET` from `POST`)
 
