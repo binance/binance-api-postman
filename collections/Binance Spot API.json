@@ -2229,7 +2229,7 @@
                                 },
                                 {
                                     "key": "belowTimeInForce",
-                                    "value": "belowType",
+                                    "value": "GTC",
                                     "description": "",
                                     "disabled": true
                                 },
