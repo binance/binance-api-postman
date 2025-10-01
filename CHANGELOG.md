@@ -1,5 +1,19 @@
 # Changelog
 
+## 24.0.0 - 2025-10-01
+
+### Added (1)
+
+- `GET /api/v3/myFilters`
+
+### Changed (1)
+
+- Modified parameter `aboveTimeInForce`:
+  - type `number` → `string`
+  - enum added: `GTC`, `IOC`, `FOK`
+  - affected endpoints:
+    - `POST /api/v3/orderList/oco`
+
 ## 23.0.0 - 2025-09-19
 
 ### Changed (3)

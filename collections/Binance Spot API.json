@@ -482,6 +482,67 @@
                     }
                 },
                 {
+                    "name": "Query relevant filters",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/api/v3/myFilters",
+                            "host": ["{{url}}"],
+                            "path": ["api", "v3", "myFilters"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "BNBUSDT",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000.0",
+                                    "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "Query Prevented Matches",
                     "request": {
                         "method": "GET",
@@ -2157,8 +2218,8 @@
                                 },
                                 {
                                     "key": "aboveTimeInForce",
-                                    "value": "1.0",
-                                    "description": "Required if `aboveType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT`",
+                                    "value": "GTC",
+                                    "description": "",
                                     "disabled": true
                                 },
                                 {
