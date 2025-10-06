@@ -1,5 +1,13 @@
 # Changelog
 
+## 25.0.0 - 2025-10-06
+
+### Changed (2)
+
+- Deleted parameter `limit`
+  - affected endpoints:
+    - `GET /eapi/v1/openOrders`
+
 ## 24.0.0 - 2025-10-01
 
 ### Added (1)

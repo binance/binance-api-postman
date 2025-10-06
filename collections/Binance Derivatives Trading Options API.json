@@ -669,7 +669,7 @@
                                 {
                                     "key": "orders",
                                     "value": "",
-                                    "description": "order list. Max 5 orders",
+                                    "description": "order list. Max 10 orders",
                                     "disabled": false
                                 },
                                 {
@@ -913,12 +913,6 @@
                                     "key": "endTime",
                                     "value": "1641782889000",
                                     "description": "End Time, e.g 1593512200000",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "limit",
-                                    "value": "100",
-                                    "description": "Number of result sets returned Default:100 Max:1000",
                                     "disabled": true
                                 },
                                 {
