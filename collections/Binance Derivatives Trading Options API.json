@@ -1052,7 +1052,7 @@
                                 {
                                     "key": "side",
                                     "value": "BUY",
-                                    "description": "BUY or SELL",
+                                    "description": "Buy/sell direction: SELL, BUY",
                                     "disabled": false
                                 },
                                 {
@@ -1915,30 +1915,6 @@
                                     "key": "legs",
                                     "value": "",
                                     "description": "Max 1 (only single leg supported), list of legs parameters in JSON; example: eapi/v1/block/order/create?orders=[{\"symbol\":\"BTC-210115-35000-C\", \"price\":\"100\",\"quantity\":\"0.0002\",\"side\":\"BUY\",\"type\":\"LIMIT\"}]",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "symbol",
-                                    "value": "symbol_example",
-                                    "description": "Option trading pair, e.g BTC-200730-9000-C",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "side",
-                                    "value": "BUY",
-                                    "description": "BUY or SELL",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "price",
-                                    "value": "1.0",
-                                    "description": "Order Price",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "quantity",
-                                    "value": "1.0",
-                                    "description": "Order Quantity",
                                     "disabled": false
                                 },
                                 {

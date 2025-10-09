@@ -1,5 +1,22 @@
 # Changelog
 
+## 26.0.0 - 2025-10-09
+
+### Changed (4)
+
+- Deleted parameter `price`
+  - affected endpoints:
+    - `POST /eapi/v1/block/order/create`
+- Deleted parameter `quantity`
+  - affected endpoints:
+    - `POST /eapi/v1/block/order/create`
+- Deleted parameter `side`
+  - affected endpoints:
+    - `POST /eapi/v1/block/order/create`
+- Deleted parameter `symbol`
+  - affected endpoints:
+    - `POST /eapi/v1/block/order/create`
+
 ## 25.0.0 - 2025-10-06
 
 ### Changed (2)
