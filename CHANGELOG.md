@@ -1,5 +1,13 @@
 # Changelog
 
+## 27.0.0 - 2025-10-27
+
+### Removed (3)
+
+- `DELETE /api/v3/userDataStream`
+- `POST /api/v3/userDataStream`
+- `PUT /api/v3/userDataStream`
+
 ## 26.0.0 - 2025-10-09
 
 ### Changed (4)
