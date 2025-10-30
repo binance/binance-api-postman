@@ -3457,6 +3457,12 @@
                                     "value": "500",
                                     "description": "Default: 500; Maximum: 1000.",
                                     "disabled": true
+                                },
+                                {
+                                    "key": "symbolStatus",
+                                    "value": "TRADING",
+                                    "description": "",
+                                    "disabled": true
                                 }
                             ]
                         }
@@ -3646,6 +3652,12 @@
                                     "value": "FULL",
                                     "description": "",
                                     "disabled": true
+                                },
+                                {
+                                    "key": "symbolStatus",
+                                    "value": "TRADING",
+                                    "description": "",
+                                    "disabled": true
                                 }
                             ]
                         }
@@ -3701,6 +3713,12 @@
                                     "value": "FULL",
                                     "description": "",
                                     "disabled": true
+                                },
+                                {
+                                    "key": "symbolStatus",
+                                    "value": "TRADING",
+                                    "description": "",
+                                    "disabled": true
                                 }
                             ]
                         }
@@ -3750,6 +3768,12 @@
                                     "value": "",
                                     "description": "List of symbols to query",
                                     "disabled": true
+                                },
+                                {
+                                    "key": "symbolStatus",
+                                    "value": "TRADING",
+                                    "description": "",
+                                    "disabled": true
                                 }
                             ]
                         }
@@ -3798,6 +3822,12 @@
                                     "key": "symbols",
                                     "value": "",
                                     "description": "List of symbols to query",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "symbolStatus",
+                                    "value": "TRADING",
+                                    "description": "",
                                     "disabled": true
                                 }
                             ]
@@ -3858,6 +3888,12 @@
                                 {
                                     "key": "type",
                                     "value": "FULL",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "symbolStatus",
+                                    "value": "TRADING",
                                     "description": "",
                                     "disabled": true
                                 }

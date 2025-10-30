@@ -1,5 +1,29 @@
 # Changelog
 
+## 28.0.0 - 2025-10-30
+
+### Added (8)
+
+- `GET /sapi/v1/bfusd/account`
+- `GET /sapi/v1/bfusd/history/rateHistory`
+- `GET /sapi/v1/bfusd/history/redemptionHistory`
+- `GET /sapi/v1/bfusd/history/rewardsHistory`
+- `GET /sapi/v1/bfusd/history/subscriptionHistory`
+- `GET /sapi/v1/bfusd/quota`
+- `POST /sapi/v1/bfusd/redeem`
+- `POST /sapi/v1/bfusd/subscribe`
+
+### Changed (1)
+
+- Added parameter `symbolStatus`
+  - affected endpoints:
+    - `GET /api/v3/depth`
+    - `GET /api/v3/ticker`
+    - `GET /api/v3/ticker/24hr`
+    - `GET /api/v3/ticker/bookTicker`
+    - `GET /api/v3/ticker/price`
+    - `GET /api/v3/ticker/tradingDay`
+
 ## 27.0.0 - 2025-10-27
 
 ### Removed (3)

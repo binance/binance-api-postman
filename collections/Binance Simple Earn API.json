@@ -108,6 +108,577 @@
     ],
     "item": [
         {
+            "name": "Bfusd",
+            "item": [
+                {
+                    "name": "Get BFUSD Account (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/bfusd/account",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "bfusd", "account"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than 60000 (ms)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get BFUSD Rate History (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/bfusd/history/rateHistory",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "bfusd", "history", "rateHistory"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "current",
+                                    "value": "1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "10",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than 60000 (ms)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get BFUSD Redemption History (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/bfusd/history/redemptionHistory",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "bfusd", "history", "redemptionHistory"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "current",
+                                    "value": "1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "10",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than 60000 (ms)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get BFUSD Rewards History (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/bfusd/history/rewardsHistory",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "bfusd", "history", "rewardsHistory"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "current",
+                                    "value": "1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "10",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than 60000 (ms)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get BFUSD subscription history(USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/bfusd/history/subscriptionHistory",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "bfusd", "history", "subscriptionHistory"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "asset",
+                                    "value": "asset_example",
+                                    "description": "USDC or USDT",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "current",
+                                    "value": "1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "10",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than 60000 (ms)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get BFUSD Quota Details (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/bfusd/quota",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "bfusd", "quota"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than 60000 (ms)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Redeem BFUSD(TRADE)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/bfusd/redeem",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "bfusd", "redeem"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "amount",
+                                    "value": "1.0",
+                                    "description": "Amount",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "s",
+                                    "description": "FAST or STANDARD, defaults to STANDARD",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than 60000 (ms)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Subscribe BFUSD(TRADE)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/bfusd/subscribe",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "bfusd", "subscribe"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "asset",
+                                    "value": "asset_example",
+                                    "description": "USDT or USDC (whichever is eligible)",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "amount",
+                                    "value": "1.0",
+                                    "description": "Amount",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than 60000 (ms)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
             "name": "Flexible-Locked",
             "item": [
                 {
@@ -146,7 +717,7 @@
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -226,19 +797,19 @@
                                 {
                                     "key": "current",
                                     "value": "1",
-                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
                                     "disabled": true
                                 },
                                 {
                                     "key": "size",
                                     "value": "10",
-                                    "description": "Default:10, Max:100",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
                                     "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -324,19 +895,19 @@
                                 {
                                     "key": "current",
                                     "value": "1",
-                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
                                     "disabled": true
                                 },
                                 {
                                     "key": "size",
                                     "value": "10",
-                                    "description": "Default:10, Max:100",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
                                     "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -428,19 +999,19 @@
                                 {
                                     "key": "current",
                                     "value": "1",
-                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
                                     "disabled": true
                                 },
                                 {
                                     "key": "size",
                                     "value": "10",
-                                    "description": "Default:10, Max:100",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
                                     "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -532,19 +1103,19 @@
                                 {
                                     "key": "current",
                                     "value": "1",
-                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
                                     "disabled": true
                                 },
                                 {
                                     "key": "size",
                                     "value": "10",
-                                    "description": "Default:10, Max:100",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
                                     "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -636,19 +1207,19 @@
                                 {
                                     "key": "current",
                                     "value": "1",
-                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
                                     "disabled": true
                                 },
                                 {
                                     "key": "size",
                                     "value": "10",
-                                    "description": "Default:10, Max:100",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
                                     "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -709,19 +1280,19 @@
                                 {
                                     "key": "current",
                                     "value": "1",
-                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
                                     "disabled": true
                                 },
                                 {
                                     "key": "size",
                                     "value": "10",
-                                    "description": "Default:10, Max:100",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
                                     "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -782,7 +1353,7 @@
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -849,19 +1420,19 @@
                                 {
                                     "key": "current",
                                     "value": "1",
-                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
                                     "disabled": true
                                 },
                                 {
                                     "key": "size",
                                     "value": "10",
-                                    "description": "Default:10, Max:100",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
                                     "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -940,7 +1511,7 @@
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -1007,7 +1578,7 @@
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -1086,7 +1657,7 @@
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -1159,7 +1730,7 @@
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -1251,19 +1822,19 @@
                                 {
                                     "key": "current",
                                     "value": "1",
-                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
                                     "disabled": true
                                 },
                                 {
                                     "key": "size",
                                     "value": "10",
-                                    "description": "Default:10, Max:100",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
                                     "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -1349,19 +1920,19 @@
                                 {
                                     "key": "current",
                                     "value": "1",
-                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
                                     "disabled": true
                                 },
                                 {
                                     "key": "size",
                                     "value": "10",
-                                    "description": "Default:10, Max:100",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
                                     "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -1447,19 +2018,19 @@
                                 {
                                     "key": "current",
                                     "value": "1",
-                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
                                     "disabled": true
                                 },
                                 {
                                     "key": "size",
                                     "value": "10",
-                                    "description": "Default:10, Max:100",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
                                     "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -1520,19 +2091,19 @@
                                 {
                                     "key": "current",
                                     "value": "1",
-                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
                                     "disabled": true
                                 },
                                 {
                                     "key": "size",
                                     "value": "10",
-                                    "description": "Default:10, Max:100",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
                                     "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -1593,7 +2164,7 @@
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -1666,19 +2237,19 @@
                                 {
                                     "key": "current",
                                     "value": "1",
-                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
                                     "disabled": true
                                 },
                                 {
                                     "key": "size",
                                     "value": "10",
-                                    "description": "Default:10, Max:100",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
                                     "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -1739,7 +2310,7 @@
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -1806,7 +2377,7 @@
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -1873,7 +2444,7 @@
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -1958,7 +2529,7 @@
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -2031,7 +2602,7 @@
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -2091,7 +2662,7 @@
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -2158,19 +2729,19 @@
                                 {
                                     "key": "current",
                                     "value": "1",
-                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
                                     "disabled": true
                                 },
                                 {
                                     "key": "size",
                                     "value": "10",
-                                    "description": "Default:10, Max:100",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
                                     "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -2237,19 +2808,19 @@
                                 {
                                     "key": "current",
                                     "value": "1",
-                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
                                     "disabled": true
                                 },
                                 {
                                     "key": "size",
                                     "value": "10",
-                                    "description": "Default:10, Max:100",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
                                     "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -2316,19 +2887,19 @@
                                 {
                                     "key": "current",
                                     "value": "1",
-                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
                                     "disabled": true
                                 },
                                 {
                                     "key": "size",
                                     "value": "10",
-                                    "description": "Default:10, Max:100",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
                                     "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -2401,19 +2972,19 @@
                                 {
                                     "key": "current",
                                     "value": "1",
-                                    "description": "Currently querying the page. Start from 1. Default:1",
+                                    "description": "Currently querying page. Starts from 1. Default: 1",
                                     "disabled": true
                                 },
                                 {
                                     "key": "size",
                                     "value": "10",
-                                    "description": "Default:10, Max:100",
+                                    "description": "Number of results per page. Default: 10, Max: 100",
                                     "disabled": true
                                 },
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -2468,7 +3039,7 @@
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -2535,7 +3106,7 @@
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
@@ -2602,7 +3173,7 @@
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
-                                    "description": "",
+                                    "description": "The value cannot be greater than 60000 (ms)",
                                     "disabled": true
                                 },
                                 {
