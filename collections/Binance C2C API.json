@@ -144,6 +144,12 @@
                             "variable": [],
                             "query": [
                                 {
+                                    "key": "tradeType",
+                                    "value": "tradeType_example",
+                                    "description": "BUY, SELL",
+                                    "disabled": true
+                                },
+                                {
                                     "key": "startTime",
                                     "value": "1623319461670",
                                     "description": "",
@@ -159,6 +165,12 @@
                                     "key": "page",
                                     "value": "1",
                                     "description": "Default 1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "rows",
+                                    "value": "100",
+                                    "description": "default 100, max 100",
                                     "disabled": true
                                 },
                                 {

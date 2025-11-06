@@ -1,5 +1,16 @@
 # Changelog
 
+## 29.0.0 - 2025-11-06
+
+### Changed (2)
+
+- Added parameter `rows`
+  - affected endpoints:
+    - `GET /sapi/v1/c2c/orderMatch/listUserOrderHistory`
+- Added parameter `tradeType`
+  - affected endpoints:
+    - `GET /sapi/v1/c2c/orderMatch/listUserOrderHistory`
+
 ## 28.0.0 - 2025-10-30
 
 ### Added (8)
