@@ -1452,6 +1452,461 @@
                     }
                 },
                 {
+                    "name": "Cancel All Algo Open Orders (TRADE)",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/fapi/v1/algoOpenOrders",
+                            "host": ["{{url}}"],
+                            "path": ["fapi", "v1", "algoOpenOrders"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "symbol_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel Algo Order (TRADE)",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/fapi/v1/algoOrder",
+                            "host": ["{{url}}"],
+                            "path": ["fapi", "v1", "algoOrder"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "algoid",
+                                    "value": "789",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "clientalgoid",
+                                    "value": "clientalgoid_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "New Algo Order(TRADE)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/fapi/v1/algoOrder",
+                            "host": ["{{url}}"],
+                            "path": ["fapi", "v1", "algoOrder"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "algoType",
+                                    "value": "algoType_example",
+                                    "description": "Only support `CONDITIONAL`",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "symbol",
+                                    "value": "symbol_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "BUY",
+                                    "description": "`SELL`, `BUY`",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "positionSide",
+                                    "value": "BOTH",
+                                    "description": "Default `BOTH` for One-way Mode ; `LONG` or `SHORT` for Hedge Mode. It must be sent with Hedge Mode.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "type",
+                                    "value": "type_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "timeInForce",
+                                    "value": "GTC",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "quantity",
+                                    "value": "1.0",
+                                    "description": "Cannot be sent with `closePosition`=`true`(Close-All)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "1.0",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "triggerPrice",
+                                    "value": "1.0",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "workingType",
+                                    "value": "MARK_PRICE",
+                                    "description": "stopPrice triggered by: \"MARK_PRICE\", \"CONTRACT_PRICE\". Default \"CONTRACT_PRICE\"",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "priceMatch",
+                                    "value": "NONE",
+                                    "description": "only avaliable for `LIMIT`/`STOP`/`TAKE_PROFIT` order; can be set to `OPPONENT`/ `OPPONENT_5`/ `OPPONENT_10`/ `OPPONENT_20`: /`QUEUE`/ `QUEUE_5`/ `QUEUE_10`/ `QUEUE_20`; Can't be passed together with `price`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "closePosition",
+                                    "value": "closePosition_example",
+                                    "description": "`true`, `false`；Close-All，used with `STOP_MARKET` or `TAKE_PROFIT_MARKET`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "priceProtect",
+                                    "value": "false",
+                                    "description": "\"TRUE\" or \"FALSE\", default \"FALSE\". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "reduceOnly",
+                                    "value": "false",
+                                    "description": "\"true\" or \"false\". default \"false\". Cannot be sent in Hedge Mode; cannot be sent with `closePosition`=`true`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "activationPrice",
+                                    "value": "1.0",
+                                    "description": "Used with `TRAILING_STOP_MARKET` orders, default as the latest price(supporting different `workingType`)",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "callbackRate",
+                                    "value": "1.0",
+                                    "description": "Used with `TRAILING_STOP_MARKET` orders, min 0.1, max 10 where 1 for 1%",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "clientAlgoId",
+                                    "value": "1",
+                                    "description": "A unique id among open orders. Automatically generated if not sent. Can only be string following the rule: `^[\\.A-Z\\:/a-z0-9_-]{1,36}$`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "selfTradePreventionMode",
+                                    "value": "EXPIRE_TAKER",
+                                    "description": "`EXPIRE_TAKER`:expire taker order when STP triggers/ `EXPIRE_MAKER`:expire taker order when STP triggers/ `EXPIRE_BOTH`:expire both orders when STP triggers; default `NONE`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "goodTillDate",
+                                    "value": "789",
+                                    "description": "order cancel time for timeInForce `GTD`, mandatory when `timeInforce` set to `GTD`; order the timestamp only retains second-level precision, ms part will be ignored; The goodTillDate timestamp must be greater than the current time plus 600 seconds and smaller than 253402300799000",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query Algo Order (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/fapi/v1/algoOrder",
+                            "host": ["{{url}}"],
+                            "path": ["fapi", "v1", "algoOrder"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "algoId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "clientAlgoId",
+                                    "value": "1",
+                                    "description": "A unique id among open orders. Automatically generated if not sent. Can only be string following the rule: `^[\\.A-Z\\:/a-z0-9_-]{1,36}$`",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Query All Algo Orders (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/fapi/v1/allAlgoOrders",
+                            "host": ["{{url}}"],
+                            "path": ["fapi", "v1", "allAlgoOrders"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "symbol_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "algoId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1623319461670",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1641782889000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page",
+                                    "value": "789",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "100",
+                                    "description": "Default 100; max 1000",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "Cancel All Open Orders (TRADE)",
                     "request": {
                         "method": "DELETE",
@@ -2140,6 +2595,79 @@
                     }
                 },
                 {
+                    "name": "Current All Algo Open Orders (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/fapi/v1/openAlgoOrders",
+                            "host": ["{{url}}"],
+                            "path": ["fapi", "v1", "openAlgoOrders"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "algoType",
+                                    "value": "algoType_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "symbol",
+                                    "value": "symbol_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "algoId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "Query Current Open Order (USER_DATA)",
                     "request": {
                         "method": "GET",
@@ -2581,7 +3109,7 @@
                                 {
                                     "key": "selfTradePreventionMode",
                                     "value": "EXPIRE_TAKER",
-                                    "description": "`NONE`:No STP / `EXPIRE_TAKER`:expire taker order when STP triggers/ `EXPIRE_MAKER`:expire taker order when STP triggers/ `EXPIRE_BOTH`:expire both orders when STP triggers; default `NONE`",
+                                    "description": "`EXPIRE_TAKER`:expire taker order when STP triggers/ `EXPIRE_MAKER`:expire taker order when STP triggers/ `EXPIRE_BOTH`:expire both orders when STP triggers; default `NONE`",
                                     "disabled": true
                                 },
                                 {
@@ -2823,7 +3351,7 @@
                                 {
                                     "key": "selfTradePreventionMode",
                                     "value": "EXPIRE_TAKER",
-                                    "description": "`NONE`:No STP / `EXPIRE_TAKER`:expire taker order when STP triggers/ `EXPIRE_MAKER`:expire taker order when STP triggers/ `EXPIRE_BOTH`:expire both orders when STP triggers; default `NONE`",
+                                    "description": "`EXPIRE_TAKER`:expire taker order when STP triggers/ `EXPIRE_MAKER`:expire taker order when STP triggers/ `EXPIRE_BOTH`:expire both orders when STP triggers; default `NONE`",
                                     "disabled": true
                                 },
                                 {
@@ -4842,7 +5370,7 @@
                     }
                 },
                 {
-                    "name": "Symbol Price Ticker(Deprecated)",
+                    "name": "Symbol Price Ticker",
                     "request": {
                         "method": "GET",
                         "header": [

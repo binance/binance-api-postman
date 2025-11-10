@@ -1,5 +1,44 @@
 # Changelog
 
+## 30.0.0 - 2025-11-10
+
+### Added (8)
+
+- `DELETE /fapi/v1/algoOpenOrders`
+- `DELETE /fapi/v1/algoOrder`
+- `GET /fapi/v1/algoOrder`
+- `GET /fapi/v1/allAlgoOrders`
+- `GET /fapi/v1/openAlgoOrders`
+- `POST /fapi/v1/algoOrder`
+- `GET /sapi/v1/fiat/get-order-detail`
+- `GET /sapi/v2/fiat/withdraw`
+
+### Changed (4)
+
+- Added parameter `endTimestamp`
+  - affected endpoints:
+    - `GET /sapi/v1/c2c/orderMatch/listUserOrderHistory`
+- Added parameter `startTimestamp`
+  - affected endpoints:
+    - `GET /sapi/v1/c2c/orderMatch/listUserOrderHistory`
+- Deleted parameter `endTime`
+  - affected endpoints:
+    - `GET /sapi/v1/c2c/orderMatch/listUserOrderHistory`
+- Deleted parameter `startTime`
+  - affected endpoints:
+    - `GET /sapi/v1/c2c/orderMatch/listUserOrderHistory`
+
+### Removed (8)
+
+- `DELETE /sapi/v1/userDataStream/isolated`
+- `DELETE /sapi/v1/userDataStream`
+- `POST /sapi/v1/userDataStream/isolated`
+- `POST /sapi/v1/userDataStream`
+- `PUT /sapi/v1/userDataStream/isolated`
+- `PUT /sapi/v1/userDataStream`
+- `POST /sapi/v1/portfolio/mint`
+- `POST /sapi/v1/portfolio/redeem`
+
 ## 29.0.0 - 2025-11-06
 
 ### Changed (2)

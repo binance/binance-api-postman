@@ -150,14 +150,14 @@
                                     "disabled": true
                                 },
                                 {
-                                    "key": "startTime",
-                                    "value": "1623319461670",
+                                    "key": "startTimestamp",
+                                    "value": "789",
                                     "description": "",
                                     "disabled": true
                                 },
                                 {
-                                    "key": "endTime",
-                                    "value": "1641782889000",
+                                    "key": "endTimestamp",
+                                    "value": "789",
                                     "description": "",
                                     "disabled": true
                                 },
