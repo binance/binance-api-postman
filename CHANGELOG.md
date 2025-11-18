@@ -1,5 +1,16 @@
 # Changelog
 
+## 31.0.0 - 2025-11-18
+
+### Changed (1)
+
+- Renamed `Symbol Price Ticker` to `Index Price Ticker` in `Derivatives Trading Options API` collection.
+
+### Removed (2)
+
+- `GET /sapi/v1/fiat/get-order-detail`
+- `GET /sapi/v2/fiat/withdraw`
+
 ## 30.0.0 - 2025-11-10
 
 ### Added (8)

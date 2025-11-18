@@ -2570,7 +2570,7 @@
                     }
                 },
                 {
-                    "name": "Symbol Price Ticker",
+                    "name": "Index Price Ticker",
                     "request": {
                         "method": "GET",
                         "header": [
