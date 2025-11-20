@@ -5284,6 +5284,49 @@
                     }
                 },
                 {
+                    "name": "ADL Risk",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/fapi/v1/symbolAdlRisk",
+                            "host": ["{{url}}"],
+                            "path": ["fapi", "v1", "symbolAdlRisk"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "symbol_example",
+                                    "description": "",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "24hr Ticker Price Change Statistics",
                     "request": {
                         "method": "GET",

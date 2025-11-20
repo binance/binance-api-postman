@@ -201,7 +201,7 @@
                                 {
                                     "key": "asset",
                                     "value": "asset_example",
-                                    "description": "`LDUSDT` only",
+                                    "description": "`LDUSDT` and `RWUSD`",
                                     "disabled": false
                                 },
                                 {
@@ -445,7 +445,7 @@
                                 {
                                     "key": "asset",
                                     "value": "asset_example",
-                                    "description": "`LDUSDT` only",
+                                    "description": "`LDUSDT` and `RWUSD`",
                                     "disabled": false
                                 },
                                 {
@@ -477,7 +477,7 @@
                     }
                 },
                 {
-                    "name": "Transfer LDUSDT for Portfolio Margin(TRADE)",
+                    "name": "Transfer LDUSDT/RWUSD for Portfolio Margin(TRADE)",
                     "request": {
                         "method": "POST",
                         "header": [
@@ -512,7 +512,7 @@
                                 {
                                     "key": "asset",
                                     "value": "asset_example",
-                                    "description": "`LDUSDT` only",
+                                    "description": "`LDUSDT` and `RWUSD`",
                                     "disabled": false
                                 },
                                 {

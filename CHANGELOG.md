@@ -1,5 +1,11 @@
 # Changelog
 
+## 32.0.0 - 2025-11-20
+
+### Added (1)
+
+- `GET /fapi/v1/symbolAdlRisk`
+
 ## 31.0.0 - 2025-11-18
 
 ### Changed (1)
