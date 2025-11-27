@@ -5284,6 +5284,55 @@
                     }
                 },
                 {
+                    "name": "RPI Order Book",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/fapi/v1/rpiDepth",
+                            "host": ["{{url}}"],
+                            "path": ["fapi", "v1", "rpiDepth"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "symbol_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "limit",
+                                    "value": "100",
+                                    "description": "Default 100; max 1000",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "ADL Risk",
                     "request": {
                         "method": "GET",

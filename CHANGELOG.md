@@ -1,5 +1,11 @@
 # Changelog
 
+## 33.0.0 - 2025-11-27
+
+### Added (1)
+
+- `GET /fapi/v1/rpiDepth`
+
 ## 32.0.0 - 2025-11-20
 
 ### Added (1)
