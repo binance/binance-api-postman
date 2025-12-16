@@ -14,36 +14,57 @@
             "script": {
                 "exec": [
                     "const ts = Date.now();",
-                    "let paramsObject = {};",
+                    "let queryParamsObject = {};",
+                    "let bodyParamsObject = {};",
                     "const postmanEnvironment = pm.environment.get('environment');",
                     "const api_key = pm.environment.get('api-key');",
                     "const api_secret = pm.environment.get('api-secret');",
                     "const parameters = pm.request.url.query;",
+                    "const body = pm.request.body;",
                     "",
                     "// set host based on env",
                     "pm.request.url.host = [pm.variables.get('prod_url')];",
                     "",
-                    "// build paramsObject (skip any existing signature)",
+                    "// Collect query params",
                     "parameters.each((param) => {",
                     "    if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
-                    "        paramsObject[param.key] = param.value;",
+                    "        queryParamsObject[param.key] = param.value;",
                     "    }",
                     "});",
                     "",
                     "// add timestamp",
                     "Object.assign(paramsObject, { timestamp: ts });",
                     "",
+                    "// Collect body params if urlencoded",
+                    "let hasUrlencodedBodyParams = false;",
+                    "",
+                    "if (body) {",
+                    "    const contentTypeHeader = pm.request.headers.get('Content-Type') || pm.request.headers.get('content-type') || '';",
+                    "    const isFormUrlencoded = contentTypeHeader.includes('application/x-www-form-urlencoded') || body.mode === 'urlencoded';",
+                    "",
+                    "    if (isFormUrlencoded && body.urlencoded) {",
+                    "        body.urlencoded.each((param) => {",
+                    "            if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+                    "                bodyParamsObject[param.key] = param.value;",
+                    "                hasUrlencodedBodyParams = true;",
+                    "            }",
+                    "        });",
+                    "    }",
+                    "}",
+                    "",
                     "// set api key",
                     "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
                     "",
                     "// only sign if a signature param was declared and we have a secret",
                     "if (parameters.has('signature') && api_secret) {",
-                    "    // canonical query string",
-                    "    const queryString = buildQueryString(paramsObject);",
+                    "    // canonical query strings",
+                    "    const queryStringForSign = buildQueryString(queryParamsObject);",
+                    "    const bodyStringForSign = buildQueryString(bodyParamsObject);",
+                    "    const totalParams = queryStringForSign + bodyStringForSign;",
                     "",
                     "    const encoder = new TextEncoder();",
                     "    const keyData = encoder.encode(api_secret);",
-                    "    const msgData = encoder.encode(queryString);",
+                    "    const msgData = encoder.encode(totalParams);",
                     "",
                     "    pm.request.url.query.clear();",
                     "",
@@ -55,7 +76,9 @@
                     "        .join('');",
                     "",
                     "    // update request",
-                    "    pm.request.url.query = `${queryString}&signature=${signature}`;",
+                    "    const finalQueryParams = Object.assign({}, queryParamsObject, { signature });",
+                    "    const finalQueryString = buildQueryString(finalQueryParams);",
+                    "    pm.request.url.query = finalQueryString;",
                     "}",
                     "",
                     "function buildQueryString(params) {",
@@ -86,20 +109,22 @@
                     "    else pm.request.headers.add({ key, value });",
                     "}",
                     "",
-                    "function is_disabled(str) {",
-                    "    return str === true;",
+                    "function is_disabled(val) {",
+                    "    return val === true;",
                     "}",
                     "",
                     "function is_empty(str) {",
-                    "    return (",
-                    "        typeof str === 'undefined' ||",
-                    "        !str ||",
-                    "        str.length === 0 ||",
-                    "        str === '' ||",
-                    "        !/[^\\\\s]/.test(str) ||",
-                    "        /^\\\\s*$/.test(str) ||",
-                    "        str.replace(/\\\\s/g, '') === ''",
-                    "    );",
+                    "    if (str === null || str === undefined) return true;",
+                    "    if (typeof str === 'string') {",
+                    "        return (",
+                    "            !str ||",
+                    "            str.length === 0 ||",
+                    "            !/[^\\\\s]/.test(str) ||",
+                    "            /^\\\\s*$/.test(str) ||",
+                    "            str.replace(/\\\\s/g, '') === ''",
+                    "        );",
+                    "    }",
+                    "    return false;",
                     "}"
                 ],
                 "type": "text/javascript"
@@ -129,13 +154,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/bfusd/account",
@@ -184,13 +204,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/bfusd/history/rateHistory",
@@ -263,13 +278,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/bfusd/history/redemptionHistory",
@@ -342,13 +352,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/bfusd/history/rewardsHistory",
@@ -421,13 +426,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/bfusd/history/subscriptionHistory",
@@ -506,13 +506,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/bfusd/quota",
@@ -561,13 +556,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/bfusd/redeem",
@@ -628,13 +618,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/bfusd/subscribe",
@@ -700,13 +685,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/account",
@@ -755,13 +735,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/collateralRecord",
@@ -847,13 +822,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/rateHistory",
@@ -945,13 +915,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/redemptionRecord",
@@ -1049,13 +1014,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/rewardsRecord",
@@ -1153,13 +1113,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/subscriptionRecord",
@@ -1257,13 +1212,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/flexible/list",
@@ -1330,13 +1280,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/flexible/personalLeftQuota",
@@ -1391,13 +1336,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/flexible/position",
@@ -1470,13 +1410,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/flexible/redeem",
@@ -1549,13 +1484,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/flexible/setAutoSubscribe",
@@ -1616,13 +1546,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/flexible/subscribe",
@@ -1695,13 +1620,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/flexible/subscriptionPreview",
@@ -1768,13 +1688,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/locked/history/redemptionRecord",
@@ -1872,13 +1787,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/locked/history/rewardsRecord",
@@ -1970,13 +1880,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/locked/history/subscriptionRecord",
@@ -2068,13 +1973,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/locked/list",
@@ -2141,13 +2041,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/locked/personalLeftQuota",
@@ -2202,13 +2097,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/locked/position",
@@ -2287,13 +2177,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/locked/redeem",
@@ -2348,13 +2233,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/locked/setAutoSubscribe",
@@ -2415,13 +2295,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/locked/setRedeemOption",
@@ -2482,13 +2357,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/locked/subscribe",
@@ -2522,8 +2392,8 @@
                                 },
                                 {
                                     "key": "redeemTo",
-                                    "value": "",
-                                    "description": "`SPOT`,`FLEXIBLE`, default `FLEXIBLE`",
+                                    "value": "SPOT",
+                                    "description": "`SPOT`,`FLEXIBLE`, default `SPOT`",
                                     "disabled": true
                                 },
                                 {
@@ -2567,13 +2437,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/simple-earn/locked/subscriptionPreview",
@@ -2645,13 +2510,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/rwusd/account",
@@ -2700,13 +2560,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/rwusd/history/rateHistory",
@@ -2779,13 +2634,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/rwusd/history/redemptionHistory",
@@ -2858,13 +2708,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/rwusd/history/rewardsHistory",
@@ -2937,13 +2782,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/rwusd/history/subscriptionHistory",
@@ -3022,13 +2862,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/rwusd/quota",
@@ -3077,13 +2912,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/rwusd/redeem",
@@ -3144,13 +2974,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/rwusd/subscribe",

@@ -1,5 +1,62 @@
 # Changelog
 
+## 34.0.0 - 2025-12-16
+
+### Added (7)
+
+- `GET /fapi/v1/tradingSchedule`
+- `POST /fapi/v1/stock/contract`
+- `POST /api/v3/orderList/opo`
+- `POST /api/v3/orderList/opoco`
+- `GET /sapi/v1/fiat/get-order-detail`
+- `POST /sapi/v1/fiat/deposit`
+- `POST /sapi/v2/fiat/withdraw`
+
+### Changed (8)
+
+- Deleted parameter `activationPrice`
+  - affected endpoints:
+    - `POST /fapi/v1/order`
+- Deleted parameter `callbackRate`
+  - affected endpoints:
+    - `POST /fapi/v1/order`
+- Deleted parameter `closePosition`
+  - affected endpoints:
+    - `POST /fapi/v1/order`
+- Deleted parameter `priceProtect`
+  - affected endpoints:
+    - `POST /fapi/v1/order`
+- Deleted parameter `stopPrice`
+  - affected endpoints:
+    - `POST /fapi/v1/order`
+- Deleted parameter `workingType`
+  - affected endpoints:
+    - `POST /fapi/v1/order`
+- Modified parameter `batchOrders`:
+  - items: property `activationPrice` deleted
+  - items: property `priceProtect` deleted
+  - items: property `stopPrice` deleted
+  - items: property `workingType` deleted
+  - items: property `callbackRate` deleted
+  - items: item property `activationPrice` deleted
+  - items: item property `priceProtect` deleted
+  - items: item property `stopPrice` deleted
+  - items: item property `workingType` deleted
+  - items: item property `callbackRate` deleted
+  - affected endpoints:
+    - `POST /fapi/v1/batchOrders`
+- Modified parameter `batchOrders`:
+  - items.`orderId`: type `integer` → `string`
+  - items.`price`: type `number` → `string`
+  - items.`quantity`: type `number` → `string`
+  - items.`recvWindow`: type `integer` → `string`
+  - items.`orderId`: type `integer` → `string`
+  - items.`price`: type `number` → `string`
+  - items.`quantity`: type `number` → `string`
+  - items.`recvWindow`: type `integer` → `string`
+  - affected endpoints:
+    - `PUT /fapi/v1/batchOrders`
+
 ## 33.0.0 - 2025-11-27
 
 ### Added (1)

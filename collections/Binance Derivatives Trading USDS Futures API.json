@@ -14,36 +14,57 @@
             "script": {
                 "exec": [
                     "const ts = Date.now();",
-                    "let paramsObject = {};",
+                    "let queryParamsObject = {};",
+                    "let bodyParamsObject = {};",
                     "const postmanEnvironment = pm.environment.get('environment');",
                     "const api_key = pm.environment.get('api-key');",
                     "const api_secret = pm.environment.get('api-secret');",
                     "const parameters = pm.request.url.query;",
+                    "const body = pm.request.body;",
                     "",
                     "// set host based on env",
                     "pm.request.url.host = postmanEnvironment === 'production' ? [pm.variables.get('prod_url')] : [pm.variables.get('testnet_url')];",
                     "",
-                    "// build paramsObject (skip any existing signature)",
+                    "// Collect query params",
                     "parameters.each((param) => {",
                     "    if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
-                    "        paramsObject[param.key] = param.value;",
+                    "        queryParamsObject[param.key] = param.value;",
                     "    }",
                     "});",
                     "",
                     "// add timestamp",
                     "Object.assign(paramsObject, { timestamp: ts });",
                     "",
+                    "// Collect body params if urlencoded",
+                    "let hasUrlencodedBodyParams = false;",
+                    "",
+                    "if (body) {",
+                    "    const contentTypeHeader = pm.request.headers.get('Content-Type') || pm.request.headers.get('content-type') || '';",
+                    "    const isFormUrlencoded = contentTypeHeader.includes('application/x-www-form-urlencoded') || body.mode === 'urlencoded';",
+                    "",
+                    "    if (isFormUrlencoded && body.urlencoded) {",
+                    "        body.urlencoded.each((param) => {",
+                    "            if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+                    "                bodyParamsObject[param.key] = param.value;",
+                    "                hasUrlencodedBodyParams = true;",
+                    "            }",
+                    "        });",
+                    "    }",
+                    "}",
+                    "",
                     "// set api key",
                     "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
                     "",
                     "// only sign if a signature param was declared and we have a secret",
                     "if (parameters.has('signature') && api_secret) {",
-                    "    // canonical query string",
-                    "    const queryString = buildQueryString(paramsObject);",
+                    "    // canonical query strings",
+                    "    const queryStringForSign = buildQueryString(queryParamsObject);",
+                    "    const bodyStringForSign = buildQueryString(bodyParamsObject);",
+                    "    const totalParams = queryStringForSign + bodyStringForSign;",
                     "",
                     "    const encoder = new TextEncoder();",
                     "    const keyData = encoder.encode(api_secret);",
-                    "    const msgData = encoder.encode(queryString);",
+                    "    const msgData = encoder.encode(totalParams);",
                     "",
                     "    pm.request.url.query.clear();",
                     "",
@@ -55,7 +76,9 @@
                     "        .join('');",
                     "",
                     "    // update request",
-                    "    pm.request.url.query = `${queryString}&signature=${signature}`;",
+                    "    const finalQueryParams = Object.assign({}, queryParamsObject, { signature });",
+                    "    const finalQueryString = buildQueryString(finalQueryParams);",
+                    "    pm.request.url.query = finalQueryString;",
                     "}",
                     "",
                     "function buildQueryString(params) {",
@@ -86,20 +109,22 @@
                     "    else pm.request.headers.add({ key, value });",
                     "}",
                     "",
-                    "function is_disabled(str) {",
-                    "    return str === true;",
+                    "function is_disabled(val) {",
+                    "    return val === true;",
                     "}",
                     "",
                     "function is_empty(str) {",
-                    "    return (",
-                    "        typeof str === 'undefined' ||",
-                    "        !str ||",
-                    "        str.length === 0 ||",
-                    "        str === '' ||",
-                    "        !/[^\\\\s]/.test(str) ||",
-                    "        /^\\\\s*$/.test(str) ||",
-                    "        str.replace(/\\\\s/g, '') === ''",
-                    "    );",
+                    "    if (str === null || str === undefined) return true;",
+                    "    if (typeof str === 'string') {",
+                    "        return (",
+                    "            !str ||",
+                    "            str.length === 0 ||",
+                    "            !/[^\\\\s]/.test(str) ||",
+                    "            /^\\\\s*$/.test(str) ||",
+                    "            str.replace(/\\\\s/g, '') === ''",
+                    "        );",
+                    "    }",
+                    "    return false;",
                     "}"
                 ],
                 "type": "text/javascript"
@@ -129,13 +154,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/accountConfig",
@@ -184,13 +204,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/apiTradingStatus",
@@ -245,13 +260,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/commissionRate",
@@ -306,13 +316,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/feeBurn",
@@ -361,13 +366,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/feeBurn",
@@ -422,13 +422,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/income",
@@ -513,13 +508,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/income/asyn",
@@ -580,13 +570,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/income/asyn/id",
@@ -641,13 +626,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/leverageBracket",
@@ -702,13 +682,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/multiAssetsMargin",
@@ -757,13 +732,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/order/asyn",
@@ -824,13 +794,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/order/asyn/id",
@@ -885,13 +850,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/positionSide/dual",
@@ -940,13 +900,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/rateLimit/order",
@@ -995,13 +950,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/symbolConfig",
@@ -1056,13 +1006,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/trade/asyn",
@@ -1123,13 +1068,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/trade/asyn/id",
@@ -1184,13 +1124,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v2/account",
@@ -1239,13 +1174,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v2/balance",
@@ -1294,13 +1224,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v3/account",
@@ -1349,13 +1274,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v3/balance",
@@ -1409,13 +1329,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/adlQuantile",
@@ -1470,13 +1385,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/algoOpenOrders",
@@ -1531,13 +1441,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/algoOrder",
@@ -1598,13 +1503,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/algoOrder",
@@ -1651,7 +1551,7 @@
                                 {
                                     "key": "quantity",
                                     "value": "1.0",
-                                    "description": "Cannot be sent with `closePosition`=`true`(Close-All)",
+                                    "description": "",
                                     "disabled": true
                                 },
                                 {
@@ -1693,7 +1593,7 @@
                                 {
                                     "key": "reduceOnly",
                                     "value": "false",
-                                    "description": "\"true\" or \"false\". default \"false\". Cannot be sent in Hedge Mode; cannot be sent with `closePosition`=`true`",
+                                    "description": "\"true\" or \"false\". default \"false\". Cannot be sent in Hedge Mode",
                                     "disabled": true
                                 },
                                 {
@@ -1705,7 +1605,7 @@
                                 {
                                     "key": "callbackRate",
                                     "value": "1.0",
-                                    "description": "Used with `TRAILING_STOP_MARKET` orders, min 0.1, max 10 where 1 for 1%",
+                                    "description": "Used with `TRAILING_STOP_MARKET` orders, min 0.1, max 5 where 1 for 1%",
                                     "disabled": true
                                 },
                                 {
@@ -1767,13 +1667,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/algoOrder",
@@ -1834,13 +1729,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/allAlgoOrders",
@@ -1925,13 +1815,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/allOpenOrders",
@@ -1986,13 +1871,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/allOrders",
@@ -2071,13 +1951,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/batchOrders",
@@ -2144,13 +2019,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/batchOrders",
@@ -2205,13 +2075,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/batchOrders",
@@ -2266,13 +2131,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/countdownCancelAll",
@@ -2333,13 +2193,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/forceOrders",
@@ -2418,13 +2273,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/leverage",
@@ -2485,13 +2335,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/marginType",
@@ -2552,13 +2397,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/multiAssetsMargin",
@@ -2613,13 +2453,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/openAlgoOrders",
@@ -2686,13 +2521,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/openOrder",
@@ -2759,13 +2589,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/openOrders",
@@ -2820,13 +2645,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/order",
@@ -2893,13 +2713,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/order",
@@ -2990,13 +2805,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/order",
@@ -3037,13 +2847,13 @@
                                 {
                                     "key": "quantity",
                                     "value": "1.0",
-                                    "description": "Cannot be sent with `closePosition`=`true`(Close-All)",
+                                    "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "reduceOnly",
                                     "value": "false",
-                                    "description": "\"true\" or \"false\". default \"false\". Cannot be sent in Hedge Mode; cannot be sent with `closePosition`=`true`",
+                                    "description": "\"true\" or \"false\". default \"false\". Cannot be sent in Hedge Mode",
                                     "disabled": true
                                 },
                                 {
@@ -3056,42 +2866,6 @@
                                     "key": "newClientOrderId",
                                     "value": "1",
                                     "description": "A unique id among open orders. Automatically generated if not sent. Can only be string following the rule: `^[\\.A-Z\\:/a-z0-9_-]{1,36}$`",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "stopPrice",
-                                    "value": "1.0",
-                                    "description": "Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "closePosition",
-                                    "value": "closePosition_example",
-                                    "description": "`true`, `false`；Close-All，used with `STOP_MARKET` or `TAKE_PROFIT_MARKET`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "activationPrice",
-                                    "value": "1.0",
-                                    "description": "Used with `TRAILING_STOP_MARKET` orders, default as the latest price(supporting different `workingType`)",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "callbackRate",
-                                    "value": "1.0",
-                                    "description": "Used with `TRAILING_STOP_MARKET` orders, min 0.1, max 10 where 1 for 1%",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "workingType",
-                                    "value": "MARK_PRICE",
-                                    "description": "stopPrice triggered by: \"MARK_PRICE\", \"CONTRACT_PRICE\". Default \"CONTRACT_PRICE\"",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "priceProtect",
-                                    "value": "false",
-                                    "description": "\"TRUE\" or \"FALSE\", default \"FALSE\". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders.",
                                     "disabled": true
                                 },
                                 {
@@ -3159,13 +2933,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/order",
@@ -3232,13 +3001,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/order/test",
@@ -3279,13 +3043,13 @@
                                 {
                                     "key": "quantity",
                                     "value": "1.0",
-                                    "description": "Cannot be sent with `closePosition`=`true`(Close-All)",
+                                    "description": "",
                                     "disabled": true
                                 },
                                 {
                                     "key": "reduceOnly",
                                     "value": "false",
-                                    "description": "\"true\" or \"false\". default \"false\". Cannot be sent in Hedge Mode; cannot be sent with `closePosition`=`true`",
+                                    "description": "\"true\" or \"false\". default \"false\". Cannot be sent in Hedge Mode",
                                     "disabled": true
                                 },
                                 {
@@ -3321,7 +3085,7 @@
                                 {
                                     "key": "callbackRate",
                                     "value": "1.0",
-                                    "description": "Used with `TRAILING_STOP_MARKET` orders, min 0.1, max 10 where 1 for 1%",
+                                    "description": "Used with `TRAILING_STOP_MARKET` orders, min 0.1, max 5 where 1 for 1%",
                                     "disabled": true
                                 },
                                 {
@@ -3401,13 +3165,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/orderAmendment",
@@ -3492,13 +3251,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/positionMargin",
@@ -3571,13 +3325,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/positionMargin/history",
@@ -3656,13 +3405,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/positionSide/dual",
@@ -3676,6 +3420,56 @@
                                     "description": "\"true\": Hedge Mode; \"false\": One-way Mode",
                                     "disabled": false
                                 },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Futures TradFi Perps Contract(USER_DATA)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/fapi/v1/stock/contract",
+                            "host": ["{{url}}"],
+                            "path": ["fapi", "v1", "stock", "contract"],
+                            "variable": [],
+                            "query": [
                                 {
                                     "key": "recvWindow",
                                     "value": "5000",
@@ -3717,13 +3511,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/userTrades",
@@ -3808,13 +3597,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v2/positionRisk",
@@ -3869,13 +3653,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v3/positionRisk",
@@ -3935,13 +3714,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/convert/acceptQuote",
@@ -3996,13 +3770,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/convert/exchangeInfo",
@@ -4045,13 +3814,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/convert/getQuote",
@@ -4130,13 +3894,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/convert/orderStatus",
@@ -4196,13 +3955,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/pmAccountInfo",
@@ -4256,13 +4010,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/listenKey",
@@ -4292,13 +4041,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/listenKey",
@@ -4328,13 +4072,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/listenKey",
@@ -4369,13 +4108,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/aggTrades",
@@ -4436,13 +4170,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/assetIndex",
@@ -4479,13 +4208,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/constituents",
@@ -4522,13 +4246,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/continuousKlines",
@@ -4595,13 +4314,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/depth",
@@ -4644,13 +4358,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/exchangeInfo",
@@ -4680,13 +4389,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/fundingInfo",
@@ -4716,13 +4420,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/fundingRate",
@@ -4777,13 +4476,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/historicalTrades",
@@ -4832,13 +4526,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/indexInfo",
@@ -4875,13 +4564,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/indexPriceKlines",
@@ -4942,13 +4626,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/insuranceBalance",
@@ -4985,13 +4664,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/klines",
@@ -5052,13 +4726,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/markPriceKlines",
@@ -5119,13 +4788,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/openInterest",
@@ -5156,13 +4820,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/ping",
@@ -5192,13 +4851,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/premiumIndex",
@@ -5235,13 +4889,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/premiumIndexKlines",
@@ -5302,13 +4951,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/rpiDepth",
@@ -5351,13 +4995,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/symbolAdlRisk",
@@ -5394,13 +5033,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/ticker/24hr",
@@ -5437,13 +5071,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/ticker/bookTicker",
@@ -5480,13 +5109,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/ticker/price",
@@ -5523,13 +5147,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/time",
@@ -5559,13 +5178,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v1/trades",
@@ -5590,6 +5204,37 @@
                     }
                 },
                 {
+                    "name": "Trading Schedule",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/fapi/v1/tradingSchedule",
+                            "host": ["{{url}}"],
+                            "path": ["fapi", "v1", "tradingSchedule"],
+                            "variable": [],
+                            "query": []
+                        }
+                    }
+                },
+                {
                     "name": "Symbol Price Ticker V2",
                     "request": {
                         "method": "GET",
@@ -5608,13 +5253,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/fapi/v2/ticker/price",
@@ -5651,13 +5291,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/futures/data/basis",
@@ -5724,13 +5359,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/futures/data/delivery-price",
@@ -5767,13 +5397,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/futures/data/globalLongShortAccountRatio",
@@ -5834,13 +5459,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/futures/data/openInterestHist",
@@ -5901,13 +5521,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/futures/data/takerlongshortRatio",
@@ -5968,13 +5583,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/futures/data/topLongShortAccountRatio",
@@ -6035,13 +5645,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/futures/data/topLongShortPositionRatio",

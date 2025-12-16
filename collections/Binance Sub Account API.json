@@ -14,36 +14,57 @@
             "script": {
                 "exec": [
                     "const ts = Date.now();",
-                    "let paramsObject = {};",
+                    "let queryParamsObject = {};",
+                    "let bodyParamsObject = {};",
                     "const postmanEnvironment = pm.environment.get('environment');",
                     "const api_key = pm.environment.get('api-key');",
                     "const api_secret = pm.environment.get('api-secret');",
                     "const parameters = pm.request.url.query;",
+                    "const body = pm.request.body;",
                     "",
                     "// set host based on env",
                     "pm.request.url.host = [pm.variables.get('prod_url')];",
                     "",
-                    "// build paramsObject (skip any existing signature)",
+                    "// Collect query params",
                     "parameters.each((param) => {",
                     "    if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
-                    "        paramsObject[param.key] = param.value;",
+                    "        queryParamsObject[param.key] = param.value;",
                     "    }",
                     "});",
                     "",
                     "// add timestamp",
                     "Object.assign(paramsObject, { timestamp: ts });",
                     "",
+                    "// Collect body params if urlencoded",
+                    "let hasUrlencodedBodyParams = false;",
+                    "",
+                    "if (body) {",
+                    "    const contentTypeHeader = pm.request.headers.get('Content-Type') || pm.request.headers.get('content-type') || '';",
+                    "    const isFormUrlencoded = contentTypeHeader.includes('application/x-www-form-urlencoded') || body.mode === 'urlencoded';",
+                    "",
+                    "    if (isFormUrlencoded && body.urlencoded) {",
+                    "        body.urlencoded.each((param) => {",
+                    "            if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+                    "                bodyParamsObject[param.key] = param.value;",
+                    "                hasUrlencodedBodyParams = true;",
+                    "            }",
+                    "        });",
+                    "    }",
+                    "}",
+                    "",
                     "// set api key",
                     "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
                     "",
                     "// only sign if a signature param was declared and we have a secret",
                     "if (parameters.has('signature') && api_secret) {",
-                    "    // canonical query string",
-                    "    const queryString = buildQueryString(paramsObject);",
+                    "    // canonical query strings",
+                    "    const queryStringForSign = buildQueryString(queryParamsObject);",
+                    "    const bodyStringForSign = buildQueryString(bodyParamsObject);",
+                    "    const totalParams = queryStringForSign + bodyStringForSign;",
                     "",
                     "    const encoder = new TextEncoder();",
                     "    const keyData = encoder.encode(api_secret);",
-                    "    const msgData = encoder.encode(queryString);",
+                    "    const msgData = encoder.encode(totalParams);",
                     "",
                     "    pm.request.url.query.clear();",
                     "",
@@ -55,7 +76,9 @@
                     "        .join('');",
                     "",
                     "    // update request",
-                    "    pm.request.url.query = `${queryString}&signature=${signature}`;",
+                    "    const finalQueryParams = Object.assign({}, queryParamsObject, { signature });",
+                    "    const finalQueryString = buildQueryString(finalQueryParams);",
+                    "    pm.request.url.query = finalQueryString;",
                     "}",
                     "",
                     "function buildQueryString(params) {",
@@ -86,20 +109,22 @@
                     "    else pm.request.headers.add({ key, value });",
                     "}",
                     "",
-                    "function is_disabled(str) {",
-                    "    return str === true;",
+                    "function is_disabled(val) {",
+                    "    return val === true;",
                     "}",
                     "",
                     "function is_empty(str) {",
-                    "    return (",
-                    "        typeof str === 'undefined' ||",
-                    "        !str ||",
-                    "        str.length === 0 ||",
-                    "        str === '' ||",
-                    "        !/[^\\\\s]/.test(str) ||",
-                    "        /^\\\\s*$/.test(str) ||",
-                    "        str.replace(/\\\\s/g, '') === ''",
-                    "    );",
+                    "    if (str === null || str === undefined) return true;",
+                    "    if (typeof str === 'string') {",
+                    "        return (",
+                    "            !str ||",
+                    "            str.length === 0 ||",
+                    "            !/[^\\\\s]/.test(str) ||",
+                    "            /^\\\\s*$/.test(str) ||",
+                    "            str.replace(/\\\\s/g, '') === ''",
+                    "        );",
+                    "    }",
+                    "    return false;",
                     "}"
                 ],
                 "type": "text/javascript"
@@ -129,13 +154,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/managed-subaccount/accountSnapshot",
@@ -214,13 +234,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/managed-subaccount/asset",
@@ -275,13 +290,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/managed-subaccount/deposit",
@@ -348,13 +358,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/managed-subaccount/deposit/address",
@@ -427,13 +432,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/managed-subaccount/fetch-future-asset",
@@ -488,13 +488,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/managed-subaccount/info",
@@ -561,13 +556,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/managed-subaccount/marginAsset",
@@ -622,13 +612,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/managed-subaccount/query-trans-log",
@@ -713,13 +698,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/managed-subaccount/queryTransLogForInvestor",
@@ -809,13 +789,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/managed-subaccount/queryTransLogForTradeParent",
@@ -905,13 +880,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/managed-subaccount/withdraw",
@@ -989,13 +959,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/capital/deposit/subAddress",
@@ -1068,13 +1033,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/capital/deposit/subHisrec",
@@ -1171,13 +1131,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/futures/account",
@@ -1232,13 +1187,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/futures/accountSummary",
@@ -1287,13 +1237,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/futures/internalTransfer",
@@ -1378,13 +1323,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/futures/internalTransfer",
@@ -1463,13 +1403,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/futures/move-position",
@@ -1548,13 +1483,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/futures/move-position",
@@ -1627,13 +1557,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/futures/transfer",
@@ -1706,13 +1631,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/margin/account",
@@ -1767,13 +1687,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/margin/accountSummary",
@@ -1822,13 +1737,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/margin/transfer",
@@ -1901,13 +1811,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/spotSummary",
@@ -1974,13 +1879,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/sub/transfer/history",
@@ -2065,13 +1965,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/transfer/subToMaster",
@@ -2132,13 +2027,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/transfer/subToSub",
@@ -2205,13 +2095,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/transfer/subUserHistory",
@@ -2296,13 +2181,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/universalTransfer",
@@ -2393,13 +2273,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/universalTransfer",
@@ -2496,13 +2371,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v2/sub-account/futures/account",
@@ -2563,13 +2433,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v2/sub-account/futures/accountSummary",
@@ -2636,13 +2501,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v3/sub-account/assets",
@@ -2697,13 +2557,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v4/sub-account/assets",
@@ -2763,13 +2618,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/eoptions/enable",
@@ -2824,13 +2674,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/futures/enable",
@@ -2885,13 +2730,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/futures/positionRisk",
@@ -2946,13 +2786,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/list",
@@ -3025,13 +2860,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/status",
@@ -3086,13 +2916,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/transaction-statistics",
@@ -3147,13 +2972,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/virtualSubAccount",
@@ -3208,13 +3028,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v2/sub-account/futures/positionRisk",
@@ -3280,13 +3095,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/subAccountApi/ipRestriction",
@@ -3347,13 +3157,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v1/sub-account/subAccountApi/ipRestriction/ipList",
@@ -3427,13 +3232,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/sapi/v2/sub-account/subAccountApi/ipRestriction",

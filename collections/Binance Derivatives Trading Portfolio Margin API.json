@@ -14,36 +14,57 @@
             "script": {
                 "exec": [
                     "const ts = Date.now();",
-                    "let paramsObject = {};",
+                    "let queryParamsObject = {};",
+                    "let bodyParamsObject = {};",
                     "const postmanEnvironment = pm.environment.get('environment');",
                     "const api_key = pm.environment.get('api-key');",
                     "const api_secret = pm.environment.get('api-secret');",
                     "const parameters = pm.request.url.query;",
+                    "const body = pm.request.body;",
                     "",
                     "// set host based on env",
                     "pm.request.url.host = postmanEnvironment === 'production' ? [pm.variables.get('prod_url')] : [pm.variables.get('testnet_url')];",
                     "",
-                    "// build paramsObject (skip any existing signature)",
+                    "// Collect query params",
                     "parameters.each((param) => {",
                     "    if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
-                    "        paramsObject[param.key] = param.value;",
+                    "        queryParamsObject[param.key] = param.value;",
                     "    }",
                     "});",
                     "",
                     "// add timestamp",
                     "Object.assign(paramsObject, { timestamp: ts });",
                     "",
+                    "// Collect body params if urlencoded",
+                    "let hasUrlencodedBodyParams = false;",
+                    "",
+                    "if (body) {",
+                    "    const contentTypeHeader = pm.request.headers.get('Content-Type') || pm.request.headers.get('content-type') || '';",
+                    "    const isFormUrlencoded = contentTypeHeader.includes('application/x-www-form-urlencoded') || body.mode === 'urlencoded';",
+                    "",
+                    "    if (isFormUrlencoded && body.urlencoded) {",
+                    "        body.urlencoded.each((param) => {",
+                    "            if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+                    "                bodyParamsObject[param.key] = param.value;",
+                    "                hasUrlencodedBodyParams = true;",
+                    "            }",
+                    "        });",
+                    "    }",
+                    "}",
+                    "",
                     "// set api key",
                     "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
                     "",
                     "// only sign if a signature param was declared and we have a secret",
                     "if (parameters.has('signature') && api_secret) {",
-                    "    // canonical query string",
-                    "    const queryString = buildQueryString(paramsObject);",
+                    "    // canonical query strings",
+                    "    const queryStringForSign = buildQueryString(queryParamsObject);",
+                    "    const bodyStringForSign = buildQueryString(bodyParamsObject);",
+                    "    const totalParams = queryStringForSign + bodyStringForSign;",
                     "",
                     "    const encoder = new TextEncoder();",
                     "    const keyData = encoder.encode(api_secret);",
-                    "    const msgData = encoder.encode(queryString);",
+                    "    const msgData = encoder.encode(totalParams);",
                     "",
                     "    pm.request.url.query.clear();",
                     "",
@@ -55,7 +76,9 @@
                     "        .join('');",
                     "",
                     "    // update request",
-                    "    pm.request.url.query = `${queryString}&signature=${signature}`;",
+                    "    const finalQueryParams = Object.assign({}, queryParamsObject, { signature });",
+                    "    const finalQueryString = buildQueryString(finalQueryParams);",
+                    "    pm.request.url.query = finalQueryString;",
                     "}",
                     "",
                     "function buildQueryString(params) {",
@@ -86,20 +109,22 @@
                     "    else pm.request.headers.add({ key, value });",
                     "}",
                     "",
-                    "function is_disabled(str) {",
-                    "    return str === true;",
+                    "function is_disabled(val) {",
+                    "    return val === true;",
                     "}",
                     "",
                     "function is_empty(str) {",
-                    "    return (",
-                    "        typeof str === 'undefined' ||",
-                    "        !str ||",
-                    "        str.length === 0 ||",
-                    "        str === '' ||",
-                    "        !/[^\\\\s]/.test(str) ||",
-                    "        /^\\\\s*$/.test(str) ||",
-                    "        str.replace(/\\\\s/g, '') === ''",
-                    "    );",
+                    "    if (str === null || str === undefined) return true;",
+                    "    if (typeof str === 'string') {",
+                    "        return (",
+                    "            !str ||",
+                    "            str.length === 0 ||",
+                    "            !/[^\\\\s]/.test(str) ||",
+                    "            /^\\\\s*$/.test(str) ||",
+                    "            str.replace(/\\\\s/g, '') === ''",
+                    "        );",
+                    "    }",
+                    "    return false;",
                     "}"
                 ],
                 "type": "text/javascript"
@@ -129,13 +154,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/account",
@@ -184,13 +204,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/asset-collection",
@@ -245,13 +260,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/auto-collection",
@@ -300,13 +310,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/balance",
@@ -361,13 +366,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/bnb-transfer",
@@ -428,13 +428,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/account",
@@ -483,13 +478,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/commissionRate",
@@ -544,13 +534,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/income",
@@ -635,13 +620,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/leverage",
@@ -702,13 +682,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/leverageBracket",
@@ -763,13 +738,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/positionRisk",
@@ -830,13 +800,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/positionSide/dual",
@@ -891,13 +856,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/positionSide/dual",
@@ -946,13 +906,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/marginInterestHistory",
@@ -1037,13 +992,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/marginLoan",
@@ -1134,13 +1084,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/maxBorrowable",
@@ -1195,13 +1140,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/maxWithdraw",
@@ -1256,13 +1196,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/repayLoan",
@@ -1353,13 +1288,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/portfolio/interest-history",
@@ -1432,13 +1362,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/portfolio/negative-balance-exchange-record",
@@ -1499,13 +1424,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/rateLimit/order",
@@ -1554,13 +1474,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/repay-futures-negative-balance",
@@ -1609,13 +1524,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/repay-futures-switch",
@@ -1670,13 +1580,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/repay-futures-switch",
@@ -1725,13 +1630,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/account",
@@ -1780,13 +1680,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/accountConfig",
@@ -1835,13 +1730,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/apiTradingStatus",
@@ -1896,13 +1786,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/commissionRate",
@@ -1957,13 +1842,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/income",
@@ -2048,13 +1928,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/income/asyn",
@@ -2115,13 +1990,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/income/asyn/id",
@@ -2176,13 +2046,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/leverage",
@@ -2243,13 +2108,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/leverageBracket",
@@ -2304,13 +2164,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/order/asyn",
@@ -2371,13 +2226,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/order/asyn/id",
@@ -2432,13 +2282,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/positionRisk",
@@ -2493,13 +2338,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/positionSide/dual",
@@ -2554,13 +2394,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/positionSide/dual",
@@ -2609,13 +2444,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/symbolConfig",
@@ -2670,13 +2500,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/trade/asyn",
@@ -2737,13 +2562,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/trade/asyn/id",
@@ -2798,13 +2618,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v2/um/account",
@@ -2858,13 +2673,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/adlQuantile",
@@ -2919,13 +2729,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/allOpenOrders",
@@ -2980,13 +2785,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/allOrders",
@@ -3071,13 +2871,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/conditional/allOpenOrders",
@@ -3132,13 +2927,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/conditional/allOrders",
@@ -3217,13 +3007,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/conditional/openOrder",
@@ -3290,13 +3075,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/conditional/openOrders",
@@ -3351,13 +3131,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/conditional/order",
@@ -3424,13 +3199,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/conditional/order",
@@ -3563,13 +3333,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/conditional/orderHistory",
@@ -3636,13 +3401,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/forceOrders",
@@ -3721,13 +3481,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/openOrder",
@@ -3794,13 +3549,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/openOrders",
@@ -3861,13 +3611,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/order",
@@ -3934,13 +3679,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/order",
@@ -4031,13 +3771,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/order",
@@ -4152,13 +3887,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/order",
@@ -4225,13 +3955,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/orderAmendment",
@@ -4316,13 +4041,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/cm/userTrades",
@@ -4407,13 +4127,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/allOpenOrders",
@@ -4468,13 +4183,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/allOrderList",
@@ -4547,13 +4257,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/allOrders",
@@ -4632,13 +4337,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/forceOrders",
@@ -4711,13 +4411,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/myTrades",
@@ -4802,13 +4497,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/openOrderList",
@@ -4857,13 +4547,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/openOrders",
@@ -4918,13 +4603,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/order",
@@ -4997,13 +4677,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/order",
@@ -5136,13 +4811,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/order",
@@ -5209,13 +4879,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/order/oco",
@@ -5348,13 +5013,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/orderList",
@@ -5427,13 +5087,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/orderList",
@@ -5494,13 +5149,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/margin/repay-debt",
@@ -5567,13 +5217,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/marginLoan",
@@ -5634,13 +5279,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/repayLoan",
@@ -5701,13 +5341,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/adlQuantile",
@@ -5762,13 +5397,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/allOpenOrders",
@@ -5823,13 +5453,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/allOrders",
@@ -5908,13 +5533,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/conditional/allOpenOrders",
@@ -5969,13 +5589,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/conditional/allOrders",
@@ -6054,13 +5669,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/conditional/openOrder",
@@ -6127,13 +5737,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/conditional/openOrders",
@@ -6188,13 +5793,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/conditional/order",
@@ -6261,13 +5861,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/conditional/order",
@@ -6418,13 +6013,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/conditional/orderHistory",
@@ -6491,13 +6081,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/feeBurn",
@@ -6546,13 +6131,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/feeBurn",
@@ -6607,13 +6187,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/forceOrders",
@@ -6692,13 +6267,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/openOrder",
@@ -6765,13 +6335,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/openOrders",
@@ -6826,13 +6391,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/order",
@@ -6899,13 +6459,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/order",
@@ -6996,13 +6551,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/order",
@@ -7129,13 +6679,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/order",
@@ -7202,13 +6747,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/orderAmendment",
@@ -7293,13 +6833,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/um/userTrades",
@@ -7377,13 +6912,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/listenKey",
@@ -7407,13 +6937,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/listenKey",
@@ -7443,13 +6968,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/listenKey",
@@ -7478,13 +6998,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/papi/v1/ping",

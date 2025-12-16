@@ -14,36 +14,57 @@
             "script": {
                 "exec": [
                     "const ts = Date.now();",
-                    "let paramsObject = {};",
+                    "let queryParamsObject = {};",
+                    "let bodyParamsObject = {};",
                     "const postmanEnvironment = pm.environment.get('environment');",
                     "const api_key = pm.environment.get('api-key');",
                     "const api_secret = pm.environment.get('api-secret');",
                     "const parameters = pm.request.url.query;",
+                    "const body = pm.request.body;",
                     "",
                     "// set host based on env",
                     "pm.request.url.host = postmanEnvironment === 'production' ? [pm.variables.get('prod_url')] : [pm.variables.get('testnet_url')];",
                     "",
-                    "// build paramsObject (skip any existing signature)",
+                    "// Collect query params",
                     "parameters.each((param) => {",
                     "    if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
-                    "        paramsObject[param.key] = param.value;",
+                    "        queryParamsObject[param.key] = param.value;",
                     "    }",
                     "});",
                     "",
                     "// add timestamp",
                     "Object.assign(paramsObject, { timestamp: ts });",
                     "",
+                    "// Collect body params if urlencoded",
+                    "let hasUrlencodedBodyParams = false;",
+                    "",
+                    "if (body) {",
+                    "    const contentTypeHeader = pm.request.headers.get('Content-Type') || pm.request.headers.get('content-type') || '';",
+                    "    const isFormUrlencoded = contentTypeHeader.includes('application/x-www-form-urlencoded') || body.mode === 'urlencoded';",
+                    "",
+                    "    if (isFormUrlencoded && body.urlencoded) {",
+                    "        body.urlencoded.each((param) => {",
+                    "            if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+                    "                bodyParamsObject[param.key] = param.value;",
+                    "                hasUrlencodedBodyParams = true;",
+                    "            }",
+                    "        });",
+                    "    }",
+                    "}",
+                    "",
                     "// set api key",
                     "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
                     "",
                     "// only sign if a signature param was declared and we have a secret",
                     "if (parameters.has('signature') && api_secret) {",
-                    "    // canonical query string",
-                    "    const queryString = buildQueryString(paramsObject);",
+                    "    // canonical query strings",
+                    "    const queryStringForSign = buildQueryString(queryParamsObject);",
+                    "    const bodyStringForSign = buildQueryString(bodyParamsObject);",
+                    "    const totalParams = queryStringForSign + bodyStringForSign;",
                     "",
                     "    const encoder = new TextEncoder();",
                     "    const keyData = encoder.encode(api_secret);",
-                    "    const msgData = encoder.encode(queryString);",
+                    "    const msgData = encoder.encode(totalParams);",
                     "",
                     "    pm.request.url.query.clear();",
                     "",
@@ -55,7 +76,9 @@
                     "        .join('');",
                     "",
                     "    // update request",
-                    "    pm.request.url.query = `${queryString}&signature=${signature}`;",
+                    "    const finalQueryParams = Object.assign({}, queryParamsObject, { signature });",
+                    "    const finalQueryString = buildQueryString(finalQueryParams);",
+                    "    pm.request.url.query = finalQueryString;",
                     "}",
                     "",
                     "function buildQueryString(params) {",
@@ -86,20 +109,22 @@
                     "    else pm.request.headers.add({ key, value });",
                     "}",
                     "",
-                    "function is_disabled(str) {",
-                    "    return str === true;",
+                    "function is_disabled(val) {",
+                    "    return val === true;",
                     "}",
                     "",
                     "function is_empty(str) {",
-                    "    return (",
-                    "        typeof str === 'undefined' ||",
-                    "        !str ||",
-                    "        str.length === 0 ||",
-                    "        str === '' ||",
-                    "        !/[^\\\\s]/.test(str) ||",
-                    "        /^\\\\s*$/.test(str) ||",
-                    "        str.replace(/\\\\s/g, '') === ''",
-                    "    );",
+                    "    if (str === null || str === undefined) return true;",
+                    "    if (typeof str === 'string') {",
+                    "        return (",
+                    "            !str ||",
+                    "            str.length === 0 ||",
+                    "            !/[^\\\\s]/.test(str) ||",
+                    "            /^\\\\s*$/.test(str) ||",
+                    "            str.replace(/\\\\s/g, '') === ''",
+                    "        );",
+                    "    }",
+                    "    return false;",
                     "}"
                 ],
                 "type": "text/javascript"
@@ -129,13 +154,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/account",
@@ -184,13 +204,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/balance",
@@ -239,13 +254,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/commissionRate",
@@ -300,13 +310,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/income",
@@ -391,13 +396,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/income/asyn",
@@ -458,13 +458,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/income/asyn/id",
@@ -519,13 +514,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/leverageBracket",
@@ -580,13 +570,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/order/asyn",
@@ -647,13 +632,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/order/asyn/id",
@@ -708,13 +688,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/positionSide/dual",
@@ -763,13 +738,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/trade/asyn",
@@ -830,13 +800,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/trade/asyn/id",
@@ -891,13 +856,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v2/leverageBracket",
@@ -957,13 +917,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/adlQuantile",
@@ -1018,13 +973,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/allOpenOrders",
@@ -1079,13 +1029,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/allOrders",
@@ -1170,13 +1115,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/batchOrders",
@@ -1243,13 +1183,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/batchOrders",
@@ -1298,13 +1233,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/countdownCancelAll",
@@ -1365,13 +1295,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/forceOrders",
@@ -1450,13 +1375,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/leverage",
@@ -1517,13 +1437,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/marginType",
@@ -1584,13 +1499,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/openOrder",
@@ -1657,13 +1567,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/openOrders",
@@ -1724,13 +1629,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/order",
@@ -1797,13 +1697,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/order",
@@ -1894,13 +1789,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/order",
@@ -2057,13 +1947,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/order",
@@ -2130,13 +2015,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/orderAmendment",
@@ -2221,13 +2101,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/positionMargin",
@@ -2300,13 +2175,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/positionMargin/history",
@@ -2385,13 +2255,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/positionRisk",
@@ -2452,13 +2317,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/positionSide/dual",
@@ -2513,13 +2373,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/userTrades",
@@ -2615,13 +2470,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/pmAccountInfo",
@@ -2675,13 +2525,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/listenKey",
@@ -2705,13 +2550,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/listenKey",
@@ -2741,13 +2581,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/listenKey",
@@ -2782,13 +2617,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/aggTrades",
@@ -2849,13 +2679,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/constituents",
@@ -2892,13 +2717,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/continuousKlines",
@@ -2965,13 +2785,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/depth",
@@ -3014,13 +2829,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/exchangeInfo",
@@ -3050,13 +2860,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/fundingInfo",
@@ -3086,13 +2891,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/fundingRate",
@@ -3147,13 +2947,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/historicalTrades",
@@ -3202,13 +2997,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/indexPriceKlines",
@@ -3269,13 +3059,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/klines",
@@ -3336,13 +3121,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/markPriceKlines",
@@ -3403,13 +3183,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/openInterest",
@@ -3440,13 +3215,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/ping",
@@ -3476,13 +3246,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/premiumIndex",
@@ -3525,13 +3290,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/premiumIndexKlines",
@@ -3592,13 +3352,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/ticker/24hr",
@@ -3641,13 +3396,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/ticker/bookTicker",
@@ -3690,13 +3440,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/ticker/price",
@@ -3739,13 +3484,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/time",
@@ -3775,13 +3515,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/dapi/v1/trades",
@@ -3824,13 +3559,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/futures/data/basis",
@@ -3897,13 +3627,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/futures/data/globalLongShortAccountRatio",
@@ -3964,13 +3689,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/futures/data/openInterestHist",
@@ -4037,13 +3757,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/futures/data/takerBuySellVol",
@@ -4110,13 +3825,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/futures/data/topLongShortAccountRatio",
@@ -4177,13 +3887,8 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "",
-                            "options": {
-                                "raw": {
-                                    "language": "json"
-                                }
-                            }
+                            "mode": "urlencoded",
+                            "urlencoded": []
                         },
                         "url": {
                             "raw": "{{url}}/futures/data/topLongShortPositionRatio",
