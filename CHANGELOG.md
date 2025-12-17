@@ -1,5 +1,11 @@
 # Changelog
 
+## 34.0.1 - 2025-12-17
+
+### Changed (1)
+
+- Fixed bug on pre-request script for query params.
+
 ## 34.0.0 - 2025-12-16
 
 ### Added (7)

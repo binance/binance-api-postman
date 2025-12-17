@@ -33,7 +33,7 @@
                     "});",
                     "",
                     "// add timestamp",
-                    "Object.assign(paramsObject, { timestamp: ts });",
+                    "Object.assign(queryParamsObject, { timestamp: ts });",
                     "",
                     "// Collect body params if urlencoded",
                     "let hasUrlencodedBodyParams = false;",
