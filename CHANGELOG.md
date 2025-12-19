@@ -1,5 +1,21 @@
 # Changelog
 
+## 35.0.0 - 2025-12-19
+
+### Added (2)
+
+- `POST /sapi/v1/asset/dust-convert/convert`
+- `POST /sapi/v1/asset/dust-convert/query-convertible-assets`
+
+### Changed (2)
+
+- Added parameter `activatePrice`
+  - affected endpoints:
+    - `POST /fapi/v1/algoOrder`
+- Deleted parameter `activationPrice`
+  - affected endpoints:
+    - `POST /fapi/v1/algoOrder`
+
 ## 34.0.1 - 2025-12-17
 
 ### Changed (1)

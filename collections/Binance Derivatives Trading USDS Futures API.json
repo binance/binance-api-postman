@@ -1597,7 +1597,7 @@
                                     "disabled": true
                                 },
                                 {
-                                    "key": "activationPrice",
+                                    "key": "activatePrice",
                                     "value": "1.0",
                                     "description": "Used with `TRAILING_STOP_MARKET` orders, default as the latest price(supporting different `workingType`)",
                                     "disabled": true

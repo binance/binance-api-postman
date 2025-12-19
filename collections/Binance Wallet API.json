@@ -1949,6 +1949,142 @@
                     }
                 },
                 {
+                    "name": "Dust Convert (USER_DATA)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/asset/dust-convert/convert",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "asset", "dust-convert", "convert"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "asset",
+                                    "value": "asset_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "clientId",
+                                    "value": "1",
+                                    "description": "A unique id for the request",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "targetAsset",
+                                    "value": "targetAsset_example",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "thirdPartyClientId",
+                                    "value": "1",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "dustQuotaAssetToTargetAssetPrice",
+                                    "value": "1.0",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Dust Convertible Assets (USER_DATA)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/asset/dust-convert/query-convertible-assets",
+                            "host": ["{{url}}"],
+                            "path": [
+                                "sapi",
+                                "v1",
+                                "asset",
+                                "dust-convert",
+                                "query-convertible-assets"
+                            ],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "targetAsset",
+                                    "value": "targetAsset_example",
+                                    "description": "",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "dustQuotaAssetToTargetAssetPrice",
+                                    "value": "1.0",
+                                    "description": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
                     "name": "Funding Wallet (USER_DATA)",
                     "request": {
                         "method": "POST",
