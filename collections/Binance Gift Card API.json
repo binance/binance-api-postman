@@ -1,503 +1,513 @@
 {
-    "info": {
-        "name": "Binance Gift Card REST API",
-        "description": {
-            "content": "OpenAPI Specification for the Binance Gift Card REST API",
-            "type": "text/markdown"
-        },
-        "version": "1.0.0",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  "info": {
+    "name": "Binance Gift Card REST API",
+    "description": {
+      "content": "OpenAPI Specification for the Binance Gift Card REST API",
+      "type": "text/markdown"
     },
-    "event": [
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "exec": [
+          "const ts = Date.now();",
+          "let queryParamsObject = {};",
+          "let bodyParamsObject = {};",
+          "const postmanEnvironment = pm.environment.get('environment');",
+          "const api_key = pm.environment.get('api-key');",
+          "const api_secret = pm.environment.get('api-secret');",
+          "const parameters = pm.request.url.query;",
+          "const body = pm.request.body;",
+          "",
+          "// set host based on env",
+          "const normalizedEnvironment = String(postmanEnvironment || 'production').toLowerCase();",
+          "const environmentUrlKeyMap = {",
+          "    production: 'prod_url',",
+          "    prod: 'prod_url',",
+          "    testnet: 'testnet_url',",
+          "    demo: 'demo_url'",
+          "};",
+          "const selectedUrlKey = environmentUrlKeyMap[normalizedEnvironment] || 'prod_url';",
+          "const selectedUrl = pm.variables.get(selectedUrlKey) || pm.variables.get('prod_url');",
+          "",
+          "// set host based on env",
+          "pm.request.url.host = [selectedUrl];",
+          "",
+          "// Collect query params",
+          "parameters.each((param) => {",
+          "    if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+          "        queryParamsObject[param.key] = param.value;",
+          "    }",
+          "});",
+          "",
+          "// add timestamp",
+          "Object.assign(queryParamsObject, { timestamp: ts });",
+          "",
+          "// Collect body params if urlencoded",
+          "let hasUrlencodedBodyParams = false;",
+          "",
+          "if (body) {",
+          "    const contentTypeHeader = pm.request.headers.get('Content-Type') || pm.request.headers.get('content-type') || '';",
+          "    const isFormUrlencoded = contentTypeHeader.includes('application/x-www-form-urlencoded') || body.mode === 'urlencoded';",
+          "",
+          "    if (isFormUrlencoded && body.urlencoded) {",
+          "        body.urlencoded.each((param) => {",
+          "            if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+          "                bodyParamsObject[param.key] = param.value;",
+          "                hasUrlencodedBodyParams = true;",
+          "            }",
+          "        });",
+          "    }",
+          "}",
+          "",
+          "// set api key",
+          "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
+          "",
+          "// only sign if a signature param was declared and we have a secret",
+          "if (parameters.has('signature') && api_secret) {",
+          "    // canonical query strings",
+          "    const queryStringForSign = buildQueryString(queryParamsObject);",
+          "    const bodyStringForSign = buildQueryString(bodyParamsObject);",
+          "    const totalParams = queryStringForSign + bodyStringForSign;",
+          "",
+          "    const encoder = new TextEncoder();",
+          "    const keyData = encoder.encode(api_secret);",
+          "    const msgData = encoder.encode(totalParams);",
+          "",
+          "    pm.request.url.query.clear();",
+          "",
+          "    const cryptoKey = await crypto.subtle.importKey('raw', keyData, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);",
+          "    const signatureBuffer = await crypto.subtle.sign('HMAC', cryptoKey, msgData);",
+          "",
+          "    const signature = Array.from(new Uint8Array(signatureBuffer))",
+          "        .map((b) => b.toString(16).padStart(2, '0'))",
+          "        .join('');",
+          "",
+          "    // update request",
+          "    const finalQueryParams = Object.assign({}, queryParamsObject, { signature });",
+          "    const finalQueryString = buildQueryString(finalQueryParams);",
+          "    pm.request.url.query = finalQueryString;",
+          "}",
+          "",
+          "function buildQueryString(params) {",
+          "    if (!params) return '';",
+          "",
+          "    const pairs = [];",
+          "    Object.entries(params).forEach(([key, value]) => {",
+          "        if (value !== null && value !== undefined) {",
+          "            const serializedValue = serializeValue(value);",
+          "            pairs.push(`${key}=${encodeURIComponent(serializedValue)}`);",
+          "        }",
+          "    });",
+          "",
+          "    return pairs.join('&');",
+          "}",
+          "",
+          "function serializeValue(value) {",
+          "    if (value === null || value === undefined) return '';",
+          "    if (Array.isArray(value) || (typeof value === 'object' && value !== null)) return JSON.stringify(value);",
+          "",
+          "    return String(value);",
+          "}",
+          "",
+          "function setOrUpdateHeaderParam(key, value) {",
+          "    let headers = pm.request.headers;",
+          "    let header = headers.find((header) => header.key === key);",
+          "    if (header) header.value = value;",
+          "    else pm.request.headers.add({ key, value });",
+          "}",
+          "",
+          "function is_disabled(val) {",
+          "    return val === true;",
+          "}",
+          "",
+          "function is_empty(str) {",
+          "    if (str === null || str === undefined) return true;",
+          "    if (typeof str === 'string') {",
+          "        return (",
+          "            !str ||",
+          "            str.length === 0 ||",
+          "            !/[^\\\\s]/.test(str) ||",
+          "            /^\\\\s*$/.test(str) ||",
+          "            str.replace(/\\\\s/g, '') === ''",
+          "        );",
+          "    }",
+          "    return false;",
+          "}"
+        ],
+        "type": "text/javascript"
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "Market-Data",
+      "item": [
         {
-            "listen": "prerequest",
-            "script": {
-                "exec": [
-                    "const ts = Date.now();",
-                    "let queryParamsObject = {};",
-                    "let bodyParamsObject = {};",
-                    "const postmanEnvironment = pm.environment.get('environment');",
-                    "const api_key = pm.environment.get('api-key');",
-                    "const api_secret = pm.environment.get('api-secret');",
-                    "const parameters = pm.request.url.query;",
-                    "const body = pm.request.body;",
-                    "",
-                    "// set host based on env",
-                    "pm.request.url.host = [pm.variables.get('prod_url')];",
-                    "",
-                    "// Collect query params",
-                    "parameters.each((param) => {",
-                    "    if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
-                    "        queryParamsObject[param.key] = param.value;",
-                    "    }",
-                    "});",
-                    "",
-                    "// add timestamp",
-                    "Object.assign(queryParamsObject, { timestamp: ts });",
-                    "",
-                    "// Collect body params if urlencoded",
-                    "let hasUrlencodedBodyParams = false;",
-                    "",
-                    "if (body) {",
-                    "    const contentTypeHeader = pm.request.headers.get('Content-Type') || pm.request.headers.get('content-type') || '';",
-                    "    const isFormUrlencoded = contentTypeHeader.includes('application/x-www-form-urlencoded') || body.mode === 'urlencoded';",
-                    "",
-                    "    if (isFormUrlencoded && body.urlencoded) {",
-                    "        body.urlencoded.each((param) => {",
-                    "            if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
-                    "                bodyParamsObject[param.key] = param.value;",
-                    "                hasUrlencodedBodyParams = true;",
-                    "            }",
-                    "        });",
-                    "    }",
-                    "}",
-                    "",
-                    "// set api key",
-                    "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
-                    "",
-                    "// only sign if a signature param was declared and we have a secret",
-                    "if (parameters.has('signature') && api_secret) {",
-                    "    // canonical query strings",
-                    "    const queryStringForSign = buildQueryString(queryParamsObject);",
-                    "    const bodyStringForSign = buildQueryString(bodyParamsObject);",
-                    "    const totalParams = queryStringForSign + bodyStringForSign;",
-                    "",
-                    "    const encoder = new TextEncoder();",
-                    "    const keyData = encoder.encode(api_secret);",
-                    "    const msgData = encoder.encode(totalParams);",
-                    "",
-                    "    pm.request.url.query.clear();",
-                    "",
-                    "    const cryptoKey = await crypto.subtle.importKey('raw', keyData, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);",
-                    "    const signatureBuffer = await crypto.subtle.sign('HMAC', cryptoKey, msgData);",
-                    "",
-                    "    const signature = Array.from(new Uint8Array(signatureBuffer))",
-                    "        .map((b) => b.toString(16).padStart(2, '0'))",
-                    "        .join('');",
-                    "",
-                    "    // update request",
-                    "    const finalQueryParams = Object.assign({}, queryParamsObject, { signature });",
-                    "    const finalQueryString = buildQueryString(finalQueryParams);",
-                    "    pm.request.url.query = finalQueryString;",
-                    "}",
-                    "",
-                    "function buildQueryString(params) {",
-                    "    if (!params) return '';",
-                    "",
-                    "    const pairs = [];",
-                    "    Object.entries(params).forEach(([key, value]) => {",
-                    "        if (value !== null && value !== undefined) {",
-                    "            const serializedValue = serializeValue(value);",
-                    "            pairs.push(`${key}=${encodeURIComponent(serializedValue)}`);",
-                    "        }",
-                    "    });",
-                    "",
-                    "    return pairs.join('&');",
-                    "}",
-                    "",
-                    "function serializeValue(value) {",
-                    "    if (value === null || value === undefined) return '';",
-                    "    if (Array.isArray(value) || (typeof value === 'object' && value !== null)) return JSON.stringify(value);",
-                    "",
-                    "    return String(value);",
-                    "}",
-                    "",
-                    "function setOrUpdateHeaderParam(key, value) {",
-                    "    let headers = pm.request.headers;",
-                    "    let header = headers.find((header) => header.key === key);",
-                    "    if (header) header.value = value;",
-                    "    else pm.request.headers.add({ key, value });",
-                    "}",
-                    "",
-                    "function is_disabled(val) {",
-                    "    return val === true;",
-                    "}",
-                    "",
-                    "function is_empty(str) {",
-                    "    if (str === null || str === undefined) return true;",
-                    "    if (typeof str === 'string') {",
-                    "        return (",
-                    "            !str ||",
-                    "            str.length === 0 ||",
-                    "            !/[^\\\\s]/.test(str) ||",
-                    "            /^\\\\s*$/.test(str) ||",
-                    "            str.replace(/\\\\s/g, '') === ''",
-                    "        );",
-                    "    }",
-                    "    return false;",
-                    "}"
-                ],
-                "type": "text/javascript"
-            }
-        }
-    ],
-    "item": [
-        {
-            "name": "Market-Data",
-            "item": [
+          "name": "Create a dual-token gift card(fixed value, discount feature)(TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/giftcard/buyCode",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "giftcard", "buyCode"],
+              "variable": [],
+              "query": [
                 {
-                    "name": "Create a dual-token gift card(fixed value, discount feature)(TRADE)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/giftcard/buyCode",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "giftcard", "buyCode"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "baseToken",
-                                    "value": "baseToken_example",
-                                    "description": "The token you want to pay, example: BUSD",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "faceToken",
-                                    "value": "faceToken_example",
-                                    "description": "The token you want to buy, example: BNB. If faceToken = baseToken, it's the same as createCode endpoint.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "baseTokenAmount",
-                                    "value": "1.0",
-                                    "description": "The base token asset quantity, example : 1.002",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "baseToken",
+                  "value": "baseToken_example",
+                  "description": "The token you want to pay, example: BUSD",
+                  "disabled": false
                 },
                 {
-                    "name": "Fetch Token Limit(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/giftcard/buyCode/token-limit",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "giftcard", "buyCode", "token-limit"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "baseToken",
-                                    "value": "baseToken_example",
-                                    "description": "The token you want to pay, example: BUSD",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "faceToken",
+                  "value": "faceToken_example",
+                  "description": "The token you want to buy, example: BNB. If faceToken = baseToken, it's the same as createCode endpoint.",
+                  "disabled": false
                 },
                 {
-                    "name": "Create a single-token gift card (USER_DATA)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/giftcard/createCode",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "giftcard", "createCode"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "token",
-                                    "value": "token_example",
-                                    "description": "The token type contained in the Binance Gift Card",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "amount",
-                                    "value": "1.0",
-                                    "description": "The amount of the token contained in the Binance Gift Card",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "baseTokenAmount",
+                  "value": "1.0",
+                  "description": "The base token asset quantity, example : 1.002",
+                  "disabled": false
                 },
                 {
-                    "name": "Fetch RSA Public Key(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/giftcard/cryptography/rsa-public-key",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "giftcard", "cryptography", "rsa-public-key"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
                 },
                 {
-                    "name": "Redeem a Binance Gift Card(USER_DATA)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/giftcard/redeemCode",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "giftcard", "redeemCode"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "code",
-                                    "value": "code_example",
-                                    "description": "Redemption code of Binance Gift Card to be redeemed, supports both Plaintext & Encrypted code.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "externalUid",
-                                    "value": "externalUid_example",
-                                    "description": "Each external unique ID represents a unique user on the partner platform. The function helps you to identify the redemption behavior of different users, such as redemption frequency and amount. It also helps risk and limit control of a single account, such as daily limit on redemption volume, frequency, and incorrect number of entries. This will also prevent a single user account reach the partner's daily redemption limits. We strongly recommend you to use this feature and transfer us the User ID of your users if you have different users redeeming Binance Gift Cards on your platform. To protect user data privacy, you may choose to transfer the user id in any desired format (max. 400 characters).",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
                 },
                 {
-                    "name": "Verify Binance Gift Card by Gift Card Number(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/giftcard/verify",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "giftcard", "verify"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "referenceNo",
-                                    "value": "referenceNo_example",
-                                    "description": "Enter the Gift Card Number",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
                 }
-            ]
-        }
-    ],
-
-    "variable": [
+              ]
+            }
+          }
+        },
         {
-            "key": "prod_url",
-            "value": "https://api.binance.com",
-            "type": "string"
+          "name": "Fetch Token Limit(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/giftcard/buyCode/token-limit",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "giftcard", "buyCode", "token-limit"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "baseToken",
+                  "value": "baseToken_example",
+                  "description": "The token you want to pay, example: BUSD",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create a single-token gift card (USER_DATA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/giftcard/createCode",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "giftcard", "createCode"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "token",
+                  "value": "token_example",
+                  "description": "The token type contained in the Binance Gift Card",
+                  "disabled": false
+                },
+                {
+                  "key": "amount",
+                  "value": "1.0",
+                  "description": "The amount of the token contained in the Binance Gift Card",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Fetch RSA Public Key(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/giftcard/cryptography/rsa-public-key",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "giftcard", "cryptography", "rsa-public-key"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Redeem a Binance Gift Card(USER_DATA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/giftcard/redeemCode",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "giftcard", "redeemCode"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "code",
+                  "value": "code_example",
+                  "description": "Redemption code of Binance Gift Card to be redeemed, supports both Plaintext & Encrypted code.",
+                  "disabled": false
+                },
+                {
+                  "key": "externalUid",
+                  "value": "externalUid_example",
+                  "description": "Each external unique ID represents a unique user on the partner platform. The function helps you to identify the redemption behavior of different users, such as redemption frequency and amount. It also helps risk and limit control of a single account, such as daily limit on redemption volume, frequency, and incorrect number of entries. This will also prevent a single user account reach the partner's daily redemption limits. We strongly recommend you to use this feature and transfer us the User ID of your users if you have different users redeeming Binance Gift Cards on your platform. To protect user data privacy, you may choose to transfer the user id in any desired format (max. 400 characters).",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Verify Binance Gift Card by Gift Card Number(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/giftcard/verify",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "giftcard", "verify"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "referenceNo",
+                  "value": "referenceNo_example",
+                  "description": "Enter the Gift Card Number",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
         }
-    ]
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "prod_url",
+      "value": "https://api.binance.com",
+      "type": "string"
+    }
+  ]
 }

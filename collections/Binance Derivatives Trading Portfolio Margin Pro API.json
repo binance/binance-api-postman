@@ -1,1293 +1,1303 @@
 {
-    "info": {
-        "name": "Binance Derivatives Trading Portfolio Margin Pro REST API",
-        "description": {
-            "content": "OpenAPI Specification for the Binance Derivatives Trading Portfolio Margin Pro REST API",
-            "type": "text/markdown"
-        },
-        "version": "1.0.0",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  "info": {
+    "name": "Binance Derivatives Trading Portfolio Margin Pro REST API",
+    "description": {
+      "content": "OpenAPI Specification for the Binance Derivatives Trading Portfolio Margin Pro REST API",
+      "type": "text/markdown"
     },
-    "event": [
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "exec": [
+          "const ts = Date.now();",
+          "let queryParamsObject = {};",
+          "let bodyParamsObject = {};",
+          "const postmanEnvironment = pm.environment.get('environment');",
+          "const api_key = pm.environment.get('api-key');",
+          "const api_secret = pm.environment.get('api-secret');",
+          "const parameters = pm.request.url.query;",
+          "const body = pm.request.body;",
+          "",
+          "// set host based on env",
+          "const normalizedEnvironment = String(postmanEnvironment || 'production').toLowerCase();",
+          "const environmentUrlKeyMap = {",
+          "    production: 'prod_url',",
+          "    prod: 'prod_url',",
+          "    testnet: 'testnet_url',",
+          "    demo: 'demo_url'",
+          "};",
+          "const selectedUrlKey = environmentUrlKeyMap[normalizedEnvironment] || 'prod_url';",
+          "const selectedUrl = pm.variables.get(selectedUrlKey) || pm.variables.get('prod_url');",
+          "",
+          "// set host based on env",
+          "pm.request.url.host = [selectedUrl];",
+          "",
+          "// Collect query params",
+          "parameters.each((param) => {",
+          "    if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+          "        queryParamsObject[param.key] = param.value;",
+          "    }",
+          "});",
+          "",
+          "// add timestamp",
+          "Object.assign(queryParamsObject, { timestamp: ts });",
+          "",
+          "// Collect body params if urlencoded",
+          "let hasUrlencodedBodyParams = false;",
+          "",
+          "if (body) {",
+          "    const contentTypeHeader = pm.request.headers.get('Content-Type') || pm.request.headers.get('content-type') || '';",
+          "    const isFormUrlencoded = contentTypeHeader.includes('application/x-www-form-urlencoded') || body.mode === 'urlencoded';",
+          "",
+          "    if (isFormUrlencoded && body.urlencoded) {",
+          "        body.urlencoded.each((param) => {",
+          "            if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+          "                bodyParamsObject[param.key] = param.value;",
+          "                hasUrlencodedBodyParams = true;",
+          "            }",
+          "        });",
+          "    }",
+          "}",
+          "",
+          "// set api key",
+          "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
+          "",
+          "// only sign if a signature param was declared and we have a secret",
+          "if (parameters.has('signature') && api_secret) {",
+          "    // canonical query strings",
+          "    const queryStringForSign = buildQueryString(queryParamsObject);",
+          "    const bodyStringForSign = buildQueryString(bodyParamsObject);",
+          "    const totalParams = queryStringForSign + bodyStringForSign;",
+          "",
+          "    const encoder = new TextEncoder();",
+          "    const keyData = encoder.encode(api_secret);",
+          "    const msgData = encoder.encode(totalParams);",
+          "",
+          "    pm.request.url.query.clear();",
+          "",
+          "    const cryptoKey = await crypto.subtle.importKey('raw', keyData, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);",
+          "    const signatureBuffer = await crypto.subtle.sign('HMAC', cryptoKey, msgData);",
+          "",
+          "    const signature = Array.from(new Uint8Array(signatureBuffer))",
+          "        .map((b) => b.toString(16).padStart(2, '0'))",
+          "        .join('');",
+          "",
+          "    // update request",
+          "    const finalQueryParams = Object.assign({}, queryParamsObject, { signature });",
+          "    const finalQueryString = buildQueryString(finalQueryParams);",
+          "    pm.request.url.query = finalQueryString;",
+          "}",
+          "",
+          "function buildQueryString(params) {",
+          "    if (!params) return '';",
+          "",
+          "    const pairs = [];",
+          "    Object.entries(params).forEach(([key, value]) => {",
+          "        if (value !== null && value !== undefined) {",
+          "            const serializedValue = serializeValue(value);",
+          "            pairs.push(`${key}=${encodeURIComponent(serializedValue)}`);",
+          "        }",
+          "    });",
+          "",
+          "    return pairs.join('&');",
+          "}",
+          "",
+          "function serializeValue(value) {",
+          "    if (value === null || value === undefined) return '';",
+          "    if (Array.isArray(value) || (typeof value === 'object' && value !== null)) return JSON.stringify(value);",
+          "",
+          "    return String(value);",
+          "}",
+          "",
+          "function setOrUpdateHeaderParam(key, value) {",
+          "    let headers = pm.request.headers;",
+          "    let header = headers.find((header) => header.key === key);",
+          "    if (header) header.value = value;",
+          "    else pm.request.headers.add({ key, value });",
+          "}",
+          "",
+          "function is_disabled(val) {",
+          "    return val === true;",
+          "}",
+          "",
+          "function is_empty(str) {",
+          "    if (str === null || str === undefined) return true;",
+          "    if (typeof str === 'string') {",
+          "        return (",
+          "            !str ||",
+          "            str.length === 0 ||",
+          "            !/[^\\\\s]/.test(str) ||",
+          "            /^\\\\s*$/.test(str) ||",
+          "            str.replace(/\\\\s/g, '') === ''",
+          "        );",
+          "    }",
+          "    return false;",
+          "}"
+        ],
+        "type": "text/javascript"
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "Account",
+      "item": [
         {
-            "listen": "prerequest",
-            "script": {
-                "exec": [
-                    "const ts = Date.now();",
-                    "let queryParamsObject = {};",
-                    "let bodyParamsObject = {};",
-                    "const postmanEnvironment = pm.environment.get('environment');",
-                    "const api_key = pm.environment.get('api-key');",
-                    "const api_secret = pm.environment.get('api-secret');",
-                    "const parameters = pm.request.url.query;",
-                    "const body = pm.request.body;",
-                    "",
-                    "// set host based on env",
-                    "pm.request.url.host = [pm.variables.get('prod_url')];",
-                    "",
-                    "// Collect query params",
-                    "parameters.each((param) => {",
-                    "    if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
-                    "        queryParamsObject[param.key] = param.value;",
-                    "    }",
-                    "});",
-                    "",
-                    "// add timestamp",
-                    "Object.assign(queryParamsObject, { timestamp: ts });",
-                    "",
-                    "// Collect body params if urlencoded",
-                    "let hasUrlencodedBodyParams = false;",
-                    "",
-                    "if (body) {",
-                    "    const contentTypeHeader = pm.request.headers.get('Content-Type') || pm.request.headers.get('content-type') || '';",
-                    "    const isFormUrlencoded = contentTypeHeader.includes('application/x-www-form-urlencoded') || body.mode === 'urlencoded';",
-                    "",
-                    "    if (isFormUrlencoded && body.urlencoded) {",
-                    "        body.urlencoded.each((param) => {",
-                    "            if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
-                    "                bodyParamsObject[param.key] = param.value;",
-                    "                hasUrlencodedBodyParams = true;",
-                    "            }",
-                    "        });",
-                    "    }",
-                    "}",
-                    "",
-                    "// set api key",
-                    "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
-                    "",
-                    "// only sign if a signature param was declared and we have a secret",
-                    "if (parameters.has('signature') && api_secret) {",
-                    "    // canonical query strings",
-                    "    const queryStringForSign = buildQueryString(queryParamsObject);",
-                    "    const bodyStringForSign = buildQueryString(bodyParamsObject);",
-                    "    const totalParams = queryStringForSign + bodyStringForSign;",
-                    "",
-                    "    const encoder = new TextEncoder();",
-                    "    const keyData = encoder.encode(api_secret);",
-                    "    const msgData = encoder.encode(totalParams);",
-                    "",
-                    "    pm.request.url.query.clear();",
-                    "",
-                    "    const cryptoKey = await crypto.subtle.importKey('raw', keyData, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);",
-                    "    const signatureBuffer = await crypto.subtle.sign('HMAC', cryptoKey, msgData);",
-                    "",
-                    "    const signature = Array.from(new Uint8Array(signatureBuffer))",
-                    "        .map((b) => b.toString(16).padStart(2, '0'))",
-                    "        .join('');",
-                    "",
-                    "    // update request",
-                    "    const finalQueryParams = Object.assign({}, queryParamsObject, { signature });",
-                    "    const finalQueryString = buildQueryString(finalQueryParams);",
-                    "    pm.request.url.query = finalQueryString;",
-                    "}",
-                    "",
-                    "function buildQueryString(params) {",
-                    "    if (!params) return '';",
-                    "",
-                    "    const pairs = [];",
-                    "    Object.entries(params).forEach(([key, value]) => {",
-                    "        if (value !== null && value !== undefined) {",
-                    "            const serializedValue = serializeValue(value);",
-                    "            pairs.push(`${key}=${encodeURIComponent(serializedValue)}`);",
-                    "        }",
-                    "    });",
-                    "",
-                    "    return pairs.join('&');",
-                    "}",
-                    "",
-                    "function serializeValue(value) {",
-                    "    if (value === null || value === undefined) return '';",
-                    "    if (Array.isArray(value) || (typeof value === 'object' && value !== null)) return JSON.stringify(value);",
-                    "",
-                    "    return String(value);",
-                    "}",
-                    "",
-                    "function setOrUpdateHeaderParam(key, value) {",
-                    "    let headers = pm.request.headers;",
-                    "    let header = headers.find((header) => header.key === key);",
-                    "    if (header) header.value = value;",
-                    "    else pm.request.headers.add({ key, value });",
-                    "}",
-                    "",
-                    "function is_disabled(val) {",
-                    "    return val === true;",
-                    "}",
-                    "",
-                    "function is_empty(str) {",
-                    "    if (str === null || str === undefined) return true;",
-                    "    if (typeof str === 'string') {",
-                    "        return (",
-                    "            !str ||",
-                    "            str.length === 0 ||",
-                    "            !/[^\\\\s]/.test(str) ||",
-                    "            /^\\\\s*$/.test(str) ||",
-                    "            str.replace(/\\\\s/g, '') === ''",
-                    "        );",
-                    "    }",
-                    "    return false;",
-                    "}"
-                ],
-                "type": "text/javascript"
-            }
-        }
-    ],
-    "item": [
-        {
-            "name": "Account",
-            "item": [
+          "name": "Get Portfolio Margin Pro Account Info(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/account",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "account"],
+              "variable": [],
+              "query": [
                 {
-                    "name": "Get Portfolio Margin Pro Account Info(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/account",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "account"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
                 },
                 {
-                    "name": "Fund Collection by Asset(USER_DATA)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/asset-collection",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "asset-collection"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "asset",
-                                    "value": "asset_example",
-                                    "description": "`LDUSDT` and `RWUSD`",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
                 },
                 {
-                    "name": "Fund Auto-collection(USER_DATA)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/auto-collection",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "auto-collection"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Get Portfolio Margin Pro Account Balance(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/balance",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "balance"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "asset",
-                                    "value": "asset_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "BNB transfer(USER_DATA)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/bnb-transfer",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "bnb-transfer"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "amount",
-                                    "value": "1.0",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "transferSide",
-                                    "value": "transferSide_example",
-                                    "description": "\"TO_UM\",\"FROM_UM\"",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Get Delta Mode Status(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/delta-mode",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "delta-mode"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Switch Delta Mode(TRADE)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/delta-mode",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "delta-mode"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "deltaEnabled",
-                                    "value": "deltaEnabled_example",
-                                    "description": "`true` to enable Delta mode; `false` to disable Delta mode",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Get Transferable Earn Asset Balance for Portfolio Margin (USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/earn-asset-balance",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "earn-asset-balance"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "asset",
-                                    "value": "asset_example",
-                                    "description": "`LDUSDT` and `RWUSD`",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "transferType",
-                                    "value": "transferType_example",
-                                    "description": "`EARN_TO_FUTURE` /`FUTURE_TO_EARN`",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Transfer LDUSDT/RWUSD for Portfolio Margin(TRADE)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/earn-asset-transfer",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "earn-asset-transfer"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "asset",
-                                    "value": "asset_example",
-                                    "description": "`LDUSDT` and `RWUSD`",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "transferType",
-                                    "value": "transferType_example",
-                                    "description": "`EARN_TO_FUTURE` /`FUTURE_TO_EARN`",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "amount",
-                                    "value": "1.0",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Query Portfolio Margin Pro Negative Balance Interest History(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/interest-history",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "interest-history"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "asset",
-                                    "value": "asset_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "startTime",
-                                    "value": "1623319461670",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "endTime",
-                                    "value": "1641782889000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "size",
-                                    "value": "10",
-                                    "description": "Default:10 Max:100",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Query Portfolio Margin Pro Bankruptcy Loan Amount(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/pmLoan",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "pmLoan"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Query Portfolio Margin Pro Bankruptcy Loan Repay History(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/pmloan-history",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "pmloan-history"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "startTime",
-                                    "value": "1623319461670",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "endTime",
-                                    "value": "1641782889000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "current",
-                                    "value": "1",
-                                    "description": "Currently querying page. Start from 1. Default:1",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "size",
-                                    "value": "10",
-                                    "description": "Default:10 Max:100",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Portfolio Margin Pro Bankruptcy Loan Repay",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/repay",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "repay"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "from",
-                                    "value": "SPOT",
-                                    "description": "SPOT or MARGIN，default SPOT",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Repay futures Negative Balance(USER_DATA)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/repay-futures-negative-balance",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "repay-futures-negative-balance"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "from",
-                                    "value": "SPOT",
-                                    "description": "SPOT or MARGIN，default SPOT",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Change Auto-repay-futures Status(TRADE)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/repay-futures-switch",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "repay-futures-switch"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "autoRepay",
-                                    "value": "true",
-                                    "description": "Default: `true`; `false` for turn off the auto-repay futures negative balance function",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Get Auto-repay-futures Status(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/repay-futures-switch",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "repay-futures-switch"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Get Portfolio Margin Pro SPAN Account Info(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v2/portfolio/account",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v2", "portfolio", "account"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
                 }
-            ]
+              ]
+            }
+          }
         },
         {
-            "name": "Market-Data",
-            "item": [
+          "name": "Fund Collection by Asset(USER_DATA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/asset-collection",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "asset-collection"],
+              "variable": [],
+              "query": [
                 {
-                    "name": "Query Portfolio Margin Asset Index Price (MARKET_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/asset-index-price",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "asset-index-price"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "asset",
-                                    "value": "asset_example",
-                                    "description": "",
-                                    "disabled": true
-                                }
-                            ]
-                        }
-                    }
+                  "key": "asset",
+                  "value": "asset_example",
+                  "description": "`LDUSDT` and `RWUSD`",
+                  "disabled": false
                 },
                 {
-                    "name": "Portfolio Margin Collateral Rate(MARKET_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/collateralRate",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "collateralRate"],
-                            "variable": [],
-                            "query": []
-                        }
-                    }
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
                 },
                 {
-                    "name": "Get Portfolio Margin Asset Leverage(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/portfolio/margin-asset-leverage",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "portfolio", "margin-asset-leverage"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
                 },
                 {
-                    "name": "Portfolio Margin Pro Tiered Collateral Rate(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v2/portfolio/collateralRate",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v2", "portfolio", "collateralRate"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
                 }
-            ]
-        }
-    ],
-
-    "variable": [
+              ]
+            }
+          }
+        },
         {
-            "key": "prod_url",
-            "value": "https://api.binance.com",
-            "type": "string"
+          "name": "Fund Auto-collection(USER_DATA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/auto-collection",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "auto-collection"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Portfolio Margin Pro Account Balance(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/balance",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "balance"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "asset",
+                  "value": "asset_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "BNB transfer(USER_DATA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/bnb-transfer",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "bnb-transfer"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "amount",
+                  "value": "1.0",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "transferSide",
+                  "value": "transferSide_example",
+                  "description": "\"TO_UM\",\"FROM_UM\"",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Delta Mode Status(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/delta-mode",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "delta-mode"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Switch Delta Mode(TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/delta-mode",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "delta-mode"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "deltaEnabled",
+                  "value": "deltaEnabled_example",
+                  "description": "`true` to enable Delta mode; `false` to disable Delta mode",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Transferable Earn Asset Balance for Portfolio Margin (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/earn-asset-balance",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "earn-asset-balance"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "asset",
+                  "value": "asset_example",
+                  "description": "`LDUSDT` and `RWUSD`",
+                  "disabled": false
+                },
+                {
+                  "key": "transferType",
+                  "value": "transferType_example",
+                  "description": "`EARN_TO_FUTURE` /`FUTURE_TO_EARN`",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Transfer LDUSDT/RWUSD for Portfolio Margin(TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/earn-asset-transfer",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "earn-asset-transfer"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "asset",
+                  "value": "asset_example",
+                  "description": "`LDUSDT` and `RWUSD`",
+                  "disabled": false
+                },
+                {
+                  "key": "transferType",
+                  "value": "transferType_example",
+                  "description": "`EARN_TO_FUTURE` /`FUTURE_TO_EARN`",
+                  "disabled": false
+                },
+                {
+                  "key": "amount",
+                  "value": "1.0",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Portfolio Margin Pro Negative Balance Interest History(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/interest-history",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "interest-history"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "asset",
+                  "value": "asset_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Default:10 Max:100",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Portfolio Margin Pro Bankruptcy Loan Amount(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/pmLoan",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "pmLoan"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Portfolio Margin Pro Bankruptcy Loan Repay History(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/pmloan-history",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "pmloan-history"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page. Start from 1. Default:1",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Default:10 Max:100",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Portfolio Margin Pro Bankruptcy Loan Repay",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/repay",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "repay"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "from",
+                  "value": "SPOT",
+                  "description": "SPOT or MARGIN，default SPOT",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Repay futures Negative Balance(USER_DATA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/repay-futures-negative-balance",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "repay-futures-negative-balance"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "from",
+                  "value": "SPOT",
+                  "description": "SPOT or MARGIN，default SPOT",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Change Auto-repay-futures Status(TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/repay-futures-switch",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "repay-futures-switch"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "autoRepay",
+                  "value": "true",
+                  "description": "Default: `true`; `false` for turn off the auto-repay futures negative balance function",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Auto-repay-futures Status(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/repay-futures-switch",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "repay-futures-switch"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Portfolio Margin Pro SPAN Account Info(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/portfolio/account",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "portfolio", "account"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
         }
-    ]
+      ]
+    },
+    {
+      "name": "Market-Data",
+      "item": [
+        {
+          "name": "Query Portfolio Margin Asset Index Price (MARKET_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/asset-index-price",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "asset-index-price"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "asset",
+                  "value": "asset_example",
+                  "description": "",
+                  "disabled": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Portfolio Margin Collateral Rate(MARKET_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/collateralRate",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "collateralRate"],
+              "variable": [],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "Get Portfolio Margin Asset Leverage(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/portfolio/margin-asset-leverage",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "portfolio", "margin-asset-leverage"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Portfolio Margin Pro Tiered Collateral Rate(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/portfolio/collateralRate",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "portfolio", "collateralRate"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "prod_url",
+      "value": "https://api.binance.com",
+      "type": "string"
+    }
+  ]
 }

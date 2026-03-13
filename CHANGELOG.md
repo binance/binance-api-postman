@@ -1,5 +1,14 @@
 # Changelog
 
+## 41.0.0 - 2026-03-13
+
+### Added (4)
+
+- Support Demo Mode environment.
+- `GET /api/v3/executionRules`
+- `GET /api/v3/referencePrice/calculation`
+- `GET /api/v3/referencePrice`
+
 ## 40.0.0 - 2026-02-13
 
 ### Added (2)

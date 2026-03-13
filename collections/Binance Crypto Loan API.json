@@ -1,1492 +1,1494 @@
 {
-    "info": {
-        "name": "Binance Crypto Loan REST API",
-        "description": {
-            "content": "OpenAPI Specification for the Binance Crypto Loan REST API",
-            "type": "text/markdown"
-        },
-        "version": "1.0.0",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  "info": {
+    "name": "Binance Crypto Loan REST API",
+    "description": {
+      "content": "OpenAPI Specification for the Binance Crypto Loan REST API",
+      "type": "text/markdown"
     },
-    "event": [
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "exec": [
+          "const ts = Date.now();",
+          "let queryParamsObject = {};",
+          "let bodyParamsObject = {};",
+          "const postmanEnvironment = pm.environment.get('environment');",
+          "const api_key = pm.environment.get('api-key');",
+          "const api_secret = pm.environment.get('api-secret');",
+          "const parameters = pm.request.url.query;",
+          "const body = pm.request.body;",
+          "",
+          "// set host based on env",
+          "const normalizedEnvironment = String(postmanEnvironment || 'production').toLowerCase();",
+          "const environmentUrlKeyMap = {",
+          "    production: 'prod_url',",
+          "    prod: 'prod_url',",
+          "    testnet: 'testnet_url',",
+          "    demo: 'demo_url'",
+          "};",
+          "const selectedUrlKey = environmentUrlKeyMap[normalizedEnvironment] || 'prod_url';",
+          "const selectedUrl = pm.variables.get(selectedUrlKey) || pm.variables.get('prod_url');",
+          "",
+          "// set host based on env",
+          "pm.request.url.host = [selectedUrl];",
+          "",
+          "// Collect query params",
+          "parameters.each((param) => {",
+          "    if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+          "        queryParamsObject[param.key] = param.value;",
+          "    }",
+          "});",
+          "",
+          "// add timestamp",
+          "Object.assign(queryParamsObject, { timestamp: ts });",
+          "",
+          "// Collect body params if urlencoded",
+          "let hasUrlencodedBodyParams = false;",
+          "",
+          "if (body) {",
+          "    const contentTypeHeader = pm.request.headers.get('Content-Type') || pm.request.headers.get('content-type') || '';",
+          "    const isFormUrlencoded = contentTypeHeader.includes('application/x-www-form-urlencoded') || body.mode === 'urlencoded';",
+          "",
+          "    if (isFormUrlencoded && body.urlencoded) {",
+          "        body.urlencoded.each((param) => {",
+          "            if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+          "                bodyParamsObject[param.key] = param.value;",
+          "                hasUrlencodedBodyParams = true;",
+          "            }",
+          "        });",
+          "    }",
+          "}",
+          "",
+          "// set api key",
+          "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
+          "",
+          "// only sign if a signature param was declared and we have a secret",
+          "if (parameters.has('signature') && api_secret) {",
+          "    // canonical query strings",
+          "    const queryStringForSign = buildQueryString(queryParamsObject);",
+          "    const bodyStringForSign = buildQueryString(bodyParamsObject);",
+          "    const totalParams = queryStringForSign + bodyStringForSign;",
+          "",
+          "    const encoder = new TextEncoder();",
+          "    const keyData = encoder.encode(api_secret);",
+          "    const msgData = encoder.encode(totalParams);",
+          "",
+          "    pm.request.url.query.clear();",
+          "",
+          "    const cryptoKey = await crypto.subtle.importKey('raw', keyData, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);",
+          "    const signatureBuffer = await crypto.subtle.sign('HMAC', cryptoKey, msgData);",
+          "",
+          "    const signature = Array.from(new Uint8Array(signatureBuffer))",
+          "        .map((b) => b.toString(16).padStart(2, '0'))",
+          "        .join('');",
+          "",
+          "    // update request",
+          "    const finalQueryParams = Object.assign({}, queryParamsObject, { signature });",
+          "    const finalQueryString = buildQueryString(finalQueryParams);",
+          "    pm.request.url.query = finalQueryString;",
+          "}",
+          "",
+          "function buildQueryString(params) {",
+          "    if (!params) return '';",
+          "",
+          "    const pairs = [];",
+          "    Object.entries(params).forEach(([key, value]) => {",
+          "        if (value !== null && value !== undefined) {",
+          "            const serializedValue = serializeValue(value);",
+          "            pairs.push(`${key}=${encodeURIComponent(serializedValue)}`);",
+          "        }",
+          "    });",
+          "",
+          "    return pairs.join('&');",
+          "}",
+          "",
+          "function serializeValue(value) {",
+          "    if (value === null || value === undefined) return '';",
+          "    if (Array.isArray(value) || (typeof value === 'object' && value !== null)) return JSON.stringify(value);",
+          "",
+          "    return String(value);",
+          "}",
+          "",
+          "function setOrUpdateHeaderParam(key, value) {",
+          "    let headers = pm.request.headers;",
+          "    let header = headers.find((header) => header.key === key);",
+          "    if (header) header.value = value;",
+          "    else pm.request.headers.add({ key, value });",
+          "}",
+          "",
+          "function is_disabled(val) {",
+          "    return val === true;",
+          "}",
+          "",
+          "function is_empty(str) {",
+          "    if (str === null || str === undefined) return true;",
+          "    if (typeof str === 'string') {",
+          "        return (",
+          "            !str ||",
+          "            str.length === 0 ||",
+          "            !/[^\\\\s]/.test(str) ||",
+          "            /^\\\\s*$/.test(str) ||",
+          "            str.replace(/\\\\s/g, '') === ''",
+          "        );",
+          "    }",
+          "    return false;",
+          "}"
+        ],
+        "type": "text/javascript"
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "Stable-Rate",
+      "item": [
         {
-            "listen": "prerequest",
-            "script": {
-                "exec": [
-                    "const ts = Date.now();",
-                    "let queryParamsObject = {};",
-                    "let bodyParamsObject = {};",
-                    "const postmanEnvironment = pm.environment.get('environment');",
-                    "const api_key = pm.environment.get('api-key');",
-                    "const api_secret = pm.environment.get('api-secret');",
-                    "const parameters = pm.request.url.query;",
-                    "const body = pm.request.body;",
-                    "",
-                    "// set host based on env",
-                    "pm.request.url.host = [pm.variables.get('prod_url')];",
-                    "",
-                    "// Collect query params",
-                    "parameters.each((param) => {",
-                    "    if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
-                    "        queryParamsObject[param.key] = param.value;",
-                    "    }",
-                    "});",
-                    "",
-                    "// add timestamp",
-                    "Object.assign(queryParamsObject, { timestamp: ts });",
-                    "",
-                    "// Collect body params if urlencoded",
-                    "let hasUrlencodedBodyParams = false;",
-                    "",
-                    "if (body) {",
-                    "    const contentTypeHeader = pm.request.headers.get('Content-Type') || pm.request.headers.get('content-type') || '';",
-                    "    const isFormUrlencoded = contentTypeHeader.includes('application/x-www-form-urlencoded') || body.mode === 'urlencoded';",
-                    "",
-                    "    if (isFormUrlencoded && body.urlencoded) {",
-                    "        body.urlencoded.each((param) => {",
-                    "            if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
-                    "                bodyParamsObject[param.key] = param.value;",
-                    "                hasUrlencodedBodyParams = true;",
-                    "            }",
-                    "        });",
-                    "    }",
-                    "}",
-                    "",
-                    "// set api key",
-                    "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
-                    "",
-                    "// only sign if a signature param was declared and we have a secret",
-                    "if (parameters.has('signature') && api_secret) {",
-                    "    // canonical query strings",
-                    "    const queryStringForSign = buildQueryString(queryParamsObject);",
-                    "    const bodyStringForSign = buildQueryString(bodyParamsObject);",
-                    "    const totalParams = queryStringForSign + bodyStringForSign;",
-                    "",
-                    "    const encoder = new TextEncoder();",
-                    "    const keyData = encoder.encode(api_secret);",
-                    "    const msgData = encoder.encode(totalParams);",
-                    "",
-                    "    pm.request.url.query.clear();",
-                    "",
-                    "    const cryptoKey = await crypto.subtle.importKey('raw', keyData, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);",
-                    "    const signatureBuffer = await crypto.subtle.sign('HMAC', cryptoKey, msgData);",
-                    "",
-                    "    const signature = Array.from(new Uint8Array(signatureBuffer))",
-                    "        .map((b) => b.toString(16).padStart(2, '0'))",
-                    "        .join('');",
-                    "",
-                    "    // update request",
-                    "    const finalQueryParams = Object.assign({}, queryParamsObject, { signature });",
-                    "    const finalQueryString = buildQueryString(finalQueryParams);",
-                    "    pm.request.url.query = finalQueryString;",
-                    "}",
-                    "",
-                    "function buildQueryString(params) {",
-                    "    if (!params) return '';",
-                    "",
-                    "    const pairs = [];",
-                    "    Object.entries(params).forEach(([key, value]) => {",
-                    "        if (value !== null && value !== undefined) {",
-                    "            const serializedValue = serializeValue(value);",
-                    "            pairs.push(`${key}=${encodeURIComponent(serializedValue)}`);",
-                    "        }",
-                    "    });",
-                    "",
-                    "    return pairs.join('&');",
-                    "}",
-                    "",
-                    "function serializeValue(value) {",
-                    "    if (value === null || value === undefined) return '';",
-                    "    if (Array.isArray(value) || (typeof value === 'object' && value !== null)) return JSON.stringify(value);",
-                    "",
-                    "    return String(value);",
-                    "}",
-                    "",
-                    "function setOrUpdateHeaderParam(key, value) {",
-                    "    let headers = pm.request.headers;",
-                    "    let header = headers.find((header) => header.key === key);",
-                    "    if (header) header.value = value;",
-                    "    else pm.request.headers.add({ key, value });",
-                    "}",
-                    "",
-                    "function is_disabled(val) {",
-                    "    return val === true;",
-                    "}",
-                    "",
-                    "function is_empty(str) {",
-                    "    if (str === null || str === undefined) return true;",
-                    "    if (typeof str === 'string') {",
-                    "        return (",
-                    "            !str ||",
-                    "            str.length === 0 ||",
-                    "            !/[^\\\\s]/.test(str) ||",
-                    "            /^\\\\s*$/.test(str) ||",
-                    "            str.replace(/\\\\s/g, '') === ''",
-                    "        );",
-                    "    }",
-                    "    return false;",
-                    "}"
-                ],
-                "type": "text/javascript"
-            }
-        }
-    ],
-    "item": [
-        {
-            "name": "Stable-Rate",
-            "item": [
+          "name": "Get Loan Borrow History(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/loan/borrow/history",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "loan", "borrow", "history"],
+              "variable": [],
+              "query": [
                 {
-                    "name": "Get Loan Borrow History(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/loan/borrow/history",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "loan", "borrow", "history"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "orderId",
-                                    "value": "1",
-                                    "description": "orderId in `POST /sapi/v1/loan/borrow`",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "loanCoin",
-                                    "value": "loanCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "collateralCoin",
-                                    "value": "collateralCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "startTime",
-                                    "value": "1623319461670",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "endTime",
-                                    "value": "1641782889000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "current",
-                                    "value": "1",
-                                    "description": "Current querying page. Start from 1; default: 1; max: 1000",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "limit",
-                                    "value": "10",
-                                    "description": "Default: 10; max: 100",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "orderId",
+                  "value": "1",
+                  "description": "orderId in `POST /sapi/v1/loan/borrow`",
+                  "disabled": true
                 },
                 {
-                    "name": "Get Crypto Loans Income History(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/loan/income",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "loan", "income"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "asset",
-                                    "value": "asset_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "type",
-                                    "value": "0",
-                                    "description": "All types will be returned by default. Enum：`borrowIn` ,`collateralSpent`, `repayAmount`, `collateralReturn`(Collateral return after repayment), `addCollateral`, `removeCollateral`, `collateralReturnAfterLiquidation`",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "startTime",
-                                    "value": "1623319461670",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "endTime",
-                                    "value": "1641782889000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "limit",
-                                    "value": "10",
-                                    "description": "Default: 10; max: 100",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "loanCoin",
+                  "value": "loanCoin_example",
+                  "description": "",
+                  "disabled": true
                 },
                 {
-                    "name": "Get Loan LTV Adjustment History(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/loan/ltv/adjustment/history",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "loan", "ltv", "adjustment", "history"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "orderId",
-                                    "value": "1",
-                                    "description": "orderId in `POST /sapi/v1/loan/borrow`",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "loanCoin",
-                                    "value": "loanCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "collateralCoin",
-                                    "value": "collateralCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "startTime",
-                                    "value": "1623319461670",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "endTime",
-                                    "value": "1641782889000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "current",
-                                    "value": "1",
-                                    "description": "Current querying page. Start from 1; default: 1; max: 1000",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "limit",
-                                    "value": "10",
-                                    "description": "Default: 10; max: 100",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "collateralCoin",
+                  "value": "collateralCoin_example",
+                  "description": "",
+                  "disabled": true
                 },
                 {
-                    "name": "Check Collateral Repay Rate(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/loan/repay/collateral/rate",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "loan", "repay", "collateral", "rate"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "loanCoin",
-                                    "value": "loanCoin_example",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "collateralCoin",
-                                    "value": "collateralCoin_example",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "repayAmount",
-                                    "value": "1.0",
-                                    "description": "repay amount of loanCoin",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
                 },
                 {
-                    "name": "Get Loan Repayment History(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/loan/repay/history",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "loan", "repay", "history"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "orderId",
-                                    "value": "1",
-                                    "description": "orderId in `POST /sapi/v1/loan/borrow`",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "loanCoin",
-                                    "value": "loanCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "collateralCoin",
-                                    "value": "collateralCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "startTime",
-                                    "value": "1623319461670",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "endTime",
-                                    "value": "1641782889000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "current",
-                                    "value": "1",
-                                    "description": "Current querying page. Start from 1; default: 1; max: 1000",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "limit",
-                                    "value": "10",
-                                    "description": "Default: 10; max: 100",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Default: 10; max: 100",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
                 }
-            ]
+              ]
+            }
+          }
         },
         {
-            "name": "Flexible-Rate",
-            "item": [
+          "name": "Get Crypto Loans Income History(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/loan/income",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "loan", "income"],
+              "variable": [],
+              "query": [
                 {
-                    "name": "Flexible Loan Adjust LTV(TRADE)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v2/loan/flexible/adjust/ltv",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v2", "loan", "flexible", "adjust", "ltv"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "loanCoin",
-                                    "value": "loanCoin_example",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "collateralCoin",
-                                    "value": "collateralCoin_example",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "adjustmentAmount",
-                                    "value": "1.0",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "direction",
-                                    "value": "direction_example",
-                                    "description": "\"ADDITIONAL\", \"REDUCED\"",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "asset",
+                  "value": "asset_example",
+                  "description": "",
+                  "disabled": true
                 },
                 {
-                    "name": "Flexible Loan Borrow(TRADE)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v2/loan/flexible/borrow",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v2", "loan", "flexible", "borrow"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "loanCoin",
-                                    "value": "loanCoin_example",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "loanAmount",
-                                    "value": "1.0",
-                                    "description": "Mandatory when collateralAmount is empty",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "collateralCoin",
-                                    "value": "collateralCoin_example",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "collateralAmount",
-                                    "value": "1.0",
-                                    "description": "Mandatory when loanAmount is empty",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "type",
+                  "value": "0",
+                  "description": "All types will be returned by default. Enum：`borrowIn` ,`collateralSpent`, `repayAmount`, `collateralReturn`(Collateral return after repayment), `addCollateral`, `removeCollateral`, `collateralReturnAfterLiquidation`",
+                  "disabled": true
                 },
                 {
-                    "name": "Get Flexible Loan Borrow History(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v2/loan/flexible/borrow/history",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v2", "loan", "flexible", "borrow", "history"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "loanCoin",
-                                    "value": "loanCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "collateralCoin",
-                                    "value": "collateralCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "startTime",
-                                    "value": "1623319461670",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "endTime",
-                                    "value": "1641782889000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "current",
-                                    "value": "1",
-                                    "description": "Current querying page. Start from 1; default: 1; max: 1000",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "limit",
-                                    "value": "10",
-                                    "description": "Default: 10; max: 100",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
                 },
                 {
-                    "name": "Get Flexible Loan Collateral Assets Data(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v2/loan/flexible/collateral/data",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v2", "loan", "flexible", "collateral", "data"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "collateralCoin",
-                                    "value": "collateralCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
                 },
                 {
-                    "name": "Get Flexible Loan Liquidation History (USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v2/loan/flexible/liquidation/history",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v2", "loan", "flexible", "liquidation", "history"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "loanCoin",
-                                    "value": "loanCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "collateralCoin",
-                                    "value": "collateralCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "startTime",
-                                    "value": "1623319461670",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "endTime",
-                                    "value": "1641782889000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "current",
-                                    "value": "1",
-                                    "description": "Current querying page. Start from 1; default: 1; max: 1000",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "limit",
-                                    "value": "10",
-                                    "description": "Default: 10; max: 100",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Default: 10; max: 100",
+                  "disabled": true
                 },
                 {
-                    "name": "Get Flexible Loan Assets Data(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v2/loan/flexible/loanable/data",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v2", "loan", "flexible", "loanable", "data"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "loanCoin",
-                                    "value": "loanCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
                 },
                 {
-                    "name": "Get Flexible Loan LTV Adjustment History(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v2/loan/flexible/ltv/adjustment/history",
-                            "host": ["{{url}}"],
-                            "path": [
-                                "sapi",
-                                "v2",
-                                "loan",
-                                "flexible",
-                                "ltv",
-                                "adjustment",
-                                "history"
-                            ],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "loanCoin",
-                                    "value": "loanCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "collateralCoin",
-                                    "value": "collateralCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "startTime",
-                                    "value": "1623319461670",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "endTime",
-                                    "value": "1641782889000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "current",
-                                    "value": "1",
-                                    "description": "Current querying page. Start from 1; default: 1; max: 1000",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "limit",
-                                    "value": "10",
-                                    "description": "Default: 10; max: 100",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
                 },
                 {
-                    "name": "Get Flexible Loan Ongoing Orders(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v2/loan/flexible/ongoing/orders",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v2", "loan", "flexible", "ongoing", "orders"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "loanCoin",
-                                    "value": "loanCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "collateralCoin",
-                                    "value": "collateralCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "current",
-                                    "value": "1",
-                                    "description": "Current querying page. Start from 1; default: 1; max: 1000",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "limit",
-                                    "value": "10",
-                                    "description": "Default: 10; max: 100",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Flexible Loan Repay(TRADE)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v2/loan/flexible/repay",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v2", "loan", "flexible", "repay"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "loanCoin",
-                                    "value": "loanCoin_example",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "collateralCoin",
-                                    "value": "collateralCoin_example",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "repayAmount",
-                                    "value": "1.0",
-                                    "description": "repay amount of loanCoin",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "collateralReturn",
-                                    "value": "true",
-                                    "description": "Default: TRUE. TRUE: Return extra collateral to spot account; FALSE: Keep extra collateral in the order, and lower LTV.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "fullRepayment",
-                                    "value": "false",
-                                    "description": "Default: FALSE. TRUE: Full repayment; FALSE: Partial repayment, based on loanAmount",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "repaymentType",
-                                    "value": "1",
-                                    "description": "Default: 1. 1: Repayment with loan asset; 2: Repayment with collateral",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Get Flexible Loan Repayment History(USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v2/loan/flexible/repay/history",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v2", "loan", "flexible", "repay", "history"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "loanCoin",
-                                    "value": "loanCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "collateralCoin",
-                                    "value": "collateralCoin_example",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "startTime",
-                                    "value": "1623319461670",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "endTime",
-                                    "value": "1641782889000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "current",
-                                    "value": "1",
-                                    "description": "Current querying page. Start from 1; default: 1; max: 1000",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "limit",
-                                    "value": "10",
-                                    "description": "Default: 10; max: 100",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Check Collateral Repay Rate (USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v2/loan/flexible/repay/rate",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v2", "loan", "flexible", "repay", "rate"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "loanCoin",
-                                    "value": "loanCoin_example",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "collateralCoin",
-                                    "value": "collateralCoin_example",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Get Flexible Loan Interest Rate History (USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v2/loan/interestRateHistory",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v2", "loan", "interestRateHistory"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "coin",
-                                    "value": "coin_example",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "startTime",
-                                    "value": "1623319461670",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "endTime",
-                                    "value": "1641782889000",
-                                    "description": "",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "current",
-                                    "value": "1",
-                                    "description": "Current querying page. Start from 1; default: 1; max: 1000",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "limit",
-                                    "value": "10",
-                                    "description": "Default: 10; max: 100",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
                 }
-            ]
-        }
-    ],
-
-    "variable": [
+              ]
+            }
+          }
+        },
         {
-            "key": "prod_url",
-            "value": "https://api.binance.com",
-            "type": "string"
+          "name": "Get Loan LTV Adjustment History(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/loan/ltv/adjustment/history",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "loan", "ltv", "adjustment", "history"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "orderId",
+                  "value": "1",
+                  "description": "orderId in `POST /sapi/v1/loan/borrow`",
+                  "disabled": true
+                },
+                {
+                  "key": "loanCoin",
+                  "value": "loanCoin_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "collateralCoin",
+                  "value": "collateralCoin_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Default: 10; max: 100",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Check Collateral Repay Rate(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/loan/repay/collateral/rate",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "loan", "repay", "collateral", "rate"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "loanCoin",
+                  "value": "loanCoin_example",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "collateralCoin",
+                  "value": "collateralCoin_example",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "repayAmount",
+                  "value": "1.0",
+                  "description": "repay amount of loanCoin",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Loan Repayment History(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/loan/repay/history",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "loan", "repay", "history"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "orderId",
+                  "value": "1",
+                  "description": "orderId in `POST /sapi/v1/loan/borrow`",
+                  "disabled": true
+                },
+                {
+                  "key": "loanCoin",
+                  "value": "loanCoin_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "collateralCoin",
+                  "value": "collateralCoin_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Default: 10; max: 100",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
         }
-    ]
+      ]
+    },
+    {
+      "name": "Flexible-Rate",
+      "item": [
+        {
+          "name": "Flexible Loan Adjust LTV(TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/loan/flexible/adjust/ltv",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "loan", "flexible", "adjust", "ltv"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "loanCoin",
+                  "value": "loanCoin_example",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "collateralCoin",
+                  "value": "collateralCoin_example",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "adjustmentAmount",
+                  "value": "1.0",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "direction",
+                  "value": "direction_example",
+                  "description": "\"ADDITIONAL\", \"REDUCED\"",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Flexible Loan Borrow(TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/loan/flexible/borrow",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "loan", "flexible", "borrow"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "loanCoin",
+                  "value": "loanCoin_example",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "loanAmount",
+                  "value": "1.0",
+                  "description": "Mandatory when collateralAmount is empty",
+                  "disabled": true
+                },
+                {
+                  "key": "collateralCoin",
+                  "value": "collateralCoin_example",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "collateralAmount",
+                  "value": "1.0",
+                  "description": "Mandatory when loanAmount is empty",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Flexible Loan Borrow History(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/loan/flexible/borrow/history",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "loan", "flexible", "borrow", "history"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "loanCoin",
+                  "value": "loanCoin_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "collateralCoin",
+                  "value": "collateralCoin_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Default: 10; max: 100",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Flexible Loan Collateral Assets Data(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/loan/flexible/collateral/data",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "loan", "flexible", "collateral", "data"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "collateralCoin",
+                  "value": "collateralCoin_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Flexible Loan Liquidation History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/loan/flexible/liquidation/history",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "loan", "flexible", "liquidation", "history"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "loanCoin",
+                  "value": "loanCoin_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "collateralCoin",
+                  "value": "collateralCoin_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Default: 10; max: 100",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Flexible Loan Assets Data(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/loan/flexible/loanable/data",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "loan", "flexible", "loanable", "data"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "loanCoin",
+                  "value": "loanCoin_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Flexible Loan LTV Adjustment History(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/loan/flexible/ltv/adjustment/history",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "loan", "flexible", "ltv", "adjustment", "history"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "loanCoin",
+                  "value": "loanCoin_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "collateralCoin",
+                  "value": "collateralCoin_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Default: 10; max: 100",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Flexible Loan Ongoing Orders(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/loan/flexible/ongoing/orders",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "loan", "flexible", "ongoing", "orders"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "loanCoin",
+                  "value": "loanCoin_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "collateralCoin",
+                  "value": "collateralCoin_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Default: 10; max: 100",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Flexible Loan Repay(TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/loan/flexible/repay",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "loan", "flexible", "repay"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "loanCoin",
+                  "value": "loanCoin_example",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "collateralCoin",
+                  "value": "collateralCoin_example",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "repayAmount",
+                  "value": "1.0",
+                  "description": "repay amount of loanCoin",
+                  "disabled": false
+                },
+                {
+                  "key": "collateralReturn",
+                  "value": "true",
+                  "description": "Default: TRUE. TRUE: Return extra collateral to spot account; FALSE: Keep extra collateral in the order, and lower LTV.",
+                  "disabled": true
+                },
+                {
+                  "key": "fullRepayment",
+                  "value": "false",
+                  "description": "Default: FALSE. TRUE: Full repayment; FALSE: Partial repayment, based on loanAmount",
+                  "disabled": true
+                },
+                {
+                  "key": "repaymentType",
+                  "value": "1",
+                  "description": "Default: 1. 1: Repayment with loan asset; 2: Repayment with collateral",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Flexible Loan Repayment History(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/loan/flexible/repay/history",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "loan", "flexible", "repay", "history"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "loanCoin",
+                  "value": "loanCoin_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "collateralCoin",
+                  "value": "collateralCoin_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Default: 10; max: 100",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Check Collateral Repay Rate (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/loan/flexible/repay/rate",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "loan", "flexible", "repay", "rate"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "loanCoin",
+                  "value": "loanCoin_example",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "collateralCoin",
+                  "value": "collateralCoin_example",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Flexible Loan Interest Rate History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/loan/interestRateHistory",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "loan", "interestRateHistory"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "coin",
+                  "value": "coin_example",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Default: 10; max: 100",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "prod_url",
+      "value": "https://api.binance.com",
+      "type": "string"
+    }
+  ]
 }
