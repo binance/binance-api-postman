@@ -1,5 +1,26 @@
 # Changelog
 
+## 42.0.0 - 2026-03-19
+
+### Changed (4)
+
+- Added parameter `purchaseId`
+  - affected endpoints:
+    - `GET /sapi/v1/eth-staking/eth/history/stakingHistory`
+    - `GET /sapi/v1/sol-staking/sol/history/stakingHistory`
+- Added parameter `redeemId`
+  - affected endpoints:
+    - `GET /sapi/v1/eth-staking/eth/history/redemptionHistory`
+    - `GET /sapi/v1/sol-staking/sol/history/redemptionHistory`
+- Added parameter `selfTradePreventionMode`
+  - affected endpoints:
+    - `POST /eapi/v1/order`
+- Modified parameter `orders`:
+  - items: property `selfTradePreventionMode` added
+  - items: item property `selfTradePreventionMode` added
+  - affected endpoints:
+    - `POST /eapi/v1/batchOrders`
+
 ## 41.0.0 - 2026-03-13
 
 ### Added (4)

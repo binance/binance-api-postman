@@ -170,8 +170,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/bill",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "bill"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "bill"
+              ],
               "variable": [],
               "query": [
                 {
@@ -250,8 +256,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/marginAccount",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "marginAccount"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "marginAccount"
+              ],
               "variable": [],
               "query": [
                 {
@@ -305,8 +317,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/allOpenOrders",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "allOpenOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "allOpenOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -361,8 +379,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/allOpenOrdersByUnderlying",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "allOpenOrdersByUnderlying"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "allOpenOrdersByUnderlying"
+              ],
               "variable": [],
               "query": [
                 {
@@ -417,8 +441,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/batchOrders",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "batchOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "batchOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -485,8 +515,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/batchOrders",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "batchOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "batchOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -541,8 +577,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/commission",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "commission"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "commission"
+              ],
               "variable": [],
               "query": [
                 {
@@ -591,8 +633,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/exerciseRecord",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "exerciseRecord"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "exerciseRecord"
+              ],
               "variable": [],
               "query": [
                 {
@@ -665,8 +713,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/historyOrders",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "historyOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "historyOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -745,8 +799,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/openOrders",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "openOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "openOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -819,8 +879,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/order",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -887,8 +953,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/order",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -958,6 +1030,12 @@
                   "disabled": true
                 },
                 {
+                  "key": "selfTradePreventionMode",
+                  "value": "EXPIRE_TAKER",
+                  "description": "`EXPIRE_TAKER`:expire taker order when STP triggers/ `EXPIRE_MAKER`:expire maker order when STP triggers/ `EXPIRE_BOTH`:expire both orders when STP triggers; Default `EXPIRE_MAKER`",
+                  "disabled": true
+                },
+                {
                   "key": "recvWindow",
                   "value": "5000",
                   "description": "",
@@ -1003,8 +1081,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/order",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1071,8 +1155,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/position",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "position"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "position"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1127,8 +1217,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/userTrades",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "userTrades"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "userTrades"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1212,8 +1308,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/countdownCancelAll",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "countdownCancelAll"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "countdownCancelAll"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1268,8 +1370,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/countdownCancelAll",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "countdownCancelAll"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "countdownCancelAll"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1330,8 +1438,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/countdownCancelAllHeartBeat",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "countdownCancelAllHeartBeat"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "countdownCancelAllHeartBeat"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1386,8 +1500,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/mmp",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "mmp"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "mmp"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1442,8 +1562,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/mmpReset",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "mmpReset"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "mmpReset"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1498,8 +1624,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/mmpSet",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "mmpSet"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "mmpSet"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1577,8 +1709,16 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/block/order/create",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "block", "order", "create"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "block",
+                "order",
+                "create"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1633,8 +1773,16 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/block/order/create",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "block", "order", "create"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "block",
+                "order",
+                "create"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1689,8 +1837,16 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/block/order/create",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "block", "order", "create"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "block",
+                "order",
+                "create"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1751,8 +1907,16 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/block/order/execute",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "block", "order", "execute"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "block",
+                "order",
+                "execute"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1807,8 +1971,16 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/block/order/execute",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "block", "order", "execute"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "block",
+                "order",
+                "execute"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1863,8 +2035,16 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/block/order/orders",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "block", "order", "orders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "block",
+                "order",
+                "orders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1937,8 +2117,15 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/block/user-trades",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "block", "user-trades"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "block",
+                "user-trades"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2004,8 +2191,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/listenKey",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "listenKey"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "listenKey"
+              ],
               "variable": [],
               "query": []
             }
@@ -2029,8 +2222,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/listenKey",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "listenKey"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "listenKey"
+              ],
               "variable": [],
               "query": []
             }
@@ -2060,8 +2259,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/listenKey",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "listenKey"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "listenKey"
+              ],
               "variable": [],
               "query": []
             }
@@ -2096,8 +2301,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/blockTrades",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "blockTrades"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "blockTrades"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2140,8 +2351,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/depth",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "depth"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "depth"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2184,8 +2401,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/exchangeInfo",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "exchangeInfo"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "exchangeInfo"
+              ],
               "variable": [],
               "query": []
             }
@@ -2215,8 +2438,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/exerciseHistory",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "exerciseHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "exerciseHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2271,8 +2500,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/index",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "index"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "index"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2309,8 +2544,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/klines",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "klines"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "klines"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2371,8 +2612,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/mark",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "mark"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "mark"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2409,8 +2656,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/openInterest",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "openInterest"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "openInterest"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2447,8 +2700,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/ping",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "ping"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "ping"
+              ],
               "variable": [],
               "query": []
             }
@@ -2478,8 +2737,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/ticker",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "ticker"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "ticker"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2516,8 +2781,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/time",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "time"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "time"
+              ],
               "variable": [],
               "query": []
             }
@@ -2547,8 +2818,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/trades",
-              "host": ["{{url}}"],
-              "path": ["eapi", "v1", "trades"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "eapi",
+                "v1",
+                "trades"
+              ],
               "variable": [],
               "query": [
                 {

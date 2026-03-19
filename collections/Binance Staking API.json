@@ -170,8 +170,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/account",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "onchain-yields", "account"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "onchain-yields",
+                "account"
+              ],
               "variable": [],
               "query": [
                 {
@@ -220,8 +227,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/history/redemptionRecord",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "onchain-yields", "locked", "history", "redemptionRecord"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "onchain-yields",
+                "locked",
+                "history",
+                "redemptionRecord"
+              ],
               "variable": [],
               "query": [
                 {
@@ -312,8 +328,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/history/rewardsRecord",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "onchain-yields", "locked", "history", "rewardsRecord"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "onchain-yields",
+                "locked",
+                "history",
+                "rewardsRecord"
+              ],
               "variable": [],
               "query": [
                 {
@@ -398,8 +423,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/history/subscriptionRecord",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "onchain-yields", "locked", "history", "subscriptionRecord"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "onchain-yields",
+                "locked",
+                "history",
+                "subscriptionRecord"
+              ],
               "variable": [],
               "query": [
                 {
@@ -490,8 +524,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/list",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "onchain-yields", "locked", "list"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "onchain-yields",
+                "locked",
+                "list"
+              ],
               "variable": [],
               "query": [
                 {
@@ -558,8 +600,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/personalLeftQuota",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "onchain-yields", "locked", "personalLeftQuota"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "onchain-yields",
+                "locked",
+                "personalLeftQuota"
+              ],
               "variable": [],
               "query": [
                 {
@@ -614,8 +664,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/position",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "onchain-yields", "locked", "position"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "onchain-yields",
+                "locked",
+                "position"
+              ],
               "variable": [],
               "query": [
                 {
@@ -694,8 +752,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/redeem",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "onchain-yields", "locked", "redeem"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "onchain-yields",
+                "locked",
+                "redeem"
+              ],
               "variable": [],
               "query": [
                 {
@@ -756,8 +822,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/setAutoSubscribe",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "onchain-yields", "locked", "setAutoSubscribe"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "onchain-yields",
+                "locked",
+                "setAutoSubscribe"
+              ],
               "variable": [],
               "query": [
                 {
@@ -818,8 +892,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/setRedeemOption",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "onchain-yields", "locked", "setRedeemOption"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "onchain-yields",
+                "locked",
+                "setRedeemOption"
+              ],
               "variable": [],
               "query": [
                 {
@@ -880,8 +962,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/subscribe",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "onchain-yields", "locked", "subscribe"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "onchain-yields",
+                "locked",
+                "subscribe"
+              ],
               "variable": [],
               "query": [
                 {
@@ -972,8 +1062,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/subscriptionPreview",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "onchain-yields", "locked", "subscriptionPreview"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "onchain-yields",
+                "locked",
+                "subscriptionPreview"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1045,8 +1143,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/soft-staking/history/rewardsRecord",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "soft-staking", "history", "rewardsRecord"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "soft-staking",
+                "history",
+                "rewardsRecord"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1125,8 +1231,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/soft-staking/list",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "soft-staking", "list"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "soft-staking",
+                "list"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1193,8 +1306,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/soft-staking/set",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "soft-staking", "set"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "soft-staking",
+                "set"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1254,8 +1374,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sol-staking/account",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "sol-staking", "account"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "account"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1304,8 +1431,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sol-staking/sol/claim",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "sol-staking", "sol", "claim"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "sol",
+                "claim"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1354,8 +1489,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sol-staking/sol/history/bnsolRewardsHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "sol-staking", "sol", "history", "bnsolRewardsHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "sol",
+                "history",
+                "bnsolRewardsHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1428,8 +1572,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sol-staking/sol/history/boostRewardsHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "sol-staking", "sol", "history", "boostRewardsHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "sol",
+                "history",
+                "boostRewardsHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1508,8 +1661,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sol-staking/sol/history/rateHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "sol-staking", "sol", "history", "rateHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "sol",
+                "history",
+                "rateHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1582,10 +1744,25 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sol-staking/sol/history/redemptionHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "sol-staking", "sol", "history", "redemptionHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "sol",
+                "history",
+                "redemptionHistory"
+              ],
               "variable": [],
               "query": [
+                {
+                  "key": "redeemId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
                 {
                   "key": "startTime",
                   "value": "1623319461670",
@@ -1656,10 +1833,25 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sol-staking/sol/history/stakingHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "sol-staking", "sol", "history", "stakingHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "sol",
+                "history",
+                "stakingHistory"
+              ],
               "variable": [],
               "query": [
+                {
+                  "key": "purchaseId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
                 {
                   "key": "startTime",
                   "value": "1623319461670",
@@ -1730,8 +1922,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sol-staking/sol/history/unclaimedRewards",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "sol-staking", "sol", "history", "unclaimedRewards"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "sol",
+                "history",
+                "unclaimedRewards"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1780,8 +1981,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sol-staking/sol/quota",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "sol-staking", "sol", "quota"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "sol",
+                "quota"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1830,8 +2039,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sol-staking/sol/redeem",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "sol-staking", "sol", "redeem"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "sol",
+                "redeem"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1886,8 +2103,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sol-staking/sol/stake",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "sol-staking", "sol", "stake"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "sol",
+                "stake"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1947,8 +2172,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/eth-staking/eth/history/rateHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "eth-staking", "eth", "history", "rateHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "eth-staking",
+                "eth",
+                "history",
+                "rateHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2021,10 +2255,25 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/eth-staking/eth/history/redemptionHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "eth-staking", "eth", "history", "redemptionHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "eth-staking",
+                "eth",
+                "history",
+                "redemptionHistory"
+              ],
               "variable": [],
               "query": [
+                {
+                  "key": "redeemId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
                 {
                   "key": "startTime",
                   "value": "1623319461670",
@@ -2095,10 +2344,25 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/eth-staking/eth/history/stakingHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "eth-staking", "eth", "history", "stakingHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "eth-staking",
+                "eth",
+                "history",
+                "stakingHistory"
+              ],
               "variable": [],
               "query": [
+                {
+                  "key": "purchaseId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
                 {
                   "key": "startTime",
                   "value": "1623319461670",
@@ -2169,8 +2433,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/eth-staking/eth/history/wbethRewardsHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "eth-staking", "eth", "history", "wbethRewardsHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "eth-staking",
+                "eth",
+                "history",
+                "wbethRewardsHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2243,8 +2516,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/eth-staking/eth/quota",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "eth-staking", "eth", "quota"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "eth-staking",
+                "eth",
+                "quota"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2293,8 +2574,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/eth-staking/eth/redeem",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "eth-staking", "eth", "redeem"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "eth-staking",
+                "eth",
+                "redeem"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2355,8 +2644,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/eth-staking/wbeth/history/unwrapHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "eth-staking", "wbeth", "history", "unwrapHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "eth-staking",
+                "wbeth",
+                "history",
+                "unwrapHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2429,8 +2727,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/eth-staking/wbeth/history/wrapHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "eth-staking", "wbeth", "history", "wrapHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "eth-staking",
+                "wbeth",
+                "history",
+                "wrapHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2503,8 +2810,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/eth-staking/wbeth/wrap",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "eth-staking", "wbeth", "wrap"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "eth-staking",
+                "wbeth",
+                "wrap"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2559,8 +2874,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v2/eth-staking/account",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v2", "eth-staking", "account"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v2",
+                "eth-staking",
+                "account"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2609,8 +2931,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v2/eth-staking/eth/stake",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v2", "eth-staking", "eth", "stake"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v2",
+                "eth-staking",
+                "eth",
+                "stake"
+              ],
               "variable": [],
               "query": [
                 {
