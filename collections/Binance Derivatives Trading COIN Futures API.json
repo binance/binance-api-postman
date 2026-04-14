@@ -4022,6 +4022,11 @@
       "key": "testnet_url",
       "value": "https://testnet.binancefuture.com",
       "type": "string"
+    },
+    {
+      "key": "demo_url",
+      "value": "https://demo-dapi.binance.com",
+      "type": "string"
     }
   ]
 }
