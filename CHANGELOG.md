@@ -1,5 +1,14 @@
 # Changelog
 
+## 43.0.0 - 2026-04-15
+
+### Added (4)
+
+- `DELETE /sapi/v1/portfolio/margin-call-level`
+- `GET /sapi/v1/portfolio/margin-call-level`
+- `POST /sapi/v1/portfolio/margin-call-level`
+- `POST /papi/v1/um/stock/contract`
+
 ## 42.0.0 - 2026-03-19
 
 ### Changed (4)

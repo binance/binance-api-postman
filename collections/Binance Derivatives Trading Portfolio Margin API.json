@@ -170,8 +170,14 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/account",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "account"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "account"
+              ],
               "variable": [],
               "query": [
                 {
@@ -220,8 +226,14 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/asset-collection",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "asset-collection"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "asset-collection"
+              ],
               "variable": [],
               "query": [
                 {
@@ -276,8 +288,14 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/auto-collection",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "auto-collection"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "auto-collection"
+              ],
               "variable": [],
               "query": [
                 {
@@ -326,8 +344,14 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/balance",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "balance"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "balance"
+              ],
               "variable": [],
               "query": [
                 {
@@ -382,8 +406,14 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/bnb-transfer",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "bnb-transfer"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "bnb-transfer"
+              ],
               "variable": [],
               "query": [
                 {
@@ -444,8 +474,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/account",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "account"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "account"
+              ],
               "variable": [],
               "query": [
                 {
@@ -494,8 +531,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/commissionRate",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "commissionRate"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "commissionRate"
+              ],
               "variable": [],
               "query": [
                 {
@@ -550,8 +594,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/income",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "income"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "income"
+              ],
               "variable": [],
               "query": [
                 {
@@ -636,8 +687,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/leverage",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "leverage"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "leverage"
+              ],
               "variable": [],
               "query": [
                 {
@@ -698,8 +756,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/leverageBracket",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "leverageBracket"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "leverageBracket"
+              ],
               "variable": [],
               "query": [
                 {
@@ -754,8 +819,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/positionRisk",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "positionRisk"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "positionRisk"
+              ],
               "variable": [],
               "query": [
                 {
@@ -816,8 +888,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/positionSide/dual",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "positionSide", "dual"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "positionSide",
+                "dual"
+              ],
               "variable": [],
               "query": [
                 {
@@ -872,8 +952,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/positionSide/dual",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "positionSide", "dual"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "positionSide",
+                "dual"
+              ],
               "variable": [],
               "query": [
                 {
@@ -922,8 +1010,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/marginInterestHistory",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "marginInterestHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "marginInterestHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1008,8 +1103,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/marginLoan",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "marginLoan"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "marginLoan"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1100,8 +1202,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/maxBorrowable",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "maxBorrowable"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "maxBorrowable"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1156,8 +1265,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/maxWithdraw",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "maxWithdraw"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "maxWithdraw"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1212,8 +1328,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/repayLoan",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "repayLoan"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "repayLoan"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1304,8 +1427,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/portfolio/interest-history",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "portfolio", "interest-history"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "portfolio",
+                "interest-history"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1378,8 +1508,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/portfolio/negative-balance-exchange-record",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "portfolio", "negative-balance-exchange-record"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "portfolio",
+                "negative-balance-exchange-record"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1440,8 +1577,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/rateLimit/order",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "rateLimit", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "rateLimit",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1490,8 +1634,14 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/repay-futures-negative-balance",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "repay-futures-negative-balance"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "repay-futures-negative-balance"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1540,8 +1690,14 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/repay-futures-switch",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "repay-futures-switch"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "repay-futures-switch"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1596,8 +1752,14 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/repay-futures-switch",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "repay-futures-switch"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "repay-futures-switch"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1646,8 +1808,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/account",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "account"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "account"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1696,8 +1865,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/accountConfig",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "accountConfig"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "accountConfig"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1746,8 +1922,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/apiTradingStatus",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "apiTradingStatus"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "apiTradingStatus"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1802,8 +1985,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/commissionRate",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "commissionRate"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "commissionRate"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1858,8 +2048,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/income",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "income"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "income"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1944,8 +2141,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/income/asyn",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "income", "asyn"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "income",
+                "asyn"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2006,8 +2211,17 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/income/asyn/id",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "income", "asyn", "id"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "income",
+                "asyn",
+                "id"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2062,8 +2276,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/leverage",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "leverage"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "leverage"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2124,8 +2345,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/leverageBracket",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "leverageBracket"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "leverageBracket"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2180,8 +2408,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/order/asyn",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "order", "asyn"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "order",
+                "asyn"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2242,8 +2478,17 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/order/asyn/id",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "order", "asyn", "id"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "order",
+                "asyn",
+                "id"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2298,8 +2543,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/positionRisk",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "positionRisk"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "positionRisk"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2354,8 +2606,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/positionSide/dual",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "positionSide", "dual"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "positionSide",
+                "dual"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2410,8 +2670,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/positionSide/dual",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "positionSide", "dual"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "positionSide",
+                "dual"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2460,8 +2728,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/symbolConfig",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "symbolConfig"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "symbolConfig"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2516,8 +2791,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/trade/asyn",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "trade", "asyn"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "trade",
+                "asyn"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2578,8 +2861,17 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/trade/asyn/id",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "trade", "asyn", "id"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "trade",
+                "asyn",
+                "id"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2634,8 +2926,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v2/um/account",
-              "host": ["{{url}}"],
-              "path": ["papi", "v2", "um", "account"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v2",
+                "um",
+                "account"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2689,8 +2988,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/adlQuantile",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "adlQuantile"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "adlQuantile"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2745,8 +3051,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/allOpenOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "allOpenOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "allOpenOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2801,8 +3114,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/allOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "allOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "allOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2887,8 +3207,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/conditional/allOpenOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "conditional", "allOpenOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "conditional",
+                "allOpenOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2943,8 +3271,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/conditional/allOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "conditional", "allOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "conditional",
+                "allOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3023,8 +3359,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/conditional/openOrder",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "conditional", "openOrder"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "conditional",
+                "openOrder"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3091,8 +3435,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/conditional/openOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "conditional", "openOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "conditional",
+                "openOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3147,8 +3499,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/conditional/order",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "conditional", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "conditional",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3215,8 +3575,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/conditional/order",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "conditional", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "conditional",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3349,8 +3717,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/conditional/orderHistory",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "conditional", "orderHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "conditional",
+                "orderHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3417,8 +3793,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/forceOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "forceOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "forceOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3497,8 +3880,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/openOrder",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "openOrder"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "openOrder"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3565,8 +3955,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/openOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "openOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "openOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3627,8 +4024,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/order",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3695,8 +4099,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/order",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3787,8 +4198,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/order",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3903,8 +4321,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/order",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3971,8 +4396,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/orderAmendment",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "orderAmendment"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "orderAmendment"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4057,8 +4489,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/cm/userTrades",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "cm", "userTrades"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "userTrades"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4143,8 +4582,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/allOpenOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "allOpenOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "allOpenOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4199,8 +4645,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/allOrderList",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "allOrderList"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "allOrderList"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4273,8 +4726,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/allOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "allOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "allOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4353,8 +4813,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/forceOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "forceOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "forceOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4427,8 +4894,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/myTrades",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "myTrades"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "myTrades"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4513,8 +4987,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/openOrderList",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "openOrderList"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "openOrderList"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4563,8 +5044,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/openOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "openOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "openOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4619,8 +5107,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/order",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4693,8 +5188,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/order",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4827,8 +5329,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/order",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4895,8 +5404,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/order/oco",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "order", "oco"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "order",
+                "oco"
+              ],
               "variable": [],
               "query": [
                 {
@@ -5029,8 +5546,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/orderList",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "orderList"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "orderList"
+              ],
               "variable": [],
               "query": [
                 {
@@ -5103,8 +5627,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/orderList",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "orderList"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "orderList"
+              ],
               "variable": [],
               "query": [
                 {
@@ -5165,8 +5696,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/margin/repay-debt",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "margin", "repay-debt"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "margin",
+                "repay-debt"
+              ],
               "variable": [],
               "query": [
                 {
@@ -5233,8 +5771,14 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/marginLoan",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "marginLoan"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "marginLoan"
+              ],
               "variable": [],
               "query": [
                 {
@@ -5295,8 +5839,14 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/repayLoan",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "repayLoan"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "repayLoan"
+              ],
               "variable": [],
               "query": [
                 {
@@ -5357,8 +5907,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/adlQuantile",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "adlQuantile"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "adlQuantile"
+              ],
               "variable": [],
               "query": [
                 {
@@ -5413,8 +5970,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/allOpenOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "allOpenOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "allOpenOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -5469,8 +6033,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/allOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "allOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "allOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -5549,8 +6120,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/conditional/allOpenOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "conditional", "allOpenOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "conditional",
+                "allOpenOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -5605,8 +6184,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/conditional/allOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "conditional", "allOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "conditional",
+                "allOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -5685,8 +6272,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/conditional/openOrder",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "conditional", "openOrder"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "conditional",
+                "openOrder"
+              ],
               "variable": [],
               "query": [
                 {
@@ -5753,8 +6348,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/conditional/openOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "conditional", "openOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "conditional",
+                "openOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -5809,8 +6412,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/conditional/order",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "conditional", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "conditional",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -5877,8 +6488,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/conditional/order",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "conditional", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "conditional",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -6029,8 +6648,16 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/conditional/orderHistory",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "conditional", "orderHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "conditional",
+                "orderHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -6097,8 +6724,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/feeBurn",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "feeBurn"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "feeBurn"
+              ],
               "variable": [],
               "query": [
                 {
@@ -6147,8 +6781,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/feeBurn",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "feeBurn"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "feeBurn"
+              ],
               "variable": [],
               "query": [
                 {
@@ -6203,8 +6844,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/forceOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "forceOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "forceOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -6283,8 +6931,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/openOrder",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "openOrder"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "openOrder"
+              ],
               "variable": [],
               "query": [
                 {
@@ -6351,8 +7006,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/openOrders",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "openOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "openOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -6407,8 +7069,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/order",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -6475,8 +7144,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/order",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -6567,8 +7243,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/order",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -6695,8 +7378,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/order",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -6763,8 +7453,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/orderAmendment",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "orderAmendment"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "orderAmendment"
+              ],
               "variable": [],
               "query": [
                 {
@@ -6826,6 +7523,64 @@
           }
         },
         {
+          "name": "Futures TradFi Perps Contract(USER_DATA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/papi/v1/um/stock/contract",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "stock",
+                "contract"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
           "name": "UM Account Trade List(USER_DATA)",
           "request": {
             "method": "GET",
@@ -6849,8 +7604,15 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/um/userTrades",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "um", "userTrades"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "userTrades"
+              ],
               "variable": [],
               "query": [
                 {
@@ -6928,8 +7690,14 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/listenKey",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "listenKey"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "listenKey"
+              ],
               "variable": [],
               "query": []
             }
@@ -6953,8 +7721,14 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/listenKey",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "listenKey"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "listenKey"
+              ],
               "variable": [],
               "query": []
             }
@@ -6984,8 +7758,14 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/listenKey",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "listenKey"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "listenKey"
+              ],
               "variable": [],
               "query": []
             }
@@ -7014,8 +7794,14 @@
             },
             "url": {
               "raw": "{{url}}/papi/v1/ping",
-              "host": ["{{url}}"],
-              "path": ["papi", "v1", "ping"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "ping"
+              ],
               "variable": [],
               "query": []
             }
