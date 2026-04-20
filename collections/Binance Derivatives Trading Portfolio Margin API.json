@@ -5947,6 +5947,552 @@
           }
         },
         {
+          "name": "Query Current UM Open Algo Order (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/papi/v1/um/algo/algoOrder",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "algo",
+                "algoOrder"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "algoId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "clientAlgoId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query UM Algo Order History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/papi/v1/um/algo/allAlgoOrders",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "algo",
+                "allAlgoOrders"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "symbol_example",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "algoId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "Timestamp in ms to get funding from INCLUSIVE.",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "Timestamp in ms to get funding until INCLUSIVE.",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Default 100; max 1000",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Cancel All UM Algo Open Orders (TRADE)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/papi/v1/um/algo/allOpenOrders",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "algo",
+                "allOpenOrders"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "symbol_example",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query All Current UM Open Algo Orders (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/papi/v1/um/algo/openAlgoOrders",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "algo",
+                "openAlgoOrders"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "algoType",
+                  "value": "algoType_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "symbol",
+                  "value": "symbol_example",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "algoId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Cancel UM Algo Order (TRADE)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/papi/v1/um/algo/order",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "algo",
+                "order"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "algoId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "clientAlgoId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "New UM Algo Order (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/papi/v1/um/algo/order",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "um",
+                "algo",
+                "order"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "algoType",
+                  "value": "algoType_example",
+                  "description": "Only support `CONDITIONAL`",
+                  "disabled": false
+                },
+                {
+                  "key": "symbol",
+                  "value": "symbol_example",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "side",
+                  "value": "BUY",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "positionSide",
+                  "value": "BOTH",
+                  "description": "Default `BOTH` for One-way Mode ; `LONG` or `SHORT` for Hedge Mode. It must be sent in Hedge Mode.",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "LIMIT",
+                  "description": "`LIMIT`, `MARKET`",
+                  "disabled": false
+                },
+                {
+                  "key": "timeInForce",
+                  "value": "GTC",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "quantity",
+                  "value": "1.0",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "price",
+                  "value": "1.0",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "triggerPrice",
+                  "value": "1.0",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "workingType",
+                  "value": "MARK_PRICE",
+                  "description": "stopPrice triggered by: \"MARK_PRICE\", \"CONTRACT_PRICE\". Default \"CONTRACT_PRICE\"",
+                  "disabled": true
+                },
+                {
+                  "key": "priceMatch",
+                  "value": "NONE",
+                  "description": "only avaliable for `LIMIT`/`STOP`/`TAKE_PROFIT` order; can be set to `OPPONENT`/ `OPPONENT_5`/ `OPPONENT_10`/ `OPPONENT_20`: /`QUEUE`/ `QUEUE_5`/ `QUEUE_10`/ `QUEUE_20`; Can't be passed together with `price`",
+                  "disabled": true
+                },
+                {
+                  "key": "closePosition",
+                  "value": "closePosition_example",
+                  "description": "true, false; Close-All, used with `STOP_MARKET` or `TAKE_PROFIT_MARKET`.",
+                  "disabled": true
+                },
+                {
+                  "key": "priceProtect",
+                  "value": "false",
+                  "description": "\"TRUE\" or \"FALSE\", default \"FALSE\". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders",
+                  "disabled": true
+                },
+                {
+                  "key": "reduceOnly",
+                  "value": "false",
+                  "description": "\"true\" or \"false\". default \"false\". Cannot be sent in Hedge Mode .",
+                  "disabled": true
+                },
+                {
+                  "key": "activatePrice",
+                  "value": "1.0",
+                  "description": "Used with `TRAILING_STOP_MARKET` orders, default as the latest price(supporting different `workingType`)",
+                  "disabled": true
+                },
+                {
+                  "key": "callbackRate",
+                  "value": "1.0",
+                  "description": "Used with `TRAILING_STOP_MARKET` orders, min 0.1, max 5 where 1 for 1%",
+                  "disabled": true
+                },
+                {
+                  "key": "clientAlgoId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "newOrderRespType",
+                  "value": "ACK",
+                  "description": "\"ACK\", \"RESULT\", default \"ACK\"",
+                  "disabled": true
+                },
+                {
+                  "key": "selfTradePreventionMode",
+                  "value": "NONE",
+                  "description": "`NONE`:No STP / `EXPIRE_TAKER`:expire taker order when STP triggers/ `EXPIRE_MAKER`:expire taker order when STP triggers/ `EXPIRE_BOTH`:expire both orders when STP triggers",
+                  "disabled": true
+                },
+                {
+                  "key": "goodTillDate",
+                  "value": "789",
+                  "description": "order cancel time for timeInForce `GTD`, mandatory when `timeInforce` set to `GTD`; order the timestamp only retains second-level precision, ms part will be ignored; The goodTillDate timestamp must be greater than the current time plus 600 seconds and smaller than 253402300799000Mode. It must be sent in Hedge Mode.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
           "name": "Cancel All UM Open Orders(TRADE)",
           "request": {
             "method": "DELETE",
@@ -6097,7 +6643,7 @@
           }
         },
         {
-          "name": "Cancel All UM Open Conditional Orders (TRADE)",
+          "name": "Cancel All UM Open Conditional Orders",
           "request": {
             "method": "DELETE",
             "header": [
@@ -6161,7 +6707,7 @@
           }
         },
         {
-          "name": "Query All UM Conditional Orders(USER_DATA)",
+          "name": "Query All UM Conditional Orders",
           "request": {
             "method": "GET",
             "header": [
@@ -6249,7 +6795,7 @@
           }
         },
         {
-          "name": "Query Current UM Open Conditional Order(USER_DATA)",
+          "name": "Query Current UM Open Conditional Order",
           "request": {
             "method": "GET",
             "header": [
@@ -6325,7 +6871,7 @@
           }
         },
         {
-          "name": "Query All Current UM Open Conditional Orders(USER_DATA)",
+          "name": "Query All Current UM Open Conditional Orders",
           "request": {
             "method": "GET",
             "header": [
@@ -6389,7 +6935,7 @@
           }
         },
         {
-          "name": "Cancel UM Conditional Order(TRADE)",
+          "name": "Cancel UM Conditional Order",
           "request": {
             "method": "DELETE",
             "header": [
@@ -6465,7 +7011,7 @@
           }
         },
         {
-          "name": "New UM Conditional Order (TRADE)",
+          "name": "New UM Conditional Order",
           "request": {
             "method": "POST",
             "header": [
@@ -6625,7 +7171,7 @@
           }
         },
         {
-          "name": "Query UM Conditional Order History(USER_DATA)",
+          "name": "Query UM Conditional Order History",
           "request": {
             "method": "GET",
             "header": [

@@ -1953,12 +1953,6 @@
                   "disabled": true
                 },
                 {
-                  "key": "page",
-                  "value": "789",
-                  "description": "",
-                  "disabled": true
-                },
-                {
                   "key": "limit",
                   "value": "100",
                   "description": "Default 100; max 1000",
@@ -3777,12 +3771,6 @@
                 "value": "",
                 "description": "API KEY",
                 "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
               }
             ],
             "body": {
@@ -4695,7 +4683,7 @@
                 },
                 {
                   "key": "interval",
-                  "value": "INTERVAL_1m",
+                  "value": "INTERVAL_1s",
                   "description": "",
                   "disabled": false
                 },
@@ -5049,7 +5037,7 @@
                 },
                 {
                   "key": "interval",
-                  "value": "INTERVAL_1m",
+                  "value": "INTERVAL_1s",
                   "description": "",
                   "disabled": false
                 },
@@ -5161,7 +5149,7 @@
                 },
                 {
                   "key": "interval",
-                  "value": "INTERVAL_1m",
+                  "value": "INTERVAL_1s",
                   "description": "",
                   "disabled": false
                 },
@@ -5229,7 +5217,7 @@
                 },
                 {
                   "key": "interval",
-                  "value": "INTERVAL_1m",
+                  "value": "INTERVAL_1s",
                   "description": "",
                   "disabled": false
                 },
@@ -5416,7 +5404,7 @@
                 },
                 {
                   "key": "interval",
-                  "value": "INTERVAL_1m",
+                  "value": "INTERVAL_1s",
                   "description": "",
                   "disabled": false
                 },
@@ -5894,9 +5882,9 @@
                 },
                 {
                   "key": "limit",
-                  "value": "30",
-                  "description": "Default 30,Max 500",
-                  "disabled": false
+                  "value": "100",
+                  "description": "Default 100; max 1000",
+                  "disabled": true
                 },
                 {
                   "key": "startTime",

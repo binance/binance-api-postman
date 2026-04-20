@@ -1,5 +1,34 @@
 # Changelog
 
+## 44.0.0 - 2026-04-20
+
+### Added (6)
+
+- `DELETE /papi/v1/um/algo/allOpenOrders`
+- `DELETE /papi/v1/um/algo/order`
+- `GET /papi/v1/um/algo/algoOrder`
+- `GET /papi/v1/um/algo/allAlgoOrders`
+- `GET /papi/v1/um/algo/openAlgoOrders`
+- `POST /papi/v1/um/algo/order`
+
+### Changed (3)
+
+- Deleted parameter `page`
+  - affected endpoints:
+    - `GET /fapi/v1/allAlgoOrders`
+- Modified parameter `interval`:
+  - enum added: `1s`
+  - affected endpoints:
+    - `GET /fapi/v1/continuousKlines`
+    - `GET /fapi/v1/indexPriceKlines`
+    - `GET /fapi/v1/klines`
+    - `GET /fapi/v1/markPriceKlines`
+    - `GET /fapi/v1/premiumIndexKlines`
+- Modified parameter `limit`:
+  - required: `true` → `false`
+  - affected endpoints:
+    - `GET /futures/data/basis`
+
 ## 43.0.0 - 2026-04-15
 
 ### Added (4)
