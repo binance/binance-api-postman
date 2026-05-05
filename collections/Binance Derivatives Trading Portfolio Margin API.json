@@ -3644,7 +3644,7 @@
                 {
                   "key": "priceProtect",
                   "value": "false",
-                  "description": "\"TRUE\" or \"FALSE\", default \"FALSE\". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders",
+                  "description": "\"true\" or \"false\", default \"false\". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders",
                   "disabled": true
                 },
                 {
@@ -6389,8 +6389,8 @@
                 {
                   "key": "quantity",
                   "value": "1.0",
-                  "description": "",
-                  "disabled": true
+                  "description": "Order quantity",
+                  "disabled": false
                 },
                 {
                   "key": "price",
@@ -6417,15 +6417,9 @@
                   "disabled": true
                 },
                 {
-                  "key": "closePosition",
-                  "value": "closePosition_example",
-                  "description": "true, false; Close-All, used with `STOP_MARKET` or `TAKE_PROFIT_MARKET`.",
-                  "disabled": true
-                },
-                {
                   "key": "priceProtect",
                   "value": "false",
-                  "description": "\"TRUE\" or \"FALSE\", default \"FALSE\". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders",
+                  "description": "\"true\" or \"false\", default \"false\". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders",
                   "disabled": true
                 },
                 {
@@ -7103,7 +7097,7 @@
                 {
                   "key": "priceProtect",
                   "value": "false",
-                  "description": "\"TRUE\" or \"FALSE\", default \"FALSE\". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders",
+                  "description": "\"true\" or \"false\", default \"false\". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders",
                   "disabled": true
                 },
                 {

@@ -1,5 +1,17 @@
 # Changelog
 
+## 45.0.0 - 2026-05-05
+
+### Changed (2)
+
+- Deleted parameter `closePosition`
+  - affected endpoints:
+    - `POST /papi/v1/um/algo/order`
+- Modified parameter `quantity`:
+  - required: `false` → `true`
+  - affected endpoints:
+    - `POST /papi/v1/um/algo/order`
+
 ## 44.0.0 - 2026-04-20
 
 ### Added (6)
