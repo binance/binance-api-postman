@@ -1,5 +1,34 @@
 # Changelog
 
+## 46.0.0 - 2026-05-06
+
+### Added (1)
+
+- `GET /api/v3/historicalBlockTrades`
+
+### Changed (3)
+
+- Modified parameter `selfTradePreventionMode`:
+  - enum added: `TRANSFER`
+  - affected endpoints:
+    - `POST /api/v3/order`
+    - `POST /api/v3/order/cancelReplace`
+    - `POST /api/v3/order/oco`
+    - `POST /api/v3/order/test`
+    - `POST /api/v3/orderList/oco`
+    - `POST /api/v3/orderList/opo`
+    - `POST /api/v3/orderList/opoco`
+    - `POST /api/v3/orderList/oto`
+    - `POST /api/v3/orderList/otoco`
+    - `POST /api/v3/sor/order`
+    - `POST /api/v3/sor/order/test`
+- Added parameter `rows`
+  - affected endpoints:
+    - `GET /sapi/v1/sub-account/futures/move-position`
+- Deleted parameter `row`
+  - affected endpoints:
+    - `GET /sapi/v1/sub-account/futures/move-position`
+
 ## 45.0.0 - 2026-05-05
 
 ### Changed (2)

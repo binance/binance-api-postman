@@ -170,8 +170,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/account",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "account"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "account"
+              ],
               "variable": [],
               "query": [
                 {
@@ -226,8 +232,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/account/commission",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "account", "commission"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "account",
+                "commission"
+              ],
               "variable": [],
               "query": [
                 {
@@ -276,8 +289,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/allOrderList",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "allOrderList"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "allOrderList"
+              ],
               "variable": [],
               "query": [
                 {
@@ -350,8 +369,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/allOrders",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "allOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "allOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -430,8 +455,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/myAllocations",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "myAllocations"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "myAllocations"
+              ],
               "variable": [],
               "query": [
                 {
@@ -516,8 +547,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/myFilters",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "myFilters"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "myFilters"
+              ],
               "variable": [],
               "query": [
                 {
@@ -572,8 +609,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/myPreventedMatches",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "myPreventedMatches"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "myPreventedMatches"
+              ],
               "variable": [],
               "query": [
                 {
@@ -652,8 +695,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/myTrades",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "myTrades"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "myTrades"
+              ],
               "variable": [],
               "query": [
                 {
@@ -738,8 +787,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/openOrderList",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "openOrderList"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "openOrderList"
+              ],
               "variable": [],
               "query": [
                 {
@@ -788,8 +843,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/openOrders",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "openOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "openOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -844,8 +905,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/order",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -912,8 +979,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/order/amendments",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "order", "amendments"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "order",
+                "amendments"
+              ],
               "variable": [],
               "query": [
                 {
@@ -937,7 +1011,7 @@
                 {
                   "key": "limit",
                   "value": "500",
-                  "description": "Default:500; Maximum: 1000 ",
+                  "description": "Default: 500; Maximum: 1000",
                   "disabled": true
                 },
                 {
@@ -986,8 +1060,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/orderList",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "orderList"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "orderList"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1048,8 +1128,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/rateLimit/order",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "rateLimit", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "rateLimit",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1103,8 +1190,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/openOrders",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "openOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "openOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1159,8 +1252,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/order",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1239,8 +1338,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/order",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1397,8 +1502,16 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/order/amend/keepPriority",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "order", "amend", "keepPriority"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "order",
+                "amend",
+                "keepPriority"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1477,8 +1590,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/order/cancelReplace",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "order", "cancelReplace"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "order",
+                "cancelReplace"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1671,8 +1791,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/order/oco",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "order", "oco"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "order",
+                "oco"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1835,8 +1962,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/order/test",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "order", "test"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "order",
+                "test"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1999,8 +2133,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/orderList",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "orderList"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "orderList"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2073,8 +2213,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/orderList/oco",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "orderList", "oco"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "orderList",
+                "oco"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2200,7 +2347,7 @@
                 {
                   "key": "belowStopPrice",
                   "value": "1.0",
-                  "description": "Can be used if `belowType` is `STOP_LOSS`, `STOP_LOSS_LIMIT, TAKE_PROFIT` or `TAKE_PROFIT_LIMIT` <br>Either belowStopPrice or belowTrailingDelta or both, must be specified.",
+                  "description": "Can be used if `belowType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT` or `TAKE_PROFIT_LIMIT` <br>Either `belowStopPrice` or `belowTrailingDelta` or both, must be specified.",
                   "disabled": true
                 },
                 {
@@ -2303,8 +2450,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/orderList/opo",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "orderList", "opo"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "orderList",
+                "opo"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2527,8 +2681,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/orderList/opoco",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "orderList", "opoco"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "orderList",
+                "opoco"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2823,8 +2984,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/orderList/oto",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "orderList", "oto"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "orderList",
+                "oto"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3053,8 +3221,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/orderList/otoco",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "orderList", "otoco"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "orderList",
+                "otoco"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3355,8 +3530,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/sor/order",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "sor", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "sor",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3477,8 +3659,16 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/sor/order/test",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "sor", "order", "test"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "sor",
+                "order",
+                "test"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3610,8 +3800,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/exchangeInfo",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "exchangeInfo"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "exchangeInfo"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3672,8 +3868,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/executionRules",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "executionRules"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "executionRules"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3716,8 +3918,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/ping",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "ping"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "ping"
+              ],
               "variable": [],
               "query": []
             }
@@ -3747,8 +3955,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/time",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "time"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "time"
+              ],
               "variable": [],
               "query": []
             }
@@ -3783,8 +3997,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/aggTrades",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "aggTrades"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "aggTrades"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3845,8 +4065,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/avgPrice",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "avgPrice"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "avgPrice"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3883,8 +4109,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/depth",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "depth"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "depth"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3903,6 +4135,62 @@
                   "key": "symbolStatus",
                   "value": "TRADING",
                   "description": "",
+                  "disabled": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Historical Block Trades",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/api/v3/historicalBlockTrades",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "historicalBlockTrades"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "BNBUSDT",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "fromId",
+                  "value": "1",
+                  "description": "Block trade ID to fetch from",
+                  "disabled": false
+                },
+                {
+                  "key": "limit",
+                  "value": "500",
+                  "description": "Default: 500; Maximum: 1000",
                   "disabled": true
                 }
               ]
@@ -3933,8 +4221,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/historicalTrades",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "historicalTrades"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "historicalTrades"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3983,8 +4277,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/klines",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "klines"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "klines"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4051,8 +4351,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/referencePrice",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "referencePrice"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "referencePrice"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4089,8 +4395,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/referencePrice/calculation",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "referencePrice", "calculation"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "referencePrice",
+                "calculation"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4133,8 +4446,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/ticker",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "ticker"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "ticker"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4195,8 +4514,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/ticker/24hr",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "ticker", "24hr"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "ticker",
+                "24hr"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4251,8 +4577,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/ticker/bookTicker",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "ticker", "bookTicker"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "ticker",
+                "bookTicker"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4301,8 +4634,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/ticker/price",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "ticker", "price"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "ticker",
+                "price"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4351,8 +4691,15 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/ticker/tradingDay",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "ticker", "tradingDay"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "ticker",
+                "tradingDay"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4413,8 +4760,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/trades",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "trades"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "trades"
+              ],
               "variable": [],
               "query": [
                 {
@@ -4457,8 +4810,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/uiKlines",
-              "host": ["{{url}}"],
-              "path": ["api", "v3", "uiKlines"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "uiKlines"
+              ],
               "variable": [],
               "query": [
                 {
