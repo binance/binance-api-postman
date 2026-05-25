@@ -170,8 +170,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/account/apiRestrictions",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "account", "apiRestrictions"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "account",
+                "apiRestrictions"
+              ],
               "variable": [],
               "query": [
                 {
@@ -220,8 +227,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/account/apiTradingStatus",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "account", "apiTradingStatus"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "account",
+                "apiTradingStatus"
+              ],
               "variable": [],
               "query": [
                 {
@@ -264,8 +278,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/account/disableFastWithdrawSwitch",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "account", "disableFastWithdrawSwitch"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "account",
+                "disableFastWithdrawSwitch"
+              ],
               "variable": [],
               "query": [
                 {
@@ -308,8 +329,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/account/enableFastWithdrawSwitch",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "account", "enableFastWithdrawSwitch"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "account",
+                "enableFastWithdrawSwitch"
+              ],
               "variable": [],
               "query": [
                 {
@@ -358,8 +386,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/account/info",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "account", "info"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "account",
+                "info"
+              ],
               "variable": [],
               "query": [
                 {
@@ -408,8 +443,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/account/status",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "account", "status"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "account",
+                "status"
+              ],
               "variable": [],
               "query": [
                 {
@@ -458,8 +500,14 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/accountSnapshot",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "accountSnapshot"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "accountSnapshot"
+              ],
               "variable": [],
               "query": [
                 {
@@ -537,8 +585,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/spot/delist-schedule",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "spot", "delist-schedule"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "spot",
+                "delist-schedule"
+              ],
               "variable": [],
               "query": [
                 {
@@ -575,8 +630,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/system/status",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "system", "status"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "system",
+                "status"
+              ],
               "variable": [],
               "query": []
             }
@@ -611,8 +673,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/addressVerify/list",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "addressVerify", "list"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "addressVerify",
+                "list"
+              ],
               "variable": [],
               "query": [
                 {
@@ -661,8 +730,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/localentity/broker/deposit/provide-info",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "localentity", "broker", "deposit", "provide-info"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "localentity",
+                "broker",
+                "deposit",
+                "provide-info"
+              ],
               "variable": [],
               "query": [
                 {
@@ -765,8 +843,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/localentity/broker/withdraw/apply",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "localentity", "broker", "withdraw", "apply"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "localentity",
+                "broker",
+                "withdraw",
+                "apply"
+              ],
               "variable": [],
               "query": [
                 {
@@ -881,8 +968,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/localentity/deposit/history",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "localentity", "deposit", "history"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "localentity",
+                "deposit",
+                "history"
+              ],
               "variable": [],
               "query": [
                 {
@@ -991,8 +1086,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/localentity/deposit/provide-info",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "localentity", "deposit", "provide-info"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "localentity",
+                "deposit",
+                "provide-info"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1047,8 +1150,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/localentity/questionnaire-requirements",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "localentity", "questionnaire-requirements"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "localentity",
+                "questionnaire-requirements"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1097,8 +1207,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/localentity/vasp",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "localentity", "vasp"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "localentity",
+                "vasp"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1147,8 +1264,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/localentity/withdraw/apply",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "localentity", "withdraw", "apply"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "localentity",
+                "withdraw",
+                "apply"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1257,8 +1382,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/localentity/withdraw/history",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "localentity", "withdraw", "history"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "localentity",
+                "withdraw",
+                "history"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1367,8 +1500,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v2/localentity/deposit/history",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v2", "localentity", "deposit", "history"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v2",
+                "localentity",
+                "deposit",
+                "history"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1465,8 +1606,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v2/localentity/deposit/provide-info",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v2", "localentity", "deposit", "provide-info"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v2",
+                "localentity",
+                "deposit",
+                "provide-info"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1521,8 +1670,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v2/localentity/withdraw/history",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v2", "localentity", "withdraw", "history"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v2",
+                "localentity",
+                "withdraw",
+                "history"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1636,8 +1793,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/asset/assetDetail",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "asset", "assetDetail"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "asset",
+                "assetDetail"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1692,8 +1856,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/asset/assetDividend",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "asset", "assetDividend"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "asset",
+                "assetDividend"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1766,8 +1937,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/asset/custody/transfer-history",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "asset", "custody", "transfer-history"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "asset",
+                "custody",
+                "transfer-history"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1858,8 +2037,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/asset/dribblet",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "asset", "dribblet"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "asset",
+                "dribblet"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1926,8 +2112,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/asset/dust",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "asset", "dust"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "asset",
+                "dust"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1988,8 +2181,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/asset/dust-btc",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "asset", "dust-btc"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "asset",
+                "dust-btc"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2044,8 +2244,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/asset/dust-convert/convert",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "asset", "dust-convert", "convert"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "asset",
+                "dust-convert",
+                "convert"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2053,6 +2261,12 @@
                   "value": "asset_example",
                   "description": "",
                   "disabled": false
+                },
+                {
+                  "key": "accountType",
+                  "value": "SPOT",
+                  "description": "`SPOT` or `MARGIN`,default `SPOT`",
+                  "disabled": true
                 },
                 {
                   "key": "clientId",
@@ -2118,10 +2332,24 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/asset/dust-convert/query-convertible-assets",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "asset", "dust-convert", "query-convertible-assets"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "asset",
+                "dust-convert",
+                "query-convertible-assets"
+              ],
               "variable": [],
               "query": [
+                {
+                  "key": "accountType",
+                  "value": "SPOT",
+                  "description": "`SPOT` or `MARGIN`,default `SPOT`",
+                  "disabled": true
+                },
                 {
                   "key": "targetAsset",
                   "value": "targetAsset_example",
@@ -2174,8 +2402,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/asset/get-funding-asset",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "asset", "get-funding-asset"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "asset",
+                "get-funding-asset"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2236,8 +2471,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/asset/ledger-transfer/cloud-mining/queryByPage",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "asset", "ledger-transfer", "cloud-mining", "queryByPage"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "asset",
+                "ledger-transfer",
+                "cloud-mining",
+                "queryByPage"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2322,8 +2566,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/asset/tradeFee",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "asset", "tradeFee"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "asset",
+                "tradeFee"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2378,8 +2629,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/asset/transfer",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "asset", "transfer"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "asset",
+                "transfer"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2470,8 +2728,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/asset/transfer",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "asset", "transfer"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "asset",
+                "transfer"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2550,8 +2815,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/asset/wallet/balance",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "asset", "wallet", "balance"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "asset",
+                "wallet",
+                "balance"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2606,8 +2879,14 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/bnbBurn",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "bnbBurn"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "bnbBurn"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2668,8 +2947,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/spot/open-symbol-list",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "spot", "open-symbol-list"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "spot",
+                "open-symbol-list"
+              ],
               "variable": [],
               "query": []
             }
@@ -2699,8 +2985,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v3/asset/getUserAsset",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v3", "asset", "getUserAsset"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v3",
+                "asset",
+                "getUserAsset"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2766,8 +3059,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/capital/config/getall",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "capital", "config", "getall"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "capital",
+                "config",
+                "getall"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2816,8 +3117,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/capital/deposit/address",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "capital", "deposit", "address"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "capital",
+                "deposit",
+                "address"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2884,8 +3193,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/capital/deposit/address/list",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "capital", "deposit", "address", "list"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "capital",
+                "deposit",
+                "address",
+                "list"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2940,8 +3258,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/capital/deposit/credit-apply",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "capital", "deposit", "credit-apply"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "capital",
+                "deposit",
+                "credit-apply"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3008,8 +3334,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/capital/deposit/hisrec",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "capital", "deposit", "hisrec"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "capital",
+                "deposit",
+                "hisrec"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3106,8 +3440,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/capital/withdraw/address/list",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "capital", "withdraw", "address", "list"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "capital",
+                "withdraw",
+                "address",
+                "list"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3150,8 +3493,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/capital/withdraw/apply",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "capital", "withdraw", "apply"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "capital",
+                "withdraw",
+                "apply"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3254,8 +3605,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/capital/withdraw/history",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "capital", "withdraw", "history"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "capital",
+                "withdraw",
+                "history"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3352,8 +3711,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/capital/withdraw/quota",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "capital", "withdraw", "quota"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "capital",
+                "withdraw",
+                "quota"
+              ],
               "variable": [],
               "query": [
                 {

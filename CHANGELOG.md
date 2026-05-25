@@ -1,5 +1,14 @@
 # Changelog
 
+## 47.0.0 - 2026-05-25
+
+### Changed (1)
+
+- Added parameter `accountType`
+  - affected endpoints:
+    - `POST /sapi/v1/asset/dust-convert/convert`
+    - `POST /sapi/v1/asset/dust-convert/query-convertible-assets`
+
 ## 46.0.0 - 2026-05-06
 
 ### Added (1)
