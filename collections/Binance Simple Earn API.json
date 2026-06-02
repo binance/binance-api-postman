@@ -170,8 +170,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/bfusd/account",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "bfusd", "account"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "bfusd",
+                "account"
+              ],
               "variable": [],
               "query": [
                 {
@@ -220,8 +227,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/bfusd/history/rateHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "bfusd", "history", "rateHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "bfusd",
+                "history",
+                "rateHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -294,8 +309,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/bfusd/history/redemptionHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "bfusd", "history", "redemptionHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "bfusd",
+                "history",
+                "redemptionHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -368,8 +391,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/bfusd/history/rewardsHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "bfusd", "history", "rewardsHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "bfusd",
+                "history",
+                "rewardsHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -442,8 +473,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/bfusd/history/subscriptionHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "bfusd", "history", "subscriptionHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "bfusd",
+                "history",
+                "subscriptionHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -522,8 +561,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/bfusd/quota",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "bfusd", "quota"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "bfusd",
+                "quota"
+              ],
               "variable": [],
               "query": [
                 {
@@ -572,8 +618,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/bfusd/redeem",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "bfusd", "redeem"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "bfusd",
+                "redeem"
+              ],
               "variable": [],
               "query": [
                 {
@@ -634,8 +687,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/bfusd/subscribe",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "bfusd", "subscribe"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "bfusd",
+                "subscribe"
+              ],
               "variable": [],
               "query": [
                 {
@@ -650,6 +710,69 @@
                   "description": "Amount",
                   "disabled": false
                 },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Yield-Arena",
+      "item": [
+        {
+          "name": "Get Yield Arena Activities (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/earn/arena/activities",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "earn",
+                "arena",
+                "activities"
+              ],
+              "variable": [],
+              "query": [
                 {
                   "key": "recvWindow",
                   "value": "5000",
@@ -701,8 +824,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/account",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "account"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "account"
+              ],
               "variable": [],
               "query": [
                 {
@@ -751,8 +881,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/collateralRecord",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "flexible", "history", "collateralRecord"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "history",
+                "collateralRecord"
+              ],
               "variable": [],
               "query": [
                 {
@@ -831,8 +970,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/rateHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "flexible", "history", "rateHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "history",
+                "rateHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -917,8 +1065,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/redemptionRecord",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "flexible", "history", "redemptionRecord"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "history",
+                "redemptionRecord"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1009,8 +1166,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/rewardsRecord",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "flexible", "history", "rewardsRecord"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "history",
+                "rewardsRecord"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1101,8 +1267,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/subscriptionRecord",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "flexible", "history", "subscriptionRecord"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "history",
+                "subscriptionRecord"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1193,8 +1368,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/flexible/list",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "flexible", "list"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "list"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1261,8 +1444,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/flexible/personalLeftQuota",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "flexible", "personalLeftQuota"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "personalLeftQuota"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1317,8 +1508,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/flexible/position",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "flexible", "position"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "position"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1391,8 +1590,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/flexible/redeem",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "flexible", "redeem"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "redeem"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1465,8 +1672,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/flexible/setAutoSubscribe",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "flexible", "setAutoSubscribe"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "setAutoSubscribe"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1527,8 +1742,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/flexible/subscribe",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "flexible", "subscribe"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "subscribe"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1601,8 +1824,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/flexible/subscriptionPreview",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "flexible", "subscriptionPreview"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "subscriptionPreview"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1663,8 +1894,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/locked/history/redemptionRecord",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "locked", "history", "redemptionRecord"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "history",
+                "redemptionRecord"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1755,8 +1995,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/locked/history/rewardsRecord",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "locked", "history", "rewardsRecord"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "history",
+                "rewardsRecord"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1841,8 +2090,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/locked/history/subscriptionRecord",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "locked", "history", "subscriptionRecord"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "history",
+                "subscriptionRecord"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1927,8 +2185,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/locked/list",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "locked", "list"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "list"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1995,8 +2261,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/locked/personalLeftQuota",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "locked", "personalLeftQuota"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "personalLeftQuota"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2051,8 +2325,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/locked/position",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "locked", "position"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "position"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2131,8 +2413,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/locked/redeem",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "locked", "redeem"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "redeem"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2187,8 +2477,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/locked/setAutoSubscribe",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "locked", "setAutoSubscribe"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "setAutoSubscribe"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2249,8 +2547,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/locked/setRedeemOption",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "locked", "setRedeemOption"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "setRedeemOption"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2311,8 +2617,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/locked/subscribe",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "locked", "subscribe"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "subscribe"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2391,8 +2705,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/simple-earn/locked/subscriptionPreview",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "simple-earn", "locked", "subscriptionPreview"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "subscriptionPreview"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2464,8 +2786,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/rwusd/account",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "rwusd", "account"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "rwusd",
+                "account"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2514,8 +2843,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/rwusd/history/rateHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "rwusd", "history", "rateHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "rwusd",
+                "history",
+                "rateHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2588,8 +2925,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/rwusd/history/redemptionHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "rwusd", "history", "redemptionHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "rwusd",
+                "history",
+                "redemptionHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2662,8 +3007,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/rwusd/history/rewardsHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "rwusd", "history", "rewardsHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "rwusd",
+                "history",
+                "rewardsHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2736,8 +3089,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/rwusd/history/subscriptionHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "rwusd", "history", "subscriptionHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "rwusd",
+                "history",
+                "subscriptionHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2816,8 +3177,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/rwusd/quota",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "rwusd", "quota"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "rwusd",
+                "quota"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2866,8 +3234,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/rwusd/redeem",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "rwusd", "redeem"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "rwusd",
+                "redeem"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2928,8 +3303,15 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/rwusd/subscribe",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "rwusd", "subscribe"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "rwusd",
+                "subscribe"
+              ],
               "variable": [],
               "query": [
                 {

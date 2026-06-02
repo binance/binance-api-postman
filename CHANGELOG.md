@@ -1,5 +1,13 @@
 # Changelog
 
+## 48.0.0 - 2026-06-02
+
+### Added (3)
+
+- `GET /sapi/v1/earn/arena/activities`
+- `GET /sapi/v1/localentity/country/list`
+- `GET /sapi/v1/localentity/region/list`
+
 ## 47.0.0 - 2026-05-25
 
 ### Changed (1)

@@ -945,6 +945,58 @@
           }
         },
         {
+          "name": "Get Country List (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/localentity/country/list",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "localentity",
+                "country",
+                "list"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
           "name": "Deposit History (for local entities that required travel rule) (supporting network) (USER_DATA)",
           "request": {
             "method": "GET",
@@ -1166,6 +1218,64 @@
                   "value": "5000",
                   "description": "",
                   "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Region List (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/localentity/region/list",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "localentity",
+                "region",
+                "list"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "countryCode",
+                  "value": "countryCode_example",
+                  "description": "ISO 2-digit country code (from `Country List` API).",
+                  "disabled": false
                 },
                 {
                   "key": "timestamp",
