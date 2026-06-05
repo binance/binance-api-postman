@@ -1,5 +1,13 @@
 # Changelog
 
+## 49.0.0 - 2026-06-05
+
+### Changed (1)
+
+- Added parameter `includeSource`
+  - affected endpoints:
+    - `GET /sapi/v1/capital/deposit/subHisrec`
+
 ## 48.0.0 - 2026-06-02
 
 ### Added (3)

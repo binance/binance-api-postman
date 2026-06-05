@@ -716,7 +716,7 @@
                 {
                   "key": "transfers",
                   "value": "transfers_example",
-                  "description": "Transfer Direction (FROM/TO)",
+                  "description": "Transfer Direction (from/to)",
                   "disabled": true
                 },
                 {
@@ -815,7 +815,7 @@
                 {
                   "key": "transfers",
                   "value": "transfers_example",
-                  "description": "Transfer Direction (FROM/TO)",
+                  "description": "Transfer Direction (from/to)",
                   "disabled": true
                 },
                 {
@@ -908,7 +908,7 @@
                 {
                   "key": "transfers",
                   "value": "transfers_example",
-                  "description": "Transfer Direction (FROM/TO)",
+                  "description": "Transfer Direction (from/to)",
                   "disabled": true
                 },
                 {
@@ -1142,6 +1142,12 @@
                   "value": "sub-account-email@email.com",
                   "description": "[Sub-account email](#email-address)",
                   "disabled": false
+                },
+                {
+                  "key": "includeSource",
+                  "value": "false",
+                  "description": "Default: `false`, return `sourceAddress`field when set to `true`",
+                  "disabled": true
                 },
                 {
                   "key": "coin",
