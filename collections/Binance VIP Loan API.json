@@ -170,8 +170,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/loan/vip/borrow",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "loan", "vip", "borrow"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "loan",
+                "vip",
+                "borrow"
+              ],
               "variable": [],
               "query": [
                 {
@@ -201,7 +209,7 @@
                 {
                   "key": "collateralCoin",
                   "value": "collateralCoin_example",
-                  "description": "Multiple split by `,`",
+                  "description": "Collateral coin(s), multiple separated by `,`. Only coin names, no amount (VIP loan collateral amount = entire spot account balance)",
                   "disabled": false
                 },
                 {
@@ -214,6 +222,107 @@
                   "key": "loanTerm",
                   "value": "789",
                   "description": "Mandatory for fixed rate. Optional for fixed interest rate. Eg: 30/60 days",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "VIP Loan Fixed Rate Borrow(TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/loan/vip/fixed/borrow",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "loan",
+                "vip",
+                "fixed",
+                "borrow"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "supplyRequest",
+                  "value": "supplyRequest_example",
+                  "description": "Supply request string, positional encoding (no key). Multiple entries separated by `;`, fields separated by `:`, order: `<requestId>:<interestRate>:<amount>`. Example: `1212:0.12:100;3434:0.13:50`",
+                  "disabled": false
+                },
+                {
+                  "key": "borrowCoin",
+                  "value": "borrowCoin_example",
+                  "description": "Borrow coin",
+                  "disabled": false
+                },
+                {
+                  "key": "loanTerm",
+                  "value": "789",
+                  "description": "30/60 days",
+                  "disabled": false
+                },
+                {
+                  "key": "borrowUid",
+                  "value": "789",
+                  "description": "Borrow receiving account UID",
+                  "disabled": false
+                },
+                {
+                  "key": "collateralCoin",
+                  "value": "collateralCoin_example",
+                  "description": "Collateral coin(s), multiple separated by `,`. Only coin names, no amount (VIP loan collateral amount = entire spot account balance)",
+                  "disabled": false
+                },
+                {
+                  "key": "collateralAccountId",
+                  "value": "1",
+                  "description": "Multiple split by `,`",
+                  "disabled": false
+                },
+                {
+                  "key": "autoRepay",
+                  "value": "false",
+                  "description": "Default: `true`. `true`: auto repay at expiration; `false`: auto-convert to flexible (floating rate) at expiration",
                   "disabled": true
                 },
                 {
@@ -262,8 +371,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/loan/vip/renew",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "loan", "vip", "renew"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "loan",
+                "vip",
+                "renew"
+              ],
               "variable": [],
               "query": [
                 {
@@ -324,8 +441,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/loan/vip/repay",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "loan", "vip", "repay"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "loan",
+                "vip",
+                "repay"
+              ],
               "variable": [],
               "query": [
                 {
@@ -391,8 +516,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/loan/vip/accruedInterest",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "loan", "vip", "accruedInterest"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "loan",
+                "vip",
+                "accruedInterest"
+              ],
               "variable": [],
               "query": [
                 {
@@ -422,7 +555,7 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "description": "Page number, default 1, minimum 1",
                   "disabled": true
                 },
                 {
@@ -477,8 +610,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/loan/vip/collateral/account",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "loan", "vip", "collateral", "account"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "loan",
+                "vip",
+                "collateral",
+                "account"
+              ],
               "variable": [],
               "query": [
                 {
@@ -539,8 +681,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/loan/vip/ongoing/orders",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "loan", "vip", "ongoing", "orders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "loan",
+                "vip",
+                "ongoing",
+                "orders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -570,7 +721,7 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "description": "Page number, default 1, minimum 1",
                   "disabled": true
                 },
                 {
@@ -625,14 +776,23 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/loan/vip/request/data",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "loan", "vip", "request", "data"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "loan",
+                "vip",
+                "request",
+                "data"
+              ],
               "variable": [],
               "query": [
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "description": "Page number, default 1, minimum 1",
                   "disabled": true
                 },
                 {
@@ -692,14 +852,106 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/loan/vip/collateral/data",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "loan", "vip", "collateral", "data"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "loan",
+                "vip",
+                "collateral",
+                "data"
+              ],
               "variable": [],
               "query": [
                 {
                   "key": "collateralCoin",
                   "value": "collateralCoin_example",
                   "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query VIP Loan Fixed Rate Market(USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/loan/vip/fixed/market",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "loan",
+                "vip",
+                "fixed",
+                "market"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "loanCoin",
+                  "value": "loanCoin_example",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "duration",
+                  "value": "789",
+                  "description": "Duration in days, minimum 1",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Page number, default 1, minimum 1",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "5000",
+                  "description": "Page size, default 10, range [1, 100]",
                   "disabled": true
                 },
                 {
@@ -748,8 +1000,16 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/loan/vip/interestRateHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "loan", "vip", "interestRateHistory"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "loan",
+                "vip",
+                "interestRateHistory"
+              ],
               "variable": [],
               "query": [
                 {
@@ -773,7 +1033,7 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "description": "Page number, default 1, minimum 1",
                   "disabled": true
                 },
                 {
@@ -828,8 +1088,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/loan/vip/loanable/data",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "loan", "vip", "loanable", "data"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "loan",
+                "vip",
+                "loanable",
+                "data"
+              ],
               "variable": [],
               "query": [
                 {
@@ -890,8 +1159,17 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/loan/vip/request/interestRate",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "loan", "vip", "request", "interestRate"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "loan",
+                "vip",
+                "request",
+                "interestRate"
+              ],
               "variable": [],
               "query": [
                 {

@@ -1,5 +1,12 @@
 # Changelog
 
+## 50.0.0 - 2026-06-16
+
+### Added (2)
+
+- `GET /sapi/v1/loan/vip/fixed/market`
+- `POST /sapi/v1/loan/vip/fixed/borrow`
+
 ## 49.0.0 - 2026-06-05
 
 ### Changed (1)
