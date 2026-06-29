@@ -1,0 +1,2301 @@
+{
+  "info": {
+    "name": "Prediction Trading REST API",
+    "description": {
+      "content": "Place and manage prediction market orders, query positions, and transfer funds via the Prediction Trading REST API.",
+      "type": "text/markdown"
+    },
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "exec": [
+          "const ts = Date.now();",
+          "let queryParamsObject = {};",
+          "let bodyParamsObject = {};",
+          "const postmanEnvironment = pm.environment.get('environment');",
+          "const api_key = pm.environment.get('api-key');",
+          "const api_secret = pm.environment.get('api-secret');",
+          "const parameters = pm.request.url.query;",
+          "const body = pm.request.body;",
+          "",
+          "// set host based on env",
+          "const normalizedEnvironment = String(postmanEnvironment || 'production').toLowerCase();",
+          "const environmentUrlKeyMap = {",
+          "    production: 'prod_url',",
+          "    prod: 'prod_url',",
+          "    testnet: 'testnet_url',",
+          "    demo: 'demo_url'",
+          "};",
+          "const selectedUrlKey = environmentUrlKeyMap[normalizedEnvironment] || 'prod_url';",
+          "const selectedUrl = pm.variables.get(selectedUrlKey) || pm.variables.get('prod_url');",
+          "",
+          "// set host based on env",
+          "pm.request.url.host = [selectedUrl];",
+          "",
+          "// Collect query params",
+          "parameters.each((param) => {",
+          "    if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+          "        queryParamsObject[param.key] = param.value;",
+          "    }",
+          "});",
+          "",
+          "// add timestamp",
+          "Object.assign(queryParamsObject, { timestamp: ts });",
+          "",
+          "// Collect body params if urlencoded",
+          "let hasUrlencodedBodyParams = false;",
+          "",
+          "if (body) {",
+          "    const contentTypeHeader = pm.request.headers.get('Content-Type') || pm.request.headers.get('content-type') || '';",
+          "    const isFormUrlencoded = contentTypeHeader.includes('application/x-www-form-urlencoded') || body.mode === 'urlencoded';",
+          "",
+          "    if (isFormUrlencoded && body.urlencoded) {",
+          "        body.urlencoded.each((param) => {",
+          "            if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+          "                bodyParamsObject[param.key] = param.value;",
+          "                hasUrlencodedBodyParams = true;",
+          "            }",
+          "        });",
+          "    }",
+          "}",
+          "",
+          "// set api key",
+          "setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
+          "",
+          "// only sign if a signature param was declared and we have a secret",
+          "if (parameters.has('signature') && api_secret) {",
+          "    // canonical query strings",
+          "    const queryStringForSign = buildQueryString(queryParamsObject);",
+          "    const bodyStringForSign = buildQueryString(bodyParamsObject);",
+          "    const totalParams = queryStringForSign + bodyStringForSign;",
+          "",
+          "    const encoder = new TextEncoder();",
+          "    const keyData = encoder.encode(api_secret);",
+          "    const msgData = encoder.encode(totalParams);",
+          "",
+          "    pm.request.url.query.clear();",
+          "",
+          "    const cryptoKey = await crypto.subtle.importKey('raw', keyData, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);",
+          "    const signatureBuffer = await crypto.subtle.sign('HMAC', cryptoKey, msgData);",
+          "",
+          "    const signature = Array.from(new Uint8Array(signatureBuffer))",
+          "        .map((b) => b.toString(16).padStart(2, '0'))",
+          "        .join('');",
+          "",
+          "    // update request",
+          "    const finalQueryParams = Object.assign({}, queryParamsObject, { signature });",
+          "    const finalQueryString = buildQueryString(finalQueryParams);",
+          "    pm.request.url.query = finalQueryString;",
+          "}",
+          "",
+          "function buildQueryString(params) {",
+          "    if (!params) return '';",
+          "",
+          "    const pairs = [];",
+          "    Object.entries(params).forEach(([key, value]) => {",
+          "        if (value !== null && value !== undefined) {",
+          "            const serializedValue = serializeValue(value);",
+          "            pairs.push(`${key}=${encodeURIComponent(serializedValue)}`);",
+          "        }",
+          "    });",
+          "",
+          "    return pairs.join('&');",
+          "}",
+          "",
+          "function serializeValue(value) {",
+          "    if (value === null || value === undefined) return '';",
+          "    if (Array.isArray(value) || (typeof value === 'object' && value !== null)) return JSON.stringify(value);",
+          "",
+          "    return String(value);",
+          "}",
+          "",
+          "function setOrUpdateHeaderParam(key, value) {",
+          "    let headers = pm.request.headers;",
+          "    let header = headers.find((header) => header.key === key);",
+          "    if (header) header.value = value;",
+          "    else pm.request.headers.add({ key, value });",
+          "}",
+          "",
+          "function is_disabled(val) {",
+          "    return val === true;",
+          "}",
+          "",
+          "function is_empty(str) {",
+          "    if (str === null || str === undefined) return true;",
+          "    if (typeof str === 'string') {",
+          "        return (",
+          "            !str ||",
+          "            str.length === 0 ||",
+          "            !/[^\\\\s]/.test(str) ||",
+          "            /^\\\\s*$/.test(str) ||",
+          "            str.replace(/\\\\s/g, '') === ''",
+          "        );",
+          "    }",
+          "    return false;",
+          "}"
+        ],
+        "type": "text/javascript"
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "Redeem",
+      "item": [
+        {
+          "name": "Batch Redeem",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/batch-redeem",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "batch-redeem"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "walletAddress",
+                  "value": "0x12e32db8817e292508c34111cbc4b23340df542c",
+                  "description": "User's prediction wallet address",
+                  "disabled": false
+                },
+                {
+                  "key": "walletId",
+                  "value": "5b5c1ec3be4e4416a5872b21c1ca5d20",
+                  "description": "Wallet ID",
+                  "disabled": false
+                },
+                {
+                  "key": "tokenIds",
+                  "value": "",
+                  "description": "List of prediction token IDs to redeem. Not empty. Example: `tokenIds=112233&tokenIds=112234`",
+                  "disabled": false
+                },
+                {
+                  "key": "chainId",
+                  "value": "56",
+                  "description": "Chain ID. Default `56` (BSC)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Redeem Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/redeem/status",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "redeem",
+                "status"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "walletAddress",
+                  "value": "0x12e32db8817e292508c34111cbc4b23340df542c",
+                  "description": "User's prediction wallet address",
+                  "disabled": false
+                },
+                {
+                  "key": "txHash",
+                  "value": "0xabc123def456789abcdef123456789abcdef123456789abcdef123456789abcd",
+                  "description": "Redeem transaction hash",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Market Data",
+      "item": [
+        {
+          "name": "List Prediction Categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/category/list",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "category",
+                "list"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Market Detail",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/market/detail",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "market",
+                "detail"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "marketTopicId",
+                  "value": "4229564",
+                  "description": "Market topic ID. Must be > 0",
+                  "disabled": false
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "List Prediction Markets",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/market/list",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "market",
+                "list"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "l1Category",
+                  "value": "crypto",
+                  "description": "Level-1 category filter",
+                  "disabled": true
+                },
+                {
+                  "key": "l2Category",
+                  "value": "up-down",
+                  "description": "Level-2 category filter",
+                  "disabled": true
+                },
+                {
+                  "key": "sortBy",
+                  "value": "RECOMMENDED",
+                  "description": "Sort field. Enum: `RECOMMENDED`, `VOLUME`, `PARTICIPANTS`, `CREATED_TIME`, `END_DATE`",
+                  "disabled": true
+                },
+                {
+                  "key": "orderBy",
+                  "value": "ASC",
+                  "description": "Sort direction. Enum: `ASC`, `DESC`",
+                  "disabled": true
+                },
+                {
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset. Default `0`",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Page size. Default `20`, range 1–100",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Market Search",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/market/search",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "market",
+                "search"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "query",
+                  "value": "BTC price",
+                  "description": "Search keyword. Not blank",
+                  "disabled": false
+                },
+                {
+                  "key": "topK",
+                  "value": "20",
+                  "description": "Max number of results to return. Default `20`, range 1–50",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Order Book",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/order-book",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "order-book"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "vendor",
+                  "value": "predict_fun",
+                  "description": "Vendor identifier (e.g. `predict_fun`)",
+                  "disabled": false
+                },
+                {
+                  "key": "marketId",
+                  "value": "5567895",
+                  "description": "Market ID. Must be > 0",
+                  "disabled": false
+                },
+                {
+                  "key": "tokenId",
+                  "value": "112233",
+                  "description": "Prediction outcome token ID",
+                  "disabled": false
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Last Trade Price",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/order-book/last-trade-price",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "order-book",
+                "last-trade-price"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "marketId",
+                  "value": "5567895",
+                  "description": "Market ID. Must be > 0",
+                  "disabled": false
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Trade",
+      "item": [
+        {
+          "name": "Query Order History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/order/history",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "order",
+                "history"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "walletAddress",
+                  "value": "0x12e32db8817e292508c34111cbc4b23340df542c",
+                  "description": "User's prediction wallet address",
+                  "disabled": false
+                },
+                {
+                  "key": "l1Category",
+                  "value": "crypto",
+                  "description": "Filter by level-1 category",
+                  "disabled": true
+                },
+                {
+                  "key": "orderType",
+                  "value": "MARKET",
+                  "description": "Filter by order type. Enum: `MARKET`, `LIMIT`",
+                  "disabled": true
+                },
+                {
+                  "key": "status",
+                  "value": "CLOSED",
+                  "description": "Filter by order status",
+                  "disabled": true
+                },
+                {
+                  "key": "startDate",
+                  "value": "2026-05-01",
+                  "description": "Start date. Format: `yyyy-MM-dd`. Must be ≤ `endDate`",
+                  "disabled": true
+                },
+                {
+                  "key": "endDate",
+                  "value": "2026-05-25",
+                  "description": "End date. Format: `yyyy-MM-dd`. Must be ≥ `startDate`",
+                  "disabled": true
+                },
+                {
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset. Default `0`",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Page size. Default `20`, range 1–100",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Active Orders",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/order/list",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "order",
+                "list"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "walletAddress",
+                  "value": "0x12e32db8817e292508c34111cbc4b23340df542c",
+                  "description": "User's prediction wallet address",
+                  "disabled": false
+                },
+                {
+                  "key": "tradeSide",
+                  "value": "BUY",
+                  "description": "Filter by trade side. Enum: `BUY`, `SELL`",
+                  "disabled": true
+                },
+                {
+                  "key": "l1Category",
+                  "value": "crypto",
+                  "description": "Filter by level-1 category",
+                  "disabled": true
+                },
+                {
+                  "key": "marketId",
+                  "value": "5567895",
+                  "description": "Filter by market ID",
+                  "disabled": true
+                },
+                {
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset. Default `0`",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Page size. Default `20`, range 1–100",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Batch Cancel Orders",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/trade/batch-cancel",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "trade",
+                "batch-cancel"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "walletAddress",
+                  "value": "0x12e32db8817e292508c34111cbc4b23340df542c",
+                  "description": "User's prediction wallet address",
+                  "disabled": false
+                },
+                {
+                  "key": "walletId",
+                  "value": "5b5c1ec3be4e4416a5872b21c1ca5d20",
+                  "description": "Wallet ID",
+                  "disabled": false
+                },
+                {
+                  "key": "cancelInfoList",
+                  "value": "",
+                  "description": "List of orders to cancel (index `i` starts from 0)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Quote",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/trade/get-quote",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "trade",
+                "get-quote"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "walletAddress",
+                  "value": "0x12e32db8817e292508c34111cbc4b23340df542c",
+                  "description": "User's prediction wallet address",
+                  "disabled": false
+                },
+                {
+                  "key": "tokenId",
+                  "value": "112233",
+                  "description": "Prediction outcome token ID",
+                  "disabled": false
+                },
+                {
+                  "key": "side",
+                  "value": "BUY",
+                  "description": "Trade direction. Enum: `BUY`, `SELL`",
+                  "disabled": false
+                },
+                {
+                  "key": "amountIn",
+                  "value": "1000000000000000000",
+                  "description": "Input amount in wei (18 decimals). Must be > 0. For `MARKET` orders, minimum is approximately 1.5 USDT (varies by market depth). Example: `1000000000000000000` = 1 USDT",
+                  "disabled": false
+                },
+                {
+                  "key": "orderType",
+                  "value": "MARKET",
+                  "description": "Order type. Enum: `MARKET`, `LIMIT`",
+                  "disabled": false
+                },
+                {
+                  "key": "slippageBps",
+                  "value": "1200",
+                  "description": "Slippage tolerance in basis points. Range 1–10000",
+                  "disabled": false
+                },
+                {
+                  "key": "priceLimit",
+                  "value": "0.5",
+                  "description": "Limit price. Required when `orderType=LIMIT`. Must be > 0",
+                  "disabled": true
+                },
+                {
+                  "key": "chainId",
+                  "value": "56",
+                  "description": "Chain ID. Default `56` (BSC)",
+                  "disabled": true
+                },
+                {
+                  "key": "feeRateBps",
+                  "value": "200",
+                  "description": "Fee rate in basis points. Default `200`, range 1–10000",
+                  "disabled": true
+                },
+                {
+                  "key": "fundingSource",
+                  "value": "MPC",
+                  "description": "Funding source. Enum: `MPC`, `CEX`. Default `MPC`",
+                  "disabled": true
+                },
+                {
+                  "key": "fundTransferAmount",
+                  "value": "1000000000000000000",
+                  "description": "Auto-transfer amount before order (wei). Must be > 0 if provided",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Place Order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/trade/place-order-bundle",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "trade",
+                "place-order-bundle"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "walletAddress",
+                  "value": "0x12e32db8817e292508c34111cbc4b23340df542c",
+                  "description": "User's prediction wallet address",
+                  "disabled": false
+                },
+                {
+                  "key": "walletId",
+                  "value": "5b5c1ec3be4e4416a5872b21c1ca5d20",
+                  "description": "Wallet ID",
+                  "disabled": false
+                },
+                {
+                  "key": "quoteId",
+                  "value": "q_20260525_abc123xyz",
+                  "description": "Quote ID obtained from `Get Quote`",
+                  "disabled": false
+                },
+                {
+                  "key": "timeInForce",
+                  "value": "FOK",
+                  "description": "Must match `orderType`: `FOK` for `MARKET`, `GTC` for `LIMIT`",
+                  "disabled": false
+                },
+                {
+                  "key": "accountType",
+                  "value": "SPOT",
+                  "description": "Payment account type. Enum: `SPOT`, `FUNDING`",
+                  "disabled": false
+                },
+                {
+                  "key": "orderType",
+                  "value": "MARKET",
+                  "description": "Order type. Enum: `MARKET`, `LIMIT`",
+                  "disabled": false
+                },
+                {
+                  "key": "slippageBps",
+                  "value": "1200",
+                  "description": "Slippage tolerance in basis points. Range 1–10000",
+                  "disabled": false
+                },
+                {
+                  "key": "priceLimit",
+                  "value": "0.5",
+                  "description": "Limit price. Required when `orderType=LIMIT`. Must be > 0",
+                  "disabled": true
+                },
+                {
+                  "key": "fundingSource",
+                  "value": "MPC",
+                  "description": "Funding source. Enum: `MPC`, `CEX`. Default `MPC`",
+                  "disabled": true
+                },
+                {
+                  "key": "fundTransferAmount",
+                  "value": "1000000000000000000",
+                  "description": "Auto-transfer amount before order (wei). Must be > 0 if provided",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Wallet",
+      "item": [
+        {
+          "name": "Query Payment Option Balances",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/balance/payment-options",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "balance",
+                "payment-options"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Portfolio",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/pnl/portfolio",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "pnl",
+                "portfolio"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "walletAddress",
+                  "value": "0x12e32db8817e292508c34111cbc4b23340df542c",
+                  "description": "User's prediction wallet address",
+                  "disabled": false
+                },
+                {
+                  "key": "tokenId",
+                  "value": "112233",
+                  "description": "Filter by prediction token ID",
+                  "disabled": true
+                },
+                {
+                  "key": "marketId",
+                  "value": "5567895",
+                  "description": "Filter by market ID. Must be > 0",
+                  "disabled": true
+                },
+                {
+                  "key": "marketTopicId",
+                  "value": "4229564",
+                  "description": "Filter by market topic ID. Must be > 0",
+                  "disabled": true
+                },
+                {
+                  "key": "activeOnly",
+                  "value": "false",
+                  "description": "If `true`, return only active (unresolved) positions",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Quota Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/quota/limit/status",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "quota",
+                "limit",
+                "status"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "List Prediction Wallets",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/wallet/list",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "wallet",
+                "list"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transfer",
+      "item": [
+        {
+          "name": "Create Inbound Transfer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/transfer/inbound",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "transfer",
+                "inbound"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "walletId",
+                  "value": "5b5c1ec3be4e4416a5872b21c1ca5d20",
+                  "description": "Wallet ID",
+                  "disabled": false
+                },
+                {
+                  "key": "walletAddress",
+                  "value": "0x12e32db8817e292508c34111cbc4b23340df542c",
+                  "description": "User's prediction wallet address",
+                  "disabled": false
+                },
+                {
+                  "key": "fromTokenAmount",
+                  "value": "1000000000000000000",
+                  "description": "Transfer amount in wei (18 decimals). Must be > 0. Example: `1000000000000000000` = 1 USDT",
+                  "disabled": false
+                },
+                {
+                  "key": "accountType",
+                  "value": "SPOT",
+                  "description": "Destination CEX account. Enum: `SPOT`, `FUNDING`",
+                  "disabled": false
+                },
+                {
+                  "key": "fromToken",
+                  "value": "USDT",
+                  "description": "Source token symbol. Default `USDT`",
+                  "disabled": true
+                },
+                {
+                  "key": "toToken",
+                  "value": "USDT",
+                  "description": "Destination token symbol. Default `USDT`",
+                  "disabled": true
+                },
+                {
+                  "key": "chainId",
+                  "value": "56",
+                  "description": "Chain ID. Default `56` (BSC)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Transfer List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/transfer/list",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "transfer",
+                "list"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "walletAddress",
+                  "value": "0x12e32db8817e292508c34111cbc4b23340df542c",
+                  "description": "User's prediction wallet address",
+                  "disabled": false
+                },
+                {
+                  "key": "startDate",
+                  "value": "2026-05-01",
+                  "description": "Start date. Format: `yyyy-MM-dd`. Must be ≤ `endDate`",
+                  "disabled": false
+                },
+                {
+                  "key": "endDate",
+                  "value": "2026-05-25",
+                  "description": "End date. Format: `yyyy-MM-dd`. Must be ≥ `startDate`",
+                  "disabled": false
+                },
+                {
+                  "key": "tokenSymbol",
+                  "value": "USDT",
+                  "description": "Filter by token symbol (e.g. `USDT`)",
+                  "disabled": true
+                },
+                {
+                  "key": "direction",
+                  "value": "INBOUND",
+                  "description": "Filter by direction. Enum: `INBOUND`, `OUTBOUND`",
+                  "disabled": true
+                },
+                {
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset. Default `0`",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Page size. Default `20`, range 1–100",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Outbound Transfer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/transfer/outbound",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "transfer",
+                "outbound"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "walletId",
+                  "value": "5b5c1ec3be4e4416a5872b21c1ca5d20",
+                  "description": "Wallet ID",
+                  "disabled": false
+                },
+                {
+                  "key": "walletAddress",
+                  "value": "0x12e32db8817e292508c34111cbc4b23340df542c",
+                  "description": "User's prediction wallet address",
+                  "disabled": false
+                },
+                {
+                  "key": "fromTokenAmount",
+                  "value": "1000000000000000000",
+                  "description": "Transfer amount in wei (18 decimals). Must be > 0. Example: `1000000000000000000` = 1 USDT",
+                  "disabled": false
+                },
+                {
+                  "key": "accountType",
+                  "value": "SPOT",
+                  "description": "Source CEX account. Enum: `SPOT`, `FUNDING`",
+                  "disabled": false
+                },
+                {
+                  "key": "sourceBiz",
+                  "value": "USER_TRANSFER",
+                  "description": "Business source. Enum: `USER_TRANSFER`, `PREDICTION_BUY`",
+                  "disabled": false
+                },
+                {
+                  "key": "fromToken",
+                  "value": "USDT",
+                  "description": "Source token symbol. Default `USDT`",
+                  "disabled": true
+                },
+                {
+                  "key": "toToken",
+                  "value": "USDT",
+                  "description": "Destination token symbol. Default `USDT`",
+                  "disabled": true
+                },
+                {
+                  "key": "chainId",
+                  "value": "56",
+                  "description": "Chain ID. Default `56` (BSC)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Transfer Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/transfer/status",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "transfer",
+                "status"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "transferId",
+                  "value": "tf_20260525_out_001",
+                  "description": "Transfer ID returned from outbound/inbound transfer",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Position",
+      "item": [
+        {
+          "name": "Query PnL",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/pnl/query",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "pnl",
+                "query"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "walletAddress",
+                  "value": "0x12e32db8817e292508c34111cbc4b23340df542c",
+                  "description": "User's prediction wallet address",
+                  "disabled": false
+                },
+                {
+                  "key": "tokenId",
+                  "value": "112233",
+                  "description": "Filter by prediction token ID",
+                  "disabled": true
+                },
+                {
+                  "key": "marketId",
+                  "value": "5567895",
+                  "description": "Filter by market ID. Must be > 0",
+                  "disabled": true
+                },
+                {
+                  "key": "marketTopicId",
+                  "value": "4229564",
+                  "description": "Filter by market topic ID. Must be > 0",
+                  "disabled": true
+                },
+                {
+                  "key": "activeOnly",
+                  "value": "false",
+                  "description": "If `true`, return only active (unresolved) positions",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Positions by Filter",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/position/filter",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "position",
+                "filter"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "walletAddress",
+                  "value": "0x12e32db8817e292508c34111cbc4b23340df542c",
+                  "description": "User's prediction wallet address",
+                  "disabled": true
+                },
+                {
+                  "key": "marketTopicId",
+                  "value": "4229564",
+                  "description": "Filter by market topic ID",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Positions",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/position/list",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "position",
+                "list"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "walletAddress",
+                  "value": "0x12e32db8817e292508c34111cbc4b23340df542c",
+                  "description": "User's prediction wallet address",
+                  "disabled": false
+                },
+                {
+                  "key": "tab",
+                  "value": "ONGOING",
+                  "description": "Position status tab. Values from `PositionQueryType`. Default `ONGOING`",
+                  "disabled": true
+                },
+                {
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset. Default `0`",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Page size. Default `20`, range 1–100",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Settled Position History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/position/settled-history",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "position",
+                "settled-history"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "walletAddress",
+                  "value": "0x12e32db8817e292508c34111cbc4b23340df542c",
+                  "description": "User's prediction wallet address",
+                  "disabled": false
+                },
+                {
+                  "key": "l1Category",
+                  "value": "crypto",
+                  "description": "Filter by level-1 category",
+                  "disabled": true
+                },
+                {
+                  "key": "result",
+                  "value": "1",
+                  "description": "Settlement result filter",
+                  "disabled": true
+                },
+                {
+                  "key": "startDate",
+                  "value": "2026-05-01",
+                  "description": "Start date. Format: `yyyy-MM-dd`. Must be ≤ `endDate`",
+                  "disabled": true
+                },
+                {
+                  "key": "endDate",
+                  "value": "2026-05-25",
+                  "description": "End date. Format: `yyyy-MM-dd`. Must be ≥ `startDate`",
+                  "disabled": true
+                },
+                {
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset. Default `0`",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Page size. Default `20`, range 1–100",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Position by Token",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/position/token",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "w3w",
+                "wallet",
+                "prediction",
+                "position",
+                "token"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "walletAddress",
+                  "value": "0x12e32db8817e292508c34111cbc4b23340df542c",
+                  "description": "User's prediction wallet address",
+                  "disabled": false
+                },
+                {
+                  "key": "tokenId",
+                  "value": "112233",
+                  "description": "Prediction outcome token ID",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "prod_url",
+      "value": "https://api.binance.com",
+      "type": "string"
+    }
+  ]
+}

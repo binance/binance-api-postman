@@ -1,5 +1,11 @@
 # Changelog
 
+## 51.0.0 - 2026-06-29
+
+### Added (1)
+
+- Added W3W Prediction API collection of endpoints.
+
 ## 50.0.0 - 2026-06-16
 
 ### Added (2)
