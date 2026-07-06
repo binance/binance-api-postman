@@ -170,8 +170,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/account",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "account"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "account"
+              ],
               "variable": [],
               "query": [
                 {
@@ -220,8 +226,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/balance",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "balance"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "balance"
+              ],
               "variable": [],
               "query": [
                 {
@@ -270,8 +282,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/commissionRate",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "commissionRate"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "commissionRate"
+              ],
               "variable": [],
               "query": [
                 {
@@ -326,8 +344,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/income",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "income"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "income"
+              ],
               "variable": [],
               "query": [
                 {
@@ -412,8 +436,15 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/income/asyn",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "income", "asyn"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "income",
+                "asyn"
+              ],
               "variable": [],
               "query": [
                 {
@@ -474,8 +505,16 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/income/asyn/id",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "income", "asyn", "id"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "income",
+                "asyn",
+                "id"
+              ],
               "variable": [],
               "query": [
                 {
@@ -530,8 +569,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/leverageBracket",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "leverageBracket"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "leverageBracket"
+              ],
               "variable": [],
               "query": [
                 {
@@ -586,8 +631,15 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/order/asyn",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "order", "asyn"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "order",
+                "asyn"
+              ],
               "variable": [],
               "query": [
                 {
@@ -648,8 +700,16 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/order/asyn/id",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "order", "asyn", "id"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "order",
+                "asyn",
+                "id"
+              ],
               "variable": [],
               "query": [
                 {
@@ -704,8 +764,15 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/positionSide/dual",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "positionSide", "dual"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "positionSide",
+                "dual"
+              ],
               "variable": [],
               "query": [
                 {
@@ -754,8 +821,15 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/trade/asyn",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "trade", "asyn"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "trade",
+                "asyn"
+              ],
               "variable": [],
               "query": [
                 {
@@ -816,8 +890,16 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/trade/asyn/id",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "trade", "asyn", "id"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "trade",
+                "asyn",
+                "id"
+              ],
               "variable": [],
               "query": [
                 {
@@ -872,8 +954,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v2/leverageBracket",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v2", "leverageBracket"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v2",
+                "leverageBracket"
+              ],
               "variable": [],
               "query": [
                 {
@@ -933,8 +1021,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/adlQuantile",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "adlQuantile"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "adlQuantile"
+              ],
               "variable": [],
               "query": [
                 {
@@ -989,8 +1083,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/allOpenOrders",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "allOpenOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "allOpenOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1045,8 +1145,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/allOrders",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "allOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "allOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1131,8 +1237,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/batchOrders",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "batchOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "batchOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1199,8 +1311,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/batchOrders",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "batchOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "batchOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1255,8 +1373,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/batchOrders",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "batchOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "batchOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1311,8 +1435,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/countdownCancelAll",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "countdownCancelAll"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "countdownCancelAll"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1373,8 +1503,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/forceOrders",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "forceOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "forceOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1453,8 +1589,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/leverage",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "leverage"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "leverage"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1515,8 +1657,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/marginType",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "marginType"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "marginType"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1577,8 +1725,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/openOrder",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "openOrder"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "openOrder"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1645,8 +1799,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/openOrders",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "openOrders"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "openOrders"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1707,8 +1867,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/order",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1775,8 +1941,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/order",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1867,8 +2039,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/order",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -1892,7 +2070,7 @@
                 {
                   "key": "type",
                   "value": "LIMIT",
-                  "description": "",
+                  "description": "**After CM migration, stop-type values (`STOP`, `STOP_MARKET`, `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`, `TRAILING_STOP_MARKET`) are no longer accepted by this endpoint and will return `-4120`. Use the new `/dapi/v1/algoOrder` endpoint instead.**",
                   "disabled": false
                 },
                 {
@@ -1958,7 +2136,7 @@
                 {
                   "key": "priceProtect",
                   "value": "false",
-                  "description": "\"TRUE\" or \"FALSE\", default \"FALSE\". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders.",
+                  "description": "\"true\" or \"false\", default \"false\". Used with `STOP/STOP_MARKET` or `TAKE_PROFIT/TAKE_PROFIT_MARKET` orders.",
                   "disabled": true
                 },
                 {
@@ -2025,8 +2203,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/order",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "order"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "order"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2093,8 +2277,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/orderAmendment",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "orderAmendment"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "orderAmendment"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2179,8 +2369,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/positionMargin",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "positionMargin"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "positionMargin"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2204,7 +2400,7 @@
                 {
                   "key": "type",
                   "value": "LIMIT",
-                  "description": "",
+                  "description": "**After CM migration, stop-type values (`STOP`, `STOP_MARKET`, `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`, `TRAILING_STOP_MARKET`) are no longer accepted by this endpoint and will return `-4120`. Use the new `/dapi/v1/algoOrder` endpoint instead.**",
                   "disabled": false
                 },
                 {
@@ -2253,8 +2449,15 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/positionMargin/history",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "positionMargin", "history"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "positionMargin",
+                "history"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2333,8 +2536,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/positionRisk",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "positionRisk"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "positionRisk"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2395,8 +2604,15 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/positionSide/dual",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "positionSide", "dual"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "positionSide",
+                "dual"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2451,8 +2667,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/userTrades",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "userTrades"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "userTrades"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2522,67 +2744,6 @@
       ]
     },
     {
-      "name": "Portfolio-Margin-Endpoints",
-      "item": [
-        {
-          "name": "Classic Portfolio Margin Account Information (USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/dapi/v1/pmAccountInfo",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "pmAccountInfo"],
-              "variable": [],
-              "query": [
-                {
-                  "key": "asset",
-                  "value": "asset_example",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
       "name": "User-Data-Streams",
       "item": [
         {
@@ -2603,8 +2764,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/listenKey",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "listenKey"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "listenKey"
+              ],
               "variable": [],
               "query": []
             }
@@ -2634,8 +2801,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/listenKey",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "listenKey"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "listenKey"
+              ],
               "variable": [],
               "query": []
             }
@@ -2665,8 +2838,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/listenKey",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "listenKey"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "listenKey"
+              ],
               "variable": [],
               "query": []
             }
@@ -2701,8 +2880,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/aggTrades",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "aggTrades"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "aggTrades"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2763,8 +2948,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/constituents",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "constituents"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "constituents"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2801,8 +2992,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/continuousKlines",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "continuousKlines"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "continuousKlines"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2869,8 +3066,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/depth",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "depth"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "depth"
+              ],
               "variable": [],
               "query": [
                 {
@@ -2913,8 +3116,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/exchangeInfo",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "exchangeInfo"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "exchangeInfo"
+              ],
               "variable": [],
               "query": []
             }
@@ -2944,8 +3153,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/fundingInfo",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "fundingInfo"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "fundingInfo"
+              ],
               "variable": [],
               "query": []
             }
@@ -2975,8 +3190,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/fundingRate",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "fundingRate"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "fundingRate"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3031,8 +3252,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/historicalTrades",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "historicalTrades"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "historicalTrades"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3081,8 +3308,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/indexPriceKlines",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "indexPriceKlines"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "indexPriceKlines"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3143,8 +3376,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/klines",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "klines"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "klines"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3205,8 +3444,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/markPriceKlines",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "markPriceKlines"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "markPriceKlines"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3267,8 +3512,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/openInterest",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "openInterest"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "openInterest"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3299,8 +3550,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/ping",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "ping"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "ping"
+              ],
               "variable": [],
               "query": []
             }
@@ -3330,8 +3587,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/premiumIndex",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "premiumIndex"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "premiumIndex"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3374,8 +3637,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/premiumIndexKlines",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "premiumIndexKlines"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "premiumIndexKlines"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3436,8 +3705,15 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/ticker/24hr",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "ticker", "24hr"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "ticker",
+                "24hr"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3480,8 +3756,15 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/ticker/bookTicker",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "ticker", "bookTicker"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "ticker",
+                "bookTicker"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3524,8 +3807,15 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/ticker/price",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "ticker", "price"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "ticker",
+                "price"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3568,8 +3858,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/time",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "time"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "time"
+              ],
               "variable": [],
               "query": []
             }
@@ -3599,8 +3895,14 @@
             },
             "url": {
               "raw": "{{url}}/dapi/v1/trades",
-              "host": ["{{url}}"],
-              "path": ["dapi", "v1", "trades"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "trades"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3643,8 +3945,14 @@
             },
             "url": {
               "raw": "{{url}}/futures/data/basis",
-              "host": ["{{url}}"],
-              "path": ["futures", "data", "basis"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "futures",
+                "data",
+                "basis"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3711,8 +4019,14 @@
             },
             "url": {
               "raw": "{{url}}/futures/data/globalLongShortAccountRatio",
-              "host": ["{{url}}"],
-              "path": ["futures", "data", "globalLongShortAccountRatio"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "futures",
+                "data",
+                "globalLongShortAccountRatio"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3773,8 +4087,14 @@
             },
             "url": {
               "raw": "{{url}}/futures/data/openInterestHist",
-              "host": ["{{url}}"],
-              "path": ["futures", "data", "openInterestHist"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "futures",
+                "data",
+                "openInterestHist"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3841,8 +4161,14 @@
             },
             "url": {
               "raw": "{{url}}/futures/data/takerBuySellVol",
-              "host": ["{{url}}"],
-              "path": ["futures", "data", "takerBuySellVol"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "futures",
+                "data",
+                "takerBuySellVol"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3909,8 +4235,14 @@
             },
             "url": {
               "raw": "{{url}}/futures/data/topLongShortAccountRatio",
-              "host": ["{{url}}"],
-              "path": ["futures", "data", "topLongShortAccountRatio"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "futures",
+                "data",
+                "topLongShortAccountRatio"
+              ],
               "variable": [],
               "query": [
                 {
@@ -3971,8 +4303,14 @@
             },
             "url": {
               "raw": "{{url}}/futures/data/topLongShortPositionRatio",
-              "host": ["{{url}}"],
-              "path": ["futures", "data", "topLongShortPositionRatio"],
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "futures",
+                "data",
+                "topLongShortPositionRatio"
+              ],
               "variable": [],
               "query": [
                 {

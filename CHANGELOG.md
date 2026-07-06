@@ -1,5 +1,11 @@
 # Changelog
 
+## 52.0.0 - 2026-07-06
+
+### Removed (1)
+
+- `GET /dapi/v1/pmAccountInfo`
+
 ## 51.0.0 - 2026-06-29
 
 ### Added (1)
