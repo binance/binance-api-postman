@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "Binance Crypto Loan REST API",
+    "name": "Crypto Loan REST API",
     "description": {
-      "content": "OpenAPI Specification for the Binance Crypto Loan REST API",
+      "content": "Access Binance Crypto Loans to query assets, subscribe to loans, and manage loan positions.",
       "type": "text/markdown"
     },
     "version": "1.0.0",
@@ -144,10 +144,10 @@
   ],
   "item": [
     {
-      "name": "Stable-Rate",
+      "name": "Stable Rate",
       "item": [
         {
-          "name": "Get Loan Borrow History(USER_DATA)",
+          "name": "Get Loan Borrow History (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -182,13 +182,13 @@
                 },
                 {
                   "key": "loanCoin",
-                  "value": "loanCoin_example",
+                  "value": "BUSD",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "collateralCoin",
-                  "value": "collateralCoin_example",
+                  "value": "BNB",
                   "description": "",
                   "disabled": true
                 },
@@ -207,19 +207,19 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "description": "Current querying page",
                   "disabled": true
                 },
                 {
                   "key": "limit",
                   "value": "10",
-                  "description": "Default: 10; max: 100",
+                  "description": "Number of records to return",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -239,7 +239,7 @@
           }
         },
         {
-          "name": "Get Crypto Loans Income History(USER_DATA)",
+          "name": "Get Crypto Loans Income History (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -268,14 +268,14 @@
               "query": [
                 {
                   "key": "asset",
-                  "value": "asset_example",
+                  "value": "BUSD",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "type",
-                  "value": "0",
-                  "description": "All types will be returned by default. Enum：`borrowIn` ,`collateralSpent`, `repayAmount`, `collateralReturn`(Collateral return after repayment), `addCollateral`, `removeCollateral`, `collateralReturnAfterLiquidation`",
+                  "value": "borrowIn",
+                  "description": "All types will be returned by default.",
                   "disabled": true
                 },
                 {
@@ -293,13 +293,13 @@
                 {
                   "key": "limit",
                   "value": "10",
-                  "description": "Default: 10; max: 100",
+                  "description": "Number of records to return",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -319,7 +319,7 @@
           }
         },
         {
-          "name": "Get Loan LTV Adjustment History(USER_DATA)",
+          "name": "Get Loan LTV Adjustment History (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -354,13 +354,13 @@
                 },
                 {
                   "key": "loanCoin",
-                  "value": "loanCoin_example",
+                  "value": "BUSD",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "collateralCoin",
-                  "value": "collateralCoin_example",
+                  "value": "BNB",
                   "description": "",
                   "disabled": true
                 },
@@ -379,19 +379,19 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "description": "Current querying page",
                   "disabled": true
                 },
                 {
                   "key": "limit",
                   "value": "10",
-                  "description": "Default: 10; max: 100",
+                  "description": "Number of records to return",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -411,75 +411,7 @@
           }
         },
         {
-          "name": "Check Collateral Repay Rate(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/loan/repay/collateral/rate",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "loan", "repay", "collateral", "rate"],
-              "variable": [],
-              "query": [
-                {
-                  "key": "loanCoin",
-                  "value": "loanCoin_example",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "collateralCoin",
-                  "value": "collateralCoin_example",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "repayAmount",
-                  "value": "1.0",
-                  "description": "repay amount of loanCoin",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Loan Repayment History(USER_DATA)",
+          "name": "Get Loan Repayment History (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -514,13 +446,13 @@
                 },
                 {
                   "key": "loanCoin",
-                  "value": "loanCoin_example",
+                  "value": "BUSD",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "collateralCoin",
-                  "value": "collateralCoin_example",
+                  "value": "BNB",
                   "description": "",
                   "disabled": true
                 },
@@ -539,19 +471,19 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "description": "Current querying page",
                   "disabled": true
                 },
                 {
                   "key": "limit",
                   "value": "10",
-                  "description": "Default: 10; max: 100",
+                  "description": "Number of records to return",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -573,10 +505,10 @@
       ]
     },
     {
-      "name": "Flexible-Rate",
+      "name": "Flexible Rate",
       "item": [
         {
-          "name": "Flexible Loan Adjust LTV(TRADE)",
+          "name": "Flexible Loan Adjust LTV (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -605,32 +537,32 @@
               "query": [
                 {
                   "key": "loanCoin",
-                  "value": "loanCoin_example",
+                  "value": "BUSD",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "collateralCoin",
-                  "value": "collateralCoin_example",
+                  "value": "BNB",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "adjustmentAmount",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "direction",
-                  "value": "direction_example",
-                  "description": "\"ADDITIONAL\", \"REDUCED\"",
+                  "value": "ADDITIONAL",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -650,7 +582,7 @@
           }
         },
         {
-          "name": "Flexible Loan Borrow(TRADE)",
+          "name": "Flexible Loan Borrow (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -679,32 +611,32 @@
               "query": [
                 {
                   "key": "loanCoin",
-                  "value": "loanCoin_example",
+                  "value": "BUSD",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "loanAmount",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "Mandatory when collateralAmount is empty",
                   "disabled": true
                 },
                 {
                   "key": "collateralCoin",
-                  "value": "collateralCoin_example",
+                  "value": "BNB",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "collateralAmount",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "Mandatory when loanAmount is empty",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -724,7 +656,7 @@
           }
         },
         {
-          "name": "Get Flexible Loan Borrow History(USER_DATA)",
+          "name": "Get Flexible Loan Borrow History (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -753,13 +685,13 @@
               "query": [
                 {
                   "key": "loanCoin",
-                  "value": "loanCoin_example",
+                  "value": "BUSD",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "collateralCoin",
-                  "value": "collateralCoin_example",
+                  "value": "BNB",
                   "description": "",
                   "disabled": true
                 },
@@ -778,19 +710,19 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "description": "Current querying page",
                   "disabled": true
                 },
                 {
                   "key": "limit",
                   "value": "10",
-                  "description": "Default: 10; max: 100",
+                  "description": "Number of records to return",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -810,7 +742,7 @@
           }
         },
         {
-          "name": "Get Flexible Loan Collateral Assets Data(USER_DATA)",
+          "name": "Get Flexible Loan Collateral Assets Data (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -839,14 +771,14 @@
               "query": [
                 {
                   "key": "collateralCoin",
-                  "value": "collateralCoin_example",
+                  "value": "BNB",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -890,18 +822,25 @@
             "url": {
               "raw": "{{url}}/sapi/v2/loan/flexible/liquidation/history",
               "host": ["{{url}}"],
-              "path": ["sapi", "v2", "loan", "flexible", "liquidation", "history"],
+              "path": [
+                "sapi",
+                "v2",
+                "loan",
+                "flexible",
+                "liquidation",
+                "history"
+              ],
               "variable": [],
               "query": [
                 {
                   "key": "loanCoin",
-                  "value": "loanCoin_example",
+                  "value": "BUSD",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "collateralCoin",
-                  "value": "collateralCoin_example",
+                  "value": "BNB",
                   "description": "",
                   "disabled": true
                 },
@@ -920,19 +859,19 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "description": "Current querying page",
                   "disabled": true
                 },
                 {
                   "key": "limit",
                   "value": "10",
-                  "description": "Default: 10; max: 100",
+                  "description": "Number of records to return",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -952,7 +891,7 @@
           }
         },
         {
-          "name": "Get Flexible Loan Assets Data(USER_DATA)",
+          "name": "Get Flexible Loan Assets Data (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -981,14 +920,14 @@
               "query": [
                 {
                   "key": "loanCoin",
-                  "value": "loanCoin_example",
+                  "value": "BUSD",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -1008,7 +947,7 @@
           }
         },
         {
-          "name": "Get Flexible Loan LTV Adjustment History(USER_DATA)",
+          "name": "Get Flexible Loan LTV Adjustment History (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -1032,18 +971,26 @@
             "url": {
               "raw": "{{url}}/sapi/v2/loan/flexible/ltv/adjustment/history",
               "host": ["{{url}}"],
-              "path": ["sapi", "v2", "loan", "flexible", "ltv", "adjustment", "history"],
+              "path": [
+                "sapi",
+                "v2",
+                "loan",
+                "flexible",
+                "ltv",
+                "adjustment",
+                "history"
+              ],
               "variable": [],
               "query": [
                 {
                   "key": "loanCoin",
-                  "value": "loanCoin_example",
+                  "value": "BUSD",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "collateralCoin",
-                  "value": "collateralCoin_example",
+                  "value": "BNB",
                   "description": "",
                   "disabled": true
                 },
@@ -1062,19 +1009,19 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "description": "Current querying page",
                   "disabled": true
                 },
                 {
                   "key": "limit",
                   "value": "10",
-                  "description": "Default: 10; max: 100",
+                  "description": "Number of records to return",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -1094,7 +1041,7 @@
           }
         },
         {
-          "name": "Get Flexible Loan Ongoing Orders(USER_DATA)",
+          "name": "Get Flexible Loan Ongoing Orders (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -1123,32 +1070,32 @@
               "query": [
                 {
                   "key": "loanCoin",
-                  "value": "loanCoin_example",
+                  "value": "BUSD",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "collateralCoin",
-                  "value": "collateralCoin_example",
+                  "value": "BNB",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "description": "Current querying page",
                   "disabled": true
                 },
                 {
                   "key": "limit",
                   "value": "10",
-                  "description": "Default: 10; max: 100",
+                  "description": "Number of records to return",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -1168,7 +1115,7 @@
           }
         },
         {
-          "name": "Flexible Loan Repay(TRADE)",
+          "name": "Flexible Loan Repay (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -1197,44 +1144,44 @@
               "query": [
                 {
                   "key": "loanCoin",
-                  "value": "loanCoin_example",
+                  "value": "BUSD",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "collateralCoin",
-                  "value": "collateralCoin_example",
+                  "value": "BNB",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "repayAmount",
-                  "value": "1.0",
-                  "description": "repay amount of loanCoin",
+                  "value": "1",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "collateralReturn",
                   "value": "true",
-                  "description": "Default: TRUE. TRUE: Return extra collateral to spot account; FALSE: Keep extra collateral in the order, and lower LTV.",
+                  "description": "TRUE: Return extra collateral to spot account; FALSE: Keep extra collateral in the order and lower LTV.",
                   "disabled": true
                 },
                 {
                   "key": "fullRepayment",
                   "value": "false",
-                  "description": "Default: FALSE. TRUE: Full repayment; FALSE: Partial repayment, based on loanAmount",
+                  "description": "TRUE: Full repayment; FALSE: Partial repayment based on loan amount",
                   "disabled": true
                 },
                 {
                   "key": "repaymentType",
                   "value": "1",
-                  "description": "Default: 1. 1: Repayment with loan asset; 2: Repayment with collateral",
+                  "description": "1: Repayment with loan asset; 2: Repayment with collateral",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -1254,7 +1201,7 @@
           }
         },
         {
-          "name": "Get Flexible Loan Repayment History(USER_DATA)",
+          "name": "Get Flexible Loan Repayment History (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -1283,13 +1230,13 @@
               "query": [
                 {
                   "key": "loanCoin",
-                  "value": "loanCoin_example",
+                  "value": "BUSD",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "collateralCoin",
-                  "value": "collateralCoin_example",
+                  "value": "BNB",
                   "description": "",
                   "disabled": true
                 },
@@ -1308,19 +1255,19 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "description": "Current querying page",
                   "disabled": true
                 },
                 {
                   "key": "limit",
                   "value": "10",
-                  "description": "Default: 10; max: 100",
+                  "description": "Number of records to return",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -1340,7 +1287,7 @@
           }
         },
         {
-          "name": "Check Collateral Repay Rate (USER_DATA)",
+          "name": "Check Collateral Flexible Repay Rate (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -1369,20 +1316,20 @@
               "query": [
                 {
                   "key": "loanCoin",
-                  "value": "loanCoin_example",
+                  "value": "BUSD",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "collateralCoin",
-                  "value": "collateralCoin_example",
+                  "value": "BNB",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -1431,7 +1378,7 @@
               "query": [
                 {
                   "key": "coin",
-                  "value": "coin_example",
+                  "value": "USDT",
                   "description": "",
                   "disabled": false
                 },
@@ -1450,19 +1397,19 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Current querying page. Start from 1; default: 1; max: 1000",
+                  "description": "Current querying page",
                   "disabled": true
                 },
                 {
                   "key": "limit",
                   "value": "10",
-                  "description": "Default: 10; max: 100",
+                  "description": "Number of records to return",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": false
                 },
                 {

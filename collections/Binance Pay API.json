@@ -2,7 +2,7 @@
   "info": {
     "name": "Binance Pay REST API",
     "description": {
-      "content": "OpenAPI Specification for the Binance Pay REST API",
+      "content": "Query Binance Pay transaction history.",
       "type": "text/markdown"
     },
     "version": "1.0.0",
@@ -144,77 +144,72 @@
   ],
   "item": [
     {
-      "name": "Pay",
-      "item": [
-        {
-          "name": "Get Pay Trade History",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/pay/transactions",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "pay", "transactions"],
-              "variable": [],
-              "query": [
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "limit",
-                  "value": "100",
-                  "description": "default 100, max 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
+      "name": "Get Pay Trade History",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-MBX-APIKEY",
+            "value": "",
+            "description": "API KEY",
+            "disabled": false
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "description": "",
+            "disabled": false
           }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{url}}/sapi/v1/pay/transactions",
+          "host": ["{{url}}"],
+          "path": ["sapi", "v1", "pay", "transactions"],
+          "variable": [],
+          "query": [
+            {
+              "key": "startTime",
+              "value": "1623319461670",
+              "description": "Start time in milliseconds.",
+              "disabled": true
+            },
+            {
+              "key": "endTime",
+              "value": "1641782889000",
+              "description": "End time in milliseconds.",
+              "disabled": true
+            },
+            {
+              "key": "limit",
+              "value": "100",
+              "description": "Number of records to return.",
+              "disabled": true
+            },
+            {
+              "key": "recvWindow",
+              "value": "5000",
+              "description": "Request validity window in milliseconds.",
+              "disabled": true
+            },
+            {
+              "key": "timestamp",
+              "value": "",
+              "description": "UTC timestamp in ms",
+              "disabled": false
+            },
+            {
+              "key": "signature",
+              "value": "",
+              "description": "Signature",
+              "disabled": false
+            }
+          ]
         }
-      ]
+      }
     }
   ],
   "variable": [

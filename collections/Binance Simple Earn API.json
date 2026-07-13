@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "Binance Simple Earn REST API",
+    "name": "Simple Earn REST API",
     "description": {
-      "content": "OpenAPI Specification for the Binance Simple Earn REST API",
+      "content": "Earn rewards by subscribing to flexible or locked Simple Earn products.",
       "type": "text/markdown"
     },
     "version": "1.0.0",
@@ -144,598 +144,7 @@
   ],
   "item": [
     {
-      "name": "Bfusd",
-      "item": [
-        {
-          "name": "Get BFUSD Account (USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/bfusd/account",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "bfusd",
-                "account"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get BFUSD Rate History (USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/bfusd/history/rateHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "bfusd",
-                "history",
-                "rateHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get BFUSD Redemption History (USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/bfusd/history/redemptionHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "bfusd",
-                "history",
-                "redemptionHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get BFUSD Rewards History (USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/bfusd/history/rewardsHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "bfusd",
-                "history",
-                "rewardsHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get BFUSD subscription history(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/bfusd/history/subscriptionHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "bfusd",
-                "history",
-                "subscriptionHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "asset",
-                  "value": "asset_example",
-                  "description": "USDC or USDT",
-                  "disabled": true
-                },
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get BFUSD Quota Details (USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/bfusd/quota",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "bfusd",
-                "quota"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Redeem BFUSD(TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/bfusd/redeem",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "bfusd",
-                "redeem"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "amount",
-                  "value": "1.0",
-                  "description": "Amount",
-                  "disabled": false
-                },
-                {
-                  "key": "type",
-                  "value": "s",
-                  "description": "FAST or STANDARD, defaults to STANDARD",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Subscribe BFUSD(TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/bfusd/subscribe",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "bfusd",
-                "subscribe"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "asset",
-                  "value": "asset_example",
-                  "description": "USDT or USDC (whichever is eligible)",
-                  "disabled": false
-                },
-                {
-                  "key": "amount",
-                  "value": "1.0",
-                  "description": "Amount",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "Yield-Arena",
+      "name": "Yield Arena",
       "item": [
         {
           "name": "Get Yield Arena Activities (USER_DATA)",
@@ -753,1992 +162,36 @@
                 "value": "application/json",
                 "description": "",
                 "disabled": false
+              },
+              {
+                "key": "lang",
+                "value": "",
+                "description": "Locale tag for `title` and `description` (e.g. `en`, `zh-CN`, `pt-BR`). Default: `en`. If the value is missing, malformed, or has no translation configured, content is returned in `en`.",
+                "disabled": true
               }
             ],
             "body": {
               "mode": "urlencoded",
-              "urlencoded": []
+              "urlencoded": [
+                {
+                  "key": "lang",
+                  "value": "en",
+                  "description": "Locale tag for `title` and `description` (e.g. `en`, `zh-CN`, `pt-BR`). Default: `en`. If the value is missing, malformed, or has no translation configured, content is returned in `en`.",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
             },
             "url": {
               "raw": "{{url}}/sapi/v1/earn/arena/activities",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "earn",
-                "arena",
-                "activities"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "earn", "arena", "activities"],
               "variable": [],
               "query": [
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "Flexible-Locked",
-      "item": [
-        {
-          "name": "Simple Account(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/account",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "account"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Collateral Record(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/collateralRecord",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "flexible",
-                "history",
-                "collateralRecord"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "productId",
-                  "value": "1",
                   "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Rate History(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/rateHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "flexible",
-                "history",
-                "rateHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "productId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "aprPeriod",
-                  "value": "DAY",
-                  "description": "\"DAY\",\"YEAR\",default\"DAY\"",
-                  "disabled": true
-                },
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Flexible Redemption Record(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/redemptionRecord",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "flexible",
-                "history",
-                "redemptionRecord"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "productId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "redeemId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "asset",
-                  "value": "asset_example",
-                  "description": "USDC or USDT",
-                  "disabled": true
-                },
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Flexible Rewards History(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/rewardsRecord",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "flexible",
-                "history",
-                "rewardsRecord"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "productId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "asset",
-                  "value": "asset_example",
-                  "description": "USDC or USDT",
-                  "disabled": true
-                },
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "type",
-                  "value": "s",
-                  "description": "FAST or STANDARD, defaults to STANDARD",
-                  "disabled": false
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Flexible Subscription Record(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/subscriptionRecord",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "flexible",
-                "history",
-                "subscriptionRecord"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "productId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "purchaseId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "asset",
-                  "value": "asset_example",
-                  "description": "USDC or USDT",
-                  "disabled": true
-                },
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Simple Earn Flexible Product List(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/flexible/list",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "flexible",
-                "list"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "asset",
-                  "value": "asset_example",
-                  "description": "USDC or USDT",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Flexible Personal Left Quota(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/flexible/personalLeftQuota",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "flexible",
-                "personalLeftQuota"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "productId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Flexible Product Position(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/flexible/position",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "flexible",
-                "position"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "asset",
-                  "value": "asset_example",
-                  "description": "USDC or USDT",
-                  "disabled": true
-                },
-                {
-                  "key": "productId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Redeem Flexible Product(TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/flexible/redeem",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "flexible",
-                "redeem"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "productId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "redeemAll",
-                  "value": "false",
-                  "description": "true or false, default to false",
-                  "disabled": true
-                },
-                {
-                  "key": "amount",
-                  "value": "1.0",
-                  "description": "if redeemAll is false, amount is mandatory",
-                  "disabled": true
-                },
-                {
-                  "key": "destAccount",
-                  "value": "SPOT",
-                  "description": "`SPOT`,`FUND`, default `SPOT`",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Set Flexible Auto Subscribe(USER_DATA)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/flexible/setAutoSubscribe",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "flexible",
-                "setAutoSubscribe"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "productId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "autoSubscribe",
-                  "value": "true",
-                  "description": "true or false",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Subscribe Flexible Product(TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/flexible/subscribe",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "flexible",
-                "subscribe"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "productId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "amount",
-                  "value": "1.0",
-                  "description": "Amount",
-                  "disabled": false
-                },
-                {
-                  "key": "autoSubscribe",
-                  "value": "true",
-                  "description": "true or false, default true.",
-                  "disabled": true
-                },
-                {
-                  "key": "sourceAccount",
-                  "value": "SPOT",
-                  "description": "`SPOT`,`FUND`,`ALL`, default `SPOT`",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Flexible Subscription Preview(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/flexible/subscriptionPreview",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "flexible",
-                "subscriptionPreview"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "productId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "amount",
-                  "value": "1.0",
-                  "description": "Amount",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Locked Redemption Record(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/locked/history/redemptionRecord",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "locked",
-                "history",
-                "redemptionRecord"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "positionId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "redeemId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "asset",
-                  "value": "asset_example",
-                  "description": "USDC or USDT",
-                  "disabled": true
-                },
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Locked Rewards History(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/locked/history/rewardsRecord",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "locked",
-                "history",
-                "rewardsRecord"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "positionId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "asset",
-                  "value": "asset_example",
-                  "description": "USDC or USDT",
-                  "disabled": true
-                },
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Locked Subscription Record(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/locked/history/subscriptionRecord",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "locked",
-                "history",
-                "subscriptionRecord"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "purchaseId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "asset",
-                  "value": "asset_example",
-                  "description": "USDC or USDT",
-                  "disabled": true
-                },
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Simple Earn Locked Product List(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/locked/list",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "locked",
-                "list"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "asset",
-                  "value": "asset_example",
-                  "description": "USDC or USDT",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Locked Personal Left Quota(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/locked/personalLeftQuota",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "locked",
-                "personalLeftQuota"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "projectId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Locked Product Position",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/locked/position",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "locked",
-                "position"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "asset",
-                  "value": "asset_example",
-                  "description": "USDC or USDT",
-                  "disabled": true
-                },
-                {
-                  "key": "positionId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "projectId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Redeem Locked Product(TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/locked/redeem",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "locked",
-                "redeem"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "positionId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Set Locked Auto Subscribe(USER_DATA)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/locked/setAutoSubscribe",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "locked",
-                "setAutoSubscribe"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "positionId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "autoSubscribe",
-                  "value": "true",
-                  "description": "true or false",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Set Locked Product Redeem Option(USER_DATA)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/locked/setRedeemOption",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "locked",
-                "setRedeemOption"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "positionId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "redeemTo",
-                  "value": "redeemTo_example",
-                  "description": "`SPOT`,'FLEXIBLE'",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Subscribe Locked Product(TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/locked/subscribe",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "locked",
-                "subscribe"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "projectId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "amount",
-                  "value": "1.0",
-                  "description": "Amount",
-                  "disabled": false
-                },
-                {
-                  "key": "autoSubscribe",
-                  "value": "true",
-                  "description": "true or false, default true.",
-                  "disabled": true
-                },
-                {
-                  "key": "sourceAccount",
-                  "value": "SPOT",
-                  "description": "`SPOT`,`FUND`,`ALL`, default `SPOT`",
-                  "disabled": true
-                },
-                {
-                  "key": "redeemTo",
-                  "value": "SPOT",
-                  "description": "`SPOT`,`FLEXIBLE`, default `SPOT`",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Locked Subscription Preview(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/simple-earn/locked/subscriptionPreview",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "simple-earn",
-                "locked",
-                "subscriptionPreview"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "projectId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "amount",
-                  "value": "1.0",
-                  "description": "Amount",
-                  "disabled": false
-                },
-                {
-                  "key": "autoSubscribe",
-                  "value": "true",
-                  "description": "true or false, default true.",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
                   "disabled": true
                 },
                 {
@@ -2786,15 +239,8 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/rwusd/account",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "rwusd",
-                "account"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "rwusd", "account"],
               "variable": [],
               "query": [
                 {
@@ -2843,16 +289,8 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/rwusd/history/rateHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "rwusd",
-                "history",
-                "rateHistory"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "rwusd", "history", "rateHistory"],
               "variable": [],
               "query": [
                 {
@@ -2870,13 +308,13 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
+                  "description": "Currently querying page",
                   "disabled": true
                 },
                 {
                   "key": "size",
                   "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
+                  "description": "Number of results per page",
                   "disabled": true
                 },
                 {
@@ -2925,16 +363,8 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/rwusd/history/redemptionHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "rwusd",
-                "history",
-                "redemptionHistory"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "rwusd", "history", "redemptionHistory"],
               "variable": [],
               "query": [
                 {
@@ -2952,13 +382,13 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
+                  "description": "Currently querying page",
                   "disabled": true
                 },
                 {
                   "key": "size",
                   "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
+                  "description": "Number of results per page",
                   "disabled": true
                 },
                 {
@@ -3007,16 +437,8 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/rwusd/history/rewardsHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "rwusd",
-                "history",
-                "rewardsHistory"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "rwusd", "history", "rewardsHistory"],
               "variable": [],
               "query": [
                 {
@@ -3034,13 +456,13 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
+                  "description": "Currently querying page",
                   "disabled": true
                 },
                 {
                   "key": "size",
                   "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
+                  "description": "Number of results per page",
                   "disabled": true
                 },
                 {
@@ -3066,7 +488,7 @@
           }
         },
         {
-          "name": "Get RWUSD subscription history(USER_DATA)",
+          "name": "Get RWUSD subscription history (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -3089,22 +511,14 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/rwusd/history/subscriptionHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "rwusd",
-                "history",
-                "subscriptionHistory"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "rwusd", "history", "subscriptionHistory"],
               "variable": [],
               "query": [
                 {
                   "key": "asset",
-                  "value": "asset_example",
-                  "description": "USDC or USDT",
+                  "value": "USDC",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -3122,13 +536,13 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Currently querying page. Starts from 1. Default: 1",
+                  "description": "Currently querying page",
                   "disabled": true
                 },
                 {
                   "key": "size",
                   "value": "10",
-                  "description": "Number of results per page. Default: 10, Max: 100",
+                  "description": "Number of results per page",
                   "disabled": true
                 },
                 {
@@ -3177,15 +591,8 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/rwusd/quota",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "rwusd",
-                "quota"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "rwusd", "quota"],
               "variable": [],
               "query": [
                 {
@@ -3211,7 +618,7 @@
           }
         },
         {
-          "name": "Redeem RWUSD(TRADE)",
+          "name": "Redeem RWUSD (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -3234,17 +641,78 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/rwusd/redeem",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "rwusd",
-                "redeem"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "rwusd", "redeem"],
               "variable": [],
               "query": [
+                {
+                  "key": "amount",
+                  "value": "1.0",
+                  "description": "Amount in RWUSD",
+                  "disabled": false
+                },
+                {
+                  "key": "type",
+                  "value": "FAST",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Subscribe RWUSD (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/rwusd/subscribe",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "rwusd", "subscribe"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "asset",
+                  "value": "USDT",
+                  "description": "",
+                  "disabled": false
+                },
                 {
                   "key": "amount",
                   "value": "1.0",
@@ -3252,9 +720,665 @@
                   "disabled": false
                 },
                 {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Flexible Locked",
+      "item": [
+        {
+          "name": "Simple Account (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/account",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "simple-earn", "account"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Collateral Record (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/collateralRecord",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "history",
+                "collateralRecord"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "productId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Rate History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/rateHistory",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "history",
+                "rateHistory"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "productId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "aprPeriod",
+                  "value": "DAY",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Flexible Redemption Record (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/redemptionRecord",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "history",
+                "redemptionRecord"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "productId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "redeemId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "asset",
+                  "value": "USDC",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page. Starts from 1.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Flexible Rewards History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/rewardsRecord",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "history",
+                "rewardsRecord"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "productId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "asset",
+                  "value": "USDC",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
                   "key": "type",
-                  "value": "s",
-                  "description": "FAST or STANDARD, defaults to STANDARD",
+                  "value": "BONUS",
+                  "description": "`BONUS` - Bonus tiered APR, `REALTIME` - Real-time APR, `REWARDS` - Historical rewards, `ALL` - All types. Default: `ALL`",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page. Starts from 1.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Flexible Subscription Record (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/flexible/history/subscriptionRecord",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "history",
+                "subscriptionRecord"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "productId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "purchaseId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "asset",
+                  "value": "USDC",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page. Starts from 1.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Simple Earn Flexible Product List (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/flexible/list",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "simple-earn", "flexible", "list"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "asset",
+                  "value": "USDC",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page. Starts from 1.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Flexible Personal Left Quota (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/flexible/personalLeftQuota",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "personalLeftQuota"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "productId",
+                  "value": "1",
+                  "description": "",
                   "disabled": false
                 },
                 {
@@ -3280,7 +1404,81 @@
           }
         },
         {
-          "name": "Subscribe RWUSD(TRADE)",
+          "name": "Get Flexible Product Position (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/flexible/position",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "simple-earn", "flexible", "position"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "asset",
+                  "value": "USDC",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "productId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page. Starts from 1.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Redeem Flexible Product (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -3302,22 +1500,1609 @@
               "urlencoded": []
             },
             "url": {
-              "raw": "{{url}}/sapi/v1/rwusd/subscribe",
-              "host": [
-                "{{url}}"
-              ],
+              "raw": "{{url}}/sapi/v1/simple-earn/flexible/redeem",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "simple-earn", "flexible", "redeem"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "productId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "redeemAll",
+                  "value": "false",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "amount",
+                  "value": "1.0",
+                  "description": "if redeemAll is false, amount is mandatory",
+                  "disabled": true
+                },
+                {
+                  "key": "destAccount",
+                  "value": "SPOT",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Set Flexible Auto Subscribe (USER_DATA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/flexible/setAutoSubscribe",
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
-                "rwusd",
-                "subscribe"
+                "simple-earn",
+                "flexible",
+                "setAutoSubscribe"
               ],
               "variable": [],
               "query": [
                 {
+                  "key": "productId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "autoSubscribe",
+                  "value": "true",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Subscribe Flexible Product (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/flexible/subscribe",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "simple-earn", "flexible", "subscribe"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "productId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "amount",
+                  "value": "1.0",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "autoSubscribe",
+                  "value": "true",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "sourceAccount",
+                  "value": "SPOT",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Flexible Subscription Preview (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/flexible/subscriptionPreview",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "flexible",
+                "subscriptionPreview"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "productId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "amount",
+                  "value": "1.0",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Locked Redemption Record (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/locked/history/redemptionRecord",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "history",
+                "redemptionRecord"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "positionId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "redeemId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
                   "key": "asset",
-                  "value": "asset_example",
-                  "description": "USDT or USDC (whichever is eligible)",
+                  "value": "USDC",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page. Starts from 1.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Locked Rewards History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/locked/history/rewardsRecord",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "history",
+                "rewardsRecord"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "positionId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "asset",
+                  "value": "USDC",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page. Starts from 1.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Locked Subscription Record (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/locked/history/subscriptionRecord",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "history",
+                "subscriptionRecord"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "purchaseId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "asset",
+                  "value": "USDC",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page. Starts from 1.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Simple Earn Locked Product List (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/locked/list",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "simple-earn", "locked", "list"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "asset",
+                  "value": "USDC",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page. Starts from 1.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Locked Personal Left Quota (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/locked/personalLeftQuota",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "personalLeftQuota"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "projectId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Locked Product Position (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/locked/position",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "simple-earn", "locked", "position"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "asset",
+                  "value": "USDC",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "positionId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "projectId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page. Starts from 1.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Redeem Locked Product (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/locked/redeem",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "simple-earn", "locked", "redeem"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "positionId",
+                  "value": "1",
+                  "description": "Locked product position ID",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Set Locked Auto Subscribe (USER_DATA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/locked/setAutoSubscribe",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "setAutoSubscribe"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "positionId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "autoSubscribe",
+                  "value": "true",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Set Locked Product Redeem Option (USER_DATA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/locked/setRedeemOption",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "setRedeemOption"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "positionId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "redeemTo",
+                  "value": "SPOT",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Subscribe Locked Product (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/locked/subscribe",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "simple-earn", "locked", "subscribe"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "projectId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "amount",
+                  "value": "1.0",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "autoSubscribe",
+                  "value": "false",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "sourceAccount",
+                  "value": "SPOT",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "redeemTo",
+                  "value": "SPOT",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Locked Subscription Preview (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/simple-earn/locked/subscriptionPreview",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "simple-earn",
+                "locked",
+                "subscriptionPreview"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "projectId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "amount",
+                  "value": "1.0",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "autoSubscribe",
+                  "value": "true",
+                  "description": "default true.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000 (ms)",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Bfusd",
+      "item": [
+        {
+          "name": "Get BFUSD Account (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/bfusd/account",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "bfusd", "account"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get BFUSD Rate History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/bfusd/history/rateHistory",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "bfusd", "history", "rateHistory"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page. Starts from 1.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get BFUSD Redemption History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/bfusd/history/redemptionHistory",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "bfusd", "history", "redemptionHistory"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get BFUSD Rewards History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/bfusd/history/rewardsHistory",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "bfusd", "history", "rewardsHistory"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get BFUSD subscription history (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/bfusd/history/subscriptionHistory",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "bfusd", "history", "subscriptionHistory"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "asset",
+                  "value": "USDC",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "Number of results per page.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get BFUSD Quota Details (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/bfusd/quota",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "bfusd", "quota"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Redeem BFUSD (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/bfusd/redeem",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "bfusd", "redeem"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "amount",
+                  "value": "1.0",
+                  "description": "Amount in BFUSD",
+                  "disabled": false
+                },
+                {
+                  "key": "type",
+                  "value": "FAST",
+                  "description": "defaults to STANDARD",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Subscribe BFUSD (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/bfusd/subscribe",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "bfusd", "subscribe"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "asset",
+                  "value": "USDT",
+                  "description": "",
                   "disabled": false
                 },
                 {
@@ -3329,7 +3114,7 @@
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "The value cannot be greater than 60000 (ms)",
+                  "description": "Request validity window in milliseconds.",
                   "disabled": true
                 },
                 {

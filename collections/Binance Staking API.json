@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "Binance Staking REST API",
+    "name": "Staking REST API",
     "description": {
-      "content": "OpenAPI Specification for the Binance Staking REST API",
+      "content": "Subscribe to staking products, track positions, and query rewards via the Binance Staking API.",
       "type": "text/markdown"
     },
     "version": "1.0.0",
@@ -144,7 +144,754 @@
   ],
   "item": [
     {
-      "name": "On-Chain-Yields",
+      "name": "Sol Staking",
+      "item": [
+        {
+          "name": "SOL Staking account (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sol-staking/account",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sol-staking", "account"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Claim Boost Rewards (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sol-staking/sol/claim",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sol-staking", "sol", "claim"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get BNSOL rewards history (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sol-staking/sol/history/bnsolRewardsHistory",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "sol",
+                "history",
+                "bnsolRewardsHistory"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Boost Rewards History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sol-staking/sol/history/boostRewardsHistory",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "sol",
+                "history",
+                "boostRewardsHistory"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "CLAIM",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get BNSOL Rate History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sol-staking/sol/history/rateHistory",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "sol",
+                "history",
+                "rateHistory"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get SOL redemption history (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sol-staking/sol/history/redemptionHistory",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "sol",
+                "history",
+                "redemptionHistory"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "redeemId",
+                  "value": "1234567",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get SOL staking history (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sol-staking/sol/history/stakingHistory",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "sol",
+                "history",
+                "stakingHistory"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "purchaseId",
+                  "value": "1234567",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Unclaimed Rewards (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sol-staking/sol/history/unclaimedRewards",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "sol-staking",
+                "sol",
+                "history",
+                "unclaimedRewards"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get SOL staking quota details (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sol-staking/sol/quota",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sol-staking", "sol", "quota"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than 60000",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Redeem SOL (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sol-staking/sol/redeem",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sol-staking", "sol", "redeem"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "amount",
+                  "value": "1.0",
+                  "description": "Amount in BNSOL, limit 8 decimals",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Subscribe SOL Staking (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sol-staking/sol/stake",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sol-staking", "sol", "stake"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "amount",
+                  "value": "1.0",
+                  "description": "Amount in SOL.",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "On Chain Yields",
       "item": [
         {
           "name": "On-chain Yields Account (USER_DATA)",
@@ -170,21 +917,14 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/account",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "onchain-yields",
-                "account"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "onchain-yields", "account"],
               "variable": [],
               "query": [
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "The value cannot be greater than `60000`",
                   "disabled": true
                 },
                 {
@@ -227,9 +967,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/history/redemptionRecord",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -254,8 +992,8 @@
                 },
                 {
                   "key": "asset",
-                  "value": "BETH",
-                  "description": "WBETH or BETH, default to BETH",
+                  "value": "BTC",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -273,19 +1011,19 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
+                  "description": "Currently querying page",
                   "disabled": true
                 },
                 {
                   "key": "size",
                   "value": "10",
-                  "description": "Default:10, Max:100",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds.",
                   "disabled": true
                 },
                 {
@@ -328,9 +1066,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/history/rewardsRecord",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -349,8 +1085,8 @@
                 },
                 {
                   "key": "asset",
-                  "value": "BETH",
-                  "description": "WBETH or BETH, default to BETH",
+                  "value": "BTC",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -368,19 +1104,19 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
+                  "description": "Currently querying page",
                   "disabled": true
                 },
                 {
                   "key": "size",
                   "value": "10",
-                  "description": "Default:10, Max:100",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds.",
                   "disabled": true
                 },
                 {
@@ -423,9 +1159,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/history/subscriptionRecord",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -450,8 +1184,8 @@
                 },
                 {
                   "key": "asset",
-                  "value": "BETH",
-                  "description": "WBETH or BETH, default to BETH",
+                  "value": "BTC",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -469,19 +1203,19 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
+                  "description": "Currently querying page",
                   "disabled": true
                 },
                 {
                   "key": "size",
                   "value": "10",
-                  "description": "Default:10, Max:100",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds.",
                   "disabled": true
                 },
                 {
@@ -524,40 +1258,32 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/list",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "onchain-yields",
-                "locked",
-                "list"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "onchain-yields", "locked", "list"],
               "variable": [],
               "query": [
                 {
                   "key": "asset",
-                  "value": "BETH",
-                  "description": "WBETH or BETH, default to BETH",
+                  "value": "SOL",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
+                  "description": "Currently querying page",
                   "disabled": true
                 },
                 {
                   "key": "size",
                   "value": "10",
-                  "description": "Default:10, Max:100",
+                  "description": "Number of results per page.",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds.",
                   "disabled": true
                 },
                 {
@@ -600,9 +1326,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/personalLeftQuota",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -621,7 +1345,7 @@
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds.",
                   "disabled": true
                 },
                 {
@@ -664,22 +1388,14 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/position",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "onchain-yields",
-                "locked",
-                "position"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "onchain-yields", "locked", "position"],
               "variable": [],
               "query": [
                 {
                   "key": "asset",
-                  "value": "BETH",
-                  "description": "WBETH or BETH, default to BETH",
+                  "value": "BTC",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -697,19 +1413,19 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
+                  "description": "Currently querying page",
                   "disabled": true
                 },
                 {
                   "key": "size",
                   "value": "10",
-                  "description": "Default:10, Max:100",
+                  "description": "Number of results per page.",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds.",
                   "disabled": true
                 },
                 {
@@ -752,22 +1468,14 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/redeem",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "onchain-yields",
-                "locked",
-                "redeem"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "onchain-yields", "locked", "redeem"],
               "variable": [],
               "query": [
                 {
                   "key": "positionId",
                   "value": "1",
-                  "description": "",
+                  "description": "Locked product position ID",
                   "disabled": false
                 },
                 {
@@ -779,7 +1487,7 @@
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds.",
                   "disabled": true
                 },
                 {
@@ -799,7 +1507,7 @@
           }
         },
         {
-          "name": "Set On-chain Yields Locked Auto Subscribe(USER_DATA)",
+          "name": "Set On-chain Yields Locked Auto Subscribe (USER_DATA)",
           "request": {
             "method": "POST",
             "header": [
@@ -822,9 +1530,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/setAutoSubscribe",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -843,13 +1549,13 @@
                 {
                   "key": "autoSubscribe",
                   "value": "true",
-                  "description": "true or false",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds.",
                   "disabled": true
                 },
                 {
@@ -869,7 +1575,7 @@
           }
         },
         {
-          "name": "Set On-chain Yields Locked Product Redeem Option(USER_DATA)",
+          "name": "Set On-chain Yields Locked Product Redeem Option (USER_DATA)",
           "request": {
             "method": "POST",
             "header": [
@@ -892,9 +1598,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/setRedeemOption",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -912,14 +1616,14 @@
                 },
                 {
                   "key": "redeemTo",
-                  "value": "redeemTo_example",
-                  "description": "'SPOT','FLEXIBLE'",
+                  "value": "SPOT",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds.",
                   "disabled": true
                 },
                 {
@@ -939,7 +1643,7 @@
           }
         },
         {
-          "name": "Subscribe On-chain Yields Locked Product(TRADE)",
+          "name": "Subscribe On-chain Yields Locked Product (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -962,16 +1666,8 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/subscribe",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "onchain-yields",
-                "locked",
-                "subscribe"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "onchain-yields", "locked", "subscribe"],
               "variable": [],
               "query": [
                 {
@@ -983,25 +1679,25 @@
                 {
                   "key": "amount",
                   "value": "1.0",
-                  "description": "Amount in SOL.",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "autoSubscribe",
-                  "value": "true",
-                  "description": "true or false, default true.",
+                  "value": "false",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "sourceAccount",
                   "value": "SPOT",
-                  "description": "`SPOT`,`FUND`,`ALL`, default `SPOT`",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "redeemTo",
-                  "value": "",
-                  "description": "`SPOT`,`FLEXIBLE`, default `FLEXIBLE` Takes effect when Auto Subscribe is false",
+                  "value": "SPOT",
+                  "description": "Takes effect when Auto Subscribe is false",
                   "disabled": true
                 },
                 {
@@ -1019,7 +1715,7 @@
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds.",
                   "disabled": true
                 },
                 {
@@ -1062,9 +1758,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/onchain-yields/locked/subscriptionPreview",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -1083,19 +1777,19 @@
                 {
                   "key": "amount",
                   "value": "1.0",
-                  "description": "Amount in SOL.",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "autoSubscribe",
                   "value": "true",
-                  "description": "true or false, default true.",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds.",
                   "disabled": true
                 },
                 {
@@ -1117,10 +1811,787 @@
       ]
     },
     {
-      "name": "Soft-Staking",
+      "name": "Eth Staking",
       "item": [
         {
-          "name": "Get Soft Staking Rewards History(USER_DATA)",
+          "name": "Get WBETH Rate History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/eth-staking/eth/history/rateHistory",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "eth-staking",
+                "eth",
+                "history",
+                "rateHistory"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get ETH redemption history (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/eth-staking/eth/history/redemptionHistory",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "eth-staking",
+                "eth",
+                "history",
+                "redemptionHistory"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "redeemId",
+                  "value": "1234567",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get ETH staking history (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/eth-staking/eth/history/stakingHistory",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "eth-staking",
+                "eth",
+                "history",
+                "stakingHistory"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "purchaseId",
+                  "value": "1234567",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get WBETH rewards history (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/eth-staking/eth/history/wbethRewardsHistory",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "eth-staking",
+                "eth",
+                "history",
+                "wbethRewardsHistory"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get current ETH staking quota (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/eth-staking/eth/quota",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "eth-staking", "eth", "quota"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Redeem ETH (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/eth-staking/eth/redeem",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "eth-staking", "eth", "redeem"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "amount",
+                  "value": "1.0",
+                  "description": "Amount in BETH, limit 8 decimals",
+                  "disabled": false
+                },
+                {
+                  "key": "asset",
+                  "value": "WBETH",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get WBETH unwrap history (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/eth-staking/wbeth/history/unwrapHistory",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "eth-staking",
+                "wbeth",
+                "history",
+                "unwrapHistory"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get WBETH wrap history (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/eth-staking/wbeth/history/wrapHistory",
+              "host": ["{{url}}"],
+              "path": [
+                "sapi",
+                "v1",
+                "eth-staking",
+                "wbeth",
+                "history",
+                "wrapHistory"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Currently querying page",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "10",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Wrap BETH (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/eth-staking/wbeth/wrap",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "eth-staking", "wbeth", "wrap"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "amount",
+                  "value": "1.0",
+                  "description": "Amount in BETH, limit 4 decimals",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "ETH Staking account (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/eth-staking/account",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "eth-staking", "account"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Subscribe ETH Staking (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/eth-staking/eth/stake",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "eth-staking", "eth", "stake"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "amount",
+                  "value": "1.0",
+                  "description": "Amount in ETH, limit 4 decimals",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Request validity window in milliseconds.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Soft Staking",
+      "item": [
+        {
+          "name": "Get Soft Staking Rewards History (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -1143,9 +2614,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/soft-staking/history/rewardsRecord",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -1157,8 +2626,8 @@
               "query": [
                 {
                   "key": "asset",
-                  "value": "BETH",
-                  "description": "WBETH or BETH, default to BETH",
+                  "value": "BTC",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -1176,19 +2645,19 @@
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
+                  "description": "Currently querying page",
                   "disabled": true
                 },
                 {
                   "key": "size",
                   "value": "10",
-                  "description": "Default:10, Max:100",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds.",
                   "disabled": true
                 },
                 {
@@ -1231,39 +2700,32 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/soft-staking/list",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "soft-staking",
-                "list"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "soft-staking", "list"],
               "variable": [],
               "query": [
                 {
                   "key": "asset",
-                  "value": "BETH",
-                  "description": "WBETH or BETH, default to BETH",
+                  "value": "BTC",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "current",
                   "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
+                  "description": "Currently querying page",
                   "disabled": true
                 },
                 {
                   "key": "size",
                   "value": "10",
-                  "description": "Default:10, Max:100",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds.",
                   "disabled": true
                 },
                 {
@@ -1306,1653 +2768,20 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/soft-staking/set",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "soft-staking",
-                "set"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "soft-staking", "set"],
               "variable": [],
               "query": [
                 {
                   "key": "softStaking",
                   "value": "true",
-                  "description": "true or false",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "Sol-Staking",
-      "item": [
-        {
-          "name": "SOL Staking account(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/sol-staking/account",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sol-staking",
-                "account"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Claim Boost Rewards(TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/sol-staking/sol/claim",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sol-staking",
-                "sol",
-                "claim"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get BNSOL rewards history(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/sol-staking/sol/history/bnsolRewardsHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sol-staking",
-                "sol",
-                "history",
-                "bnsolRewardsHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Default:10, Max:100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Boost Rewards History(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/sol-staking/sol/history/boostRewardsHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sol-staking",
-                "sol",
-                "history",
-                "boostRewardsHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "type",
-                  "value": "CLAIM",
-                  "description": "\"CLAIM\", \"DISTRIBUTE\", default \"CLAIM\"",
-                  "disabled": false
-                },
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Default:10, Max:100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get BNSOL Rate History(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/sol-staking/sol/history/rateHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sol-staking",
-                "sol",
-                "history",
-                "rateHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Default:10, Max:100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get SOL redemption history(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/sol-staking/sol/history/redemptionHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sol-staking",
-                "sol",
-                "history",
-                "redemptionHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "redeemId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Default:10, Max:100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get SOL staking history(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/sol-staking/sol/history/stakingHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sol-staking",
-                "sol",
-                "history",
-                "stakingHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "purchaseId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Default:10, Max:100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Unclaimed Rewards(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/sol-staking/sol/history/unclaimedRewards",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sol-staking",
-                "sol",
-                "history",
-                "unclaimedRewards"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get SOL staking quota details(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/sol-staking/sol/quota",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sol-staking",
-                "sol",
-                "quota"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Redeem SOL(TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/sol-staking/sol/redeem",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sol-staking",
-                "sol",
-                "redeem"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "amount",
-                  "value": "1.0",
-                  "description": "Amount in SOL.",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Subscribe SOL Staking(TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/sol-staking/sol/stake",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sol-staking",
-                "sol",
-                "stake"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "amount",
-                  "value": "1.0",
-                  "description": "Amount in SOL.",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "Eth-Staking",
-      "item": [
-        {
-          "name": "Get WBETH Rate History(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/eth-staking/eth/history/rateHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "eth-staking",
-                "eth",
-                "history",
-                "rateHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Default:10, Max:100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get ETH redemption history(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/eth-staking/eth/history/redemptionHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "eth-staking",
-                "eth",
-                "history",
-                "redemptionHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "redeemId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Default:10, Max:100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get ETH staking history(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/eth-staking/eth/history/stakingHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "eth-staking",
-                "eth",
-                "history",
-                "stakingHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "purchaseId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Default:10, Max:100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get WBETH rewards history(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/eth-staking/eth/history/wbethRewardsHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "eth-staking",
-                "eth",
-                "history",
-                "wbethRewardsHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Default:10, Max:100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get current ETH staking quota(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/eth-staking/eth/quota",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "eth-staking",
-                "eth",
-                "quota"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Redeem ETH(TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/eth-staking/eth/redeem",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "eth-staking",
-                "eth",
-                "redeem"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "amount",
-                  "value": "1.0",
-                  "description": "Amount in SOL.",
-                  "disabled": false
-                },
-                {
-                  "key": "asset",
-                  "value": "BETH",
-                  "description": "WBETH or BETH, default to BETH",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get WBETH unwrap history(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/eth-staking/wbeth/history/unwrapHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "eth-staking",
-                "wbeth",
-                "history",
-                "unwrapHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Default:10, Max:100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get WBETH wrap history(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/eth-staking/wbeth/history/wrapHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "eth-staking",
-                "wbeth",
-                "history",
-                "wrapHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "current",
-                  "value": "1",
-                  "description": "Currently querying page. Start from 1. Default:1",
-                  "disabled": true
-                },
-                {
-                  "key": "size",
-                  "value": "10",
-                  "description": "Default:10, Max:100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Wrap BETH(TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/eth-staking/wbeth/wrap",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "eth-staking",
-                "wbeth",
-                "wrap"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "amount",
-                  "value": "1.0",
-                  "description": "Amount in SOL.",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "ETH Staking account(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v2/eth-staking/account",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v2",
-                "eth-staking",
-                "account"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Subscribe ETH Staking(TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v2/eth-staking/eth/stake",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v2",
-                "eth-staking",
-                "eth",
-                "stake"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "amount",
-                  "value": "1.0",
-                  "description": "Amount in SOL.",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds.",
                   "disabled": true
                 },
                 {

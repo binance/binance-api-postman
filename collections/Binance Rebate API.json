@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "Binance Rebate REST API",
+    "name": "Rebate REST API",
     "description": {
-      "content": "OpenAPI Specification for the Binance Rebate REST API",
+      "content": "Query spot trading rebate history records.",
       "type": "text/markdown"
     },
     "version": "1.0.0",
@@ -144,77 +144,72 @@
   ],
   "item": [
     {
-      "name": "Rebate",
-      "item": [
-        {
-          "name": "Get Spot Rebate History Records (USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/rebate/taxQuery",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "rebate", "taxQuery"],
-              "variable": [],
-              "query": [
-                {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "page",
-                  "value": "1",
-                  "description": "Default 1",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
+      "name": "Get Spot Rebate History Records (USER_DATA)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-MBX-APIKEY",
+            "value": "",
+            "description": "API KEY",
+            "disabled": false
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "description": "",
+            "disabled": false
           }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{url}}/sapi/v1/rebate/taxQuery",
+          "host": ["{{url}}"],
+          "path": ["sapi", "v1", "rebate", "taxQuery"],
+          "variable": [],
+          "query": [
+            {
+              "key": "startTime",
+              "value": "1623319461670",
+              "description": "Start time in milliseconds.",
+              "disabled": true
+            },
+            {
+              "key": "endTime",
+              "value": "1641782889000",
+              "description": "End time in milliseconds.",
+              "disabled": true
+            },
+            {
+              "key": "page",
+              "value": "1",
+              "description": "Page number.",
+              "disabled": true
+            },
+            {
+              "key": "recvWindow",
+              "value": "5000",
+              "description": "Request validity window in milliseconds.",
+              "disabled": true
+            },
+            {
+              "key": "timestamp",
+              "value": "",
+              "description": "UTC timestamp in ms",
+              "disabled": false
+            },
+            {
+              "key": "signature",
+              "value": "",
+              "description": "Signature",
+              "disabled": false
+            }
+          ]
         }
-      ]
+      }
     }
   ],
   "variable": [

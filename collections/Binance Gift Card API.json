@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "Binance Gift Card REST API",
+    "name": "Gift Card REST API",
     "description": {
-      "content": "OpenAPI Specification for the Binance Gift Card REST API",
+      "content": "Create, redeem, and check the value of Binance crypto gift cards.",
       "type": "text/markdown"
     },
     "version": "1.0.0",
@@ -144,10 +144,10 @@
   ],
   "item": [
     {
-      "name": "Market-Data",
+      "name": "Market Data",
       "item": [
         {
-          "name": "Create a dual-token gift card(fixed value, discount feature)(TRADE)",
+          "name": "Create a dual-token gift card (fixed value, discount feature) (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -176,19 +176,19 @@
               "query": [
                 {
                   "key": "baseToken",
-                  "value": "baseToken_example",
+                  "value": "BUSD",
                   "description": "The token you want to pay, example: BUSD",
                   "disabled": false
                 },
                 {
                   "key": "faceToken",
-                  "value": "faceToken_example",
+                  "value": "BNB",
                   "description": "The token you want to buy, example: BNB. If faceToken = baseToken, it's the same as createCode endpoint.",
                   "disabled": false
                 },
                 {
                   "key": "baseTokenAmount",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "The base token asset quantity, example : 1.002",
                   "disabled": false
                 },
@@ -215,7 +215,7 @@
           }
         },
         {
-          "name": "Fetch Token Limit(USER_DATA)",
+          "name": "Fetch Token Limit (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -244,7 +244,7 @@
               "query": [
                 {
                   "key": "baseToken",
-                  "value": "baseToken_example",
+                  "value": "BUSD",
                   "description": "The token you want to pay, example: BUSD",
                   "disabled": false
                 },
@@ -300,13 +300,13 @@
               "query": [
                 {
                   "key": "token",
-                  "value": "token_example",
+                  "value": "BNB",
                   "description": "The token type contained in the Binance Gift Card",
                   "disabled": false
                 },
                 {
                   "key": "amount",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "The amount of the token contained in the Binance Gift Card",
                   "disabled": false
                 },
@@ -333,7 +333,7 @@
           }
         },
         {
-          "name": "Fetch RSA Public Key(USER_DATA)",
+          "name": "Fetch RSA Public Key (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -357,7 +357,13 @@
             "url": {
               "raw": "{{url}}/sapi/v1/giftcard/cryptography/rsa-public-key",
               "host": ["{{url}}"],
-              "path": ["sapi", "v1", "giftcard", "cryptography", "rsa-public-key"],
+              "path": [
+                "sapi",
+                "v1",
+                "giftcard",
+                "cryptography",
+                "rsa-public-key"
+              ],
               "variable": [],
               "query": [
                 {
@@ -383,7 +389,7 @@
           }
         },
         {
-          "name": "Redeem a Binance Gift Card(USER_DATA)",
+          "name": "Redeem a Binance Gift Card (USER_DATA)",
           "request": {
             "method": "POST",
             "header": [
@@ -412,13 +418,13 @@
               "query": [
                 {
                   "key": "code",
-                  "value": "code_example",
+                  "value": "6H9EKF5ECCWFBHGE",
                   "description": "Redemption code of Binance Gift Card to be redeemed, supports both Plaintext & Encrypted code.",
                   "disabled": false
                 },
                 {
                   "key": "externalUid",
-                  "value": "externalUid_example",
+                  "value": "user-123",
                   "description": "Each external unique ID represents a unique user on the partner platform. The function helps you to identify the redemption behavior of different users, such as redemption frequency and amount. It also helps risk and limit control of a single account, such as daily limit on redemption volume, frequency, and incorrect number of entries. This will also prevent a single user account reach the partner's daily redemption limits. We strongly recommend you to use this feature and transfer us the User ID of your users if you have different users redeeming Binance Gift Cards on your platform. To protect user data privacy, you may choose to transfer the user id in any desired format (max. 400 characters).",
                   "disabled": true
                 },
@@ -445,7 +451,7 @@
           }
         },
         {
-          "name": "Verify Binance Gift Card by Gift Card Number(USER_DATA)",
+          "name": "Verify Binance Gift Card by Gift Card Number (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -474,7 +480,7 @@
               "query": [
                 {
                   "key": "referenceNo",
-                  "value": "referenceNo_example",
+                  "value": "0033002328060227",
                   "description": "Enter the Gift Card Number",
                   "disabled": false
                 },

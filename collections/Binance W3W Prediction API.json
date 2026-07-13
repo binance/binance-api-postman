@@ -147,7 +147,7 @@
       "name": "Redeem",
       "item": [
         {
-          "name": "Batch Redeem",
+          "name": "Batch Redeem (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -170,9 +170,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/batch-redeem",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -224,7 +222,7 @@
           }
         },
         {
-          "name": "Get Redeem Status",
+          "name": "Get Redeem Status (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -247,9 +245,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/redeem/status",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -324,9 +320,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/category/list",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -378,9 +372,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/market/detail",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -438,9 +430,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/market/list",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -528,9 +518,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/market/search",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -594,9 +582,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/order-book",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -665,9 +651,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/order-book/last-trade-price",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -707,7 +691,7 @@
       "name": "Trade",
       "item": [
         {
-          "name": "Query Order History",
+          "name": "Query Order History (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -730,9 +714,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/order/history",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -815,7 +797,7 @@
           }
         },
         {
-          "name": "Query Active Orders",
+          "name": "Query Active Orders (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -838,9 +820,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/order/list",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -911,7 +891,7 @@
           }
         },
         {
-          "name": "Batch Cancel Orders",
+          "name": "Batch Cancel Orders (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -934,9 +914,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/trade/batch-cancel",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -983,7 +961,7 @@
           }
         },
         {
-          "name": "Get Quote",
+          "name": "Get Quote (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -1006,9 +984,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/trade/get-quote",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -1103,7 +1079,7 @@
           }
         },
         {
-          "name": "Place Order",
+          "name": "Place Order (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -1126,9 +1102,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/trade/place-order-bundle",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -1222,7 +1196,7 @@
       "name": "Wallet",
       "item": [
         {
-          "name": "Query Payment Option Balances",
+          "name": "Query Payment Option Balances (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -1245,9 +1219,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/balance/payment-options",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -1282,7 +1254,7 @@
           }
         },
         {
-          "name": "Get Portfolio",
+          "name": "Get Portfolio (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -1305,9 +1277,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/pnl/portfolio",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -1372,7 +1342,7 @@
           }
         },
         {
-          "name": "Get Quota Status",
+          "name": "Get Quota Status (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -1395,9 +1365,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/quota/limit/status",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -1433,7 +1401,7 @@
           }
         },
         {
-          "name": "List Prediction Wallets",
+          "name": "List Prediction Wallets (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -1456,9 +1424,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/wallet/list",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -1498,7 +1464,7 @@
       "name": "Transfer",
       "item": [
         {
-          "name": "Create Inbound Transfer",
+          "name": "Create Inbound Transfer (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -1521,9 +1487,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/transfer/inbound",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -1594,7 +1558,7 @@
           }
         },
         {
-          "name": "Query Transfer List",
+          "name": "Query Transfer List (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -1617,9 +1581,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/transfer/list",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -1696,7 +1658,7 @@
           }
         },
         {
-          "name": "Create Outbound Transfer",
+          "name": "Create Outbound Transfer (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -1719,9 +1681,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/transfer/outbound",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -1798,7 +1758,7 @@
           }
         },
         {
-          "name": "Query Transfer Status",
+          "name": "Query Transfer Status (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -1821,9 +1781,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/transfer/status",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -1869,7 +1827,7 @@
       "name": "Position",
       "item": [
         {
-          "name": "Query PnL",
+          "name": "Query PnL (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -1892,9 +1850,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/pnl/query",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -1959,7 +1915,7 @@
           }
         },
         {
-          "name": "Query Positions by Filter",
+          "name": "Query Positions by Filter (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -1982,9 +1938,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/position/filter",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -2031,7 +1985,7 @@
           }
         },
         {
-          "name": "Query Positions",
+          "name": "Query Positions (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -2054,9 +2008,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/position/list",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -2115,7 +2067,7 @@
           }
         },
         {
-          "name": "Query Settled Position History",
+          "name": "Query Settled Position History (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -2138,9 +2090,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/position/settled-history",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -2217,7 +2167,7 @@
           }
         },
         {
-          "name": "Get Position by Token",
+          "name": "Get Position by Token (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -2240,9 +2190,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/w3w/wallet/prediction/position/token",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",

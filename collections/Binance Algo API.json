@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "Binance Algo REST API",
+    "name": "Algo Trading REST API",
     "description": {
-      "content": "OpenAPI Specification for the Binance Algo REST API",
+      "content": "Programmatic access to Binance’s execution algorithms for creating and managing Spot and Futures algo orders.",
       "type": "text/markdown"
     },
     "version": "1.0.0",
@@ -144,10 +144,10 @@
   ],
   "item": [
     {
-      "name": "Future-Algo",
+      "name": "Future Algo",
       "item": [
         {
-          "name": "Query Historical Algo Orders(USER_DATA)",
+          "name": "Query Historical Futures Algo Orders (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -201,19 +201,19 @@
                 {
                   "key": "page",
                   "value": "1",
-                  "description": "Default is 1",
+                  "description": "Page number",
                   "disabled": true
                 },
                 {
                   "key": "pageSize",
                   "value": "100",
-                  "description": "MIN 1, MAX 100; Default 100",
+                  "description": "Records per page",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -233,7 +233,7 @@
           }
         },
         {
-          "name": "Time-Weighted Average Price(Twap) New Order(TRADE)",
+          "name": "Time-Weighted Futures Average Price (Twap) New Order (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -280,14 +280,14 @@
                 },
                 {
                   "key": "quantity",
-                  "value": "1.0",
-                  "description": "Quantity of base asset; Maximum notional per order is 200k, 2mm or 10mm, depending on symbol. Please reduce your size if you order is above the maximum notional per order.",
+                  "value": "1",
+                  "description": "Quantity of base asset; The notional (`quantity` * `mark price(base asset)`) must be more than the equivalent of 1,000 USDT and less than the equivalent of 1,000,000 USDT",
                   "disabled": false
                 },
                 {
                   "key": "duration",
                   "value": "5000",
-                  "description": "Duration for TWAP orders in seconds. [300, 86400]",
+                  "description": "Duration for TWAP orders in seconds",
                   "disabled": false
                 },
                 {
@@ -304,14 +304,14 @@
                 },
                 {
                   "key": "limitPrice",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "Limit price of the order; If it is not sent, will place order by market price by default",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -331,7 +331,7 @@
           }
         },
         {
-          "name": "Volume Participation(VP) New Order (TRADE)",
+          "name": "Volume Participation (VP) New Order (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -378,8 +378,8 @@
                 },
                 {
                   "key": "quantity",
-                  "value": "1.0",
-                  "description": "Quantity of base asset; Maximum notional per order is 200k, 2mm or 10mm, depending on symbol. Please reduce your size if you order is above the maximum notional per order.",
+                  "value": "1",
+                  "description": "Quantity of base asset; The notional (`quantity` * `mark price(base asset)`) must be more than the equivalent of 10,000 USDT and less than the equivalent of 1,000,000 USDT",
                   "disabled": false
                 },
                 {
@@ -402,14 +402,14 @@
                 },
                 {
                   "key": "limitPrice",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "Limit price of the order; If it is not sent, will place order by market price by default",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -429,7 +429,7 @@
           }
         },
         {
-          "name": "Query Current Algo Open Orders(USER_DATA)",
+          "name": "Query Current Futures Algo Open Orders (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -459,7 +459,7 @@
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -479,7 +479,7 @@
           }
         },
         {
-          "name": "Cancel Algo Order(TRADE)",
+          "name": "Cancel Futures Algo Order (TRADE)",
           "request": {
             "method": "DELETE",
             "header": [
@@ -515,7 +515,7 @@
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -535,7 +535,7 @@
           }
         },
         {
-          "name": "Query Sub Orders(USER_DATA)",
+          "name": "Query Futures Sub Orders (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -571,19 +571,19 @@
                 {
                   "key": "page",
                   "value": "1",
-                  "description": "Default is 1",
+                  "description": "Page number",
                   "disabled": true
                 },
                 {
                   "key": "pageSize",
                   "value": "100",
-                  "description": "MIN 1, MAX 100; Default 100",
+                  "description": "Records per page",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -605,10 +605,10 @@
       ]
     },
     {
-      "name": "Spot-Algo",
+      "name": "Spot Algo",
       "item": [
         {
-          "name": "Query Historical Algo Orders(USER_DATA)",
+          "name": "Query Historical Spot Algo Orders (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -638,13 +638,13 @@
                 {
                   "key": "symbol",
                   "value": "BTCUSDT",
-                  "description": "Trading symbol eg. BTCUSDT",
+                  "description": "Trading symbol",
                   "disabled": true
                 },
                 {
                   "key": "side",
                   "value": "BUY",
-                  "description": "BUY or SELL",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -662,19 +662,19 @@
                 {
                   "key": "page",
                   "value": "1",
-                  "description": "Default is 1",
+                  "description": "Page number",
                   "disabled": true
                 },
                 {
                   "key": "pageSize",
-                  "value": "100",
-                  "description": "MIN 1, MAX 100; Default 100",
+                  "value": "10",
+                  "description": "Records per page",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -694,7 +694,7 @@
           }
         },
         {
-          "name": "Time-Weighted Average Price(Twap) New Order(TRADE)",
+          "name": "Time-Weighted Spot Average Price(Twap) New Order (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -735,14 +735,14 @@
                 },
                 {
                   "key": "quantity",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "Quantity of base asset; Maximum notional per order is 200k, 2mm or 10mm, depending on symbol. Please reduce your size if you order is above the maximum notional per order.",
                   "disabled": false
                 },
                 {
                   "key": "duration",
                   "value": "5000",
-                  "description": "Duration for TWAP orders in seconds. [300, 86400]",
+                  "description": "Duration for TWAP orders in seconds",
                   "disabled": false
                 },
                 {
@@ -753,7 +753,7 @@
                 },
                 {
                   "key": "limitPrice",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "Limit price of the order; If it is not sent, will place order by market price by default",
                   "disabled": true
                 },
@@ -774,7 +774,7 @@
           }
         },
         {
-          "name": "Query Current Algo Open Orders(USER_DATA)",
+          "name": "Query Current Spot Algo Open Orders (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -804,7 +804,7 @@
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -824,7 +824,7 @@
           }
         },
         {
-          "name": "Cancel Algo Order(TRADE)",
+          "name": "Cancel Spot Algo Order (TRADE)",
           "request": {
             "method": "DELETE",
             "header": [
@@ -853,14 +853,14 @@
               "query": [
                 {
                   "key": "algoId",
-                  "value": "1",
-                  "description": "eg. 14511",
+                  "value": "14511",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -880,7 +880,7 @@
           }
         },
         {
-          "name": "Query Sub Orders(USER_DATA)",
+          "name": "Query Spot Sub Orders (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -916,19 +916,19 @@
                 {
                   "key": "page",
                   "value": "1",
-                  "description": "Default is 1",
+                  "description": "Page number",
                   "disabled": true
                 },
                 {
                   "key": "pageSize",
-                  "value": "100",
-                  "description": "MIN 1, MAX 100; Default 100",
+                  "value": "10",
+                  "description": "Records per page",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {

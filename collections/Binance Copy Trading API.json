@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "Binance Copy Trading REST API",
+    "name": "Copy Trading REST API",
     "description": {
-      "content": "OpenAPI Specification for the Binance Copy Trading REST API",
+      "content": "Automate lead trading via the Copy Trading API.",
       "type": "text/markdown"
     },
     "version": "1.0.0",
@@ -144,10 +144,10 @@
   ],
   "item": [
     {
-      "name": "Future-Copy-Trading",
+      "name": "Future Copy Trading",
       "item": [
         {
-          "name": "Get Futures Lead Trading Symbol Whitelist(USER_DATA)",
+          "name": "Get Futures Lead Trading Symbol Whitelist (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -177,7 +177,7 @@
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {
@@ -197,7 +197,7 @@
           }
         },
         {
-          "name": "Get Futures Lead Trader Status(TRADE)",
+          "name": "Get Futures Lead Trader Status (TRADE)",
           "request": {
             "method": "GET",
             "header": [
@@ -227,7 +227,7 @@
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Request validity window in milliseconds",
                   "disabled": true
                 },
                 {

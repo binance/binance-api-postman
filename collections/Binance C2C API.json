@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "Binance C2C REST API",
+    "name": "C2C REST API",
     "description": {
-      "content": "OpenAPI Specification for the Binance C2C REST API",
+      "content": "Query fiat transaction history via the C2C REST API.",
       "type": "text/markdown"
     },
     "version": "1.0.0",
@@ -144,89 +144,66 @@
   ],
   "item": [
     {
-      "name": "C2C",
-      "item": [
-        {
-          "name": "Get C2C Trade History (USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/c2c/orderMatch/listUserOrderHistory",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "c2c", "orderMatch", "listUserOrderHistory"],
-              "variable": [],
-              "query": [
-                {
-                  "key": "tradeType",
-                  "value": "tradeType_example",
-                  "description": "BUY, SELL",
-                  "disabled": true
-                },
-                {
-                  "key": "startTimestamp",
-                  "value": "789",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTimestamp",
-                  "value": "789",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "page",
-                  "value": "1",
-                  "description": "Default 1",
-                  "disabled": true
-                },
-                {
-                  "key": "rows",
-                  "value": "100",
-                  "description": "default 100, max 100",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
+      "name": "Get C2C Trade History (USER_DATA)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-MBX-APIKEY",
+            "value": "",
+            "description": "API KEY",
+            "disabled": false
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "description": "",
+            "disabled": false
           }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{url}}/sapi/v1/c2c/orderMatch/listUserOrderHistory",
+          "host": ["{{url}}"],
+          "path": ["sapi", "v1", "c2c", "orderMatch", "listUserOrderHistory"],
+          "variable": [],
+          "query": [
+            {
+              "key": "tradeType",
+              "value": "BUY",
+              "description": "Trade side filter",
+              "disabled": true
+            },
+            {
+              "key": "startTimestamp",
+              "value": "1770736694138",
+              "description": "",
+              "disabled": true
+            },
+            {
+              "key": "endTimestamp",
+              "value": "1770736694138",
+              "description": "",
+              "disabled": true
+            },
+            {
+              "key": "page",
+              "value": "1",
+              "description": "Page number",
+              "disabled": true
+            },
+            {
+              "key": "rows",
+              "value": "100",
+              "description": "Number of records per page",
+              "disabled": true
+            }
+          ]
         }
-      ]
+      }
     }
   ],
   "variable": [

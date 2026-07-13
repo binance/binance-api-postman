@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "Binance Fiat REST API",
+    "name": "Fiat REST API",
     "description": {
-      "content": "OpenAPI Specification for the Binance Fiat REST API",
+      "content": "Query Binance fiat deposit and withdrawal history.",
       "type": "text/markdown"
     },
     "version": "1.0.0",
@@ -144,402 +144,397 @@
   ],
   "item": [
     {
-      "name": "Fiat",
-      "item": [
-        {
-          "name": "Deposit(TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded",
-                "description": "",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "key": "currency",
-                  "value": "currency_example",
-                  "description": "",
-                  "type": "text",
-                  "disabled": false
-                },
-                {
-                  "key": "apiPaymentMethod",
-                  "value": "apiPaymentMethod_example",
-                  "description": "",
-                  "type": "text",
-                  "disabled": false
-                },
-                {
-                  "key": "amount",
-                  "value": "789",
-                  "description": "",
-                  "type": "text",
-                  "disabled": false
-                },
-                {
-                  "key": "ext",
-                  "value": "Object",
-                  "description": "",
-                  "type": "text",
-                  "disabled": true
-                }
-              ]
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/fiat/deposit",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "fiat", "deposit"],
-              "variable": [],
-              "query": [
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
+      "name": "Deposit (TRADE)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-MBX-APIKEY",
+            "value": "",
+            "description": "API KEY",
+            "disabled": false
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "description": "",
+            "disabled": false
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "description": "",
+            "disabled": false
           }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "currency",
+              "value": "currency_example",
+              "description": "",
+              "type": "text",
+              "disabled": false
+            },
+            {
+              "key": "apiPaymentMethod",
+              "value": "pix",
+              "description": "payment method; current supported: pix",
+              "type": "text",
+              "disabled": false
+            },
+            {
+              "key": "amount",
+              "value": "amount_example",
+              "description": "deposit amount",
+              "type": "text",
+              "disabled": false
+            },
+            {
+              "key": "ext",
+              "value": "Object",
+              "description": "",
+              "type": "text",
+              "disabled": true
+            }
+          ]
         },
-        {
-          "name": "Get Order Detail(USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
+        "url": {
+          "raw": "{{url}}/sapi/v1/fiat/deposit",
+          "host": ["{{url}}"],
+          "path": ["sapi", "v1", "fiat", "deposit"],
+          "variable": [],
+          "query": [
+            {
+              "key": "recvWindow",
+              "value": "5000",
+              "description": "Request validity window in milliseconds",
+              "disabled": true
             },
-            "url": {
-              "raw": "{{url}}/sapi/v1/fiat/get-order-detail",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "fiat", "get-order-detail"],
-              "variable": [],
-              "query": [
-                {
-                  "key": "orderNo",
-                  "value": "orderNo_example",
-                  "description": "order id retrieved from the api call of withdrawal",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Fiat Deposit/Withdraw History (USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
+            {
+              "key": "timestamp",
+              "value": "",
+              "description": "UTC timestamp in ms",
+              "disabled": false
             },
-            "url": {
-              "raw": "{{url}}/sapi/v1/fiat/orders",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "fiat", "orders"],
-              "variable": [],
-              "query": [
-                {
-                  "key": "transactionType",
-                  "value": "transactionType_example",
-                  "description": "0-buy,1-sell",
-                  "disabled": false
-                },
-                {
-                  "key": "beginTime",
-                  "value": "789",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "page",
-                  "value": "1",
-                  "description": "default 1",
-                  "disabled": true
-                },
-                {
-                  "key": "rows",
-                  "value": "100",
-                  "description": "default 100, max 500",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
+            {
+              "key": "signature",
+              "value": "",
+              "description": "Signature",
+              "disabled": false
             }
-          }
-        },
-        {
-          "name": "Get Fiat Payments History (USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/fiat/payments",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v1", "fiat", "payments"],
-              "variable": [],
-              "query": [
-                {
-                  "key": "transactionType",
-                  "value": "transactionType_example",
-                  "description": "0-buy,1-sell",
-                  "disabled": false
-                },
-                {
-                  "key": "beginTime",
-                  "value": "789",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "page",
-                  "value": "1",
-                  "description": "default 1",
-                  "disabled": true
-                },
-                {
-                  "key": "rows",
-                  "value": "100",
-                  "description": "default 100, max 500",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Fiat Withdraw(WITHDRAW)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Content-Type",
-                "value": "application/x-www-form-urlencoded",
-                "description": "",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": [
-                {
-                  "key": "currency",
-                  "value": "currency_example",
-                  "description": "",
-                  "type": "text",
-                  "disabled": false
-                },
-                {
-                  "key": "apiPaymentMethod",
-                  "value": "apiPaymentMethod_example",
-                  "description": "",
-                  "type": "text",
-                  "disabled": false
-                },
-                {
-                  "key": "amount",
-                  "value": "789",
-                  "description": "",
-                  "type": "text",
-                  "disabled": false
-                },
-                {
-                  "key": "accountInfo",
-                  "value": "",
-                  "description": "",
-                  "type": "text",
-                  "disabled": false
-                },
-                {
-                  "key": "ext",
-                  "value": "Object",
-                  "description": "",
-                  "type": "text",
-                  "disabled": true
-                }
-              ]
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v2/fiat/withdraw",
-              "host": ["{{url}}"],
-              "path": ["sapi", "v2", "fiat", "withdraw"],
-              "variable": [],
-              "query": [
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
+          ]
         }
-      ]
+      }
+    },
+    {
+      "name": "Get Order Detail (USER_DATA)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-MBX-APIKEY",
+            "value": "",
+            "description": "API KEY",
+            "disabled": false
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "description": "",
+            "disabled": false
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{url}}/sapi/v1/fiat/get-order-detail",
+          "host": ["{{url}}"],
+          "path": ["sapi", "v1", "fiat", "get-order-detail"],
+          "variable": [],
+          "query": [
+            {
+              "key": "orderNo",
+              "value": "036752*678",
+              "description": "Order ID retrieved from the withdrawal API",
+              "disabled": false
+            },
+            {
+              "key": "recvWindow",
+              "value": "5000",
+              "description": "",
+              "disabled": true
+            },
+            {
+              "key": "timestamp",
+              "value": "",
+              "description": "UTC timestamp in ms",
+              "disabled": false
+            },
+            {
+              "key": "signature",
+              "value": "",
+              "description": "Signature",
+              "disabled": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Fiat Deposit/Withdraw History (USER_DATA)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-MBX-APIKEY",
+            "value": "",
+            "description": "API KEY",
+            "disabled": false
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "description": "",
+            "disabled": false
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{url}}/sapi/v1/fiat/orders",
+          "host": ["{{url}}"],
+          "path": ["sapi", "v1", "fiat", "orders"],
+          "variable": [],
+          "query": [
+            {
+              "key": "transactionType",
+              "value": "0",
+              "description": "0: deposit, 1: withdraw",
+              "disabled": false
+            },
+            {
+              "key": "beginTime",
+              "value": "1641782889000",
+              "description": "",
+              "disabled": true
+            },
+            {
+              "key": "endTime",
+              "value": "1641782889000",
+              "description": "",
+              "disabled": true
+            },
+            {
+              "key": "page",
+              "value": "1",
+              "description": "",
+              "disabled": true
+            },
+            {
+              "key": "rows",
+              "value": "100",
+              "description": "",
+              "disabled": true
+            },
+            {
+              "key": "recvWindow",
+              "value": "5000",
+              "description": "",
+              "disabled": true
+            },
+            {
+              "key": "timestamp",
+              "value": "",
+              "description": "UTC timestamp in ms",
+              "disabled": false
+            },
+            {
+              "key": "signature",
+              "value": "",
+              "description": "Signature",
+              "disabled": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Fiat Payments History (USER_DATA)",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-MBX-APIKEY",
+            "value": "",
+            "description": "API KEY",
+            "disabled": false
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "description": "",
+            "disabled": false
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{url}}/sapi/v1/fiat/payments",
+          "host": ["{{url}}"],
+          "path": ["sapi", "v1", "fiat", "payments"],
+          "variable": [],
+          "query": [
+            {
+              "key": "transactionType",
+              "value": "0",
+              "description": "0: buy, 1: sell",
+              "disabled": false
+            },
+            {
+              "key": "beginTime",
+              "value": "1641782889000",
+              "description": "",
+              "disabled": true
+            },
+            {
+              "key": "endTime",
+              "value": "1641782889000",
+              "description": "",
+              "disabled": true
+            },
+            {
+              "key": "page",
+              "value": "1",
+              "description": "",
+              "disabled": true
+            },
+            {
+              "key": "rows",
+              "value": "100",
+              "description": "",
+              "disabled": true
+            },
+            {
+              "key": "recvWindow",
+              "value": "5000",
+              "description": "",
+              "disabled": true
+            },
+            {
+              "key": "timestamp",
+              "value": "",
+              "description": "UTC timestamp in ms",
+              "disabled": false
+            },
+            {
+              "key": "signature",
+              "value": "",
+              "description": "Signature",
+              "disabled": false
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Fiat Withdraw (TRADE)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-MBX-APIKEY",
+            "value": "",
+            "description": "API KEY",
+            "disabled": false
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded",
+            "description": "",
+            "disabled": false
+          },
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "description": "",
+            "disabled": false
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "currency",
+              "value": "currency_example",
+              "description": "Fiat currency, such as BRL, ARS, MXN",
+              "type": "text",
+              "disabled": false
+            },
+            {
+              "key": "apiPaymentMethod",
+              "value": "bank_transfer",
+              "description": "payment method; current supported: bank_transfer",
+              "type": "text",
+              "disabled": false
+            },
+            {
+              "key": "amount",
+              "value": "789",
+              "description": "withdraw amount",
+              "type": "text",
+              "disabled": false
+            },
+            {
+              "key": "accountInfo",
+              "value": "",
+              "description": "",
+              "type": "text",
+              "disabled": false
+            },
+            {
+              "key": "ext",
+              "value": "Object",
+              "description": "",
+              "type": "text",
+              "disabled": true
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{url}}/sapi/v2/fiat/withdraw",
+          "host": ["{{url}}"],
+          "path": ["sapi", "v2", "fiat", "withdraw"],
+          "variable": [],
+          "query": [
+            {
+              "key": "recvWindow",
+              "value": "5000",
+              "description": "Request validity window in milliseconds",
+              "disabled": true
+            },
+            {
+              "key": "timestamp",
+              "value": "",
+              "description": "UTC timestamp in ms",
+              "disabled": false
+            },
+            {
+              "key": "signature",
+              "value": "",
+              "description": "Signature",
+              "disabled": false
+            }
+          ]
+        }
+      }
     }
   ],
   "variable": [

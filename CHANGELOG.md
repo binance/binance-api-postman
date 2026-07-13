@@ -1,5 +1,846 @@
 # Changelog
 
+## 53.0.0 - 2026-07-13
+
+### Added (11)
+
+- `DELETE /sapi/v1/sub-account/subAccountApi`
+- `GET /bapi/defi/v1/public/alpha-trade/fullDepth`
+- `GET /sapi/v1/loan/vip/repay/history`
+- `GET /sapi/v1/margin/liquidation-loan/repay-history`
+- `GET /sapi/v1/margin/liquidation-loan`
+- `GET /sapi/v1/sub-account/subAccountApi`
+- `POST /eapi/v1/stock/contract`
+- `POST /sapi/v1/margin/exit-special-key-mode`
+- `POST /sapi/v1/margin/liquidation-loan/repay`
+- `POST /sapi/v1/sub-account/subAccountApiPermission`
+- `POST /sapi/v1/sub-account/subAccountApi`
+
+### Changed (153)
+
+- Added parameter `autoCompoundPlan`
+  - affected endpoints:
+    - `POST /sapi/v1/dci/product/auto_compound/edit-status`
+- Added parameter `lang`
+  - affected endpoints:
+    - `GET /sapi/v1/earn/arena/activities`
+- Added parameter `recvWindow`
+  - affected endpoints:
+    - `GET /sapi/v1/localentity/country/list`
+    - `GET /sapi/v1/localentity/region/list`
+- Added parameter `trailingDelta`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order`
+- Deleted parameter `AutoCompoundPlan`
+  - affected endpoints:
+    - `POST /sapi/v1/dci/product/auto_compound/edit-status`
+- Deleted parameter `recvWindow`
+  - affected endpoints:
+    - `GET /sapi/v1/c2c/orderMatch/listUserOrderHistory`
+- Deleted parameter `signature`
+  - affected endpoints:
+    - `PUT /sapi/v1/localentity/broker/deposit/provide-info`
+    - `POST /sapi/v1/localentity/broker/withdraw/apply`
+- Modified parameter `accountType`:
+  - enum added: `SPOT`, `MARGIN`
+  - affected endpoints:
+    - `GET /sapi/v1/asset/dribblet`
+    - `POST /sapi/v1/asset/dust`
+    - `POST /sapi/v1/asset/dust-btc`
+- Modified parameter `algoType`:
+  - enum added: `CONDITIONAL`
+  - affected endpoints:
+    - `POST /papi/v1/um/algo/order`
+    - `POST /fapi/v1/algoOrder`
+- Modified parameter `aprPeriod`:
+  - enum added: `DAY`, `YEAR`
+  - affected endpoints:
+    - `GET /sapi/v1/simple-earn/flexible/history/rateHistory`
+- Modified parameter `archived`:
+  - enum added: `true`, `false`
+  - affected endpoints:
+    - `GET /papi/v1/margin/marginInterestHistory`
+    - `GET /papi/v1/margin/marginLoan`
+    - `GET /papi/v1/margin/repayLoan`
+- Modified parameter `asset`:
+  - enum added: `LDUSDT`, `RWUSD`
+  - affected endpoints:
+    - `POST /sapi/v1/portfolio/earn-asset-transfer`
+- Modified parameter `asset`:
+  - enum added: `USDC`, `USDT`
+  - affected endpoints:
+    - `GET /sapi/v1/bfusd/history/subscriptionHistory`
+    - `GET /sapi/v1/rwusd/history/subscriptionHistory`
+- Modified parameter `asset`:
+  - enum added: `USDT`, `USDC`
+  - affected endpoints:
+    - `POST /sapi/v1/rwusd/subscribe`
+- Modified parameter `asset`:
+  - enum added: `WBETH`, `BETH`
+  - affected endpoints:
+    - `POST /sapi/v1/eth-staking/eth/redeem`
+- Modified parameter `assetNames`:
+  - type `array` → `string`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/exchange-small-liability`
+- Modified parameter `autoCompoundPlan`:
+  - enum added: `NONE`, `STANDARD`, `ADVANCED`
+  - affected endpoints:
+    - `POST /sapi/v1/dci/product/subscribe`
+- Modified parameter `autoRepay`:
+  - enum added: `true`, `false`
+  - affected endpoints:
+    - `POST /papi/v1/repay-futures-switch`
+    - `POST /sapi/v1/portfolio/repay-futures-switch`
+- Modified parameter `autoRepayAtCancel`:
+  - enum added: `true`, `false`
+  - affected endpoints:
+    - `POST /papi/v1/margin/order`
+- Modified parameter `batchOrders`:
+  - items: required added: `type`, `quantity`, `symbol`, `side`
+  - items.`activationPrice`: type `string` → `number`
+  - items.`callbackRate`: type `string` → `number`
+  - items.`price`: type `string` → `number`
+  - items.`priceMatch`: enum removed: `NONE`
+  - items.`priceProtect`: enum added: `true`, `false`
+  - items.`quantity`: type `string` → `number`
+  - items.`reduceOnly`: enum added: `true`, `false`
+  - items.`selfTradePreventionMode`: enum removed: `NONE`
+  - items.`stopPrice`: type `string` → `number`
+  - items.`activationPrice`: type `string` → `number`
+  - items.`callbackRate`: type `string` → `number`
+  - items.`price`: type `string` → `number`
+  - items.`priceMatch`: enum removed: `NONE`
+  - items.`priceProtect`: enum added: `true`, `false`
+  - items.`quantity`: type `string` → `number`
+  - items.`reduceOnly`: enum added: `true`, `false`
+  - items.`selfTradePreventionMode`: enum removed: `NONE`
+  - items.`stopPrice`: type `string` → `number`
+  - affected endpoints:
+    - `POST /dapi/v1/batchOrders`
+- Modified parameter `batchOrders`:
+  - items: required added: `symbol`, `side`, `timestamp`
+  - items: property `timestamp` added
+  - items.`orderId`: type `string` → `integer`
+  - items.`price`: type `string` → `number`
+  - items.`quantity`: type `string` → `number`
+  - items.`recvWindow`: type `string` → `integer`
+  - items: item property `timestamp` added
+  - items.`orderId`: type `string` → `integer`
+  - items.`price`: type `string` → `number`
+  - items.`quantity`: type `string` → `number`
+  - items.`recvWindow`: type `string` → `integer`
+  - affected endpoints:
+    - `PUT /dapi/v1/batchOrders`
+- Modified parameter `batchOrders`:
+  - items.`goodTillDate`: type `string` → `integer`
+  - items.`price`: type `string` → `number`
+  - items.`priceMatch`: enum removed: `NONE`
+  - items.`quantity`: type `string` → `number`
+  - items.`reduceOnly`: enum added: `true`, `false`
+  - items.`selfTradePreventionMode`: enum added: `NONE`
+  - items.`type`: enum added: `LIMIT`, `MARKET`, `STOP`, `STOP_MARKET`, `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`, `TRAILING_STOP_MARKET`
+  - items.`goodTillDate`: type `string` → `integer`
+  - items.`price`: type `string` → `number`
+  - items.`priceMatch`: enum removed: `NONE`
+  - items.`quantity`: type `string` → `number`
+  - items.`reduceOnly`: enum added: `true`, `false`
+  - items.`selfTradePreventionMode`: enum added: `NONE`
+  - items.`type`: enum added: `LIMIT`, `MARKET`, `STOP`, `STOP_MARKET`, `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`, `TRAILING_STOP_MARKET`
+  - affected endpoints:
+    - `POST /fapi/v1/batchOrders`
+- Modified parameter `batchOrders`:
+  - items: property `timestamp` added
+  - items.`orderId`: type `string` → `integer`
+  - items.`price`: type `string` → `number`
+  - items.`priceMatch`: enum removed: `NONE`
+  - items.`quantity`: type `string` → `number`
+  - items.`recvWindow`: type `string` → `integer`
+  - items.`stopPrice`: type `string` → `number`
+  - items: item property `timestamp` added
+  - items.`orderId`: type `string` → `integer`
+  - items.`price`: type `string` → `number`
+  - items.`priceMatch`: enum removed: `NONE`
+  - items.`quantity`: type `string` → `number`
+  - items.`recvWindow`: type `string` → `integer`
+  - items.`stopPrice`: type `string` → `number`
+  - affected endpoints:
+    - `PUT /fapi/v1/batchOrders`
+- Modified parameter `cancelRestrictions`:
+  - enum removed: `NEW`, `PARTIALLY_FILLED`
+  - affected endpoints:
+    - `DELETE /api/v3/order`
+    - `POST /api/v3/order/cancelReplace`
+- Modified parameter `clientAlgoId`:
+  - minLength `0` → `32`
+  - maxLength `null` → `32`
+  - affected endpoints:
+    - `POST /sapi/v1/algo/futures/newOrderTwap`
+    - `POST /sapi/v1/algo/futures/newOrderVp`
+    - `POST /sapi/v1/algo/spot/newOrderTwap`
+- Modified parameter `closePosition`:
+  - enum added: `true`, `false`
+  - affected endpoints:
+    - `POST /fapi/v1/algoOrder`
+    - `POST /fapi/v1/order/test`
+- Modified parameter `contractType`:
+  - enum removed: `CURRENT_QUARTER_DELIVERING`, `NEXT_QUARTER_DELIVERING`, `PERPETUAL_DELIVERING`
+  - affected endpoints:
+    - `GET /dapi/v1/continuousKlines`
+    - `GET /futures/data/basis`
+- Modified parameter `contractType`:
+  - enum removed: `CURRENT_QUARTER_DELIVERING`, `NEXT_QUARTER_DELIVERING`, `PERPETUAL_DELIVERING`
+  - enum added: `ALL`
+  - affected endpoints:
+    - `GET /futures/data/openInterestHist`
+    - `GET /futures/data/takerBuySellVol`
+- Modified parameter `contractType`:
+  - enum removed: `CURRENT_MONTH`, `NEXT_MONTH`, `PERPETUAL_DELIVERING`
+  - enum added: `TRADIFI_PERPETUAL`
+  - affected endpoints:
+    - `GET /fapi/v1/continuousKlines`
+- Modified parameter `contractType`:
+  - enum removed: `CURRENT_MONTH`, `NEXT_MONTH`, `PERPETUAL_DELIVERING`
+  - affected endpoints:
+    - `GET /futures/data/basis`
+- Modified parameter `currency`:
+  - enum added: `USDT`
+  - affected endpoints:
+    - `GET /eapi/v1/bill`
+- Modified parameter `deltaEnabled`:
+  - enum added: `true`, `false`
+  - affected endpoints:
+    - `POST /sapi/v1/portfolio/delta-mode`
+- Modified parameter `deltaLimit`:
+  - required: `false` → `true`
+  - affected endpoints:
+    - `POST /eapi/v1/mmpSet`
+- Modified parameter `depositId`:
+  - type `string` → `integer`
+  - affected endpoints:
+    - `GET /sapi/v2/localentity/deposit/history`
+- Modified parameter `destAccount`:
+  - enum added: `SPOT`, `FUND`
+  - affected endpoints:
+    - `POST /sapi/v1/simple-earn/flexible/redeem`
+- Modified parameter `direction`:
+  - enum added: `ADDITIONAL`, `REDUCED`
+  - affected endpoints:
+    - `POST /sapi/v2/loan/flexible/adjust/ltv`
+- Modified parameter `dualSidePosition`:
+  - enum added: `true`, `false`
+  - affected endpoints:
+    - `POST /papi/v1/cm/positionSide/dual`
+    - `POST /papi/v1/um/positionSide/dual`
+- Modified parameter `expiredType`:
+  - enum added: `1_D`, `3_D`, `7_D`, `30_D`
+  - affected endpoints:
+    - `POST /sapi/v1/convert/limit/placeOrder`
+- Modified parameter `externalUid`:
+  - maxLength `null` → `400`
+  - affected endpoints:
+    - `POST /sapi/v1/giftcard/redeemCode`
+- Modified parameter `feeBurn`:
+  - enum added: `true`, `false`
+  - affected endpoints:
+    - `POST /papi/v1/um/feeBurn`
+- Modified parameter `from`:
+  - enum added: `SPOT`, `MARGIN`
+  - affected endpoints:
+    - `POST /sapi/v1/portfolio/repay`
+    - `POST /sapi/v1/portfolio/repay-futures-negative-balance`
+- Modified parameter `fromAccountType`:
+  - enum added: `SPOT`, `USDT_FUTURE`, `COIN_FUTURE`, `MARGIN`, `ISOLATED_MARGIN`
+  - affected endpoints:
+    - `POST /sapi/v1/sub-account/universalTransfer`
+- Modified parameter `fromSymbol`:
+  - enum added: `ISOLATEDMARGIN_MARGIN`, `ISOLATEDMARGIN_ISOLATEDMARGIN`
+  - affected endpoints:
+    - `GET /sapi/v1/asset/transfer`
+    - `POST /sapi/v1/asset/transfer`
+- Modified parameter `frozenTimeInMilliseconds`:
+  - required: `false` → `true`
+  - affected endpoints:
+    - `POST /eapi/v1/mmpSet`
+- Modified parameter `incomeType`:
+  - enum added: `TRANSFER`, `WELCOME_BONUS`, `FUNDING_FEE`, `REALIZED_PNL`, `COMMISSION`, `INSURANCE_CLEAR`, `DELIVERED_SETTELMENT`
+  - affected endpoints:
+    - `GET /dapi/v1/income`
+    - `GET /papi/v1/cm/income`
+- Modified parameter `incomeType`:
+  - enum added: `TRANSFER`, `WELCOME_BONUS`, `REALIZED_PNL`, `FUNDING_FEE`, `COMMISSION`, `INSURANCE_CLEAR`, `REFERRAL_KICKBACK`, `COMMISSION_REBATE`, `API_REBATE`, `CONTEST_REWARD`, `CROSS_COLLATERAL_TRANSFER`, `OPTIONS_PREMIUM_FEE`, `OPTIONS_SETTLE_PROFIT`, `INTERNAL_TRANSFER`, `AUTO_EXCHANGE`, `DELIVERED_SETTELMENT`, `COIN_SWAP_DEPOSIT`, `COIN_SWAP_WITHDRAW`, `POSITION_LIMIT_INCREASE_FEE`
+  - affected endpoints:
+    - `GET /papi/v1/um/income`
+- Modified parameter `incomeType`:
+  - enum added: `TRANSFER`, `WELCOME_BONUS`, `REALIZED_PNL`, `FUNDING_FEE`, `COMMISSION`, `INSURANCE_CLEAR`, `REFERRAL_KICKBACK`, `COMMISSION_REBATE`, `API_REBATE`, `CONTEST_REWARD`, `CROSS_COLLATERAL_TRANSFER`, `OPTIONS_PREMIUM_FEE`, `OPTIONS_SETTLE_PROFIT`, `INTERNAL_TRANSFER`, `AUTO_EXCHANGE`, `DELIVERED_SETTELMENT`, `COIN_SWAP_DEPOSIT`, `COIN_SWAP_WITHDRAW`, `POSITION_LIMIT_INCREASE_FEE`, `STRATEGY_UMFUTURES_TRANSFER`, `FEE_RETURN`, `BFUSD_REWARD`
+  - affected endpoints:
+    - `GET /fapi/v1/income`
+- Modified parameter `interval`:
+  - enum added: `1s`, `15s`, `1m`, `3m`, `5m`, `15m`, `30m`, `1h`, `2h`, `4h`, `6h`, `8h`, `12h`, `1d`, `3d`, `1w`, `1M`
+  - affected endpoints:
+    - `GET /bapi/defi/v1/public/alpha-trade/klines`
+- Modified parameter `interval`:
+  - enum added: `1m`, `3m`, `5m`, `15m`, `30m`, `1h`, `2h`, `4h`, `6h`, `8h`, `12h`, `1d`, `3d`, `1w`, `1M`
+  - affected endpoints:
+    - `GET /eapi/v1/klines`
+- Modified parameter `interval`:
+  - enum removed: `1s`
+  - affected endpoints:
+    - `GET /fapi/v1/continuousKlines`
+    - `GET /fapi/v1/indexPriceKlines`
+    - `GET /fapi/v1/klines`
+    - `GET /fapi/v1/markPriceKlines`
+    - `GET /fapi/v1/premiumIndexKlines`
+- Modified parameter `isIsolated`:
+  - enum added: `TRUE`, `FALSE`
+  - affected endpoints:
+    - `GET /sapi/v1/margin/allOrderList`
+    - `GET /sapi/v1/margin/allOrders`
+    - `GET /sapi/v1/margin/myPreventedMatches`
+    - `GET /sapi/v1/margin/myTrades`
+    - `GET /sapi/v1/margin/openOrderList`
+    - `DELETE /sapi/v1/margin/openOrders`
+    - `GET /sapi/v1/margin/openOrders`
+    - `DELETE /sapi/v1/margin/order`
+    - `GET /sapi/v1/margin/order`
+    - `POST /sapi/v1/margin/order`
+    - `POST /sapi/v1/margin/order/oco`
+    - `POST /sapi/v1/margin/order/oto`
+    - `POST /sapi/v1/margin/order/otoco`
+    - `DELETE /sapi/v1/margin/orderList`
+    - `GET /sapi/v1/margin/orderList`
+    - `GET /sapi/v1/margin/rateLimit/order`
+- Modified parameter `isIsolated`:
+  - enum added: `TRUE`, `FALSE`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/borrow-repay`
+- Modified parameter `isIsolated`:
+  - type `boolean` → `string`
+  - enum added: `TRUE`, `FALSE`
+  - affected endpoints:
+    - `GET /sapi/v1/margin/next-hourly-interest-rate`
+- Modified parameter `legs`:
+  - items: required added: `symbol`, `side`, `type`, `quantity`
+  - items: property `side` added
+  - items: property `symbol` added
+  - items: property `type` added
+  - items: property `price` added
+  - items: property `quantity` added
+  - items: item property `side` added
+  - items: item property `symbol` added
+  - items: item property `type` added
+  - items: item property `price` added
+  - items: item property `quantity` added
+  - affected endpoints:
+    - `POST /eapi/v1/block/order/create`
+- Modified parameter `liquidity`:
+  - enum added: `MAKER`, `TAKER`
+  - affected endpoints:
+    - `POST /eapi/v1/block/order/create`
+- Modified parameter `needBtcValuation`:
+  - type `string` → `boolean`
+  - affected endpoints:
+    - `POST /sapi/v1/asset/get-funding-asset`
+- Modified parameter `newOrderRespType`:
+  - enum added: `FULL`
+  - affected endpoints:
+    - `POST /papi/v1/margin/order`
+- Modified parameter `newOrderRespType`:
+  - enum removed: `MARKET`, `LIMIT`
+  - affected endpoints:
+    - `POST /api/v3/order`
+    - `POST /api/v3/order/cancelReplace`
+    - `POST /api/v3/order/oco`
+    - `POST /api/v3/order/test`
+    - `POST /api/v3/orderList/oco`
+    - `POST /api/v3/orderList/opo`
+    - `POST /api/v3/orderList/opoco`
+    - `POST /api/v3/orderList/oto`
+    - `POST /api/v3/orderList/otoco`
+    - `POST /api/v3/sor/order`
+    - `POST /api/v3/sor/order/test`
+- Modified parameter `optionType`:
+  - enum added: `CALL`, `PUT`
+  - affected endpoints:
+    - `GET /sapi/v1/dci/product/list`
+- Modified parameter `orderIdList`:
+  - maxItems `null` → `10`
+  - affected endpoints:
+    - `DELETE /dapi/v1/batchOrders`
+- Modified parameter `orderIdList`:
+  - maxLength `null` → `10`
+  - affected endpoints:
+    - `DELETE /fapi/v1/batchOrders`
+- Modified parameter `orders`:
+  - items: required added: `symbol`, `side`, `type`, `quantity`
+  - items.`isMmp`: type `string` → `boolean`
+  - items.`postOnly`: type `string` → `boolean`
+  - items.`price`: type `string` → `number`
+  - items.`quantity`: type `string` → `number`
+  - items.`reduceOnly`: type `string` → `boolean`
+  - items.`isMmp`: type `string` → `boolean`
+  - items.`postOnly`: type `string` → `boolean`
+  - items.`price`: type `string` → `number`
+  - items.`quantity`: type `string` → `number`
+  - items.`reduceOnly`: type `string` → `boolean`
+  - affected endpoints:
+    - `POST /eapi/v1/batchOrders`
+- Modified parameter `origClientOrderIdList`:
+  - maxItems `null` → `10`
+  - affected endpoints:
+    - `DELETE /dapi/v1/batchOrders`
+- Modified parameter `origClientOrderIdList`:
+  - maxLength `null` → `10`
+  - affected endpoints:
+    - `DELETE /fapi/v1/batchOrders`
+- Modified parameter `pegOffsetType`:
+  - enum removed: `NON_REPRESENTABLE`
+  - affected endpoints:
+    - `POST /api/v3/order`
+    - `POST /api/v3/order/cancelReplace`
+    - `POST /api/v3/order/test`
+- Modified parameter `pegPriceType`:
+  - enum removed: `NON_REPRESENTABLE`
+  - affected endpoints:
+    - `POST /api/v3/order`
+    - `POST /api/v3/order/cancelReplace`
+    - `POST /api/v3/order/test`
+- Modified parameter `pendingAboveTimeInForce`:
+  - enum added: `GTC`, `IOC`, `FOK`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order/otoco`
+- Modified parameter `pendingAboveType`:
+  - enum added: `LIMIT_MAKER`, `STOP_LOSS`, `STOP_LOSS_LIMIT`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order/otoco`
+- Modified parameter `pendingBelowTimeInForce`:
+  - enum added: `GTC`, `IOC`, `FOK`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order/otoco`
+- Modified parameter `pendingBelowType`:
+  - enum added: `LIMIT_MAKER`, `STOP_LOSS`, `STOP_LOSS_LIMIT`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order/otoco`
+- Modified parameter `pendingSide`:
+  - enum added: `BUY`, `SELL`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order/oto`
+    - `POST /sapi/v1/margin/order/otoco`
+- Modified parameter `pendingTimeInForce`:
+  - enum added: `GTC`, `IOC`, `FOK`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order/oto`
+- Modified parameter `pendingType`:
+  - enum added: `LIMIT`, `MARKET`, `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`, `LIMIT_MAKER`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order/oto`
+- Modified parameter `permissionMode`:
+  - enum added: `TRADE`, `READ`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/apiKey`
+- Modified parameter `permissions`:
+  - items: enum added: `SPOT`, `MARGIN`, `LEVERAGED`, `TRD_GRP_002`, `TRD_GRP_003`, `TRD_GRP_004`, `TRD_GRP_005`, `TRD_GRP_006`, `TRD_GRP_007`, `TRD_GRP_008`, `TRD_GRP_009`, `TRD_GRP_010`, `TRD_GRP_011`, `TRD_GRP_012`, `TRD_GRP_013`, `TRD_GRP_014`, `TRD_GRP_015`, `TRD_GRP_016`, `TRD_GRP_017`, `TRD_GRP_018`, `TRD_GRP_019`, `TRD_GRP_020`, `TRD_GRP_021`, `TRD_GRP_022`, `TRD_GRP_023`, `TRD_GRP_024`, `TRD_GRP_025`
+  - affected endpoints:
+    - `GET /api/v3/exchangeInfo`
+- Modified parameter `positionId`:
+  - type `integer` → `string`
+  - affected endpoints:
+    - `GET /sapi/v1/simple-earn/locked/history/redemptionRecord`
+    - `GET /sapi/v1/simple-earn/locked/history/rewardsRecord`
+    - `GET /sapi/v1/simple-earn/locked/position`
+    - `GET /sapi/v1/onchain-yields/locked/history/redemptionRecord`
+    - `GET /sapi/v1/onchain-yields/locked/position`
+- Modified parameter `positionSide`:
+  - enum added: `BOTH`, `LONG`, `SHORT`
+  - affected endpoints:
+    - `POST /sapi/v1/algo/futures/newOrderTwap`
+    - `POST /sapi/v1/algo/futures/newOrderVp`
+- Modified parameter `positionSide`:
+  - enum removed: `BOTH`, `LONG`, `SHORT`
+  - affected endpoints:
+    - `POST /fapi/v1/algoOrder`
+    - `POST /fapi/v1/order`
+    - `POST /fapi/v1/positionMargin`
+- Modified parameter `priceMatch`:
+  - enum removed: `NONE`
+  - affected endpoints:
+    - `POST /dapi/v1/order`
+    - `PUT /dapi/v1/order`
+    - `POST /papi/v1/cm/order`
+    - `PUT /papi/v1/cm/order`
+    - `POST /papi/v1/um/conditional/order`
+    - `POST /papi/v1/um/order`
+    - `PUT /papi/v1/um/order`
+    - `POST /fapi/v1/algoOrder`
+    - `POST /fapi/v1/order`
+    - `PUT /fapi/v1/order`
+    - `POST /fapi/v1/order/test`
+- Modified parameter `priceMatch`:
+  - enum removed: `NONE`
+  - affected endpoints:
+    - `POST /papi/v1/um/algo/order`
+- Modified parameter `priceProtect`:
+  - enum added: `true`, `false`
+  - affected endpoints:
+    - `POST /dapi/v1/order`
+    - `POST /papi/v1/cm/conditional/order`
+    - `POST /papi/v1/um/algo/order`
+    - `POST /papi/v1/um/conditional/order`
+    - `POST /fapi/v1/algoOrder`
+    - `POST /fapi/v1/order/test`
+- Modified parameter `productType`:
+  - enum added: `UM`
+  - affected endpoints:
+    - `POST /sapi/v1/sub-account/futures/move-position`
+- Modified parameter `qtyLimit`:
+  - required: `false` → `true`
+  - affected endpoints:
+    - `POST /eapi/v1/mmpSet`
+- Modified parameter `redeemTo`:
+  - enum added: `SPOT`, `FLEXIBLE`
+  - affected endpoints:
+    - `POST /sapi/v1/simple-earn/locked/setRedeemOption`
+    - `POST /sapi/v1/onchain-yields/locked/setRedeemOption`
+- Modified parameter `redeemTo`:
+  - enum added: `SPOT`, `FLEXIBLE`
+  - affected endpoints:
+    - `POST /sapi/v1/simple-earn/locked/subscribe`
+- Modified parameter `redeemTo`:
+  - enum added: `SPOT`, `FLEXIBLE`
+  - affected endpoints:
+    - `POST /sapi/v1/onchain-yields/locked/subscribe`
+- Modified parameter `reduceOnly`:
+  - enum added: `true`, `false`
+  - affected endpoints:
+    - `POST /dapi/v1/order`
+    - `POST /papi/v1/cm/order`
+    - `POST /papi/v1/um/algo/order`
+    - `POST /papi/v1/um/conditional/order`
+    - `POST /papi/v1/um/order`
+    - `POST /fapi/v1/algoOrder`
+    - `POST /fapi/v1/order`
+    - `POST /fapi/v1/order/test`
+- Modified parameter `repaymentType`:
+  - enum added: `1`, `2`
+  - affected endpoints:
+    - `POST /sapi/v2/loan/flexible/repay`
+- Modified parameter `selfTradePreventionMode`:
+  - enum added: `NONE`
+  - affected endpoints:
+    - `POST /eapi/v1/order`
+- Modified parameter `selfTradePreventionMode`:
+  - enum added: `NONE`
+  - affected endpoints:
+    - `POST /fapi/v1/algoOrder`
+    - `POST /fapi/v1/order/test`
+- Modified parameter `selfTradePreventionMode`:
+  - enum added: `EXPIRE_TAKER`, `EXPIRE_MAKER`, `EXPIRE_BOTH`, `NONE`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order`
+    - `POST /sapi/v1/margin/order/oco`
+    - `POST /sapi/v1/margin/order/oto`
+    - `POST /sapi/v1/margin/order/otoco`
+- Modified parameter `selfTradePreventionMode`:
+  - enum removed: `NON_REPRESENTABLE`
+  - affected endpoints:
+    - `POST /api/v3/order`
+    - `POST /api/v3/order/cancelReplace`
+    - `POST /api/v3/order/oco`
+    - `POST /api/v3/order/test`
+    - `POST /api/v3/orderList/oco`
+    - `POST /api/v3/orderList/opo`
+    - `POST /api/v3/orderList/opoco`
+    - `POST /api/v3/orderList/oto`
+    - `POST /api/v3/orderList/otoco`
+    - `POST /api/v3/sor/order`
+    - `POST /api/v3/sor/order/test`
+- Modified parameter `side`:
+  - enum added: `BUY`, `SELL`
+  - affected endpoints:
+    - `GET /sapi/v1/algo/futures/historicalOrders`
+    - `POST /sapi/v1/algo/futures/newOrderTwap`
+    - `POST /sapi/v1/algo/futures/newOrderVp`
+    - `GET /sapi/v1/algo/spot/historicalOrders`
+    - `POST /sapi/v1/algo/spot/newOrderTwap`
+    - `POST /sapi/v1/convert/limit/placeOrder`
+- Modified parameter `sideEffectType`:
+  - enum added: `AUTO_BORROW_REPAY`
+  - affected endpoints:
+    - `POST /papi/v1/margin/order`
+- Modified parameter `sideEffectType`:
+  - enum added: `NO_SIDE_EFFECT`, `MARGIN_BUY`, `AUTO_REPAY`, `AUTO_BORROW_REPAY`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order`
+    - `POST /sapi/v1/margin/order/oco`
+- Modified parameter `sideEffectType`:
+  - enum added: `NO_SIDE_EFFECT`, `MARGIN_BUY`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order/oto`
+    - `POST /sapi/v1/margin/order/otoco`
+- Modified parameter `sourceAccount`:
+  - enum added: `SPOT`, `FUND`, `ALL`
+  - affected endpoints:
+    - `POST /sapi/v1/simple-earn/flexible/subscribe`
+    - `POST /sapi/v1/simple-earn/locked/subscribe`
+    - `POST /sapi/v1/onchain-yields/locked/subscribe`
+- Modified parameter `status`:
+  - enum added: `PENDING`, `PURCHASE_SUCCESS`, `SETTLED`, `PURCHASE_FAIL`, `REFUNDING`, `REFUND_SUCCESS`, `SETTLING`
+  - affected endpoints:
+    - `GET /sapi/v1/dci/product/positions`
+- Modified parameter `status`:
+  - type `string` → `integer`
+  - affected endpoints:
+    - `POST /sapi/v2/sub-account/subAccountApi/ipRestriction`
+- Modified parameter `status`:
+  - enum added: `0`, `1`, `2`, `6`, `7`, `8`
+  - affected endpoints:
+    - `GET /sapi/v1/capital/deposit/hisrec`
+- Modified parameter `stopLimitTimeInForce`:
+  - enum added: `GTC`, `FOK`, `IOC`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order/oco`
+- Modified parameter `strategyType`:
+  - enum removed: `LIMIT_MAKER`
+  - affected endpoints:
+    - `POST /papi/v1/cm/conditional/order`
+    - `POST /papi/v1/um/conditional/order`
+- Modified parameter `subAccountId`:
+  - type `integer` → `string`
+  - affected endpoints:
+    - `POST /sapi/v1/capital/deposit/credit-apply`
+- Modified parameter `symbol`:
+  - required: `false` → `true`
+  - affected endpoints:
+    - `GET /eapi/v1/userTrades`
+- Modified parameter `symbol`:
+  - required: `true` → `false`
+  - affected endpoints:
+    - `GET /papi/v1/cm/allOrders`
+- Modified parameter `symbol`:
+  - required: `true` → `false`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/borrow-repay`
+- Modified parameter `symbolStatus`:
+  - enum removed: `END_OF_DAY`, `NON_REPRESENTABLE`
+  - affected endpoints:
+    - `GET /api/v3/depth`
+    - `GET /api/v3/exchangeInfo`
+    - `GET /api/v3/executionRules`
+    - `GET /api/v3/referencePrice/calculation`
+    - `GET /api/v3/ticker/bookTicker`
+    - `GET /api/v3/ticker/price`
+    - `GET /api/v3/ticker/tradingDay`
+- Modified parameter `symbolStatus`:
+  - enum removed: `END_OF_DAY`, `NON_REPRESENTABLE`
+  - affected endpoints:
+    - `GET /api/v3/ticker`
+    - `GET /api/v3/ticker/24hr`
+- Modified parameter `timeInForce`:
+  - enum removed: `GTX`
+  - affected endpoints:
+    - `POST /papi/v1/margin/order`
+- Modified parameter `timeInForce`:
+  - enum added: `GTD`
+  - affected endpoints:
+    - `POST /papi/v1/um/algo/order`
+- Modified parameter `timeInForce`:
+  - enum added: `GTD`
+  - affected endpoints:
+    - `POST /papi/v1/um/conditional/order`
+    - `POST /papi/v1/um/order`
+- Modified parameter `timeInForce`:
+  - enum removed: `NON_REPRESENTABLE`
+  - affected endpoints:
+    - `POST /api/v3/order`
+    - `POST /api/v3/order/cancelReplace`
+    - `POST /api/v3/order/test`
+    - `POST /api/v3/sor/order`
+    - `POST /api/v3/sor/order/test`
+- Modified parameter `toAccountType`:
+  - enum added: `SPOT`, `USDT_FUTURE`, `COIN_FUTURE`, `MARGIN`, `ISOLATED_MARGIN`
+  - affected endpoints:
+    - `POST /sapi/v1/sub-account/universalTransfer`
+- Modified parameter `toSymbol`:
+  - enum added: `MARGIN_ISOLATEDMARGIN`, `ISOLATEDMARGIN_ISOLATEDMARGIN`
+  - affected endpoints:
+    - `GET /sapi/v1/asset/transfer`
+    - `POST /sapi/v1/asset/transfer`
+- Modified parameter `tradeType`:
+  - enum added: `BUY`, `SELL`
+  - affected endpoints:
+    - `GET /sapi/v1/c2c/orderMatch/listUserOrderHistory`
+- Modified parameter `transferFunctionAccountType`:
+  - enum added: `SPOT`, `MARGIN`, `ISOLATED_MARGIN`, `USDT_FUTURE`, `COIN_FUTURE`
+  - affected endpoints:
+    - `GET /sapi/v1/managed-subaccount/query-trans-log`
+    - `GET /sapi/v1/managed-subaccount/queryTransLogForInvestor`
+    - `GET /sapi/v1/managed-subaccount/queryTransLogForTradeParent`
+- Modified parameter `transferSide`:
+  - enum added: `TO_UM`, `FROM_UM`
+  - affected endpoints:
+    - `POST /papi/v1/bnb-transfer`
+    - `POST /sapi/v1/portfolio/bnb-transfer`
+- Modified parameter `transferType`:
+  - enum added: `EARN_TO_FUTURE`, `FUTURE_TO_EARN`
+  - affected endpoints:
+    - `GET /sapi/v1/portfolio/earn-asset-balance`
+    - `POST /sapi/v1/portfolio/earn-asset-transfer`
+- Modified parameter `type`:
+  - enum added: `borrowIn`, `collateralSpent`, `repayAmount`, `collateralReturn`, `addCollateral`, `removeCollateral`, `collateralReturnAfterLiquidation`
+  - affected endpoints:
+    - `GET /sapi/v1/loan/income`
+- Modified parameter `type`:
+  - type `string` → `integer`
+  - enum removed: `LIMIT`, `MARKET`, `STOP`, `STOP_MARKET`, `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`, `TRAILING_STOP_MARKET`
+  - affected endpoints:
+    - `POST /dapi/v1/positionMargin`
+- Modified parameter `type`:
+  - enum added: `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`, `LIMIT_MAKER`
+  - affected endpoints:
+    - `POST /papi/v1/margin/order`
+- Modified parameter `type`:
+  - enum removed: `LIMIT`, `MARKET`
+  - enum added: `STOP`, `TAKE_PROFIT`, `STOP_MARKET`, `TAKE_PROFIT_MARKET`, `TRAILING_STOP_MARKET`
+  - affected endpoints:
+    - `POST /papi/v1/um/algo/order`
+- Modified parameter `type`:
+  - enum added: `LIMIT`, `MARKET`, `STOP`, `STOP_MARKET`, `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`, `TRAILING_STOP_MARKET`
+  - affected endpoints:
+    - `POST /fapi/v1/algoOrder`
+- Modified parameter `type`:
+  - enum added: `LIMIT`, `MARKET`, `STOP`, `STOP_MARKET`, `TAKE_PROFIT`, `TAKE_PROFIT_MARKET`, `TRAILING_STOP_MARKET`
+  - affected endpoints:
+    - `POST /fapi/v1/order`
+    - `POST /fapi/v1/order/test`
+- Modified parameter `type`:
+  - type `string` → `integer`
+  - affected endpoints:
+    - `POST /fapi/v1/positionMargin`
+- Modified parameter `type`:
+  - type `integer` → `string`
+  - affected endpoints:
+    - `GET /fapi/v1/positionMargin/history`
+- Modified parameter `type`:
+  - enum added: `MARGIN`, `ISOLATED`
+  - affected endpoints:
+    - `GET /sapi/v1/margin/available-inventory`
+    - `POST /sapi/v1/margin/manual-liquidation`
+- Modified parameter `type`:
+  - enum added: `BORROW`, `REPAY`
+  - affected endpoints:
+    - `GET /sapi/v1/margin/borrow-repay`
+    - `POST /sapi/v1/margin/borrow-repay`
+- Modified parameter `type`:
+  - enum added: `TRANSFER`, `BORROW`, `REPAY`, `BUY_INCOME`, `BUY_EXPENSE`, `SELL_INCOME`, `SELL_EXPENSE`, `TRADING_COMMISSION`, `BUY_LIQUIDATION`, `SELL_LIQUIDATION`, `REPAY_LIQUIDATION`, `OTHER_LIQUIDATION`, `LIQUIDATION_FEE`, `SMALL_BALANCE_CONVERT`, `COMMISSION_RETURN`, `SMALL_CONVERT`
+  - affected endpoints:
+    - `GET /sapi/v1/margin/capital-flow`
+- Modified parameter `type`:
+  - enum added: `LIMIT`, `MARKET`, `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`, `LIMIT_MAKER`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order`
+- Modified parameter `type`:
+  - enum added: `ROLL_IN`, `ROLL_OUT`
+  - affected endpoints:
+    - `GET /sapi/v1/margin/transfer`
+- Modified parameter `type`:
+  - enum added: `FAST`, `STANDARD`
+  - affected endpoints:
+    - `POST /sapi/v1/bfusd/redeem`
+    - `POST /sapi/v1/rwusd/redeem`
+- Modified parameter `type`:
+  - required: `true` → `false`
+  - enum added: `BONUS`, `REALTIME`, `REWARDS`, `ALL`
+  - affected endpoints:
+    - `GET /sapi/v1/simple-earn/flexible/history/rewardsRecord`
+- Modified parameter `type`:
+  - enum removed: `NON_REPRESENTABLE`
+  - affected endpoints:
+    - `POST /api/v3/order`
+    - `POST /api/v3/order/cancelReplace`
+    - `POST /api/v3/order/test`
+- Modified parameter `type`:
+  - enum removed: `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`, `LIMIT_MAKER`, `NON_REPRESENTABLE`
+  - affected endpoints:
+    - `POST /api/v3/sor/order`
+    - `POST /api/v3/sor/order/test`
+- Modified parameter `type`:
+  - enum added: `CLAIM`, `DISTRIBUTE`
+  - affected endpoints:
+    - `GET /sapi/v1/sol-staking/sol/history/boostRewardsHistory`
+- Modified parameter `type`:
+  - enum added: `SPOT`, `MARGIN`, `FUTURES`
+  - affected endpoints:
+    - `GET /sapi/v1/managed-subaccount/accountSnapshot`
+    - `GET /sapi/v1/accountSnapshot`
+- Modified parameter `type`:
+  - enum added: `DELEGATE`, `UNDELEGATE`
+  - affected endpoints:
+    - `GET /sapi/v1/asset/custody/transfer-history`
+- Modified parameter `type`:
+  - enum added: `MAIN_UMFUTURE`, `MAIN_CMFUTURE`, `MAIN_MARGIN`, `UMFUTURE_MAIN`, `UMFUTURE_MARGIN`, `CMFUTURE_MAIN`, `CMFUTURE_MARGIN`, `MARGIN_MAIN`, `MARGIN_UMFUTURE`, `MARGIN_CMFUTURE`, `ISOLATEDMARGIN_MARGIN`, `MARGIN_ISOLATEDMARGIN`, `ISOLATEDMARGIN_ISOLATEDMARGIN`, `MAIN_FUNDING`, `FUNDING_MAIN`, `FUNDING_UMFUTURE`, `UMFUTURE_FUNDING`, `MARGIN_FUNDING`, `FUNDING_MARGIN`, `FUNDING_CMFUTURE`, `CMFUTURE_FUNDING`, `MAIN_OPTION`, `OPTION_MAIN`, `UMFUTURE_OPTION`, `OPTION_UMFUTURE`, `MARGIN_OPTION`, `OPTION_MARGIN`, `FUNDING_OPTION`, `OPTION_FUNDING`, `MAIN_PORTFOLIO_MARGIN`, `PORTFOLIO_MARGIN_MAIN`
+  - affected endpoints:
+    - `POST /sapi/v1/asset/transfer`
+- Modified parameter `underlying`:
+  - required: `false` → `true`
+  - affected endpoints:
+    - `GET /eapi/v1/mmp`
+    - `POST /eapi/v1/mmpReset`
+    - `POST /eapi/v1/mmpSet`
+- Modified parameter `urgency`:
+  - enum added: `LOW`, `MEDIUM`, `HIGH`
+  - affected endpoints:
+    - `POST /sapi/v1/algo/futures/newOrderVp`
+- Modified parameter `validTime`:
+  - enum added: `10s`, `30s`, `1m`
+  - affected endpoints:
+    - `POST /sapi/v1/convert/getQuote`
+- Modified parameter `walletType`:
+  - enum added: `SPOT`, `FUNDING`, `EARN`, `SPOT_FUNDING`, `FUNDING_EARN`, `SPOT_FUNDING_EARN`, `SPOT_EARN`
+  - affected endpoints:
+    - `POST /sapi/v1/convert/getQuote`
+    - `POST /sapi/v1/convert/limit/placeOrder`
+- Modified parameter `windowSize`:
+  - enum added: `7d`
+  - affected endpoints:
+    - `GET /api/v3/ticker`
+- Modified parameter `windowTimeInMilliseconds`:
+  - required: `false` → `true`
+  - affected endpoints:
+    - `POST /eapi/v1/mmpSet`
+- Modified parameter `workingSide`:
+  - enum added: `BUY`, `SELL`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order/oto`
+    - `POST /sapi/v1/margin/order/otoco`
+- Modified parameter `workingTimeInForce`:
+  - enum added: `GTC`, `IOC`, `FOK`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order/oto`
+- Modified parameter `workingTimeInForce`:
+  - enum added: `GTC`, `IOC`, `FOK`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order/otoco`
+- Modified parameter `workingType`:
+  - enum added: `CONTRACT_PRICE`
+  - affected endpoints:
+    - `POST /papi/v1/cm/conditional/order`
+    - `POST /papi/v1/um/conditional/order`
+- Modified parameter `workingType`:
+  - enum added: `CONTRACT_PRICE`
+  - affected endpoints:
+    - `POST /papi/v1/um/algo/order`
+- Modified parameter `workingType`:
+  - enum added: `LIMIT`, `LIMIT_MAKER`
+  - affected endpoints:
+    - `POST /sapi/v1/margin/order/oto`
+    - `POST /sapi/v1/margin/order/otoco`
+- Marked `GET /fapi/v1/ticker/price` as deprecated.
+- Marked `POST /api/v3/order/oco` as deprecated.
+
+### Removed (1)
+
+- `GET /sapi/v1/loan/repay/collateral/rate`
+
 ## 52.0.0 - 2026-07-06
 
 ### Removed (1)

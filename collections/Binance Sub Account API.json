@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "Binance Sub Account REST API",
+    "name": "Sub Account REST API",
     "description": {
-      "content": "OpenAPI Specification for the Binance Sub Account REST API",
+      "content": "Create and manage sub-accounts, control permissions, and transfer assets via the Sub Account API.",
       "type": "text/markdown"
     },
     "version": "1.0.0",
@@ -144,7 +144,7 @@
   ],
   "item": [
     {
-      "name": "Managed-Sub-Account",
+      "name": "Managed Sub Account",
       "item": [
         {
           "name": "Query Managed Sub-account Snapshot (For Investor Master Account) (USER_DATA)",
@@ -170,45 +170,38 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/managed-subaccount/accountSnapshot",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "managed-subaccount",
-                "accountSnapshot"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "managed-subaccount", "accountSnapshot"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "abc@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "type",
-                  "value": "type_example",
-                  "description": "\"SPOT\", \"MARGIN\"（cross）, \"FUTURES\"（UM）",
+                  "value": "SPOT",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "startTime",
                   "value": "1623319461670",
-                  "description": "",
+                  "description": "Query time range must be within 30 days and only supports data within the last month.",
                   "disabled": true
                 },
                 {
                   "key": "endTime",
                   "value": "1641782889000",
-                  "description": "",
+                  "description": "If both startTime and endTime are omitted, records from the last 7 days are returned by default.",
                   "disabled": true
                 },
                 {
                   "key": "limit",
-                  "value": "1",
-                  "description": "Default value: 1, Max value: 200",
+                  "value": "10",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -257,21 +250,14 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/managed-subaccount/asset",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "managed-subaccount",
-                "asset"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "managed-subaccount", "asset"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "abc@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
@@ -320,26 +306,19 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/managed-subaccount/deposit",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "managed-subaccount",
-                "deposit"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "managed-subaccount", "deposit"],
               "variable": [],
               "query": [
                 {
                   "key": "toEmail",
-                  "value": "toEmail_example",
+                  "value": "abc@test.com",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "asset",
-                  "value": "asset_example",
+                  "value": "BTC",
                   "description": "",
                   "disabled": false
                 },
@@ -395,9 +374,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/managed-subaccount/deposit/address",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -409,19 +386,19 @@
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "abc@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "coin",
-                  "value": "coin_example",
+                  "value": "USDT",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "network",
-                  "value": "network_example",
+                  "value": "LIGHTNING",
                   "description": "networks can be found in `GET /sapi/v1/capital/deposit/address`",
                   "disabled": true
                 },
@@ -477,9 +454,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/managed-subaccount/fetch-future-asset",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -490,14 +465,14 @@
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "abc@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "accountType",
-                  "value": "accountType_example",
-                  "description": "No input or input \"MARGIN\" to get Cross Margin account details. Input \"ISOLATED_MARGIN\" to get Isolated Margin account details.",
+                  "value": "MARGIN",
+                  "description": "No input or input \"USDT_FUTURE\" to get UM Futures account details. Input \"COIN_FUTURE\" to get CM Futures account details.",
                   "disabled": true
                 },
                 {
@@ -540,33 +515,26 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/managed-subaccount/info",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "managed-subaccount",
-                "info"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "managed-subaccount", "info"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "email_example",
-                  "description": "Managed sub-account email",
+                  "value": "abc@test.com",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "page",
                   "value": "1",
-                  "description": "Default value: 1",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "limit",
-                  "value": "1",
-                  "description": "Default value: 1, Max value: 200",
+                  "value": "10",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -615,26 +583,19 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/managed-subaccount/marginAsset",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "managed-subaccount",
-                "marginAsset"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "managed-subaccount", "marginAsset"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "abc@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "accountType",
-                  "value": "accountType_example",
+                  "value": "MARGIN",
                   "description": "No input or input \"MARGIN\" to get Cross Margin account details. Input \"ISOLATED_MARGIN\" to get Isolated Margin account details.",
                   "disabled": true
                 },
@@ -678,15 +639,8 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/managed-subaccount/query-trans-log",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "managed-subaccount",
-                "query-trans-log"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "managed-subaccount", "query-trans-log"],
               "variable": [],
               "query": [
                 {
@@ -703,14 +657,14 @@
                 },
                 {
                   "key": "page",
-                  "value": "789",
-                  "description": "Page",
+                  "value": "1",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "limit",
-                  "value": "789",
-                  "description": "Limit (Max: 500)",
+                  "value": "10",
+                  "description": "",
                   "disabled": false
                 },
                 {
@@ -721,8 +675,8 @@
                 },
                 {
                   "key": "transferFunctionAccountType",
-                  "value": "transferFunctionAccountType_example",
-                  "description": "Transfer function account type (SPOT/MARGIN/ISOLATED_MARGIN/USDT_FUTURE/COIN_FUTURE)",
+                  "value": "SPOT",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -748,7 +702,7 @@
           }
         },
         {
-          "name": "Query Managed Sub Account Transfer Log (For Investor Master Account) (USER_DATA)",
+          "name": "Query Managed Sub Account Transfer Log For Investor Master Account (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -771,9 +725,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/managed-subaccount/queryTransLogForInvestor",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -784,8 +736,8 @@
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "abc@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
@@ -802,26 +754,26 @@
                 },
                 {
                   "key": "page",
-                  "value": "789",
+                  "value": "1",
                   "description": "Page",
                   "disabled": false
                 },
                 {
                   "key": "limit",
-                  "value": "789",
-                  "description": "Limit (Max: 500)",
+                  "value": "1",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "transfers",
                   "value": "transfers_example",
-                  "description": "Transfer Direction (from/to)",
+                  "description": "Transfer Direction (FROM/TO)",
                   "disabled": true
                 },
                 {
                   "key": "transferFunctionAccountType",
-                  "value": "transferFunctionAccountType_example",
-                  "description": "Transfer function account type (SPOT/MARGIN/ISOLATED_MARGIN/USDT_FUTURE/COIN_FUTURE)",
+                  "value": "SPOT",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -841,7 +793,7 @@
           }
         },
         {
-          "name": "Query Managed Sub Account Transfer Log (For Trading Team Master Account) (USER_DATA)",
+          "name": "Query Managed Sub Account Transfer Log For Trading Team Master Account (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -864,9 +816,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/managed-subaccount/queryTransLogForTradeParent",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -877,8 +827,8 @@
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "abc@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
@@ -895,26 +845,26 @@
                 },
                 {
                   "key": "page",
-                  "value": "789",
-                  "description": "Page",
+                  "value": "1",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "limit",
-                  "value": "789",
-                  "description": "Limit (Max: 500)",
+                  "value": "10",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "transfers",
                   "value": "transfers_example",
-                  "description": "Transfer Direction (from/to)",
+                  "description": "Transfer Direction (FROM/TO)",
                   "disabled": true
                 },
                 {
                   "key": "transferFunctionAccountType",
-                  "value": "transferFunctionAccountType_example",
-                  "description": "Transfer function account type (SPOT/MARGIN/ISOLATED_MARGIN/USDT_FUTURE/COIN_FUTURE)",
+                  "value": "SPOT",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -957,26 +907,19 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/managed-subaccount/withdraw",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "managed-subaccount",
-                "withdraw"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "managed-subaccount", "withdraw"],
               "variable": [],
               "query": [
                 {
                   "key": "fromEmail",
-                  "value": "fromEmail_example",
+                  "value": "from@test.com",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "asset",
-                  "value": "asset_example",
+                  "value": "BTC",
                   "description": "",
                   "disabled": false
                 },
@@ -989,7 +932,7 @@
                 {
                   "key": "transferDate",
                   "value": "789",
-                  "description": "Withdrawals is automatically occur on the transfer date(UTC0). If a date is not selected, the withdrawal occurs right now",
+                  "description": "Withdrawal will happen automatically on the selected date (UTC 0). If no date is selected, withdrawal takes effect immediately.",
                   "disabled": true
                 },
                 {
@@ -1017,7 +960,484 @@
       ]
     },
     {
-      "name": "Asset-Management",
+      "name": "Account Management",
+      "item": [
+        {
+          "name": "Enable Options for Sub-account (For Master Account) (USER_DATA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sub-account/eoptions/enable",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "eoptions", "enable"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "123@test.com",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Enable Futures for Sub-account (For Master Account) (USER_DATA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sub-account/futures/enable",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "futures", "enable"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "123@test.com",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Futures Position-Risk of Sub-account (For Master Account) (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sub-account/futures/positionRisk",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "futures", "positionRisk"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "123@test.com",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Sub-account List (For Master Account) (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sub-account/list",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "list"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "123@test.com",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "isFreeze",
+                  "value": "true",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "page",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "10",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Sub-account's Status on Margin Or Futures (For Master Account) (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sub-account/status",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "status"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "123@test.com",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Sub-account Transaction Statistics (For Master Account) (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sub-account/transaction-statistics",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "transaction-statistics"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "abc@test.com",
+                  "description": "Managed sub-account email",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create a Virtual Sub-account (For Master Account) (USER_DATA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sub-account/virtualSubAccount",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "virtualSubAccount"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "subAccountString",
+                  "value": "testSubAccount",
+                  "description": "Please input a string. We will create a virtual email using that string for you to register",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Futures Position-Risk of Sub-account V2 (For Master Account) (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/sub-account/futures/positionRisk",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "sub-account", "futures", "positionRisk"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "123@test.com",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "futuresType",
+                  "value": "1",
+                  "description": "1:USDT-margined Futures，2: Coin-margined Futures",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Asset Management",
       "item": [
         {
           "name": "Get Sub-account Deposit Address (For Master Account) (USER_DATA)",
@@ -1043,27 +1463,19 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/capital/deposit/subAddress",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "capital",
-                "deposit",
-                "subAddress"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "capital", "deposit", "subAddress"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "123@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "coin",
-                  "value": "coin_example",
+                  "value": "BTC",
                   "description": "",
                   "disabled": false
                 },
@@ -1125,40 +1537,32 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/capital/deposit/subHisrec",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "capital",
-                "deposit",
-                "subHisrec"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "capital", "deposit", "subHisrec"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "123@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "includeSource",
                   "value": "false",
-                  "description": "Default: `false`, return `sourceAddress`field when set to `true`",
+                  "description": "Default `false`, return `sourceAddress` field when set to `true`",
                   "disabled": true
                 },
                 {
                   "key": "coin",
-                  "value": "coin_example",
+                  "value": "BTC",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "status",
-                  "value": "789",
-                  "description": "0(0:pending,6: credited but cannot withdraw,7:Wrong Deposit,8:Waiting User confirm,1:success)",
+                  "value": "0",
+                  "description": "Deposit status: 0=pending, 6=credited but cannot withdraw, 7=wrong deposit, 8=waiting user confirmation, 1=success.",
                   "disabled": true
                 },
                 {
@@ -1176,13 +1580,13 @@
                 {
                   "key": "limit",
                   "value": "1",
-                  "description": "Default value: 1, Max value: 200",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "offset",
                   "value": "0",
-                  "description": "default:0",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -1237,22 +1641,14 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/futures/account",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "futures",
-                "account"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "futures", "account"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "123@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
@@ -1301,9 +1697,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/futures/accountSummary",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -1315,14 +1709,14 @@
               "query": [
                 {
                   "key": "page",
-                  "value": "789",
-                  "description": "Page",
+                  "value": "1",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "limit",
-                  "value": "789",
-                  "description": "Limit (Max: 500)",
+                  "value": "1",
+                  "description": "",
                   "disabled": false
                 },
                 {
@@ -1371,9 +1765,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/futures/internalTransfer",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -1385,20 +1777,20 @@
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "123@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "futuresType",
-                  "value": "789",
+                  "value": "1",
                   "description": "1:USDT-margined Futures，2: Coin-margined Futures",
                   "disabled": false
                 },
                 {
                   "key": "startTime",
                   "value": "1623319461670",
-                  "description": "",
+                  "description": "Cannot be earlier than 1 month ago",
                   "disabled": true
                 },
                 {
@@ -1410,13 +1802,13 @@
                 {
                   "key": "page",
                   "value": "1",
-                  "description": "Default value: 1",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "limit",
-                  "value": "1",
-                  "description": "Default value: 1, Max value: 200",
+                  "value": "10",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -1465,9 +1857,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/futures/internalTransfer",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -1479,25 +1869,25 @@
               "query": [
                 {
                   "key": "fromEmail",
-                  "value": "fromEmail_example",
-                  "description": "",
+                  "value": "abc@test.com",
+                  "description": "Sender email",
                   "disabled": false
                 },
                 {
                   "key": "toEmail",
-                  "value": "toEmail_example",
-                  "description": "",
+                  "value": "def@test.com",
+                  "description": "Recipient email",
                   "disabled": false
                 },
                 {
                   "key": "futuresType",
-                  "value": "789",
+                  "value": "1",
                   "description": "1:USDT-margined Futures，2: Coin-margined Futures",
                   "disabled": false
                 },
                 {
                   "key": "asset",
-                  "value": "asset_example",
+                  "value": "BTC",
                   "description": "",
                   "disabled": false
                 },
@@ -1553,21 +1943,13 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/futures/move-position",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "futures",
-                "move-position"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "futures", "move-position"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
-                  "value": "symbol_example",
+                  "value": "BTCUSDT",
                   "description": "",
                   "disabled": false
                 },
@@ -1585,13 +1967,13 @@
                 },
                 {
                   "key": "page",
-                  "value": "789",
-                  "description": "Page",
+                  "value": "1",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "rows",
-                  "value": "789",
+                  "value": "1",
                   "description": "",
                   "disabled": false
                 },
@@ -1641,34 +2023,26 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/futures/move-position",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "futures",
-                "move-position"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "futures", "move-position"],
               "variable": [],
               "query": [
                 {
                   "key": "fromUserEmail",
-                  "value": "fromUserEmail_example",
+                  "value": "testFrom@google.com",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "toUserEmail",
-                  "value": "toUserEmail_example",
+                  "value": "testTo@google.com",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "productType",
-                  "value": "productType_example",
-                  "description": "Only support UM",
+                  "value": "UM",
+                  "description": "",
                   "disabled": false
                 },
                 {
@@ -1723,40 +2097,32 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/futures/transfer",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "futures",
-                "transfer"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "futures", "transfer"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "123@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "asset",
-                  "value": "asset_example",
-                  "description": "",
+                  "value": "USDT",
+                  "description": "The asset being transferred",
                   "disabled": false
                 },
                 {
                   "key": "amount",
                   "value": "1.0",
-                  "description": "",
+                  "description": "The amount to be transferred",
                   "disabled": false
                 },
                 {
                   "key": "type",
-                  "value": "789",
-                  "description": "1: transfer from subaccount's  spot account to margin account 2: transfer from subaccount's margin account to its spot account",
+                  "value": "1",
+                  "description": "1: transfer from subaccount's spot account to its USDT-margined futures account 2: transfer from subaccount's USDT-margined futures account to its spot account 3: transfer from subaccount's spot account to its COIN-margined futures account 4:transfer from subaccount's COIN-margined futures account to its spot account",
                   "disabled": false
                 },
                 {
@@ -1805,22 +2171,14 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/margin/account",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "margin",
-                "account"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "margin", "account"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "123@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
@@ -1869,16 +2227,8 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/margin/accountSummary",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "margin",
-                "accountSummary"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "margin", "accountSummary"],
               "variable": [],
               "query": [
                 {
@@ -1927,40 +2277,32 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/margin/transfer",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "margin",
-                "transfer"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "margin", "transfer"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "123@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "asset",
-                  "value": "asset_example",
-                  "description": "",
+                  "value": "BTC",
+                  "description": "The asset being transferred",
                   "disabled": false
                 },
                 {
                   "key": "amount",
                   "value": "1.0",
-                  "description": "",
+                  "description": "The amount to be transferred",
                   "disabled": false
                 },
                 {
                   "key": "type",
-                  "value": "789",
-                  "description": "1: transfer from subaccount's  spot account to margin account 2: transfer from subaccount's margin account to its spot account",
+                  "value": "1",
+                  "description": "1: transfer from subaccount's spot account to margin account 2: transfer from subaccount's margin account to its spot account",
                   "disabled": false
                 },
                 {
@@ -2009,33 +2351,26 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/spotSummary",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "spotSummary"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "spotSummary"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "email_example",
+                  "value": "123@test.com",
                   "description": "Managed sub-account email",
                   "disabled": true
                 },
                 {
                   "key": "page",
                   "value": "1",
-                  "description": "Default value: 1",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "size",
                   "value": "10",
-                  "description": "default 10, max 20",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -2084,9 +2419,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/sub/transfer/history",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -2099,13 +2432,13 @@
               "query": [
                 {
                   "key": "fromEmail",
-                  "value": "fromEmail_example",
+                  "value": "aaa@test.com",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "toEmail",
-                  "value": "toEmail_example",
+                  "value": "bbb@test.com",
                   "description": "",
                   "disabled": true
                 },
@@ -2124,13 +2457,13 @@
                 {
                   "key": "page",
                   "value": "1",
-                  "description": "Default value: 1",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "limit",
-                  "value": "1",
-                  "description": "Default value: 1, Max value: 200",
+                  "value": "10",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -2179,21 +2512,13 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/transfer/subToMaster",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "transfer",
-                "subToMaster"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "transfer", "subToMaster"],
               "variable": [],
               "query": [
                 {
                   "key": "asset",
-                  "value": "asset_example",
+                  "value": "BTC",
                   "description": "",
                   "disabled": false
                 },
@@ -2249,27 +2574,19 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/transfer/subToSub",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "transfer",
-                "subToSub"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "transfer", "subToSub"],
               "variable": [],
               "query": [
                 {
                   "key": "toEmail",
-                  "value": "toEmail_example",
+                  "value": "abc@test.com",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "asset",
-                  "value": "asset_example",
+                  "value": "BTC",
                   "description": "",
                   "disabled": false
                 },
@@ -2325,9 +2642,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/transfer/subUserHistory",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -2339,13 +2654,13 @@
               "query": [
                 {
                   "key": "asset",
-                  "value": "asset_example",
+                  "value": "BTC",
                   "description": "If not sent, result of all assets will be returned",
                   "disabled": true
                 },
                 {
                   "key": "type",
-                  "value": "789",
+                  "value": "1",
                   "description": "1: transfer in, 2: transfer out",
                   "disabled": true
                 },
@@ -2363,8 +2678,8 @@
                 },
                 {
                   "key": "limit",
-                  "value": "1",
-                  "description": "Default value: 1, Max value: 200",
+                  "value": "10",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -2419,26 +2734,19 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/universalTransfer",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "universalTransfer"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "universalTransfer"],
               "variable": [],
               "query": [
                 {
                   "key": "fromEmail",
-                  "value": "fromEmail_example",
+                  "value": "abctest@gmail.com",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "toEmail",
-                  "value": "toEmail_example",
+                  "value": "deftest@gmail.com",
                   "description": "",
                   "disabled": true
                 },
@@ -2463,13 +2771,13 @@
                 {
                   "key": "page",
                   "value": "1",
-                  "description": "Default value: 1",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "limit",
-                  "value": "1",
-                  "description": "Default value: 1, Max value: 200",
+                  "value": "10",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -2518,56 +2826,49 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/universalTransfer",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "universalTransfer"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "universalTransfer"],
               "variable": [],
               "query": [
                 {
                   "key": "fromEmail",
-                  "value": "fromEmail_example",
+                  "value": "abc@test.com",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "toEmail",
-                  "value": "toEmail_example",
+                  "value": "def@test.com",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "fromAccountType",
-                  "value": "fromAccountType_example",
-                  "description": "\"SPOT\",\"USDT_FUTURE\",\"COIN_FUTURE\",\"MARGIN\"(Cross),\"ISOLATED_MARGIN\"",
+                  "value": "SPOT",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "toAccountType",
-                  "value": "toAccountType_example",
-                  "description": "\"SPOT\",\"USDT_FUTURE\",\"COIN_FUTURE\",\"MARGIN\"(Cross),\"ISOLATED_MARGIN\"",
+                  "value": "SPOT",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "clientTranId",
                   "value": "1",
-                  "description": "",
+                  "description": "Must be unique",
                   "disabled": true
                 },
                 {
                   "key": "symbol",
-                  "value": "symbol_example",
+                  "value": "BTCUSDT",
                   "description": "Only supported under ISOLATED_MARGIN type",
                   "disabled": true
                 },
                 {
                   "key": "asset",
-                  "value": "asset_example",
+                  "value": "BTC",
                   "description": "",
                   "disabled": false
                 },
@@ -2623,27 +2924,19 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v2/sub-account/futures/account",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v2",
-                "sub-account",
-                "futures",
-                "account"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v2", "sub-account", "futures", "account"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "123@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "futuresType",
-                  "value": "789",
+                  "value": "1",
                   "description": "1:USDT-margined Futures，2: Coin-margined Futures",
                   "disabled": false
                 },
@@ -2693,9 +2986,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v2/sub-account/futures/accountSummary",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v2",
@@ -2707,20 +2998,20 @@
               "query": [
                 {
                   "key": "futuresType",
-                  "value": "789",
+                  "value": "1",
                   "description": "1:USDT-margined Futures，2: Coin-margined Futures",
                   "disabled": false
                 },
                 {
                   "key": "page",
                   "value": "1",
-                  "description": "Default value: 1",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "limit",
-                  "value": "1",
-                  "description": "Default value: 1, Max value: 200",
+                  "value": "10",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -2769,21 +3060,14 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v3/sub-account/assets",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v3",
-                "sub-account",
-                "assets"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v3", "sub-account", "assets"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "123@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
@@ -2809,7 +3093,7 @@
           }
         },
         {
-          "name": "Query Sub-account Assets (For Master Account) (USER_DATA)",
+          "name": "Query Sub-account Assets V4 (For Master Account) (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -2832,21 +3116,14 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v4/sub-account/assets",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v4",
-                "sub-account",
-                "assets"
-              ],
+              "host": ["{{url}}"],
+              "path": ["sapi", "v4", "sub-account", "assets"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "123@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
@@ -2874,10 +3151,10 @@
       ]
     },
     {
-      "name": "Account-Management",
+      "name": "Api Management",
       "item": [
         {
-          "name": "Enable Options for Sub-account (For Master Account) (USER_DATA)",
+          "name": "Create Sub-account API Key (For Master Account) (USER_DATA)",
           "request": {
             "method": "POST",
             "header": [
@@ -2899,24 +3176,76 @@
               "urlencoded": []
             },
             "url": {
-              "raw": "{{url}}/sapi/v1/sub-account/eoptions/enable",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "eoptions",
-                "enable"
-              ],
+              "raw": "{{url}}/sapi/v1/sub-account/subAccountApi",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "subAccountApi"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "123@test.com",
+                  "description": "Sub-account email",
                   "disabled": false
+                },
+                {
+                  "key": "apiName",
+                  "value": "myKey",
+                  "description": "API Key name",
+                  "disabled": false
+                },
+                {
+                  "key": "status",
+                  "value": "2",
+                  "description": "IP restriction status. 1 = unrestricted, 2 = restricted to trusted IPs, 3 = third-party IP restriction",
+                  "disabled": false
+                },
+                {
+                  "key": "canTrade",
+                  "value": "true",
+                  "description": "Spot & Margin trading permission, default false",
+                  "disabled": true
+                },
+                {
+                  "key": "canMarginLoanRepay",
+                  "value": "false",
+                  "description": "Margin borrow/repay permission, default false",
+                  "disabled": true
+                },
+                {
+                  "key": "canFuturesTrade",
+                  "value": "false",
+                  "description": "Futures trading permission, default false",
+                  "disabled": true
+                },
+                {
+                  "key": "canUniversalTransfer",
+                  "value": "false",
+                  "description": "Universal transfer permission, default false",
+                  "disabled": true
+                },
+                {
+                  "key": "canVanillaOptions",
+                  "value": "false",
+                  "description": "Vanilla options permission, default false",
+                  "disabled": true
+                },
+                {
+                  "key": "ipAddress",
+                  "value": "69.210.67.14",
+                  "description": "Required when status=2. IP address list, max 500 chars",
+                  "disabled": true
+                },
+                {
+                  "key": "thirdPartyName",
+                  "value": "thirdParty",
+                  "description": "Required when status=3. Third-party name",
+                  "disabled": true
+                },
+                {
+                  "key": "publicKey",
+                  "value": "",
+                  "description": "Ed25519 public key (optional, for Ed25519 type API Key)",
+                  "disabled": true
                 },
                 {
                   "key": "recvWindow",
@@ -2941,9 +3270,9 @@
           }
         },
         {
-          "name": "Enable Futures for Sub-account (For Master Account) (USER_DATA)",
+          "name": "Delete Sub-account API Key (For Master Account) (USER_DATA)",
           "request": {
-            "method": "POST",
+            "method": "DELETE",
             "header": [
               {
                 "key": "X-MBX-APIKEY",
@@ -2963,23 +3292,21 @@
               "urlencoded": []
             },
             "url": {
-              "raw": "{{url}}/sapi/v1/sub-account/futures/enable",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "futures",
-                "enable"
-              ],
+              "raw": "{{url}}/sapi/v1/sub-account/subAccountApi",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "subAccountApi"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "123@test.com",
+                  "description": "Sub-account email",
+                  "disabled": false
+                },
+                {
+                  "key": "subAccountApiKey",
+                  "value": "k5V49ldtn4tszj6W3hystegdfvmGbqDzjmkCtpTvC0G74WhK7yd4rfCTo4lShf",
+                  "description": "The sub-account API Key to be deleted",
                   "disabled": false
                 },
                 {
@@ -3005,71 +3332,7 @@
           }
         },
         {
-          "name": "Get Futures Position-Risk of Sub-account (For Master Account) (USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/sub-account/futures/positionRisk",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "futures",
-                "positionRisk"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Query Sub-account List (For Master Account) (USER_DATA)",
+          "name": "Query Sub-account API Key (For Master Account) (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -3091,103 +3354,33 @@
               "urlencoded": []
             },
             "url": {
-              "raw": "{{url}}/sapi/v1/sub-account/list",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "list"
-              ],
+              "raw": "{{url}}/sapi/v1/sub-account/subAccountApi",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "subAccountApi"],
               "variable": [],
               "query": [
                 {
                   "key": "email",
-                  "value": "email_example",
-                  "description": "Managed sub-account email",
-                  "disabled": true
+                  "value": "123@test.com",
+                  "description": "Sub-account email",
+                  "disabled": false
                 },
                 {
-                  "key": "isFreeze",
-                  "value": "isFreeze_example",
-                  "description": "true or false",
+                  "key": "subAccountApiKey",
+                  "value": "k5V49ldtn4tszj6W3hystegdfvmGbqDzjmkCtpTvC0G74WhK7yd4rfCTo4lShf",
+                  "description": "Specify an API Key for exact match",
                   "disabled": true
                 },
                 {
                   "key": "page",
                   "value": "1",
-                  "description": "Default value: 1",
+                  "description": "Page number, default 1, minimum 1",
                   "disabled": true
                 },
                 {
-                  "key": "limit",
-                  "value": "1",
-                  "description": "Default value: 1, Max value: 200",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Sub-account's Status on Margin Or Futures (For Master Account) (USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/sub-account/status",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "status"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "email",
-                  "value": "email_example",
-                  "description": "Managed sub-account email",
+                  "key": "size",
+                  "value": "30",
+                  "description": "Page size, default 30, maximum 100",
                   "disabled": true
                 },
                 {
@@ -3212,207 +3405,6 @@
             }
           }
         },
-        {
-          "name": "Query Sub-account Transaction Statistics (For Master Account) (USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/sub-account/transaction-statistics",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "transaction-statistics"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "email",
-                  "value": "email_example",
-                  "description": "Managed sub-account email",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Create a Virtual Sub-account (For Master Account) (USER_DATA)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v1/sub-account/virtualSubAccount",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v1",
-                "sub-account",
-                "virtualSubAccount"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "subAccountString",
-                  "value": "subAccountString_example",
-                  "description": "Please input a string. We will create a virtual email using that string for you to register",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Futures Position-Risk of Sub-account V2 (For Master Account) (USER_DATA)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/sapi/v2/sub-account/futures/positionRisk",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "sapi",
-                "v2",
-                "sub-account",
-                "futures",
-                "positionRisk"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
-                  "disabled": false
-                },
-                {
-                  "key": "futuresType",
-                  "value": "789",
-                  "description": "1:USDT-margined Futures，2: Coin-margined Futures",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "Api-Management",
-      "item": [
         {
           "name": "Get IP Restriction for a Sub-account API Key (For Master Account) (USER_DATA)",
           "request": {
@@ -3437,9 +3429,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/subAccountApi/ipRestriction",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -3451,13 +3441,13 @@
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "123@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "subAccountApiKey",
-                  "value": "subAccountApiKey_example",
+                  "value": "k5V49ldtn4tszj6W3hystegdfvmGbqDzjmkCtpTvC0G74WhK7yd4rfCTo4lShf",
                   "description": "",
                   "disabled": false
                 },
@@ -3507,9 +3497,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v1/sub-account/subAccountApi/ipRestriction/ipList",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v1",
@@ -3522,21 +3510,113 @@
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "123@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "subAccountApiKey",
-                  "value": "subAccountApiKey_example",
+                  "value": "k5V49ldtn4tszj6W3hystegdfvmGbqDzjmkCtpTvC0G74WhK7yd4rfCTo4lShf",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "ipAddress",
-                  "value": "ipAddress_example",
+                  "value": "69.210.67.14",
                   "description": "IPs to be deleted. Can be added in batches, separated by commas",
                   "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Modify Sub-account API Key Permission (For Master Account) (USER_DATA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/sub-account/subAccountApiPermission",
+              "host": ["{{url}}"],
+              "path": ["sapi", "v1", "sub-account", "subAccountApiPermission"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "123@test.com",
+                  "description": "Sub-account email",
+                  "disabled": false
+                },
+                {
+                  "key": "subAccountApiKey",
+                  "value": "k5V49ldtn4tszj6W3hystegdfvmGbqDzjmkCtpTvC0G74WhK7yd4rfCTo4lShf",
+                  "description": "Sub-account API Key",
+                  "disabled": false
+                },
+                {
+                  "key": "canTrade",
+                  "value": "true",
+                  "description": "Spot & Margin trading permission",
+                  "disabled": true
+                },
+                {
+                  "key": "canMarginLoanRepay",
+                  "value": "false",
+                  "description": "Margin borrow/repay permission",
+                  "disabled": true
+                },
+                {
+                  "key": "canFuturesTrade",
+                  "value": "true",
+                  "description": "Futures trading permission",
+                  "disabled": true
+                },
+                {
+                  "key": "canUniversalTransfer",
+                  "value": "false",
+                  "description": "Universal transfer permission",
+                  "disabled": true
+                },
+                {
+                  "key": "canVanillaOptions",
+                  "value": "false",
+                  "description": "Vanilla options permission",
+                  "disabled": true
                 },
                 {
                   "key": "recvWindow",
@@ -3584,9 +3664,7 @@
             },
             "url": {
               "raw": "{{url}}/sapi/v2/sub-account/subAccountApi/ipRestriction",
-              "host": [
-                "{{url}}"
-              ],
+              "host": ["{{url}}"],
               "path": [
                 "sapi",
                 "v2",
@@ -3598,25 +3676,25 @@
               "query": [
                 {
                   "key": "email",
-                  "value": "sub-account-email@email.com",
-                  "description": "[Sub-account email](#email-address)",
+                  "value": "123@test.com",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "subAccountApiKey",
-                  "value": "subAccountApiKey_example",
+                  "value": "k5V49ldtn4tszj6W3hystegdfvmGbqDzjmkCtpTvC0G74WhK7yd4rfCTo4lShf",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "status",
-                  "value": "status_example",
+                  "value": "1",
                   "description": "IP Restriction status. 1 = IP Unrestricted. 2 = Restrict access to trusted IPs only.",
                   "disabled": false
                 },
                 {
                   "key": "ipAddress",
-                  "value": "ipAddress_example",
+                  "value": "69.210.67.14",
                   "description": "Insert static IP in batch, separated by commas.",
                   "disabled": true
                 },

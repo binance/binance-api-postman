@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "Binance Spot REST API",
+    "name": "Spot REST API",
     "description": {
-      "content": "OpenAPI Specifications for the Binance Spot REST API\n\nAPI documents:\n  - [Github rest-api documentation file](https://github.com/binance/binance-spot-api-docs/blob/master/rest-api.md)\n  - [General API information for rest-api on website](https://developers.binance.com/docs/binance-spot-api-docs/rest-api/general-api-information)\n",
+      "content": "Access market data, manage accounts, and trade on Binance Spot.",
       "type": "text/markdown"
     },
     "version": "1.0.0",
@@ -144,1030 +144,10 @@
   ],
   "item": [
     {
-      "name": "Account",
-      "item": [
-        {
-          "name": "Account information",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/api/v3/account",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "account"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "omitZeroBalances",
-                  "value": "false",
-                  "description": "When set to `true`, emits only the non-zero balances of an account. <br>Default value: `false`",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Query Commission Rates",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/api/v3/account/commission",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "account",
-                "commission"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "symbol",
-                  "value": "BNBUSDT",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Query all Order lists",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/api/v3/allOrderList",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "allOrderList"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "fromId",
-                  "value": "1",
-                  "description": "ID to get aggregate trades from INCLUSIVE.",
-                  "disabled": true
-                },
-                {
-                  "key": "startTime",
-                  "value": "1735693200000",
-                  "description": "Timestamp in ms to get aggregate trades from INCLUSIVE.",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1735693200000",
-                  "description": "Timestamp in ms to get aggregate trades until INCLUSIVE.",
-                  "disabled": true
-                },
-                {
-                  "key": "limit",
-                  "value": "500",
-                  "description": "Default: 500; Maximum: 1000.",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "All orders",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/api/v3/allOrders",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "allOrders"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "symbol",
-                  "value": "BNBUSDT",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "orderId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "startTime",
-                  "value": "1735693200000",
-                  "description": "Timestamp in ms to get aggregate trades from INCLUSIVE.",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1735693200000",
-                  "description": "Timestamp in ms to get aggregate trades until INCLUSIVE.",
-                  "disabled": true
-                },
-                {
-                  "key": "limit",
-                  "value": "500",
-                  "description": "Default: 500; Maximum: 1000.",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Query Allocations",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/api/v3/myAllocations",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "myAllocations"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "symbol",
-                  "value": "BNBUSDT",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "startTime",
-                  "value": "1735693200000",
-                  "description": "Timestamp in ms to get aggregate trades from INCLUSIVE.",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1735693200000",
-                  "description": "Timestamp in ms to get aggregate trades until INCLUSIVE.",
-                  "disabled": true
-                },
-                {
-                  "key": "fromAllocationId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "limit",
-                  "value": "500",
-                  "description": "Default: 500; Maximum: 1000.",
-                  "disabled": true
-                },
-                {
-                  "key": "orderId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Query relevant filters",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/api/v3/myFilters",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "myFilters"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "symbol",
-                  "value": "BNBUSDT",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Query Prevented Matches",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/api/v3/myPreventedMatches",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "myPreventedMatches"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "symbol",
-                  "value": "BNBUSDT",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "preventedMatchId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "orderId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "fromPreventedMatchId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "limit",
-                  "value": "500",
-                  "description": "Default: 500; Maximum: 1000.",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Account trade list",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/api/v3/myTrades",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "myTrades"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "symbol",
-                  "value": "BNBUSDT",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "orderId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "startTime",
-                  "value": "1735693200000",
-                  "description": "Timestamp in ms to get aggregate trades from INCLUSIVE.",
-                  "disabled": true
-                },
-                {
-                  "key": "endTime",
-                  "value": "1735693200000",
-                  "description": "Timestamp in ms to get aggregate trades until INCLUSIVE.",
-                  "disabled": true
-                },
-                {
-                  "key": "fromId",
-                  "value": "1",
-                  "description": "ID to get aggregate trades from INCLUSIVE.",
-                  "disabled": true
-                },
-                {
-                  "key": "limit",
-                  "value": "500",
-                  "description": "Default: 500; Maximum: 1000.",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Query Open Order lists",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/api/v3/openOrderList",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "openOrderList"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Current open orders",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/api/v3/openOrders",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "openOrders"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "symbol",
-                  "value": "BNBUSDT",
-                  "description": "Symbol to query",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Query order",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/api/v3/order",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "order"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "symbol",
-                  "value": "BNBUSDT",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "orderId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "origClientOrderId",
-                  "value": "origClientOrderId_example",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Query Order Amendments",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/api/v3/order/amendments",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "order",
-                "amendments"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "symbol",
-                  "value": "BNBUSDT",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "orderId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": false
-                },
-                {
-                  "key": "fromExecutionId",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "limit",
-                  "value": "500",
-                  "description": "Default: 500; Maximum: 1000",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Query Order list",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/api/v3/orderList",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "orderList"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "orderListId",
-                  "value": "1",
-                  "description": "Either `orderListId` or `listClientOrderId` must be provided",
-                  "disabled": true
-                },
-                {
-                  "key": "origClientOrderId",
-                  "value": "origClientOrderId_example",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Query Unfilled Order Count",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/api/v3/rateLimit/order",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "rateLimit",
-                "order"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
       "name": "Trade",
       "item": [
         {
-          "name": "Cancel All Open Orders on a Symbol",
+          "name": "Cancel All Open Orders on a Symbol (TRADE)",
           "request": {
             "method": "DELETE",
             "header": [
@@ -1190,14 +170,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/openOrders",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "openOrders"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "openOrders"],
               "variable": [],
               "query": [
                 {
@@ -1208,8 +182,8 @@
                 },
                 {
                   "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                   "disabled": true
                 },
                 {
@@ -1229,7 +203,7 @@
           }
         },
         {
-          "name": "Cancel order",
+          "name": "Cancel order (TRADE)",
           "request": {
             "method": "DELETE",
             "header": [
@@ -1252,14 +226,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/order",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "order"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "order"],
               "variable": [],
               "query": [
                 {
@@ -1276,26 +244,26 @@
                 },
                 {
                   "key": "origClientOrderId",
-                  "value": "origClientOrderId_example",
+                  "value": "myOrder1",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "newClientOrderId",
-                  "value": "newClientOrderId_example",
-                  "description": "A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+                  "value": "cancelMyOrder1",
+                  "description": "Used to uniquely identify this cancel. Automatically generated by default.",
                   "disabled": true
                 },
                 {
                   "key": "cancelRestrictions",
                   "value": "ONLY_NEW",
-                  "description": "",
+                  "description": "Supported values: <br>`ONLY_NEW` - Cancel will succeed if the order status is `NEW`.<br> `ONLY_PARTIALLY_FILLED` - Cancel will succeed if order status is `PARTIALLY_FILLED`.",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                   "disabled": true
                 },
                 {
@@ -1315,7 +283,7 @@
           }
         },
         {
-          "name": "New order",
+          "name": "New order (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -1338,14 +306,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/order",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "order"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "order"],
               "variable": [],
               "query": [
                 {
@@ -1357,42 +319,42 @@
                 {
                   "key": "side",
                   "value": "BUY",
-                  "description": "",
+                  "description": "Please see [Enums](/products/spot/enums#side) for supported values.",
                   "disabled": false
                 },
                 {
                   "key": "type",
                   "value": "MARKET",
-                  "description": "",
+                  "description": "Please see [Enums](/products/spot/enums#ordertypes) for supported values.",
                   "disabled": false
                 },
                 {
                   "key": "timeInForce",
                   "value": "GTC",
-                  "description": "",
+                  "description": "Please see [Enums](/products/spot/enums#timeinforce) for supported values.",
                   "disabled": true
                 },
                 {
                   "key": "quantity",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "quoteOrderQty",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "price",
-                  "value": "400.0",
+                  "value": "400",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "newClientOrderId",
-                  "value": "newClientOrderId_example",
+                  "value": "myOrder1",
                   "description": "A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
                   "disabled": true
                 },
@@ -1410,56 +372,56 @@
                 },
                 {
                   "key": "stopPrice",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.",
                   "disabled": true
                 },
                 {
                   "key": "trailingDelta",
                   "value": "1",
-                  "description": "See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md).",
+                  "description": "See Trailing Stop order FAQ",
                   "disabled": true
                 },
                 {
                   "key": "icebergQty",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order.",
                   "disabled": true
                 },
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "",
+                  "description": "`MARKET` and `LIMIT` order types default to `FULL`, all other orders default to `ACK`.",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "",
+                  "description": "The allowed enums is dependent on what is configured on the symbol.",
                   "disabled": true
                 },
                 {
                   "key": "pegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "",
+                  "description": "See Pegged Orders Info",
                   "disabled": true
                 },
                 {
                   "key": "pegOffsetValue",
                   "value": "1",
-                  "description": "Priceleveltopegthepriceto(max:100).<br>See[PeggedOrdersInfo](#pegged-orders-info)",
+                  "description": "Price level to peg the price to (max: 100). See Pegged Orders Info",
                   "disabled": true
                 },
                 {
                   "key": "pegOffsetType",
                   "value": "PRICE_LEVEL",
-                  "description": "",
+                  "description": "Only `PRICE_LEVEL` is supported. See Pegged Orders Info",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                   "disabled": true
                 },
                 {
@@ -1479,7 +441,7 @@
           }
         },
         {
-          "name": "Order Amend Keep Priority",
+          "name": "Order Amend Keep Priority (TRADE)",
           "request": {
             "method": "PUT",
             "header": [
@@ -1502,16 +464,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/order/amend/keepPriority",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "order",
-                "amend",
-                "keepPriority"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "order", "amend", "keepPriority"],
               "variable": [],
               "query": [
                 {
@@ -1523,30 +477,30 @@
                 {
                   "key": "orderId",
                   "value": "1",
-                  "description": "",
+                  "description": "`orderId` or `origClientOrderId` must be sent",
                   "disabled": true
                 },
                 {
                   "key": "origClientOrderId",
-                  "value": "origClientOrderId_example",
-                  "description": "",
+                  "value": "myOrder1",
+                  "description": "`orderId` or `origClientOrderId` must be sent",
                   "disabled": true
                 },
                 {
                   "key": "newClientOrderId",
-                  "value": "newClientOrderId_example",
-                  "description": "A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+                  "value": "myOrder2",
+                  "description": "The new client order ID for the order after being amended. <br> If not sent, one will be randomly generated. <br> It is possible to reuse the current clientOrderId by sending it as the `newClientOrderId`.",
                   "disabled": true
                 },
                 {
                   "key": "newQty",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "`newQty` must be greater than 0 and less than the order's quantity.",
                   "disabled": false
                 },
                 {
                   "key": "recvWindow",
-                  "value": "5000.0",
+                  "value": "5000",
                   "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                   "disabled": true
                 },
@@ -1567,7 +521,7 @@
           }
         },
         {
-          "name": "Cancel an Existing Order and Send a New Order",
+          "name": "Cancel an Existing Order and Send a New Order (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -1590,15 +544,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/order/cancelReplace",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "order",
-                "cancelReplace"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "order", "cancelReplace"],
               "variable": [],
               "query": [
                 {
@@ -1622,7 +569,7 @@
                 {
                   "key": "cancelReplaceMode",
                   "value": "STOP_ON_FAILURE",
-                  "description": "",
+                  "description": "The allowed values are: <br/> `STOP_ON_FAILURE` - If the cancel request fails, the new order placement will not be attempted. <br/> `ALLOW_FAILURE` - new order placement will be attempted even if cancel request fails.",
                   "disabled": false
                 },
                 {
@@ -1633,31 +580,31 @@
                 },
                 {
                   "key": "quantity",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "quoteOrderQty",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "price",
-                  "value": "400.0",
+                  "value": "400",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "cancelNewClientOrderId",
-                  "value": "cancelNewClientOrderId_example",
+                  "value": "cancelMyOrder1",
                   "description": "Used to uniquely identify this cancel. Automatically generated by default.",
                   "disabled": true
                 },
                 {
                   "key": "cancelOrigClientOrderId",
-                  "value": "cancelOrigClientOrderId_example",
+                  "value": "myOrder1",
                   "description": "Either `cancelOrderId` or `cancelOrigClientOrderId` must be sent. <br></br> If both `cancelOrderId` and `cancelOrigClientOrderId` parameters are provided, the `cancelOrderId` is searched first, then the `cancelOrigClientOrderId` from that result is checked against that order. <br></br> If both conditions are not met the request will be rejected.",
                   "disabled": true
                 },
@@ -1669,8 +616,8 @@
                 },
                 {
                   "key": "newClientOrderId",
-                  "value": "newClientOrderId_example",
-                  "description": "A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+                  "value": "myOrder2",
+                  "description": "Used to identify the new order.",
                   "disabled": true
                 },
                 {
@@ -1687,68 +634,68 @@
                 },
                 {
                   "key": "stopPrice",
-                  "value": "1.0",
-                  "description": "Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.",
+                  "value": "1",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "trailingDelta",
                   "value": "1",
-                  "description": "See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md).",
+                  "description": "See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)",
                   "disabled": true
                 },
                 {
                   "key": "icebergQty",
-                  "value": "1.0",
-                  "description": "Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order.",
+                  "value": "1",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "",
+                  "description": "Allowed values: <br/> `ACK`, `RESULT`, `FULL` <br/> `MARKET` and `LIMIT` orders types default to `FULL`; all other orders default to `ACK`",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. The possible supported values are: [STP Modes](/products/spot/enums#stpmodes).",
                   "disabled": true
                 },
                 {
                   "key": "cancelRestrictions",
                   "value": "ONLY_NEW",
-                  "description": "",
+                  "description": "Supported values: <br>`ONLY_NEW` - Cancel will succeed if the order status is `NEW`.<br> `ONLY_PARTIALLY_FILLED ` - Cancel will succeed if order status is `PARTIALLY_FILLED`.",
                   "disabled": true
                 },
                 {
                   "key": "orderRateLimitExceededMode",
                   "value": "DO_NOTHING",
-                  "description": "",
+                  "description": "Supported values: <br> `DO_NOTHING` (default)- will only attempt to cancel the order if account has not exceeded the unfilled order rate limit<br> `CANCEL_ONLY` - will always cancel the order",
                   "disabled": true
                 },
                 {
                   "key": "pegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "",
+                  "description": "`PRIMARY_PEG` or `MARKET_PEG` <br> See Pegged Orders",
                   "disabled": true
                 },
                 {
                   "key": "pegOffsetValue",
                   "value": "1",
-                  "description": "Priceleveltopegthepriceto(max:100).<br>See[PeggedOrdersInfo](#pegged-orders-info)",
+                  "description": "Price level to peg the price to (max: 100) <br> See Pegged Orders",
                   "disabled": true
                 },
                 {
                   "key": "pegOffsetType",
                   "value": "PRICE_LEVEL",
-                  "description": "",
+                  "description": "Only `PRICE_LEVEL` is supported <br> See Pegged Orders.",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                   "disabled": true
                 },
                 {
@@ -1768,7 +715,7 @@
           }
         },
         {
-          "name": "New OCO - Deprecated",
+          "name": "New OCO - Deprecated (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -1791,15 +738,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/order/oco",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "order",
-                "oco"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "order", "oco"],
               "variable": [],
               "query": [
                 {
@@ -1810,7 +750,7 @@
                 },
                 {
                   "key": "listClientOrderId",
-                  "value": "listClientOrderId_example",
+                  "value": "JYVpp3F0f5CAG15DhtrqLp",
                   "description": "A unique Id for the entire orderList",
                   "disabled": true
                 },
@@ -1822,19 +762,19 @@
                 },
                 {
                   "key": "quantity",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "limitClientOrderId",
-                  "value": "limitClientOrderId_example",
+                  "value": "limitOrder1",
                   "description": "A unique Id for the limit order",
                   "disabled": true
                 },
                 {
                   "key": "price",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": false
                 },
@@ -1852,25 +792,25 @@
                 },
                 {
                   "key": "limitIcebergQty",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "Used to make the `LIMIT_MAKER` leg an iceberg order.",
                   "disabled": true
                 },
                 {
                   "key": "trailingDelta",
                   "value": "1",
-                  "description": "See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md).",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "stopClientOrderId",
-                  "value": "stopClientOrderId_example",
+                  "value": "stopOrder1",
                   "description": "A unique Id for the stop loss/stop loss limit leg",
                   "disabled": true
                 },
                 {
                   "key": "stopPrice",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": false
                 },
@@ -1888,37 +828,37 @@
                 },
                 {
                   "key": "stopLimitPrice",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "If provided, `stopLimitTimeInForce` is required.",
                   "disabled": true
                 },
                 {
                   "key": "stopIcebergQty",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "Used with `STOP_LOSS_LIMIT` leg to make an iceberg order.",
                   "disabled": true
                 },
                 {
                   "key": "stopLimitTimeInForce",
                   "value": "GTC",
-                  "description": "",
+                  "description": "Valid values are `GTC`/`FOK`/`IOC`",
                   "disabled": true
                 },
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "",
+                  "description": "Format of the JSON response. Supported values: [Order Response Type](/products/spot/enums#orderresponsetype)",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "",
+                  "description": "The allowed values are dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
-                  "value": "5000.0",
+                  "value": "5000",
                   "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                   "disabled": true
                 },
@@ -1939,7 +879,7 @@
           }
         },
         {
-          "name": "Test new order",
+          "name": "Test new order (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -1962,21 +902,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/order/test",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "order",
-                "test"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "order", "test"],
               "variable": [],
               "query": [
                 {
                   "key": "computeCommissionRates",
                   "value": "false",
-                  "description": "Default: `false` <br> See [Commissions FAQ](faqs/commission_faq.md#test-order-diferences) to learn more.",
+                  "description": "Default: `false` <br> See [Commissions FAQ](/products/spot/faqs/commission_faq#test-order-diferences) to learn more.",
                   "disabled": true
                 },
                 {
@@ -1988,43 +921,43 @@
                 {
                   "key": "side",
                   "value": "BUY",
-                  "description": "",
+                  "description": "Please see [Enums](/products/spot/enums#side) for supported values.",
                   "disabled": false
                 },
                 {
                   "key": "type",
                   "value": "MARKET",
-                  "description": "",
+                  "description": "Please see [Enums](/products/spot/enums#ordertypes) for supported values.",
                   "disabled": false
                 },
                 {
                   "key": "timeInForce",
                   "value": "GTC",
-                  "description": "",
+                  "description": "Please see [Enums](/products/spot/enums#timeinforce) for supported values.",
                   "disabled": true
                 },
                 {
                   "key": "quantity",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "quoteOrderQty",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "price",
-                  "value": "400.0",
+                  "value": "400",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "newClientOrderId",
-                  "value": "newClientOrderId_example",
-                  "description": "A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+                  "value": "myOrder1",
+                  "description": "A unique id among open orders. Automatically generated if not sent. Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
                   "disabled": true
                 },
                 {
@@ -2041,56 +974,56 @@
                 },
                 {
                   "key": "stopPrice",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "Used with `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, and `TAKE_PROFIT_LIMIT` orders.",
                   "disabled": true
                 },
                 {
                   "key": "trailingDelta",
                   "value": "1",
-                  "description": "See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md).",
+                  "description": "See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)",
                   "disabled": true
                 },
                 {
                   "key": "icebergQty",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order.",
                   "disabled": true
                 },
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "",
+                  "description": "Set the response JSON. `ACK`, `RESULT`, or `FULL`; `MARKET` and `LIMIT` order types default to `FULL`, all other orders default to `ACK`.",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)",
                   "disabled": true
                 },
                 {
                   "key": "pegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "",
+                  "description": "`PRIMARY_PEG` or `MARKET_PEG`. See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
                   "key": "pegOffsetValue",
                   "value": "1",
-                  "description": "Priceleveltopegthepriceto(max:100).<br>See[PeggedOrdersInfo](#pegged-orders-info)",
+                  "description": "Price level for pegging (max: 100). See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
                   "key": "pegOffsetType",
                   "value": "PRICE_LEVEL",
-                  "description": "",
+                  "description": "Only `PRICE_LEVEL` is supported. See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`. Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                   "disabled": true
                 },
                 {
@@ -2110,7 +1043,7 @@
           }
         },
         {
-          "name": "Cancel Order list",
+          "name": "Cancel Order list (TRADE)",
           "request": {
             "method": "DELETE",
             "header": [
@@ -2133,14 +1066,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/orderList",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "orderList"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "orderList"],
               "variable": [],
               "query": [
                 {
@@ -2157,20 +1084,20 @@
                 },
                 {
                   "key": "listClientOrderId",
-                  "value": "listClientOrderId_example",
-                  "description": "A unique Id for the entire orderList",
+                  "value": "C3wyj4WVEktd7u9aVBRXcN",
+                  "description": "Either `orderListId` or `listClientOrderId` must be provided",
                   "disabled": true
                 },
                 {
                   "key": "newClientOrderId",
-                  "value": "newClientOrderId_example",
-                  "description": "A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+                  "value": "cancelMyOrder1",
+                  "description": "Used to uniquely identify this cancel. Automatically generated by default.",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                   "disabled": true
                 },
                 {
@@ -2190,7 +1117,7 @@
           }
         },
         {
-          "name": "New Order list - OCO",
+          "name": "New Order list - OCO (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -2213,15 +1140,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/orderList/oco",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "orderList",
-                "oco"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "orderList", "oco"],
               "variable": [],
               "query": [
                 {
@@ -2232,8 +1152,8 @@
                 },
                 {
                   "key": "listClientOrderId",
-                  "value": "listClientOrderId_example",
-                  "description": "A unique Id for the entire orderList",
+                  "value": "lH1YDkuQKWiXVXHPSKYEIp",
+                  "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `aboveClientOrderId` and the `belowClientOrderId`.",
                   "disabled": true
                 },
                 {
@@ -2244,8 +1164,8 @@
                 },
                 {
                   "key": "quantity",
-                  "value": "1.0",
-                  "description": "",
+                  "value": "1",
+                  "description": "Quantity for both orders of the order list.",
                   "disabled": false
                 },
                 {
@@ -2256,8 +1176,8 @@
                 },
                 {
                   "key": "aboveClientOrderId",
-                  "value": "aboveClientOrderId_example",
-                  "description": "Arbitrary unique ID among open orders for the above order. Automatically generated if not sent",
+                  "value": "aboveOrder1",
+                  "description": "Arbitrary unique ID among open orders for the above order. Automatically generated if not sent.",
                   "disabled": true
                 },
                 {
@@ -2268,26 +1188,26 @@
                 },
                 {
                   "key": "abovePrice",
-                  "value": "1.0",
-                  "description": "Can be used if `aboveType` is `STOP_LOSS_LIMIT` , `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price.",
+                  "value": "1",
+                  "description": "Can be used if `aboveType` is `STOP_LOSS_LIMIT`, `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price.",
                   "disabled": true
                 },
                 {
                   "key": "aboveStopPrice",
-                  "value": "1.0",
-                  "description": "Can be used if `aboveType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`. <br>Either `aboveStopPrice` or `aboveTrailingDelta` or both, must be specified.",
+                  "value": "1",
+                  "description": "Can be used if `aboveType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`. Either `aboveStopPrice` or `aboveTrailingDelta` or both, must be specified.",
                   "disabled": true
                 },
                 {
                   "key": "aboveTrailingDelta",
                   "value": "1",
-                  "description": "See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md).",
+                  "description": "See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)",
                   "disabled": true
                 },
                 {
                   "key": "aboveTimeInForce",
                   "value": "GTC",
-                  "description": "",
+                  "description": "Required if `aboveType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT`.",
                   "disabled": true
                 },
                 {
@@ -2299,13 +1219,13 @@
                 {
                   "key": "aboveStrategyType",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the above order strategy. <br>Values smaller than 1000000 are reserved and cannot be used.",
+                  "description": "Arbitrary numeric value identifying the above order strategy. Values smaller than `1000000` are reserved and cannot be used.",
                   "disabled": true
                 },
                 {
                   "key": "abovePegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "",
+                  "description": "`PRIMARY_PEG` or `MARKET_PEG`. See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
@@ -2323,13 +1243,13 @@
                 {
                   "key": "belowType",
                   "value": "STOP_LOSS",
-                  "description": "",
+                  "description": "Supported values: `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`",
                   "disabled": false
                 },
                 {
                   "key": "belowClientOrderId",
-                  "value": "belowClientOrderId_example",
-                  "description": "Arbitrary unique ID among open orders for the below order. Automatically generated if not sent",
+                  "value": "belowOrder1",
+                  "description": "Arbitrary unique ID among open orders for the below order. Automatically generated if not sent.",
                   "disabled": true
                 },
                 {
@@ -2340,26 +1260,26 @@
                 },
                 {
                   "key": "belowPrice",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "Can be used if `belowType` is `STOP_LOSS_LIMIT`, `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price.",
                   "disabled": true
                 },
                 {
                   "key": "belowStopPrice",
-                  "value": "1.0",
-                  "description": "Can be used if `belowType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT` or `TAKE_PROFIT_LIMIT` <br>Either `belowStopPrice` or `belowTrailingDelta` or both, must be specified.",
+                  "value": "1",
+                  "description": "Can be used if `belowType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`. Either `belowStopPrice` or `belowTrailingDelta` or both, must be specified.",
                   "disabled": true
                 },
                 {
                   "key": "belowTrailingDelta",
                   "value": "1",
-                  "description": "See [Trailing Stop order FAQ](faqs/trailing-stop-faq.md).",
+                  "description": "See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)",
                   "disabled": true
                 },
                 {
                   "key": "belowTimeInForce",
                   "value": "GTC",
-                  "description": "",
+                  "description": "Required if `belowType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT`.",
                   "disabled": true
                 },
                 {
@@ -2371,13 +1291,13 @@
                 {
                   "key": "belowStrategyType",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the below order strategy. <br>Values smaller than 1000000 are reserved and cannot be used.",
+                  "description": "Arbitrary numeric value identifying the below order strategy. Values smaller than `1000000` are reserved and cannot be used.",
                   "disabled": true
                 },
                 {
                   "key": "belowPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "",
+                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
@@ -2395,19 +1315,19 @@
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "",
+                  "description": "Select response format: `ACK`, `RESULT`, `FULL`.",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`. Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                   "disabled": true
                 },
                 {
@@ -2427,7 +1347,7 @@
           }
         },
         {
-          "name": "New Order List - OPO",
+          "name": "New Order List - OPO (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -2450,15 +1370,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/orderList/opo",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "orderList",
-                "opo"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "orderList", "opo"],
               "variable": [],
               "query": [
                 {
@@ -2469,80 +1382,80 @@
                 },
                 {
                   "key": "listClientOrderId",
-                  "value": "listClientOrderId_example",
-                  "description": "A unique Id for the entire orderList",
+                  "value": "H94qCqO27P74OEiO4X8HOG",
+                  "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `workingClientOrderId` and the `pendingClientOrderId`.",
                   "disabled": true
                 },
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "",
+                  "description": "Format of the JSON response. Supported values: [Order Response Type](/products/spot/enums#orderresponsetype)",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)",
                   "disabled": true
                 },
                 {
                   "key": "workingType",
                   "value": "LIMIT",
-                  "description": "",
+                  "description": "Supported values: `LIMIT`, `LIMIT_MAKER`",
                   "disabled": false
                 },
                 {
                   "key": "workingSide",
                   "value": "BUY",
-                  "description": "",
+                  "description": "Supported values: [Order Side](/products/spot/enums#side)",
                   "disabled": false
                 },
                 {
                   "key": "workingClientOrderId",
-                  "value": "workingClientOrderId_example",
-                  "description": "Arbitrary unique ID among open orders for the working order. Automatically generated if not sent. ",
+                  "value": "workingOrder1",
+                  "description": "Arbitrary unique ID among open orders for the working order. Automatically generated if not sent.",
                   "disabled": true
                 },
                 {
                   "key": "workingPrice",
-                  "value": "1.0",
-                  "description": "",
+                  "value": "1",
+                  "description": "Price for the working order.",
                   "disabled": false
                 },
                 {
                   "key": "workingQuantity",
-                  "value": "1.0",
-                  "description": "Sets the quantity for the working order. ",
+                  "value": "1",
+                  "description": "Sets the quantity for the working order.",
                   "disabled": false
                 },
                 {
                   "key": "workingIcebergQty",
-                  "value": "1.0",
-                  "description": "This can only be used if `workingTimeInForce` is `GTC`, or if `workingType` is `LIMIT_MAKER`. ",
+                  "value": "1",
+                  "description": "This can only be used if `workingTimeInForce` is `GTC`, or if `workingType` is `LIMIT_MAKER`.",
                   "disabled": true
                 },
                 {
                   "key": "workingTimeInForce",
                   "value": "GTC",
-                  "description": "",
+                  "description": "Supported values: [Time In Force](/products/spot/enums#timeinforce)",
                   "disabled": true
                 },
                 {
                   "key": "workingStrategyId",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the working order within an order strategy. ",
+                  "description": "Arbitrary numeric value identifying the working order within an order strategy.",
                   "disabled": true
                 },
                 {
                   "key": "workingStrategyType",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the working order strategy. Values smaller than 1000000 are reserved and cannot be used. ",
+                  "description": "Arbitrary numeric value identifying the working order strategy. Values smaller than `1000000` are reserved and cannot be used.",
                   "disabled": true
                 },
                 {
                   "key": "workingPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "",
+                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
@@ -2560,67 +1473,67 @@
                 {
                   "key": "pendingType",
                   "value": "LIMIT",
-                  "description": "",
+                  "description": "Supported values: [Order Types](/products/spot/enums#ordertypes). Note that `MARKET` orders using `quoteOrderQty` are not supported.",
                   "disabled": false
                 },
                 {
                   "key": "pendingSide",
                   "value": "BUY",
-                  "description": "",
+                  "description": "Supported values: [Order Side](/products/spot/enums#side)",
                   "disabled": false
                 },
                 {
                   "key": "pendingClientOrderId",
-                  "value": "pendingClientOrderId_example",
-                  "description": "Arbitrary unique ID among open orders for the pending order. Automatically generated if not sent. ",
+                  "value": "pendingOrder1",
+                  "description": "Arbitrary unique ID among open orders for the pending order. Automatically generated if not sent.",
                   "disabled": true
                 },
                 {
                   "key": "pendingPrice",
-                  "value": "1.0",
-                  "description": "",
+                  "value": "1",
+                  "description": "Price for the pending order.",
                   "disabled": true
                 },
                 {
                   "key": "pendingStopPrice",
-                  "value": "1.0",
-                  "description": "",
+                  "value": "1",
+                  "description": "Stop price for the pending order.",
                   "disabled": true
                 },
                 {
                   "key": "pendingTrailingDelta",
-                  "value": "1.0",
-                  "description": "",
+                  "value": "1",
+                  "description": "Trailing delta for the pending order.",
                   "disabled": true
                 },
                 {
                   "key": "pendingIcebergQty",
-                  "value": "1.0",
-                  "description": "This can only be used if `pendingTimeInForce` is `GTC` or if `pendingType` is `LIMIT_MAKER`. ",
+                  "value": "1",
+                  "description": "This can only be used if `pendingTimeInForce` is `GTC` or if `pendingType` is `LIMIT_MAKER`.",
                   "disabled": true
                 },
                 {
                   "key": "pendingTimeInForce",
                   "value": "GTC",
-                  "description": "",
+                  "description": "Supported values: [Time In Force](/products/spot/enums#timeinforce)",
                   "disabled": true
                 },
                 {
                   "key": "pendingStrategyId",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the pending order within an order strategy. ",
+                  "description": "Arbitrary numeric value identifying the pending order within an order strategy.",
                   "disabled": true
                 },
                 {
                   "key": "pendingStrategyType",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the pending order strategy. Values smaller than 1000000 are reserved and cannot be used. ",
+                  "description": "Arbitrary numeric value identifying the pending order strategy. Values smaller than `1000000` are reserved and cannot be used.",
                   "disabled": true
                 },
                 {
                   "key": "pendingPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "",
+                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
@@ -2637,8 +1550,8 @@
                 },
                 {
                   "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                   "disabled": true
                 },
                 {
@@ -2658,7 +1571,7 @@
           }
         },
         {
-          "name": "New Order List - OPOCO",
+          "name": "New Order List - OPOCO (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -2681,15 +1594,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/orderList/opoco",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "orderList",
-                "opoco"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "orderList", "opoco"],
               "variable": [],
               "query": [
                 {
@@ -2700,20 +1606,20 @@
                 },
                 {
                   "key": "listClientOrderId",
-                  "value": "listClientOrderId_example",
-                  "description": "A unique Id for the entire orderList",
+                  "value": "bcedxMpQG6nFrZUPQyshoL",
+                  "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `workingClientOrderId` and the `pendingClientOrderId`.",
                   "disabled": true
                 },
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "",
+                  "description": "Format of the JSON response. Supported values: [Order Response Type](/products/spot/enums#orderresponsetype)",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)",
                   "disabled": true
                 },
                 {
@@ -2725,205 +1631,205 @@
                 {
                   "key": "workingSide",
                   "value": "BUY",
-                  "description": "",
+                  "description": "Supported values: [Order Side](/products/spot/enums#side)",
                   "disabled": false
                 },
                 {
                   "key": "workingClientOrderId",
-                  "value": "workingClientOrderId_example",
-                  "description": "Arbitrary unique ID among open orders for the working order. Automatically generated if not sent. ",
+                  "value": "workingOrder1",
+                  "description": "Arbitrary unique ID among open orders for the working order. Automatically generated if not sent.",
                   "disabled": true
                 },
                 {
                   "key": "workingPrice",
-                  "value": "1.0",
-                  "description": "",
+                  "value": "1",
+                  "description": "Price for the working order.",
                   "disabled": false
                 },
                 {
                   "key": "workingQuantity",
-                  "value": "1.0",
-                  "description": "Sets the quantity for the working order. ",
+                  "value": "1",
+                  "description": "Sets the quantity for the working order.",
                   "disabled": false
                 },
                 {
                   "key": "workingIcebergQty",
-                  "value": "1.0",
-                  "description": "This can only be used if `workingTimeInForce` is `GTC`, or if `workingType` is `LIMIT_MAKER`. ",
+                  "value": "1",
+                  "description": "This can only be used if `workingTimeInForce` is `GTC`, or if `workingType` is `LIMIT_MAKER`.",
                   "disabled": true
                 },
                 {
                   "key": "workingTimeInForce",
                   "value": "GTC",
-                  "description": "",
+                  "description": "Supported values: [Time In Force](/products/spot/enums#timeinforce)",
                   "disabled": true
                 },
                 {
                   "key": "workingStrategyId",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the working order within an order strategy. ",
+                  "description": "Arbitrary numeric value identifying the working order within an order strategy.",
                   "disabled": true
                 },
                 {
                   "key": "workingStrategyType",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the working order strategy. Values smaller than 1000000 are reserved and cannot be used. ",
+                  "description": "Arbitrary numeric value identifying the working order strategy. Values smaller than `1000000` are reserved and cannot be used.",
                   "disabled": true
                 },
                 {
                   "key": "workingPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "",
+                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
                   "key": "workingPegOffsetType",
                   "value": "PRICE_LEVEL",
-                  "description": "",
+                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
                   "key": "workingPegOffsetValue",
                   "value": "1",
-                  "description": "",
+                  "description": "Price level for pegging (max: 100). See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
                   "key": "pendingSide",
                   "value": "BUY",
-                  "description": "",
+                  "description": "Supported values: [Order Side](/products/spot/enums#side)",
                   "disabled": false
                 },
                 {
                   "key": "pendingAboveType",
                   "value": "STOP_LOSS_LIMIT",
-                  "description": "",
+                  "description": "Supported values: `STOP_LOSS_LIMIT`, `STOP_LOSS`, `LIMIT_MAKER`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`",
                   "disabled": false
                 },
                 {
                   "key": "pendingAboveClientOrderId",
-                  "value": "pendingAboveClientOrderId_example",
-                  "description": "Arbitrary unique ID among open orders for the pending above order. Automatically generated if not sent. ",
+                  "value": "pendingAboveOrder1",
+                  "description": "Arbitrary unique ID among open orders for the pending above order. Automatically generated if not sent.",
                   "disabled": true
                 },
                 {
                   "key": "pendingAbovePrice",
-                  "value": "1.0",
-                  "description": "Can be used if `pendingAboveType` is `STOP_LOSS_LIMIT` , `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price. ",
+                  "value": "1",
+                  "description": "Can be used if `pendingAboveType` is `STOP_LOSS_LIMIT`, `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price.",
                   "disabled": true
                 },
                 {
                   "key": "pendingAboveStopPrice",
-                  "value": "1.0",
-                  "description": "Can be used if `pendingAboveType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT` ",
+                  "value": "1",
+                  "description": "Can be used if `pendingAboveType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`.",
                   "disabled": true
                 },
                 {
                   "key": "pendingAboveTrailingDelta",
-                  "value": "1.0",
-                  "description": "See [Trailing Stop FAQ](./faqs/trailing-stop-faq.md) ",
+                  "value": "1",
+                  "description": "See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)",
                   "disabled": true
                 },
                 {
                   "key": "pendingAboveIcebergQty",
-                  "value": "1.0",
-                  "description": "This can only be used if `pendingAboveTimeInForce` is `GTC` or if `pendingAboveType` is `LIMIT_MAKER`. ",
+                  "value": "1",
+                  "description": "This can only be used if `pendingAboveTimeInForce` is `GTC` or `pendingAboveType` is `LIMIT_MAKER`.",
                   "disabled": true
                 },
                 {
                   "key": "pendingAboveTimeInForce",
                   "value": "GTC",
-                  "description": "",
+                  "description": "Required if `pendingAboveType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT`.",
                   "disabled": true
                 },
                 {
                   "key": "pendingAboveStrategyId",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the pending above order within an order strategy. ",
+                  "description": "Arbitrary numeric value identifying the pending above order within an order strategy.",
                   "disabled": true
                 },
                 {
                   "key": "pendingAboveStrategyType",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the pending above order strategy. Values smaller than 1000000 are reserved and cannot be used. ",
+                  "description": "Arbitrary numeric value identifying the pending above order strategy. Values smaller than `1000000` are reserved and cannot be used.",
                   "disabled": true
                 },
                 {
                   "key": "pendingAbovePegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "",
+                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
                   "key": "pendingAbovePegOffsetType",
                   "value": "PRICE_LEVEL",
-                  "description": "",
+                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
                   "key": "pendingAbovePegOffsetValue",
                   "value": "1",
-                  "description": "",
+                  "description": "Price level for pegging (max: 100). See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowType",
                   "value": "STOP_LOSS",
-                  "description": "",
+                  "description": "Supported values: `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowClientOrderId",
-                  "value": "pendingBelowClientOrderId_example",
-                  "description": "Arbitrary unique ID among open orders for the pending below order. Automatically generated if not sent. ",
+                  "value": "pendingBelowOrder1",
+                  "description": "Arbitrary unique ID among open orders for the pending below order. Automatically generated if not sent.",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowPrice",
-                  "value": "1.0",
-                  "description": "Can be used if `pendingBelowType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT` to specify limit price ",
+                  "value": "1",
+                  "description": "Can be used if `pendingBelowType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT` to specify the limit price.",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowStopPrice",
-                  "value": "1.0",
-                  "description": "Can be used if `pendingBelowType` is `STOP_LOSS`, `STOP_LOSS_LIMIT, TAKE_PROFIT or TAKE_PROFIT_LIMIT`. Either `pendingBelowStopPrice` or `pendingBelowTrailingDelta` or both, must be specified. ",
+                  "value": "1",
+                  "description": "Can be used if `pendingBelowType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`. Either `pendingBelowStopPrice` or `pendingBelowTrailingDelta` or both, must be specified.",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowTrailingDelta",
-                  "value": "1.0",
-                  "description": "",
+                  "value": "1",
+                  "description": "See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowIcebergQty",
-                  "value": "1.0",
-                  "description": "This can only be used if `pendingBelowTimeInForce` is `GTC`, or if `pendingBelowType` is `LIMIT_MAKER`. ",
+                  "value": "1",
+                  "description": "This can only be used if `pendingBelowTimeInForce` is `GTC` or `pendingBelowType` is `LIMIT_MAKER`.",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowTimeInForce",
                   "value": "GTC",
-                  "description": "",
+                  "description": "Supported values: [Time In Force](/products/spot/enums#timeinforce)",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowStrategyId",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the pending below order within an order strategy. ",
+                  "description": "Arbitrary numeric value identifying the pending below order within an order strategy.",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowStrategyType",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the pending below order strategy. Values smaller than 1000000 are reserved and cannot be used. ",
+                  "description": "Arbitrary numeric value identifying the pending below order strategy. Values smaller than `1000000` are reserved and cannot be used.",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "",
+                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
@@ -2940,8 +1846,8 @@
                 },
                 {
                   "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`. Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                   "disabled": true
                 },
                 {
@@ -2961,7 +1867,7 @@
           }
         },
         {
-          "name": "New Order list - OTO",
+          "name": "New Order list - OTO (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -2984,15 +1890,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/orderList/oto",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "orderList",
-                "oto"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "orderList", "oto"],
               "variable": [],
               "query": [
                 {
@@ -3003,80 +1902,86 @@
                 },
                 {
                   "key": "listClientOrderId",
-                  "value": "listClientOrderId_example",
-                  "description": "A unique Id for the entire orderList",
+                  "value": "yl2ERtcar1o25zcWtqVBTC",
+                  "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `workingClientOrderId` and the `pendingClientOrderId`.",
                   "disabled": true
                 },
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "",
+                  "description": "Format of the JSON response. Supported values: [Order Response Type](/products/spot/enums#orderresponsetype)",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)",
                   "disabled": true
                 },
                 {
                   "key": "workingType",
                   "value": "LIMIT",
-                  "description": "",
+                  "description": "Supported values: `LIMIT`, `LIMIT_MAKER`",
                   "disabled": false
                 },
                 {
                   "key": "workingSide",
                   "value": "BUY",
-                  "description": "",
+                  "description": "Supported values: [Order Side](/products/spot/enums#side)",
                   "disabled": false
                 },
                 {
                   "key": "workingClientOrderId",
-                  "value": "workingClientOrderId_example",
-                  "description": "Arbitrary unique ID among open orders for the working order. Automatically generated if not sent. ",
+                  "value": "workingOrder1",
+                  "description": "Arbitrary unique ID among open orders for the working order. Automatically generated if not sent.",
                   "disabled": true
                 },
                 {
                   "key": "workingPrice",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "workingQuantity",
-                  "value": "1.0",
-                  "description": "Sets the quantity for the working order. ",
+                  "value": "1",
+                  "description": "Sets the quantity for the working order.",
                   "disabled": false
                 },
                 {
                   "key": "workingIcebergQty",
-                  "value": "1.0",
-                  "description": "This can only be used if `workingTimeInForce` is `GTC`, or if `workingType` is `LIMIT_MAKER`. ",
+                  "value": "1",
+                  "description": "This can only be used if `workingTimeInForce` is `GTC`, or if `workingType` is `LIMIT_MAKER`.",
                   "disabled": true
                 },
                 {
                   "key": "workingTimeInForce",
                   "value": "GTC",
-                  "description": "",
+                  "description": "Supported values: [Time In Force](/products/spot/enums#timeinforce)",
                   "disabled": true
                 },
                 {
                   "key": "workingStrategyId",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the working order within an order strategy. ",
+                  "description": "Arbitrary numeric value identifying the working order within an order strategy.",
                   "disabled": true
                 },
                 {
                   "key": "workingStrategyType",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the working order strategy. Values smaller than 1000000 are reserved and cannot be used. ",
+                  "description": "Arbitrary numeric value identifying the working order strategy. Values smaller than `1000000` are reserved and cannot be used.",
                   "disabled": true
+                },
+                {
+                  "key": "pendingType",
+                  "value": "LIMIT",
+                  "description": "Supported values: [Order Types](/products/spot/enums#ordertypes). Note that `MARKET` orders using `quoteOrderQty` are not supported.",
+                  "disabled": false
                 },
                 {
                   "key": "workingPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "",
+                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
@@ -3092,75 +1997,69 @@
                   "disabled": true
                 },
                 {
-                  "key": "pendingType",
-                  "value": "LIMIT",
-                  "description": "",
-                  "disabled": false
-                },
-                {
                   "key": "pendingSide",
                   "value": "BUY",
-                  "description": "",
+                  "description": "Supported values: [Order Side](/products/spot/enums#side)",
                   "disabled": false
                 },
                 {
                   "key": "pendingClientOrderId",
-                  "value": "pendingClientOrderId_example",
-                  "description": "Arbitrary unique ID among open orders for the pending order. Automatically generated if not sent. ",
+                  "value": "pendingOrder1",
+                  "description": "Arbitrary unique ID among open orders for the pending order. Automatically generated if not sent.",
                   "disabled": true
                 },
                 {
                   "key": "pendingPrice",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "pendingStopPrice",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "pendingTrailingDelta",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "pendingQuantity",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "Sets the quantity for the pending order.",
                   "disabled": false
                 },
                 {
                   "key": "pendingIcebergQty",
-                  "value": "1.0",
-                  "description": "This can only be used if `pendingTimeInForce` is `GTC` or if `pendingType` is `LIMIT_MAKER`. ",
+                  "value": "1",
+                  "description": "This can only be used if `pendingTimeInForce` is `GTC` or if `pendingType` is `LIMIT_MAKER`.",
                   "disabled": true
                 },
                 {
                   "key": "pendingTimeInForce",
                   "value": "GTC",
-                  "description": "",
+                  "description": "Supported values: [Time In Force](/products/spot/enums#timeinforce)",
                   "disabled": true
                 },
                 {
                   "key": "pendingStrategyId",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the pending order within an order strategy. ",
+                  "description": "Arbitrary numeric value identifying the pending order within an order strategy.",
                   "disabled": true
                 },
                 {
                   "key": "pendingStrategyType",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the pending order strategy. Values smaller than 1000000 are reserved and cannot be used. ",
+                  "description": "Arbitrary numeric value identifying the pending order strategy. Values smaller than `1000000` are reserved and cannot be used.",
                   "disabled": true
                 },
                 {
                   "key": "pendingPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "",
+                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
@@ -3177,8 +2076,8 @@
                 },
                 {
                   "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`. Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                   "disabled": true
                 },
                 {
@@ -3198,7 +2097,7 @@
           }
         },
         {
-          "name": "New Order list - OTOCO",
+          "name": "New Order list - OTOCO (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -3221,15 +2120,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/orderList/otoco",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "orderList",
-                "otoco"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "orderList", "otoco"],
               "variable": [],
               "query": [
                 {
@@ -3240,80 +2132,80 @@
                 },
                 {
                   "key": "listClientOrderId",
-                  "value": "listClientOrderId_example",
-                  "description": "A unique Id for the entire orderList",
+                  "value": "RumwQpBaDctlUu5jyG5rs0",
+                  "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `workingClientOrderId` and the `pendingClientOrderId`.",
                   "disabled": true
                 },
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "",
+                  "description": "Format of the JSON response. Supported values: [Order Response Type](/products/spot/enums#orderresponsetype)",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)",
                   "disabled": true
                 },
                 {
                   "key": "workingType",
                   "value": "LIMIT",
-                  "description": "",
+                  "description": "Supported values: `LIMIT`, `LIMIT_MAKER`",
                   "disabled": false
                 },
                 {
                   "key": "workingSide",
                   "value": "BUY",
-                  "description": "",
+                  "description": "Supported values: [Order Side](/products/spot/enums#side)",
                   "disabled": false
                 },
                 {
                   "key": "workingClientOrderId",
-                  "value": "workingClientOrderId_example",
-                  "description": "Arbitrary unique ID among open orders for the working order. Automatically generated if not sent. ",
+                  "value": "workingOrder1",
+                  "description": "Arbitrary unique ID among open orders for the working order. Automatically generated if not sent.",
                   "disabled": true
                 },
                 {
                   "key": "workingPrice",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "workingQuantity",
-                  "value": "1.0",
-                  "description": "Sets the quantity for the working order. ",
+                  "value": "1",
+                  "description": "Sets the quantity for the working order.",
                   "disabled": false
                 },
                 {
                   "key": "workingIcebergQty",
-                  "value": "1.0",
-                  "description": "This can only be used if `workingTimeInForce` is `GTC`, or if `workingType` is `LIMIT_MAKER`. ",
+                  "value": "1",
+                  "description": "This can only be used if `workingTimeInForce` is `GTC`, or if `workingType` is `LIMIT_MAKER`.",
                   "disabled": true
                 },
                 {
                   "key": "workingTimeInForce",
                   "value": "GTC",
-                  "description": "",
+                  "description": "Supported values: [Time In Force](/products/spot/enums#timeinforce)",
                   "disabled": true
                 },
                 {
                   "key": "workingStrategyId",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the working order within an order strategy. ",
+                  "description": "Arbitrary numeric value identifying the working order within an order strategy.",
                   "disabled": true
                 },
                 {
                   "key": "workingStrategyType",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the working order strategy. Values smaller than 1000000 are reserved and cannot be used. ",
+                  "description": "Arbitrary numeric value identifying the working order strategy. Values smaller than `1000000` are reserved and cannot be used.",
                   "disabled": true
                 },
                 {
                   "key": "workingPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "",
+                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
@@ -3331,73 +2223,73 @@
                 {
                   "key": "pendingSide",
                   "value": "BUY",
-                  "description": "",
+                  "description": "Supported values: [Order Side](/products/spot/enums#side)",
                   "disabled": false
                 },
                 {
                   "key": "pendingQuantity",
-                  "value": "1.0",
-                  "description": "Sets the quantity for the pending order.",
+                  "value": "1",
+                  "description": "Sets the quantity for the pending orders.",
                   "disabled": false
                 },
                 {
                   "key": "pendingAboveType",
                   "value": "STOP_LOSS_LIMIT",
-                  "description": "",
+                  "description": "Supported values: `STOP_LOSS_LIMIT`, `STOP_LOSS`, `LIMIT_MAKER`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`",
                   "disabled": false
                 },
                 {
                   "key": "pendingAboveClientOrderId",
-                  "value": "pendingAboveClientOrderId_example",
-                  "description": "Arbitrary unique ID among open orders for the pending above order. Automatically generated if not sent. ",
+                  "value": "pendingAboveOrder1",
+                  "description": "Arbitrary unique ID among open orders for the pending above order. Automatically generated if not sent.",
                   "disabled": true
                 },
                 {
                   "key": "pendingAbovePrice",
-                  "value": "1.0",
-                  "description": "Can be used if `pendingAboveType` is `STOP_LOSS_LIMIT` , `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price. ",
+                  "value": "1",
+                  "description": "Can be used if `pendingAboveType` is `STOP_LOSS_LIMIT`, `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price.",
                   "disabled": true
                 },
                 {
                   "key": "pendingAboveStopPrice",
-                  "value": "1.0",
-                  "description": "Can be used if `pendingAboveType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT` ",
+                  "value": "1",
+                  "description": "Can be used if `pendingAboveType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`.",
                   "disabled": true
                 },
                 {
                   "key": "pendingAboveTrailingDelta",
-                  "value": "1.0",
-                  "description": "See [Trailing Stop FAQ](./faqs/trailing-stop-faq.md) ",
+                  "value": "1",
+                  "description": "See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)",
                   "disabled": true
                 },
                 {
                   "key": "pendingAboveIcebergQty",
-                  "value": "1.0",
-                  "description": "This can only be used if `pendingAboveTimeInForce` is `GTC` or if `pendingAboveType` is `LIMIT_MAKER`. ",
+                  "value": "1",
+                  "description": "This can only be used if `pendingAboveTimeInForce` is `GTC` or if `pendingAboveType` is `LIMIT_MAKER`.",
                   "disabled": true
                 },
                 {
                   "key": "pendingAboveTimeInForce",
                   "value": "GTC",
-                  "description": "",
+                  "description": "Required if `pendingAboveType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT`.",
                   "disabled": true
                 },
                 {
                   "key": "pendingAboveStrategyId",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the pending above order within an order strategy. ",
+                  "description": "Arbitrary numeric value identifying the pending above order within an order strategy.",
                   "disabled": true
                 },
                 {
                   "key": "pendingAboveStrategyType",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the pending above order strategy. Values smaller than 1000000 are reserved and cannot be used. ",
+                  "description": "Arbitrary numeric value identifying the pending above order strategy. Values smaller than `1000000` are reserved and cannot be used.",
                   "disabled": true
                 },
                 {
                   "key": "pendingAbovePegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "",
+                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
@@ -3415,61 +2307,61 @@
                 {
                   "key": "pendingBelowType",
                   "value": "STOP_LOSS",
-                  "description": "",
+                  "description": "Supported values: `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowClientOrderId",
-                  "value": "pendingBelowClientOrderId_example",
-                  "description": "Arbitrary unique ID among open orders for the pending below order. Automatically generated if not sent. ",
+                  "value": "pendingBelowOrder1",
+                  "description": "Arbitrary unique ID among open orders for the pending below order. Automatically generated if not sent.",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowPrice",
-                  "value": "1.0",
-                  "description": "Can be used if `pendingBelowType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT` to specify limit price ",
+                  "value": "1",
+                  "description": "Can be used if `pendingBelowType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT` to specify the limit price.",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowStopPrice",
-                  "value": "1.0",
-                  "description": "Can be used if `pendingBelowType` is `STOP_LOSS`, `STOP_LOSS_LIMIT, TAKE_PROFIT or TAKE_PROFIT_LIMIT`. Either `pendingBelowStopPrice` or `pendingBelowTrailingDelta` or both, must be specified. ",
+                  "value": "1",
+                  "description": "Can be used if `pendingBelowType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`. Either `pendingBelowStopPrice` or `pendingBelowTrailingDelta` or both, must be specified.",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowTrailingDelta",
-                  "value": "1.0",
-                  "description": "",
+                  "value": "1",
+                  "description": "See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowIcebergQty",
-                  "value": "1.0",
-                  "description": "This can only be used if `pendingBelowTimeInForce` is `GTC`, or if `pendingBelowType` is `LIMIT_MAKER`. ",
+                  "value": "1",
+                  "description": "This can only be used if `pendingBelowTimeInForce` is `GTC`, or if `pendingBelowType` is `LIMIT_MAKER`.",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowTimeInForce",
                   "value": "GTC",
-                  "description": "",
+                  "description": "Required if `pendingBelowType` is `STOP_LOSS_LIMIT` or `TAKE_PROFIT_LIMIT`.",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowStrategyId",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the pending below order within an order strategy. ",
+                  "description": "Arbitrary numeric value identifying the pending below order within an order strategy.",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowStrategyType",
                   "value": "1",
-                  "description": "Arbitrary numeric value identifying the pending below order strategy. Values smaller than 1000000 are reserved and cannot be used. ",
+                  "description": "Arbitrary numeric value identifying the pending below order strategy. Values smaller than `1000000` are reserved and cannot be used.",
                   "disabled": true
                 },
                 {
                   "key": "pendingBelowPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "",
+                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
                   "disabled": true
                 },
                 {
@@ -3486,8 +2378,8 @@
                 },
                 {
                   "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`. Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                   "disabled": true
                 },
                 {
@@ -3507,7 +2399,7 @@
           }
         },
         {
-          "name": "New order using SOR",
+          "name": "New order using SOR (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -3530,15 +2422,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/sor/order",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "sor",
-                "order"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "sor", "order"],
               "variable": [],
               "query": [
                 {
@@ -3567,19 +2452,19 @@
                 },
                 {
                   "key": "quantity",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "price",
-                  "value": "400.0",
+                  "value": "400",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "newClientOrderId",
-                  "value": "newClientOrderId_example",
+                  "value": "myOrder1",
                   "description": "A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
                   "disabled": true
                 },
@@ -3597,25 +2482,25 @@
                 },
                 {
                   "key": "icebergQty",
-                  "value": "1.0",
-                  "description": "Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order.",
+                  "value": "1",
+                  "description": "Used with `LIMIT` to create an iceberg order.",
                   "disabled": true
                 },
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "",
+                  "description": "Set the response JSON. `ACK`, `RESULT`, or `FULL`. Default to `FULL`",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. The possible supported values are: [STP Modes](/products/spot/enums#stpmodes).",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
-                  "value": "5000.0",
+                  "value": "5000",
                   "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                   "disabled": true
                 },
@@ -3636,7 +2521,7 @@
           }
         },
         {
-          "name": "Test new order using SOR",
+          "name": "Test new order using SOR (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -3659,22 +2544,14 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/sor/order/test",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "sor",
-                "order",
-                "test"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "sor", "order", "test"],
               "variable": [],
               "query": [
                 {
                   "key": "computeCommissionRates",
                   "value": "false",
-                  "description": "Default: `false` <br> See [Commissions FAQ](faqs/commission_faq.md#test-order-diferences) to learn more.",
+                  "description": "",
                   "disabled": true
                 },
                 {
@@ -3686,37 +2563,37 @@
                 {
                   "key": "side",
                   "value": "BUY",
-                  "description": "",
+                  "description": "Please see [Enums](/products/spot/enums#side) for supported values.",
                   "disabled": false
                 },
                 {
                   "key": "type",
                   "value": "MARKET",
-                  "description": "",
+                  "description": "Please see [Enums](/products/spot/enums#ordertypes) for supported values.",
                   "disabled": false
                 },
                 {
                   "key": "timeInForce",
                   "value": "GTC",
-                  "description": "",
+                  "description": "Please see [Enums](/products/spot/enums#timeinforce) for supported values.",
                   "disabled": true
                 },
                 {
                   "key": "quantity",
-                  "value": "1.0",
+                  "value": "1",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "price",
-                  "value": "400.0",
+                  "value": "400",
                   "description": "",
                   "disabled": true
                 },
                 {
                   "key": "newClientOrderId",
-                  "value": "newClientOrderId_example",
-                  "description": "A unique id among open orders. Automatically generated if not sent.<br/> Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
+                  "value": "myOrder1",
+                  "description": "A unique id among open orders. Automatically generated if not sent. Orders with the same `newClientOrderID` can be accepted only when the previous one is filled, otherwise the order will be rejected.",
                   "disabled": true
                 },
                 {
@@ -3733,26 +2610,26 @@
                 },
                 {
                   "key": "icebergQty",
-                  "value": "1.0",
-                  "description": "Used with `LIMIT`, `STOP_LOSS_LIMIT`, and `TAKE_PROFIT_LIMIT` to create an iceberg order.",
+                  "value": "1",
+                  "description": "Used with `LIMIT` to create an iceberg order.",
                   "disabled": true
                 },
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "",
+                  "description": "Set the response JSON. `ACK`, `RESULT`, or `FULL`. Default to `FULL`.",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
-                  "value": "5000.0",
-                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`. Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
                   "disabled": true
                 },
                 {
@@ -3800,44 +2677,38 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/exchangeInfo",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "exchangeInfo"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "exchangeInfo"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
-                  "value": "BNBUSDT",
-                  "description": "Symbol to query",
+                  "value": "ETHBTC",
+                  "description": "Example: curl -X GET \"https://api.binance.com/api/v3/exchangeInfo?symbol=BNBBTC\"",
                   "disabled": true
                 },
                 {
                   "key": "symbols",
-                  "value": "",
-                  "description": "List of symbols to query",
+                  "value": "[&quot;BTCUSDT&quot;,&quot;BNBBTC&quot;]",
+                  "description": "Examples: curl -X GET \"https://api.binance.com/api/v3/exchangeInfo?symbols=%5B%22BNBBTC%22,%22BTCUSDT%22%5D\" or curl -g -X GET 'https://api.binance.com/api/v3/exchangeInfo?symbols=[\"BTCUSDT\",\"BNBBTC\"]'",
                   "disabled": true
                 },
                 {
                   "key": "permissions",
-                  "value": "",
-                  "description": "List of permissions to query",
+                  "value": "SPOT",
+                  "description": "Examples: curl -X GET \"https://api.binance.com/api/v3/exchangeInfo?permissions=SPOT\"  curl -X GET \"https://api.binance.com/api/v3/exchangeInfo?permissions=%5B%22MARGIN%22%2C%22LEVERAGED%22%5D\" or curl -g -X GET 'https://api.binance.com/api/v3/exchangeInfo?permissions=[\"MARGIN\",\"LEVERAGED\"]'",
                   "disabled": true
                 },
                 {
                   "key": "showPermissionSets",
-                  "value": "true",
-                  "description": "Controls whether the content of the `permissionSets` field is populated or not. Defaults to `true`",
+                  "value": "false",
+                  "description": "Controls whether the content of the `permissionSets` field is populated or not.",
                   "disabled": true
                 },
                 {
                   "key": "symbolStatus",
                   "value": "TRADING",
-                  "description": "",
+                  "description": "Filters for symbols that have this `tradingStatus`. Cannot be used in combination with `symbols` or `symbol`.",
                   "disabled": true
                 }
               ]
@@ -3868,32 +2739,26 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/executionRules",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "executionRules"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "executionRules"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
-                  "value": "BNBUSDT",
-                  "description": "Symbol to query",
+                  "value": "BAZUSD",
+                  "description": "Query for specified symbol.",
                   "disabled": true
                 },
                 {
                   "key": "symbols",
-                  "value": "",
-                  "description": "List of symbols to query",
+                  "value": "[&quot;BAZUSD&quot;,&quot;BNBUSDT&quot;]",
+                  "description": "Query for multiple symbols.",
                   "disabled": true
                 },
                 {
                   "key": "symbolStatus",
                   "value": "TRADING",
-                  "description": "",
+                  "description": "Query for all symbols with the specified status.",
                   "disabled": true
                 }
               ]
@@ -3918,14 +2783,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/ping",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "ping"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "ping"],
               "variable": [],
               "query": []
             }
@@ -3955,16 +2814,943 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/time",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "time"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "time"],
               "variable": [],
               "query": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Account",
+      "item": [
+        {
+          "name": "Account information (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/api/v3/account",
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "account"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "omitZeroBalances",
+                  "value": "false",
+                  "description": "When set to `true`, emits only the non-zero balances of an account.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Commission Rates (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/api/v3/account/commission",
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "account", "commission"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "BTCUSDT",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query all Order lists (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/api/v3/allOrderList",
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "allOrderList"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "fromId",
+                  "value": "1",
+                  "description": "If supplied, neither startTime or endTime can be provided",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1735693200000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1735693200000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "All orders (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/api/v3/allOrders",
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "allOrders"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "LTCBTC",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "orderId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1735693200000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1735693200000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`. <br> Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Allocations (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/api/v3/myAllocations",
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "myAllocations"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "BTCUSDT",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "startTime",
+                  "value": "1735693200000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1735693200000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "fromAllocationId",
+                  "value": "0",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "orderId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query relevant filters (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/api/v3/myFilters",
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "myFilters"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "BNBUSDT",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Prevented Matches (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/api/v3/myPreventedMatches",
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "myPreventedMatches"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "BTCUSDT",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "preventedMatchId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "orderId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "fromPreventedMatchId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Account trade list (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/api/v3/myTrades",
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "myTrades"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "BNBBTC",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "orderId",
+                  "value": "100234",
+                  "description": "This can only be used in combination with `symbol`.",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1735693200000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1735693200000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "fromId",
+                  "value": "1",
+                  "description": "TradeId to fetch from. Default gets most recent trades.",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Open Order lists (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/api/v3/openOrderList",
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "openOrderList"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Current open orders (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/api/v3/openOrders",
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "openOrders"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "LTCBTC",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query order (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/api/v3/order",
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "order"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "LTCBTC",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "orderId",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "origClientOrderId",
+                  "value": "myOrder1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Order Amendments (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/api/v3/order/amendments",
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "order", "amendments"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "BTCUSDT",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "orderId",
+                  "value": "9",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "fromExecutionId",
+                  "value": "22",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "1",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Order list (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/api/v3/orderList",
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "orderList"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "orderListId",
+                  "value": "27",
+                  "description": "Query order list by `orderListId`. `orderListId` or `origClientOrderId` must be provided.",
+                  "disabled": true
+                },
+                {
+                  "key": "origClientOrderId",
+                  "value": "1",
+                  "description": "Query order list by `listClientOrderId`. `orderListId` or `origClientOrderId` must be provided.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Unfilled Order Count (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/api/v3/rateLimit/order",
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "rateLimit", "order"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
             }
           }
         }
@@ -3997,14 +3783,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/aggTrades",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "aggTrades"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "aggTrades"],
               "variable": [],
               "query": [
                 {
@@ -4033,8 +3813,8 @@
                 },
                 {
                   "key": "limit",
-                  "value": "500",
-                  "description": "Default: 500; Maximum: 1000.",
+                  "value": "1",
+                  "description": "",
                   "disabled": true
                 }
               ]
@@ -4065,14 +3845,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/avgPrice",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "avgPrice"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "avgPrice"],
               "variable": [],
               "query": [
                 {
@@ -4109,14 +3883,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/depth",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "depth"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "depth"],
               "variable": [],
               "query": [
                 {
@@ -4127,14 +3895,14 @@
                 },
                 {
                   "key": "limit",
-                  "value": "500",
-                  "description": "Default: 500; Maximum: 1000.",
+                  "value": "1",
+                  "description": "If limit > 5000, only 5000 entries will be returned.",
                   "disabled": true
                 },
                 {
                   "key": "symbolStatus",
                   "value": "TRADING",
-                  "description": "",
+                  "description": "Filters for symbols that have this `tradingStatus`. A status mismatch returns error `-1220 SYMBOL_DOES_NOT_MATCH_STATUS`.",
                   "disabled": true
                 }
               ]
@@ -4142,7 +3910,7 @@
           }
         },
         {
-          "name": "Historical Block Trades",
+          "name": "Historical Block Trades (MARKET_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -4165,25 +3933,19 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/historicalBlockTrades",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "historicalBlockTrades"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "historicalBlockTrades"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
-                  "value": "BNBUSDT",
+                  "value": "BNBBTC",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "fromId",
-                  "value": "1",
+                  "value": "582",
                   "description": "Block trade ID to fetch from",
                   "disabled": false
                 },
@@ -4221,14 +3983,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/historicalTrades",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "historicalTrades"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "historicalTrades"],
               "variable": [],
               "query": [
                 {
@@ -4239,14 +3995,14 @@
                 },
                 {
                   "key": "limit",
-                  "value": "500",
-                  "description": "Default: 500; Maximum: 1000.",
+                  "value": "1",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "fromId",
                   "value": "1",
-                  "description": "ID to get aggregate trades from INCLUSIVE.",
+                  "description": "TradeId to fetch from. Default gets most recent trades.",
                   "disabled": true
                 }
               ]
@@ -4277,14 +4033,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/klines",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "klines"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "klines"],
               "variable": [],
               "query": [
                 {
@@ -4295,32 +4045,32 @@
                 },
                 {
                   "key": "interval",
-                  "value": "INTERVAL_1s",
+                  "value": "1s",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "startTime",
                   "value": "1735693200000",
-                  "description": "Timestamp in ms to get aggregate trades from INCLUSIVE.",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "endTime",
                   "value": "1735693200000",
-                  "description": "Timestamp in ms to get aggregate trades until INCLUSIVE.",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "timeZone",
-                  "value": "timeZone_example",
+                  "value": "0",
                   "description": "Default: 0 (UTC)",
                   "disabled": true
                 },
                 {
                   "key": "limit",
-                  "value": "500",
-                  "description": "Default: 500; Maximum: 1000.",
+                  "value": "1",
+                  "description": "",
                   "disabled": true
                 }
               ]
@@ -4351,14 +4101,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/referencePrice",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "referencePrice"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "referencePrice"],
               "variable": [],
               "query": [
                 {
@@ -4395,15 +4139,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/referencePrice/calculation",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "referencePrice",
-                "calculation"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "referencePrice", "calculation"],
               "variable": [],
               "query": [
                 {
@@ -4415,7 +4152,7 @@
                 {
                   "key": "symbolStatus",
                   "value": "TRADING",
-                  "description": "",
+                  "description": "Supported values: `TRADING`, `HALT`, `BREAK`",
                   "disabled": true
                 }
               ]
@@ -4446,32 +4183,26 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/ticker",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "ticker"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "ticker"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
                   "value": "BNBUSDT",
-                  "description": "Symbol to query",
+                  "description": "Either `symbol` or `symbols` must be provided",
                   "disabled": true
                 },
                 {
                   "key": "symbols",
-                  "value": "",
-                  "description": "List of symbols to query",
+                  "value": "[&quot;BTCUSDT&quot;,&quot;BNBUSDT&quot;]",
+                  "description": "Either `symbol` or `symbols` must be provided  Examples of accepted format for the `symbols` parameter: [\"BTCUSDT\",\"BNBUSDT\"] or %5B%22BTCUSDT%22,%22BNBUSDT%22%5D  The maximum number of symbols allowed in a request is 100.",
                   "disabled": true
                 },
                 {
                   "key": "windowSize",
-                  "value": "WINDOW_SIZE_1m",
-                  "description": "",
+                  "value": "1m",
+                  "description": "Units cannot be combined (e.g. `1d2h` is not allowed).",
                   "disabled": true
                 },
                 {
@@ -4514,27 +4245,20 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/ticker/24hr",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "ticker",
-                "24hr"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "ticker", "24hr"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
                   "value": "BNBUSDT",
-                  "description": "Symbol to query",
+                  "description": "Either `symbol` or `symbols` must be provided",
                   "disabled": true
                 },
                 {
                   "key": "symbols",
-                  "value": "",
-                  "description": "List of symbols to query",
+                  "value": "[&quot;BTCUSDT&quot;,&quot;BNBUSDT&quot;]",
+                  "description": "Either `symbol` or `symbols` must be provided  Examples of accepted format for the `symbols` parameter: [\"BTCUSDT\",\"BNBUSDT\"] or %5B%22BTCUSDT%22,%22BNBUSDT%22%5D  The maximum number of symbols allowed in a request is 100.",
                   "disabled": true
                 },
                 {
@@ -4577,33 +4301,26 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/ticker/bookTicker",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "ticker",
-                "bookTicker"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "ticker", "bookTicker"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
                   "value": "BNBUSDT",
-                  "description": "Symbol to query",
+                  "description": "Parameter symbol and symbols cannot be used in combination. If neither parameter is sent, `bookTickers` for all symbols will be returned in an array.",
                   "disabled": true
                 },
                 {
                   "key": "symbols",
-                  "value": "",
-                  "description": "List of symbols to query",
+                  "value": "[&quot;BTCUSDT&quot;,&quot;BNBUSDT&quot;]",
+                  "description": "Parameter symbol and symbols cannot be used in combination. If neither parameter is sent, `bookTickers` for all symbols will be returned in an array. Examples of accepted format for the symbols parameter: [\"BTCUSDT\",\"BNBUSDT\"] or %5B%22BTCUSDT%22,%22BNBUSDT%22%5D",
                   "disabled": true
                 },
                 {
                   "key": "symbolStatus",
                   "value": "TRADING",
-                  "description": "",
+                  "description": "Filters for symbols that have this `tradingStatus`. For a single symbol, a status mismatch returns error `-1220 SYMBOL_DOES_NOT_MATCH_STATUS`. For multiple or all symbols, non-matching ones are simply excluded from the response.",
                   "disabled": true
                 }
               ]
@@ -4634,33 +4351,26 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/ticker/price",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "ticker",
-                "price"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "ticker", "price"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
                   "value": "BNBUSDT",
-                  "description": "Symbol to query",
+                  "description": "Parameter symbol and symbols cannot be used in combination. If neither parameter is sent, prices for all symbols will be returned in an array.",
                   "disabled": true
                 },
                 {
                   "key": "symbols",
-                  "value": "",
-                  "description": "List of symbols to query",
+                  "value": "[&quot;BTCUSDT&quot;,&quot;BNBUSDT&quot;]",
+                  "description": "Parameter symbol and symbols cannot be used in combination. If neither parameter is sent, prices for all symbols will be returned in an array. Examples of accepted format for the symbols parameter: [\"BTCUSDT\",\"BNBUSDT\"] or %5B%22BTCUSDT%22,%22BNBUSDT%22%5D",
                   "disabled": true
                 },
                 {
                   "key": "symbolStatus",
                   "value": "TRADING",
-                  "description": "",
+                  "description": "Filters for symbols that have this `tradingStatus`. For a single symbol, a status mismatch returns error `-1220 SYMBOL_DOES_NOT_MATCH_STATUS`. For multiple or all symbols, non-matching ones are simply excluded from the response.",
                   "disabled": true
                 }
               ]
@@ -4691,32 +4401,25 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/ticker/tradingDay",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "ticker",
-                "tradingDay"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "ticker", "tradingDay"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
                   "value": "BNBUSDT",
-                  "description": "Symbol to query",
+                  "description": "Either `symbol` or `symbols` must be provided.",
                   "disabled": true
                 },
                 {
                   "key": "symbols",
-                  "value": "",
-                  "description": "List of symbols to query",
+                  "value": "[&quot;BTCUSDT&quot;,&quot;BNBUSDT&quot;]",
+                  "description": "Either `symbol` or `symbols` must be provided. Examples of accepted format for the `symbols` parameter: [\"BTCUSDT\",\"BNBUSDT\"] or %5B%22BTCUSDT%22,%22BNBUSDT%22%5D. The maximum number of `symbols` allowed in a request is 100.",
                   "disabled": true
                 },
                 {
                   "key": "timeZone",
-                  "value": "timeZone_example",
+                  "value": "0",
                   "description": "Default: 0 (UTC)",
                   "disabled": true
                 },
@@ -4729,7 +4432,7 @@
                 {
                   "key": "symbolStatus",
                   "value": "TRADING",
-                  "description": "",
+                  "description": "Filters for symbols that have this `tradingStatus`. For a single symbol, a status mismatch returns error `-1220 SYMBOL_DOES_NOT_MATCH_STATUS`. For multiple symbols, non-matching ones are simply excluded from the response.",
                   "disabled": true
                 }
               ]
@@ -4760,14 +4463,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/trades",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "trades"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "trades"],
               "variable": [],
               "query": [
                 {
@@ -4778,8 +4475,8 @@
                 },
                 {
                   "key": "limit",
-                  "value": "500",
-                  "description": "Default: 500; Maximum: 1000.",
+                  "value": "1",
+                  "description": "",
                   "disabled": true
                 }
               ]
@@ -4810,14 +4507,8 @@
             },
             "url": {
               "raw": "{{url}}/api/v3/uiKlines",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "api",
-                "v3",
-                "uiKlines"
-              ],
+              "host": ["{{url}}"],
+              "path": ["api", "v3", "uiKlines"],
               "variable": [],
               "query": [
                 {
@@ -4828,32 +4519,32 @@
                 },
                 {
                   "key": "interval",
-                  "value": "INTERVAL_1s",
+                  "value": "1s",
                   "description": "",
                   "disabled": false
                 },
                 {
                   "key": "startTime",
                   "value": "1735693200000",
-                  "description": "Timestamp in ms to get aggregate trades from INCLUSIVE.",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "endTime",
                   "value": "1735693200000",
-                  "description": "Timestamp in ms to get aggregate trades until INCLUSIVE.",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "timeZone",
-                  "value": "timeZone_example",
+                  "value": "0",
                   "description": "Default: 0 (UTC)",
                   "disabled": true
                 },
                 {
                   "key": "limit",
-                  "value": "500",
-                  "description": "Default: 500; Maximum: 1000.",
+                  "value": "1",
+                  "description": "",
                   "disabled": true
                 }
               ]

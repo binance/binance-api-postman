@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "Binance Derivatives Trading Options REST API",
+    "name": "Options REST API",
     "description": {
-      "content": "OpenAPI Specification for the Binance Derivatives Trading Options REST API",
+      "content": "Access market data, manage accounts, and trade Binance Options.",
       "type": "text/markdown"
     },
     "version": "1.0.0",
@@ -144,10 +144,10 @@
   ],
   "item": [
     {
-      "name": "Account",
+      "name": "Market Data",
       "item": [
         {
-          "name": "Account Funding Flow (USER_DATA)",
+          "name": "Recent Block Trades List",
           "request": {
             "method": "GET",
             "header": [
@@ -169,27 +169,134 @@
               "urlencoded": []
             },
             "url": {
-              "raw": "{{url}}/eapi/v1/bill",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "bill"
-              ],
+              "raw": "{{url}}/eapi/v1/blockTrades",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "blockTrades"],
               "variable": [],
               "query": [
                 {
-                  "key": "currency",
-                  "value": "currency_example",
-                  "description": "Asset type, only support USDT  as of now",
+                  "key": "symbol",
+                  "value": "BTC-200730-9000-C",
+                  "description": "Option trading pair",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of records",
+                  "disabled": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Order Book",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/eapi/v1/depth",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "depth"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "BTC-200730-9000-C",
+                  "description": "Option trading pair",
                   "disabled": false
                 },
                 {
-                  "key": "recordId",
-                  "value": "1",
-                  "description": "Return the recordId and subsequent data, the latest data is returned by default, e.g 100000",
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Default:100 Max:1000.Optional value:[10, 20, 50, 100, 500, 1000]",
+                  "disabled": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Exchange Information",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/eapi/v1/exchangeInfo",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "exchangeInfo"],
+              "variable": [],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "Historical Exercise Records",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/eapi/v1/exerciseHistory",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "exerciseHistory"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "underlying",
+                  "value": "BTCUSDT",
+                  "description": "Underlying asset.",
                   "disabled": true
                 },
                 {
@@ -206,34 +313,16 @@
                 },
                 {
                   "key": "limit",
-                  "value": "100",
-                  "description": "Number of result sets returned Default:100 Max:1000",
+                  "value": "20",
+                  "description": "Number of result sets returned",
                   "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
                 }
               ]
             }
           }
         },
         {
-          "name": "Option Margin Account Information (USER_DATA)",
+          "name": "Index Price",
           "request": {
             "method": "GET",
             "header": [
@@ -255,34 +344,298 @@
               "urlencoded": []
             },
             "url": {
-              "raw": "{{url}}/eapi/v1/marginAccount",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "marginAccount"
-              ],
+              "raw": "{{url}}/eapi/v1/index",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "index"],
               "variable": [],
               "query": [
                 {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
+                  "key": "underlying",
+                  "value": "BTCUSDT",
+                  "description": "Underlying asset.",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Kline/Candlestick Data",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/eapi/v1/klines",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "klines"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "BTC-200730-9000-C",
+                  "description": "Option trading pair",
+                  "disabled": false
+                },
+                {
+                  "key": "interval",
+                  "value": "1m",
+                  "description": "Time interval",
+                  "disabled": false
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "Start Time, e.g 1593511200000",
                   "disabled": true
                 },
                 {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "End Time, e.g 1593512200000",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of result sets returned",
+                  "disabled": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Option Mark Price",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/eapi/v1/mark",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "mark"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "BTC-200730-9000-C",
+                  "description": "Option trading pair",
+                  "disabled": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Open Interest",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/eapi/v1/openInterest",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "openInterest"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "underlyingAsset",
+                  "value": "ETH/BTC",
+                  "description": "Underlying asset.",
                   "disabled": false
                 },
                 {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
+                  "key": "expiration",
+                  "value": "221225",
+                  "description": "expiration date",
                   "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Test Connectivity",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/eapi/v1/ping",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "ping"],
+              "variable": [],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "24hr Ticker Price Change Statistics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/eapi/v1/ticker",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "ticker"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "BTC-200730-9000-C",
+                  "description": "Option trading pair",
+                  "disabled": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Check Server Time",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/eapi/v1/time",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "time"],
+              "variable": [],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "Recent Trades List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/eapi/v1/trades",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "trades"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "BTC-200730-9000-C",
+                  "description": "Option trading pair",
+                  "disabled": false
+                },
+                {
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of result sets returned",
+                  "disabled": true
                 }
               ]
             }
@@ -317,26 +670,20 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/allOpenOrders",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "allOpenOrders"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "allOpenOrders"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
-                  "value": "symbol_example",
-                  "description": "Option trading pair, e.g BTC-200730-9000-C",
+                  "value": "BTC-200730-9000-C",
+                  "description": "Option trading pair.",
                   "disabled": false
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Recv Window.",
                   "disabled": true
                 },
                 {
@@ -379,26 +726,20 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/allOpenOrdersByUnderlying",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "allOpenOrdersByUnderlying"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "allOpenOrdersByUnderlying"],
               "variable": [],
               "query": [
                 {
                   "key": "underlying",
-                  "value": "underlying_example",
-                  "description": "Option underlying, e.g BTCUSDT",
+                  "value": "BTCUSDT",
+                  "description": "Underlying asset.",
                   "disabled": false
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Recv Window.",
                   "disabled": true
                 },
                 {
@@ -441,38 +782,32 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/batchOrders",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "batchOrders"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "batchOrders"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
-                  "value": "symbol_example",
-                  "description": "Option trading pair, e.g BTC-200730-9000-C",
+                  "value": "BTC-200730-9000-C",
+                  "description": "Option trading pair.",
                   "disabled": false
                 },
                 {
                   "key": "orderIds",
                   "value": "",
-                  "description": "Order ID, e.g [4611875134427365377,4611875134427365378]",
+                  "description": "Order ID list.",
                   "disabled": true
                 },
                 {
                   "key": "clientOrderIds",
                   "value": "",
-                  "description": "User-defined order ID, e.g [\"my_id_1\",\"my_id_2\"]",
+                  "description": "Client order ID list.",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Recv Window.",
                   "disabled": true
                 },
                 {
@@ -492,7 +827,7 @@
           }
         },
         {
-          "name": "Place Multiple Orders(TRADE)",
+          "name": "Place Multiple Orders (TRADE)",
           "request": {
             "method": "POST",
             "header": [
@@ -515,14 +850,8 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/batchOrders",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "batchOrders"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "batchOrders"],
               "variable": [],
               "query": [
                 {
@@ -577,20 +906,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/commission",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "commission"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "commission"],
               "variable": [],
               "query": [
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Recv Window.",
                   "disabled": true
                 },
                 {
@@ -633,20 +956,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/exerciseRecord",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "exerciseRecord"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "exerciseRecord"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
-                  "value": "symbol_example",
-                  "description": "Option trading pair, e.g BTC-200730-9000-C",
+                  "value": "BTC-200730-9000-C",
+                  "description": "Option trading pair.",
                   "disabled": true
                 },
                 {
@@ -663,14 +980,14 @@
                 },
                 {
                   "key": "limit",
-                  "value": "100",
-                  "description": "Number of result sets returned Default:100 Max:1000",
+                  "value": "20",
+                  "description": "Number of result sets returned.",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Recv Window.",
                   "disabled": true
                 },
                 {
@@ -713,26 +1030,20 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/historyOrders",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "historyOrders"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "historyOrders"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
-                  "value": "symbol_example",
-                  "description": "Option trading pair, e.g BTC-200730-9000-C",
+                  "value": "BTC-200730-9000-C",
+                  "description": "Option trading pair.",
                   "disabled": false
                 },
                 {
                   "key": "orderId",
-                  "value": "1",
-                  "description": "Order ID, e.g 4611875134427365377",
+                  "value": "4611875134427365000",
+                  "description": "Order ID.",
                   "disabled": true
                 },
                 {
@@ -749,14 +1060,14 @@
                 },
                 {
                   "key": "limit",
-                  "value": "100",
-                  "description": "Number of result sets returned Default:100 Max:1000",
+                  "value": "20",
+                  "description": "Number of result sets returned",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Recv Window.",
                   "disabled": true
                 },
                 {
@@ -799,26 +1110,20 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/openOrders",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "openOrders"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "openOrders"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
-                  "value": "symbol_example",
-                  "description": "Option trading pair, e.g BTC-200730-9000-C",
+                  "value": "BTC-200730-9000-C",
+                  "description": "Option trading pair.",
                   "disabled": true
                 },
                 {
                   "key": "orderId",
-                  "value": "1",
-                  "description": "Order ID, e.g 4611875134427365377",
+                  "value": "4611875134427365000",
+                  "description": "Order ID.",
                   "disabled": true
                 },
                 {
@@ -836,7 +1141,7 @@
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Recv Window.",
                   "disabled": true
                 },
                 {
@@ -879,38 +1184,32 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/order",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "order"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "order"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
-                  "value": "symbol_example",
-                  "description": "Option trading pair, e.g BTC-200730-9000-C",
+                  "value": "BTC-200730-9000-C",
+                  "description": "Option trading pair.",
                   "disabled": false
                 },
                 {
                   "key": "orderId",
-                  "value": "1",
-                  "description": "Order ID, e.g 4611875134427365377",
+                  "value": "4611875134427365000",
+                  "description": "Order ID.",
                   "disabled": true
                 },
                 {
                   "key": "clientOrderId",
-                  "value": "1",
-                  "description": "User-defined order ID, e.g 10000",
+                  "value": "10000",
+                  "description": "clientOrderId",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Recv Window.",
                   "disabled": true
                 },
                 {
@@ -953,32 +1252,26 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/order",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "order"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "order"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
-                  "value": "symbol_example",
-                  "description": "Option trading pair, e.g BTC-200730-9000-C",
+                  "value": "BTC-200730-9000-C",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "side",
                   "value": "BUY",
-                  "description": "Buy/sell direction: SELL, BUY",
+                  "description": "",
                   "disabled": false
                 },
                 {
                   "key": "type",
                   "value": "LIMIT",
-                  "description": "Order Type: LIMIT(only support limit)",
+                  "description": "",
                   "disabled": false
                 },
                 {
@@ -996,43 +1289,43 @@
                 {
                   "key": "timeInForce",
                   "value": "GTC",
-                  "description": "Time in force method（Default GTC）",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "reduceOnly",
                   "value": "false",
-                  "description": "Reduce Only（Default false）",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "postOnly",
                   "value": "false",
-                  "description": "Post Only（Default false）",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "\"ACK\", \"RESULT\", Default \"ACK\"",
+                  "description": "",
                   "disabled": true
                 },
                 {
                   "key": "clientOrderId",
                   "value": "1",
-                  "description": "User-defined order ID, e.g 10000",
+                  "description": "User-defined order ID cannot be repeated in pending orders",
                   "disabled": true
                 },
                 {
                   "key": "isMmp",
                   "value": "true",
-                  "description": "is market maker protection order, true/false",
+                  "description": "is market maker protection order",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
-                  "value": "EXPIRE_TAKER",
-                  "description": "`EXPIRE_TAKER`:expire taker order when STP triggers/ `EXPIRE_MAKER`:expire maker order when STP triggers/ `EXPIRE_BOTH`:expire both orders when STP triggers; Default `EXPIRE_MAKER`",
+                  "value": "NONE",
+                  "description": "Self-trade prevention mode",
                   "disabled": true
                 },
                 {
@@ -1081,38 +1374,32 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/order",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "order"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "order"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
-                  "value": "symbol_example",
-                  "description": "Option trading pair, e.g BTC-200730-9000-C",
+                  "value": "BTC-200730-9000-C",
+                  "description": "Option trading pair.",
                   "disabled": false
                 },
                 {
                   "key": "orderId",
-                  "value": "1",
-                  "description": "Order ID, e.g 4611875134427365377",
+                  "value": "4611875134427365000",
+                  "description": "Order ID.",
                   "disabled": true
                 },
                 {
                   "key": "clientOrderId",
-                  "value": "1",
-                  "description": "User-defined order ID, e.g 10000",
+                  "value": "abc123",
+                  "description": "User-defined order ID; cannot be duplicated among open orders.",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Recv Window.",
                   "disabled": true
                 },
                 {
@@ -1155,22 +1442,66 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/position",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "position"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "position"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
-                  "value": "symbol_example",
-                  "description": "Option trading pair, e.g BTC-200730-9000-C",
+                  "value": "BTC-200730-9000-C",
+                  "description": "Option trading pair.",
                   "disabled": true
                 },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Recv Window.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "TradFi Options Contract (USER_DATA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/eapi/v1/stock/contract",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "stock", "contract"],
+              "variable": [],
+              "query": [
                 {
                   "key": "recvWindow",
                   "value": "5000",
@@ -1217,21 +1548,15 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/userTrades",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "userTrades"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "userTrades"],
               "variable": [],
               "query": [
                 {
                   "key": "symbol",
-                  "value": "symbol_example",
-                  "description": "Option trading pair, e.g BTC-200730-9000-C",
-                  "disabled": true
+                  "value": "BTC-200730-9000-C",
+                  "description": "Option trading pair.",
+                  "disabled": false
                 },
                 {
                   "key": "fromId",
@@ -1253,14 +1578,14 @@
                 },
                 {
                   "key": "limit",
-                  "value": "100",
-                  "description": "Number of result sets returned Default:100 Max:1000",
+                  "value": "20",
+                  "description": "Number of result sets returned.",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Recv Window.",
                   "disabled": true
                 },
                 {
@@ -1282,414 +1607,7 @@
       ]
     },
     {
-      "name": "Market-Maker-Endpoints",
-      "item": [
-        {
-          "name": "Get Auto-Cancel All Open Orders (Kill-Switch) Config (TRADE)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/eapi/v1/countdownCancelAll",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "countdownCancelAll"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "underlying",
-                  "value": "underlying_example",
-                  "description": "underlying, e.g BTCUSDT",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Set Auto-Cancel All Open Orders (Kill-Switch) Config (TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/eapi/v1/countdownCancelAll",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "countdownCancelAll"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "underlying",
-                  "value": "underlying_example",
-                  "description": "Option underlying, e.g BTCUSDT",
-                  "disabled": false
-                },
-                {
-                  "key": "countdownTime",
-                  "value": "789",
-                  "description": "Countdown time in milliseconds (ex. 1,000 for 1 second). 0 to disable the timer. Negative values (ex. -10000) are not accepted. Minimum acceptable value is 5,000",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Auto-Cancel All Open Orders (Kill-Switch) Heartbeat (TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/eapi/v1/countdownCancelAllHeartBeat",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "countdownCancelAllHeartBeat"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "underlyings",
-                  "value": "underlyings_example",
-                  "description": "Option Underlying Symbols, e.g BTCUSDT,ETHUSDT",
-                  "disabled": false
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Get Market Maker Protection Config (TRADE)",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/eapi/v1/mmp",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "mmp"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "underlying",
-                  "value": "underlying_example",
-                  "description": "underlying, e.g BTCUSDT",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Reset Market Maker Protection Config (TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/eapi/v1/mmpReset",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "mmpReset"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "underlying",
-                  "value": "underlying_example",
-                  "description": "underlying, e.g BTCUSDT",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Set Market Maker Protection Config (TRADE)",
-          "request": {
-            "method": "POST",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/eapi/v1/mmpSet",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "mmpSet"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "underlying",
-                  "value": "underlying_example",
-                  "description": "underlying, e.g BTCUSDT",
-                  "disabled": true
-                },
-                {
-                  "key": "windowTimeInMilliseconds",
-                  "value": "789",
-                  "description": "MMP Interval in milliseconds; Range (0,5000]",
-                  "disabled": true
-                },
-                {
-                  "key": "frozenTimeInMilliseconds",
-                  "value": "789",
-                  "description": "MMP frozen time in milliseconds, if set to 0 manual reset is required",
-                  "disabled": true
-                },
-                {
-                  "key": "qtyLimit",
-                  "value": "1.0",
-                  "description": "quantity limit",
-                  "disabled": true
-                },
-                {
-                  "key": "deltaLimit",
-                  "value": "1.0",
-                  "description": "net delta limit",
-                  "disabled": true
-                },
-                {
-                  "key": "recvWindow",
-                  "value": "5000",
-                  "description": "",
-                  "disabled": true
-                },
-                {
-                  "key": "timestamp",
-                  "value": "",
-                  "description": "UTC timestamp in ms",
-                  "disabled": false
-                },
-                {
-                  "key": "signature",
-                  "value": "",
-                  "description": "Signature",
-                  "disabled": false
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "name": "Market-Maker-Block-Trade",
+      "name": "Market Maker Block Trade",
       "item": [
         {
           "name": "Cancel Block Trade Order (TRADE)",
@@ -1709,28 +1627,20 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/block/order/create",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "block",
-                "order",
-                "create"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "block", "order", "create"],
               "variable": [],
               "query": [
                 {
                   "key": "blockOrderMatchingKey",
-                  "value": "blockOrderMatchingKey_example",
-                  "description": "",
+                  "value": "7d046e6e-a429-4335-ab9d-6a681febcde5",
+                  "description": "Block trade matching key.",
                   "disabled": false
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Recv Window.",
                   "disabled": true
                 },
                 {
@@ -1773,21 +1683,13 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/block/order/create",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "block",
-                "order",
-                "create"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "block", "order", "create"],
               "variable": [],
               "query": [
                 {
                   "key": "blockOrderMatchingKey",
-                  "value": "blockOrderMatchingKey_example",
+                  "value": "3668822b8-1baa-6a2f-adb8-d3de6289b361",
                   "description": "",
                   "disabled": false
                 },
@@ -1837,22 +1739,14 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/block/order/create",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "block",
-                "order",
-                "create"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "block", "order", "create"],
               "variable": [],
               "query": [
                 {
                   "key": "liquidity",
-                  "value": "liquidity_example",
-                  "description": "Taker or Maker",
+                  "value": "MAKER",
+                  "description": "",
                   "disabled": false
                 },
                 {
@@ -1907,21 +1801,13 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/block/order/execute",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "block",
-                "order",
-                "execute"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "block", "order", "execute"],
               "variable": [],
               "query": [
                 {
                   "key": "blockOrderMatchingKey",
-                  "value": "blockOrderMatchingKey_example",
+                  "value": "7d046e6e-a429-4335-ab9d-6a681febcde5",
                   "description": "",
                   "disabled": false
                 },
@@ -1971,28 +1857,20 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/block/order/execute",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "block",
-                "order",
-                "execute"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "block", "order", "execute"],
               "variable": [],
               "query": [
                 {
                   "key": "blockOrderMatchingKey",
-                  "value": "blockOrderMatchingKey_example",
-                  "description": "",
+                  "value": "12b96c28-ba05-8906-c89t-703215cfb2e6",
+                  "description": "Block trade matching key.",
                   "disabled": false
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Recv Window.",
                   "disabled": true
                 },
                 {
@@ -2035,21 +1913,13 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/block/order/orders",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "block",
-                "order",
-                "orders"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "block", "order", "orders"],
               "variable": [],
               "query": [
                 {
                   "key": "blockOrderMatchingKey",
-                  "value": "blockOrderMatchingKey_example",
+                  "value": "7d046e6e-a429-4335-ab9d-6a681febcde5",
                   "description": "If specified, returns the specific block trade associated with the blockOrderMatchingKey",
                   "disabled": true
                 },
@@ -2067,14 +1937,14 @@
                 },
                 {
                   "key": "underlying",
-                  "value": "underlying_example",
-                  "description": "underlying, e.g BTCUSDT",
+                  "value": "BTCUSDT",
+                  "description": "Underlying asset.",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Recv Window.",
                   "disabled": true
                 },
                 {
@@ -2117,15 +1987,8 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/block/user-trades",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "block",
-                "user-trades"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "block", "user-trades"],
               "variable": [],
               "query": [
                 {
@@ -2142,14 +2005,14 @@
                 },
                 {
                   "key": "underlying",
-                  "value": "underlying_example",
-                  "description": "underlying, e.g BTCUSDT",
+                  "value": "BTCUSDT",
+                  "description": "Underlying asset.",
                   "disabled": true
                 },
                 {
                   "key": "recvWindow",
                   "value": "5000",
-                  "description": "",
+                  "description": "Recv Window.",
                   "disabled": true
                 },
                 {
@@ -2171,7 +2034,7 @@
       ]
     },
     {
-      "name": "User-Data-Streams",
+      "name": "User Data Streams",
       "item": [
         {
           "name": "Close User Data Stream (USER_STREAM)",
@@ -2191,14 +2054,8 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/listenKey",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "listenKey"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "listenKey"],
               "variable": [],
               "query": []
             }
@@ -2222,14 +2079,8 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/listenKey",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "listenKey"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "listenKey"],
               "variable": [],
               "query": []
             }
@@ -2259,14 +2110,8 @@
             },
             "url": {
               "raw": "{{url}}/eapi/v1/listenKey",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "listenKey"
-              ],
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "listenKey"],
               "variable": [],
               "query": []
             }
@@ -2275,10 +2120,10 @@
       ]
     },
     {
-      "name": "Market-Data",
+      "name": "Account",
       "item": [
         {
-          "name": "Recent Block Trades List",
+          "name": "Account Funding Flow (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -2300,158 +2145,21 @@
               "urlencoded": []
             },
             "url": {
-              "raw": "{{url}}/eapi/v1/blockTrades",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "blockTrades"
-              ],
+              "raw": "{{url}}/eapi/v1/bill",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "bill"],
               "variable": [],
               "query": [
                 {
-                  "key": "symbol",
-                  "value": "symbol_example",
-                  "description": "Option trading pair, e.g BTC-200730-9000-C",
-                  "disabled": true
-                },
-                {
-                  "key": "limit",
-                  "value": "100",
-                  "description": "Number of result sets returned Default:100 Max:1000",
-                  "disabled": true
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Order Book",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/eapi/v1/depth",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "depth"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "symbol",
-                  "value": "symbol_example",
-                  "description": "Option trading pair, e.g BTC-200730-9000-C",
+                  "key": "currency",
+                  "value": "USDT",
+                  "description": "Asset type, only support USDT  as of now",
                   "disabled": false
                 },
                 {
-                  "key": "limit",
-                  "value": "100",
-                  "description": "Number of result sets returned Default:100 Max:1000",
-                  "disabled": true
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Exchange Information",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/eapi/v1/exchangeInfo",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "exchangeInfo"
-              ],
-              "variable": [],
-              "query": []
-            }
-          }
-        },
-        {
-          "name": "Historical Exercise Records",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/eapi/v1/exerciseHistory",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "exerciseHistory"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "underlying",
-                  "value": "underlying_example",
-                  "description": "underlying, e.g BTCUSDT",
+                  "key": "recordId",
+                  "value": "100000",
+                  "description": "Return the recordId and subsequent data, the latest data is returned by default",
                   "disabled": true
                 },
                 {
@@ -2468,16 +2176,34 @@
                 },
                 {
                   "key": "limit",
-                  "value": "100",
-                  "description": "Number of result sets returned Default:100 Max:1000",
+                  "value": "20",
+                  "description": "Number of result sets returned",
                   "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Recv Window.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
                 }
               ]
             }
           }
         },
         {
-          "name": "Index Price",
+          "name": "Option Margin Account Information (USER_DATA)",
           "request": {
             "method": "GET",
             "header": [
@@ -2499,21 +2225,88 @@
               "urlencoded": []
             },
             "url": {
-              "raw": "{{url}}/eapi/v1/index",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "index"
-              ],
+              "raw": "{{url}}/eapi/v1/marginAccount",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "marginAccount"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Recv Window.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Market Maker Endpoints",
+      "item": [
+        {
+          "name": "Get Auto-Cancel All Open Orders (Kill-Switch) Config (TRADE)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/eapi/v1/countdownCancelAll",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "countdownCancelAll"],
               "variable": [],
               "query": [
                 {
                   "key": "underlying",
-                  "value": "underlying_example",
-                  "description": "Option underlying, e.g BTCUSDT",
+                  "value": "BTCUSDT",
+                  "description": "Underlying asset.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Recv Window.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
                   "disabled": false
                 }
               ]
@@ -2521,9 +2314,9 @@
           }
         },
         {
-          "name": "Kline/Candlestick Data",
+          "name": "Set Auto-Cancel All Open Orders (Kill-Switch) Config (TRADE)",
           "request": {
-            "method": "GET",
+            "method": "POST",
             "header": [
               {
                 "key": "X-MBX-APIKEY",
@@ -2543,139 +2336,39 @@
               "urlencoded": []
             },
             "url": {
-              "raw": "{{url}}/eapi/v1/klines",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "klines"
-              ],
+              "raw": "{{url}}/eapi/v1/countdownCancelAll",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "countdownCancelAll"],
               "variable": [],
               "query": [
                 {
-                  "key": "symbol",
-                  "value": "symbol_example",
-                  "description": "Option trading pair, e.g BTC-200730-9000-C",
+                  "key": "underlying",
+                  "value": "BTCUSDT",
+                  "description": "",
                   "disabled": false
                 },
                 {
-                  "key": "interval",
-                  "value": "interval_example",
-                  "description": "Time interval",
+                  "key": "countdownTime",
+                  "value": "5000",
+                  "description": "Countdown time in milliseconds (ex. 1,000 for 1 second). 0 to disable the timer. Negative values (ex. -10000) are not accepted. Minimum acceptable value is 5,000",
                   "disabled": false
                 },
                 {
-                  "key": "startTime",
-                  "value": "1623319461670",
-                  "description": "Start Time, e.g 1593511200000",
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
                   "disabled": true
                 },
                 {
-                  "key": "endTime",
-                  "value": "1641782889000",
-                  "description": "End Time, e.g 1593512200000",
-                  "disabled": true
-                },
-                {
-                  "key": "limit",
-                  "value": "100",
-                  "description": "Number of result sets returned Default:100 Max:1000",
-                  "disabled": true
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Option Mark Price",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/eapi/v1/mark",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "mark"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "symbol",
-                  "value": "symbol_example",
-                  "description": "Option trading pair, e.g BTC-200730-9000-C",
-                  "disabled": true
-                }
-              ]
-            }
-          }
-        },
-        {
-          "name": "Open Interest",
-          "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              },
-              {
-                "key": "Accept",
-                "value": "application/json",
-                "description": "",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/eapi/v1/openInterest",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "openInterest"
-              ],
-              "variable": [],
-              "query": [
-                {
-                  "key": "underlyingAsset",
-                  "value": "underlyingAsset_example",
-                  "description": "underlying asset, e.g ETH/BTC",
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
                   "disabled": false
                 },
                 {
-                  "key": "expiration",
-                  "value": "expiration_example",
-                  "description": "expiration date, e.g 221225",
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
                   "disabled": false
                 }
               ]
@@ -2683,40 +2376,9 @@
           }
         },
         {
-          "name": "Test Connectivity",
+          "name": "Auto-Cancel All Open Orders (Kill-Switch) Heartbeat (TRADE)",
           "request": {
-            "method": "GET",
-            "header": [
-              {
-                "key": "X-MBX-APIKEY",
-                "value": "",
-                "description": "API KEY",
-                "disabled": false
-              }
-            ],
-            "body": {
-              "mode": "urlencoded",
-              "urlencoded": []
-            },
-            "url": {
-              "raw": "{{url}}/eapi/v1/ping",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "ping"
-              ],
-              "variable": [],
-              "query": []
-            }
-          }
-        },
-        {
-          "name": "24hr Ticker Price Change Statistics",
-          "request": {
-            "method": "GET",
+            "method": "POST",
             "header": [
               {
                 "key": "X-MBX-APIKEY",
@@ -2736,29 +2398,41 @@
               "urlencoded": []
             },
             "url": {
-              "raw": "{{url}}/eapi/v1/ticker",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "ticker"
-              ],
+              "raw": "{{url}}/eapi/v1/countdownCancelAllHeartBeat",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "countdownCancelAllHeartBeat"],
               "variable": [],
               "query": [
                 {
-                  "key": "symbol",
-                  "value": "symbol_example",
-                  "description": "Option trading pair, e.g BTC-200730-9000-C",
+                  "key": "underlyings",
+                  "value": "BTCUSDT,ETHUSDT",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
                   "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
                 }
               ]
             }
           }
         },
         {
-          "name": "Check Server Time",
+          "name": "Get Market Maker Protection Config (TRADE)",
           "request": {
             "method": "GET",
             "header": [
@@ -2780,24 +2454,43 @@
               "urlencoded": []
             },
             "url": {
-              "raw": "{{url}}/eapi/v1/time",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "time"
-              ],
+              "raw": "{{url}}/eapi/v1/mmp",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "mmp"],
               "variable": [],
-              "query": []
+              "query": [
+                {
+                  "key": "underlying",
+                  "value": "BTCUSDT",
+                  "description": "Underlying asset.",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "Recv Window.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
             }
           }
         },
         {
-          "name": "Recent Trades List",
+          "name": "Reset Market Maker Protection Config (TRADE)",
           "request": {
-            "method": "GET",
+            "method": "POST",
             "header": [
               {
                 "key": "X-MBX-APIKEY",
@@ -2817,28 +2510,114 @@
               "urlencoded": []
             },
             "url": {
-              "raw": "{{url}}/eapi/v1/trades",
-              "host": [
-                "{{url}}"
-              ],
-              "path": [
-                "eapi",
-                "v1",
-                "trades"
-              ],
+              "raw": "{{url}}/eapi/v1/mmpReset",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "mmpReset"],
               "variable": [],
               "query": [
                 {
-                  "key": "symbol",
-                  "value": "symbol_example",
-                  "description": "Option trading pair, e.g BTC-200730-9000-C",
+                  "key": "underlying",
+                  "value": "BTCUSDT",
+                  "description": "",
                   "disabled": false
                 },
                 {
-                  "key": "limit",
-                  "value": "100",
-                  "description": "Number of result sets returned Default:100 Max:1000",
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
                   "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Set Market Maker Protection Config (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/eapi/v1/mmpSet",
+              "host": ["{{url}}"],
+              "path": ["eapi", "v1", "mmpSet"],
+              "variable": [],
+              "query": [
+                {
+                  "key": "underlying",
+                  "value": "BTCUSDT",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "windowTimeInMilliseconds",
+                  "value": "1000",
+                  "description": "MMP Interval in milliseconds",
+                  "disabled": false
+                },
+                {
+                  "key": "frozenTimeInMilliseconds",
+                  "value": "1000",
+                  "description": "MMP frozen time in milliseconds, if set to 0 manual reset is required",
+                  "disabled": false
+                },
+                {
+                  "key": "qtyLimit",
+                  "value": "1.0",
+                  "description": "quantity limit",
+                  "disabled": false
+                },
+                {
+                  "key": "deltaLimit",
+                  "value": "1.0",
+                  "description": "net delta limit",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
                 }
               ]
             }
