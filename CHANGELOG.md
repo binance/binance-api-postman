@@ -1,5 +1,11 @@
 # Changelog
 
+## 53.0.0 - 2026-07-15
+
+### Deleted (1)
+
+- Removed NFT REST API Collection.
+
 ## 53.0.0 - 2026-07-13
 
 ### Added (11)
