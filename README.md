@@ -71,3 +71,27 @@ Please refer to the API documentation to double check all the mandatory paramete
 
 If you don't find your answer here, please consult <https://dev.binance.vision/> for similar questions from the community or
 open an issue [here](https://github.com/binance/binance-api-postman/issues).
+
+## Contributing
+
+Since this repository contains auto-generated code using OpenAPI Generator, we encourage you to:
+
+1. Open a GitHub issue to discuss your ideas or report bugs
+2. Allow maintainers to implement necessary changes through the code generation process
+
+## Disclaimer
+
+These Postman Collections are provided by Binance on an "as is" and "as available" basis for use at your own risk. Binance makes no representations or warranties of any kind, whether express or implied, as to the operation of the collections, their accuracy, reliability, completeness, or fitness for any particular purpose.
+
+To the fullest extent permitted by law, Binance shall not be liable for any losses, damages, or expenses of any kind arising from or in connection with your use of, or inability to use, these collections, including but not limited to any financial losses resulting from errors, bugs, interruptions, or inaccuracies in the collections.
+
+Your use of these collections to access the Binance Platform is subject to the Binance API Key Terms and the Binance Terms of Use, which shall prevail in the event of any conflict with this disclaimer. You are solely responsible for any orders or transactions executed through the Binance Platform using these collections.
+
+This SDK is not intended to constitute investment advice or a recommendation to buy, sell, or hold any digital asset. You should independently evaluate and verify all information before acting.
+
+- [Binance Terms of Use](https://www.binance.com/en/terms)
+- [Binance API Key Terms](https://www.binance.com/en/about-legal/terms-binance-api)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
