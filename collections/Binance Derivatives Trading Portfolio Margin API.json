@@ -1371,6 +1371,12 @@
                   "disabled": true
                 },
                 {
+                  "key": "modifyId",
+                  "value": "1",
+                  "description": "User-defined modification identifier, returned as-is in the response. Optional; not validated for uniqueness.",
+                  "disabled": true
+                },
+                {
                   "key": "recvWindow",
                   "value": "5000",
                   "description": "",
@@ -4953,6 +4959,12 @@
                   "key": "priceMatch",
                   "value": "OPPONENT",
                   "description": "only avaliable for `LIMIT`/`STOP`/`TAKE_PROFIT` order; can be set to `OPPONENT`/ `OPPONENT_5`/ `OPPONENT_10`/ `OPPONENT_20`: /`QUEUE`/ `QUEUE_5`/ `QUEUE_10`/ `QUEUE_20`; Can't be passed together with `price`",
+                  "disabled": true
+                },
+                {
+                  "key": "modifyId",
+                  "value": "1",
+                  "description": "User-defined modification identifier, returned as-is in the response. Optional; not validated for uniqueness.",
                   "disabled": true
                 },
                 {

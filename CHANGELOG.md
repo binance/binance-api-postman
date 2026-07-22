@@ -1,5 +1,22 @@
 # Changelog
 
+## 55.0.0 - 2026-07-22
+    
+### Changed (2)
+
+- Added parameter `modifyId`
+  - affected endpoints:
+    - `PUT /fapi/v1/order`
+    - `PUT /dapi/v1/order`
+    - `PUT /papi/v1/cm/order`
+    - `PUT /papi/v1/um/order`
+- Modified parameter `batchOrders`:
+  - items: property `modifyId` added
+  - items: item property `modifyId` added
+  - affected endpoints:
+    - `PUT /fapi/v1/batchOrders`
+    - `PUT /dapi/v1/batchOrders`
+
 ## 54.0.0 - 2026-07-15
 
 ### Deleted (1)
