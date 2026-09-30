@@ -1,1181 +1,1308 @@
 {
-    "info": {
-        "name": "Stocks Trading REST API",
-        "description": {
-            "content": "REST APIs for Binance Stocks Trading. All endpoints under `/sapi/v1/equity/*`.",
-            "type": "text/markdown"
-        },
-        "version": "1.0.0",
-        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  "info": {
+    "name": "Stocks Trading REST API",
+    "description": {
+      "content": "REST APIs for Binance Stocks Trading. All endpoints under `/sapi/v1/equity/*`.",
+      "type": "text/markdown"
     },
-    "event": [
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "exec": [
+          "(async () => {",
+          "    const ts = Date.now();",
+          "    let queryParamsObject = {};",
+          "    let bodyParamsObject = {};",
+          "    const postmanEnvironment = pm.environment.get('environment');",
+          "    const api_key = pm.environment.get('api-key');",
+          "    const api_secret = pm.environment.get('api-secret');",
+          "    const parameters = pm.request.url.query;",
+          "    const body = pm.request.body;",
+          "",
+          "    // set host based on env",
+          "    const normalizedEnvironment = String(postmanEnvironment || 'production').toLowerCase();",
+          "    const environmentUrlKeyMap = {",
+          "        production: 'prod_url',",
+          "        prod: 'prod_url',",
+          "        testnet: 'testnet_url',",
+          "        demo: 'demo_url'",
+          "    };",
+          "    const selectedUrlKey = environmentUrlKeyMap[normalizedEnvironment] || 'prod_url';",
+          "    const selectedUrl = pm.variables.get(selectedUrlKey) || pm.variables.get('prod_url');",
+          "",
+          "    // set host based on env",
+          "    pm.request.url.host = [selectedUrl];",
+          "",
+          "    // Collect query params",
+          "    parameters.each((param) => {",
+          "        if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+          "            queryParamsObject[param.key] = param.value;",
+          "        }",
+          "    });",
+          "",
+          "    // add timestamp",
+          "    Object.assign(queryParamsObject, { timestamp: ts });",
+          "",
+          "    // Collect body params if urlencoded",
+          "    let hasUrlencodedBodyParams = false;",
+          "",
+          "    if (body) {",
+          "        const contentTypeHeader = pm.request.headers.get('Content-Type') || pm.request.headers.get('content-type') || '';",
+          "        const isFormUrlencoded = contentTypeHeader.includes('application/x-www-form-urlencoded') || body.mode === 'urlencoded';",
+          "",
+          "        if (isFormUrlencoded && body.urlencoded) {",
+          "            body.urlencoded.each((param) => {",
+          "                if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+          "                    bodyParamsObject[param.key] = param.value;",
+          "                    hasUrlencodedBodyParams = true;",
+          "                }",
+          "            });",
+          "        }",
+          "    }",
+          "",
+          "    // set api key",
+          "    setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
+          "",
+          "    // only sign if a signature param was declared and we have a secret",
+          "    if (parameters.has('signature') && api_secret) {",
+          "        // canonical query strings",
+          "        const queryStringForSign = buildQueryString(queryParamsObject);",
+          "        const bodyStringForSign = buildQueryString(bodyParamsObject);",
+          "        const totalParams = queryStringForSign + bodyStringForSign;",
+          "",
+          "        const encoder = new TextEncoder();",
+          "        const keyData = encoder.encode(api_secret);",
+          "        const msgData = encoder.encode(totalParams);",
+          "",
+          "        pm.request.url.query.clear();",
+          "",
+          "        const cryptoKey = await crypto.subtle.importKey('raw', keyData, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);",
+          "        const signatureBuffer = await crypto.subtle.sign('HMAC', cryptoKey, msgData);",
+          "",
+          "        const signature = Array.from(new Uint8Array(signatureBuffer))",
+          "            .map((b) => b.toString(16).padStart(2, '0'))",
+          "            .join('');",
+          "",
+          "        // update request",
+          "        const finalQueryParams = Object.assign({}, queryParamsObject, { signature });",
+          "        const finalQueryString = buildQueryString(finalQueryParams);",
+          "        pm.request.url.query = finalQueryString;",
+          "    }",
+          "",
+          "    function buildQueryString(params) {",
+          "        if (!params) return '';",
+          "",
+          "        const pairs = [];",
+          "        Object.entries(params).forEach(([key, value]) => {",
+          "            if (value !== null && value !== undefined) {",
+          "                const serializedValue = serializeValue(value);",
+          "                pairs.push(`${key}=${encodeURIComponent(serializedValue)}`);",
+          "            }",
+          "        });",
+          "",
+          "        return pairs.join('&');",
+          "    }",
+          "",
+          "    function serializeValue(value) {",
+          "        if (value === null || value === undefined) return '';",
+          "        if (Array.isArray(value) || (typeof value === 'object' && value !== null)) return JSON.stringify(value);",
+          "",
+          "        return String(value);",
+          "    }",
+          "",
+          "    function setOrUpdateHeaderParam(key, value) {",
+          "        let headers = pm.request.headers;",
+          "        let header = headers.find((header) => header.key === key);",
+          "        if (header) header.value = value;",
+          "        else pm.request.headers.add({ key, value });",
+          "    }",
+          "",
+          "    function is_disabled(val) {",
+          "        return val === true;",
+          "    }",
+          "",
+          "    function is_empty(str) {",
+          "        if (str === null || str === undefined) return true;",
+          "        if (typeof str === 'string') {",
+          "            return (",
+          "                !str ||",
+          "                str.length === 0 ||",
+          "                !/[^\\\\s]/.test(str) ||",
+          "                /^\\\\s*$/.test(str) ||",
+          "                str.replace(/\\\\s/g, '') === ''",
+          "            );",
+          "        }",
+          "        return false;",
+          "    }",
+          "",
+          "})().then(() => {",
+          "    if (typeof pm.done === 'function') pm.done();",
+          "});"
+        ],
+        "type": "text/javascript"
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "Tokenized",
+      "item": [
         {
-            "listen": "prerequest",
-            "script": {
-                "exec": [
-                    "(async () => {",
-                    "    const ts = Date.now();",
-                    "    let queryParamsObject = {};",
-                    "    let bodyParamsObject = {};",
-                    "    const postmanEnvironment = pm.environment.get('environment');",
-                    "    const api_key = pm.environment.get('api-key');",
-                    "    const api_secret = pm.environment.get('api-secret');",
-                    "    const parameters = pm.request.url.query;",
-                    "    const body = pm.request.body;",
-                    "",
-                    "    // set host based on env",
-                    "    const normalizedEnvironment = String(postmanEnvironment || 'production').toLowerCase();",
-                    "    const environmentUrlKeyMap = {",
-                    "        production: 'prod_url',",
-                    "        prod: 'prod_url',",
-                    "        testnet: 'testnet_url',",
-                    "        demo: 'demo_url'",
-                    "    };",
-                    "    const selectedUrlKey = environmentUrlKeyMap[normalizedEnvironment] || 'prod_url';",
-                    "    const selectedUrl = pm.variables.get(selectedUrlKey) || pm.variables.get('prod_url');",
-                    "",
-                    "    // set host based on env",
-                    "    pm.request.url.host = [selectedUrl];",
-                    "",
-                    "    // Collect query params",
-                    "    parameters.each((param) => {",
-                    "        if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
-                    "            queryParamsObject[param.key] = param.value;",
-                    "        }",
-                    "    });",
-                    "",
-                    "    // add timestamp",
-                    "    Object.assign(queryParamsObject, { timestamp: ts });",
-                    "",
-                    "    // Collect body params if urlencoded",
-                    "    let hasUrlencodedBodyParams = false;",
-                    "",
-                    "    if (body) {",
-                    "        const contentTypeHeader = pm.request.headers.get('Content-Type') || pm.request.headers.get('content-type') || '';",
-                    "        const isFormUrlencoded = contentTypeHeader.includes('application/x-www-form-urlencoded') || body.mode === 'urlencoded';",
-                    "",
-                    "        if (isFormUrlencoded && body.urlencoded) {",
-                    "            body.urlencoded.each((param) => {",
-                    "                if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
-                    "                    bodyParamsObject[param.key] = param.value;",
-                    "                    hasUrlencodedBodyParams = true;",
-                    "                }",
-                    "            });",
-                    "        }",
-                    "    }",
-                    "",
-                    "    // set api key",
-                    "    setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
-                    "",
-                    "    // only sign if a signature param was declared and we have a secret",
-                    "    if (parameters.has('signature') && api_secret) {",
-                    "        // canonical query strings",
-                    "        const queryStringForSign = buildQueryString(queryParamsObject);",
-                    "        const bodyStringForSign = buildQueryString(bodyParamsObject);",
-                    "        const totalParams = queryStringForSign + bodyStringForSign;",
-                    "",
-                    "        const encoder = new TextEncoder();",
-                    "        const keyData = encoder.encode(api_secret);",
-                    "        const msgData = encoder.encode(totalParams);",
-                    "",
-                    "        pm.request.url.query.clear();",
-                    "",
-                    "        const cryptoKey = await crypto.subtle.importKey('raw', keyData, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);",
-                    "        const signatureBuffer = await crypto.subtle.sign('HMAC', cryptoKey, msgData);",
-                    "",
-                    "        const signature = Array.from(new Uint8Array(signatureBuffer))",
-                    "            .map((b) => b.toString(16).padStart(2, '0'))",
-                    "            .join('');",
-                    "",
-                    "        // update request",
-                    "        const finalQueryParams = Object.assign({}, queryParamsObject, { signature });",
-                    "        const finalQueryString = buildQueryString(finalQueryParams);",
-                    "        pm.request.url.query = finalQueryString;",
-                    "    }",
-                    "",
-                    "    function buildQueryString(params) {",
-                    "        if (!params) return '';",
-                    "",
-                    "        const pairs = [];",
-                    "        Object.entries(params).forEach(([key, value]) => {",
-                    "            if (value !== null && value !== undefined) {",
-                    "                const serializedValue = serializeValue(value);",
-                    "                pairs.push(`${key}=${encodeURIComponent(serializedValue)}`);",
-                    "            }",
-                    "        });",
-                    "",
-                    "        return pairs.join('&');",
-                    "    }",
-                    "",
-                    "    function serializeValue(value) {",
-                    "        if (value === null || value === undefined) return '';",
-                    "        if (Array.isArray(value) || (typeof value === 'object' && value !== null)) return JSON.stringify(value);",
-                    "",
-                    "        return String(value);",
-                    "    }",
-                    "",
-                    "    function setOrUpdateHeaderParam(key, value) {",
-                    "        let headers = pm.request.headers;",
-                    "        let header = headers.find((header) => header.key === key);",
-                    "        if (header) header.value = value;",
-                    "        else pm.request.headers.add({ key, value });",
-                    "    }",
-                    "",
-                    "    function is_disabled(val) {",
-                    "        return val === true;",
-                    "    }",
-                    "",
-                    "    function is_empty(str) {",
-                    "        if (str === null || str === undefined) return true;",
-                    "        if (typeof str === 'string') {",
-                    "            return (",
-                    "                !str ||",
-                    "                str.length === 0 ||",
-                    "                !/[^\\\\s]/.test(str) ||",
-                    "                /^\\\\s*$/.test(str) ||",
-                    "                str.replace(/\\\\s/g, '') === ''",
-                    "            );",
-                    "        }",
-                    "        return false;",
-                    "    }",
-                    "",
-                    "})().then(() => {",
-                    "    if (typeof pm.done === 'function') pm.done();",
-                    "});"
-                ],
-                "type": "text/javascript"
+          "name": "Tokenized Convert Status (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/tokenized/convert-status",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "tokenized",
+                "convert-status"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "issuerRequestId",
+                  "value": "mint-20260505-8f3b9e1a2d3c4b5a",
+                  "description": "Convert request id returned by `/tokenized/mint` or `/redeem`.",
+                  "disabled": false
+                },
+                {
+                  "key": "convertType",
+                  "value": "MINT",
+                  "description": "`MINT` or `REDEEM`.",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
             }
+          }
+        },
+        {
+          "name": "Tokenized Convert History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/tokenized/history",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "tokenized",
+                "history"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "1735800000000",
+                  "description": "Start time (ms epoch).",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1735900000000",
+                  "description": "End time (ms epoch).",
+                  "disabled": true
+                },
+                {
+                  "key": "lastId",
+                  "value": "10019",
+                  "description": "Last record id from the previous page. Omit (or leave unset) to fetch the first page.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "20",
+                  "description": "Page size. Default `20`, max `100`.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Tokenized Mint (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/tokenized/mint",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "tokenized",
+                "mint"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "underlyingAsset",
+                  "value": "AAPL",
+                  "description": "Underlying US-equity ticker, e.g. `AAPL`, `TSLA`. Resolved against the active-symbol list; unknown tickers return `-26004`. The target tokenized asset is looked up from this field via `/market/tokenized-assets`.",
+                  "disabled": false
+                },
+                {
+                  "key": "underlyingAssetAmount",
+                  "value": "1",
+                  "description": "Quantity of the underlying asset to mint from. Must be > 0.",
+                  "disabled": false
+                },
+                {
+                  "key": "clientOrderId",
+                  "value": "mint-client-id-32chars-0000000001",
+                  "description": "Client order id for idempotency. Format `^[a-zA-Z0-9-_]{32,36}$`. Auto-generated when omitted.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Tokenized Redeem (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/tokenized/redeem",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "tokenized",
+                "redeem"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "tokenizedAsset",
+                  "value": "AAPLB",
+                  "description": "Tokenized asset to redeem, e.g. `AAPLB`. Not a US-equity ticker — this is the on-chain tokenized asset identifier. Unknown asset returns `-1102` (the message currently says the parameter was empty/malformed, but it was in fact sent — it is simply unknown). The target underlying ticker is looked up from this field via `/market/tokenized-assets`.",
+                  "disabled": false
+                },
+                {
+                  "key": "tokenizedAssetAmount",
+                  "value": "1",
+                  "description": "Quantity of the tokenized asset to redeem. Must be > 0.",
+                  "disabled": false
+                },
+                {
+                  "key": "clientOrderId",
+                  "value": "redeem-client-id-32chars-000000001",
+                  "description": "Client order id for idempotency. Format `^[a-zA-Z0-9-_]{32,36}$`. Auto-generated when omitted.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
         }
-    ],
-    "item": [
+      ]
+    },
+    {
+      "name": "Market Data",
+      "item": [
         {
-            "name": "Tokenized",
-            "item": [
+          "name": "Exchange Info (MARKET_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/market/exchangeInfo",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "market",
+                "exchangeInfo"
+              ],
+              "variable": [],
+              "query": [
                 {
-                    "name": "Tokenized Convert Status (USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/equity/tokenized/convert-status",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "equity", "tokenized", "convert-status"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "issuerRequestId",
-                                    "value": "mint-20260505-8f3b9e1a2d3c4b5a",
-                                    "description": "Convert request id returned by `/tokenized/mint` or `/redeem`.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "convertType",
-                                    "value": "MINT",
-                                    "description": "`MINT` or `REDEEM`.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Tokenized Convert History (USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/equity/tokenized/history",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "equity", "tokenized", "history"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "startTime",
-                                    "value": "1735800000000",
-                                    "description": "Start time (ms epoch).",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "endTime",
-                                    "value": "1735900000000",
-                                    "description": "End time (ms epoch).",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "lastId",
-                                    "value": "10019",
-                                    "description": "Last record id from the previous page. Omit (or leave unset) to fetch the first page.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "size",
-                                    "value": "20",
-                                    "description": "Page size. Default `20`, max `100`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Tokenized Mint (TRADE)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/equity/tokenized/mint",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "equity", "tokenized", "mint"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "underlyingAsset",
-                                    "value": "AAPL",
-                                    "description": "Underlying US-equity ticker, e.g. `AAPL`, `TSLA`. Resolved against the active-symbol list; unknown tickers return `-26004`. The target tokenized asset is looked up from this field via `/market/tokenized-assets`.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "underlyingAssetAmount",
-                                    "value": "1",
-                                    "description": "Quantity of the underlying asset to mint from. Must be > 0.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "clientOrderId",
-                                    "value": "mint-client-id-32chars-0000000001",
-                                    "description": "Client order id for idempotency. Format `^[a-zA-Z0-9-_]{32,36}$`. Auto-generated when omitted.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Tokenized Redeem (TRADE)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/equity/tokenized/redeem",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "equity", "tokenized", "redeem"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "tokenizedAsset",
-                                    "value": "AAPLB",
-                                    "description": "Tokenized asset to redeem, e.g. `AAPLB`. Not a US-equity ticker — this is the on-chain tokenized asset identifier. Unknown asset returns `-1102` (the message currently says the parameter was empty/malformed, but it was in fact sent — it is simply unknown). The target underlying ticker is looked up from this field via `/market/tokenized-assets`.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "tokenizedAssetAmount",
-                                    "value": "1",
-                                    "description": "Quantity of the tokenized asset to redeem. Must be > 0.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "clientOrderId",
-                                    "value": "redeem-client-id-32chars-000000001",
-                                    "description": "Client order id for idempotency. Format `^[a-zA-Z0-9-_]{32,36}$`. Auto-generated when omitted.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
+                  "key": "symbol",
+                  "value": "AAPL",
+                  "description": "Filter to a single US-equity ticker, e.g. `AAPL`. When omitted, returns all active symbols. An unknown ticker returns an empty `symbols` array (HTTP 200), not an error.",
+                  "disabled": true
                 }
-            ]
+              ]
+            }
+          }
         },
         {
-            "name": "Market Data",
-            "item": [
+          "name": "Latest Quote (MARKET_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/market/quote",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "market",
+                "quote"
+              ],
+              "variable": [],
+              "query": [
                 {
-                    "name": "Exchange Info (MARKET_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/equity/market/exchangeInfo",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "equity", "market", "exchangeInfo"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "symbol",
-                                    "value": "AAPL",
-                                    "description": "Filter to a single US-equity ticker, e.g. `AAPL`. When omitted, returns all active symbols. An unknown ticker returns an empty `symbols` array (HTTP 200), not an error.",
-                                    "disabled": true
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Latest Quote (MARKET_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/equity/market/quote",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "equity", "market", "quote"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "symbol",
-                                    "value": "AAPL",
-                                    "description": "US-equity ticker, e.g. `AAPL`, `TSLA`. Case-insensitive; uppercased server-side.",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Tokenized Assets (MARKET_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/equity/market/tokenized-assets",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "equity", "market", "tokenized-assets"],
-                            "variable": [],
-                            "query": []
-                        }
-                    }
+                  "key": "symbol",
+                  "value": "AAPL",
+                  "description": "US-equity ticker, e.g. `AAPL`, `TSLA`. Case-insensitive; uppercased server-side.",
+                  "disabled": false
                 }
-            ]
+              ]
+            }
+          }
         },
         {
-            "name": "Trade",
-            "item": [
-                {
-                    "name": "Cancel Equity Order (TRADE)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/equity/order/cancel",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "equity", "order", "cancel"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "orderId",
-                                    "value": "c3c58f49-7b0d-4b9e-a2db-1a2f9a3b8c71",
-                                    "description": "Equity order id returned by `/order/place` or a query endpoint.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Cancel All Equity Orders (TRADE)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/equity/order/cancel-all",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "equity", "order", "cancel-all"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Equity Order Detail (USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/equity/order/detail",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "equity", "order", "detail"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "orderId",
-                                    "value": "c3c58f49-7b0d-4b9e-a2db-1a2f9a3b8c71",
-                                    "description": "Equity order id. Either `orderId` or `clientOrderId` must be provided.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "clientOrderId",
-                                    "value": "web_2c9c92b74f1e4a7c8f3b9e1a2d3c4b5a",
-                                    "description": "Client-supplied order id. Either `orderId` or `clientOrderId` must be provided.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Equity Order History (USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/equity/order/history",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "equity", "order", "history"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "symbol",
-                                    "value": "NVDA",
-                                    "description": "US-equity ticker filter, e.g. `NVDA`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "orderType",
-                                    "value": "MARKET",
-                                    "description": "Order type filter: `MARKET` / `LIMIT`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "side",
-                                    "value": "BUY",
-                                    "description": "Side filter: `BUY` / `SELL`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "orderStatus",
-                                    "value": "FILLED,CANCELED",
-                                    "description": "Comma-separated status filter. Allowed values: `FILLED`, `PARTIALLY_FILLED`, `CANCELED`, `EXPIRED`, `REJECTED`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "startTime",
-                                    "value": "1735800000000",
-                                    "description": "Start time (ms epoch).",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "endTime",
-                                    "value": "1735900000000",
-                                    "description": "End time (ms epoch).",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "current",
-                                    "value": "1",
-                                    "description": "Page number, 1-based. Default `1`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "size",
-                                    "value": "20",
-                                    "description": "Page size. Default `20`, max `100`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Current Open Orders (USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/equity/order/open-orders",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "equity", "order", "open-orders"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Place Equity Order (TRADE)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/equity/order/place",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "equity", "order", "place"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "symbol",
-                                    "value": "AAPL",
-                                    "description": "US stock ticker, e.g. `AAPL`, `TSLA`. Must be a tradable US-equity symbol — verify via `/sapi/v1/equity/market/exchangeInfo`. Tokenization enablement (verifiable via `/sapi/v1/equity/market/tokenized-assets`) is *not* required; non-tokenized symbols are accepted and settle as traditional underlying-equity trades. The `tokenize` parameter only takes effect on tokenization-enabled symbols and is silently ignored otherwise.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "quoteAsset",
-                                    "value": "USDC",
-                                    "description": "Quote asset. Defaults to `USDC`; must be within the server's allowed set.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "side",
-                                    "value": "BUY",
-                                    "description": "`BUY` / `SELL`.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "orderType",
-                                    "value": "MARKET",
-                                    "description": "`MARKET` / `LIMIT`.",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "price",
-                                    "value": "180.50",
-                                    "description": "**Required** for `LIMIT`; **forbidden** for `MARKET`. Maximum 2 decimal places.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "quantity",
-                                    "value": "1",
-                                    "description": "**Required** for `LIMIT` (both sides) and `SELL MARKET`; **forbidden** for `BUY MARKET`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "notional",
-                                    "value": "1000.00",
-                                    "description": "**Required** for `BUY MARKET`; **forbidden** for `LIMIT` and `SELL MARKET`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timeInForce",
-                                    "value": "DAY",
-                                    "description": "`DAY` (default) / `GTC`. `GTC` is only supported for `LIMIT` orders; a fractional-share `GTC` order must be paired with `tradingSession = EXTENDED` or `24H`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "tradingSession",
-                                    "value": "RTH",
-                                    "description": "`RTH` / `EXTENDED` / `24H`. **Required** for `LIMIT`; **forbidden** for `MARKET`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "walletType",
-                                    "value": "CARD",
-                                    "description": "Payment wallet for `BUY` orders: `CARD` (default) / `MAIN`. `SELL` orders always settle to `CARD`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "clientOrderId",
-                                    "value": "web_2c9c92b74f1e4a7c8f3b9e1a2d3c4b5a",
-                                    "description": "Client-supplied order id. Format `^[a-zA-Z0-9-_]{32,36}$`. Auto-generated when omitted.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "tokenize",
-                                    "value": "true",
-                                    "description": "Whether to tokenize the purchased stock asset upon settlement. Default `true`. Only takes effect when the symbol is tokenization-enabled (check via `/market/tokenized-assets`); silently ignored for non-tokenized symbols, which always settle as traditional underlying-equity trades.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                },
-                {
-                    "name": "Equity Trade History (USER_DATA)",
-                    "request": {
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/equity/trade/history",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "equity", "trade", "history"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "symbol",
-                                    "value": "NVDA",
-                                    "description": "US-equity ticker filter, e.g. `NVDA`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "side",
-                                    "value": "BUY",
-                                    "description": "Side filter: `BUY` / `SELL`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "orderId",
-                                    "value": "c3c58f49-7b0d-4b9e-a2db-1a2f9a3b8c71",
-                                    "description": "Narrow the result to executions of a single order.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "startTime",
-                                    "value": "1735800000000",
-                                    "description": "Start time (ms epoch).",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "endTime",
-                                    "value": "1735900000000",
-                                    "description": "End time (ms epoch).",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "current",
-                                    "value": "1",
-                                    "description": "Page number, 1-based. Default `1`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "size",
-                                    "value": "20",
-                                    "description": "Page size. Default `20`, max `100`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "name": "User Data Streams",
-            "item": [
-                {
-                    "name": "Create / Renew Listen Key (USER_STREAM)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/equity/listenKey",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "equity", "listenKey"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`.",
-                                    "disabled": true
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
-        },
-        {
-            "name": "Account",
-            "item": [
-                {
-                    "name": "Sign US Equity Disclaimer (TRADE)",
-                    "request": {
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "X-MBX-APIKEY",
-                                "value": "",
-                                "description": "API KEY",
-                                "disabled": false
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "description": "",
-                                "disabled": false
-                            }
-                        ],
-                        "body": {
-                            "mode": "urlencoded",
-                            "urlencoded": []
-                        },
-                        "url": {
-                            "raw": "{{url}}/sapi/v1/equity/account/disclaimer",
-                            "host": ["{{url}}"],
-                            "path": ["sapi", "v1", "equity", "account", "disclaimer"],
-                            "variable": [],
-                            "query": [
-                                {
-                                    "key": "recvWindow",
-                                    "value": "5000",
-                                    "description": "The value cannot be greater than `60000`.",
-                                    "disabled": true
-                                },
-                                {
-                                    "key": "timestamp",
-                                    "value": "",
-                                    "description": "UTC timestamp in ms",
-                                    "disabled": false
-                                },
-                                {
-                                    "key": "signature",
-                                    "value": "",
-                                    "description": "Signature",
-                                    "disabled": false
-                                }
-                            ]
-                        }
-                    }
-                }
-            ]
+          "name": "Tokenized Assets (MARKET_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/market/tokenized-assets",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "market",
+                "tokenized-assets"
+              ],
+              "variable": [],
+              "query": []
+            }
+          }
         }
-    ],
-    "variable": [
+      ]
+    },
+    {
+      "name": "Trade",
+      "item": [
         {
-            "key": "prod_url",
-            "value": "https://api.binance.com",
-            "type": "string"
+          "name": "Cancel Equity Order (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/order/cancel",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "order",
+                "cancel"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "orderId",
+                  "value": "c3c58f49-7b0d-4b9e-a2db-1a2f9a3b8c71",
+                  "description": "Equity order id returned by `/order/place` or a query endpoint.",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Cancel All Equity Orders (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/order/cancel-all",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "order",
+                "cancel-all"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Equity Order Detail (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/order/detail",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "order",
+                "detail"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "orderId",
+                  "value": "c3c58f49-7b0d-4b9e-a2db-1a2f9a3b8c71",
+                  "description": "Equity order id. Either `orderId` or `clientOrderId` must be provided.",
+                  "disabled": true
+                },
+                {
+                  "key": "clientOrderId",
+                  "value": "web_2c9c92b74f1e4a7c8f3b9e1a2d3c4b5a",
+                  "description": "Client-supplied order id. Either `orderId` or `clientOrderId` must be provided.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Equity Order History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/order/history",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "order",
+                "history"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "NVDA",
+                  "description": "US-equity ticker filter, e.g. `NVDA`.",
+                  "disabled": true
+                },
+                {
+                  "key": "orderType",
+                  "value": "MARKET",
+                  "description": "Order type filter: `MARKET` / `LIMIT`.",
+                  "disabled": true
+                },
+                {
+                  "key": "side",
+                  "value": "BUY",
+                  "description": "Side filter: `BUY` / `SELL`.",
+                  "disabled": true
+                },
+                {
+                  "key": "orderStatus",
+                  "value": "FILLED,CANCELED",
+                  "description": "Comma-separated status filter. Allowed values: `FILLED`, `PARTIALLY_FILLED`, `CANCELED`, `EXPIRED`, `REJECTED`.",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1735800000000",
+                  "description": "Start time (ms epoch).",
+                  "disabled": false
+                },
+                {
+                  "key": "endTime",
+                  "value": "1735900000000",
+                  "description": "End time (ms epoch).",
+                  "disabled": false
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Page number, 1-based. Default `1`.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "20",
+                  "description": "Page size. Default `20`, max `100`.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Current Open Orders (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/order/open-orders",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "order",
+                "open-orders"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Place Equity Order (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/order/place",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "order",
+                "place"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "AAPL",
+                  "description": "US stock ticker, e.g. `AAPL`, `TSLA`. Must be a tradable US-equity symbol — verify via `/sapi/v1/equity/market/exchangeInfo`. Tokenization enablement (verifiable via `/sapi/v1/equity/market/tokenized-assets`) is *not* required; non-tokenized symbols are accepted and settle as traditional underlying-equity trades. The `tokenize` parameter only takes effect on tokenization-enabled symbols and is silently ignored otherwise.",
+                  "disabled": false
+                },
+                {
+                  "key": "quoteAsset",
+                  "value": "USDC",
+                  "description": "Quote asset. Defaults to `USDC`; must be within the server's allowed set.",
+                  "disabled": true
+                },
+                {
+                  "key": "side",
+                  "value": "BUY",
+                  "description": "`BUY` / `SELL`.",
+                  "disabled": false
+                },
+                {
+                  "key": "orderType",
+                  "value": "MARKET",
+                  "description": "`MARKET` / `LIMIT`.",
+                  "disabled": false
+                },
+                {
+                  "key": "price",
+                  "value": "180.50",
+                  "description": "**Required** for `LIMIT`; **forbidden** for `MARKET`. Maximum 2 decimal places.",
+                  "disabled": true
+                },
+                {
+                  "key": "quantity",
+                  "value": "1",
+                  "description": "**Required** for `LIMIT` (both sides) and `SELL MARKET`; **forbidden** for `BUY MARKET`.",
+                  "disabled": true
+                },
+                {
+                  "key": "notional",
+                  "value": "1000.00",
+                  "description": "**Required** for `BUY MARKET`; **forbidden** for `LIMIT` and `SELL MARKET`.",
+                  "disabled": true
+                },
+                {
+                  "key": "timeInForce",
+                  "value": "DAY",
+                  "description": "`DAY` (default) / `GTC`. `GTC` is only supported for `LIMIT` orders; a fractional-share `GTC` order must be paired with `tradingSession = EXTENDED` or `24H`.",
+                  "disabled": true
+                },
+                {
+                  "key": "tradingSession",
+                  "value": "RTH",
+                  "description": "`RTH` / `EXTENDED` / `24H`. **Required** for `LIMIT`; **forbidden** for `MARKET`.",
+                  "disabled": true
+                },
+                {
+                  "key": "walletType",
+                  "value": "CARD",
+                  "description": "Payment wallet for `BUY` orders: `CARD` (default) / `MAIN`. `SELL` orders always settle to `CARD`.",
+                  "disabled": true
+                },
+                {
+                  "key": "clientOrderId",
+                  "value": "web_2c9c92b74f1e4a7c8f3b9e1a2d3c4b5a",
+                  "description": "Client-supplied order id. Format `^[a-zA-Z0-9-_]{32,36}$`. Auto-generated when omitted.",
+                  "disabled": true
+                },
+                {
+                  "key": "tokenize",
+                  "value": "true",
+                  "description": "Whether to tokenize the purchased stock asset upon settlement. Default `true`. Only takes effect when the symbol is tokenization-enabled (check via `/market/tokenized-assets`); silently ignored for non-tokenized symbols, which always settle as traditional underlying-equity trades.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Equity Trade History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/trade/history",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "trade",
+                "history"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "NVDA",
+                  "description": "US-equity ticker filter, e.g. `NVDA`.",
+                  "disabled": true
+                },
+                {
+                  "key": "side",
+                  "value": "BUY",
+                  "description": "Side filter: `BUY` / `SELL`.",
+                  "disabled": true
+                },
+                {
+                  "key": "orderId",
+                  "value": "c3c58f49-7b0d-4b9e-a2db-1a2f9a3b8c71",
+                  "description": "Narrow the result to executions of a single order.",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1735800000000",
+                  "description": "Start time (ms epoch).",
+                  "disabled": false
+                },
+                {
+                  "key": "endTime",
+                  "value": "1735900000000",
+                  "description": "End time (ms epoch).",
+                  "disabled": false
+                },
+                {
+                  "key": "current",
+                  "value": "1",
+                  "description": "Page number, 1-based. Default `1`.",
+                  "disabled": true
+                },
+                {
+                  "key": "size",
+                  "value": "20",
+                  "description": "Page size. Default `20`, max `100`.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
         }
-    ]
+      ]
+    },
+    {
+      "name": "User Data Streams",
+      "item": [
+        {
+          "name": "Create / Renew Listen Key (USER_STREAM)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/listenKey",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "listenKey"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`.",
+                  "disabled": true
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Account",
+      "item": [
+        {
+          "name": "Sign US Equity Disclaimer (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/account/disclaimer",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "account",
+                "disclaimer"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "prod_url",
+      "value": "https://api.binance.com",
+      "type": "string"
+    }
+  ]
 }

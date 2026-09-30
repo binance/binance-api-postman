@@ -1,5 +1,22 @@
 # Changelog
 
+## 58.0.0 - 2026-09-30
+
+**Derivatives Trading Portfolio Margin**
+
+### Changed (1)
+
+- Modified parameter `incomeType`:
+  - enum removed: `AUTO_EXCHANGE`
+  - affected endpoints:
+    - `GET /papi/v1/um/income`
+
+**Spot**
+
+### Changed (1)
+
+- Marked `POST /api/v3/order/oco` as deprecated.
+
 ## 57.0.1 - 2026-09-16
 
 **Derivatives Trading USDS Futures**

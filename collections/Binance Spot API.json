@@ -274,7 +274,7 @@
                 {
                   "key": "cancelRestrictions",
                   "value": "ONLY_NEW",
-                  "description": "Supported values: <br>`ONLY_NEW` - Cancel will succeed if the order status is `NEW`.<br> `ONLY_PARTIALLY_FILLED` - Cancel will succeed if order status is `PARTIALLY_FILLED`.",
+                  "description": "Supported values: <br>`ONLY_NEW` - Cancel will succeed if the order status is `NEW`.<br> `ONLY_PARTIALLY_FILLED` - Cancel will succeed if order status is `PARTIALLY_FILLED`. For more information please refer to Regarding `cancelRestrictions`.",
                   "disabled": true
                 },
                 {
@@ -342,19 +342,19 @@
                 {
                   "key": "side",
                   "value": "BUY",
-                  "description": "Please see [Enums](/products/spot/enums#side) for supported values.",
+                  "description": "Please see Enums for supported values.",
                   "disabled": false
                 },
                 {
                   "key": "type",
                   "value": "MARKET",
-                  "description": "Please see [Enums](/products/spot/enums#ordertypes) for supported values.",
+                  "description": "Please see Enums for supported values.",
                   "disabled": false
                 },
                 {
                   "key": "timeInForce",
                   "value": "GTC",
-                  "description": "Please see [Enums](/products/spot/enums#timeinforce) for supported values.",
+                  "description": "Please see Enums for supported values.",
                   "disabled": true
                 },
                 {
@@ -525,7 +525,7 @@
                 },
                 {
                   "key": "newQty",
-                  "value": "1",
+                  "value": "5",
                   "description": "`newQty` must be greater than 0 and less than the order's quantity.",
                   "disabled": false
                 },
@@ -679,7 +679,7 @@
                 {
                   "key": "trailingDelta",
                   "value": "1",
-                  "description": "See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)",
+                  "description": "See Trailing Stop order FAQ",
                   "disabled": true
                 },
                 {
@@ -697,13 +697,13 @@
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "The allowed enums is dependent on what is configured on the symbol. The possible supported values are: [STP Modes](/products/spot/enums#stpmodes).",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. The possible supported values are: STP Modes.",
                   "disabled": true
                 },
                 {
                   "key": "cancelRestrictions",
                   "value": "ONLY_NEW",
-                  "description": "Supported values: <br>`ONLY_NEW` - Cancel will succeed if the order status is `NEW`.<br> `ONLY_PARTIALLY_FILLED ` - Cancel will succeed if order status is `PARTIALLY_FILLED`.",
+                  "description": "Supported values: <br>`ONLY_NEW` - Cancel will succeed if the order status is `NEW`.<br> `ONLY_PARTIALLY_FILLED ` - Cancel will succeed if order status is `PARTIALLY_FILLED`. For more information please refer to Regarding `cancelRestrictions`.",
                   "disabled": true
                 },
                 {
@@ -892,13 +892,13 @@
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "Format of the JSON response. Supported values: [Order Response Type](/products/spot/enums#orderresponsetype)",
+                  "description": "Format of the JSON response. Supported values: Order Response Type",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "The allowed values are dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)",
+                  "description": "The allowed values are dependent on what is configured on the symbol. Supported values: STP Modes",
                   "disabled": true
                 },
                 {
@@ -961,7 +961,7 @@
                 {
                   "key": "computeCommissionRates",
                   "value": "false",
-                  "description": "Default: `false` <br> See [Commissions FAQ](/products/spot/faqs/commission_faq#test-order-diferences) to learn more.",
+                  "description": "Default: `false` <br> See Commissions FAQ to learn more.",
                   "disabled": true
                 },
                 {
@@ -973,19 +973,19 @@
                 {
                   "key": "side",
                   "value": "BUY",
-                  "description": "Please see [Enums](/products/spot/enums#side) for supported values.",
+                  "description": "Please see Enums for supported values.",
                   "disabled": false
                 },
                 {
                   "key": "type",
                   "value": "MARKET",
-                  "description": "Please see [Enums](/products/spot/enums#ordertypes) for supported values.",
+                  "description": "Please see Enums for supported values.",
                   "disabled": false
                 },
                 {
                   "key": "timeInForce",
                   "value": "GTC",
-                  "description": "Please see [Enums](/products/spot/enums#timeinforce) for supported values.",
+                  "description": "Please see Enums for supported values.",
                   "disabled": true
                 },
                 {
@@ -1033,7 +1033,7 @@
                 {
                   "key": "trailingDelta",
                   "value": "1",
-                  "description": "See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)",
+                  "description": "See Trailing Stop order FAQ",
                   "disabled": true
                 },
                 {
@@ -1051,25 +1051,25 @@
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: STP Modes",
                   "disabled": true
                 },
                 {
                   "key": "pegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "`PRIMARY_PEG` or `MARKET_PEG`. See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "`PRIMARY_PEG` or `MARKET_PEG`. See Pegged Orders",
                   "disabled": true
                 },
                 {
                   "key": "pegOffsetValue",
                   "value": "1",
-                  "description": "Price level for pegging (max: 100). See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "Price level for pegging (max: 100). See Pegged Orders",
                   "disabled": true
                 },
                 {
                   "key": "pegOffsetType",
                   "value": "PRICE_LEVEL",
-                  "description": "Only `PRICE_LEVEL` is supported. See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "Only `PRICE_LEVEL` is supported. See Pegged Orders",
                   "disabled": true
                 },
                 {
@@ -1253,20 +1253,20 @@
                 },
                 {
                   "key": "abovePrice",
-                  "value": "1",
+                  "value": "1.5",
                   "description": "Can be used if `aboveType` is `STOP_LOSS_LIMIT`, `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price.",
                   "disabled": true
                 },
                 {
                   "key": "aboveStopPrice",
-                  "value": "1",
+                  "value": "1.50000001",
                   "description": "Can be used if `aboveType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`. Either `aboveStopPrice` or `aboveTrailingDelta` or both, must be specified.",
                   "disabled": true
                 },
                 {
                   "key": "aboveTrailingDelta",
                   "value": "1",
-                  "description": "See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)",
+                  "description": "See Trailing Stop order FAQ",
                   "disabled": true
                 },
                 {
@@ -1290,7 +1290,7 @@
                 {
                   "key": "abovePegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "`PRIMARY_PEG` or `MARKET_PEG`. See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "`PRIMARY_PEG` or `MARKET_PEG`. See Pegged Orders",
                   "disabled": true
                 },
                 {
@@ -1325,20 +1325,20 @@
                 },
                 {
                   "key": "belowPrice",
-                  "value": "1",
+                  "value": "1.49999999",
                   "description": "Can be used if `belowType` is `STOP_LOSS_LIMIT`, `LIMIT_MAKER`, or `TAKE_PROFIT_LIMIT` to specify the limit price.",
                   "disabled": true
                 },
                 {
                   "key": "belowStopPrice",
-                  "value": "1",
+                  "value": "1.50000001",
                   "description": "Can be used if `belowType` is `STOP_LOSS`, `STOP_LOSS_LIMIT`, `TAKE_PROFIT`, `TAKE_PROFIT_LIMIT`. Either `belowStopPrice` or `belowTrailingDelta` or both, must be specified.",
                   "disabled": true
                 },
                 {
                   "key": "belowTrailingDelta",
                   "value": "1",
-                  "description": "See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)",
+                  "description": "See Trailing Stop order FAQ",
                   "disabled": true
                 },
                 {
@@ -1362,7 +1362,7 @@
                 {
                   "key": "belowPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "See Pegged Orders",
                   "disabled": true
                 },
                 {
@@ -1386,7 +1386,7 @@
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: STP Modes",
                   "disabled": true
                 },
                 {
@@ -1461,13 +1461,13 @@
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "Format of the JSON response. Supported values: [Order Response Type](/products/spot/enums#orderresponsetype)",
+                  "description": "Format of the JSON response. Supported values: Order Response Type",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: STP Modes",
                   "disabled": true
                 },
                 {
@@ -1479,7 +1479,7 @@
                 {
                   "key": "workingSide",
                   "value": "BUY",
-                  "description": "Supported values: [Order Side](/products/spot/enums#side)",
+                  "description": "Supported values: Order Side",
                   "disabled": false
                 },
                 {
@@ -1509,7 +1509,7 @@
                 {
                   "key": "workingTimeInForce",
                   "value": "GTC",
-                  "description": "Supported values: [Time In Force](/products/spot/enums#timeinforce)",
+                  "description": "Supported values: Time In Force",
                   "disabled": true
                 },
                 {
@@ -1527,7 +1527,7 @@
                 {
                   "key": "workingPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "See Pegged Orders",
                   "disabled": true
                 },
                 {
@@ -1545,13 +1545,13 @@
                 {
                   "key": "pendingType",
                   "value": "LIMIT",
-                  "description": "Supported values: [Order Types](/products/spot/enums#ordertypes). Note that `MARKET` orders using `quoteOrderQty` are not supported.",
+                  "description": "Supported values: Order Types. Note that `MARKET` orders using `quoteOrderQty` are not supported.",
                   "disabled": false
                 },
                 {
                   "key": "pendingSide",
                   "value": "BUY",
-                  "description": "Supported values: [Order Side](/products/spot/enums#side)",
+                  "description": "Supported values: Order Side",
                   "disabled": false
                 },
                 {
@@ -1587,7 +1587,7 @@
                 {
                   "key": "pendingTimeInForce",
                   "value": "GTC",
-                  "description": "Supported values: [Time In Force](/products/spot/enums#timeinforce)",
+                  "description": "Supported values: Time In Force",
                   "disabled": true
                 },
                 {
@@ -1605,7 +1605,7 @@
                 {
                   "key": "pendingPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "See Pegged Orders",
                   "disabled": true
                 },
                 {
@@ -1686,19 +1686,19 @@
                 {
                   "key": "listClientOrderId",
                   "value": "bcedxMpQG6nFrZUPQyshoL",
-                  "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `workingClientOrderId` and the `pendingClientOrderId`.",
+                  "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `workingClientOrderId`, `pendingAboveClientOrderId`, and the `pendingBelowClientOrderId`.",
                   "disabled": true
                 },
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "Format of the JSON response. Supported values: [Order Response Type](/products/spot/enums#orderresponsetype)",
+                  "description": "Format of the JSON response. Supported values: Order Response Type",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: STP Modes",
                   "disabled": true
                 },
                 {
@@ -1710,7 +1710,7 @@
                 {
                   "key": "workingSide",
                   "value": "BUY",
-                  "description": "Supported values: [Order Side](/products/spot/enums#side)",
+                  "description": "Supported values: Order Side",
                   "disabled": false
                 },
                 {
@@ -1740,7 +1740,7 @@
                 {
                   "key": "workingTimeInForce",
                   "value": "GTC",
-                  "description": "Supported values: [Time In Force](/products/spot/enums#timeinforce)",
+                  "description": "Supported values: Time In Force",
                   "disabled": true
                 },
                 {
@@ -1758,25 +1758,25 @@
                 {
                   "key": "workingPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "See Pegged Orders",
                   "disabled": true
                 },
                 {
                   "key": "workingPegOffsetType",
                   "value": "PRICE_LEVEL",
-                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "See Pegged Orders",
                   "disabled": true
                 },
                 {
                   "key": "workingPegOffsetValue",
                   "value": "1",
-                  "description": "Price level for pegging (max: 100). See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "Price level for pegging (max: 100). See Pegged Orders",
                   "disabled": true
                 },
                 {
                   "key": "pendingSide",
                   "value": "BUY",
-                  "description": "Supported values: [Order Side](/products/spot/enums#side)",
+                  "description": "Supported values: Order Side",
                   "disabled": false
                 },
                 {
@@ -1806,7 +1806,7 @@
                 {
                   "key": "pendingAboveTrailingDelta",
                   "value": "1",
-                  "description": "See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)",
+                  "description": "See Trailing Stop order FAQ",
                   "disabled": true
                 },
                 {
@@ -1836,19 +1836,19 @@
                 {
                   "key": "pendingAbovePegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "See Pegged Orders",
                   "disabled": true
                 },
                 {
                   "key": "pendingAbovePegOffsetType",
                   "value": "PRICE_LEVEL",
-                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "See Pegged Orders",
                   "disabled": true
                 },
                 {
                   "key": "pendingAbovePegOffsetValue",
                   "value": "1",
-                  "description": "Price level for pegging (max: 100). See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "Price level for pegging (max: 100). See Pegged Orders",
                   "disabled": true
                 },
                 {
@@ -1878,7 +1878,7 @@
                 {
                   "key": "pendingBelowTrailingDelta",
                   "value": "1",
-                  "description": "See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)",
+                  "description": "See Trailing Stop order FAQ",
                   "disabled": true
                 },
                 {
@@ -1890,7 +1890,7 @@
                 {
                   "key": "pendingBelowTimeInForce",
                   "value": "GTC",
-                  "description": "Supported values: [Time In Force](/products/spot/enums#timeinforce)",
+                  "description": "Supported values: Time In Force",
                   "disabled": true
                 },
                 {
@@ -1908,7 +1908,7 @@
                 {
                   "key": "pendingBelowPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "See Pegged Orders",
                   "disabled": true
                 },
                 {
@@ -1995,13 +1995,13 @@
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "Format of the JSON response. Supported values: [Order Response Type](/products/spot/enums#orderresponsetype)",
+                  "description": "Format of the JSON response. Supported values: Order Response Type",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: STP Modes",
                   "disabled": true
                 },
                 {
@@ -2013,7 +2013,7 @@
                 {
                   "key": "workingSide",
                   "value": "BUY",
-                  "description": "Supported values: [Order Side](/products/spot/enums#side)",
+                  "description": "Supported values: Order Side",
                   "disabled": false
                 },
                 {
@@ -2043,7 +2043,7 @@
                 {
                   "key": "workingTimeInForce",
                   "value": "GTC",
-                  "description": "Supported values: [Time In Force](/products/spot/enums#timeinforce)",
+                  "description": "Supported values: Time In Force",
                   "disabled": true
                 },
                 {
@@ -2061,13 +2061,13 @@
                 {
                   "key": "pendingType",
                   "value": "LIMIT",
-                  "description": "Supported values: [Order Types](/products/spot/enums#ordertypes). Note that `MARKET` orders using `quoteOrderQty` are not supported.",
+                  "description": "Supported values: Order Types. Note that `MARKET` orders using `quoteOrderQty` are not supported.",
                   "disabled": false
                 },
                 {
                   "key": "workingPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "See Pegged Orders",
                   "disabled": true
                 },
                 {
@@ -2085,7 +2085,7 @@
                 {
                   "key": "pendingSide",
                   "value": "BUY",
-                  "description": "Supported values: [Order Side](/products/spot/enums#side)",
+                  "description": "Supported values: Order Side",
                   "disabled": false
                 },
                 {
@@ -2127,7 +2127,7 @@
                 {
                   "key": "pendingTimeInForce",
                   "value": "GTC",
-                  "description": "Supported values: [Time In Force](/products/spot/enums#timeinforce)",
+                  "description": "Supported values: Time In Force",
                   "disabled": true
                 },
                 {
@@ -2145,7 +2145,7 @@
                 {
                   "key": "pendingPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "See Pegged Orders",
                   "disabled": true
                 },
                 {
@@ -2226,19 +2226,19 @@
                 {
                   "key": "listClientOrderId",
                   "value": "RumwQpBaDctlUu5jyG5rs0",
-                  "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `workingClientOrderId` and the `pendingClientOrderId`.",
+                  "description": "Arbitrary unique ID among open order lists. Automatically generated if not sent. A new order list with the same `listClientOrderId` is accepted only when the previous one is filled or completely expired. `listClientOrderId` is distinct from the `workingClientOrderId`, `pendingAboveClientOrderId`, and the `pendingBelowClientOrderId`.",
                   "disabled": true
                 },
                 {
                   "key": "newOrderRespType",
                   "value": "ACK",
-                  "description": "Format of the JSON response. Supported values: [Order Response Type](/products/spot/enums#orderresponsetype)",
+                  "description": "Format of the JSON response. Supported values: Order Response Type",
                   "disabled": true
                 },
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: STP Modes",
                   "disabled": true
                 },
                 {
@@ -2250,7 +2250,7 @@
                 {
                   "key": "workingSide",
                   "value": "BUY",
-                  "description": "Supported values: [Order Side](/products/spot/enums#side)",
+                  "description": "Supported values: Order Side",
                   "disabled": false
                 },
                 {
@@ -2280,7 +2280,7 @@
                 {
                   "key": "workingTimeInForce",
                   "value": "GTC",
-                  "description": "Supported values: [Time In Force](/products/spot/enums#timeinforce)",
+                  "description": "Supported values: Time In Force",
                   "disabled": true
                 },
                 {
@@ -2298,7 +2298,7 @@
                 {
                   "key": "workingPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "See Pegged Orders",
                   "disabled": true
                 },
                 {
@@ -2316,7 +2316,7 @@
                 {
                   "key": "pendingSide",
                   "value": "BUY",
-                  "description": "Supported values: [Order Side](/products/spot/enums#side)",
+                  "description": "Supported values: Order Side",
                   "disabled": false
                 },
                 {
@@ -2352,7 +2352,7 @@
                 {
                   "key": "pendingAboveTrailingDelta",
                   "value": "1",
-                  "description": "See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)",
+                  "description": "See Trailing Stop order FAQ",
                   "disabled": true
                 },
                 {
@@ -2382,7 +2382,7 @@
                 {
                   "key": "pendingAbovePegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "See Pegged Orders",
                   "disabled": true
                 },
                 {
@@ -2424,7 +2424,7 @@
                 {
                   "key": "pendingBelowTrailingDelta",
                   "value": "1",
-                  "description": "See [Trailing Stop order FAQ](/products/spot/faqs/trailing-stop-faq)",
+                  "description": "See Trailing Stop order FAQ",
                   "disabled": true
                 },
                 {
@@ -2454,7 +2454,7 @@
                 {
                   "key": "pendingBelowPegPriceType",
                   "value": "PRIMARY_PEG",
-                  "description": "See [Pegged Orders](/products/spot/faqs/pegged_orders)",
+                  "description": "See Pegged Orders",
                   "disabled": true
                 },
                 {
@@ -2595,7 +2595,7 @@
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "The allowed enums is dependent on what is configured on the symbol. The possible supported values are: [STP Modes](/products/spot/enums#stpmodes).",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. The possible supported values are: STP Modes.",
                   "disabled": true
                 },
                 {
@@ -2671,19 +2671,19 @@
                 {
                   "key": "side",
                   "value": "BUY",
-                  "description": "Please see [Enums](/products/spot/enums#side) for supported values.",
+                  "description": "Please see Enums for supported values.",
                   "disabled": false
                 },
                 {
                   "key": "type",
                   "value": "MARKET",
-                  "description": "Please see [Enums](/products/spot/enums#ordertypes) for supported values.",
+                  "description": "Please see Enums for supported values.",
                   "disabled": false
                 },
                 {
                   "key": "timeInForce",
                   "value": "GTC",
-                  "description": "Please see [Enums](/products/spot/enums#timeinforce) for supported values.",
+                  "description": "Please see Enums for supported values.",
                   "disabled": true
                 },
                 {
@@ -2731,7 +2731,7 @@
                 {
                   "key": "selfTradePreventionMode",
                   "value": "NONE",
-                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: [STP Modes](/products/spot/enums#stpmodes)",
+                  "description": "The allowed enums is dependent on what is configured on the symbol. Supported values: STP Modes",
                   "disabled": true
                 },
                 {
