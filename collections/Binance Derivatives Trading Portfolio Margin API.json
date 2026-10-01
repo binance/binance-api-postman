@@ -4499,8 +4499,8 @@
                 },
                 {
                   "key": "selfTradePreventionMode",
-                  "value": "NONE",
-                  "description": "`NONE`: No STP / `EXPIRE_TAKER`: expire taker order when STP triggers/ `EXPIRE_MAKER`: expire taker order when STP triggers/ `EXPIRE_BOTH`: expire both orders when STP triggers",
+                  "value": "EXPIRE_TAKER",
+                  "description": "`EXPIRE_TAKER`: expire taker order when STP triggers/ `EXPIRE_MAKER`: expire taker order when STP triggers/ `EXPIRE_BOTH`: expire both orders when STP triggers",
                   "disabled": true
                 },
                 {

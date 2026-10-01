@@ -1,5 +1,22 @@
 # Changelog
 
+## 59.0.0 - 2026-10-01
+
+**Derivatives Trading Portfolio Margin**
+
+### Changed (1)
+
+- Modified parameter `selfTradePreventionMode`:
+  - enum removed: `NONE`
+  - affected endpoints:
+    - `POST /papi/v1/um/order`
+
+**Margin Trading**
+
+### Added (1)
+
+- `GET /sapi/v1/margin/oto/openOrderList`
+
 ## 58.0.0 - 2026-09-30
 
 **Derivatives Trading Portfolio Margin**
