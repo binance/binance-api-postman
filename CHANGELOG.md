@@ -1,5 +1,19 @@
 # Changelog
 
+## 60.0.0 - 2026-10-07
+
+**Dual Investment**
+
+### Changed (1)
+
+- Deleted parameter `autoCompoundPlan`
+  - affected endpoints:
+    - `POST /sapi/v1/dci/product/subscribe`
+
+### Removed (1)
+
+- `POST /sapi/v1/dci/product/auto_compound/edit-status`
+
 ## 59.0.0 - 2026-10-01
 
 **Derivatives Trading Portfolio Margin**
