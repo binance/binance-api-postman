@@ -1,5 +1,13 @@
 # Changelog
 
+## 60.1.0 - 2026-10-09
+
+**Algo**
+
+### Added (1)
+
+- `POST /sapi/v1/algo/spot/newOrderVp`
+
 ## 60.0.0 - 2026-10-07
 
 **Dual Investment**
