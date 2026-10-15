@@ -3763,12 +3763,6 @@
                   "disabled": true
                 },
                 {
-                  "key": "page",
-                  "value": "1",
-                  "description": "Page number",
-                  "disabled": true
-                },
-                {
                   "key": "limit",
                   "value": "30",
                   "description": "Maximum number of records to return.",

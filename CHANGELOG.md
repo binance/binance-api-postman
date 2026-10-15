@@ -1,5 +1,37 @@
 # Changelog
 
+## 62.0.0 - 2026-10-15
+
+**Derivatives Trading COIN Futures**
+
+### Changed (1)
+
+- Deleted parameter `page`
+  - affected endpoints:
+    - `GET /dapi/v1/income`
+
+**Derivatives Trading Portfolio Margin**
+
+### Changed (2)
+
+- Added parameter `amount`
+  - affected endpoints:
+    - `POST /papi/v1/asset-collection`
+- Added parameter `futureType`
+  - affected endpoints:
+    - `POST /papi/v1/asset-collection`
+
+**Derivatives Trading Portfolio Margin Pro**
+
+### Changed (2)
+
+- Added parameter `amount`
+  - affected endpoints:
+    - `POST /sapi/v1/portfolio/asset-collection`
+- Added parameter `futureType`
+  - affected endpoints:
+    - `POST /sapi/v1/portfolio/asset-collection`
+
 ## 61.0.0 - 2026-10-15
 
 **Derivatives Trading USDS Futures**

@@ -5050,6 +5050,18 @@
                   "disabled": false
                 },
                 {
+                  "key": "amount",
+                  "value": "10",
+                  "description": "Amount to collect. When provided, `futureType` is required.",
+                  "disabled": true
+                },
+                {
+                  "key": "futureType",
+                  "value": "UM",
+                  "description": "Target wallet for the collection. `OPTION` is for SPAN only. Cannot be sent without `amount`. `amount` and `futureType` must be provided together. If neither is provided, existing behavior is unchanged (query all wallets + transfer).",
+                  "disabled": true
+                },
+                {
                   "key": "recvWindow",
                   "value": "5000",
                   "description": "",
@@ -7103,7 +7115,7 @@
                 {
                   "key": "leverage",
                   "value": "21",
-                  "description": "target initial leverage",
+                  "description": "Target initial leverage. The maximum is symbol-specific: use `initialLeverage` of bracket 1 from `GET /papi/v1/um/leverageBracket`.",
                   "disabled": false
                 },
                 {
