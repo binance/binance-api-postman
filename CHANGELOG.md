@@ -1,5 +1,15 @@
 # Changelog
 
+## 61.0.0 - 2026-10-15
+
+**Derivatives Trading USDS Futures**
+
+### Changed (1)
+
+- Deleted parameter `page`
+  - affected endpoints:
+    - `GET /fapi/v1/income`
+
 ## 60.1.0 - 2026-10-09
 
 **Algo**
