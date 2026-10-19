@@ -1,5 +1,16 @@
 # Changelog
 
+## 62.0.1 - 2026-10-19
+
+**Derivatives Trading USDS Futures**
+
+### Changed (1)
+
+- Modified parameter `interval`:
+  - enum added: `1s`
+  - affected endpoints:
+    - `GET /fapi/v1/continuousKlines`
+
 ## 62.0.0 - 2026-10-15
 
 **Derivatives Trading COIN Futures**

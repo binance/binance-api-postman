@@ -355,7 +355,7 @@
                 },
                 {
                   "key": "interval",
-                  "value": "1m",
+                  "value": "1s",
                   "description": "",
                   "disabled": false
                 },
