@@ -1,5 +1,15 @@
 # Changelog
 
+## 62.1.0 - 2026-10-20
+
+**Margin Trading**
+
+### Added (3)
+
+- `DELETE /sapi/v2/margin/listen-key`
+- `POST /sapi/v2/margin/listen-key`
+- `PUT /sapi/v2/margin/listen-key`
+
 ## 62.0.1 - 2026-10-19
 
 **Derivatives Trading USDS Futures**

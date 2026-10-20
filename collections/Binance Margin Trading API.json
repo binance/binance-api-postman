@@ -259,6 +259,115 @@
               "query": []
             }
           }
+        },
+        {
+          "name": "Close User Data Stream V2 (USER_STREAM)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/margin/listen-key",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v2",
+                "margin",
+                "listen-key"
+              ],
+              "variable": [],
+              "query": []
+            }
+          }
+        },
+        {
+          "name": "Keepalive User Data Stream V2 (USER_STREAM)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/margin/listen-key",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v2",
+                "margin",
+                "listen-key"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "listenKey",
+                  "value": "listenKey_example",
+                  "description": "",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Start User Data Stream V2 (USER_STREAM)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/margin/listen-key",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v2",
+                "margin",
+                "listen-key"
+              ],
+              "variable": [],
+              "query": []
+            }
+          }
         }
       ]
     },
