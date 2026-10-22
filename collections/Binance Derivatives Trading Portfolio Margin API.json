@@ -5449,12 +5449,6 @@
                   "disabled": true
                 },
                 {
-                  "key": "page",
-                  "value": "1",
-                  "description": "",
-                  "disabled": true
-                },
-                {
                   "key": "limit",
                   "value": "100",
                   "description": "Number of results returned.",
@@ -6900,12 +6894,6 @@
                   "key": "endTime",
                   "value": "1641782889000",
                   "description": "Timestamp in ms to get funding until INCLUSIVE.",
-                  "disabled": true
-                },
-                {
-                  "key": "page",
-                  "value": "1",
-                  "description": "Page number.",
                   "disabled": true
                 },
                 {

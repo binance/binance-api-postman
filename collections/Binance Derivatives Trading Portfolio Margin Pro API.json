@@ -1364,12 +1364,6 @@
               "variable": [],
               "query": [
                 {
-                  "key": "from",
-                  "value": "SPOT",
-                  "description": "",
-                  "disabled": true
-                },
-                {
                   "key": "recvWindow",
                   "value": "5000",
                   "description": "",
@@ -1426,12 +1420,6 @@
               ],
               "variable": [],
               "query": [
-                {
-                  "key": "from",
-                  "value": "SPOT",
-                  "description": "",
-                  "disabled": true
-                },
                 {
                   "key": "recvWindow",
                   "value": "5000",

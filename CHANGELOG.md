@@ -1,5 +1,34 @@
 # Changelog
 
+## 63.0.0 - 2026-10-22
+
+**Crypto Loan**
+
+### Removed (4)
+
+- `GET /sapi/v1/loan/borrow/history`
+- `GET /sapi/v1/loan/income`
+- `GET /sapi/v1/loan/ltv/adjustment/history`
+- `GET /sapi/v1/loan/repay/history`
+
+**Derivatives Trading Portfolio Margin**
+
+### Changed (1)
+
+- Deleted parameter `page`
+  - affected endpoints:
+    - `GET /papi/v1/cm/income`
+    - `GET /papi/v1/um/income`
+
+**Derivatives Trading Portfolio Margin Pro**
+
+### Changed (1)
+
+- Deleted parameter `from`
+  - affected endpoints:
+    - `POST /sapi/v1/portfolio/repay`
+    - `POST /sapi/v1/portfolio/repay-futures-negative-balance`
+
 ## 62.1.0 - 2026-10-20
 
 **Margin Trading**
