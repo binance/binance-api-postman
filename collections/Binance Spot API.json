@@ -4420,7 +4420,7 @@
                 {
                   "key": "symbolStatus",
                   "value": "TRADING",
-                  "description": "Supported values: `TRADING`, `HALT`, `BREAK`",
+                  "description": "Supported values: `TRADING`, `HALT`, `BREAK`, `CANCEL_ONLY`",
                   "disabled": true
                 }
               ]

@@ -1,5 +1,24 @@
 # Changelog
 
+## 63.0.1 - 2026-10-27
+
+**Spot**
+
+### Changed (1)
+
+- Modified parameter `symbolStatus`:
+  - enum added: `CANCEL_ONLY`
+  - affected endpoints:
+    - `GET /api/v3/depth`
+    - `GET /api/v3/exchangeInfo`
+    - `GET /api/v3/executionRules`
+    - `GET /api/v3/referencePrice/calculation`
+    - `GET /api/v3/ticker`
+    - `GET /api/v3/ticker/24hr`
+    - `GET /api/v3/ticker/bookTicker`
+    - `GET /api/v3/ticker/price`
+    - `GET /api/v3/ticker/tradingDay`
+
 ## 63.0.0 - 2026-10-22
 
 **Crypto Loan**
