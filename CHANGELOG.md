@@ -1,5 +1,24 @@
 # Changelog
 
+## 63.1.0 - 2026-10-27
+
+**Sub Account**
+
+### Added (1)
+
+- `POST /sapi/v2/sub-account/subAccountApi`
+
+### Changed (2)
+
+- Added parameter `canFixApiReading`
+  - affected endpoints:
+    - `POST /sapi/v1/sub-account/subAccountApi`
+    - `POST /sapi/v1/sub-account/subAccountApiPermission`
+- Added parameter `canFixApiTrading`
+  - affected endpoints:
+    - `POST /sapi/v1/sub-account/subAccountApi`
+    - `POST /sapi/v1/sub-account/subAccountApiPermission`
+
 ## 63.0.1 - 2026-10-27
 
 **Spot**

@@ -3508,6 +3508,18 @@
                   "disabled": true
                 },
                 {
+                  "key": "canFixApiTrading",
+                  "value": "true",
+                  "description": "FIX API Trading permission. Only supported for API Keys using an Ed25519 public key. Setting it to `true` for any other key type returns `-9000` `Unsupported operation`",
+                  "disabled": true
+                },
+                {
+                  "key": "canFixApiReading",
+                  "value": "false",
+                  "description": "FIX API Reading permission. Only supported for API Keys using an Ed25519 public key. Setting it to `true` for any other key type returns `-9000` `Unsupported operation`",
+                  "disabled": true
+                },
+                {
                   "key": "ipAddress",
                   "value": "69.210.67.14",
                   "description": "Required when status=2. IP address list, max 500 chars",
@@ -3919,6 +3931,153 @@
                   "key": "canVanillaOptions",
                   "value": "false",
                   "description": "Vanilla options permission",
+                  "disabled": true
+                },
+                {
+                  "key": "canFixApiTrading",
+                  "value": "true",
+                  "description": "FIX API Trading permission. If omitted, the existing value is unchanged. Only supported for API Keys using an Ed25519 public key. Setting it to `true` for any other key type returns `-9000` `Unsupported operation`",
+                  "disabled": true
+                },
+                {
+                  "key": "canFixApiReading",
+                  "value": "false",
+                  "description": "FIX API Reading permission. If omitted, the existing value is unchanged. Only supported for API Keys using an Ed25519 public key. Setting it to `true` for any other key type returns `-9000` `Unsupported operation`",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Sub-account API Key V2 (For Master Account) (USER_DATA)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/sub-account/subAccountApi",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v2",
+                "sub-account",
+                "subAccountApi"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "123@test.com",
+                  "description": "Sub-account email",
+                  "disabled": false
+                },
+                {
+                  "key": "apiName",
+                  "value": "my-fix-api",
+                  "description": "API Key name",
+                  "disabled": false
+                },
+                {
+                  "key": "status",
+                  "value": "2",
+                  "description": "IP restriction status. 1 = unrestricted, 2 = restricted to trusted IPs, 3 = third-party IP restriction",
+                  "disabled": false
+                },
+                {
+                  "key": "canTrade",
+                  "value": "true",
+                  "description": "Spot & Margin trading permission, default false",
+                  "disabled": true
+                },
+                {
+                  "key": "canMarginLoanRepay",
+                  "value": "false",
+                  "description": "Margin borrow/repay permission, default false",
+                  "disabled": true
+                },
+                {
+                  "key": "canFuturesTrade",
+                  "value": "false",
+                  "description": "Futures trading permission, default false",
+                  "disabled": true
+                },
+                {
+                  "key": "canUniversalTransfer",
+                  "value": "false",
+                  "description": "Universal transfer permission, default false",
+                  "disabled": true
+                },
+                {
+                  "key": "canVanillaOptions",
+                  "value": "false",
+                  "description": "Vanilla options permission, default false",
+                  "disabled": true
+                },
+                {
+                  "key": "canFixApiTrading",
+                  "value": "true",
+                  "description": "FIX API Trading permission. Only supported for API Keys using an Ed25519 public key. Setting it to `true` for any other key type returns `-9000` `Unsupported operation`",
+                  "disabled": true
+                },
+                {
+                  "key": "canFixApiReading",
+                  "value": "true",
+                  "description": "FIX API Reading permission. Only supported for API Keys using an Ed25519 public key. Setting it to `true` for any other key type returns `-9000` `Unsupported operation`",
+                  "disabled": true
+                },
+                {
+                  "key": "ipAddress",
+                  "value": "1.2.3.4",
+                  "description": "Required when status=2. IP address list, max 500 chars",
+                  "disabled": true
+                },
+                {
+                  "key": "thirdPartyName",
+                  "value": "thirdParty",
+                  "description": "Required when status=3. Third-party name",
+                  "disabled": true
+                },
+                {
+                  "key": "publicKey",
+                  "value": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAptEM59ao3nOD2baduIA830qZU4k4mqfvv7PwHVAfZhg&#x3D;\n-----END PUBLIC KEY-----",
+                  "description": "RSA or Ed25519 public key (optional). Must be sent in the request body; it is rejected if passed in the URL query string",
                   "disabled": true
                 },
                 {
