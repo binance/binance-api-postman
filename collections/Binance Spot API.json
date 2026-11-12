@@ -442,6 +442,12 @@
                   "disabled": true
                 },
                 {
+                  "key": "quoteNotionalLimit",
+                  "value": "100",
+                  "description": "For orders on the BUY side only. Maximum quote-asset notional the order may consume. See Quote Notional Limit.",
+                  "disabled": true
+                },
+                {
                   "key": "recvWindow",
                   "value": "5000",
                   "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
@@ -728,6 +734,12 @@
                   "key": "pegOffsetType",
                   "value": "PRICE_LEVEL",
                   "description": "Only `PRICE_LEVEL` is supported <br> See Pegged Orders.",
+                  "disabled": true
+                },
+                {
+                  "key": "quoteNotionalLimit",
+                  "value": "100",
+                  "description": "For replacement orders on the BUY side only. Maximum quote-asset notional the replacement order may consume. See Quote Notional Limit.",
                   "disabled": true
                 },
                 {
@@ -1073,6 +1085,12 @@
                   "disabled": true
                 },
                 {
+                  "key": "quoteNotionalLimit",
+                  "value": "100",
+                  "description": "For orders on the BUY side only. Maximum quote-asset notional the order may consume. See Quote Notional Limit.",
+                  "disabled": true
+                },
+                {
                   "key": "recvWindow",
                   "value": "5000",
                   "description": "The value cannot be greater than `60000`. Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
@@ -1390,6 +1408,18 @@
                   "disabled": true
                 },
                 {
+                  "key": "aboveQuoteNotionalLimit",
+                  "value": "100",
+                  "description": "Quote notional limit for the above order (only for orders on the BUY side). See Quote Notional Limit.",
+                  "disabled": true
+                },
+                {
+                  "key": "belowQuoteNotionalLimit",
+                  "value": "100",
+                  "description": "Quote notional limit for the below order (only for orders on the BUY side). See Quote Notional Limit.",
+                  "disabled": true
+                },
+                {
                   "key": "recvWindow",
                   "value": "5000",
                   "description": "The value cannot be greater than `60000`. Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
@@ -1621,6 +1651,12 @@
                   "disabled": true
                 },
                 {
+                  "key": "workingQuoteNotionalLimit",
+                  "value": "100",
+                  "description": "Quote notional limit for the working LIMIT order on the BUY side. See Quote Notional Limit.",
+                  "disabled": true
+                },
+                {
                   "key": "recvWindow",
                   "value": "5000",
                   "description": "Supports up to three decimal places of precision (e.g., 6000.346) so that microseconds may be specified.",
@@ -1704,7 +1740,7 @@
                 {
                   "key": "workingType",
                   "value": "LIMIT",
-                  "description": "",
+                  "description": "Supported values: `LIMIT`, `LIMIT_MAKER`",
                   "disabled": false
                 },
                 {
@@ -1921,6 +1957,12 @@
                   "key": "pendingBelowPegOffsetValue",
                   "value": "1",
                   "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "workingQuoteNotionalLimit",
+                  "value": "100",
+                  "description": "Quote notional limit for the working LIMIT order on the BUY side. See Quote Notional Limit.",
                   "disabled": true
                 },
                 {
@@ -2158,6 +2200,18 @@
                   "key": "pendingPegOffsetValue",
                   "value": "1",
                   "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "workingQuoteNotionalLimit",
+                  "value": "100",
+                  "description": "Quote notional limit for the working order (only for orders on the BUY side). See Quote Notional Limit.",
+                  "disabled": true
+                },
+                {
+                  "key": "pendingQuoteNotionalLimit",
+                  "value": "100",
+                  "description": "Quote notional limit for the pending order (only for orders on the BUY side). See Quote Notional Limit.",
                   "disabled": true
                 },
                 {
@@ -2467,6 +2521,24 @@
                   "key": "pendingBelowPegOffsetValue",
                   "value": "1",
                   "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "workingQuoteNotionalLimit",
+                  "value": "100",
+                  "description": "Quote notional limit for the working order (only for orders on the BUY side). See Quote Notional Limit.",
+                  "disabled": true
+                },
+                {
+                  "key": "pendingAboveQuoteNotionalLimit",
+                  "value": "100",
+                  "description": "Quote notional limit for the pending above order (only for orders on the BUY side). See Quote Notional Limit.",
+                  "disabled": true
+                },
+                {
+                  "key": "pendingBelowQuoteNotionalLimit",
+                  "value": "100",
+                  "description": "Quote notional limit for the pending below order (only for orders on the BUY side). See Quote Notional Limit.",
                   "disabled": true
                 },
                 {

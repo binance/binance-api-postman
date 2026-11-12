@@ -1,5 +1,38 @@
 # Changelog
 
+## 63.2.0 - 2026-11-12
+
+**Spot**
+
+### Changed (7)
+
+- Added parameter `aboveQuoteNotionalLimit`
+  - affected endpoints:
+    - `POST /api/v3/orderList/oco`
+- Added parameter `belowQuoteNotionalLimit`
+  - affected endpoints:
+    - `POST /api/v3/orderList/oco`
+- Added parameter `pendingAboveQuoteNotionalLimit`
+  - affected endpoints:
+    - `POST /api/v3/orderList/otoco`
+- Added parameter `pendingBelowQuoteNotionalLimit`
+  - affected endpoints:
+    - `POST /api/v3/orderList/otoco`
+- Added parameter `pendingQuoteNotionalLimit`
+  - affected endpoints:
+    - `POST /api/v3/orderList/oto`
+- Added parameter `quoteNotionalLimit`
+  - affected endpoints:
+    - `POST /api/v3/order`
+    - `POST /api/v3/order/cancelReplace`
+    - `POST /api/v3/order/test`
+- Added parameter `workingQuoteNotionalLimit`
+  - affected endpoints:
+    - `POST /api/v3/orderList/opo`
+    - `POST /api/v3/orderList/opoco`
+    - `POST /api/v3/orderList/oto`
+    - `POST /api/v3/orderList/otoco`
+
 ## 63.1.0 - 2026-10-27
 
 **Sub Account**
