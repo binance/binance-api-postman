@@ -3672,7 +3672,7 @@
                 {
                   "key": "callbackRate",
                   "value": "1",
-                  "description": "Used with `TRAILING_STOP_MARKET`, min 0.1, max 10 (1 = 1%)",
+                  "description": "Used with `TRAILING_STOP_MARKET`, min 0.1, max 20 (1 = 1%)",
                   "disabled": true
                 },
                 {

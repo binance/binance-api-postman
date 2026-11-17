@@ -341,6 +341,45 @@
               ]
             }
           }
+        },
+        {
+          "name": "Get Portfolio Margin Tiered Collateral Rates (MARKET_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v2/portfolio/retail/collateralRate",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v2",
+                "portfolio",
+                "retail",
+                "collateralRate"
+              ],
+              "variable": [],
+              "query": []
+            }
+          }
         }
       ]
     },

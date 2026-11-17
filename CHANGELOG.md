@@ -1,5 +1,13 @@
 # Changelog
 
+## 63.3.0 - 2026-11-17
+
+**Derivatives Trading Portfolio Margin Pro**
+
+### Added (1)
+
+- `GET /sapi/v2/portfolio/retail/collateralRate`
+
 ## 63.2.0 - 2026-11-12
 
 **Spot**
