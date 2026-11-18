@@ -1,5 +1,11 @@
 # Changelog
 
+## 63.4.0 - 2026-11-xx
+
+**Stock Options**
+
+- Add Stock Options API collection.
+
 ## 63.3.0 - 2026-11-17
 
 **Derivatives Trading Portfolio Margin Pro**

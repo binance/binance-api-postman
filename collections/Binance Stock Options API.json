@@ -1,0 +1,1313 @@
+{
+    "info": {
+        "name": "Stock Option Trading REST API",
+        "description": {
+            "content": "REST APIs for Binance Stock Option Trading (US-listed equity options). All endpoints under `/sapi/v1/equity/option/*`.",
+            "type": "text/markdown"
+        },
+        "version": "1.0.0",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "exec": [
+                    "(async () => {",
+                    "    const ts = Date.now();",
+                    "    let queryParamsObject = {};",
+                    "    let bodyParamsObject = {};",
+                    "    const postmanEnvironment = pm.environment.get('environment');",
+                    "    const api_key = pm.environment.get('api-key');",
+                    "    const api_secret = pm.environment.get('api-secret');",
+                    "    const parameters = pm.request.url.query;",
+                    "    const body = pm.request.body;",
+                    "",
+                    "    // set host based on env",
+                    "    const normalizedEnvironment = String(postmanEnvironment || 'production').toLowerCase();",
+                    "    const environmentUrlKeyMap = {",
+                    "        production: 'prod_url',",
+                    "        prod: 'prod_url',",
+                    "        testnet: 'testnet_url',",
+                    "        demo: 'demo_url'",
+                    "    };",
+                    "    const selectedUrlKey = environmentUrlKeyMap[normalizedEnvironment] || 'prod_url';",
+                    "    const selectedUrl = pm.variables.get(selectedUrlKey) || pm.variables.get('prod_url');",
+                    "",
+                    "    // set host based on env",
+                    "    pm.request.url.host = [selectedUrl];",
+                    "",
+                    "    // Collect query params",
+                    "    parameters.each((param) => {",
+                    "        if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+                    "            queryParamsObject[param.key] = param.value;",
+                    "        }",
+                    "    });",
+                    "",
+                    "    // add timestamp",
+                    "    Object.assign(queryParamsObject, { timestamp: ts });",
+                    "",
+                    "    // Collect body params if urlencoded",
+                    "    let hasUrlencodedBodyParams = false;",
+                    "",
+                    "    if (body) {",
+                    "        const contentTypeHeader = pm.request.headers.get('Content-Type') || pm.request.headers.get('content-type') || '';",
+                    "        const isFormUrlencoded = contentTypeHeader.includes('application/x-www-form-urlencoded') || body.mode === 'urlencoded';",
+                    "",
+                    "        if (isFormUrlencoded && body.urlencoded) {",
+                    "            body.urlencoded.each((param) => {",
+                    "                if (param.key !== 'signature' && !is_empty(param.value) && !is_disabled(param.disabled)) {",
+                    "                    bodyParamsObject[param.key] = param.value;",
+                    "                    hasUrlencodedBodyParams = true;",
+                    "                }",
+                    "            });",
+                    "        }",
+                    "    }",
+                    "",
+                    "    // set api key",
+                    "    setOrUpdateHeaderParam('X-MBX-APIKEY', api_key);",
+                    "",
+                    "    // only sign if a signature param was declared and we have a secret",
+                    "    if (parameters.has('signature') && api_secret) {",
+                    "        // canonical query strings",
+                    "        const queryStringForSign = buildQueryString(queryParamsObject);",
+                    "        const bodyStringForSign = buildQueryString(bodyParamsObject);",
+                    "        const totalParams = queryStringForSign + bodyStringForSign;",
+                    "",
+                    "        const encoder = new TextEncoder();",
+                    "        const keyData = encoder.encode(api_secret);",
+                    "        const msgData = encoder.encode(totalParams);",
+                    "",
+                    "        pm.request.url.query.clear();",
+                    "",
+                    "        const cryptoKey = await crypto.subtle.importKey('raw', keyData, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);",
+                    "        const signatureBuffer = await crypto.subtle.sign('HMAC', cryptoKey, msgData);",
+                    "",
+                    "        const signature = Array.from(new Uint8Array(signatureBuffer))",
+                    "            .map((b) => b.toString(16).padStart(2, '0'))",
+                    "            .join('');",
+                    "",
+                    "        // update request",
+                    "        const finalQueryParams = Object.assign({}, queryParamsObject, { signature });",
+                    "        const finalQueryString = buildQueryString(finalQueryParams);",
+                    "        pm.request.url.query = finalQueryString;",
+                    "    }",
+                    "",
+                    "    function buildQueryString(params) {",
+                    "        if (!params) return '';",
+                    "",
+                    "        const pairs = [];",
+                    "        Object.entries(params).forEach(([key, value]) => {",
+                    "            if (value !== null && value !== undefined) {",
+                    "                const serializedValue = serializeValue(value);",
+                    "                pairs.push(`${key}=${encodeURIComponent(serializedValue)}`);",
+                    "            }",
+                    "        });",
+                    "",
+                    "        return pairs.join('&');",
+                    "    }",
+                    "",
+                    "    function serializeValue(value) {",
+                    "        if (value === null || value === undefined) return '';",
+                    "        if (Array.isArray(value) || (typeof value === 'object' && value !== null)) return JSON.stringify(value);",
+                    "",
+                    "        return String(value);",
+                    "    }",
+                    "",
+                    "    function setOrUpdateHeaderParam(key, value) {",
+                    "        let headers = pm.request.headers;",
+                    "        let header = headers.find((header) => header.key === key);",
+                    "        if (header) header.value = value;",
+                    "        else pm.request.headers.add({ key, value });",
+                    "    }",
+                    "",
+                    "    function is_disabled(val) {",
+                    "        return val === true;",
+                    "    }",
+                    "",
+                    "    function is_empty(str) {",
+                    "        if (str === null || str === undefined) return true;",
+                    "        if (typeof str === 'string') {",
+                    "            return (",
+                    "                !str ||",
+                    "                str.length === 0 ||",
+                    "                !/[^\\\\s]/.test(str) ||",
+                    "                /^\\\\s*$/.test(str) ||",
+                    "                str.replace(/\\\\s/g, '') === ''",
+                    "            );",
+                    "        }",
+                    "        return false;",
+                    "    }",
+                    "",
+                    "})().then(() => {",
+                    "    if (typeof pm.done === 'function') pm.done();",
+                    "});"
+                ],
+                "type": "text/javascript"
+            }
+        }
+    ],
+    "item": [
+        {
+            "name": "Market Data",
+            "item": [
+                {
+                    "name": "Option Contracts (MARKET_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/market/contracts",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "market", "contracts"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "underlyingSymbol",
+                                    "value": "NVDA",
+                                    "description": "Underlying US-equity ticker, e.g. `NVDA`.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "expirationDate",
+                                    "value": "2026-09-30",
+                                    "description": "Expiration date in `YYYY-MM-DD`, taken from Option Expirations. Other formats (e.g. `2026-9-30`, `2026/09/30`) are rejected.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "rootSymbol",
+                                    "value": "NVDA",
+                                    "description": "OCC root. If omitted, only **standard** contracts are returned. To list corporate-action-adjusted contracts (e.g. `GOOG1`), pass the `rootSymbol` from Option Expirations.",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Option Exchange Info (MARKET_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/market/exchangeInfo",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "market", "exchangeInfo"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "NVDA260930C00100000",
+                                    "description": "OCC contract symbol, e.g. `NVDA260930C00100000`.",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Option Expirations (MARKET_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/market/expirations",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "market", "expirations"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "underlyingSymbol",
+                                    "value": "NVDA",
+                                    "description": "Underlying US-equity ticker, e.g. `NVDA`.",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Trade",
+            "item": [
+                {
+                    "name": "Submit Option Exercise (TRADE)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/exercise/submit",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "exercise", "submit"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "NVDA260930C00100000",
+                                    "description": "OCC contract symbol to exercise.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "quantity",
+                                    "value": "1",
+                                    "description": "Number of contracts to exercise. Whole number, minimum `1`, up to `availableQty`.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "quoteAsset",
+                                    "value": "USDC",
+                                    "description": "Quote asset. Only `USDC` (default) is supported; other values return `497104`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "clientOrderId",
+                                    "value": "web_2c9c92b74f1e4a7c8f3b9e1a2d3c4b5a",
+                                    "description": "Client ID. Format `^[a-zA-Z0-9-_]{32,36}$`. Generated by the server when omitted.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than `60000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel Option Order (TRADE)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/order/cancel",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "order", "cancel"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "orderId",
+                                    "value": "c3c58f49-7b0d-4b9e-a2db-1a2f9a3b8c71",
+                                    "description": "Option order ID.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than `60000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Cancel All Option Orders (TRADE)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/order/cancel-all",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "order", "cancel-all"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than `60000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Place Option Order (TRADE)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/order/place",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "order", "place"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "symbol",
+                                    "value": "NVDA260930C00100000",
+                                    "description": "OCC contract symbol.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "quoteAsset",
+                                    "value": "USDC",
+                                    "description": "Quote asset. Only `USDC` (default) is supported; other values return `497104`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "BUY",
+                                    "description": "`BUY` / `SELL`.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "positionIntent",
+                                    "value": "BUY_TO_OPEN",
+                                    "description": "May be omitted and derived from `side` (`BUY` → `BUY_TO_OPEN`, `SELL` → `SELL_TO_CLOSE`); always pass it for the short side (`SELL_TO_OPEN` / `BUY_TO_CLOSE`). Must match `side` when passed.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "quantity",
+                                    "value": "1",
+                                    "description": "Number of contracts. Must be a whole number, minimum `1`.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "price",
+                                    "value": "1.5",
+                                    "description": "Limit price (premium) per share, minimum `0.01`, must be a multiple of `tickSize`. For a put `SELL` order it cannot exceed the strike price (`497438`).",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "timeInForce",
+                                    "value": "DAY",
+                                    "description": "Only `DAY` (default) is supported. Other values return a parameter error.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "walletType",
+                                    "value": "CARD",
+                                    "description": "Payment wallet: `CARD` (default) / `MAIN`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "clientOrderId",
+                                    "value": "web_2c9c92b74f1e4a7c8f3b9e1a2d3c4b5a",
+                                    "description": "Client order ID. Format `^[a-zA-Z0-9-_]{32,36}$`. Generated by the server when omitted.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than `60000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "User Data Streams",
+            "item": [
+                {
+                    "name": "Create / Renew Listen Key (USER_STREAM)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/listenKey",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "listenKey"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than `60000`.",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "User Data",
+            "item": [
+                {
+                    "name": "Option Settlement Event Detail (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/event/detail",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "event", "detail"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "eventId",
+                                    "value": "a7f3c2e1-4b5d-4e8f-9c0a-1b2c3d4e5f60",
+                                    "description": "Event ID from Option Settlement Event History.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than `60000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Option Settlement Event History (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/event/history",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "event", "history"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "underlyingSymbol",
+                                    "value": "NVDA",
+                                    "description": "Underlying US-equity ticker filter.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "symbol",
+                                    "value": "NVDA260930C00100000",
+                                    "description": "OCC contract symbol filter. If both `symbol` and `underlyingSymbol` are sent, `symbol` takes precedence.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "eventType",
+                                    "value": "EXERCISE,ASSIGNMENT",
+                                    "description": "Comma-separated event type filter: `EXERCISE` / `ASSIGNMENT` / `EXPIRY`, case-insensitive.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1790700000000",
+                                    "description": "Start of the event time (`eventTime`) filter (ms).",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1790900000000",
+                                    "description": "End of the event time (`eventTime`) filter (ms).",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "lastId",
+                                    "value": "10086",
+                                    "description": "Cursor returned by the previous page. Omit on the first page.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "20",
+                                    "description": "Page size. Default `20`, max `100`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than `60000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Option Exercise Detail (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/exercise/detail",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "exercise", "detail"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "tranId",
+                                    "value": "1234567890",
+                                    "description": "Exercise transaction ID returned by Submit Option Exercise.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "clientOrderId",
+                                    "value": "web_2c9c92b74f1e4a7c8f3b9e1a2d3c4b5a",
+                                    "description": "Client ID used at submission.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than `60000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Exercisable Options (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/exercise/exercisable",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "exercise", "exercisable"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than `60000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Option Exercise History (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/exercise/history",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "exercise", "history"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "status",
+                                    "value": "SUCCESS,FAILED",
+                                    "description": "Comma-separated status filter: `PROCESSING` / `SUCCESS` / `FAILED`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1790600000000",
+                                    "description": "Start time (ms).",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1790800000000",
+                                    "description": "End time (ms).",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "current",
+                                    "value": "1",
+                                    "description": "Page number. Default `1`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "20",
+                                    "description": "Page size. Default `20`, max `100`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than `60000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Option Order Detail (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/order/detail",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "order", "detail"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "orderId",
+                                    "value": "c3c58f49-7b0d-4b9e-a2db-1a2f9a3b8c71",
+                                    "description": "Option order ID. Provide at least one of `orderId` and `clientOrderId`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "clientOrderId",
+                                    "value": "web_2c9c92b74f1e4a7c8f3b9e1a2d3c4b5a",
+                                    "description": "Client order ID. Provide at least one of `orderId` and `clientOrderId`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than `60000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Option Order History (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/order/history",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "order", "history"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "underlyingSymbol",
+                                    "value": "NVDA",
+                                    "description": "Underlying US-equity ticker filter, e.g. `NVDA`, case-insensitive. Matches orders on **all** contracts of that underlying, not a single OCC contract. An unlisted or delisted ticker returns `-26004`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "BUY",
+                                    "description": "`BUY` / `SELL`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "orderStatus",
+                                    "value": "FILLED,CANCELED",
+                                    "description": "Comma-separated status filter, without spaces: `FILLED` / `PARTIALLY_FILLED` / `CANCELED` / `EXPIRED` / `REJECTED`. If omitted, all statuses are returned except open orders with no fills (`NEW` / `ACCEPTED`, etc.).",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1790100000000",
+                                    "description": "Start of the order creation time (`createdAt`) filter (ms). If the span to `endTime` exceeds 180 days, it is truncated to 180 days before `endTime`.",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1790200000000",
+                                    "description": "End of the order creation time (`createdAt`) filter (ms).",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "current",
+                                    "value": "1",
+                                    "description": "Page number. Default `1`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "20",
+                                    "description": "Page size. Default `20`, max `100`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than `60000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Current Open Option Orders (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/order/open-orders",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "order", "open-orders"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than `60000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Option Positions (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/position",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "position"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than `60000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Option Trade History (USER_DATA)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "X-MBX-APIKEY",
+                                "value": "",
+                                "description": "API KEY",
+                                "disabled": false
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "description": "",
+                                "disabled": false
+                            }
+                        ],
+                        "body": {
+                            "mode": "urlencoded",
+                            "urlencoded": []
+                        },
+                        "url": {
+                            "raw": "{{url}}/sapi/v1/equity/option/trade/history",
+                            "host": ["{{url}}"],
+                            "path": ["sapi", "v1", "equity", "option", "trade", "history"],
+                            "variable": [],
+                            "query": [
+                                {
+                                    "key": "underlyingSymbol",
+                                    "value": "NVDA",
+                                    "description": "Underlying US-equity ticker filter, e.g. `NVDA`, case-insensitive. Matches fills on **all** contracts of that underlying, not a single OCC contract. An unlisted or delisted ticker returns `-26004`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "side",
+                                    "value": "BUY",
+                                    "description": "`BUY` / `SELL`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "orderId",
+                                    "value": "c3c58f49-7b0d-4b9e-a2db-1a2f9a3b8c71",
+                                    "description": "Return fills of this order only.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "startTime",
+                                    "value": "1790100000000",
+                                    "description": "Start of the execution time (`executionAt`) filter (ms).",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "endTime",
+                                    "value": "1790200000000",
+                                    "description": "End of the execution time (`executionAt`) filter (ms).",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "current",
+                                    "value": "1",
+                                    "description": "Page number. Default `1`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "size",
+                                    "value": "20",
+                                    "description": "Page size. Default `20`, max `100`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "recvWindow",
+                                    "value": "5000",
+                                    "description": "The value cannot be greater than `60000`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "timestamp",
+                                    "value": "",
+                                    "description": "UTC timestamp in ms",
+                                    "disabled": false
+                                },
+                                {
+                                    "key": "signature",
+                                    "value": "",
+                                    "description": "Signature",
+                                    "disabled": false
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "prod_url",
+            "value": "https://api.binance.com",
+            "type": "string"
+        }
+    ]
+}
