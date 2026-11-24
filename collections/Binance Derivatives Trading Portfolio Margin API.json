@@ -5477,6 +5477,141 @@
           }
         },
         {
+          "name": "Get Download Id For CM Futures Transaction History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/papi/v1/cm/income/asyn",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "income",
+                "asyn"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "Timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "Timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get CM Futures Transaction Download Link by Id (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/papi/v1/cm/income/asyn/id",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "income",
+                "asyn",
+                "id"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "downloadId",
+                  "value": "545923594199212032",
+                  "description": "get by download id api",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
           "name": "Change CM Initial Leverage (TRADE)",
           "request": {
             "method": "POST",
@@ -5585,6 +5720,141 @@
                   "value": "BTCUSD_PERP",
                   "description": "",
                   "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Download Id For CM Futures Order History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/papi/v1/cm/order/asyn",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "order",
+                "asyn"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "Timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "Timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get CM Futures Order Download Link by Id (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/papi/v1/cm/order/asyn/id",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "order",
+                "asyn",
+                "id"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "downloadId",
+                  "value": "545923594199212032",
+                  "description": "get by download id api",
+                  "disabled": false
                 },
                 {
                   "key": "recvWindow",
@@ -5777,6 +6047,141 @@
               ],
               "variable": [],
               "query": [
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Download Id For CM Futures Trade History (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/papi/v1/cm/trade/asyn",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "trade",
+                "asyn"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "Timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "Timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get CM Futures Trade Download Link by Id (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/papi/v1/cm/trade/asyn/id",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "papi",
+                "v1",
+                "cm",
+                "trade",
+                "asyn",
+                "id"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "downloadId",
+                  "value": "545923594199212032",
+                  "description": "get by download id api",
+                  "disabled": false
+                },
                 {
                   "key": "recvWindow",
                   "value": "5000",

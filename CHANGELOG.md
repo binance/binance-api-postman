@@ -1,5 +1,43 @@
 # Changelog
 
+## 64.0.0 - 2026-11-24
+
+**Derivatives Trading Portfolio Margin**
+
+### Added (6)
+
+- `GET /papi/v1/cm/income/asyn/id`
+- `GET /papi/v1/cm/income/asyn`
+- `GET /papi/v1/cm/order/asyn/id`
+- `GET /papi/v1/cm/order/asyn`
+- `GET /papi/v1/cm/trade/asyn/id`
+- `GET /papi/v1/cm/trade/asyn`
+
+**Spot**
+
+### Changed (2)
+
+- Modified parameter `aboveIcebergQty`:
+  - type `integer` → `number`
+  - format `int64` → `float`
+  - affected endpoints:
+    - `POST /api/v3/orderList/oco`
+- Modified parameter `belowIcebergQty`:
+  - type `integer` → `number`
+  - format `int64` → `float`
+  - affected endpoints:
+    - `POST /api/v3/orderList/oco`
+
+**Stocks**
+
+### Changed (1)
+
+- Added parameter `tokenizedAssetSettleWalletType`
+  - affected endpoints:
+    - `POST /sapi/v1/equity/order/place`
+    - `POST /sapi/v1/equity/tokenized/mint`
+    - `POST /sapi/v1/equity/tokenized/redeem`
+
 ## 63.4.0 - 2026-11-18
 
 **Stock Options**

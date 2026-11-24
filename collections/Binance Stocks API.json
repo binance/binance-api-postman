@@ -358,6 +358,12 @@
                   "disabled": true
                 },
                 {
+                  "key": "tokenizedAssetSettleWalletType",
+                  "value": "MAIN",
+                  "description": "Wallet that receives the minted tokenized asset. `MAIN` = Spot wallet, `CARD` = Funding wallet. Default `CARD`. If `MAIN` is sent while Spot wallet settlement is not enabled, the request is rejected as an illegal parameter.",
+                  "disabled": true
+                },
+                {
                   "key": "recvWindow",
                   "value": "5000",
                   "description": "The value cannot be greater than `60000`.",
@@ -431,6 +437,12 @@
                   "key": "clientOrderId",
                   "value": "redeem-client-id-32chars-000000001",
                   "description": "Client order id for idempotency. Format `^[a-zA-Z0-9-_]{32,36}$`. Auto-generated when omitted.",
+                  "disabled": true
+                },
+                {
+                  "key": "tokenizedAssetSettleWalletType",
+                  "value": "MAIN",
+                  "description": "Wallet the tokenized asset is deducted from on redeem. `MAIN` = Spot wallet, `CARD` = Funding wallet. Default `CARD`. If `MAIN` is sent while Spot wallet settlement is not enabled, the request is rejected as an illegal parameter.",
                   "disabled": true
                 },
                 {
@@ -1058,6 +1070,12 @@
                   "key": "tokenize",
                   "value": "true",
                   "description": "Whether to tokenize the purchased stock asset upon settlement. Default `true`. Only takes effect when the symbol is tokenization-enabled (check via `/market/tokenized-assets`); silently ignored for non-tokenized symbols, which always settle as traditional underlying-equity trades.",
+                  "disabled": true
+                },
+                {
+                  "key": "tokenizedAssetSettleWalletType",
+                  "value": "MAIN",
+                  "description": "Wallet that receives the tokenized asset minted after the order fills. `MAIN` = Spot wallet, `CARD` = Funding wallet. Default `CARD`. Only applies when `side` = `BUY` and `tokenize` = `true`; ignored for `SELL` or `tokenize` = `false`. If `MAIN` is sent while Spot wallet settlement is not enabled, the request is rejected as an illegal parameter.",
                   "disabled": true
                 },
                 {
