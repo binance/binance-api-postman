@@ -1,5 +1,14 @@
 # Changelog
 
+## 64.1.0 - 2026-11-26
+
+**Stocks**
+
+### Added (2)
+
+- `GET /sapi/v1/bstocks/corp-action`
+- `GET /sapi/v1/equity/corp-action`
+
 ## 64.0.0 - 2026-11-24
 
 **Derivatives Trading Portfolio Margin**

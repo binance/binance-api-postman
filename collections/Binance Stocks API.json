@@ -152,6 +152,156 @@
       "name": "Tokenized",
       "item": [
         {
+          "name": "Bstocks Corporate Action Records (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/bstocks/corp-action",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "bstocks",
+                "corp-action"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of records to return. Default `20`, range `1` to `100`.",
+                  "disabled": false
+                },
+                {
+                  "key": "lastTime",
+                  "value": "1795593600000",
+                  "description": "The `nextTime` returned by the previous page, in milliseconds. Must be sent together with `lastId`.",
+                  "disabled": true
+                },
+                {
+                  "key": "lastId",
+                  "value": "123456",
+                  "description": "The `nextId` returned by the previous page. Must be sent together with `lastTime`.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Corporate Action Records (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/sapi/v1/equity/corp-action",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "sapi",
+                "v1",
+                "equity",
+                "corp-action"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "20",
+                  "description": "Number of records to return. Default `20`, range `1` to `100`.",
+                  "disabled": false
+                },
+                {
+                  "key": "lastTime",
+                  "value": "1795593600000",
+                  "description": "The `nextTime` returned by the previous page, in milliseconds. Must be sent together with `lastId`.",
+                  "disabled": true
+                },
+                {
+                  "key": "lastId",
+                  "value": "123456",
+                  "description": "The `nextId` returned by the previous page. Must be sent together with `lastTime`.",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "The value cannot be greater than `60000`.",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
           "name": "Tokenized Convert Status (USER_DATA)",
           "request": {
             "method": "GET",
