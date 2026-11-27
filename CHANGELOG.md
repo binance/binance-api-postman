@@ -1,5 +1,30 @@
 # Changelog
 
+## 65.0.0 - 2026-11-27
+
+**Derivatives Trading COIN Futures**
+
+### Added (6)
+
+- `DELETE /dapi/v1/algoOpenOrders`
+- `DELETE /dapi/v1/algoOrder`
+- `GET /dapi/v1/algoOrder`
+- `GET /dapi/v1/allAlgoOrders`
+- `GET /dapi/v1/openAlgoOrders`
+- `POST /dapi/v1/algoOrder`
+
+**Stocks**
+
+### Added (2)
+
+- `GET /sapi/v1/bstocks/corp-action/history`
+- `GET /sapi/v1/equity/corp-action/history`
+
+### Removed (2)
+
+- `GET /sapi/v1/bstocks/corp-action`
+- `GET /sapi/v1/equity/corp-action`
+
 ## 64.1.0 - 2026-11-26
 
 **Stocks**

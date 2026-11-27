@@ -174,7 +174,7 @@
               "urlencoded": []
             },
             "url": {
-              "raw": "{{url}}/sapi/v1/bstocks/corp-action",
+              "raw": "{{url}}/sapi/v1/bstocks/corp-action/history",
               "host": [
                 "{{url}}"
               ],
@@ -182,7 +182,8 @@
                 "sapi",
                 "v1",
                 "bstocks",
-                "corp-action"
+                "corp-action",
+                "history"
               ],
               "variable": [],
               "query": [
@@ -249,7 +250,7 @@
               "urlencoded": []
             },
             "url": {
-              "raw": "{{url}}/sapi/v1/equity/corp-action",
+              "raw": "{{url}}/sapi/v1/equity/corp-action/history",
               "host": [
                 "{{url}}"
               ],
@@ -257,7 +258,8 @@
                 "sapi",
                 "v1",
                 "equity",
-                "corp-action"
+                "corp-action",
+                "history"
               ],
               "variable": [],
               "query": [

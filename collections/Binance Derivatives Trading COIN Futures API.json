@@ -1728,6 +1728,460 @@
           }
         },
         {
+          "name": "Cancel All Algo Open Orders (TRADE)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/dapi/v1/algoOpenOrders",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "algoOpenOrders"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "BTCUSD_PERP",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Cancel Algo Order (TRADE)",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/dapi/v1/algoOrder",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "algoOrder"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "algoId",
+                  "value": "2146760",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "clientAlgoId",
+                  "value": "6B2I9XVcJpCjqPAJ4YoFX7",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "New Algo Order (TRADE)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/dapi/v1/algoOrder",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "algoOrder"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "algoType",
+                  "value": "CONDITIONAL",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "symbol",
+                  "value": "BTCUSD_PERP",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "side",
+                  "value": "BUY",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "positionSide",
+                  "value": "BOTH",
+                  "description": "Default `BOTH` for One-way Mode ; `LONG` or `SHORT` for Hedge Mode. It must be sent in Hedge Mode.",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "LIMIT",
+                  "description": "",
+                  "disabled": false
+                },
+                {
+                  "key": "timeInForce",
+                  "value": "GTC",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "quantity",
+                  "value": "1.0",
+                  "description": "quantity measured by contract number, Cannot be sent with `closePosition`=`true`(Close-All)",
+                  "disabled": true
+                },
+                {
+                  "key": "price",
+                  "value": "1.0",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "triggerPrice",
+                  "value": "1.0",
+                  "description": "Trigger price",
+                  "disabled": true
+                },
+                {
+                  "key": "workingType",
+                  "value": "MARK_PRICE",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "priceMatch",
+                  "value": "OPPONENT",
+                  "description": "only available for `LIMIT`/`STOP`/`TAKE_PROFIT` order; Can't be passed together with `price`",
+                  "disabled": true
+                },
+                {
+                  "key": "closePosition",
+                  "value": "true",
+                  "description": "Close-All，used with `STOP_MARKET` or `TAKE_PROFIT_MARKET`.",
+                  "disabled": true
+                },
+                {
+                  "key": "priceProtect",
+                  "value": "true",
+                  "description": "Used with `STOP_MARKET` or `TAKE_PROFIT_MARKET` order. when price reaches the triggerPrice ，the difference rate between \"MARK_PRICE\" and \"CONTRACT_PRICE\" cannot be larger than the Price Protection Threshold of the symbol.",
+                  "disabled": true
+                },
+                {
+                  "key": "reduceOnly",
+                  "value": "true",
+                  "description": "Cannot be sent in Hedge Mode; cannot be sent with `closePosition`=`true`",
+                  "disabled": true
+                },
+                {
+                  "key": "activatePrice",
+                  "value": "1.0",
+                  "description": "Used with `TRAILING_STOP_MARKET` orders, default as the latest price(supporting different `workingType`)",
+                  "disabled": true
+                },
+                {
+                  "key": "callbackRate",
+                  "value": "1",
+                  "description": "Used with `TRAILING_STOP_MARKET` orders",
+                  "disabled": true
+                },
+                {
+                  "key": "clientAlgoId",
+                  "value": "1",
+                  "description": "A unique id among open orders. Automatically generated if not sent. Can only be string following the rule: `^[\\.A-Z\\:/a-z0-9_-]{1,36}$`",
+                  "disabled": true
+                },
+                {
+                  "key": "newOrderRespType",
+                  "value": "ACK",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "selfTradePreventionMode",
+                  "value": "NONE",
+                  "description": "`EXPIRE_TAKER`: expire taker order when STP triggers / `EXPIRE_MAKER`: expire maker order when STP triggers/ `EXPIRE_BOTH`: expire both orders when STP triggers; default `NONE`",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query Algo Order (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/dapi/v1/algoOrder",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "algoOrder"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "algoId",
+                  "value": "1",
+                  "description": "Order ID",
+                  "disabled": true
+                },
+                {
+                  "key": "clientAlgoId",
+                  "value": "1",
+                  "description": "Client order ID",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Query All Algo Orders (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/dapi/v1/allAlgoOrders",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "allAlgoOrders"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "symbol",
+                  "value": "BTCUSD_PERP",
+                  "description": "Symbol",
+                  "disabled": false
+                },
+                {
+                  "key": "algoId",
+                  "value": "2146760",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "startTime",
+                  "value": "1623319461670",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "endTime",
+                  "value": "1641782889000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "limit",
+                  "value": "50",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
           "name": "Cancel All Open Orders (TRADE)",
           "request": {
             "method": "DELETE",
@@ -2346,6 +2800,80 @@
                   "value": "ISOLATED",
                   "description": "",
                   "disabled": false
+                },
+                {
+                  "key": "recvWindow",
+                  "value": "5000",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "timestamp",
+                  "value": "",
+                  "description": "UTC timestamp in ms",
+                  "disabled": false
+                },
+                {
+                  "key": "signature",
+                  "value": "",
+                  "description": "Signature",
+                  "disabled": false
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Current All Algo Open Orders (USER_DATA)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-MBX-APIKEY",
+                "value": "",
+                "description": "API KEY",
+                "disabled": false
+              },
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "description": "",
+                "disabled": false
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{url}}/dapi/v1/openAlgoOrders",
+              "host": [
+                "{{url}}"
+              ],
+              "path": [
+                "dapi",
+                "v1",
+                "openAlgoOrders"
+              ],
+              "variable": [],
+              "query": [
+                {
+                  "key": "algoType",
+                  "value": "CONDITIONAL",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "symbol",
+                  "value": "BTCUSD_PERP",
+                  "description": "",
+                  "disabled": true
+                },
+                {
+                  "key": "algoId",
+                  "value": "2148627",
+                  "description": "",
+                  "disabled": true
                 },
                 {
                   "key": "recvWindow",
